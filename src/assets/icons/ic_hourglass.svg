@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 20.075">
+    <defs>
+        <style>
+            .cls-1{fill:#dadada}.cls-2{fill:#f97271}.cls-3{fill:#a6a6a6}
+        </style>
+    </defs>
+    <g id="ic_hourglass" transform="translate(-85.5 -215)">
+        <path id="Union_32" d="M8.412 14.954H.029v-.779a10.236 10.236 0 0 1 .89-3.49 7.934 7.934 0 0 1 1.436-1.957c.539-.587.965-1.051.975-1.567s-.466-1.044-1.07-1.7a9.4 9.4 0 0 1-1.57-2.1A6.5 6.5 0 0 1 .022 1.01 4.756 4.756 0 0 1 .029 0h8.383a3.6 3.6 0 0 1 0 .869 6.387 6.387 0 0 1-.672 2.213 10.162 10.162 0 0 1-1.709 2.235c-.659.71-1.229 1.324-1.218 1.844.01.5.505.969 1.078 1.513a6.974 6.974 0 0 1 1.633 2.01 10.274 10.274 0 0 1 .888 3.49v.778z" class="cls-1" data-name="Union 32" transform="translate(88.249 217.725)"/>
+        <path id="Path_342" d="M7377.564-356.693a4.449 4.449 0 0 1 1.83-.45 6.259 6.259 0 0 1 2.046.45c.1.194-1.689 2.048-1.726 2.286s-.094 5.185 0 5.372a8.015 8.015 0 0 1 1.726.94 1.692 1.692 0 0 1 .709 1.1h-5.29a2.059 2.059 0 0 1 .705-1.1 7.938 7.938 0 0 1 1.556-.94c.127-.212.043-5.172 0-5.372s-1.667-2.053-1.556-2.286z" class="cls-2" data-name="Path 342" transform="translate(-7287.244 579.031)"/>
+        <rect id="Rectangle_329" width="10.856" height="1.572" class="cls-3" data-name="Rectangle 329" rx=".786" transform="translate(87.072 232.194)"/>
+        <rect id="Rectangle_331" width="14" height="1.572" class="cls-3" data-name="Rectangle 331" rx=".786" transform="translate(85.5 215)"/>
+        <rect id="Rectangle_330" width="14" height="1.572" class="cls-3" data-name="Rectangle 330" rx=".786" transform="translate(85.5 233.504)"/>
+        <rect id="Rectangle_332" width="10.856" height="1.572" class="cls-3" data-name="Rectangle 332" rx=".786" transform="translate(87.072 216.31)"/>
+    </g>
+</svg>

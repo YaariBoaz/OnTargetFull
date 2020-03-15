@@ -1,0 +1,49 @@
+@import "../../../assets/colors";
+
+header {
+  background-color: $headerBG;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+  font-size: 6vw;
+  color: $profile-bg;
+}
+
+.wrapper {
+  height: 70%;
+  overflow-y: auto;
+
+  .allGuns {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 40px;
+      border: 1px solid;
+      border-radius: 100%;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.saveBtn{
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button{
+    width: 40vw;
+    height: 15vw;
+    border-radius: 8px;
+    background: $black_two;
+    color: white;
+    font-size: 6vw;
+  }
+}
+
+
+
+

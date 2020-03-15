@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.71 32.76">
+    <defs>
+        <style>
+            .cls-1,.cls-3,.cls-4,.cls-6{fill:none}.cls-1{stroke:#b9b9b9}.cls-2{fill:#6f6f6f}.cls-3{stroke:#ab8a5a;stroke-width:.1px}.cls-4{stroke:#707070}.cls-5{stroke:none}
+        </style>
+    </defs>
+    <g id="icon_target" data-name="icon target" transform="translate(-247 -1279.497)">
+        <path id="Line_66" d="M0 0v5.285" class="cls-1" data-name="Line 66" transform="rotate(90 -508.584 787.294)"/>
+        <path id="Line_67" d="M0 0v5.285" class="cls-1" data-name="Line 67" transform="rotate(90 -521.797 774.082)"/>
+        <ellipse id="Ellipse_139" cx="3.7" cy="3.799" class="cls-2" data-name="Ellipse 139" rx="3.7" ry="3.799" transform="translate(259.156 1292.078)"/>
+        <path id="Line_68" d="M0 0v22.796" class="cls-3" data-name="Line 68" transform="translate(262.855 1284.48)"/>
+        <path id="Line_69" d="M21.14 0H0" class="cls-3" data-name="Line 69" transform="translate(252.285 1295.878)"/>
+        <g id="Ellipse_140" class="cls-4" data-name="Ellipse 140" transform="translate(251.228 1283.937)">
+            <ellipse cx="11.627" cy="11.941" class="cls-5" rx="11.627" ry="11.941"/>
+            <ellipse cx="11.627" cy="11.941" class="cls-6" rx="11.127" ry="11.441"/>
+        </g>
+        <path id="Line_161" d="M0 0v5.428" class="cls-1" data-name="Line 161" transform="translate(262.855 1306.829)"/>
+        <path id="Line_162" d="M0 0v5.428" class="cls-1" data-name="Line 162" transform="translate(262.855 1279.497)"/>
+    </g>
+</svg>

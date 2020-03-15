@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "onTarget",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {},
+  "server": {
+    "url": "http://10.0.0.23:8101",
+    "originalUrl": "http://192.168.30.135:8102",
+    "cleartext": true
+  }
+}

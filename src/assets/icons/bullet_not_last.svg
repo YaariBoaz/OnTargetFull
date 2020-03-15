@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.036 22.036">
+    <defs>
+        <style>
+            .cls-1{stroke:#000;fill:url(#radial-gradient)}.cls-2{stroke:none}.cls-3{fill:none}.cls-4{filter:url(#bullet_not_last)}
+        </style>
+        <radialGradient id="radial-gradient" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#6f6f6f"/>
+            <stop offset="1" stop-color="#090909"/>
+        </radialGradient>
+        <filter id="bullet_not_last" width="22.036" height="22.036" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur" stdDeviation="2"/>
+            <feFlood flood-color="#333" flood-opacity=".157"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g class="cls-4">
+        <g id="bullet_not_last-2" class="cls-1" data-name="bullet, not last" transform="translate(6 3)">
+            <circle cx="5.018" cy="5.018" r="5.018" class="cls-2"/>
+            <circle cx="5.018" cy="5.018" r="4.518" class="cls-3"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="full_battery_icon" data-name="full battery icon" viewBox="0 0 17.386 10.642">
+    <defs>
+        <style>
+            .cls-1{fill:#909090}
+        </style>
+    </defs>
+    <path id="Subtraction_15" d="M15.986 10.642H0V0h15.986v10.642zM1.29 1.464V9.4h13.415V1.464z" class="cls-1" data-name="Subtraction 15"/>
+    <path id="Path_242" d="M6592.972-1448.068h1.4v4.145h-1.4" class="cls-1" data-name="Path 242" transform="translate(-6576.985 1451.362)"/>
+    <path id="Path_245" d="M6555.212-1450.421h4.65v5.179h-4.65z" class="cls-1" data-name="Path 245" transform="translate(-6552.521 1453.23)"/>
+</svg>

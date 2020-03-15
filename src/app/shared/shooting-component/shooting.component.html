@@ -1,0 +1,129 @@
+<section class="wrapper-qll" *ngIf="drill">
+    <div [class.isHistoryBG]="isHistory===true">
+        <header>
+            <p class="drill-type">{{drill.drillType}}</p>
+            <p>{{drill.sight}}</p>
+            <p class="align-right">{{drill.range}}</p>
+            <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
+                <span>⋮</span>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+            </mat-menu>
+        </header>
+        <hr/>
+        <div class="target-details">
+            <div class="icons">
+                <div class="wifi-status">
+                    <img src="../../../assets/icons/connected_icon_2709.svg">
+                    <p class="connected" *ngIf="isConnected">Connected</p>
+                    <p class="not-connected" *ngIf="!isConnected">Disconnected</p>
+                </div>
+                <div class="wifi-status">
+                    <img src="../../../assets/icons/full_battery_icon_2.svg">
+                    <p class="high-battery" *ngIf="batteryPrecent > 50">{{batteryPrecent}}%</p>
+                    <p class="low-battery" *ngIf="batteryPrecent <= 50">{{batteryPrecent}}%</p>
+                </div>
+            </div>
+            <div class="clear-target">
+
+                <button class="menuBtn"
+                        #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" style="">
+                    Press To <span>Finish</span>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="finishDrill()">Finish Drill</button>
+                    <button mat-menu-item (click)="restartShooting()">Restart Shooting</button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="main-image-wraper">
+            <div [class.isHistory]="isHistory===true" class="main-image" #screen [ngSwitch]="drill.drillType">
+                <div *ngSwitchCase="'Bullseye'">
+                    <img *ngIf="shots.length < shootingService.numberOfBullersPerDrill && !drillFinishedBefore" style="width:100%;" #container
+                         src="../../../assets/images/bullseye_red.png"
+                         alt="bullsEye">
+                    <img *ngIf="shots.length >= shootingService.numberOfBullersPerDrill || drillFinishedBefore" style="width:100%;"
+                         #container src="../../../assets/images/bullseye_black.png">
+                </div>
+                <div *ngSwitchCase="'Hostage'">
+                    <img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore" style="width:100%;"
+                         #container src="../../../assets/icons/Hostage.png" alt="Hostage"
+                    >
+                    <img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore" style="width:100%;"
+                         #container src="../../../assets/icons/Hostage_Finish.png" alt="Hostage"
+                    >
+                </div>
+                <div *ngSwitchCase="'Zero'">
+                    <img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore" style="width:100%;"
+                         #container src="../../../assets/icons/Zero.png" alt="Hostage"
+                    >
+                    <img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore" style="width:100%;"
+                         #container src="../../../../assets/icons/Zero_Finish.png.png" alt="Hostage">
+                </div>
+                <img *ngFor="let shot of shots" src="../../../assets/images/bullethit.png"
+                     style="position: absolute;height:35px;width:35px"
+                     [style.top.px]=shot.y
+                     [style.right.px]=shot.x
+                >
+            </div>
+        </div>
+        <div class="header-wrapper">
+            <p class="title">Bullets</p>
+            <p class="title">AVG-DIS</p>
+            <p class="title">Time</p>
+            <p class="title">Split</p>
+            <p class="title">Points</p>
+        </div>
+        <div class="details" *ngFor="let stat of stats">
+            <div class="box">
+                <p>{{stat.pageData.counter}}/{{shootingService.numberOfBullersPerDrill}}</p>
+            </div>
+
+            <div class="box">
+                <p>{{stat.pageData.distanceFromCenter | number : '1.2-2'}}</p>
+            </div>
+
+            <div class="box">
+                <p>
+                    {{stat.interval}}
+                </p>
+            </div>
+
+            <div class="box">
+                <p>{{stat.pageData.splitTime}}</p>
+            </div>
+
+            <div class="box">
+                <p>{{stat.pageData.points | number : '1.2-2'}}</p>
+            </div>
+        </div>
+        <div class="divider">
+            <hr>
+        </div>
+        <div class="summmaryRow">
+            <div class="box">
+                <p>{{summaryObject.counter}}</p>
+            </div>
+
+            <div class="box">
+                <p>{{summaryObject.distanceFromCenter | number : '1.2-2'}}</p>
+            </div>
+
+            <div class="box">
+                <p>
+                    {{summaryObject.totalTime}}
+                </p>
+            </div>
+
+            <div class="box">
+                <p>{{summaryObject.split}}</p>
+            </div>
+
+            <div class="box">
+                <p>{{summaryObject.points | number : '1.2-2'}}</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,244 @@
+<section class="dashboard">
+    <header [class.ios-mode]="this.platform.is('ios')">
+        <div class="personal-titles">
+            <div>
+                <p class="name">{{profile.first_name}} {{profile.last_name}}</p>
+                <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
+                    <span>⋮</span>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Item 1</button>
+                    <button mat-menu-item>Item 2</button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="personal-widget">
+            <div class="points">
+                <span class="amount">180</span>
+                <p>points</p>
+            </div>
+            <div *ngIf="!profile.picture" class="avatar">
+                <h1>{{profile.first_name | slice:0:1}}</h1>
+                <h1>{{profile.last_name | slice:0:1}}</h1>
+            </div>
+            <div *ngIf="profile.picture" class="avatar">
+                <img [src]="profile.picture"/>
+            </div>
+            <div class="place">
+                <span class="amount">3rd</span>
+                <p>place</p>
+            </div>
+        </div>
+    </header>
+    <div class="container-background">
+        <div class="top-container">
+            <div class="slider-stats" *ngIf="data">
+
+                <!-- Slides bug with the data that is saved -->
+
+                    <ion-slides (ionSlideDidChange)="slideChanged()" #slides [ngClass]="'myClass' + slideIndex"
+                                [options]="options" class="slider" pager="true" style="height: 100%;    width: 100%;">
+                        <ion-slide>
+                            <div class="arrow-left" (click)="onPrevSlide()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
+                                    <defs>
+                                        <style>
+                                            .chevron {
+                                                fill: #fff;
+                                                stroke: #6f6f6f;
+                                                stroke-linecap: round;
+                                                stroke-width: 3.5px
+                                            }
+                                        </style>
+                                    </defs>
+                                    <path id="left_chevron"
+                                          d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                                          class="chevron" data-name="left chevron"
+                                          transform="rotate(90 -1924.394 974.844)"/>
+                                </svg>
+                            </div>
+                            <div class="chart-and-stats">
+                                <div class="stats">
+                                    <h1>HIT RATIO</h1>
+                                    <p><b>96</b>/200</p>
+                                </div>
+                                <div class="hitRatioChartContainer">
+                                    <div style="display: block;width: 100%;height:100%;">
+                                        <canvas baseChart
+                                                [legend]="false"
+                                                [plugins]="doghnuChartMetaData.doughnutChartPlugins"
+                                                [colors]="doghnuChartMetaData.donutColors"
+                                                [data]="data.hitRatioChart.data"
+                                                [labels]="doghnuChartMetaData.doughnutChartLabels"
+                                                [chartType]="'doughnut'">
+                                        </canvas>
+                                    </div>
+                                </div>
+                                <div class="stats-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.897 16.311">
+                                        <defs>
+                                            <style>
+                                                .check {
+                                                    fill: #00b673
+                                                }
+                                            </style>
+                                        </defs>
+                                        <path id="green_V"
+                                              d="M291.761 3757.522c-2.2-.525-2.066.658-1.965 2.334s4.776 5.807 5.973 5.583 11.42-12.334 11.809-13.754-.914-3.619-2.724-1.945-9.085 12.2-9.085 12.2-1.81-3.893-4.008-4.418z"
+                                              class="check" data-name="green V" transform="translate(-289.75 -3749.138)"/>
+                                    </svg>
+                                    <p>You're better than most</p>
+                                </div>
+                            </div>
+                            <div class="arrow-right" (click)="onNextSlide()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
+                                    <defs>
+                                        <style>
+                                            .chevron {
+                                                fill: #fff;
+                                                stroke: #6f6f6f;
+                                                stroke-linecap: round;
+                                                stroke-width: 3.5px
+                                            }
+                                        </style>
+                                    </defs>
+                                    <path id="right_chevron"
+                                          d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                                          class="chevron" data-name="right chevron"
+                                          transform="rotate(-90 -956.514 -1919.785)"/>
+                                </svg>
+                            </div>
+                        </ion-slide>
+                        <ion-slide>
+                            <div class="arrow-left" (click)="onPrevSlide()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
+                                    <defs>
+                                        <style>
+                                            .chevron {
+                                                fill: #fff;
+                                                stroke: #6f6f6f;
+                                                stroke-linecap: round;
+                                                stroke-width: 3.5px
+                                            }
+                                        </style>
+                                    </defs>
+                                    <path id="left_chevron"
+                                          d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                                          class="chevron" data-name="left chevron"
+                                          transform="rotate(90 -1924.394 974.844)"/>
+                                </svg>
+                            </div>
+                            <div class="chart-and-stats ">
+                                <div class="stats-rateOfFire">
+                                    <h1>Rate Of Fire</h1>
+                                    <p><b>3 secs</b></p>
+                                    <span>per bullet</span>
+                                </div>
+                                <div class="rateOfFireChartContainer">
+                                    <div style="display: block;width:100%">
+                                        <canvas baseChart
+                                                [datasets]="data.rateOfFireChart.chartData"
+                                                [labels]="data.rateOfFireChart.chartLabels"
+                                                [options]="lineChartMetaData.lineChartOptions"
+                                                [colors]="lineChartMetaData.lineChartColors"
+                                                [legend]="false"
+                                                [chartType]="'line'">
+                                        </canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arrow-right" (click)="onNextSlide()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
+                                    <defs>
+                                        <style>
+                                            .chevron {
+                                                fill: #fff;
+                                                stroke: #6f6f6f;
+                                                stroke-linecap: round;
+                                                stroke-width: 3.5px
+                                            }
+                                        </style>
+                                    </defs>
+                                    <path id="right_chevron"
+                                          d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                                          class="chevron" data-name="right chevron"
+                                          transform="rotate(-90 -956.514 -1919.785)"/>
+                                </svg>
+                            </div>
+                        </ion-slide>
+                    </ion-slides>
+                <hr style="height: 1px;width: 40%;background: #cdcdcd;">
+            </div>
+            <div class="summaryContainer" *ngIf="data">
+                <div class="text-container">
+                    <p class="titleSummary">Longest Shoot</p>
+                    <p class="valueSummary">{{data.bestScores.longestShot}}</p>
+                </div>
+                <div class="text-container">
+                    <p class="titleSummary">Fast Avg Split</p>
+                    <p class="valueSummary">{{data.bestScores.avgSplit}}</p>
+                </div>
+                <div class="text-container">
+                    <p class="titleSummary">Best Avg Distance</p>
+                    <p class="valueSummary">{{data.bestScores.avgDistance}}</p>
+                </div>
+                <div class="text-container">
+                    <p class="titleSummary">Last Shooting Session</p>
+                    <p class="valueSummary">{{data.bestScores.lastShooting | date:'fullDate'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <div class="training-log-header">
+                <hr style="height: 1px;width: 40%;background: #cdcdcd;">
+                <p class="training-log-header"> Training Log</p>
+            </div>
+            <div class="history-container" *ngIf="historicTrainings">
+                <div class="train-line" *ngFor="let train of historicTrainings | keyvalue"
+                     (click)="onActivityClicked(train)">
+                    <div class="month">
+                        <h1>{{train.key}}</h1>
+                        <div *ngFor="let trainInmonth of train.value | keyvalue">
+                            <div class="right-side-and-train-info-container">
+                                <div class="right-side">
+                                    <div class="circle"></div>
+                                    <hr>
+                                    <hr>
+                                    <hr>
+                                </div>
+                                <div class="train-info">
+                                    <div>
+                                        <span class="date">{{trainInmonth.key}}</span>,
+                                        <span class="day">{{trainInmonth.value.day}}</span>
+                                    </div>
+                                    <div class="light-text"> {{trainInmonth.value.data.length}} Drills</div>
+                                </div>
+                            </div>
+                            <div class="arrow-right" style="width: 10%;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
+                                    <defs>
+                                        <style>
+                                            .history {
+                                                fill: #f0e3d2;
+                                                stroke: #f0e3d2;
+                                                stroke-linecap: round;
+                                                stroke-width: 3.5px
+                                            }
+                                        </style>
+                                    </defs>
+                                    <path id="right_chevron"
+                                          d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                                          class="history" data-name="right history"
+                                          transform="rotate(-90 -956.514 -1919.785)"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+

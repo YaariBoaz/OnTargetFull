@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.621 14.586">
+    <defs>
+        <style>
+            .cls-1{fill:#707070;fill-rule:evenodd}.cls-2{fill:none;stroke:#fc5e62;stroke-linecap:round;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="icon_down_deviation" data-name="icon down deviation" transform="rotate(-90 135.543 406.043)">
+        <path id="path" d="M15.75 9.387H6.791l4.109-4.31L9.875 4 4 10.156l5.875 6.156 1.025-1.077-4.109-4.309h8.96V9.387z" class="cls-1" transform="translate(525.836 268.654)"/>
+        <path id="Line_192" d="M0 0v14.621" class="cls-2" data-name="Line 192" transform="translate(528 271.5)"/>
+    </g>
+</svg>

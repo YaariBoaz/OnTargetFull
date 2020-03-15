@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#009688;fill-rule:evenodd}
+        </style>
+    </defs>
+    <g id="checkbox_on_light" transform="translate(-94 -40)">
+        <path id="checkbox_light" d="M0 0h24v24H0z" class="cls-1" transform="translate(94 40)"/>
+        <path id="check_on_light" d="M19 3H5a2.006 2.006 0 0 0-2 2v14a2.006 2.006 0 0 0 2 2h14a2.006 2.006 0 0 0 2-2V5a2.006 2.006 0 0 0-2-2zm-9 14l-5-4.808 1.4-1.346 3.6 3.462L17.6 7 19 8.346 10 17z" class="cls-2" transform="translate(94 40)"/>
+    </g>
+</svg>

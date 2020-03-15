@@ -1,0 +1,144 @@
+<section class="wrapper" *ngIf="profile">
+    <header>
+        <h1>Personal Settings</h1>
+        <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
+            <span>⋮</span>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+        </mat-menu>
+    </header>
+    <div class="user-img-name">
+        <div class="edit-container">
+            <ion-icon (click)="isEditMode = !isEditMode" ios="ios-create" md="md-create" size="large"></ion-icon>
+        </div>
+        <div class="image-and-name">
+            <div *ngIf="profile.picture" class="round-border">
+                <img [src]="domSanitizer.bypassSecurityTrustUrl(profile.picture)">
+                <ion-icon (click)="selectImage()" *ngIf="isEditMode" ios="ios-create" md="md-create"
+                          size="large"></ion-icon>
+            </div>
+            <div *ngIf="profile.picture === undefined" class="round-border" (click)="selectImage()">
+                <img class="camera" src="../../assets/icons/camera.png"/>
+                {{profile.picture}}
+            </div>
+            <h5>{{profile.first_name}} {{profile.last_name}}</h5>
+        </div>
+    </div>
+    <hr>
+    <div class="user-details">
+        <div class="read-mode" *ngIf="!isEditMode">
+            <div>
+                <h3> Age</h3>
+                <h3 class="value"> {{profile.age}}</h3>
+            </div>
+            <div>
+                <h3> Gender</h3>
+                <h3 class="value"> {{profile.gender}}</h3>
+            </div>
+            <div>
+                <h3> Country</h3>
+                <h3 class="value"> {{profile.conutry}}</h3>
+            </div>
+            <div>
+                <h3> State</h3>
+                <h3 class="value"> {{profile.state}}</h3>
+            </div>
+            <div>
+                <h3> Email</h3>
+                <h3 class="value"> {{profile.email}}</h3>
+            </div>
+        </div>
+        <div class="edit-mode" *ngIf="isEditMode">
+            <div class="edit-input-wrapper">
+                <h3> Age</h3>
+                <input type="number" [(ngModel)]="profile.age">
+            </div>
+            <div class="edit-input-wrapper">
+                <h3> Gender</h3>
+                <input [(ngModel)]="profile.gender">
+            </div>
+            <div class="edit-input-wrapper">
+                <h3> Country</h3>
+                <input [(ngModel)]="profile.conutry">
+            </div>
+            <div class="edit-input-wrapper">
+                <h3> State</h3>
+                <input [(ngModel)]="profile.state">
+            </div>
+            <div class="edit-input-wrapper">
+                <h3> Email</h3>
+                <input [(ngModel)]="profile.email">
+            </div>
+            <div style="width: 100%;">
+                <button (click)="onSaveProfile()" class="edit-btn"> Save Profile</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div [class.isDisabled]="isEditMode" class="default-drill">
+        <div>
+            <img src="../../assets/icons/rifle.png">
+            <h5> GUN </h5>
+            <!--            <ion-select multiple="true" cancelText="Nah" okText="Okay!">-->
+            <!--                <ion-select-option *ngFor="let gun of gunList" value="{{gun}}">{{gun}}</ion-select-option>-->
+            <!--            </ion-select>-->
+            <div *ngIf="myGuns" class="gunsWrapper" (click)="onSelectWeapons()">
+                <div>
+                    <div *ngFor="let gun of myGuns;let i = index">
+                        {{gun}}
+                        <span class="coma" *ngIf="i < myGuns.length-1">,</span>
+                    </div>
+                </div>
+            </div>
+            <span *ngIf="!myGuns" (click)="onSelectWeapons()"> Select Default Weapon</span>
+        </div>
+        <hr>
+        <div>
+            <img src="../../assets/icons/gun-shooting-target.png">
+            <h5> SIGHT </h5>
+            <div *ngIf="mySights" class="gunsWrapper" (click)="onSelectSights()">
+                <div>
+                    <div *ngFor="let sight of mySights;let i = index">
+                        {{sight}}
+                        <span class="coma" *ngIf="i < mySights.length-1">,</span>
+                    </div>
+                </div>
+            </div>
+            <span (click)="onSelectSights()" *ngIf="!mySights"> Select Default Sight</span>
+        </div>
+        <hr>
+        <div>
+            <img src="../../assets/icons/bullseye_red.png">
+            <h5> TARGET </h5>
+            <div *ngIf="myTargets" class="gunsWrapper" (click)="onSelectTarget()">
+                <div>
+                    <div *ngFor="let target of myTargets;let i = index">
+                        {{target}}
+                        <span class="coma" *ngIf="i < myTargets.length-1">,</span>
+                    </div>
+                </div>
+            </div>
+            <span (click)="onSelectTarget()" *ngIf="!myTargets"> Select Default Target</span>
+        </div>
+    </div>
+</section>
+<app-gunlist (close)="onHidetWeapons()" class="gunlist" *ngIf="isGunList"></app-gunlist>
+<app-sightlist (close)="onHideSights()" class="gunlist" *ngIf="isSightList"></app-sightlist>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

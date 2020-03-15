@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.038 22.037">
+    <defs>
+        <style>
+            .cls-1{stroke:#000;stroke-width:.6px;fill:url(#radial-gradient)}.cls-2{stroke:none}.cls-3{fill:none}.cls-4{filter:url(#bullet_last)}
+        </style>
+        <radialGradient id="radial-gradient" cx=".5" cy=".5" r=".704">
+            <stop offset="0" stop-color="#8a8888"/>
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset=".647" stop-color="#e7e6e6"/>
+            <stop offset="1" stop-color="#a3a1a1"/>
+        </radialGradient>
+        <filter id="bullet_last" width="22.038" height="22.037" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur" stdDeviation="2"/>
+            <feFlood flood-color="#333" flood-opacity=".157"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g class="cls-4">
+        <g id="bullet_last-2" class="cls-1" data-name="bullet, last" transform="translate(6 3)">
+            <ellipse cx="5.019" cy="5.019" class="cls-2" rx="5.019" ry="5.019"/>
+            <ellipse cx="5.019" cy="5.019" class="cls-3" rx="4.719" ry="4.719"/>
+        </g>
+    </g>
+</svg>

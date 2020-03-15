@@ -1,0 +1,299 @@
+@import "../../assets/colors";
+
+.tab3-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: $headerBG;
+  height: 10%;
+
+  div.personal-titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0.2em 0;
+
+    p {
+      margin: 0;
+      color: $profile-bg;
+      font-size: 6vw;
+    }
+
+    p.weapon {
+      color: $profile-bg;
+      font-weight: 300;
+      font-size: 4vw;
+    }
+  }
+
+  div.personal-widget {
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    width: 50%;
+    height: 11vw;
+
+    div.avatar {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 100%;
+      background-color: $profile-bg;
+
+      width: 15vw;
+      height: 15vw;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      h1 {
+        color: white;
+        text-align: center;
+        margin: 0;
+        font-size: 6vw;
+      }
+    }
+
+    div.points,
+    div.place {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0.2em;
+      width: 30%;
+      color: $profile-bg;
+
+      span.amount {
+        color: $profile-bg;
+        font-weight: 700;
+        font-size: 4vw;
+      }
+
+      p {
+        margin: 0;
+        font-size: 3vw;
+      }
+    }
+  }
+}
+
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $white_three;
+
+  .user-img-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 25%;
+
+    img {
+      height: 20vw;
+      border-radius: 50%;
+      width: 20vw;
+    }
+
+    img.camera-icon {
+      height: 25vw;
+      padding: 1.5em;
+    }
+
+    h5 {
+      margin: 0;
+    }
+  }
+
+  .user-details {
+    display: flex;
+    height: 30%;
+
+    .read-mode {
+      display: flex;
+      justify-content: space-between;
+      width: 70%;
+      flex-direction: column;
+
+    }
+
+    .edit-mode {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+
+    .edit-input-wrapper {
+      width: 70vw;
+      justify-content: space-between;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+
+      h3 {
+        margin: 0;
+        padding: 0;
+        padding-left: 15px;
+      }
+
+      h3.value {
+        color: $profile-bg;
+      }
+    }
+  }
+
+  .default-drill {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 35%;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-left: 10px;
+      padding-right: 10px;
+      align-items: center;
+
+      img {
+        width: 12vw;
+        border-radius: 100%;
+        border: 1px solid $profile-bg;
+      }
+
+      span {
+        padding: 0.5em;
+        border: 1px solid;
+        text-align: left;
+        padding-left: 10px;
+        font-size: 4vw;
+      }
+    }
+  }
+}
+
+hr {
+  width: 93%;
+  height: 1px;
+  background: #00000085;
+}
+
+
+.gunsWrapper {
+  border: 1px solid;
+  height: 45px;
+
+  .coma {
+    border: 0 !important;
+    margin: 0;
+    padding: 0 !important;
+  }
+}
+
+.gunlist {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.isDisabled {
+  pointer-events: none;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.camera {
+  height: 25px;
+}
+
+.edit-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5em;
+}
+
+.image-and-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.round-border {
+  border-radius: 100%;
+  border: 0.5vw solid #70524b;
+  position: relative;
+
+  ion-icon {
+    position: absolute;
+    bottom: 0;
+    border: 1px solid lightblue;
+    border-radius: 20px;
+    padding: 0.1em;
+    color: blue;
+    right: -12px;
+    background: white;
+  }
+}
+
+.menuBtn {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  background-color: transparent;
+
+  span {
+    font-size: 40px;
+    font-weight: bold;
+    color: $profile-bg;
+  }
+}
+
+.edit-btn {
+  background-color: #3b3838;
+  width: 60%;
+  height: 8vw;
+  height: 8vw;
+  margin: 0.5em auto;
+  color: white;
+  font-size: 1.2em;
+}
+
+.add-ip {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+
+  label {
+    color: $warm_grey;
+  }
+}

@@ -1,0 +1,451 @@
+@import "../../assets/colors";
+
+section.dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: $white_three;
+  overflow-y: auto;
+
+  p {
+    margin: 0;
+
+    &.name {
+      color: darkgoldenrod;
+      font-size: 1.2em;
+    }
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: $headerBG;
+    height: 20vh;
+    padding: 0.5em;
+
+    div.personal-titles {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0.2em 0;
+
+      p {
+        margin: 0;
+        color: $profile-bg;
+        font-size: 6vw;
+      }
+
+      p.weapon {
+        color: $profile-bg;
+        font-weight: 300;
+        font-size: 4vw;
+        padding: 0.5em;
+      }
+    }
+
+    div.personal-widget {
+      background-color: white;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+
+      width: 50%;
+      height: 11vw;
+
+      div.avatar {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 100%;
+        background-color: $profile-bg;
+
+        width: 15vw;
+        height: 15vw;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+          color: white;
+          text-align: center;
+          margin: 0;
+          font-size: 6vw;
+        }
+
+        img {
+          border-radius: 50%;
+          height: 15vw;
+          width: 15vw;
+        }
+      }
+
+      div.points,
+      div.place {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0.2em;
+        width: 30%;
+        color: $profile-bg;
+
+        span.amount {
+          color: $profile-bg;
+          font-weight: 700;
+          font-size: 4vw;
+        }
+
+        p {
+          margin: 0;
+          font-size: 3vw;
+        }
+      }
+    }
+  }
+
+  // Only bg
+  div.container-background {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: $white_three;
+    overflow-y: auto;
+  }
+
+  div.gray {
+    background-color: rgba(231, 231, 231, 0.8);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    color: white;
+  }
+
+  div.slider-stats {
+    box-sizing: border-box;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+
+    div.chart-and-stats {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      padding-bottom: 6vw;
+    }
+
+    div.stats-precision,
+    div.stats {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      padding-left: 15px;
+
+      h1 {
+        margin: 0;
+        color: $profile-bg;
+        font-weight: 400;
+        font-size: 6.5vw;
+      }
+
+      p {
+        margin: 0;
+        color: #b9b9b9;
+        font-size: 5vw;
+        font-weight: 300;
+
+        b {
+          color: $army-brown;
+          font-size: 7vw;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .rateOfFireChartContainer,
+    div.hitRatioChartContainer {
+
+      div.lie {
+        border-radius: 100%;
+        background-color: white;
+        width: 75%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 1em;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      div.sumPrecent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .rateOfFireChartContainer {
+      width: 80%;
+      align-self: center;
+    }
+
+    /* ARROWS */
+    .stats-rateOfFire {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      padding-left: 15px;
+
+      span {
+        color: darkgray;
+      }
+
+      h1 {
+        margin: 0;
+        color: $profile-bg;
+        font-weight: 400;
+        font-size: 9.5vw;
+      }
+
+      p {
+        margin: 0;
+        color: #b9b9b9;
+        font-size: 5vw;
+        font-weight: 300;
+
+        b {
+          color: $cerulean;
+          font-size: 7vw;
+          font-weight: 400;
+        }
+      }
+    }
+
+  }
+
+  div.stats-precision {
+    p {
+      color: $coral_pink !important;
+      font-size: 7vw !important;
+      font-weight: 400 !important;
+    }
+
+    span {
+      color: #838383;
+      font-size: 4vw;
+    }
+  }
+
+  div.summaryContainer {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0.5em;
+    justify-content: space-evenly;
+
+    div.text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 0.5em;
+
+      p.titleSummary {
+        color: $warm_grey;
+        font-size: 0.8rem;
+      }
+
+      p.valueSummary {
+        color: $profile-bg;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .stats-text {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+
+    p {
+      color: $black_two;
+      margin: 0;
+      font-size: 4vw;
+      padding-left: 10px;
+    }
+  }
+
+}
+
+.history-container {
+
+  overflow-y: auto;
+
+
+}
+
+.training-log-header {
+  color: #707070;
+  font-size: 7vw;
+  text-align: center;
+  padding: 0.5em;
+}
+
+div.arrow-left,
+div.arrow-right {
+  width: 35px;
+  height: 35px;
+  display: flex !important;
+  justify-content: flex-end;
+
+  svg {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+div.arrow-left {
+  left: 0vw;
+}
+
+div.arrow-right {
+  right: 0vw;
+}
+
+.top-container {
+}
+
+.history-container {
+  background-color: white;
+  padding-top: 20px;
+
+  .train-line {
+    display: flex;
+    justify-content: space-around;
+    color: black;
+    align-items: center;
+
+    .right-side-and-train-info-container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 90%;
+
+      .right-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 20vw;
+        width: 20%;
+
+        .circle {
+          border: 2px solid #e9d7bf;
+          height: 4vw;
+          width: 4vw;
+          border-radius: 100%;
+        }
+
+        hr {
+          background-color: #cbcbcb;
+          height: 3vw;
+          width: 0.5vw;
+          margin: 0;
+        }
+      }
+
+      .train-info {
+        display: flex;
+        flex-direction: column;
+
+        div {
+
+          .date {
+            margin-right: 20px;
+            font-weight: 600;
+            font-size: 5vw;
+          }
+
+          .day {
+            color: #5a5a5a;
+            font-size: 4.8vw;
+          }
+
+          .light-text {
+            color: #848484;
+            font-weight: 100;
+          }
+        }
+      }
+    }
+
+    .arrow-right {
+      svg {
+        height: 6vw;
+        fill: #f0e3d2;
+      }
+    }
+  }
+}
+
+.menuBtn {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  background-color: transparent;
+
+  span {
+    font-size: 40px;
+    font-weight: bold;
+    color: $profile-bg;
+  }
+}
+
+
+.month {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0.5em;
+    background: lightgray;
+    font-weight: 800;
+  }
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+.ios-mode{
+  padding-top: 20px !important;
+}

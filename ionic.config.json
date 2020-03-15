@@ -1,5 +1,8 @@
 {
   "name": "onTarget",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular"
 }

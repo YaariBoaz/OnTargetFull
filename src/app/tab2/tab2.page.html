@@ -1,0 +1,114 @@
+<section class="target-selection">
+    <header>
+        <h1> Edit Drill</h1>
+        <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
+            <span>⋮</span>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+        </mat-menu>
+    </header>
+    <div class="chooseTargetWrapper">
+        <img src="../../assets/images/brown_icon_target.png" alt="gun-shooting-targer">
+        <p>CHOOSE TARGET TYPE:
+        <p>
+    </div>
+    <ion-slides #slides effect=“slide”  class="sliders" pager="true" (ionSlideDidChange)="slideDidChange($event)">
+        <ion-slide>
+            <div class="imgWrapper">
+                <img src="../../assets/icons/bullseye_red.png" alt="No image">
+                <p>Bullseye</p>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="imgWrapper">
+                <img src="../../assets/icons/Zero.png" alt="No image">
+                <p>Zero</p>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="imgWrapper">
+                <img src="../../assets/icons/Hostage.png" alt="No image">
+                <p>Hostage</p>
+            </div>
+        </ion-slide>
+    </ion-slides>
+    <div class="form">
+        <div class="container">
+            <div style="width: 80%" class="title-and-icon">
+                <img src="../../assets/images/ic_illust_half_fullbullet.png" alt="gun-shooting-targer">
+                <p>NUMBER OF BULLETS:</p>
+            </div>
+            <div style="width: 20%" class="inputs">
+                <input [(ngModel)]="drill.numOfBullets" type="number">
+            </div>
+        </div>
+        <div class="container range">
+            <div class="title-and-icon">
+                <img src="../../assets/images/ic_illust_half_fullrange.png" alt="gun-shooting-targer">
+                <p>RANGE:</p>
+            </div>
+
+            <div class="inputs">
+                <input [(ngModel)]="drill.range" type="number">
+                <select [(ngModel)]="drill.rangeUOM">
+                    <option value="Meters">Meters</option>
+                    <option value="Feet">Feet</option>
+                </select>
+            </div>
+        </div>
+        <div class="container">
+            <div class="title-and-icon">
+                <img src="../../assets/icons/rifle.png" alt="gun-shooting-targer" class="border">
+                <p>WEAPON:</p>
+            </div>
+           <div class="inputs" *ngIf="myGuns">
+                <select [(ngModel)]="drill.weapon">
+                    <option *ngFor="let gun of myGuns" [value]="gun">{{gun}}</option>
+                </select>
+            </div>
+            <div class="inputs" *ngIf="!myGuns">
+                <select [(ngModel)]="drill.weapon">
+                    <option value="-1">Please select a weapon</option>
+                    <option *ngFor="let gun of DEFAULT_WEAPONS" [value]="gun">{{gun}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="container">
+            <div class="title-and-icon">
+                <img src="../../assets/icons/gun-shooting-target.png" alt="gun-shooting-targer" class="border">
+                <p>SIGHT:</p>
+            </div>
+
+            <div class="inputs" *ngIf="mySights">
+                <select [(ngModel)]="drill.sight">
+                    <option value="-1">Please select a weapon</option>
+                    <option *ngFor="let sight of mySights" [value]="sight">{{sight}}</option>
+                </select>
+            </div>
+            <div class="inputs" *ngIf="!mySights">
+            <select [(ngModel)]="drill.sight"  [value]='null'>
+                <option [value]="null">Please Select</option>
+                <option *ngFor="let sight of DEFAULT_SIGHTS" [ngValue]="sight">{{sight}}</option>
+            </select>
+        </div>
+
+        </div>
+        <div class="container">
+            <div class="title-and-icon">
+                <img src="../../assets/images/ic_illust_half_fullbullet.png" alt="gun-shooting-targer">
+                <p>AMMO:</p>
+            </div>
+            <div class="inputs">
+                <select [(ngModel)]="drill.ammo">
+                    <option value="Plain (M193)">Plain (M193)</option>
+                    <option value="5.56">5.56</option>
+                    <option value="6.56">6.56</option>
+                    <option value="12 Guage">12 Guage</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button class="startSessionBtn" (click)="startSesstion()" routerLink="select"> Start Session!</button>
+</section>

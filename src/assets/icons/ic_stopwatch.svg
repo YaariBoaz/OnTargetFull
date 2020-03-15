@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.476 18.002">
+    <defs>
+        <style>
+            .cls-1{fill:#5c5c5c}.cls-2,.cls-3{fill:#fc5e62;stroke:#fc5e62}.cls-3{stroke-width:.5px}.cls-4{stroke:none}.cls-5{fill:none}
+        </style>
+    </defs>
+    <g id="ic_stopwatch" transform="translate(-60.5 -966.998)">
+        <path id="Union_16" d="M2.266 15.364A9.737 9.737 0 0 1 0 9a9.645 9.645 0 0 1 2.173-6.179 1.964 1.964 0 0 1 .467.462A9.124 9.124 0 0 0 .7 9c0 4.582 3.155 8.309 7.034 8.309S14.772 13.583 14.772 9c0-4.4-2.917-8.02-6.59-8.291v3.422h-.674V0H8.183a7.05 7.05 0 0 1 5.094 2.626A9.87 9.87 0 0 1 15.476 9a9.737 9.737 0 0 1-2.266 6.367A7.186 7.186 0 0 1 7.738 18a7.184 7.184 0 0 1-5.472-2.636z" class="cls-1" data-name="Union 16" transform="translate(60.5 966.998)"/>
+        <g id="Ellipse_163" class="cls-2" data-name="Ellipse 163" transform="translate(67.6 975.948)">
+            <ellipse cx="1.021" cy="1.187" class="cls-4" rx="1.021" ry="1.187"/>
+            <ellipse cx="1.021" cy="1.187" class="cls-5" rx=".521" ry=".687"/>
+        </g>
+        <path id="Path_237" d="M-.429 6.426l1.163-.083.049-.734L.765-.054-.38 5.692z" class="cls-3" data-name="Path 237" transform="rotate(-33 1670.448 376.253)"/>
+    </g>
+</svg>
