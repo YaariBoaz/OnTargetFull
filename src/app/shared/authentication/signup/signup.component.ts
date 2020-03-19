@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StorageService} from '../../services/storage.service';
+import {ApiService} from '../../services/api.service';
 
 @Component({
     selector: 'app-signup',
@@ -14,7 +15,7 @@ export class SignupComponent implements OnInit {
     registerForm: FormGroup;
     submitted = false;
 
-    constructor(private router: Router, private formBuilder: FormBuilder, private storageService: StorageService) {
+    constructor(private apiService: ApiService, private router: Router, private formBuilder: FormBuilder, private storageService: StorageService) {
         this.back = new EventEmitter();
     }
 
@@ -37,12 +38,16 @@ export class SignupComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-        this.storageService.setItem('profileData', this.registerForm.value);
-        this.storageService.setItem('isLogedIn', true);
-        this.router.navigateByUrl('home/tabs/tab3');
+        this.apiService.signup(this.registerForm.value).subscribe((returnedValue) => {
+            if (returnedValue) {
+                debugger;
+                this.storageService.setItem('profileData', this.registerForm.value);
+                this.storageService.setItem('isLogedIn', true);
+                this.router.navigateByUrl('home/tabs/tab3');
+            }
+        });
+
     }
-
-
 
 
     onBackPressed() {

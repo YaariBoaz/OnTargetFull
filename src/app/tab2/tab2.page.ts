@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ModalController} from '@ionic/angular';
+import {ModalController, Platform} from '@ionic/angular';
 import {AlertController} from '@ionic/angular';
 import {ShootingService} from '../shared/services/shooting.service';
 import {StorageService} from '../shared/services/storage.service';
@@ -32,7 +32,8 @@ export class Tab2Page implements OnInit {
                 private tabService: TabsService,
                 public alertController: AlertController,
                 private  shootingService: ShootingService,
-                private storageService: StorageService) {
+                private storageService: StorageService,
+                private platform: Platform) {
         this.initComponents();
     }
 

@@ -1,7 +1,7 @@
 <section class="target-selection">
-    <header>
+    <header [class.ios-mode]="this.platform.is('ios')">
         <h1> Edit Drill</h1>
-        <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
+        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
             <span>⋮</span>
         </button>
         <mat-menu #menu="matMenu">

@@ -3,7 +3,7 @@
         <div class="personal-titles">
             <div>
                 <p class="name">{{profile.first_name}} {{profile.last_name}}</p>
-                <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
+                <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
                     <span>⋮</span>
                 </button>
                 <mat-menu #menu="matMenu">

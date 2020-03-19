@@ -109,27 +109,30 @@ export class StorageService {
 
 
     async setMockData() {
-        let storageData = localStorage.getItem(this.DATA_NAME) as any;
-        if (!storageData) {
-            storageData = {};
-        }
-        if (!storageData.homeData) {
-            storageData.homeData = {
-                hitRatioChart: {data: [[65, 35]]},
-                rateOfFireChart: {
-                    chartData: [{data: [65, 59, 80, 81, 56, 55, 40]}],
-                    chartLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
-                },
-                trainingHistory: this.TEMP_TRAINING_HISTORY,
-                bestScores: {
-                    longestShot: 1250,
-                    avgSplit: 2.5,
-                    avgDistance: 3,
-                    lastShooting: new Date()
-                }
-            };
-            this.setItem('homeData', storageData.homeData);
-        }
+        // let storageData = localStorage.getItem(this.DATA_NAME) as any;
+        // if (!storageData) {
+        //     storageData = {};
+        // }
+        // if (!storageData.homeData) {
+        const storageData = {
+            homeData: {}
+        };
+
+        storageData.homeData = {
+            hitRatioChart: {data: [[65, 35]]},
+            rateOfFireChart: {
+                chartData: [{data: [65, 59, 80, 81, 56, 55, 40]}],
+                chartLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+            },
+            trainingHistory: this.TEMP_TRAINING_HISTORY,
+            bestScores: {
+                longestShot: 1250,
+                avgSplit: 2.5,
+                avgDistance: 3,
+                lastShooting: new Date()
+            }
+        };
+        this.setItem('homeData', storageData.homeData);
         this.data = storageData;
     }
 

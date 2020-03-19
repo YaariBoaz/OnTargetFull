@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 export class ApiService {
 
     BASE_URL = 'htttp://192.168.0.1:8089/';
+    BACKOFFICE_URL = 'https://adlbackoffice20200309103113.azurewebsites.net/';
 
     constructor(private http: HttpClient) {
     }
@@ -18,5 +19,9 @@ export class ApiService {
 
     getDashboardData(): Observable<any> {
         return this.http.get(this.BASE_URL + 'getDashboard');
+    }
+
+    signup(registerDetails) {
+        return this.http.post(this.BACKOFFICE_URL + 'Login​/register', registerDetails);
     }
 }

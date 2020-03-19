@@ -1,7 +1,9 @@
 @import "../../../assets/colors";
-:host{
+
+:host {
   height: 100%;
 }
+
 .activity-history {
   display: flex;
   height: 100%;
@@ -140,6 +142,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
         div {
           display: flex;
           align-items: center;
@@ -156,6 +159,7 @@
 
       .range {
         text-align: center;
+
         h1 {
           margin: 0
         }
@@ -169,6 +173,7 @@
     .description {
       padding: 0.5em;
       background-color: white;
+
       p {
         color: #acacac;
         font-size: 4vw;
@@ -245,21 +250,32 @@
   top: 5px;
   right: 5px;
   background-color: transparent;
-  span{
+
+  span {
     font-size: 40px;
     font-weight: bold;
     color: $profile-bg;
   }
 }
 
-.main-image{
+.main-image {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  img{
+
+  img {
     width: 70vw;
   }
 }
 
+.ios-mode {
+  padding-top: 20px !important;
+  height: 50vw !important;
+  margin-bottom: 30px;
+}
+
+.trend-line-ios{
+  height: 60vw;
+}
 

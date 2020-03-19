@@ -3,6 +3,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {NetworkService} from '../services/network.service';
 import {StorageService} from '../services/storage.service';
 import {Router} from '@angular/router';
+import {Platform} from '@ionic/angular';
 
 // @ts-ignore
 @Component({
@@ -24,7 +25,10 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     stats = [];
     summaryObject;
 
-    constructor(private  router: Router, private  networkService: NetworkService, private stoargeService: StorageService) {
+    constructor(private  router: Router,
+                private  networkService: NetworkService,
+                private stoargeService: StorageService,
+                private platform: Platform) {
         this.networkService.hasConnectionSubject$.subscribe(hasConnection => {
             this.hasConnection = hasConnection;
             if (this.hasConnection) {
@@ -65,8 +69,9 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     handleOfflineScenario() {
         this.stoargeService.historicalTrainingsDate$.subscribe((date) => {
             if (date) {
+                debugger;
                 this.beutifiedDate = Object.keys(date.value)[0];
-                this.currentDay =  date.value[this.beutifiedDate]['day'];
+                this.currentDay = date.value[this.beutifiedDate]['day'];
                 const arrayOfTrainings = date.value[this.beutifiedDate]['data'];
                 this.numOfTrainings = arrayOfTrainings.length;
                 this.drills = arrayOfTrainings;

@@ -24,7 +24,6 @@ section.target-selection {
 }
 
 
-
 header {
   display: flex;
   flex-direction: column;
@@ -221,6 +220,7 @@ div.form {
         font-weight: bold;
         background-color: transparent;
       }
+
       button {
         background-color: #3b3838;
         width: 60%;
@@ -270,7 +270,8 @@ div.form {
   top: 5px;
   right: 5px;
   background-color: transparent;
-  span{
+
+  span {
     font-size: 40px;
     font-weight: bold;
     color: $profile-bg;
@@ -284,4 +285,14 @@ div.form {
   margin: 0.5em auto;
   color: white;
   font-size: 1.2em;
+}
+
+.ios-mode {
+  height: 15% !important;
+  padding: 0.5em !important;
+  padding-top: 25px !important;
+}
+
+.menuBtniOs{
+  top:35px !important;
 }
