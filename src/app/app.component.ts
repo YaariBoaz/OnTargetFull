@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 
 import {Platform} from '@ionic/angular';
+import {InitService} from './shared/services/init.service';
 
 @Component({
     selector: 'app-root',
@@ -10,12 +11,14 @@ import {Platform} from '@ionic/angular';
 export class AppComponent {
     constructor(
         private platform: Platform,
+        private initService: InitService
     ) {
         this.initializeApp();
     }
 
     initializeApp() {
         this.platform.ready().then(() => {
-         });
+            this.initService.trySyncData();
+        });
     }
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -22,6 +22,14 @@ export class ApiService {
     }
 
     signup(registerDetails) {
-        return this.http.post(this.BACKOFFICE_URL + 'Login​/register', registerDetails);
+        return this.http.post(this.BACKOFFICE_URL + 'Login/register', registerDetails);
+    }
+
+    login(loginDetails) {
+        return this.http.post(this.BACKOFFICE_URL + 'Login/authenticate', loginDetails);
+    }
+
+    syncData(dataToSync) {
+        return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadDrills', dataToSync);
     }
 }

@@ -7,6 +7,7 @@ import {UserService} from '../../services/user.service';
 import {StorageService} from '../../services/storage.service';
 import {AlertController} from '@ionic/angular';
 import {Facebook, FacebookLoginResponse} from '@ionic-native/facebook/ngx';
+import {ApiService} from '../../services/api.service';
 
 
 @Component({
@@ -48,6 +49,7 @@ export class SinginComponent implements OnInit {
         private router: Router,
         private storageService: StorageService,
         private fb: Facebook,
+        private apiService: ApiService,
         public alertController: AlertController,
         private  network: NetworkService,
         private userService: UserService) {
@@ -112,9 +114,12 @@ export class SinginComponent implements OnInit {
     }
 
     onLogin() {
-        // if (this.password && this.password > 3 && this.userName.indexOf('adl') > -1) {
-        this.router.navigateByUrl('/home/tabs/tab1');
-        // }
+        this.apiService.login({
+            username: this.userName,
+            password: this.password
+        }).subscribe(data => {
+            debugger;
+        });
     }
 
     backToSignin() {
