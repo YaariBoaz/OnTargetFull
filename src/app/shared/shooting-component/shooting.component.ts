@@ -3,6 +3,7 @@ import {ShootingService} from '../services/shooting.service';
 import {DrillObject} from '../../tab2/tab2.page';
 import {StorageService} from '../services/storage.service';
 import {Subscription, timer} from 'rxjs';
+import {CountupTimerService} from 'ngx-timer';
 
 
 @Component({
@@ -75,6 +76,7 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
     constructor(
         private storageService: StorageService,
         private shootingService: ShootingService,
+        private countupTimerService: CountupTimerService
     ) {
         this.drill = this.shootingService.selectedDrill;
         this.setTimeElapse();
@@ -202,32 +204,32 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
         this.pageData.totalTime = (this.pageData.totalTime + ((new Date().getTime() - this.pageData.lastShotTime.getTime()) / 1000));
         this.pageData.lastShotTime = new Date();
 
-        // this.pageData.splitTime = (this.countupTimerService.totalSeconds / this.pageData.counter).toFixed(2);
-        // this.countupTimerService.getTimerValue().subscribe((time) => {
-        //     this.stats.push({
-        //         pageData: Object.assign({}, this.pageData),
-        //         interval: time.hours + ':' + time.mins + ':' + time.seconds
-        //     });
-        //     let points = 0;
-        //     let distanceFromCenter = 0;
-        //     let split = 0;
-        //
-        //     this.stats.forEach(stat => {
-        //         points += stat.pageData.points;
-        //         distanceFromCenter += stat.pageData.distanceFromCenter;
-        //         const splitArr = stat.pageData.splitTime.split('.');
-        //         split += parseFloat(splitArr[0] + '.' + splitArr[1].substr(0, 2));
-        //     });
-        //
-        //     const statsLength = this.stats.length;
-        //     this.summaryObject = {
-        //         points: points / statsLength,
-        //         distanceFromCenter: distanceFromCenter / statsLength,
-        //         split: split / statsLength,
-        //         totalTime: this.stats[statsLength - 1].interval,
-        //         counter: this.stats[statsLength - 1].pageData.counter
-        //     };
-        // });
+        this.pageData.splitTime = (this.countupTimerService.totalSeconds / this.pageData.counter).toFixed(2);
+        this.countupTimerService.getTimerValue().subscribe((time) => {
+            this.stats.push({
+                pageData: Object.assign({}, this.pageData),
+                interval: time.hours + ':' + time.mins + ':' + time.seconds
+            });
+            let points = 0;
+            let distanceFromCenter = 0;
+            let split = 0;
+
+            this.stats.forEach(stat => {
+                points += stat.pageData.points;
+                distanceFromCenter += stat.pageData.distanceFromCenter;
+                const splitArr = stat.pageData.splitTime.split('.');
+                split += parseFloat(splitArr[0] + '.' + splitArr[1].substr(0, 2));
+            });
+
+            const statsLength = this.stats.length;
+            this.summaryObject = {
+                points: points / statsLength,
+                distanceFromCenter: distanceFromCenter / statsLength,
+                split: split / statsLength,
+                totalTime: this.stats[statsLength - 1].interval,
+                counter: this.stats[statsLength - 1].pageData.counter
+            };
+        });
 
 
     }
@@ -466,7 +468,9 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
             totalShots: this.drill.numOfBullets,
             range: this.drill.range,
             timeLimit: null,
+            splitAvg: this.pageData.splitTime,
             points: this.pageData.points,
+            avgDistanceFromCenter: this.pageData.distanceFromCenter,
             shots: this.shots,
             stata: this.stats,
             recommendation

@@ -12,7 +12,8 @@ export class InitService {
     }
 
     trySyncData() {
-        this.apiService.syncData(this.storageService.TEMP_TRAINING_HISTORY).subscribe(data => {
+        debugger;
+        this.apiService.syncData(this.storageService.data).subscribe(data => {
             debugger;
         });
     }
