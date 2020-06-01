@@ -1,3 +1,14 @@
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'"  *ngIf="splash">
+  <img [@zoomIn]="zoomIn" class="logoImage" src="assets/adl-logo-gold.png">
+  <div class="sentences">
+    <div [@bounceInRight]="bounceInRight">Collect.</div>
+    <div [@bounceInLeft]="bounceInLeft">Assess.</div>
+    <div [@bounceInUp]="bounceInUp">Recommend.</div>
+    <div [@bounceInDown]="bounceInDown">Perfect.</div>
+  </div>
+</div>
+
+
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

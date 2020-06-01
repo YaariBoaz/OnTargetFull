@@ -1,0 +1,12 @@
+#custom-overlay {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  .sentences{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+}

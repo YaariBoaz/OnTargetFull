@@ -1,0 +1,23 @@
+<ion-content>
+    <div class="bg-image"></div>
+    <div class="shadow"></div>
+    <section class="wrapper">
+        <img src="assets/ontarget.png">
+        <div class="centerPart" *ngIf="!splash">
+            <div class="signin-wrapper" *ngIf="!splash && isSignIn">
+                <div class="regular-wrapper">
+                    <input type="email" [(ngModel)]="userName" placeholder="Email">
+                    <input [(ngModel)]="password" type="password" placeholder="Password">
+                    <span (click)="onLogin()">GO!</span>
+                </div>
+                <span (click)="goToSignUp()"> Forgot Password</span>
+                <!--                <div class="social">-->
+                <!--                    <button (click)="onFBClick()" class="loginBtn loginBtn&#45;&#45;facebook">-->
+                <!--                        Login with Facebook-->
+                <!--                    </button>-->
+                <!--                </div>-->
+                <span (click)="goToSignUp()"> Create an account</span>
+            </div>
+        </div>
+    </section>
+</ion-content>

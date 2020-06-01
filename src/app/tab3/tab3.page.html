@@ -1,5 +1,5 @@
 <section class="wrapper" *ngIf="profile">
-    <header>
+    <header *ngIf="showHeader">
         <h1>Personal Settings</h1>
         <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
             <span>⋮</span>
@@ -10,20 +10,14 @@
         </mat-menu>
     </header>
     <div class="user-img-name">
-        <div class="edit-container">
-            <ion-icon (click)="isEditMode = !isEditMode" ios="ios-create" md="md-create" size="large"></ion-icon>
+        <div *ngIf="!profile.img" class="edit-container" (click)="selectImage()">
+            Upload Image
         </div>
         <div class="image-and-name">
-            <div *ngIf="profile.picture" class="round-border">
-                <img [src]="domSanitizer.bypassSecurityTrustUrl(profile.picture)">
-                <ion-icon (click)="selectImage()" *ngIf="isEditMode" ios="ios-create" md="md-create"
-                          size="large"></ion-icon>
+            <div *ngIf="profile.img" class="round-border">
+                <img [src]="domSanitizer.bypassSecurityTrustUrl(profile.img)">
             </div>
-            <div *ngIf="profile.picture === undefined" class="round-border" (click)="selectImage()">
-                <img class="camera" src="../../assets/icons/camera.png"/>
-                {{profile.picture}}
-            </div>
-            <h5>{{profile.first_name}} {{profile.last_name}}</h5>
+            <div *ngIf="profile.firstName" class="name"> {{profile.firstName}} {{ profile.lastName}}</div>
         </div>
     </div>
     <hr>
@@ -85,14 +79,10 @@
             <!--                <ion-select-option *ngFor="let gun of gunList" value="{{gun}}">{{gun}}</ion-select-option>-->
             <!--            </ion-select>-->
             <div *ngIf="myGuns" class="gunsWrapper" (click)="onSelectWeapons()">
-                <div>
-                    <div *ngFor="let gun of myGuns;let i = index">
-                        {{gun}}
-                        <span class="coma" *ngIf="i < myGuns.length-1">,</span>
-                    </div>
-                </div>
+                <label>{{myGuns[0]}}</label>
+                <label *ngIf="myGuns.length>1"> ... </label>
             </div>
-            <span *ngIf="!myGuns" (click)="onSelectWeapons()"> Select Default Weapon</span>
+            <span *ngIf=" !myGuns" (click)="onSelectWeapons()"> Select Default Weapon</span>
         </div>
         <hr>
         <div>
@@ -112,21 +102,14 @@
         <div>
             <img src="../../assets/icons/bullseye_red.png">
             <h5> TARGET </h5>
-            <div *ngIf="myTargets" class="gunsWrapper" (click)="onSelectTarget()">
-                <div>
-                    <div *ngFor="let target of myTargets;let i = index">
-                        {{target}}
-                        <span class="coma" *ngIf="i < myTargets.length-1">,</span>
-                    </div>
-                </div>
-            </div>
-            <span (click)="onSelectTarget()" *ngIf="!myTargets"> Select Default Target</span>
+            <span (click)="onSelectTarget()" *ngIf="!myTarget"> Select Default Target</span>
+            <span (click)="onSelectTarget()" *ngIf="myTarget"> {{myTarget.name}}</span>
         </div>
     </div>
 </section>
 <app-gunlist (close)="onHidetWeapons()" class="gunlist" *ngIf="isGunList"></app-gunlist>
 <app-sightlist (close)="onHideSights()" class="gunlist" *ngIf="isSightList"></app-sightlist>
-
+<app-target-list *ngIf="selectTarget"></app-target-list>
 
 
 

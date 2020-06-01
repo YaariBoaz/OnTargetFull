@@ -5,15 +5,16 @@ import {zoomIn, bounceInRight, bounceInLeft, bounceInUp, bounceInDown} from 'ngx
 import {NetworkService} from '../../services/network.service';
 import {UserService} from '../../services/user.service';
 import {StorageService} from '../../services/storage.service';
-import {AlertController} from '@ionic/angular';
+import {AlertController, LoadingController} from '@ionic/angular';
 import {Facebook, FacebookLoginResponse} from '@ionic-native/facebook/ngx';
 import {ApiService} from '../../services/api.service';
+import {InitService} from '../../services/init.service';
 
 
 @Component({
     selector: 'app-singin',
-    templateUrl: './singin.component.html',
-    styleUrls: ['./singin.component.scss'],
+    templateUrl: './signin.component.html',
+    styleUrls: ['./signin.component.scss'],
     animations: [
         trigger('zoomIn', [transition('* => *', useAnimation(zoomIn, {
             // Set the duration to 5seconds and delay to 2seconds
@@ -37,36 +38,35 @@ import {ApiService} from '../../services/api.service';
         }))])
     ],
 })
-export class SinginComponent implements OnInit {
+export class SigninComponent implements OnInit {
     splash = true;
     isSignIn = true;
     userName;
     password;
     socket;
-
+    isFirstLoad = true;
 
     constructor(
         private router: Router,
         private storageService: StorageService,
-        private fb: Facebook,
         private apiService: ApiService,
         public alertController: AlertController,
-        private  network: NetworkService,
-        private userService: UserService) {
+        public loadingController: LoadingController,
+    ) {
 
 
     }
 
     ionViewDidLoad() {
 
-
     }
 
     ngOnInit() {
 
         setTimeout(() => {
-            if (this.storageService.getItem('isLogedIn')) {
-                this.router.navigateByUrl('/home/tabs/tab1');
+            if (this.storageService.getItem('isLoggedIn')) {
+                this.splash = false;
+                // this.router.navigateByUrl('/home/tabs/tab1');
             } else {
                 this.splash = false;
             }
@@ -75,28 +75,28 @@ export class SinginComponent implements OnInit {
 
 
     async onFBClick() {
-        this.fb.login(['public_profile', 'email'])
-            .then((response: FacebookLoginResponse) => {
-                if (response.authResponse.userID !== '') {
-                    this.fb.api(
-                        // tslint:disable-next-line:max-line-length
-                        'me?fields=id,name,email,first_name,last_name,picture.width(600).height(600).as(picture_small),picture.width(360).height(360).as(picture_large)',
-                        [])
-                        .then((profileData) => {
-                            profileData.picture = 'https://graph.facebook.com/' + profileData.id + '/picture?width=1024&height=1024';
-                            this.storageService.setItem('profileData', profileData);
-                            this.storageService.setItem('isLogedIn', true);
-                            this.router.navigateByUrl('/home/tabs/tab1');
-                        }, (err) => {
-                            this.showAlert();
-                        });
-                }
-                console.log('Logged into Facebook!', response);
-            })
-            .catch(e => {
-                console.log('Error logging into Facebook', e);
-            });
-        this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+        // this.fb.login(['public_profile', 'email'])
+        //     .then((response: FacebookLoginResponse) => {
+        //         if (response.authResponse.userID !== '') {
+        //             this.fb.api(
+        //                 // tslint:disable-next-line:max-line-length
+        //                 'me?fields=id,name,email,first_name,last_name,picture.width(600).height(600).as(picture_small),picture.width(360).height(360).as(picture_large)',
+        //                 [])
+        //                 .then((profileData) => {
+        //                     profileData.picture = 'https://graph.facebook.com/' + profileData.id + '/picture?width=1024&height=1024';
+        //                     this.storageService.setItem('profileData', profileData);
+        //                     this.storageService.setItem('isLogedIn', true);
+        //                     this.router.navigateByUrl('/home/tabs/tab1');
+        //                 }, (err) => {
+        //                     this.showAlert();
+        //                 });
+        //         }
+        //         console.log('Logged into Facebook!', response);
+        //     })
+        //     .catch(e => {
+        //         console.log('Error logging into Facebook', e);
+        //     });
+        // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
     }
 
     async showAlert() {
@@ -110,19 +110,26 @@ export class SinginComponent implements OnInit {
     }
 
     goToSignUp() {
-        this.isSignIn = false;
+        this.router.navigateByUrl('wizard');
     }
 
-    onLogin() {
+    async onLogin() {
+        const loading = await this.loadingController.create({
+            message: 'Please wait...',
+            duration: 2000
+        });
+        await loading.present();
         this.apiService.login({
             username: this.userName,
             password: this.password
         }).subscribe(data => {
-            debugger;
+            this.storageService.setItem('isLoggedIn', true);
+            this.storageService.setItem('profileData', data);
+            this.router.navigateByUrl('/home/tabs/tab1');
         });
     }
 
     backToSignin() {
-        this.isSignIn = true;
+        this.router.navigateByUrl('wizard');
     }
 }

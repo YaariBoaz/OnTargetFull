@@ -24,7 +24,7 @@ export class Tab2Page implements OnInit {
         rangeUOM: 'Meters',
         sight: 'V6 5-30 X 50',
         ammo: 'Creedmor 6.5',
-        drillType: 'Bullseye',
+        drillType: 'hit',
         shots: new Array<{ x, y }>()
     };
 
@@ -54,6 +54,9 @@ export class Tab2Page implements OnInit {
         this.slides.getActiveIndex().then(index => {
             switch (index) {
                 case 0:
+                    this.drill.drillType = 'hit ';
+                    break;
+                case 1:
                     this.drill.drillType = 'Bullseye';
                     break;
                 case 1:

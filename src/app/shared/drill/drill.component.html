@@ -40,26 +40,44 @@
         </div>
         <div class="main-image-wraper">
             <div [class.isHistory]="isHistory===true" class="main-image" #screen [ngSwitch]="drill.drillType">
+                <div *ngSwitchCase="'hit'">
+                    <h4 class="hit-number">{{shotNumber}}</h4>
+                    <div *ngIf="!isFinish">
+                        <img style="width:100%;" #container
+                             src="../../../assets/images/hitnohit/defualt.png"
+                             alt="bullsEye">
+                    </div>
+                    <div *ngIf="isFinish">
+                        <img style="width:100%;" #container src="../../../assets/images/hitnohit/drill-finish.jpg">
+                    </div>
+
+                </div>
                 <div *ngSwitchCase="'Bullseye'">
-                    <img *ngIf="shots.length < shootingService.numberOfBullersPerDrill && !drillFinishedBefore" style="width:100%;" #container
+                    <img *ngIf="shots.length < shootingService.numberOfBullersPerDrill && !drillFinishedBefore"
+                         style="width:100%;" #container
                          src="../../../assets/images/bullseye_red.png"
                          alt="bullsEye">
-                    <img *ngIf="shots.length >= shootingService.numberOfBullersPerDrill || drillFinishedBefore" style="width:100%;"
+                    <img *ngIf="shots.length >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"
+                         style="width:100%;"
                          #container src="../../../assets/images/bullseye_black.png">
                 </div>
                 <div *ngSwitchCase="'Hostage'">
-                    <img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore" style="width:100%;"
+                    <img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore"
+                         style="width:100%;"
                          #container src="../../../assets/icons/Hostage.png" alt="Hostage"
                     >
-                    <img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore" style="width:100%;"
+                    <img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"
+                         style="width:100%;"
                          #container src="../../../assets/icons/Hostage_Finish.png" alt="Hostage"
                     >
                 </div>
                 <div *ngSwitchCase="'Zero'">
-                    <img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore" style="width:100%;"
+                    <img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore"
+                         style="width:100%;"
                          #container src="../../../assets/icons/Zero.png" alt="Hostage"
                     >
-                    <img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore" style="width:100%;"
+                    <img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"
+                         style="width:100%;"
                          #container src="../../../../assets/icons/Zero_Finish.png.png" alt="Hostage">
                 </div>
                 <img *ngFor="let shot of shots" src="../../../assets/images/bullethit.png"
@@ -71,9 +89,9 @@
         </div>
         <div class="header-wrapper">
             <p class="title">Bullets</p>
-            <p class="title">AVG-DIS</p>
             <p class="title">Time</p>
             <p class="title">Split</p>
+            <!--            <p class="title">AVG-DIS</p>-->
             <p class="title">Points</p>
         </div>
         <div class="details" *ngFor="let stat of stats">
@@ -81,9 +99,9 @@
                 <p>{{stat.pageData.counter}}/{{shootingService.numberOfBullersPerDrill}}</p>
             </div>
 
-            <div class="box">
-                <p>{{stat.pageData.distanceFromCenter | number : '1.2-2'}}</p>
-            </div>
+            <!--            <div class="box">-->
+            <!--                <p>{{stat.pageData.distanceFromCenter | number : '1.2-2'}}</p>-->
+            <!--            </div>-->
 
             <div class="box">
                 <p>

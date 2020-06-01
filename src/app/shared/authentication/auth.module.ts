@@ -1,20 +1,19 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {SinginComponent} from './singin/singin.component';
+import {SharedModule} from '../shared.module';
+import {WizardModule} from './signup-wizard/wizard.module';
 import {AuthRouting} from './auth.routing';
-import {IonicModule} from '@ionic/angular';
-import {SignupComponent} from './signup/signup.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {StorageService} from '../services/storage.service';
-import {SocialLoginModule, AuthServiceConfig, FacebookLoginProvider} from 'angularx-social-login';
-import {Facebook} from '@ionic-native/facebook/ngx';
+
+
 
 @NgModule({
-    declarations: [SinginComponent, SignupComponent],
-    imports: [SocialLoginModule, IonicModule, AuthRouting, CommonModule, FormsModule, ReactiveFormsModule],
-    providers: [StorageService, Facebook],
+    declarations: [],
+    imports: [SharedModule, WizardModule, AuthRouting],
+    providers: [],
+    exports: [],
     entryComponents: []
 })
+
 export class AuthModule {
 }
 
+// StorageService, Facebook, StorageService, Camera, Crop, File]

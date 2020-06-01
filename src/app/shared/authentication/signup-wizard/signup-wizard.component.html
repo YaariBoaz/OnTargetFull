@@ -1,0 +1,30 @@
+<div class="main-container" #stepper>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper (selectionChange)="onSelectionChanged($event)">
+        <mat-step [stepControl]="firstFormGroup">
+            <div class="terms-and-condition">
+                <ng-template matStepLabel>Terms And Condition</ng-template>
+                <img src="../../../../assets/ontarget.png">
+                <p class="terms-condition-text">By using this application, You agree to the
+                    <span class="link">Terms And Condition</span> and<br>
+                    <span class="link">Privacy Policy</span>
+                </p>
+
+                <button class="btn-accept-continue" mat-button matStepperNext>Accept and continue</button>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <ng-template matStepLabel>Register</ng-template>
+            <div *ngIf="isInThirdStep" class="disable-wrapper"></div>
+            <app-signup [class.isInThirdStep]="isInThirdStep === true" (back)="onBackToLogin($event)"
+                        (move)="onMoveToTargetSearch($event,stepper)"></app-signup>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+            <ng-template matStepLabel>Personal Details</ng-template>
+            <app-tab3></app-tab3>
+        </mat-step>
+    </mat-horizontal-stepper>
+    <div (click)="onBackToLogin()" class="back-btn-float">
+        <img src="./assets/icons/exit.png">
+        <span>Back To Login</span>
+    </div>
+</div>

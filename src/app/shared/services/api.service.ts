@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {InventoryModel} from '../models/InventoryModel';
 
 @Injectable({
     providedIn: 'root'
@@ -17,8 +18,8 @@ export class ApiService {
         return this.http.get(this.BASE_URL + 'ping');
     }
 
-    getDashboardData(): Observable<any> {
-        return this.http.get(this.BASE_URL + 'getDashboard');
+    getDashboardData(userId): Observable<any> {
+        return this.http.get(this.BACKOFFICE_URL + 'DeviceData/GetDashboard?userId=' + userId);
     }
 
     signup(registerDetails) {
@@ -32,4 +33,24 @@ export class ApiService {
     syncData(dataToSync) {
         return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadDrills', dataToSync);
     }
+
+    getWeapons() {
+        return this.http.get(this.BACKOFFICE_URL + '/DeviceData/getWeapons');
+    }
+
+    getSights() {
+        return this.http.get(this.BACKOFFICE_URL + '/DeviceData/getSights');
+    }
+
+    getInventory() {
+        return this.http.get(this.BACKOFFICE_URL + '/DeviceData/getInventory');
+    }
+
+    setInventory(inventoryModel: InventoryModel) {
+        return this.http.post(this.BACKOFFICE_URL + '/DeviceData/setInventory', inventoryModel);
+    }
+
+
 }
+
+

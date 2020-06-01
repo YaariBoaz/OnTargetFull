@@ -130,7 +130,7 @@ header {
   margin-bottom: 0.5em;
 
   img {
-    height: 15vh;
+    height: 85%;
     margin: 0 auto;
   }
 
@@ -160,7 +160,7 @@ div.form {
     div.title-and-icon {
       display: flex;
       align-items: center;
-      width: 60%;
+      width: 80%;
 
       img {
         width: 2.5em;
@@ -267,7 +267,7 @@ div.form {
 
 .menuBtn {
   position: absolute;
-  top: 5px;
+  top: 2vh;
   right: 5px;
   background-color: transparent;
 
@@ -281,7 +281,7 @@ div.form {
 .startSessionBtn {
   background-color: #3b3838;
   width: 60%;
-  height: 20vw;
+  height: 10vw;
   margin: 0.5em auto;
   color: white;
   font-size: 1.2em;

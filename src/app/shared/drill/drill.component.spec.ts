@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SinginComponent } from './singin.component';
+import { DrillComponent } from './drill.component';
 
-describe('SinginComponent', () => {
-  let component: SinginComponent;
-  let fixture: ComponentFixture<SinginComponent>;
+describe('SessionModalComponent', () => {
+  let component: DrillComponent;
+  let fixture: ComponentFixture<DrillComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SinginComponent ],
+      declarations: [ DrillComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SinginComponent);
+    fixture = TestBed.createComponent(DrillComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

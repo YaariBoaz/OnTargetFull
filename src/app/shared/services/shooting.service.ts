@@ -12,6 +12,7 @@ export class ShootingService {
     targets;
     targetsArrived = new BehaviorSubject(null);
     chosenTarget: any;
+    RNADOM_SHOTS = [0, 16, 32, 48];
 
     constructor(private http: HttpClient) {
     }
@@ -25,6 +26,8 @@ export class ShootingService {
             this.http.get('http://' + this.getBaseUrl() + ':8087/api/GetTargets').subscribe((data: any) => {
                 this.targets = JSON.parse(data);
                 this.targetsArrived.next(this.targets);
+            }, (error) => {
+                this.targets = [149];
             });
         }
     }
@@ -156,6 +159,11 @@ export class ShootingService {
         return false;
     }
 
+    fakeShot() {
+        const x = this.RNADOM_SHOTS[Math.floor(Math.random() * this.RNADOM_SHOTS.length)];
+        const y = this.RNADOM_SHOTS[Math.floor(Math.random() * this.RNADOM_SHOTS.length)];
+        return {xCoord: x, yCoord: y};
+    }
 
 }
 

@@ -107,10 +107,11 @@
 
     .title {
       display: flex;
-      height: 20vw;
       background: white;
       align-items: center;
-
+      height: 10vw;
+      width: 20%;
+      justify-content: center;
       img {
         height: 15vw;
         width: 15vw;
@@ -119,8 +120,8 @@
 
       div {
         display: flex;
-        align-items: center;
-        flex-direction: column;
+         flex-direction: column;
+        padding-left: 5px;
 
         p {
           margin: 0;
@@ -275,7 +276,36 @@
   margin-bottom: 30px;
 }
 
-.trend-line-ios{
+.trend-line-ios {
   height: 60vw;
 }
 
+.details {
+  display: flex;
+  color: black;
+  justify-content: space-around;
+}
+
+.summmaryRow {
+  display: flex;
+  color: black;
+  justify-content: space-around;
+  background: #d3d3d382;
+  font-weight: bold;
+}
+
+.header-wrapper {
+  color: black;
+  background: #d3d3d382;
+  font-weight: bold;
+
+  p {
+    background: transparent !important;
+  }
+}
+
+.box{
+  display: flex;
+  width: 20%;
+  justify-content: center;
+}

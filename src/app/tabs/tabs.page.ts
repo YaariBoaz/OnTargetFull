@@ -41,12 +41,12 @@ export class TabsPage {
 
     isRout() {
         const url = this.router.url;
-        if (url.indexOf('tab1') > -1) {
-            return 'tab1';
+        if (url.indexOf('tab3') > -1) {
+            return 'tab3';
         } else if (url.indexOf('tab2') > -1) {
             return 'tab2';
         } else {
-            return 'tab3';
+            return 'tab1';
         }
     }
 }

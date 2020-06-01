@@ -1,7 +1,8 @@
 <section class="target-selection">
     <header [class.ios-mode]="this.platform.is('ios')">
         <h1> Edit Drill</h1>
-        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
+        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu"
+                style="">
             <span>⋮</span>
         </button>
         <mat-menu #menu="matMenu">
@@ -14,7 +15,13 @@
         <p>CHOOSE TARGET TYPE:
         <p>
     </div>
-    <ion-slides #slides effect=“slide”  class="sliders" pager="true" (ionSlideDidChange)="slideDidChange($event)">
+    <ion-slides #slides effect=“slide” class="sliders" pager="true" (ionSlideDidChange)="slideDidChange($event)">
+        <ion-slide>
+            <div class="imgWrapper">
+                <img src="../../assets/images/hitnohit/defualt.png" alt="No image">
+                <p>Hit/No Hit</p>
+            </div>
+        </ion-slide>
         <ion-slide>
             <div class="imgWrapper">
                 <img src="../../assets/icons/bullseye_red.png" alt="No image">
@@ -63,7 +70,7 @@
                 <img src="../../assets/icons/rifle.png" alt="gun-shooting-targer" class="border">
                 <p>WEAPON:</p>
             </div>
-           <div class="inputs" *ngIf="myGuns">
+            <div class="inputs" *ngIf="myGuns">
                 <select [(ngModel)]="drill.weapon">
                     <option *ngFor="let gun of myGuns" [value]="gun">{{gun}}</option>
                 </select>
@@ -88,11 +95,11 @@
                 </select>
             </div>
             <div class="inputs" *ngIf="!mySights">
-            <select [(ngModel)]="drill.sight"  [value]='null'>
-                <option [value]="null">Please Select</option>
-                <option *ngFor="let sight of DEFAULT_SIGHTS" [ngValue]="sight">{{sight}}</option>
-            </select>
-        </div>
+                <select [(ngModel)]="drill.sight" [value]='null'>
+                    <option [value]="null">Please Select</option>
+                    <option *ngFor="let sight of DEFAULT_SIGHTS" [ngValue]="sight">{{sight}}</option>
+                </select>
+            </div>
 
         </div>
         <div class="container">

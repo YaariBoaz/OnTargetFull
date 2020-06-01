@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ShootingComponent } from './shooting.component';
+import { TermsAndConditionComponent } from './terms-and-condition.component';
 
-describe('SessionModalComponent', () => {
-  let component: ShootingComponent;
-  let fixture: ComponentFixture<ShootingComponent>;
+describe('TermsAndConditionComponent', () => {
+  let component: TermsAndConditionComponent;
+  let fixture: ComponentFixture<TermsAndConditionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShootingComponent ],
+      declarations: [ TermsAndConditionComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ShootingComponent);
+    fixture = TestBed.createComponent(TermsAndConditionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

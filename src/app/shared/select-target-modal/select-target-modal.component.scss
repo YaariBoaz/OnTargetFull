@@ -71,6 +71,7 @@ section.target-selection {
 
 
         }
+
         .connect-to-wifi {
           background: black;
           color: white;
@@ -178,7 +179,37 @@ section.target-selection {
   left: calc((100% - 60vw) / 2);
 }
 
-ion-icon{
+ion-icon {
   position: absolute;
   left: 6px;
+}
+
+.connected {
+  background-color: $deep_sea_blue !important;
+  color: white !important;
+  font-size: 5vw;
+  font-weight: 500;
+}
+
+
+.btn-disable {
+  background-color: lightgray !important;
+  color: gray !important;
+  border: 1px solid black;
+}
+
+
+.custom-loading {
+  div.loading-wrapper {
+    background-image: url("../../../assets/loader.gif");
+  }
+}
+
+.loading-wrapper {
+  background-image: url("../../../assets/loader.gif") !important;
+}
+
+.loading-wrapper.sc-ion-loading-md{
+  background-image: url("../../../assets/loader.gif") !important;
+
 }

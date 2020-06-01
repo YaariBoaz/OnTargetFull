@@ -1,5 +1,7 @@
 // import {ChartDataSets} from 'chart.js';
 
+import {HistoryValueItemModel, HistoryValueItemReccomendationModel} from './HistoryModel';
+
 export class HomeModel {
     charts: Array<any>;
 
@@ -17,11 +19,12 @@ export class BaseChart {
 }
 
 export class HitRatioChart {
-    data: Array<Array<number>>;
-    percentage: number;
+    totalHits: number;
+    totalShots: number;
 
-    constructor(props) {
-        this.percentage = 0;
+    constructor(totalShots, totalHits) {
+        this.totalHits = totalHits;
+        this.totalShots = totalShots;
     }
 
 }
@@ -74,7 +77,9 @@ export class TrainingHistory {
     range?: number;
     timeLimit?: number;
     points?: number;
-    recommendation?: string;
+    splitAvg: string;
+    avgDistanceFromCenter: number;
+    recommendation?: HistoryValueItemReccomendationModel;
 
     constructor() {
         this.date = '';
@@ -85,8 +90,10 @@ export class TrainingHistory {
         this.totalShots = 0;
         this.range = 0;
         this.timeLimit = 0;
+        this.splitAvg = '';
         this.points = 0;
-        this.recommendation = '';
+        this.avgDistanceFromCenter;
+        this.recommendation = null;
     }
 }
 
@@ -94,13 +101,13 @@ export class DashboardModel {
     hitRatioChart: HitRatioChart;
     rateOfFireChart: RateOfFireChart;
     bestScores: BestScores;
-    trainingHistory: TrainingHistory[];
+    trainingHistory: HistoryValueItemModel[];
 
     constructor() {
-        this.hitRatioChart = new HitRatioChart('Hit Ratio');
+        this.hitRatioChart = new HitRatioChart(0, 0);
         this.rateOfFireChart = new RateOfFireChart('Rate Of Fire');
         this.bestScores = new BestScores();
-        this.trainingHistory = new Array<TrainingHistory>();
+        this.trainingHistory = new Array<HistoryValueItemModel>();
     }
 }
 

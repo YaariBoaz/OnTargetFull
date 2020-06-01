@@ -1,6 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import {StorageService} from '../../shared/services/storage.service';
+import {ApiService} from '../../shared/services/api.service';
+import {InventoryModel} from '../../shared/models/InventoryModel';
+import {UserService} from '../../shared/services/user.service';
 
 @Component({
     selector: 'app-gunlist',
@@ -10,23 +13,26 @@ import {StorageService} from '../../shared/services/storage.service';
 export class GunlistComponent implements OnInit {
     @Output()
     close = new EventEmitter();
-    DEFUALT_GUNS = {
-        AR: [{model: 'M5', isSelected: false}, {model: 'M16', isSelected: false}],
-        Colt: [{model: 'COLT 1', isSelected: false}, {model: 'COLT 2', isSelected: false}],
-        Remington: [{model: 'Remington 1', isSelected: false}, {model: 'Remington 2', isSelected: false}],
-    };
     public goalList: any[];
-    public loadedGoalList: {};
+    public DEFUALT_GUNS: {};
     models = null;
     myGuns = null;
     private selectedGunType = '';
 
-    constructor(private storageService: StorageService  , public alertController: AlertController) {
+    constructor(private storageService: StorageService,
+                public alertController: AlertController,
+                private apiService: ApiService,
+                private userService: UserService) {
     }
 
     ngOnInit() {
-        this.myGuns = this.storageService.getItem('gunList');
-        this.loadedGoalList = this.DEFUALT_GUNS;
+        const inventory = this.storageService.getItem('inventory');
+        if (!inventory) {
+            this.myGuns = [];
+        } else {
+            this.myGuns = inventory.wepons;
+        }
+        this.DEFUALT_GUNS = this.storageService.getItem('gunList');
     }
 
     filterList($event) {
@@ -64,6 +70,17 @@ export class GunlistComponent implements OnInit {
         await alert.present();
     }
 
+    onSingleClick(item) {
+        if (!this.myGuns) {
+            this.myGuns = [];
+        }
+        if (this.myGuns.filter(o => o === item).length === 0) {
+            this.myGuns.push(item);
+        } else {
+            this.gunWasSelected(item);
+        }
+    }
+
     onModelClicked(item: any) {
         if (!this.myGuns) {
             this.myGuns = [];
@@ -73,7 +90,7 @@ export class GunlistComponent implements OnInit {
         } else {
             this.gunWasSelected(item);
         }
-        this.DEFUALT_GUNS[this.selectedGunType].forEach(model => {
+        this.DEFUALT_GUNS [this.selectedGunType].forEach(model => {
             if (model.model === item.model) {
                 model.isSelected = !model.isSelected;
             }
@@ -82,8 +99,18 @@ export class GunlistComponent implements OnInit {
     }
 
     onSaveWeapons() {
-        this.storageService.setItem('gunList', this.myGuns);
-        this.close.emit();
+        const mySights = this.storageService.getItem('mysightList');
+        const inventory: InventoryModel = {
+            wepons: this.myGuns,
+            sight: mySights,
+            userId: this.userService.getUserId()
+        };
+        this.storageService.setItem('inventory', inventory);
+        this.apiService.setInventory(inventory).subscribe(data => {
+            this.storageService.setItem('inventory', data);
+            this.close.emit();
+        });
+
     }
 
     removeMyGun(item: any) {

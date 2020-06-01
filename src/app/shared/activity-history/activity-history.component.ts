@@ -4,6 +4,7 @@ import {NetworkService} from '../services/network.service';
 import {StorageService} from '../services/storage.service';
 import {Router} from '@angular/router';
 import {Platform} from '@ionic/angular';
+import {HistoryModel, HistoryValueItemModel} from '../models/HistoryModel';
 
 // @ts-ignore
 @Component({
@@ -17,7 +18,7 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         day: 'Tuesday',
         numberOfDrills: 6
     };
-    drills: TrainingHistory[];
+    drills: HistoryValueItemModel[];
     hasConnection;
     currentDay;
     numOfTrainings;
@@ -67,16 +68,15 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     }
 
     handleOfflineScenario() {
-        this.stoargeService.historicalTrainingsDate$.subscribe((date) => {
+        this.stoargeService.historicalTrainingsDate$.subscribe((date: HistoryModel) => {
             if (date) {
-                debugger;
-                this.beutifiedDate = Object.keys(date.value)[0];
-                this.currentDay = date.value[this.beutifiedDate]['day'];
-                const arrayOfTrainings = date.value[this.beutifiedDate]['data'];
+                this.beutifiedDate = date.key;
+                this.currentDay = date.value.data[0].day;
+                const arrayOfTrainings = date['value']['data'];
                 this.numOfTrainings = arrayOfTrainings.length;
                 this.drills = arrayOfTrainings;
-                this.stats = date.stata;
-                this.summaryObject = date.summaryObject;
+                // this.stats = date.stata;
+                // this.summaryObject = date.summaryObject;
             }
 
         });

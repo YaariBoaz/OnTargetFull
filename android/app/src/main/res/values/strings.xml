@@ -6,4 +6,10 @@
     <string name="custom_url_scheme">io.ionic.starter</string>
     <string name="fb_app_id">2517514145185829</string>
     <string name="fb_app_name">ADL</string>
-    <string name="fb_login_protocol_scheme">fb2517514145185829</string></resources>
+
+    <string name="facebook_app_id">2526341254299735</string>
+    <string name="fb_login_protocol_scheme">fb2526341254299735</string>
+
+</resources>
+
+

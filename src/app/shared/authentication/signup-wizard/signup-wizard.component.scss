@@ -1,0 +1,79 @@
+@import "../../../../assets/colors";
+
+.terms-and-condition {
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+mat-horizontal-stepper {
+  height: 100%;
+}
+
+.link {
+  color: $cerulean;
+}
+
+.main-container {
+  border: 3px solid $warm_grey;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0.3em;
+}
+
+.terms-condition-text {
+  font-size: 6vw;
+  text-align: center;
+}
+
+.btn-accept-continue {
+  height: 8vh;
+  background: #343434;
+  width: 40vw;
+  color: white;
+  font-size: 3vw;
+}
+
+
+.isInThirdStep {
+  pointer-events: none;
+  background-color: lightgray;
+
+}
+
+.disable-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #808080ad;
+  z-index: 9999;
+}
+
+.back-btn-float {
+  z-index: 9999;
+  height: 50px;
+  width: 26vw;
+  top: 10%;
+  left: 15px;
+  display: flex;
+  background: orange;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 40px;
+  background-color: #e8e4e4;
+  color: #FFF;
+  border-radius: 50px;
+  color: black;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  img{
+    height: 25px;
+    width: 25px;
+  }
+}

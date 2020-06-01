@@ -1,17 +1,23 @@
-import {Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {ShootingService} from '../services/shooting.service';
 import {DrillObject} from '../../tab2/tab2.page';
 import {StorageService} from '../services/storage.service';
 import {Subscription, timer} from 'rxjs';
-import {CountupTimerService} from 'ngx-timer';
+import {countUpTimerConfigModel, CountupTimerService, timerTexts} from 'ngx-timer';
+import {DashboardModel} from '../models/dashboard-model';
+import {DrillModel} from '../models/DrillModel';
+import {UserService} from '../services/user.service';
+import {ApiService} from '../services/api.service';
+import {BleService} from '../services/ble.service';
+import {HitNohitService} from './hit-nohit.service';
 
 
 @Component({
     selector: 'app-session-modal',
-    templateUrl: './shooting.component.html',
-    styleUrls: ['./shooting.component.scss'],
+    templateUrl: './drill.component.html',
+    styleUrls: ['./drill.component.scss'],
 })
-export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
+export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
     @Input() isHistory = false;
     @Input() historyDrill: DrillObject;
@@ -22,10 +28,8 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
     shots = [];
     drill: DrillObject;
     testConfig: any;
+    RANDOM_TIMES = [5899, 6704, 7003, 6050, 5903];
 
-    BASE_URL = '192.168.0.';
-
-    socket: WebSocket;
 
     drillFinished = false;
 
@@ -64,45 +68,70 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
 
     height: number;
     width: number;
-    private chosenTarget: any;
     private interval;
-    private subscription: Subscription;
     stats = [];
     batteryPrecent;
-    isConnected = false;
+    isConnected = true;
     drillFinishedBefore = false;
-
+    isHit = false;
+    private hitNumber = 0;
+    isFinish = false;
+    shotNumber = 0;
 
     constructor(
         private storageService: StorageService,
         private shootingService: ShootingService,
-        private countupTimerService: CountupTimerService
+        private countupTimerService: CountupTimerService,
+        private userService: UserService,
+        private apiService: ApiService,
+        private bleService: BleService,
+        private cd: ChangeDetectorRef,
+        private hitNohitService: HitNohitService
     ) {
+
         this.drill = this.shootingService.selectedDrill;
+        this.hitNohitService.setDrill(this.drill);
+        this.hitNohitService.initStats();
+        this.hitNohitService.initTime();
+
         this.setTimeElapse();
-        this.BASE_URL += this.shootingService.chosenTarget;
-        if (this.shootingService.BaseUrl) {
-            this.BASE_URL = this.shootingService.getBaseUrl();
-        }
     }
 
     ngOnInit() {
-        this.initConnection(this.shootingService.chosenTarget);
+        this.hitNohitService.hitArrived.subscribe((data) => {
+            if (data !== null) {
+                this.shotNumber = data.hitNumber;
+                this.stats = data.statsData.stats;
+                this.pageData = data.statsData.page;
+                this.isFinish = data.statsData.isFinish;
+                this.summaryObject = data.statsData.summaryObject;
+                if (this.isFinish) {
+                    this.bleService.distory();
+                }
+                this.cd.detectChanges();
+            }
+        });
+
+        this.hitNohitService.resetDrillSubject.subscribe((flag) => {
+            if (flag) {
+                this.initStats();
+            }
+        });
 
     }
 
-    // It will start running only on the first shot.
+
     setTimeElapse() {
-        // this.countupTimerService.stopTimer();
-        // this.countupTimerService.setTimervalue(0);
-        //
-        // this.testConfig = new countUpTimerConfigModel();
-        // this.testConfig.timerClass = 'test_Timer_class';
-        // // timer text values
-        // this.testConfig.timerTexts = new timerTexts();
-        // this.testConfig.timerTexts.hourText = ':'; // default - hh
-        // this.testConfig.timerTexts.minuteText = ':'; // default - mm
-        // this.testConfig.timerTexts.secondsText = ' '; // default - ss
+        this.countupTimerService.stopTimer();
+        this.countupTimerService.setTimervalue(0);
+
+        this.testConfig = new countUpTimerConfigModel();
+        this.testConfig.timerClass = 'test_Timer_class';
+        // timer text values
+        this.testConfig.timerTexts = new timerTexts();
+        this.testConfig.timerTexts.hourText = ':'; // default - hh
+        this.testConfig.timerTexts.minuteText = ':'; // default - mm
+        this.testConfig.timerTexts.secondsText = ' '; // default - ss
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -112,40 +141,12 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
         if (changes && changes.historyDrill) {
             this.historyDrill = changes.historyDrill.currentValue;
         }
+
     }
 
-
-    initConnection(chosenTarget) {
-        this.chosenTarget = chosenTarget;
-        if (this.shootingService.BaseUrl) {
-            this.BASE_URL = this.shootingService.getBaseUrl();
-        }
-        this.socket = new WebSocket('ws://' + this.BASE_URL + '/ws');
-        this.socket.onopen = (e) => {
-            this.isConnected = true;
-            console.log('[open] Connection established');
-            this.socket.send('b');
-            this.socket.send('t');
-        };
-        this.socket.onmessage = (event) => {
-            console.log(`[message] ${event.data}`);
-            this.processData(event.data);
-        };
-        this.socket.onclose = (event) => {
-            if (event.wasClean) {
-
-            } else {
-                // e.g. server process killed or network down
-                // event.code is usually 1006 in this case
-            }
-        };
-        this.socket.onerror = (error) => {
-        };
-    }
-
-    handelShoot(parentImageHeight, parentImageWidth, data) {
+    handelShoot(parentImageHeight, parentImageWidth, data, isFake) {
         if (this.pageData.counter === 0) {
-            // this.countupTimerService.startTimer();
+            this.countupTimerService.startTimer();
         }
         const x = data.xCoord;
         const y = data.yCoord;
@@ -169,25 +170,32 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
 
         this.updateStats(x, y);
         this.shots.push({x: px, y: py});
-
-        if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
-            this.finishDrill();
-            this.updateHistory(parentImageHeight, parentImageWidth);
-        }
     }
 
     initStats() {
+        this.hitNohitService.initStats();
+        this.resetShots();
         console.log('This is in the init stats of the session');
         this.drillFinished = false;
-        this.pageData.counter = 0;
-        this.pageData.distanceFromCenter = 0;
-        this.pageData.splitTime = '0:00';
-        this.pageData.rateOfFire = 0;
-        this.pageData.points = 0;
-        this.pageData.totalTime = '0:00';
-        // this.countupTimerService.stopTimer();
-        // this.countupTimerService.setTimervalue(0);
         this.shots = [];
+        this.stats = [];
+        this.shotNumber = 0;
+        this.isFinish = false;
+        this.summaryObject = this.DEFAULT_SUMMARY_OBJECT;
+        if (!this.pageData) {
+            this.pageData = this.pageData;
+        } else {
+            this.pageData.counter = 0;
+            this.pageData.distanceFromCenter = 0;
+            this.pageData.splitTime = '0:00';
+            this.pageData.rateOfFire = 0;
+            this.pageData.points = 0;
+            this.pageData.totalTime = '0:00';
+        }
+        if (this.countupTimerService) {
+            this.countupTimerService.stopTimer();
+            this.countupTimerService.setTimervalue(0);
+        }
     }
 
 
@@ -229,6 +237,11 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
                 totalTime: this.stats[statsLength - 1].interval,
                 counter: this.stats[statsLength - 1].pageData.counter
             };
+
+            if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
+                this.finishDrill();
+                this.updateHistory(this.height, this.width);
+            }
         });
 
 
@@ -328,29 +341,27 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     onBackPressed() {
-        this.socket.close();
         this.initStats();
     }
 
     // If we returned to this screen from another tab
     ionViewWillEnter() {
         this.drill = this.shootingService.selectedDrill;
-        // this.countupTimerService.stopTimer();
-        // this.countupTimerService.setTimervalue(0);
+        this.countupTimerService.stopTimer();
+        this.countupTimerService.setTimervalue(0);
         this.initStats();
     }
 
 
     // Close socket before leaving.
     ionViewDidLeave() {
-        this.socket.close();
         console.log('[OnDestroy] Session Component');
     }
 
+
     ngOnDestroy() {
-        this.socket.close();
-        this.socket = null;
         console.log('[OnDestroy] Session Component');
+        this.bleService.distory();
     }
 
     // Decide what kind of message arrived and transfer it to the right function
@@ -382,6 +393,7 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     // Parses X/Y to normal state
+
     handleShot_MSG(dataArray) {
         const x = dataArray[2];
         let xCoord = 0;
@@ -397,7 +409,7 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
             this.height = this.container.nativeElement.offsetHeight;
             this.width = this.container.nativeElement.offsetWidth;
         }
-        this.handelShoot(this.height, this.width, {xCoord, yCoord});
+        this.handelShoot(this.height, this.width, {xCoord, yCoord}, false);
     }
 
     hanldeBateryTime_MSG(dataArray) {
@@ -446,20 +458,37 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
     private finishDrill() {
         this.drillFinishedBefore = true;
         this.drillFinished = true;
-        // this.countupTimerService.stopTimer();
-        this.socket.close();
+        this.countupTimerService.stopTimer();
         console.log('FINISH!!!!!!!!!!!!!!!!!');
-        this.updateHistory(this.height, this.width);
     }
 
     private updateHistory(parentImageHeight, parentImageWidth) {
-        let updatedData = {} as any;
-        updatedData = this.storageService.getItem('homeData');
+
+
+        let updatedData: DashboardModel = this.storageService.getItem('homeData');
 
         if (!updatedData.trainingHistory) {
             updatedData.trainingHistory = [];
         }
         const recommendation = this.shootingService.getRecommendation(this.shots, {X: parentImageWidth / 2, Y: parentImageHeight / 2});
+
+
+        const drill: DrillModel = {
+            date: new Date().toJSON(),
+            drillType: this.drill.drillType,
+            day: new Date().toLocaleString('en-us', {weekday: 'long'}),
+            hits: this.shots.length,
+            points: this.pageData.points,
+            range: this.drill.range,
+            recommendation,
+            shots: this.shots,
+            timeLimit: null,
+            totalShots: this.drill.numOfBullets,
+            userId: this.userService.getUserId(),
+            avgSplit: this.summaryObject.split,
+            disFromCenter: this.summaryObject.distanceFromCenter
+        };
+
 
         updatedData.trainingHistory.push({
             date: new Date().toString(),
@@ -473,14 +502,17 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
             avgDistanceFromCenter: this.pageData.distanceFromCenter,
             shots: this.shots,
             stata: this.stats,
+            summaryObject: this.summaryObject,
             recommendation
         });
 
-        updatedData.hitRatioChart.data[0] += this.shots.length;
-        updatedData.hitRatioChart.data[1] += this.drill.numOfBullets - this.shots.length;
+        updatedData.hitRatioChart.totalHits += this.shots.length;
+        updatedData.hitRatioChart.totalShots += this.drill.numOfBullets;
         updatedData = this.updateBestResults(updatedData);
 
         this.storageService.setItem('homeData', updatedData);
+        this.apiService.syncData(drill).subscribe(data => {
+        });
     }
 
     private updateBestResults(updatedData) {
@@ -501,5 +533,13 @@ export class ShootingComponent implements OnInit, OnChanges, OnDestroy {
         this.pageData = this.DEFUALT_PAGE_DATE;
         this.summaryObject = this.DEFAULT_SUMMARY_OBJECT;
 
+    }
+
+    private getSplitAvg(splitTime: string) {
+
+    }
+
+    resetShots() {
+        this.bleService.resetShots();
     }
 }

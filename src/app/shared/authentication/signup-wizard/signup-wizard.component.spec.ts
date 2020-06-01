@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ActivityHistoryPageComponent } from './activity-history-page.component';
+import { SignupWizardComponent } from './signup-wizard.component';
 
-describe('ActivityHistoryPageComponent', () => {
-  let component: ActivityHistoryPageComponent;
-  let fixture: ComponentFixture<ActivityHistoryPageComponent>;
+describe('SignupWizardComponent', () => {
+  let component: SignupWizardComponent;
+  let fixture: ComponentFixture<SignupWizardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActivityHistoryPageComponent ],
+      declarations: [ SignupWizardComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ActivityHistoryPageComponent);
+    fixture = TestBed.createComponent(SignupWizardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

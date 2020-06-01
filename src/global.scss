@@ -21,6 +21,7 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import "assets/colors";
 
 
 .mat-expansion-panel {
@@ -48,3 +49,49 @@
   justify-content: space-around;
   font-weight: 600;
 }
+
+.mat-horizontal-stepper-header-container {
+  background: $headerBG;
+}
+
+.mat-step-icon {
+  background-color: $warm_grey !important;
+}
+
+.mat-step-icon-selected {
+  background-color: $deep_sea_blue !important;
+}
+
+.mat-horizontal-content-container {
+  height: 100% !important;
+  padding: 0 !important;
+}
+.mat-horizontal-stepper-content{
+  height: 100% !important;
+}
+
+
+.mat-step-label{
+  color: $warm_grey !important;
+}
+
+mat-step-header{
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.mat-step-icon-state-number{
+  margin-top: 1vh !important;
+  margin-bottom: 1vh !important;
+}
+
+.mat-horizontal-stepper-content[aria-expanded="false"] {
+  display: none !important;
+}
+
+
+.scroll-content {
+  padding-bottom: 0 !important;
+}
+
+

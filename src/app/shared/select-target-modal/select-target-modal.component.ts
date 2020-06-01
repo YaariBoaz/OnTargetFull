@@ -4,6 +4,9 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {StorageService} from '../services/storage.service';
+import {BleService} from '../services/ble.service';
+import {LoadingController} from '@ionic/angular';
+import {HitNohitService} from '../drill/hit-nohit.service';
 
 @Component({
     selector: 'app-select-target-modal',
@@ -17,44 +20,68 @@ export class SelectTargetModalComponent implements OnInit {
     GET_TARGETS_API;
 
     myTargets = [];
+    targetConnected = false;
+    primaryTarget: null;
+    private loading: HTMLIonLoadingElement;
 
     constructor(private http: HttpClient,
+                private bleService: BleService,
                 private storageService: StorageService,
                 private shootingService: ShootingService,
+                public loadingController: LoadingController,
+                private hitNohitService: HitNohitService,
                 private router: Router) {
         this.myTargets = this.storageService.getItem('targetList');
 
-        // if (!this.shootingService.getBaseUrl()) {
-        //     this.storage.get('ip').then((data) => {
-        //         if (!data) {
-        //             alert('You did not enter host, You will be routed to the IP page');
-        //             this.router.navigateByUrl('/home/tabs/tab3');
-        //         } else {
-        //             this.shootingService.setBaseUrl(data);
-        //             this.shootingService.setTargetsI();
-        //         }
-        //     });
-        // } else {
-        //     this.targets = this.shootingService.targets;
-        // }
     }
 
     ngOnInit() {
-        // this.shootingService.targetsArrived.subscribe((data) => {
-        //     if (data) {
-        //         this.targets = data;
-        //     } else {
-        //         alert('Check your internet connection or the IP you entered');
-        //     }
-        // });
+        this.primaryTarget = this.storageService.getItem('target');
+        if (this.primaryTarget) {
+            this.showConnectingLoader();
+            this.bleService.isConnected().then((status) => {
+
+            }).catch(stats => {
+                // @ts-ignore
+                this.bleService.connect(this.primaryTarget.id);
+            });
+        }
+
+        this.bleService.notifyTargetConnected.subscribe(status => {
+            this.targetConnected = status;
+            if (this.loading) {
+                this.loading.dismiss();
+            }
+        });
+
+        this.bleService.notifyDissconnect.subscribe((flag) => {
+            this.targetConnected = false;
+            if (this.loading) {
+                this.loading.dismiss();
+            }
+        });
+
     }
 
     getOnlineTargets() {
         this.http.get(this.GET_TARGETS_API).subscribe((data: any) => {
             this.targets = data;
+            this.myTargets = data;
         });
     }
 
+
+    async showConnectingLoader() {
+        this.loading = await this.loadingController.create({
+            spinner: null,
+            duration: 5000,
+            message: 'Connecting to target',
+            translucent: true,
+            cssClass: 'custom-class custom-loading',
+            backdropDismiss: true
+        });
+        await this.loading.present();
+    }
 
     onTargetChosen(target) {
         this.shootingService.chosenTarget = target;
@@ -62,6 +89,7 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     startTraining() {
+        this.hitNohitService.resetDrill();
         this.router.navigateByUrl('/home/tabs/tab2/select2');
     }
 
@@ -71,5 +99,12 @@ export class SelectTargetModalComponent implements OnInit {
 
     onGetTargets() {
         this.shootingService.setTargetsI();
+    }
+
+
+    onReconnec() {
+        this.showConnectingLoader();
+        // @ts-ignore
+        this.bleService.connect(this.primaryTarget.id);
     }
 }

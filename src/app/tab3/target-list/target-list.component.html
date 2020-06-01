@@ -1,0 +1,19 @@
+<section>
+    <div class="container" *ngIf="isScanning">
+        <img class="logo" src="assets/ontarget.png">
+        <img class="spinner" src="assets/loader.gif">
+        <p> Scanning</p>
+    </div>
+    <div class="container" *ngIf="devices && !isScanning">
+        <img class="logo" src="assets/ontarget.png">
+        <p> Available Targets</p>
+        <hr>
+        <div *ngFor="let device of devices" class="devices">
+            <div>
+                <span> {{device.name}} </span>
+                <button (click)="connectBle(device)"> Pair</button>
+            </div>
+        </div>
+    </div>
+</section>
+

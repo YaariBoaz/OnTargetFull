@@ -1,5 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StorageService} from '../../shared/services/storage.service';
+import {InventoryModel} from '../../shared/models/InventoryModel';
+import {UserService} from '../../shared/services/user.service';
+import {ApiService} from '../../shared/services/api.service';
 
 @Component({
     selector: 'app-sightlist',
@@ -21,12 +24,15 @@ export class SightlistComponent implements OnInit {
     sightList: any[];
     loadedSightList: any[];
     mySights = null;
+    inventory: InventoryModel;
 
-    constructor(private storageService: StorageService) {
+    constructor(private storageService: StorageService, private userService: UserService, private apiService: ApiService) {
     }
 
     ngOnInit() {
-        this.mySights = this.storageService.getItem('sightList');
+        this.inventory = this.storageService.getItem('inventory');
+        this.DEFAULT_SIGHTS = this.storageService.getItem('sightList');
+        this.mySights = this.inventory.sight;
         if (!this.mySights) {
             this.mySights = [];
         }
@@ -65,6 +71,19 @@ export class SightlistComponent implements OnInit {
     }
 
     onSaveMySights() {
+
+        const inventory: InventoryModel = {
+            wepons: this.inventory.wepons,
+            sight: this.mySights,
+            userId: this.userService.getUserId()
+        };
+        this.storageService.setItem('inventory', inventory);
+
+        this.apiService.setInventory(inventory).subscribe(data => {
+            this.storageService.setItem('inventory', data);
+            this.close.emit();
+        });
+
         this.storageService.setItem('sightList', this.mySights);
         this.close.emit();
     }

@@ -6,39 +6,38 @@
         <h1 *ngIf="models">Select Model</h1>
     </header>
     <div class="wrapper">
-        <ion-searchbar
-                showcancelbutton=""
-                (ionInput)="filterList($event)"
-        ></ion-searchbar>
+        <ion-searchbar showcancelbutton="" (ionInput)="filterList($event)"></ion-searchbar>
         <div *ngIf="myGuns && !models">
             <div class="allGuns">
                 <img src="../../../assets/icons/rifle.png">
                 <h1>My Guns</h1>
             </div>
-            <ion-list>
-                <ion-item *ngFor="let item of myGuns">
-                    <ion-label (click)="onShowModel(item)">{{ item}}</ion-label>
-                    <ion-icon (click)="removeMyGun(item)" name="close"></ion-icon>
-                </ion-item>
-            </ion-list>
+            <div class="my-weapons-wrapper">
+                <div class="list-item" *ngFor="let item of myGuns">
+                    <span (click)="onShowModel(item)">{{ item}}</span>
+                    <div class="icon-wrapper">
+                        <ion-icon (click)="removeMyGun(item)" name="close"></ion-icon>
+                    </div>
+                </div>
+            </div>
         </div>
         <div>
             <div class="allGuns">
                 <img src="../../../assets/icons/rifle.png">
                 <h1>All Guns</h1>
             </div>
-            <ion-list *ngIf="!models">
-                <ion-item *ngFor="let item of DEFUALT_GUNS | keyvalue">
-                    <ion-label (click)="onShowModel(item)">{{ item.key }}</ion-label>
-                </ion-item>
-            </ion-list>
+            <div class="all-weapons-wrapper" *ngIf="!models">
+                <div class="list-item" *ngFor="let item of DEFUALT_GUNS" (click)="onSingleClick(item)">
+                    <span>{{ item}}</span>
+                </div>
+            </div>
         </div>
-        <ion-list *ngIf="models">
-            <ion-item (click)="onModelClicked(item)" *ngFor="let item of models">
-                <ion-label>{{ item.model }}</ion-label>
+        <!--        <ion-list *ngIf="models">-->
+        <!--            <ion-item (click)="onModelClicked(item)" *ngFor="let item of models">-->
+        <!--                <ion-label>{{ item.model }}</ion-label>-->
 
-            </ion-item>
-        </ion-list>
+        <!--            </ion-item>-->
+        <!--        </ion-list>-->
     </div>
     <div class="saveBtn">
         <button (click)="onSaveWeapons()"> Save</button>

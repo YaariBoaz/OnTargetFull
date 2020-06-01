@@ -1,6 +1,5 @@
 <section class="target-selection">
     <header>
-        <ion-icon size="large" (click)="onBackPressed()" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
         <p>Select Target</p>
         <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
             <span>⋮</span>
@@ -10,23 +9,27 @@
             <button mat-menu-item>Item 2</button>
         </mat-menu>
     </header>
-    <div class="target-list-wrapper" *ngIf="!shootingService.targets; else noTargets">
+    <div class="target-list-wrapper" *ngIf="targets; else noTargets">
         <div class="top-bar">
             <div class="target-image-wifi-wrapper">
                 <div class="target-and-image">
                     <img src="../../../assets/images/brown_icon_target.png">
                     <p>Target</p>
                 </div>
-                <div class="connect-to-wifi"> Connect Wi-fi</div>
+                <div (click)="onReconnec()" class="connect-to-wifi"> Reconnect </div>
             </div>
         </div>
 
         <div class="target-list">
             <hr/>
+            <div [class.connected]="targetConnected === true" *ngIf="primaryTarget" class="target-rectangle regular"
+                 (click)="onTargetChosen(primaryTarget)">{{primaryTarget.name}}</div>
             <div *ngFor="let target of myTargets" class="target-rectangle regular"
                  (click)="onTargetChosen(target)">{{target}}</div>
         </div>
-        <button class="startSession" (click)="startTraining()"> START SESSION</button>
+        <button [class.btn-disable]="this.targetConnected===false" [disabled]="this.targetConnected===false"
+                class="startSession" (click)="startTraining()"> START SESSION
+        </button>
     </div>
     <ng-template #noTargets>
         <div class="noConnection">
