@@ -179,6 +179,7 @@ export class BleService {
     private activatRecconectProcess() {
         this.ble.isConnected(this.currentTargetId).then((status) => {
             if (!status) {
+                debugger
                 this.connect(this.currentTargetId);
                 this.notifyDissconnect.next(true);
             }

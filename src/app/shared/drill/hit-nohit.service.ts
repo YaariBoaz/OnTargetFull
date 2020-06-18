@@ -133,6 +133,10 @@ export class HitNohitService {
         } else {
             const totalAndSplitTime: SplitAndTotalTime = this.getTotalAndSplitTimes();
             console.log('Inside updateStats totalAndSplitTime is: ', totalAndSplitTime);
+            if (!totalAndSplitTime.splitTime || !totalAndSplitTime.totalTime) {
+                totalAndSplitTime.splitTime = '00:00';
+                totalAndSplitTime.totalTime = '00:00';
+            }
             this.pageData.totalTime = totalAndSplitTime.totalTime;
             this.pageData.splitTime = totalAndSplitTime.splitTime;
             this.pageData.points += 2;
@@ -318,7 +322,7 @@ export class HitNohitService {
     }
 
     startSplitInterval() {
-        this.splitSubscription = interval(1000).subscribe(() => {
+        this.splitSubscription = interval(100).subscribe(() => {
             const timespan: TimeSpan = this.getElapsedTime(this.splitDate);
             this.currentSplitTime = timespan.minutes + ':' + timespan.seconds;
         });
