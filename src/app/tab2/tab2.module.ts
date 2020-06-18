@@ -26,8 +26,8 @@ import {DrillModule} from '../shared/drill/drill.module';
         TargetSelectionModule,
         DrillModule,
         RouterModule.forChild([
-            {path: '', component: Tab2Page},
-            {path: 'select', component: SelectTargetModalComponent},
+            {path: '', component: SelectTargetModalComponent},
+            {path: 'select', component: Tab2Page},
             {path: 'select2', component: DrillComponent}])
     ],
     providers: [/*Screenshot*/],

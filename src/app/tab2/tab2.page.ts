@@ -24,7 +24,7 @@ export class Tab2Page implements OnInit {
         rangeUOM: 'Meters',
         sight: 'V6 5-30 X 50',
         ammo: 'Creedmor 6.5',
-        drillType: 'hit',
+        drillType: 'Hit/No Hit',
         shots: new Array<{ x, y }>()
     };
 
@@ -54,7 +54,7 @@ export class Tab2Page implements OnInit {
         this.slides.getActiveIndex().then(index => {
             switch (index) {
                 case 0:
-                    this.drill.drillType = 'hit ';
+                    this.drill.drillType = 'Hit/No Hit';
                     break;
                 case 1:
                     this.drill.drillType = 'Bullseye';
@@ -90,10 +90,10 @@ export class Tab2Page implements OnInit {
 
     private setSightsAndWeapons() {
         if (this.myGuns) {
-            this.drill.weapon = this.myGuns[0];
+            this.drill.weapon = this.myGuns[1];
         } else {
             this.myGuns = this.storageService.DEFAULT_WEAPONS;
-            this.drill.weapon = this.myGuns[0];
+            this.drill.weapon = this.myGuns[1];
         }
 
         if (this.mySights) {

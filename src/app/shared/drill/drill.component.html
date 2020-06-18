@@ -1,16 +1,33 @@
 <section class="wrapper-qll" *ngIf="drill">
     <div [class.isHistoryBG]="isHistory===true">
         <header>
+            <div class="back-btn-container" (click)="onBackPressed()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
+                    <defs>
+                        <style>
+                            .chevron {
+                                fill: #fff;
+                                stroke: #6f6f6f;
+                                stroke-linecap: round;
+                                stroke-width: 3.5px
+                            }
+                        </style>
+                    </defs>
+                    <path id="left_chevron"
+                          d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                          class="chevron" data-name="left chevron" transform="rotate(90 -1924.394 974.844)"/>
+                </svg>
+            </div>
             <p class="drill-type">{{drill.drillType}}</p>
             <p>{{drill.sight}}</p>
             <p class="align-right">{{drill.range}}</p>
-            <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
-                <span>⋮</span>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item>Item 1</button>
-                <button mat-menu-item>Item 2</button>
-            </mat-menu>
+            <!--            <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">-->
+            <!--                <span>⋮</span>-->
+            <!--            </button>-->
+            <!--            <mat-menu #menu="matMenu">-->
+            <!--                <button mat-menu-item>Item 1</button>-->
+            <!--                <button mat-menu-item>Item 2</button>-->
+            <!--            </mat-menu>-->
         </header>
         <hr/>
         <div class="target-details">
@@ -28,20 +45,20 @@
             </div>
             <div class="clear-target">
 
-                <button class="menuBtn"
+                <button class="menuBtn" נ
                         #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" style="">
                     Press To <span>Finish</span>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="finishDrill()">Finish Drill</button>
-                    <button mat-menu-item (click)="restartShooting()">Restart Shooting</button>
+                    <button mat-menu-item (click)="restartShooting()">Restart Drill</button>
+                    <button mat-menu-item (click)="onBackPressed()">New Drill</button>
                 </mat-menu>
             </div>
         </div>
         <div class="main-image-wraper">
             <div [class.isHistory]="isHistory===true" class="main-image" #screen [ngSwitch]="drill.drillType">
-                <div *ngSwitchCase="'hit'">
-                    <h4 class="hit-number">{{shotNumber}}</h4>
+                <h4 class="hit-number">{{shotNumber}}</h4>
+                <div *ngSwitchCase="'Hit/No Hit'">
                     <div *ngIf="!isFinish">
                         <img style="width:100%;" #container
                              src="../../../assets/images/hitnohit/defualt.png"
@@ -87,34 +104,33 @@
                 >
             </div>
         </div>
-        <div class="header-wrapper">
-            <p class="title">Bullets</p>
-            <p class="title">Time</p>
-            <p class="title">Split</p>
-            <!--            <p class="title">AVG-DIS</p>-->
-            <p class="title">Points</p>
-        </div>
-        <div class="details" *ngFor="let stat of stats">
-            <div class="box">
-                <p>{{stat.pageData.counter}}/{{shootingService.numberOfBullersPerDrill}}</p>
-            </div>
+        <div class="table-wrapper">
+            <div scrollY="true" class="table-stats-container">
+                <div class="header-wrapper">
+                    <div class="box">Bullets</div>
+                    <div class="box">Time</div>
+                    <div class="box">Split</div>
+                    <div class="box">Points</div>
+                </div>
+                <div class="details" *ngFor="let stat of stats">
+                    <div class="box">
+                        <p>{{stat.pageData.counter}}/{{shootingService.numberOfBullersPerDrill}}</p>
+                    </div>
 
-            <!--            <div class="box">-->
-            <!--                <p>{{stat.pageData.distanceFromCenter | number : '1.2-2'}}</p>-->
-            <!--            </div>-->
+                    <div class="box">
+                        <p>
+                            {{stat.interval}}
+                        </p>
+                    </div>
 
-            <div class="box">
-                <p>
-                    {{stat.interval}}
-                </p>
-            </div>
+                    <div class="box">
+                        <p>{{stat.pageData.splitTime}}</p>
+                    </div>
 
-            <div class="box">
-                <p>{{stat.pageData.splitTime}}</p>
-            </div>
-
-            <div class="box">
-                <p>{{stat.pageData.points | number : '1.2-2'}}</p>
+                    <div class="box">
+                        <p>{{stat.pageData.points | number : '1.2-2'}}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="divider">
@@ -123,10 +139,6 @@
         <div class="summmaryRow">
             <div class="box">
                 <p>{{summaryObject.counter}}</p>
-            </div>
-
-            <div class="box">
-                <p>{{summaryObject.distanceFromCenter | number : '1.2-2'}}</p>
             </div>
 
             <div class="box">

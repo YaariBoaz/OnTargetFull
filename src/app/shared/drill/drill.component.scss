@@ -22,7 +22,7 @@ section.results {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    height: 10vw;
+    height: 8vh;
 
     .menuBtn {
       position: absolute;
@@ -80,8 +80,11 @@ section.results {
       padding: 0.5em;
       border-radius: 8px;
       text-align: center;
-      background: transparent;
-      border: 1px solid red;
+      background: lightgray;
+
+      button {
+        background-color: transparent;
+      }
     }
   }
 
@@ -157,11 +160,15 @@ div.main-image {
   background-color: white !important;
 }
 
+.table-stats-container {
+  overflow-y: auto;
+  height: 25vh;
+}
+
 div.details {
   display: flex;
   width: 100%;
-  height: 100%;
-  justify-content: space-evenly;
+  height: 45px;
 
   div.box {
     display: flex;
@@ -266,21 +273,19 @@ div.details {
 
 .header-wrapper {
   display: flex;
-  color: black;
-  justify-content: space-around;
-  font-weight: 600;
+  text-align: center;
 }
 
 .summmaryRow {
   display: flex;
-  justify-content: space-evenly;
+  text-align: center;
 }
 
 .divider {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin-top: 15px;
   hr {
     width: 90%;
     height: 1px;
@@ -312,10 +317,24 @@ div.details {
   font-weight: 700;
 }
 
-.hit-number{
+.hit-number {
   position: absolute;
   top: 35%;
-  left: 45%;
   color: white;
   font-size: 10vw;
+}
+
+
+.back-btn-container {
+  position: absolute;
+  left: 5px;
+
+  svg {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.box {
+  width: 25%;
 }

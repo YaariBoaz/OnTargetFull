@@ -1,11 +1,13 @@
 import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
-import {BLE} from '@ionic-native/ble/ngx';
 import {Platform} from '@ionic/angular';
 import {InitService} from './shared/services/init.service';
-import {Observable, of} from 'rxjs';
+import {LoadingController} from '@ionic/angular';
 import {BleService} from './shared/services/ble.service';
 import {transition, trigger, useAnimation} from '@angular/animations';
 import {bounceInDown, bounceInLeft, bounceInRight, bounceInUp, zoomIn} from 'ngx-animate/lib';
+import {Plugins} from '@capacitor/core';
+
+const {SplashScreen} = Plugins;
 
 @Component({
     selector: 'app-root',
@@ -38,17 +40,24 @@ export class AppComponent implements OnDestroy, OnInit {
     private devices;
     splash = true;
 
+
     constructor(
         private platform: Platform,
         private initService: InitService,
         public ble: BleService,
+        public loadingController: LoadingController
     ) {
+        SplashScreen.hide();
         this.initService.getDashboard();
         this.initService.getSights();
         this.initService.getWeapons();
         this.platform.ready().then(() => {
             this.ble.scan();
-
+            window.addEventListener('beforeunload', () => {
+                this.ble.isConnected().then(() => {
+                    this.ble.distory();
+                });
+            });
         });
     }
 
@@ -56,10 +65,34 @@ export class AppComponent implements OnDestroy, OnInit {
         setTimeout(() => {
             this.splash = false;
         }, 5000);
+
+        this.ble.notifyDissconnect.subscribe((flag) => {
+            if (flag) {
+
+            }
+        });
+    }
+
+
+    async presentLoadingWithOptions() {
+        const loading = await this.loadingController.create({
+            cssClass: 'my-custom-class',
+            spinner: 'bubbles',
+            duration: 2000,
+            message: 'Unexpected disconnection, Reconnecting to the target',
+            translucent: true,
+            backdropDismiss: true
+        });
+        await loading.present();
+
+        const {role, data} = await loading.onDidDismiss();
+        console.log('Loading dismissed with role:', role);
     }
 
 
     ngOnDestroy(): void {
         console.log('App Destoryed');
+
     }
+
 }

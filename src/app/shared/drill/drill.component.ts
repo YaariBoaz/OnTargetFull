@@ -10,6 +10,8 @@ import {UserService} from '../services/user.service';
 import {ApiService} from '../services/api.service';
 import {BleService} from '../services/ble.service';
 import {HitNohitService} from './hit-nohit.service';
+import {Router} from '@angular/router';
+import {AlertController, LoadingController, ToastController} from '@ionic/angular';
 
 
 @Component({
@@ -77,23 +79,26 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     private hitNumber = 0;
     isFinish = false;
     shotNumber = 0;
+    loader;
 
     constructor(
         private storageService: StorageService,
         private shootingService: ShootingService,
         private countupTimerService: CountupTimerService,
+        public toastController: ToastController,
         private userService: UserService,
         private apiService: ApiService,
         private bleService: BleService,
         private cd: ChangeDetectorRef,
+        public loadingController: LoadingController,
+        private router: Router,
+        public alertController: AlertController,
         private hitNohitService: HitNohitService
     ) {
 
         this.drill = this.shootingService.selectedDrill;
         this.hitNohitService.setDrill(this.drill);
         this.hitNohitService.initStats();
-        this.hitNohitService.initTime();
-
         this.setTimeElapse();
     }
 
@@ -105,9 +110,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                 this.pageData = data.statsData.page;
                 this.isFinish = data.statsData.isFinish;
                 this.summaryObject = data.statsData.summaryObject;
-                if (this.isFinish) {
-                    this.bleService.distory();
-                }
                 this.cd.detectChanges();
             }
         });
@@ -118,6 +120,43 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
             }
         });
 
+        this.bleService.notifyTargetConnected.subscribe(status => {
+            if (status) {
+                this.isConnected = true;
+                this.initStats();
+            }
+        });
+
+        this.bleService.notifyDissconnect.subscribe((flag) => {
+            if (flag) {
+                this.isConnected = false;
+                this.cd.detectChanges();
+                const loader = this.showToast('The target has been disconnected \n System trying to reconnect', 'danger');
+            }
+        });
+
+
+    }
+
+    async showLoader(message: string) {
+        this.loader = await this.loadingController.create({
+            cssClass: 'my-custom-class',
+            spinner: null,
+            duration: 10000,
+            message,
+            translucent: true,
+            backdropDismiss: true
+        });
+        await this.loader.present();
+    }
+
+    async showToast(msg: string, color: string) {
+        const toast = await this.toastController.create({
+            message: msg,
+            color,
+            duration: 2000
+        });
+        toast.present();
     }
 
 
@@ -342,6 +381,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
     onBackPressed() {
         this.initStats();
+        this.router.navigateByUrl('/tab2/select');
     }
 
     // If we returned to this screen from another tab
@@ -361,7 +401,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
     ngOnDestroy() {
         console.log('[OnDestroy] Session Component');
-        this.bleService.distory();
     }
 
     // Decide what kind of message arrived and transfer it to the right function
@@ -506,13 +545,13 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
             recommendation
         });
 
-        updatedData.hitRatioChart.totalHits += this.shots.length;
-        updatedData.hitRatioChart.totalShots += this.drill.numOfBullets;
-        updatedData = this.updateBestResults(updatedData);
+        // updatedData.hitRatioChart.totalHits += this.shots.length;
+        // updatedData.hitRatioChart.totalShots += this.drill.numOfBullets;
+        // updatedData = this.updateBestResults(updatedData);
 
         this.storageService.setItem('homeData', updatedData);
-        this.apiService.syncData(drill).subscribe(data => {
-        });
+        // this.apiService.syncData(drill).subscribe(data => {
+        // });
     }
 
     private updateBestResults(updatedData) {
@@ -529,10 +568,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     restartShooting() {
-        this.shots = [];
-        this.pageData = this.DEFUALT_PAGE_DATE;
-        this.summaryObject = this.DEFAULT_SUMMARY_OBJECT;
-
+        this.initStats();
     }
 
     private getSplitAvg(splitTime: string) {
@@ -541,5 +577,15 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
     resetShots() {
         this.bleService.resetShots();
+        this.stats = [];
+    }
+
+
+    onReconnect() {
+        this.bleService.connect(this.bleService.currentTargetId);
+    }
+
+    onGoBack() {
+
     }
 }

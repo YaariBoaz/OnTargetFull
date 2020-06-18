@@ -1,40 +1,49 @@
 <section class="target-selection">
     <header>
         <p>Select Target</p>
-        <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">
-            <span>⋮</span>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>Item 1</button>
-            <button mat-menu-item>Item 2</button>
-        </mat-menu>
     </header>
-    <div class="target-list-wrapper" *ngIf="targets; else noTargets">
+    <div class="target-list-wrapper">
         <div class="top-bar">
             <div class="target-image-wifi-wrapper">
                 <div class="target-and-image">
                     <img src="../../../assets/images/brown_icon_target.png">
                     <p>Target</p>
                 </div>
-                <div (click)="onReconnec()" class="connect-to-wifi"> Reconnect </div>
+                <div (click)="reScan()" class="connect-to-wifi">
+                    Scan
+                </div>
             </div>
         </div>
 
-        <div class="target-list">
-            <hr/>
-            <div [class.connected]="targetConnected === true" *ngIf="primaryTarget" class="target-rectangle regular"
-                 (click)="onTargetChosen(primaryTarget)">{{primaryTarget.name}}</div>
-            <div *ngFor="let target of myTargets" class="target-rectangle regular"
-                 (click)="onTargetChosen(target)">{{target}}</div>
+        <div class="target-list" *ngIf="myTargets; else noTargets">
+
+
+
+<!--            <div [class.connected]="targetConnected === true" *ngIf="primaryTarget; else noPrimary"-->
+<!--                 class="target-rectangle regular"-->
+<!--                 (click)="onTargetChosen(primaryTarget)">{{primaryTarget.name}}</div>-->
+
+<!--            <ng-template #noPrimary>-->
+<!--                <div class="noPrimary">-->
+<!--                    <span>You currently have not defualt target.</span>-->
+<!--                    <span>Please choose from the list below the deisred target and press Reconnect</span>-->
+<!--                </div>-->
+<!--            </ng-template>-->
+
+
+            <div [class.connected]="target.targetConnected === true" *ngFor="let target of myTargets"
+                 class="target-rectangle regular"
+                 (click)="onTargetChosen(target)">{{target.name}}</div>
         </div>
-        <button [class.btn-disable]="this.targetConnected===false" [disabled]="this.targetConnected===false"
+        <button [class.btn-disable]="!this.selectedTarget ||this.selectedTarget.targetConnected===false"
+                [disabled]="!this.selectedTarget || this.selectedTarget.targetConnected===false"
                 class="startSession" (click)="startTraining()"> START SESSION
         </button>
     </div>
     <ng-template #noTargets>
         <div class="noConnection">
             <p>No Targets Found Please Check Your Connection</p>
-            <img src="../../../assets/images/bg/broken-weapon.svg">
+            <img class="no-targets-image" src="../../../assets/images/bg/broken-weapon.svg">
         </div>
     </ng-template>
 </section>

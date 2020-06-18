@@ -1,14 +1,31 @@
 <section class="target-selection">
     <header [class.ios-mode]="this.platform.is('ios')">
+        <div class="back-btn-container" routerLink="/tab2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
+                <defs>
+                    <style>
+                        .chevron {
+                            fill: #fff;
+                            stroke: #6f6f6f;
+                            stroke-linecap: round;
+                            stroke-width: 3.5px
+                        }
+                    </style>
+                </defs>
+                <path id="left_chevron"
+                      d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                      class="chevron" data-name="left chevron" transform="rotate(90 -1924.394 974.844)"/>
+            </svg>
+        </div>
         <h1> Edit Drill</h1>
-        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu"
-                style="">
-            <span>⋮</span>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>Item 1</button>
-            <button mat-menu-item>Item 2</button>
-        </mat-menu>
+<!--        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu"-->
+<!--                style="">-->
+<!--            <span>⋮</span>-->
+<!--        </button>-->
+<!--        <mat-menu #menu="matMenu">-->
+<!--            <button mat-menu-item>Item 1</button>-->
+<!--            <button mat-menu-item>Item 2</button>-->
+<!--        </mat-menu>-->
     </header>
     <div class="chooseTargetWrapper">
         <img src="../../assets/images/brown_icon_target.png" alt="gun-shooting-targer">
@@ -22,24 +39,24 @@
                 <p>Hit/No Hit</p>
             </div>
         </ion-slide>
-        <ion-slide>
-            <div class="imgWrapper">
-                <img src="../../assets/icons/bullseye_red.png" alt="No image">
-                <p>Bullseye</p>
-            </div>
-        </ion-slide>
-        <ion-slide>
-            <div class="imgWrapper">
-                <img src="../../assets/icons/Zero.png" alt="No image">
-                <p>Zero</p>
-            </div>
-        </ion-slide>
-        <ion-slide>
-            <div class="imgWrapper">
-                <img src="../../assets/icons/Hostage.png" alt="No image">
-                <p>Hostage</p>
-            </div>
-        </ion-slide>
+<!--        <ion-slide>-->
+<!--            <div class="imgWrapper">-->
+<!--                <img src="../../assets/icons/bullseye_red.png" alt="No image">-->
+<!--                <p>Bullseye</p>-->
+<!--            </div>-->
+<!--        </ion-slide>-->
+<!--        <ion-slide>-->
+<!--            <div class="imgWrapper">-->
+<!--                <img src="../../assets/icons/Zero.png" alt="No image">-->
+<!--                <p>Zero</p>-->
+<!--            </div>-->
+<!--        </ion-slide>-->
+<!--        <ion-slide>-->
+<!--            <div class="imgWrapper">-->
+<!--                <img src="../../assets/icons/Hostage.png" alt="No image">-->
+<!--                <p>Hostage</p>-->
+<!--            </div>-->
+<!--        </ion-slide>-->
     </ion-slides>
     <div class="form">
         <div class="container">
@@ -78,7 +95,7 @@
             <div class="inputs" *ngIf="!myGuns">
                 <select [(ngModel)]="drill.weapon">
                     <option value="-1">Please select a weapon</option>
-                    <option *ngFor="let gun of DEFAULT_WEAPONS" [value]="gun">{{gun}}</option>
+                    <option *ngFor="let gun of myGuns" [value]="gun">{{gun}}</option>
                 </select>
             </div>
         </div>
@@ -117,5 +134,5 @@
             </div>
         </div>
     </div>
-    <button class="startSessionBtn" (click)="startSesstion()" routerLink="select"> Start Session!</button>
+    <button class="startSessionBtn" (click)="startSesstion()" routerLink="/tab2/select2"> Start Session!</button>
 </section>

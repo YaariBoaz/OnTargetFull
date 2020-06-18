@@ -47,7 +47,7 @@ section.target-selection {
   }
 
   .target-list-wrapper {
-
+    height: 100%;
 
     .top-bar {
 
@@ -58,6 +58,8 @@ section.target-selection {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 0.5em;
+        border-bottom: 1px solid  #80808082;
 
         .target-and-image {
           display: flex;
@@ -73,23 +75,37 @@ section.target-selection {
         }
 
         .connect-to-wifi {
-          background: black;
-          color: white;
-          padding: 0.5em;
           margin-right: 10px;
+          color: black;
+          display: -webkit-box;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          flex-direction: row;
+          border: 2px solid #222428;
+          padding: 0.5em;
+          width: 25vw;
+          border-radius: 5px;
+
+          img {
+            height: 4vh;
+            width: 5vw;
+          }
+
         }
       }
 
       .target-rectangle {
         background: #036396;
-        box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
         padding: 0.5em;
-        width: 95%;
-        color: white;
+        width: 100%;
         text-align: center;
         display: flex;
         justify-content: center;
         align-self: center;
+        height: 15vw;
+        align-items: center;
+        border-bottom: 1px solid #80808087
       }
 
 
@@ -105,12 +121,12 @@ section.target-selection {
     .target-list {
       display: flex;
       flex-direction: column;
+      height: 100%;
 
       hr {
         height: 0.3vw;
         background: #80808094;
         width: 95%;
-        margin-top: 15px;
       }
 
     }
@@ -118,16 +134,18 @@ section.target-selection {
 
   .target-rectangle {
     background: #036396;
-    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
-    padding: 0.5em;
-    width: 95%;
-    color: white;
+    width: 97%;
     text-align: center;
+    display: -webkit-box;
     display: flex;
+    -webkit-box-pack: center;
     justify-content: center;
     align-self: center;
     height: 15vw;
+    -webkit-box-align: center;
     align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    margin-top: 10px;
   }
 
   .regular {
@@ -165,6 +183,8 @@ section.target-selection {
 
   p {
     text-align: center;
+    font-weight: 900;
+    font-size: 5vh;
   }
 }
 
@@ -209,7 +229,32 @@ ion-icon {
   background-image: url("../../../assets/loader.gif") !important;
 }
 
-.loading-wrapper.sc-ion-loading-md{
+.loading-wrapper.sc-ion-loading-md {
   background-image: url("../../../assets/loader.gif") !important;
 
+}
+
+.noPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.5em;
+  color: #0000008a;
+  text-align: center;
+}
+
+
+.back-btn-container {
+  position: absolute;
+  left: 5px;
+
+  svg {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.no-targets-image {
+  width: 50vh;
 }

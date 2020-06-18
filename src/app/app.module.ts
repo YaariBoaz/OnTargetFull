@@ -19,12 +19,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from './shared/shared.module';
 import {Camera} from '@ionic-native/camera/ngx';
 import {GlobalErrorHandler} from './core/errors.service';
+import {CdTimerModule} from 'angular-cd-timer';
+import {BleService} from './shared/services/ble.service';
 
 
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [BrowserModule, ReactiveFormsModule, SharedModule
+    imports: [BrowserModule, ReactiveFormsModule, SharedModule, CdTimerModule
         , FormsModule, IonicModule.forRoot(), HttpClientModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule],
     providers: [
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
@@ -35,7 +37,7 @@ import {GlobalErrorHandler} from './core/errors.service';
         BLE,
         BluetoothSerial,
         Camera,
-        {provide: ErrorHandler, useClass: GlobalErrorHandler}
+        BleService
     ],
     exports: [MaterialModule],
     bootstrap: [AppComponent]

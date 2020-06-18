@@ -7,7 +7,6 @@ import {UserService} from './services/user.service';
 import {MaterialModule} from './material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProfileImageService} from './services/profile-image.service';
-import {BleService} from './services/ble.service';
 import {Tab3Page} from '../tab3/tab3.page';
 import {TargetListComponent} from '../tab3/target-list/target-list.component';
 import {GunlistComponent} from '../tab3/gunlist/gunlist.component';
@@ -29,7 +28,7 @@ import {HitNohitService} from './drill/hit-nohit.service';
         FormsModule,
         ReactiveFormsModule
     ],
-    providers: [BleService, HitNohitService, ApiService, UserService, ProfileImageService, StorageService, Camera, Crop, File],
+    providers: [HitNohitService, ApiService, UserService, ProfileImageService, StorageService, Camera, Crop, File],
     exports: [MaterialModule,
         MatMenuModule,
         MatExpansionModule,

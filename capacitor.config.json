@@ -5,8 +5,25 @@
   "npmClient": "npm",
   "webDir": "www",
   "cordova": {},
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3000,
+      "launchAutoHide": true,
+      "backgroundColor": "#ffffffff",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "androidSpinnerStyle": "large",
+      "iosSpinnerStyle": "small",
+      "spinnerColor": "#999999",
+      "showSpinner": true,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    }
+  },
   "server": {
-    "url": "http://10.0.0.5:8100",
-    "cleartext": true
+    "url": "http://10.0.0.4:8100",
+    "cleartext": true,
+    "originalUrl": "http://10.0.0.4:8100",
+    "originalCleartext": true
   }
 }

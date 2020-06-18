@@ -38,6 +38,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
     "@swimlane/ngx-charts": "^13.0.2",
+    "angular-cd-timer": "^1.0.0",
     "angularx-social-login": "^2.2.1",
     "cap-bluetooth-low-energy-client": "^1.0.0",
     "chart.js": "^2.9.3",
