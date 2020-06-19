@@ -1,42 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {trigger, transition, useAnimation} from '@angular/animations';
-import {zoomIn, bounceInRight, bounceInLeft, bounceInUp, bounceInDown} from 'ngx-animate';
-import {NetworkService} from '../../services/network.service';
-import {UserService} from '../../services/user.service';
 import {StorageService} from '../../services/storage.service';
 import {AlertController, LoadingController} from '@ionic/angular';
-import {Facebook, FacebookLoginResponse} from '@ionic-native/facebook/ngx';
 import {ApiService} from '../../services/api.service';
-import {InitService} from '../../services/init.service';
 
 
 @Component({
     selector: 'app-singin',
     templateUrl: './signin.component.html',
     styleUrls: ['./signin.component.scss'],
-    animations: [
-        trigger('zoomIn', [transition('* => *', useAnimation(zoomIn, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {timing: 5}
-        }))]),
-        trigger('bounceInRight', [transition('* => *', useAnimation(bounceInRight, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 2, timing: 2}
-        }))]),
-        trigger('bounceInLeft', [transition('* => *', useAnimation(bounceInLeft, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 3, timing: 4}
-        }))]),
-        trigger('bounceInUp', [transition('* => *', useAnimation(bounceInUp, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 4, timing: 6}
-        }))]),
-        trigger('bounceInDown', [transition('* => *', useAnimation(bounceInDown, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 5, timing: 8}
-        }))])
-    ],
 })
 export class SigninComponent implements OnInit {
     splash = true;

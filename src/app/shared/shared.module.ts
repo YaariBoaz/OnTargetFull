@@ -16,9 +16,10 @@ import {Camera} from '@ionic-native/camera/ngx';
 import {Crop} from '@ionic-native/crop/ngx';
 import {File} from '@ionic-native/file/ngx';
 import {HitNohitService} from './drill/hit-nohit.service';
+import {TermsAndConditionComponent} from './components/terms-and-condition/terms-and-condition.component';
 
 @NgModule({
-    declarations: [Tab3Page, TargetListComponent, GunlistComponent, SightlistComponent],
+    declarations: [Tab3Page, TargetListComponent, GunlistComponent, SightlistComponent, TermsAndConditionComponent],
     entryComponents: [],
     imports: [
         CommonModule,

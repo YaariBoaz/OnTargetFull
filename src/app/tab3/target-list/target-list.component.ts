@@ -9,8 +9,8 @@ import {Router} from '@angular/router';
     styleUrls: ['./target-list.component.scss'],
 })
 export class TargetListComponent implements OnInit {
-    private isScanning = false;
-    private devices = [];
+    isScanning = false;
+    devices = [];
 
     constructor(private ble: BleService, private storageService: StorageService, private router: Router) {
     }
