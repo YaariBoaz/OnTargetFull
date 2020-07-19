@@ -1069,13 +1069,6 @@
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/bluetooth-le@^5.24.0":
-  version "5.26.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/bluetooth-le/-/bluetooth-le-5.26.0.tgz#3332440eb356078196fc5897dc3ef07f90def7f9"
-  integrity sha512-5EDzbwx5H3zD+VLQcLODdhzChqpgcpxsKRfcqnKAzToH9ahXc4Zw+qwEskBOzJ06anwQpK+tpU6vYwd6rQTxBA==
-  dependencies:
-    "@types/cordova" latest
-
 "@ionic-native/bluetooth-serial@^5.26.0":
   version "5.26.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/bluetooth-serial/-/bluetooth-serial-5.26.0.tgz#525b18e7cacc992265330c776ae34434ca16638e"
@@ -2869,11 +2862,6 @@ cordova-plugin-bluetooth-serial@^0.4.7:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/cordova-plugin-bluetooth-serial/-/cordova-plugin-bluetooth-serial-0.4.7.tgz#1e4606ec6d42b7c23f60a74a87c7c4a4ec3828c0"
   integrity sha1-HkYG7G1Ct8I/YKdKh8fEpOw4KMA=
-
-cordova-plugin-bluetoothle@^4.5.10:
-  version "4.5.10"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-bluetoothle/-/cordova-plugin-bluetoothle-4.5.10.tgz#b27f2ef00df3e8f8ed1c9075a2618629def8440a"
-  integrity sha512-pwbmMVjxvCwyo2m/xHzLFyfHVenHBnHxeLkjXblqPgEjyFQM5yc6CfmL7ca/oN6aIyX6U7+QEJvQOmaUgfTjlw==
 
 cordova-plugin-camera@^4.1.0:
   version "4.1.0"
@@ -5740,9 +5728,9 @@ lodash.clonedeep@^4.5.0:
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
 
 lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.5:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 log-symbols@^2.1.0:
   version "2.2.0"
