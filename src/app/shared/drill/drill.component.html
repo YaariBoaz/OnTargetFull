@@ -1,159 +1,522 @@
-<section class="wrapper-qll" *ngIf="drill">
-    <div [class.isHistoryBG]="isHistory===true">
-        <header>
-            <div class="back-btn-container" (click)="onBackPressed()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
-                    <defs>
-                        <style>
-                            .chevron {
-                                fill: #fff;
-                                stroke: #6f6f6f;
-                                stroke-linecap: round;
-                                stroke-width: 3.5px
-                            }
-                        </style>
-                    </defs>
-                    <path id="left_chevron"
-                          d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
-                          class="chevron" data-name="left chevron" transform="rotate(90 -1924.394 974.844)"/>
+<!--*ngIf="drill"   REMOVED THIS -->
+
+<section class="drill-results">
+    <header [class.isHistoryBG]="isHistory===true">
+        <div class="back-button" (click)="onBackPressed()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
+                <defs>
+                    <style>
+                        .chevron {
+                            fill: #fff;
+                            stroke: #fff;
+                            stroke-linecap: round;
+                            stroke-width: 3.5px
+                        }
+                    </style>
+                </defs>
+                <path id="left_chevron"
+                      d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                      class="chevron" data-name="left chevron" transform="rotate(90 -1924.394 974.844)"/>
+            </svg>
+        </div>
+
+        <div class="info">
+            <p>Hit/No Hit</p>
+            <p class="seperator">|</p>
+            <p>ACOG TA31F 4×32</p>
+            <p class="seperator">|</p>
+            <p>Meters</p>
+        </div>
+
+        <!--            <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">-->
+        <!--                <span>⋮</span>-->
+        <!--            </button>-->
+        <!--            <mat-menu #menu="matMenu">-->
+        <!--                <button mat-menu-item>Item 1</button>-->
+        <!--                <button mat-menu-item>Item 2</button>-->
+        <!--            </mat-menu>-->
+
+        <button class="start" (click)="activateCounter()">START</button>
+    </header>
+    <div class="main-screen">
+        <div class="connection-details">
+            <div class="row">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                    <g id="Connected-icon-2709" transform="translate(-374 -11)">
+                        <path id="Rectangle_366" fill="none" d="M0 0H14V14H0z" data-name="Rectangle 366"
+                              transform="translate(374 11)"/>
+                        <path id="iconUnion" fill="rgba(0,0,0,0.6)"
+                              d="M1.962 9.386a6.642 6.642 0 0 1-.817-.973 6.543 6.543 0 0 1-.619-1.119 6.489 6.489 0 0 1 0-5.119 6.533 6.533 0 0 1 .617-1.117A6.649 6.649 0 0 1 1.96.084L2.048 0l.894.956a5.187 5.187 0 0 0 .016 7.471c-.345.348-.677.674-.986.969zm9.453.009zm-.969-.943a5.187 5.187 0 0 0 .08-7.459l.908-.9a6.659 6.659 0 0 1 .81.966 6.552 6.552 0 0 1 .617 1.117 6.494 6.494 0 0 1 0 5.119 6.548 6.548 0 0 1-.617 1.117 6.653 6.653 0 0 1-.817.973l-.008.008zM3.881 7.434zm-.007-.007A3.851 3.851 0 0 1 3.031 6.2a3.816 3.816 0 0 1 0-3.01 3.852 3.852 0 0 1 .843-1.23l.052-.05.727.777a2.665 2.665 0 0 0-.828 1.934 2.7 2.7 0 0 0 .886 1.989c-.293.3-.572.578-.83.824zm5.558.006zm-.91-.886a2.672 2.672 0 0 0 .091-3.758l.83-.824a3.848 3.848 0 0 1 .838 1.225 3.82 3.82 0 0 1 0 3.01 3.85 3.85 0 0 1-.843 1.228zm-3.006-1.89a1.1 1.1 0 1 1 1.1 1.084 1.094 1.094 0 0 1-1.1-1.084z"
+                              transform="translate(374.307 13.268)"/>
+                    </g>
                 </svg>
+                <p>Connected</p>
             </div>
-            <p class="drill-type">{{drill.drillType}}</p>
-            <p>{{drill.sight}}</p>
-            <p class="align-right">{{drill.range}}</p>
-            <!--            <button class="menuBtn" mat-button [matMenuTriggerFor]="menu" style="">-->
-            <!--                <span>⋮</span>-->
-            <!--            </button>-->
-            <!--            <mat-menu #menu="matMenu">-->
-            <!--                <button mat-menu-item>Item 1</button>-->
-            <!--                <button mat-menu-item>Item 2</button>-->
-            <!--            </mat-menu>-->
-        </header>
-        <hr/>
-        <div class="target-details">
-            <div class="icons">
-                <div class="wifi-status">
-                    <img src="../../../assets/icons/connected_icon_2709.svg">
-                    <p class="connected" *ngIf="isConnected">Connected</p>
-                    <p class="not-connected" *ngIf="!isConnected">Disconnected</p>
-                </div>
-                <div class="wifi-status">
-                    <img src="../../../assets/icons/full_battery_icon_2.svg">
-                    <p class="high-battery" *ngIf="batteryPrecent > 50">{{batteryPrecent}}%</p>
-                    <p class="low-battery" *ngIf="batteryPrecent <= 50">{{batteryPrecent}}%</p>
-                </div>
-            </div>
-            <div class="clear-target">
 
-                <button class="menuBtn" נ
-                        #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" style="">
-                    Press To <span>Finish</span>
-                </button>
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="restartShooting()">Restart Drill</button>
-                    <button mat-menu-item (click)="onBackPressed()">New Drill</button>
-                </mat-menu>
+            <div class="row">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12.795" height="8" viewBox="0 0 12.795 8">
+                    <g id="low-battery" transform="translate(0 -4)">
+                        <path id="Path_1171" fill="none"
+                              d="M11.049 9.806v.481a.984.984 0 0 1-1 .963H1.755a.984.984 0 0 1-1-.963V5.713a.984.984 0 0 1 1-.963h8.29a.984.984 0 0 1 1 .963v.481h.5a.492.492 0 0 1 .5.481v2.649a.492.492 0 0 1-.5.481z"
+                              data-name="Path 1171"/>
+                        <path id="Path_1172" fill="rgba(0,0,0,0.6)"
+                              d="M10.267 12h-8.8A1.468 1.468 0 0 1 0 10.533V5.467A1.468 1.468 0 0 1 1.467 4h8.8a1.468 1.468 0 0 1 1.467 1.467V5.6h.129a.934.934 0 0 1 .933.933v2.934a.934.934 0 0 1-.933.933h-.129v.133A1.468 1.468 0 0 1 10.267 12zm-8.8-7.2a.668.668 0 0 0-.667.667v5.067a.668.668 0 0 0 .667.667h8.8a.668.668 0 0 0 .667-.667V10a.4.4 0 0 1 .4-.4h.529A.133.133 0 0 0 12 9.467V6.533a.133.133 0 0 0-.133-.133h-.529a.4.4 0 0 1-.4-.4v-.533a.668.668 0 0 0-.667-.667z"
+                              data-name="Path 1172"/>
+                        <path id="Path_1173" fill="#ce564b"
+                              d="M3.75 11c-.414 0-.75-.149-.75-.333V7.333C3 7.149 3.336 7 3.75 7s.75.149.75.333v3.333c0 .185-.336.334-.75.334z"
+                              data-name="Path 1173" transform="translate(-1.085 -1)"/>
+                    </g>
+                </svg>
+                <p>10%</p>
             </div>
         </div>
-        <div class="main-image-wraper">
-            <div [class.isHistory]="isHistory===true" class="main-image" #screen [ngSwitch]="drill.drillType">
-                <h4 class="hit-number">{{shotNumber}}</h4>
-                <div *ngSwitchCase="'Hit/No Hit'">
-                    <div *ngIf="!isFinish">
-                        <img style="width:100%;" #container
-                             src="../../../assets/images/hitnohit/defualt.png"
-                             alt="bullsEye">
-                    </div>
-                    <div *ngIf="isFinish">
-                        <img style="width:100%;" #container src="../../../assets/images/hitnohit/drill-finish.jpg">
-                    </div>
+        <div class="target">
+            <svg xmlns="http://www.w3.org/2000/svg" width="282.232" height="282.232" viewBox="0 0 282.232 282.232">
+                <defs>
+                    <style>
+                        g#target_svg_fixed .cls-1 {
+                            fill: #fbfbfb
+                        }
 
+                        g#target_svg_fixed .cls-2 {
+                            fill: #ce564b
+                        }
+                    </style>
+                </defs>
+                <g id="target_svg_fixed" data-name="target svg fixed">
+                    <g id="Group_498" data-name="Group 498">
+                        <g id="Path_440-2">
+                            <path id="Path_443"
+                                  d="M140.5 281.027a146.968 146.968 0 0 1-28.223-2.79 131.807 131.807 0 0 1-26.254-8.2 128.354 128.354 0 0 1-23.793-12.963 160.183 160.183 0 0 1-20.839-17.065 122.861 122.861 0 0 1-17.065-20.839 152.218 152.218 0 0 1-12.963-23.793A140.9 140.9 0 0 1 .2 140.732a135.088 135.088 0 0 1 2.954-28.223 131.808 131.808 0 0 1 8.2-26.254 128.35 128.35 0 0 1 12.967-23.794 160.179 160.179 0 0 1 17.065-20.839 122.861 122.861 0 0 1 20.839-17.065 152.217 152.217 0 0 1 23.793-12.963 138.853 138.853 0 0 1 26.254-8.2A134.98 134.98 0 0 1 140.5.6a146.969 146.969 0 0 1 28.223 2.79 131.81 131.81 0 0 1 26.254 8.2 128.351 128.351 0 0 1 23.793 12.963 160.176 160.176 0 0 1 20.839 17.065 129.652 129.652 0 0 1 17.065 20.839 152.226 152.226 0 0 1 12.963 23.793 138.86 138.86 0 0 1 8.2 26.254 134.986 134.986 0 0 1 2.789 28.223 146.978 146.978 0 0 1-2.789 28.223 131.816 131.816 0 0 1-8.2 26.254A128.355 128.355 0 0 1 256.671 219a160.178 160.178 0 0 1-17.065 20.839 129.651 129.651 0 0 1-20.839 17.065 152.217 152.217 0 0 1-23.793 12.963 138.857 138.857 0 0 1-26.254 8.2 135.086 135.086 0 0 1-28.22 2.96z"
+                                  class="cls-1" data-name="Path 443" transform="translate(.62 .385)"/>
+                            <path id="Path_444"
+                                  d="M140.816 1.641a145.279 145.279 0 0 0-28.059 2.79 135.241 135.241 0 0 0-26.254 8.2 142.806 142.806 0 0 0-23.629 12.8A136 136 0 0 0 42.2 42.5a148.45 148.45 0 0 0-17.066 20.674A131.623 131.623 0 0 0 12.335 86.8a143.463 143.463 0 0 0-8.2 26.254 142.515 142.515 0 0 0 0 56.118 135.241 135.241 0 0 0 8.2 26.254 142.808 142.808 0 0 0 12.8 23.629A136 136 0 0 0 42.2 239.733 148.45 148.45 0 0 0 62.874 256.8 131.616 131.616 0 0 0 86.5 269.6a143.457 143.457 0 0 0 26.254 8.2 142.517 142.517 0 0 0 56.118 0 135.239 135.239 0 0 0 26.254-8.2 142.8 142.8 0 0 0 23.629-12.8 136 136 0 0 0 20.675-17.065 148.445 148.445 0 0 0 17.07-20.677 131.621 131.621 0 0 0 12.8-23.629 143.465 143.465 0 0 0 8.2-26.254 142.516 142.516 0 0 0 0-56.118 135.248 135.248 0 0 0-8.2-26.257 142.81 142.81 0 0 0-12.8-23.629A136.006 136.006 0 0 0 239.433 42.5a148.449 148.449 0 0 0-20.675-17.065 131.623 131.623 0 0 0-23.629-12.8 143.463 143.463 0 0 0-26.254-8.2 145.28 145.28 0 0 0-28.059-2.79m0-1.641A141.116 141.116 0 1 1-.3 141.116 141.109 141.109 0 0 1 140.816 0z"
+                                  class="cls-2" data-name="Path 444" transform="translate(.3)"/>
+                        </g>
+                    </g>
+                    <ellipse id="Ellipse_456" cx="106.822" cy="107.314" fill="#ce564b" opacity="0.791" rx="106.822"
+                             ry="107.314" transform="translate(34.344 33.868)"/>
+                    <circle id="Ellipse_457" cx="89.264" cy="89.264" r="89.264" class="cls-1"
+                            transform="rotate(-80.782 145.735 84.709)"/>
+                    <circle id="Ellipse_458" cx="63.174" cy="63.174" r="63.174" class="cls-2"
+                            transform="translate(77.991 78.008)"/>
+                    <circle id="Ellipse_459" cx="35.115" cy="35.115" r="35.115" class="cls-1"
+                            transform="translate(106.05 106.067)"/>
+                    <circle id="Ellipse_460" cx="20.557" cy="20.557" r="20.557" class="cls-2"
+                            transform="translate(120.608 120.624)"/>
+                    <path id="Rectangle_362" d="M0 0H5.579V100.258H0z" class="cls-1"
+                          transform="translate(137.556 5.973)"/>
+                    <path id="Rectangle_361" d="M0 0H100.75V5.579H0z" class="cls-1"
+                          transform="translate(6.613 136.916)"/>
+                    <path id="Rectangle_360" d="M0 0H103.048V5.579H0z" class="cls-1"
+                          transform="translate(173.327 136.916)"/>
+                    <path id="Path_439" d="M540.3 310.2h5.579v104.032H540.3z" class="cls-1"
+                          transform="translate(-402.744 -136.529)"/>
+                </g>
+            </svg>
+
+            <div class="welcome-message" *ngIf="!showResults">
+                <div class="text">
+                    <p>Hi, Evi! Let’s start new drill.</p>
+                    <p> Press button to start!</p>
                 </div>
-                <div *ngSwitchCase="'Bullseye'">
-                    <img *ngIf="shots.length < shootingService.numberOfBullersPerDrill && !drillFinishedBefore"
-                         style="width:100%;" #container
-                         src="../../../assets/images/bullseye_red.png"
-                         alt="bullsEye">
-                    <img *ngIf="shots.length >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"
-                         style="width:100%;"
-                         #container src="../../../assets/images/bullseye_black.png">
+                <svg xmlns="http://www.w3.org/2000/svg" width="47.932" height="45.389" viewBox="0 0 47.932 45.389">
+                    <g id="Layer_2" data-name="Layer 2" transform="rotate(-102 22.066 19.709)">
+                        <g id="Layer_1" data-name="Layer 1">
+                            <path id="Path_1246"
+                                  d="M36.308 41.457l.19-1.268c-.964-.127-1.927-.279-2.891-.444l-.216 1.268c.952.165 1.928.317 2.917.444zm-5.857-.989l.266-1.268c-.951-.2-1.9-.418-2.84-.672l-.33 1.268c.964.241 1.928.469 2.904.672zM24.7 38.959l.38-1.268c-.938-.292-1.864-.621-2.738-.951l-.469 1.192a26.8 26.8 0 0 0 2.827 1.027zm-5.578-2.193l.545-1.154c-.8-.38-1.585-.773-2.345-1.179l-.241-.139-.621 1.116.254.152a16.428 16.428 0 0 0 2.403 1.204zm-5.228-2.916l.71-1.065c-.8-.532-1.585-1.116-2.32-1.712l-.811 1a23.739 23.739 0 0 0 2.421 1.827zm-4.666-3.8l.887-.925c-.7-.672-1.369-1.382-1.978-2.092l-.976.824a27.89 27.89 0 0 0 2.067 2.295zm-3.9-4.577l1.065-.723a23.581 23.581 0 0 1-1.5-2.46l-1.129.61a25.749 25.749 0 0 0 1.559 2.675zm-2.819-5.188l1.191-.457-.266-.748a18.011 18.011 0 0 1-.583-1.98l-1.268.292c.165.71.38 1.42.609 2.1.076.235.215.501.317.793zM1.114 14.4l1.268-.127a18.421 18.421 0 0 1-.114-2.092v-.8H1v.849a13.65 13.65 0 0 0 .114 2.13zm1.5-5.857a20.031 20.031 0 0 1 .7-2.764L2.04 5.375a20.817 20.817 0 0 0-.748 2.941zm1.8-5.375A16.671 16.671 0 0 1 5.932.773L4.9 0a17.293 17.293 0 0 0-1.618 2.536z"
+                                  class="cls-12" data-name="Path 1246" transform="translate(-1)"/>
+                            <path id="Path_1247" d="M.735 37.948L0 36.9l5.211-3.563L1.28 28.4l1-.811 4.792 6.022z"
+                                  class="cls-12" data-name="Path 1247" transform="translate(29.692 7.388)"/>
+                        </g>
+                    </g>
+                </svg>
+
+                <div class="dot one"></div>
+                <div class="dot two"></div>
+                <div class="dot three"></div>
+                <div class="dot four"></div>
+            </div>
+
+            <div *ngIf="showResults" class="results-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>
+                            <p>Bullet</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <defs>
+                                    <style>
+                                        .cls-3 {
+                                            fill: #fff
+                                        }
+                                    </style>
+                                </defs>
+                                <g id="Icon_Favorite_Filled" data-name="Icon / Favorite / Filled"
+                                   transform="translate(-2 -1)">
+                                    <path id="Box" fill="none" d="M0 0H24V24H0z" transform="translate(2 1)"/>
+                                    <rect id="Rectangle_1747" width="24" height="24" fill="#373737"
+                                          data-name="Rectangle 1747"
+                                          rx="5" transform="translate(2 1)"/>
+                                    <g id="_002-bullet" data-name="002-bullet" transform="translate(6.164 5)">
+                                        <path id="Path_1178"
+                                              d="M15.689.136A.464.464 0 0 0 15.361 0h-.007A6.58 6.58 0 0 0 11.3 1.58l-1.7.851a.463.463 0 0 0-.12.087L1.5 10.5a.463.463 0 0 0-.141.183L.838 11.9l-.046-.046a.464.464 0 0 0-.656.656l3.177 3.177a.464.464 0 0 0 .656-.656l-.046-.046 1.223-.522a.463.463 0 0 0 .183-.141l7.978-7.978a.463.463 0 0 0 .087-.12l.851-1.7A6.58 6.58 0 0 0 15.824.471a.463.463 0 0 0-.136-.335zM3.217 14.28l-1.672-1.672.4-.935 2.208 2.208zm1.745-.9l-2.517-2.517L9.807 3.5l2.516 2.516zm7.892-8.144l-2.265-2.264.888-.446L13.3 4.347zm.989-1.656l-1.6-1.6A5.644 5.644 0 0 1 14.85.976a5.607 5.607 0 0 1-1.008 2.603z"
+                                              class="cls-3" data-name="Path 1178" transform="translate(-.001)"/>
+                                        <path id="Path_1179"
+                                              d="M213.051 237.636l-1.007 1.007a.464.464 0 0 0 .656.656l1.007-1.007a.464.464 0 0 0-.656-.656z"
+                                              class="cls-3" data-name="Path 1179"
+                                              transform="translate(-205.358 -230.16)"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </th>
+                        <th>
+                            <p>Points</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <defs>
+                                    <style>
+                                        .cls-3 {
+                                            fill: #fff
+                                        }
+                                    </style>
+                                </defs>
+                                <g id="Icon_Favorite_Filled" data-name="Icon / Favorite / Filled"
+                                   transform="translate(.123)">
+                                    <path id="Box" fill="none" d="M0 0H18V18H0z" transform="translate(2.877 3)"/>
+                                    <rect id="Rectangle_1865" width="24" height="24" fill="#363636"
+                                          data-name="Rectangle 1865" rx="5" transform="translate(-.123)"/>
+                                    <g id="_004-aim" data-name="004-aim" transform="translate(4.902 5.25)">
+                                        <path id="Path_1182"
+                                              d="M7.516 13.281a5.766 5.766 0 1 1 5.766-5.766 5.772 5.772 0 0 1-5.766 5.766zm0-10.406a4.641 4.641 0 1 0 4.641 4.641 4.646 4.646 0 0 0-4.641-4.641z"
+                                              class="cls-3" data-name="Path 1182" transform="translate(-.766 -.766)"/>
+                                        <path id="Path_1183"
+                                              d="M11.563 3.094A.563.563 0 0 1 11 2.531V.563a.563.563 0 0 1 1.125 0v1.968a.563.563 0 0 1-.562.563z"
+                                              class="cls-3" data-name="Path 1183" transform="translate(-4.813)"/>
+                                        <path id="Path_1184"
+                                              d="M21.031 12.125h-1.968a.563.563 0 0 1 0-1.125h1.969a.563.563 0 0 1 0 1.125z"
+                                              class="cls-3" data-name="Path 1184" transform="translate(-8.094 -4.813)"/>
+                                        <path id="Path_1185"
+                                              d="M11.563 21.594a.563.563 0 0 1-.563-.563v-1.968a.563.563 0 0 1 1.125 0v1.969a.563.563 0 0 1-.562.562z"
+                                              class="cls-3" data-name="Path 1185" transform="translate(-4.813 -8.094)"/>
+                                        <path id="Path_1186"
+                                              d="M2.531 12.125H.563a.563.563 0 0 1 0-1.125h1.968a.563.563 0 0 1 0 1.125z"
+                                              class="cls-3" data-name="Path 1186" transform="translate(0 -4.813)"/>
+                                        <path id="Path_1187"
+                                              d="M10.688 12.375a1.688 1.688 0 1 1 1.688-1.687 1.69 1.69 0 0 1-1.688 1.687zm0-2.25a.563.563 0 1 0 .563.563.563.563 0 0 0-.563-.563z"
+                                              class="cls-3" data-name="Path 1187" transform="translate(-3.938 -3.938)"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </th>
+                        <th>
+                            <p>Time</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <defs>
+                                    <style>
+                                        .cls-3 {
+                                            fill: #fff
+                                        }
+                                    </style>
+                                </defs>
+                                <g id="Icon_Favorite_Filled" data-name="Icon / Favorite / Filled"
+                                   transform="translate(.286)">
+                                    <path id="Box" fill="none" d="M0 0H18V18H0z" transform="translate(2.714 3)"/>
+                                    <rect id="Rectangle_1866" width="24" height="24" fill="#363636"
+                                          data-name="Rectangle 1866" rx="5" transform="translate(-.286)"/>
+                                    <g id="_003-time" data-name="003-time" transform="translate(6.218 6)">
+                                        <g id="Group_624" data-name="Group 624">
+                                            <g id="Group_623" data-name="Group 623">
+                                                <path id="Path_1180"
+                                                      d="M6 0a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm0 11.143A5.143 5.143 0 1 1 11.143 6 5.143 5.143 0 0 1 6 11.143z"
+                                                      class="cls-3" data-name="Path 1180"/>
+                                            </g>
+                                        </g>
+                                        <g id="Group_626" data-name="Group 626" transform="translate(2.143 2.143)">
+                                            <g id="Group_625" data-name="Group 625">
+                                                <path id="Path_1181"
+                                                      d="M89.19 85.333a.429.429 0 0 0-.429.429v3h-3a.429.429 0 0 0 0 .857h3.429a.429.429 0 0 0 .429-.429v-3.428a.429.429 0 0 0-.429-.429z"
+                                                      class="cls-3" data-name="Path 1181"
+                                                      transform="translate(-85.333 -85.333)"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </th>
+                        <th>
+                            <p>Split</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <g id="Icon_Favorite_Filled" data-name="Icon / Favorite / Filled"
+                                   transform="translate(-.057)">
+                                    <path id="Box" fill="none" d="M0 0H18V18H0z" transform="translate(3.057 3)"/>
+                                    <rect id="Rectangle_1867" width="24" height="24" fill="#363636"
+                                          data-name="Rectangle 1867" rx="5" transform="translate(.057)"/>
+                                    <path id="_005-split" fill="#fff"
+                                          d="M11.985 2.209L9.776 0 7.567 2.209l.663.663 1.078-1.078v1.89a2.354 2.354 0 0 1-.808 1.78L6.66 7.055a3.355 3.355 0 0 0-.671.795 3.2 3.2 0 0 0-.659-.79l-1.84-1.6a2.354 2.354 0 0 1-.813-1.78V1.794l1.078 1.078.663-.663L2.209 0 0 2.209l.663.663L1.74 1.794v1.89a3.291 3.291 0 0 0 1.136 2.488l1.84 1.595a2.346 2.346 0 0 1 .8 1.77V12h.937V9.542a2.36 2.36 0 0 1 .824-1.78l1.832-1.59a3.291 3.291 0 0 0 1.136-2.488v-1.89l1.078 1.078zm0 0"
+                                          data-name="005-split" transform="translate(5.937 6)"/>
+                                </g>
+                            </svg>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+                    <tr>
+                        <td> 1</td>
+                        <td> 8</td>
+                        <td> 00:22</td>
+                        <td> 00:99</td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+                <!-- IF the is a loop then place this outside the loop -->
+                <div class="table-sum">
+                    <p> total: 7 of 7</p>
+                    <p> 8</p>
+                    <p> 01:31</p>
+                    <p> 00:09</p>
                 </div>
-                <div *ngSwitchCase="'Hostage'">
-                    <img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore"
-                         style="width:100%;"
-                         #container src="../../../assets/icons/Hostage.png" alt="Hostage"
-                    >
-                    <img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"
-                         style="width:100%;"
-                         #container src="../../../assets/icons/Hostage_Finish.png" alt="Hostage"
-                    >
-                </div>
-                <div *ngSwitchCase="'Zero'">
-                    <img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore"
-                         style="width:100%;"
-                         #container src="../../../assets/icons/Zero.png" alt="Hostage"
-                    >
-                    <img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"
-                         style="width:100%;"
-                         #container src="../../../../assets/icons/Zero_Finish.png.png" alt="Hostage">
-                </div>
-                <img *ngFor="let shot of shots" src="../../../assets/images/bullethit.png"
-                     style="position: absolute;height:35px;width:35px"
-                     [style.top.px]=shot.y
-                     [style.right.px]=shot.x
-                >
             </div>
         </div>
-        <div class="table-wrapper">
-            <div scrollY="true" class="table-stats-container">
-                <div class="header-wrapper">
-                    <div class="box">Bullets</div>
-                    <div class="box">Time</div>
-                    <div class="box">Split</div>
-                    <div class="box">Points</div>
-                </div>
-                <div class="details" *ngFor="let stat of stats">
-                    <div class="box">
-                        <p>{{stat.pageData.counter}}/{{shootingService.numberOfBullersPerDrill}}</p>
-                    </div>
 
-                    <div class="box">
-                        <p>
-                            {{stat.interval}}
-                        </p>
-                    </div>
+        <div class="counter" *ngIf="showCounter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="125" height="190" viewBox="0 0 125 190" class="one"
+                 *ngIf="counter === 1">
+                <path id="Path_16893" fill="rgba(206,86,75,0.81)"
+                      d="M2.784-159.152q19.72 0 29.928-5.684t12.76-18.908H73.08V0H31.088v-136.184H2.784z"
+                      data-name="Path 16893" transform="translate(-2.784 183.744)"/>
+            </svg>
 
-                    <div class="box">
-                        <p>{{stat.pageData.splitTime}}</p>
-                    </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="125" height="190" viewBox="0 0 125 190" class="two"
+                 *ngIf="counter === 2">
+                <path id="Path_16892" fill="rgba(206,86,75,0.81)"
+                      d="M9.048-30.856h122.728V0H9.048zm88.624-47.792Q64.264-61.48 59.856-37.584H11.6A93.022 93.022 0 0 1 29-67.628a99.523 99.523 0 0 1 28.768-22.388q19.72-10.44 28.884-20.764t9.164-22.852q0-24.592-18.1-24.592-11.832 0-17.516 5.1t-5.68 16.94l-.7 9.512h-41.3q.232-60.784 64.264-60.784 58.232 0 58.232 45.936 0 22.5-8.816 37.816T97.672-78.648z"
+                      data-name="Path 16892" transform="translate(-9.048 187.456)"/>
+            </svg>
 
-                    <div class="box">
-                        <p>{{stat.pageData.points | number : '1.2-2'}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="divider">
-            <hr>
-        </div>
-        <div class="summmaryRow">
-            <div class="box">
-                <p>{{summaryObject.counter}}</p>
-            </div>
-
-            <div class="box">
-                <p>
-                    {{summaryObject.totalTime}}
-                </p>
-            </div>
-
-            <div class="box">
-                <p>{{summaryObject.split}}</p>
-            </div>
-
-            <div class="box">
-                <p>{{summaryObject.points | number : '1.2-2'}}</p>
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="125" height="190" viewBox="0 0 125 190" class="three"
+                 *ngIf="counter === 3">
+                <path id="Path_16891" fill="rgba(206,86,75,0.81)"
+                      d="M64.264-156.368q-15.08 1.856-15.08 16.936v9.048H9.28q0-54.752 54.984-56.84zM48.488-56.84q0 28.3 17.168 29.7V3.48Q8.816.7 8.12-56.84zm81.2 3.48q0 28.072-13.572 42.224T72.616 3.48v-30.624q18.792-1.624 18.792-22.968 0-15.312-6.844-22.736t-22.156-7.424H49.184v-30.16h11.6q13.224 0 19.72-6.032T87-135.72q0-18.792-14.616-20.648v-30.856q52.432.928 52.432 53.36 0 25.056-18.56 38.048 22.736 11.832 23.432 42.456z"
+                      data-name="Path 16891" transform="translate(-8.12 187.224)"/>
+            </svg>
         </div>
     </div>
+
+    <!--<div class="target-details">-->
+    <!--<div class="icons">-->
+    <!--<div class="wifi-status">-->
+    <!--<img src="../../../assets/icons/connected_icon_2709.svg">-->
+    <!--<p class="connected" *ngIf="isConnected">Connected</p>-->
+    <!--<p class="not-connected" *ngIf="!isConnected">Disconnected</p>-->
+    <!--</div>-->
+    <!--<div class="wifi-status">-->
+    <!--<img src="../../../assets/icons/full_battery_icon_2.svg">-->
+    <!--<p class="high-battery" *ngIf="batteryPrecent > 50">{{batteryPrecent}}%</p>-->
+    <!--<p class="low-battery" *ngIf="batteryPrecent <= 50">{{batteryPrecent}}%</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="clear-target">-->
+
+    <!--<button class="menuBtn" נ-->
+    <!--#menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" style="">-->
+    <!--Press To <span>Finish</span>-->
+    <!--</button>-->
+    <!--<mat-menu #menu="matMenu">-->
+    <!--<button mat-menu-item (click)="restartShooting()">Restart Drill</button>-->
+    <!--<button mat-menu-item (click)="onBackPressed()">New Drill</button>-->
+    <!--</mat-menu>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="main-image-wraper">-->
+    <!--<div [class.isHistory]="isHistory===true" class="main-image" #screen [ngSwitch]="drill.drillType">-->
+    <!--<h4 class="hit-number">{{shotNumber}}</h4>-->
+    <!--<div *ngSwitchCase="'Hit/No Hit'">-->
+    <!--<div *ngIf="!isFinish">-->
+    <!--<img style="width:100%;" #container-->
+    <!--src="../../../assets/images/hitnohit/defualt.png"-->
+    <!--alt="bullsEye">-->
+    <!--</div>-->
+    <!--<div *ngIf="isFinish">-->
+    <!--<img style="width:100%;" #container src="../../../assets/images/hitnohit/drill-finish.jpg">-->
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--<div *ngSwitchCase="'Bullseye'">-->
+    <!--<img *ngIf="shots.length < shootingService.numberOfBullersPerDrill && !drillFinishedBefore"-->
+    <!--style="width:100%;" #container-->
+    <!--src="../../../assets/images/bullseye_red.png"-->
+    <!--alt="bullsEye">-->
+    <!--<img *ngIf="shots.length >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"-->
+    <!--style="width:100%;"-->
+    <!--#container src="../../../assets/images/bullseye_black.png">-->
+    <!--</div>-->
+    <!--<div *ngSwitchCase="'Hostage'">-->
+    <!--<img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore"-->
+    <!--style="width:100%;"-->
+    <!--#container src="../../../assets/icons/Hostage.png" alt="Hostage"-->
+    <!--&gt;-->
+    <!--<img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"-->
+    <!--style="width:100%;"-->
+    <!--#container src="../../../assets/icons/Hostage_Finish.png" alt="Hostage"-->
+    <!--&gt;-->
+    <!--</div>-->
+    <!--<div *ngSwitchCase="'Zero'">-->
+    <!--<img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore"-->
+    <!--style="width:100%;"-->
+    <!--#container src="../../../assets/icons/Zero.png" alt="Hostage"-->
+    <!--&gt;-->
+    <!--<img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"-->
+    <!--style="width:100%;"-->
+    <!--#container src="../../../../assets/icons/Zero_Finish.png.png" alt="Hostage">-->
+    <!--</div>-->
+    <!--<img *ngFor="let shot of shots" src="../../../assets/images/bullethit.png"-->
+    <!--style="position: absolute;height:35px;width:35px"-->
+    <!--[style.top.px]=shot.y-->
+    <!--[style.right.px]=shot.x-->
+    <!--&gt;-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="table-wrapper">-->
+    <!--<div scrollY="true" class="table-stats-container">-->
+    <!--<div class="header-wrapper">-->
+    <!--<div class="box">Bullets</div>-->
+    <!--<div class="box">Time</div>-->
+    <!--<div class="box">Split</div>-->
+    <!--<div class="box">Points</div>-->
+    <!--</div>-->
+    <!--<div class="details" *ngFor="let stat of stats">-->
+    <!--<div class="box">-->
+    <!--<p>{{stat.pageData.counter}}/{{shootingService.numberOfBullersPerDrill}}</p>-->
+    <!--</div>-->
+
+    <!--<div class="box">-->
+    <!--<p>-->
+    <!--{{stat.interval}}-->
+    <!--</p>-->
+    <!--</div>-->
+
+    <!--<div class="box">-->
+    <!--<p>{{stat.pageData.splitTime}}</p>-->
+    <!--</div>-->
+
+    <!--<div class="box">-->
+    <!--<p>{{stat.pageData.points | number : '1.2-2'}}</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divider">-->
+    <!--<hr>-->
+    <!--</div>-->
+    <!--<div class="summmaryRow">-->
+    <!--<div class="box">-->
+    <!--<p>{{summaryObject.counter}}</p>-->
+    <!--</div>-->
+
+    <!--<div class="box">-->
+    <!--<p>-->
+    <!--{{summaryObject.totalTime}}-->
+    <!--</p>-->
+    <!--</div>-->
+
+    <!--<div class="box">-->
+    <!--<p>{{summaryObject.split}}</p>-->
+    <!--</div>-->
+
+    <!--<div class="box">-->
+    <!--<p>{{summaryObject.points | number : '1.2-2'}}</p>-->
+    <!--</div>-->
+    <!--</div>-->
 </section>

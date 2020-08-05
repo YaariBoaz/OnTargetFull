@@ -1,340 +1,649 @@
 @import "../../../assets/colors";
 
-.my-custom-menu {
-  --width: 500px;
-}
-
-section.results {
+section.drill-results {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-}
 
-.wrapper-qll {
-  height: 100%;
-  width: 100%;
-  background-color: $white_three;
-
-  header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    height: 8vh;
-
-    .menuBtn {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background-color: transparent;
-
-      span {
-        font-size: 25px;
-        color: #9f9f9f;
-      }
-    }
-
-    p {
-      margin: 0;
-      text-align: center;
-      width: 33%;
-      color: #9f9f9f;
-    }
-
-    p.drill-type {
-      font-weight: bold;
-      color: #616161;
-    }
-  }
-
-  .target-details {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-
-    .icons {
-      display: flex;
-      flex-direction: column;
-
-      .wifi-status {
-        display: flex;
-        align-items: center;
-
-        p {
-          margin: 0;
-          font-size: 12px;
-          margin-left: 5px;
-        }
-      }
-
-      img {
-        height: 20px
-      }
-    }
-
-    .clear-target {
-      width: 22vw;
-      color: white;
-      padding: 0.5em;
-      border-radius: 8px;
-      text-align: center;
-      background: lightgray;
-
-      button {
-        background-color: transparent;
-      }
-    }
-  }
-
-  hr {
-    height: 1px;
-    background-color: gray;
-    margin: 0;
-  }
-}
-
-
-div.results {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 100%;
-  padding: 0.5em;
-
-  p {
-    margin: 0;
-    color: rgba(59, 56, 56, 1);
-    font-size: 1.3em;
-  }
-
-  div.info {
-    display: flex;
-    align-items: center;
-
-    p {
-      margin: 0;
-      padding-right: 0.5em;
-      color: rgba(59, 56, 56, 1);
-      font-size: 1.1em;
-    }
-
-    b {
-      color: rgba(147, 111, 0, 1);
-      padding-right: 0.2em;
-      font-size: 1.2em;
-    }
-  }
-}
-
-
-div.main-image {
-  box-sizing: border-box;
-  width: 60vw;
-  height: 60vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  background-image: linear-gradient(#e4e4e496, #e4e4e496), url("../../../assets/drill-results.jpg");
+  background-size: 100% auto;
+  background-position: center center;
+  background-repeat: no-repeat;
   position: relative;
 
-  img {
+  header {
+    height: 48px;
+    background-color: #363636;
+    box-sizing: border-box;
+    padding: 10px 16px;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div.back-button {
+      width: 10px;
+      height: 17px;
+    }
+
+    div.info {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin: 0;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.26px;
+        color: white;
+
+        &.seperator {
+          padding: 0 0.5em;
+        }
+      }
+    }
+
+    button.start {
+      width: 130px;
+      border-radius: 4px;
+      height: 36px;
+      background-color: #ce564b;
+
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 1.25px;
+      color: white;
+    }
   }
-}
 
-.test_Timer_class {
-  color: black;
-}
-
-.isHistory {
-  img {
-    width: 50vw !important;
-    height: 50vw;
-  }
-}
-
-.isHistoryBG {
-  background-color: white !important;
-}
-
-.table-stats-container {
-  overflow-y: auto;
-  height: 25vh;
-}
-
-div.details {
-  display: flex;
-  width: 100%;
-  height: 45px;
-
-  div.box {
+  div.main-screen {
+    position: relative;
+    height: calc(100% - 48px);
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+  }
 
-    p {
-      margin: 0;
-      color: #0785c9;
-      padding: 0.5em 0;
-      font-size: 20px;
+  div.connection-details {
+    position: absolute;
+    top: 1em;
+    left: 33px;
 
-      &.title {
-        color: #6f6f6f;
-        font-weight: 500;
-        font-size: 16px;
-        text-decoration: underline;
+    display: flex;
+    flex-direction: column;
+
+    div.row {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 14px;
+        height: 14px;
+        margin-right: 0.5em;
       }
+
+      p {
+        font-size: 12px;
+        line-height: 16px;
+        color: rgba(0, 0, 0, 0.81);
+        margin: 0;
+      }
+    }
+  }
+
+  div.target {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1em;
+    padding-left: 100px;
+
+    div.welcome-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 300px;
+      height: 100px;
+      background-color: #e4e4e49c;
+      position: relative;
+      border-radius: 4px;
+
+      margin-right: 60px;
+
+      div.dot {
+        position: absolute;
+        background-color: gray;
+        width: 9px;
+        height: 9px;
+        border-radius: 100%;
+
+        &.one {
+          top: 0.5em;
+          left: 0.5em;
+        }
+
+        &.two {
+          top: 0.5em;
+          right: 0.5em;
+        }
+
+        &.three {
+          bottom: 0.5em;
+          left: 0.5em;
+        }
+
+        &.four {
+          bottom: 0.5em;
+          right: 0.5em;
+        }
+      }
+
+      div.text {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        p {
+          margin: 0;
+          font-size: 15px;
+          line-height: 18px;
+          letter-spacing: 0.19px;
+          color: rgba(0, 0, 0, 0.8);
+          text-align: center;
+        }
+      }
+
+      svg {
+        width: 52px;
+        height: 45.4px;
+
+        g#arrow {
+          fill: rgba(0, 0, 0, 0.8);
+        }
+      }
+
+    }
+
+    div.results-table {
+      width: 353px;
+
+      table {
+        display: block;
+
+        height: 254px;
+        width: 353px;
+        border-radius: 5px;
+
+        direction: rtl;
+
+        thead {
+          width: 100%;
+          display: block;
+          height: 40px;
+
+          tr {
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse;
+
+            width: 100%;
+            height: 40px;
+            background: #e4e4e4;
+
+            box-sizing: border-box;
+            padding: 0 1em;
+
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+
+            th {
+              color: #e4e4e4;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: calc(100% / 4);
+              box-sizing: border-box;
+              padding: 0 0.5em;
+
+              svg {
+                width: 24px;
+                height: 24px;
+                margin-right: 0.5em;
+                fill: white;
+              }
+
+              p {
+                margin: 0;
+                font-size: 12px;
+                line-height: 14px;
+                letter-spacing: 0.12px;
+                color: rgba(0, 0, 0, 0.87);
+              }
+            }
+          }
+        }
+
+        tbody {
+          width: 100%;
+          display: block;
+          overflow-y: scroll;
+          height: 214px;
+
+          tr {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 40px;
+            justify-content: space-around;
+            background-color: white;
+            flex-direction: row-reverse;
+
+            box-sizing: border-box;
+            padding: 0 1em;
+
+            &:nth-child(even) {
+              background-color: #e4e4e4;
+            }
+
+            td {
+              width: calc(100% / 4);
+              color: rgba(0, 0, 0, 0.6);
+              font-size: 12px;
+              line-height: 14px;
+              letter-spacing: 0.12px;
+
+              box-sizing: border-box;
+              padding: 0 0.5em;
+
+            }
+          }
+
+        }
+      }
+
+      div.table-sum {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+        background-color: #262626;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 0 1em;
+
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        p {
+          width: calc(100% / 4);
+          color: white;
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 0.12px;
+          box-sizing: border-box;
+          padding: 0 0.5em;
+          text-align: right;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  div.counter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0909db;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    svg {
+      width: 70.3px;
+      height: 183.7px;
     }
   }
 }
 
-
-/* Dropdown Button */
-.dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd
-}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {
-  display: block;
-}
-
-.shareContainer {
-  padding: 0.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #3b3838;
-}
-
-.imageWrapper {
-  position: relative;
-}
-
-.menu-item-wrapper {
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  font-size: 20px;
-
-  ion-icon {
-    color: red;
-  }
-}
-
-.back-btn {
-  font-size: 20px;
-  width: 45px;
-  height: 45px;
-}
-
-.header-wrapper {
-  display: flex;
-  text-align: center;
-}
-
-.summmaryRow {
-  display: flex;
-  text-align: center;
-}
-
-.divider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15px;
-  hr {
-    width: 90%;
-    height: 1px;
-    background: $army-brown;
-  }
-}
-
-
-.main-image-wraper {
-  display: flex;
-  justify-content: center;
-}
-
-.connected {
-  color: green;
-}
-
-.not-connected {
-  color: red;
-}
-
-.high-battery {
-  color: green;
-  font-weight: 700;
-}
-
-.low-battery {
-  color: red;
-  font-weight: 700;
-}
-
-.hit-number {
-  position: absolute;
-  top: 35%;
-  color: white;
-  font-size: 10vw;
-}
-
-
-.back-btn-container {
-  position: absolute;
-  left: 5px;
-
-  svg {
-    height: 20px;
-    width: 20px;
-  }
-}
-
-.box {
-  width: 25%;
-}
+//.wrapper-qll {
+//  height: 100%;
+//  width: 100%;
+//  background-color: $white_three;
+//
+//  header {
+//    display: flex;
+//    flex-direction: row;
+//    align-items: center;
+//    justify-content: space-between;
+//    box-sizing: border-box;
+//    height: 8vh;
+//
+//    .menuBtn {
+//      position: absolute;
+//      top: 5px;
+//      right: 5px;
+//      background-color: transparent;
+//
+//      span {
+//        font-size: 25px;
+//        color: #9f9f9f;
+//      }
+//    }
+//
+//    p {
+//      margin: 0;
+//      text-align: center;
+//      width: 33%;
+//      color: #9f9f9f;
+//    }
+//
+//    p.drill-type {
+//      font-weight: bold;
+//      color: #616161;
+//    }
+//  }
+//
+//  .target-details {
+//    display: flex;
+//    justify-content: space-between;
+//    margin: 20px;
+//
+//    .icons {
+//      display: flex;
+//      flex-direction: column;
+//
+//      .wifi-status {
+//        display: flex;
+//        align-items: center;
+//
+//        p {
+//          margin: 0;
+//          font-size: 12px;
+//          margin-left: 5px;
+//        }
+//      }
+//
+//      img {
+//        height: 20px
+//      }
+//    }
+//
+//    .clear-target {
+//      width: 22vw;
+//      color: white;
+//      padding: 0.5em;
+//      border-radius: 8px;
+//      text-align: center;
+//      background: lightgray;
+//
+//      button {
+//        background-color: transparent;
+//      }
+//    }
+//  }
+//
+//  hr {
+//    height: 1px;
+//    background-color: gray;
+//    margin: 0;
+//  }
+//}
+//
+//
+//div.results {
+//  display: flex;
+//  align-items: center;
+//  justify-content: space-between;
+//  box-sizing: border-box;
+//  height: 100%;
+//  padding: 0.5em;
+//
+//  p {
+//    margin: 0;
+//    color: rgba(59, 56, 56, 1);
+//    font-size: 1.3em;
+//  }
+//
+//  div.info {
+//    display: flex;
+//    align-items: center;
+//
+//    p {
+//      margin: 0;
+//      padding-right: 0.5em;
+//      color: rgba(59, 56, 56, 1);
+//      font-size: 1.1em;
+//    }
+//
+//    b {
+//      color: rgba(147, 111, 0, 1);
+//      padding-right: 0.2em;
+//      font-size: 1.2em;
+//    }
+//  }
+//}
+//
+//
+//div.main-image {
+//  box-sizing: border-box;
+//  width: 60vw;
+//  height: 60vw;
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//  justify-content: space-around;
+//  position: relative;
+//
+//  img {
+//
+//  }
+//}
+//
+//.test_Timer_class {
+//  color: black;
+//}
+//
+//.isHistory {
+//  img {
+//    width: 50vw !important;
+//    height: 50vw;
+//  }
+//}
+//
+//.isHistoryBG {
+//  background-color: white !important;
+//}
+//
+//.table-stats-container {
+//  overflow-y: auto;
+//  height: 25vh;
+//}
+//
+//div.details {
+//  display: flex;
+//  width: 100%;
+//  height: 45px;
+//
+//  div.box {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//
+//    p {
+//      margin: 0;
+//      color: #0785c9;
+//      padding: 0.5em 0;
+//      font-size: 20px;
+//
+//      &.title {
+//        color: #6f6f6f;
+//        font-weight: 500;
+//        font-size: 16px;
+//        text-decoration: underline;
+//      }
+//    }
+//  }
+//}
+//
+//
+///* Dropdown Button */
+//.dropbtn {
+//  background-color: #3498DB;
+//  color: white;
+//  padding: 16px;
+//  font-size: 16px;
+//  border: none;
+//  cursor: pointer;
+//}
+//
+///* Dropdown button on hover & focus */
+//.dropbtn:hover, .dropbtn:focus {
+//  background-color: #2980B9;
+//}
+//
+///* The container <div> - needed to position the dropdown content */
+//.dropdown {
+//  position: relative;
+//  display: inline-block;
+//}
+//
+///* Dropdown Content (Hidden by Default) */
+//.dropdown-content {
+//  display: none;
+//  position: absolute;
+//  background-color: #f1f1f1;
+//  min-width: 160px;
+//  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+//  z-index: 1;
+//}
+//
+///* Links inside the dropdown */
+//.dropdown-content a {
+//  color: black;
+//  padding: 12px 16px;
+//  text-decoration: none;
+//  display: block;
+//}
+//
+///* Change color of dropdown links on hover */
+//.dropdown-content a:hover {
+//  background-color: #ddd
+//}
+//
+///* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+//.show {
+//  display: block;
+//}
+//
+//.shareContainer {
+//  padding: 0.5em;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  background: #3b3838;
+//}
+//
+//.imageWrapper {
+//  position: relative;
+//}
+//
+//.menu-item-wrapper {
+//  width: 200px;
+//  display: flex;
+//  align-items: center;
+//  justify-content: space-evenly;
+//  font-size: 20px;
+//
+//  ion-icon {
+//    color: red;
+//  }
+//}
+//
+//.back-btn {
+//  font-size: 20px;
+//  width: 45px;
+//  height: 45px;
+//}
+//
+//.header-wrapper {
+//  display: flex;
+//  text-align: center;
+//}
+//
+//.summmaryRow {
+//  display: flex;
+//  text-align: center;
+//}
+//
+//.divider {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  margin-top: 15px;
+//  hr {
+//    width: 90%;
+//    height: 1px;
+//    background: $army-brown;
+//  }
+//}
+//
+//.main-image-wraper {
+//  display: flex;
+//  justify-content: center;
+//}
+//
+//.connected {
+//  color: green;
+//}
+//
+//.not-connected {
+//  color: red;
+//}
+//
+//.high-battery {
+//  color: green;
+//  font-weight: 700;
+//}
+//
+//.low-battery {
+//  color: red;
+//  font-weight: 700;
+//}
+//
+//.hit-number {
+//  position: absolute;
+//  top: 35%;
+//  color: white;
+//  font-size: 10vw;
+//}
+//
+//.back-btn-container {
+//  position: absolute;
+//  left: 5px;
+//
+//  svg {
+//    height: 20px;
+//    width: 20px;
+//  }
+//}
+//
+//.box {
+//  width: 25%;
+//}

@@ -2,16 +2,14 @@ import {ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnDestroy, O
 import {ShootingService} from '../services/shooting.service';
 import {DrillObject} from '../../tab2/tab2.page';
 import {StorageService} from '../services/storage.service';
-import {Subscription, timer} from 'rxjs';
 import {countUpTimerConfigModel, CountupTimerService, timerTexts} from 'ngx-timer';
-import {DashboardModel} from '../models/dashboard-model';
-import {DrillModel} from '../models/DrillModel';
 import {UserService} from '../services/user.service';
 import {ApiService} from '../services/api.service';
 import {BleService} from '../services/ble.service';
 import {HitNohitService} from './hit-nohit.service';
 import {Router} from '@angular/router';
 import {AlertController, LoadingController, ToastController} from '@ionic/angular';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 
 @Component({
@@ -20,6 +18,10 @@ import {AlertController, LoadingController, ToastController} from '@ionic/angula
     styleUrls: ['./drill.component.scss'],
 })
 export class DrillComponent implements OnInit, OnChanges, OnDestroy {
+    public counter = 0;
+    public showCounter = false;
+    public showResults = false;
+
 
     @Input() isHistory = false;
     @Input() historyDrill: DrillObject;
@@ -82,6 +84,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     loader;
 
     constructor(
+        private screenOrientation: ScreenOrientation,
         private storageService: StorageService,
         private shootingService: ShootingService,
         private countupTimerService: CountupTimerService,
@@ -97,12 +100,17 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     ) {
 
         this.drill = this.shootingService.selectedDrill;
+        console.log(this.drill);
+
         this.hitNohitService.setDrill(this.drill);
         this.hitNohitService.initStats();
         this.setTimeElapse();
     }
 
     ngOnInit() {
+        // No supported on chrome throws errors " NOT AVAILABLE ON THIS DEVICE  "
+        // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+
         this.hitNohitService.hitArrived.subscribe((data) => {
             if (data !== null) {
                 this.shotNumber = data.hitNumber;
@@ -251,5 +259,19 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
     onGoBack() {
 
+    }
+
+    activateCounter() {
+        this.counter = 1;
+        this.showCounter = true;
+        const interval = setInterval(() => {
+            this.counter++;
+            if (this.counter > 3) {
+                this.counter = 0;
+                this.showResults = true;
+                this.showCounter = false;
+                clearInterval(interval);
+            }
+        }, 3000);
     }
 }
