@@ -7,7 +7,8 @@ section.edit-drill {
 
   header {
     position: relative;
-    background-image: url("../../assets/edit-drill.jpg");
+
+    background-image: linear-gradient(#00000054, #00000054),    url("../../assets/edit-drill.jpg");
     background-size: 100% 200px;
     background-position: center center;
     background-repeat: no-repeat;
