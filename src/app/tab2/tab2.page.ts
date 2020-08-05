@@ -28,6 +28,7 @@ export class Tab2Page implements OnInit {
         shots: new Array<{ x, y }>()
     };
 
+
     constructor(public modalController: ModalController,
                 private tabService: TabsService,
                 public alertController: AlertController,
