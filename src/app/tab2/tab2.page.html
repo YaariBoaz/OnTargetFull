@@ -1,4 +1,5 @@
-<section class="target-selection">
+<section class="edit-drill">
+
     <header [class.ios-mode]="this.platform.is('ios')">
         <div class="back-btn-container" routerLink="/home/tabs/tab2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
@@ -27,11 +28,16 @@
 <!--            <button mat-menu-item>Item 2</button>-->
 <!--        </mat-menu>-->
     </header>
-    <div class="chooseTargetWrapper">
-        <img src="../../assets/images/brown_icon_target.png" alt="gun-shooting-targer">
-        <p>CHOOSE TARGET TYPE:
-        <p>
+
+    <div class="drill-name">
+        <p>drill name</p>
+        <h3>Surprise Drill - Standing</h3>
     </div>
+
+    <div class="basic-settings">
+        <p class="red-title">BASIC SETTINGS</p>
+    </div>
+
     <ion-slides #slides effect=“slide” class="sliders" pager="true" (ionSlideDidChange)="slideDidChange($event)">
         <ion-slide>
             <div class="imgWrapper">
@@ -58,6 +64,7 @@
 <!--            </div>-->
 <!--        </ion-slide>-->
     </ion-slides>
+
     <div class="form">
         <div class="container">
             <div style="width: 80%" class="title-and-icon">
