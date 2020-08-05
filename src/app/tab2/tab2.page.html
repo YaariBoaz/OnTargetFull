@@ -1,145 +1,352 @@
 <section class="edit-drill">
 
     <header [class.ios-mode]="this.platform.is('ios')">
-        <div class="back-btn-container" routerLink="/home/tabs/tab2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
-                <defs>
-                    <style>
-                        .chevron {
-                            fill: #fff;
-                            stroke: #6f6f6f;
-                            stroke-linecap: round;
-                            stroke-width: 3.5px
-                        }
-                    </style>
-                </defs>
-                <path id="left_chevron"
-                      d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
-                      class="chevron" data-name="left chevron" transform="rotate(90 -1924.394 974.844)"/>
-            </svg>
-        </div>
-        <h1> Edit Drill</h1>
-<!--        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu"-->
-<!--                style="">-->
-<!--            <span>⋮</span>-->
-<!--        </button>-->
-<!--        <mat-menu #menu="matMenu">-->
-<!--            <button mat-menu-item>Item 1</button>-->
-<!--            <button mat-menu-item>Item 2</button>-->
-<!--        </mat-menu>-->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938" routerLink="/home/tabs/tab2"
+             class="back-button">
+            <defs>
+                <style>
+                    .chevron {
+                        fill: #fff;
+                        stroke: #fff;
+                        stroke-linecap: round;
+                        stroke-width: 3.5px
+                    }
+                </style>
+            </defs>
+            <path id="left_chevron"
+                  d="M-2888.028-952.029l-1.276 1.208 1.276-1.208L-2898-962l9.972 9.972L-2877.5-962l-10.525 9.972 1.208 1.208z"
+                  class="chevron" data-name="left chevron" transform="rotate(90 -1924.394 974.844)"/>
+        </svg>
+
+        <p> Edit Drill</p>
+
+        <!--        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu"-->
+        <!--                style="">-->
+        <!--            <span>⋮</span>-->
+        <!--        </button>-->
+        <!--        <mat-menu #menu="matMenu">-->
+        <!--            <button mat-menu-item>Item 1</button>-->
+        <!--            <button mat-menu-item>Item 2</button>-->
+        <!--        </mat-menu>-->
     </header>
 
-    <div class="drill-name">
-        <p>drill name</p>
-        <h3>Surprise Drill - Standing</h3>
-    </div>
+    <div class="main-content">
 
-    <div class="basic-settings">
-        <p class="red-title">BASIC SETTINGS</p>
-    </div>
+        <div class="drill-name">
+            <p>DRILL NAME</p>
+            <h3>Surprise Drill - Standing</h3>
+        </div>
 
-    <ion-slides #slides effect=“slide” class="sliders" pager="true" (ionSlideDidChange)="slideDidChange($event)">
-        <ion-slide>
-            <div class="imgWrapper">
-                <img src="../../assets/images/hitnohit/defualt.png" alt="No image">
-                <p>Hit/No Hit</p>
-            </div>
-        </ion-slide>
-<!--        <ion-slide>-->
-<!--            <div class="imgWrapper">-->
-<!--                <img src="../../assets/icons/bullseye_red.png" alt="No image">-->
-<!--                <p>Bullseye</p>-->
-<!--            </div>-->
-<!--        </ion-slide>-->
-<!--        <ion-slide>-->
-<!--            <div class="imgWrapper">-->
-<!--                <img src="../../assets/icons/Zero.png" alt="No image">-->
-<!--                <p>Zero</p>-->
-<!--            </div>-->
-<!--        </ion-slide>-->
-<!--        <ion-slide>-->
-<!--            <div class="imgWrapper">-->
-<!--                <img src="../../assets/icons/Hostage.png" alt="No image">-->
-<!--                <p>Hostage</p>-->
-<!--            </div>-->
-<!--        </ion-slide>-->
-    </ion-slides>
+        <div class="basic-settings">
+            <p class="red-title">BASIC SETTINGS</p>
 
-    <div class="form">
-        <div class="container">
-            <div style="width: 80%" class="title-and-icon">
-                <img src="../../assets/images/ic_illust_half_fullbullet.png" alt="gun-shooting-targer">
-                <p>NUMBER OF BULLETS:</p>
-            </div>
-            <div style="width: 20%" class="inputs">
-                <input [(ngModel)]="drill.numOfBullets" type="number">
+
+            <div class="options">
+                <div class="row">
+                    <div class="icon-and-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <g id="Group_768" data-name="Group 768" transform="translate(-24 -190)">
+                                <rect id="Rectangle_1746" width="24" height="24" fill="#363636"
+                                      data-name="Rectangle 1746"
+                                      rx="5" transform="translate(24 190)"/>
+                                <g id="Connected-icon-2709" transform="translate(-346 183)">
+                                    <path id="Rectangle_366" fill="none" d="M0 0H16V16H0z" data-name="Rectangle 366"
+                                          transform="translate(374 11)"/>
+                                    <path id="goal" fill="#fff"
+                                          d="M16.679 4.3l.873-.873a.527.527 0 0 0-.329-.9L15.6 2.4 15.467.777a.527.527 0 0 0-.9-.328l-.873.873A9 9 0 0 0 2.636 15.364 9 9 0 0 0 16.679 4.3zM14.59 2.929a.528.528 0 0 0 .481.481l.929.079-1.258 1.261-1.375-.116-.117-1.376L14.511 2zM10.793 9a1.795 1.795 0 1 1-.955-1.584L8.627 8.627a.527.527 0 1 0 .746.746l1.211-1.211a1.781 1.781 0 0 1 .209.838zM10.6 6.649a2.851 2.851 0 1 0 .746.746l1.506-1.506a4.963 4.963 0 1 1-.746-.746zm4.013 7.969A7.945 7.945 0 1 1 3.382 3.382a7.949 7.949 0 0 1 9.544-1.291l-.595.595a.527.527 0 0 0-.154.359v.058l.071.841a6.017 6.017 0 1 0 1.806 1.806l.841.071h.127l.033-.006.021-.005.032-.01.02-.007.031-.013.019-.009.03-.017.018-.01.03-.022.014-.01a.523.523 0 0 0 .041-.037l.595-.595a7.949 7.949 0 0 1-1.291 9.544zm0 0"
+                                          transform="translate(373 10)"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <p>CONNECTED TARGET:</p>
+                    </div>
+                    <p class="connected-target">E1n1</p>
+                </div>
+
+                <div class="row">
+                    <div class="icon-and-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <defs>
+                                <style>
+                                    .cls-2, .cls-4 {
+                                        fill: none
+                                    }
+
+                                    .cls-2 {
+                                        stroke: #fff
+                                    }
+
+                                    .cls-3 {
+                                        stroke: none
+                                    }
+                                </style>
+                            </defs>
+                            <g id="Group_711" data-name="Group 711" transform="translate(-24 -190)">
+                                <rect id="Rectangle_1746" width="24" height="24" fill="#363636"
+                                      data-name="Rectangle 1746"
+                                      rx="5" transform="translate(24 190)"/>
+                                <g id="Group_791" data-name="Group 791">
+                                    <g id="Rectangle_1861" class="cls-2" data-name="Rectangle 1861"
+                                       transform="translate(28 194)">
+                                        <rect width="16" height="16" class="cls-3" rx="3"/>
+                                        <rect width="15" height="15" x=".5" y=".5" class="cls-4" rx="2.5"/>
+                                    </g>
+                                    <g id="Rectangle_1864" class="cls-2" data-name="Rectangle 1864"
+                                       transform="translate(30 196)">
+                                        <rect width="12" height="12" class="cls-3" rx="6"/>
+                                        <rect width="11" height="11" x=".5" y=".5" class="cls-4" rx="5.5"/>
+                                    </g>
+                                    <g id="Rectangle_1862" class="cls-2" data-name="Rectangle 1862"
+                                       transform="translate(32 198)">
+                                        <rect width="8" height="8" class="cls-3" rx="4"/>
+                                        <rect width="7" height="7" x=".5" y=".5" class="cls-4" rx="3.5"/>
+                                    </g>
+                                    <g id="Rectangle_1863" class="cls-2" data-name="Rectangle 1863"
+                                       transform="translate(35 201)">
+                                        <rect width="2" height="2" class="cls-3" rx="1"/>
+                                        <rect width="1" height="1" x=".5" y=".5" class="cls-4" rx=".5"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <p>CHOOSE TARGET:</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container range">
-            <div class="title-and-icon">
-                <img src="../../assets/images/ic_illust_half_fullrange.png" alt="gun-shooting-targer">
-                <p>RANGE:</p>
+        <ion-slides #slides effect=“slide” class="sliders" pager="false" (ionSlideDidChange)="slideDidChange($event)"
+                    [options]="slideOpts ">
+            <ion-slide>
+                <img #img src="../../assets/Artboard1.jpg" alt="target-cartboard"
+                     (click)="selectedDrillType = img.getAttribute('id')"
+                     [ngClass]="{'selected': selectedDrillType === img.getAttribute('id') }" [attr.id]="'Hit/NoHit'">
+            </ion-slide>
+            <ion-slide>
+                <img #img2 src="../../assets/Artboard2.jpg" alt="target-cartboard"
+                     (click)="selectedDrillType = img2.getAttribute('id')"
+                     [ngClass]="{'selected': selectedDrillType === img2.getAttribute('id') }" [attr.id]="'Hostage'">
+            </ion-slide>
+            <ion-slide>
+                <img #img3 src="../../assets/Artboard2.jpg" alt="target-cartboard"
+                     (click)="selectedDrillType = img3.getAttribute('id')"
+                     [ngClass]="{'selected': selectedDrillType === img3.getAttribute('id') }" [attr.id]="'noIdea'">
+            </ion-slide>
+            <ion-slide>
+                <img #img4 src="../../assets/Artboard2.jpg" alt="target-cartboard"
+                     (click)="selectedDrillType = img4.getAttribute('id')"
+                     [ngClass]="{'selected': selectedDrillType === img4.getAttribute('id') }" [attr.id]="'noIdea2'">
+            </ion-slide>
+            <ion-slide>
+                <img #img5 src="../../assets/Artboard2.jpg" alt="target-cartboard"
+                     (click)="selectedDrillType = img5.getAttribute('id')"
+                     [ngClass]="{'selected': selectedDrillType === img5.getAttribute('id') }" [attr.id]="'noIdea3'">
+            </ion-slide>
+        </ion-slides>
+
+        <div class="form">
+
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-3 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <g id="Icon_Favorite_Filled" data-name="Icon / Favorite / Filled" transform="translate(-2 -1)">
+                            <path id="Box" fill="none" d="M0 0H24V24H0z" transform="translate(2 1)"/>
+                            <rect id="Rectangle_1747" width="24" height="24" fill="#373737" data-name="Rectangle 1747"
+                                  rx="5" transform="translate(2 1)"/>
+                            <g id="_002-bullet" data-name="002-bullet" transform="translate(6.164 5)">
+                                <path id="Path_1178"
+                                      d="M15.689.136A.464.464 0 0 0 15.361 0h-.007A6.58 6.58 0 0 0 11.3 1.58l-1.7.851a.463.463 0 0 0-.12.087L1.5 10.5a.463.463 0 0 0-.141.183L.838 11.9l-.046-.046a.464.464 0 0 0-.656.656l3.177 3.177a.464.464 0 0 0 .656-.656l-.046-.046 1.223-.522a.463.463 0 0 0 .183-.141l7.978-7.978a.463.463 0 0 0 .087-.12l.851-1.7A6.58 6.58 0 0 0 15.824.471a.463.463 0 0 0-.136-.335zM3.217 14.28l-1.672-1.672.4-.935 2.208 2.208zm1.745-.9l-2.517-2.517L9.807 3.5l2.516 2.516zm7.892-8.144l-2.265-2.264.888-.446L13.3 4.347zm.989-1.656l-1.6-1.6A5.644 5.644 0 0 1 14.85.976a5.607 5.607 0 0 1-1.008 2.603z"
+                                      class="cls-3" data-name="Path 1178" transform="translate(-.001)"/>
+                                <path id="Path_1179"
+                                      d="M213.051 237.636l-1.007 1.007a.464.464 0 0 0 .656.656l1.007-1.007a.464.464 0 0 0-.656-.656z"
+                                      class="cls-3" data-name="Path 1179" transform="translate(-205.358 -230.16)"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <p>NUMBER OF BULLETS:</p>
+                </div>
+                <input [(ngModel)]="drill.numOfBullets" type="number" class="bullets">
             </div>
 
-            <div class="inputs">
-                <input [(ngModel)]="drill.range" type="number">
-                <select [(ngModel)]="drill.rangeUOM">
-                    <option value="Meters">Meters</option>
-                    <option value="Feet">Feet</option>
-                </select>
+            <div class="container range">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-2 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <g id="Group_712" data-name="Group 712" transform="translate(-27 -433)">
+                            <rect id="Rectangle_1748" width="24" height="24" fill="#373737" data-name="Rectangle 1748"
+                                  rx="5" transform="translate(27 433)"/>
+                            <g id="distance_1_" data-name="distance (1)" transform="translate(30 439)">
+                                <path id="Path_1274"
+                                      d="M7.983 3.991A4 4 0 0 0 4.021 0h-.03A4 4 0 0 0 0 3.991a5.094 5.094 0 0 0 1.273 3.043l1.84 2.511A1.845 1.845 0 1 0 5.76 11.7h.84v-1.059h-.84a1.853 1.853 0 0 0-.889-1.094L6.71 7.034a5.1 5.1 0 0 0 1.273-3.043zm-3.991 7.974a.8.8 0 1 1 .8-.8.8.8 0 0 1-.8.8zm0-3l-1.87-2.55a4.177 4.177 0 0 1-1.067-2.424 2.94 2.94 0 0 1 2.918-2.936h.018a2.94 2.94 0 0 1 2.938 2.936 4.178 4.178 0 0 1-1.069 2.42zm0 0"
+                                      class="cls-2" data-name="Path 1274"/>
+                                <path id="Path_1275"
+                                      d="M60.367 58.422a1.937 1.937 0 1 0 1.933 1.937 1.939 1.939 0 0 0-1.933-1.937zm0 2.82a.883.883 0 1 1 .883-.883.884.884 0 0 1-.883.883zm0 0"
+                                      class="cls-2" data-name="Path 1275" transform="translate(-56.376 -56.368)"/>
+                                <path id="Path_1276"
+                                      d="M292.905 3.991A4 4 0 0 0 288.943 0h-.03a4 4 0 0 0-3.991 3.991 5.1 5.1 0 0 0 1.273 3.043l1.841 2.511a1.852 1.852 0 0 0-.891 1.1h-.812V11.7h.812a1.846 1.846 0 1 0 2.649-2.15l1.839-2.512a5.1 5.1 0 0 0 1.272-3.047zm-3.992 7.974a.8.8 0 1 1 .8-.8.8.8 0 0 1-.8.8zm0-3l-1.87-2.55a4.178 4.178 0 0 1-1.069-2.419 2.94 2.94 0 0 1 2.926-2.941h.018a2.94 2.94 0 0 1 2.937 2.937 4.177 4.177 0 0 1-1.069 2.419zm0 0"
+                                      class="cls-2" data-name="Path 1276" transform="translate(-274.905)"/>
+                                <path id="Path_1277"
+                                      d="M345.289 58.422a1.937 1.937 0 1 0 1.937 1.937 1.939 1.939 0 0 0-1.937-1.937zm0 2.82a.883.883 0 1 1 .883-.883.884.884 0 0 1-.883.883zm0 0"
+                                      class="cls-2" data-name="Path 1277" transform="translate(-331.281 -56.368)"/>
+                                <path id="Path_1278" d="M209.039 302.691h1.288v1.055h-1.288zm0 0" class="cls-2"
+                                      data-name="Path 1278" transform="translate(-201.69 -292.05)"/>
+                                <path id="Path_1279" d="M267.039 302.691h1.288v1.055h-1.288zm0 0" class="cls-2"
+                                      data-name="Path 1279" transform="translate(-257.651 -292.05)"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <p>RANGE:</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="drill.range" type="number">
+                    <select [(ngModel)]="drill.rangeUOM">
+                        <option value="Meters">Meters</option>
+                        <option value="Feet">Feet</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="title-and-icon">
-                <img src="../../assets/icons/rifle.png" alt="gun-shooting-targer" class="border">
-                <p>WEAPON:</p>
-            </div>
-            <div class="inputs" *ngIf="myGuns">
-                <select [(ngModel)]="drill.weapon">
+
+            <p class="red-title">ADVANCED</p>
+
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-2 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <g id="Group_833" data-name="Group 833" transform="translate(-27 -494)">
+                            <rect id="Rectangle_1749" width="24" height="24" fill="#373737" data-name="Rectangle 1749"
+                                  rx="5" transform="translate(27 494)"/>
+                            <g id="gun" transform="translate(30 439)">
+                                <path id="Path_1280"
+                                      d="M90.527 217.328a.527.527 0 0 0 .527-.527v-5.273a.527.527 0 0 0-1.055 0v5.272a.527.527 0 0 0 .528.528z"
+                                      class="cls-2" data-name="Path 1280" transform="translate(-86.836 -144.727)"/>
+                                <path id="Path_1281"
+                                      d="M17.473 61a.527.527 0 0 0-.527.527v.527H3.691a.812.812 0 0 1-.292-.076.429.429 0 0 1-.236-.451.527.527 0 0 0-1.055 0 1.741 1.741 0 0 0 .1.588 1.585 1.585 0 0 0-1.15 1.522v.527H.527a.527.527 0 0 0-.527.527V66.8a.527.527 0 0 0 .527.527.364.364 0 0 1 .281.128.373.373 0 0 1 .084.306l-.686 5.122a1.58 1.58 0 0 0 1.566 1.828H5.8a.527.527 0 0 0 .527-.527v-3.692h.527a2.641 2.641 0 0 0 2.584-2.109h4.869a.527.527 0 0 0 .527-.527v-.527h2.637A.527.527 0 0 0 18 66.8v-5.273a.527.527 0 0 0-.527-.527zM6.855 69.438h-.527v-1.055h2.019a1.585 1.585 0 0 1-1.492 1.055zm6.926-2.638v.527H5.8a.527.527 0 0 0-.527.527v5.8h-3.5a.525.525 0 0 1-.407-.187.516.516 0 0 1-.117-.424l.687-5.124a1.431 1.431 0 0 0-.324-1.149 1.416 1.416 0 0 0-.556-.4v-1.151h12.725zm3.164-.527h-2.109v-1.054h2.109zm0-2.109H2.109v-.527a.528.528 0 0 1 .527-.527h14.309z"
+                                      class="cls-2" data-name="Path 1281"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <p>WEAPON:</p>
+                </div>
+                <select>
+                    <option value="m4">M-4</option>
                     <option *ngFor="let gun of myGuns" [value]="gun">{{gun}}</option>
                 </select>
             </div>
-            <div class="inputs" *ngIf="!myGuns">
-                <select [(ngModel)]="drill.weapon">
-                    <option value="-1">Please select a weapon</option>
-                    <option *ngFor="let gun of myGuns" [value]="gun">{{gun}}</option>
-                </select>
-            </div>
-        </div>
-        <div class="container">
-            <div class="title-and-icon">
-                <img src="../../assets/icons/gun-shooting-target.png" alt="gun-shooting-targer" class="border">
-                <p>SIGHT:</p>
-            </div>
 
-            <div class="inputs" *ngIf="mySights">
-                <select [(ngModel)]="drill.sight">
-                    <option value="-1">Please select a weapon</option>
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Icon_Favorite_Filled" width="24" height="24"
+                         data-name="Icon / Favorite / Filled" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-3 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <path id="Box" fill="none" d="M0 0H24V24H0z"/>
+                        <rect id="Rectangle_1750" width="24" height="24" fill="#373737" data-name="Rectangle 1750"
+                              rx="5"/>
+                        <g id="_004-aim" data-name="004-aim" transform="translate(2.98 3)">
+                            <path id="Path_1182"
+                                  d="M9.438 17.125a7.688 7.688 0 1 1 7.688-7.688 7.7 7.7 0 0 1-7.688 7.688zm0-13.875a6.188 6.188 0 1 0 6.188 6.188A6.195 6.195 0 0 0 9.438 3.25z"
+                                  class="cls-3" data-name="Path 1182" transform="translate(-.438 -.438)"/>
+                            <path id="Path_1183"
+                                  d="M11.75 4.125a.75.75 0 0 1-.75-.75V.75a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
+                                  class="cls-3" data-name="Path 1183" transform="translate(-2.75)"/>
+                            <path id="Path_1184" d="M21.875 12.5H19.25a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                  class="cls-3" data-name="Path 1184" transform="translate(-4.625 -2.75)"/>
+                            <path id="Path_1185"
+                                  d="M11.75 22.625a.75.75 0 0 1-.75-.75V19.25a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
+                                  class="cls-3" data-name="Path 1185" transform="translate(-2.75 -4.625)"/>
+                            <path id="Path_1186" d="M3.375 12.5H.75a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                  class="cls-3" data-name="Path 1186" transform="translate(0 -2.75)"/>
+                            <path id="Path_1187"
+                                  d="M11.25 13.5a2.25 2.25 0 1 1 2.25-2.25 2.253 2.253 0 0 1-2.25 2.25zm0-3a.75.75 0 1 0 .75.75.751.751 0 0 0-.75-.75z"
+                                  class="cls-3" data-name="Path 1187" transform="translate(-2.25 -2.25)"/>
+                        </g>
+                    </svg>
+                    <p>SIGHT:</p>
+                </div>
+                <select>
+                    <option value="ar-15 7">AR-15 7</option>
                     <option *ngFor="let sight of mySights" [value]="sight">{{sight}}</option>
                 </select>
             </div>
-            <div class="inputs" *ngIf="!mySights">
-                <select [(ngModel)]="drill.sight" [value]='null'>
-                    <option [value]="null">Please Select</option>
-                    <option *ngFor="let sight of DEFAULT_SIGHTS" [ngValue]="sight">{{sight}}</option>
-                </select>
-            </div>
 
-        </div>
-        <div class="container">
-            <div class="title-and-icon">
-                <img src="../../assets/images/ic_illust_half_fullbullet.png" alt="gun-shooting-targer">
-                <p>AMMO:</p>
-            </div>
-            <div class="inputs">
-                <select [(ngModel)]="drill.ammo">
-                    <option value="Plain (M193)">Plain (M193)</option>
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Icon_Favorite_Filled" width="24" height="24"
+                         data-name="Icon / Favorite / Filled" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-3 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <path id="Box" fill="none" d="M0 0H24V24H0z"/>
+                        <rect id="Rectangle_1750" width="24" height="24" fill="#373737" data-name="Rectangle 1750"
+                              rx="5"/>
+                        <g id="ammo" transform="translate(-18.203 4.079)">
+                            <g id="Group_717" data-name="Group 717" transform="translate(22.588 .002)">
+                                <g id="Group_716" data-name="Group 716">
+                                    <path id="Path_16012"
+                                          d="M26.823 8.434c0-.018-.02-.036-.023-.053V8.37a.3.3 0 0 0-.014-.046v-.005h.014l-.562-1.449V4.514A11.769 11.769 0 0 0 24.98.154a.306.306 0 0 0-.53 0 11.93 11.93 0 0 0-1.23 4.359v2.356l-.6 1.449-.008.005a.314.314 0 0 0-.017.046v.011c0 .003.011.036.011.053h.017v6.939a.27.27 0 0 0 .3.3v.6a.27.27 0 0 0 .267.3h3.01a.33.33 0 0 0 .337-.3v-.6a.312.312 0 0 0 .3-.3V8.435zm-3-3.921a10.047 10.047 0 0 1 .905-3.5 10.035 10.035 0 0 1 .9 3.5v.3h-1.81zm0 .9h1.81v1.208h-1.81zm-.132 1.81h2l.362.905h-2.724zm2.244 8.749h-2.413v-.3h2.413zm.3-.905H23.22V8.733h3.017z"
+                                          class="cls-3" data-name="Path 16012" transform="translate(-22.588 -.002)"/>
+                                </g>
+                            </g>
+                            <g id="Group_719" data-name="Group 719" transform="translate(28.019 .002)">
+                                <g id="Group_718" data-name="Group 718">
+                                    <path id="Path_16013"
+                                          d="M194.562 8.434c0-.018-.02-.036-.023-.053V8.37a.305.305 0 0 0-.014-.046v-.005h.017l-.562-1.449V4.514a11.769 11.769 0 0 0-1.261-4.36.306.306 0 0 0-.53 0 11.93 11.93 0 0 0-1.23 4.359v2.356l-.6 1.449-.008.005a.313.313 0 0 0-.017.046v.011c0 .003.012.036.011.053h.017v6.939a.27.27 0 0 0 .3.3v.6a.27.27 0 0 0 .267.3h3.017a.33.33 0 0 0 .337-.3v-.6a.312.312 0 0 0 .3-.3V8.435zm-3-3.921a10.047 10.047 0 0 1 .905-3.5 10.035 10.035 0 0 1 .9 3.5v.3h-1.81zm0 .9h1.81v1.208h-1.81zm-.132 1.81h2l.362.905h-2.729zm2.244 8.749h-2.413v-.3h2.413zm.3-.905h-3.017V8.733h3.017z"
+                                          class="cls-3" data-name="Path 16013" transform="translate(-190.327 -.002)"/>
+                                </g>
+                            </g>
+                            <g id="Group_721" data-name="Group 721" transform="translate(33.449 .002)">
+                                <g id="Group_720" data-name="Group 720">
+                                    <path id="Path_16014"
+                                          d="M362.3 8.434c0-.018-.02-.036-.023-.053V8.37a.3.3 0 0 0-.014-.046v-.005h.017l-.562-1.449V4.514a11.768 11.768 0 0 0-1.26-4.36.306.306 0 0 0-.53 0 11.93 11.93 0 0 0-1.23 4.359v2.356l-.6 1.449-.008.005a.316.316 0 0 0-.017.046v.011c0 .003.012.036.011.053h.017v6.939a.27.27 0 0 0 .3.3v.6a.27.27 0 0 0 .267.3h3.017a.33.33 0 0 0 .337-.3v-.6a.312.312 0 0 0 .3-.3V8.435zm-3-3.921a10.047 10.047 0 0 1 .905-3.5 10.034 10.034 0 0 1 .9 3.5v.3H359.3zm0 .9h1.81v1.208h-1.81zm-.132 1.81h2l.362.905h-2.729zm2.244 8.749H359v-.3h2.413zm.3-.905H358.7V8.733h3.017z"
+                                          class="cls-3" data-name="Path 16014" transform="translate(-358.066 -.002)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <p>AMMO:</p>
+                </div>
+
+                <select>
+                    <option value="Plain (M193)">Plain tip (M193)</option>
                     <option value="5.56">5.56</option>
                     <option value="6.56">6.56</option>
                     <option value="12 Guage">12 Guage</option>
                 </select>
             </div>
         </div>
+
+        <button class="startSessionBtn" (click)="startSesstion()" routerLink="/home/tabs/tab2/select2"> START SESSION
+        </button>
+
     </div>
-    <button class="startSessionBtn" (click)="startSesstion()" routerLink="/home/tabs/tab2/select2"> Start Session!</button>
+
+
 </section>

@@ -15,3 +15,14 @@ $black_two: #343434;
 $white_five: #ffffff;
 $profile-bg: #70524b;
 $army-brown: #c39352;
+
+$red-color: #ce564b;
+
+
+@mixin redTitle() {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+  color: $red-color;
+  font-weight: 700;
+}

@@ -11,15 +11,19 @@ import {TabsService} from '../tabs/tabs.service';
     styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-
     @ViewChild('slides', {static: false}) slides;
 
-    s;
+    public selectedDrillType = 'Hit/NoHit';
+    slideOpts = {
+        slidesPerView: 2.1,
+        spaceBetween: 3
+    };
+
     mySights;
     myGuns;
     drill: DrillObject = {
         numOfBullets: 5,
-        weapon: 'Bergara HMR Pro',
+        weapon: 'M-4',
         range: 150,
         rangeUOM: 'Meters',
         sight: 'V6 5-30 X 50',
@@ -55,10 +59,10 @@ export class Tab2Page implements OnInit {
         this.slides.getActiveIndex().then(index => {
             switch (index) {
                 case 0:
-                    this.drill.drillType = 'Hit/No Hit';
+                    this.drill.drillType = 'Hit/NoHit';
                     break;
                 case 1:
-                    this.drill.drillType = 'Bullseye';
+                    this.drill.drillType = 'BullsEye';
                     break;
                 case 1:
                     this.drill.drillType = 'Zero';
