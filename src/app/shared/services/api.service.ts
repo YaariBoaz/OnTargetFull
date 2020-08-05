@@ -31,7 +31,7 @@ export class ApiService {
     }
 
     syncData(dataToSync) {
-        return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadDrills', dataToSync);
+        return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadHitNotHitDrills', dataToSync);
     }
 
     getWeapons() {

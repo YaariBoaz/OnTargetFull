@@ -1,0 +1,47 @@
+<div class="summery-wrapper">
+    <div class="title-summary"><h4>Summary</h4></div>
+    <div class="wizard-container">
+        <div class="stepper">
+            <span [ngStyle]="{'background':getColor(1)}"></span>
+            <div class="line"></div>
+            <span [ngStyle]="{'background':getColor(2)}"></span>
+            <div class="line"></div>
+            <span [ngStyle]="{'background':getColor(3)}"> </span>
+            <div class="line"></div>
+            <span [ngStyle]="{'background':getColor(4)}">  </span>
+        </div>
+        <div class="row-wrapper">
+            <div class="status-row">
+                 <span> Add User </span>
+                 <img src="assets/images/hitnohit/check.png" *ngIf="addUserComplete">
+                <img class="spinner-wizad" src="assets/loader.gif" *ngIf="addUserStart">
+            </div>
+
+            <div class="status-row">
+                     <span> Assign Weapons </span>
+                 <img src="assets/images/hitnohit/check.png" *ngIf="addWeaponComplete">
+                <img class="spinner-wizad" src="assets/loader.gif" *ngIf="addWeaponStart">
+            </div>
+
+
+            <div class="status-row">
+                 <span> Assign Scopes </span>
+                 <img src="assets/images/hitnohit/check.png" *ngIf="addScopeComplete">
+                <img class="spinner-wizad" src="assets/loader.gif" *ngIf="addScopeStart">
+            </div>
+            <div class="status-row">
+                <span> Assign Targets </span>
+                <img src="assets/images/hitnohit/check.png" *ngIf="addTargetComplete">
+                <img class="spinner-wizad" src="assets/loader.gif" *ngIf="addTargetStart">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="custom-overlay" [style.display]="allIsComplete ? 'flex': 'none'" *ngIf="allIsComplete">
+    <img [@zoomIn1]="zoomIn1" class="logoImage" src="assets/adl-logo-gold.png">
+    <div class="sentence" [@bounceInUp]="bounceInUp">All Set</div>
+    <div class="sentence" [@bounceInRight]="bounceInRight">Lets</div>
+    <div class="sentence" [@bounceInLeft]="bounceInLeft">Start</div>
+    <div class="sentence" [@bounceInDown]="bounceInDown">Training.</div>
+</div>

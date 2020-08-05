@@ -18,25 +18,24 @@
         <div class="target-list" *ngIf="myTargets; else noTargets">
 
 
+            <!--            <div [class.connected]="targetConnected === true" *ngIf="primaryTarget; else noPrimary"-->
+            <!--                 class="target-rectangle regular"-->
+            <!--                 (click)="onTargetChosen(primaryTarget)">{{primaryTarget.name}}</div>-->
 
-<!--            <div [class.connected]="targetConnected === true" *ngIf="primaryTarget; else noPrimary"-->
-<!--                 class="target-rectangle regular"-->
-<!--                 (click)="onTargetChosen(primaryTarget)">{{primaryTarget.name}}</div>-->
-
-<!--            <ng-template #noPrimary>-->
-<!--                <div class="noPrimary">-->
-<!--                    <span>You currently have not defualt target.</span>-->
-<!--                    <span>Please choose from the list below the deisred target and press Reconnect</span>-->
-<!--                </div>-->
-<!--            </ng-template>-->
+            <!--            <ng-template #noPrimary>-->
+            <!--                <div class="noPrimary">-->
+            <!--                    <span>You currently have not defualt target.</span>-->
+            <!--                    <span>Please choose from the list below the deisred target and press Reconnect</span>-->
+            <!--                </div>-->
+            <!--            </ng-template>-->
 
 
             <div [class.connected]="target.targetConnected === true" *ngFor="let target of myTargets"
                  class="target-rectangle regular"
                  (click)="onTargetChosen(target)">{{target.name}}</div>
         </div>
-        <button [class.btn-disable]="!this.selectedTarget ||this.selectedTarget.targetConnected===false"
-                [disabled]="!this.selectedTarget || this.selectedTarget.targetConnected===false"
+        <button [class.btn-disable]="!this.selectedTarget ||!this.selectedTarget.targetConnected"
+                [disabled]="!this.selectedTarget || !this.selectedTarget.targetConnected"
                 class="startSession" (click)="startTraining()"> START SESSION
         </button>
     </div>

@@ -5,8 +5,8 @@ import {SharedModule} from '../shared.module';
 
 
 @NgModule({
-    declarations: [ActivityHistoryComponent],
-    exports: [ActivityHistoryComponent],
+    declarations: [],
+    exports: [ ],
     imports: [
         CommonModule,
         SharedModule

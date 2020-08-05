@@ -1,18 +1,5 @@
-<ion-content>
 <section>
     <form class="signInForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="user-img-name">
-            <div *ngIf="!picture" class="edit-container" (click)="selectImage()">
-                Upload Image
-            </div>
-            <div class="image-and-name">
-                <div *ngIf="picture" class="round-border">
-                    <img class="profile-img" [src]="domSanitizer.bypassSecurityTrustUrl(picture)">
-                    <ion-icon (click)="selectImage()" *ngIf="isEditMode" ios="ios-create" md="md-create"
-                              size="large"></ion-icon>
-                </div>
-            </div>
-        </div>
         <div class="lastAndFirst">
             <div class="form-group f-name">
                 <label>First Name</label>
@@ -385,10 +372,9 @@
             </div>
         </div>
         <div class="form-group center">
-            <button class="btn btn-primary">Register</button>
+            <button class="btn btn-primary">Next</button>
         </div>
     </form>
 </section>
-</ion-content>
 
 

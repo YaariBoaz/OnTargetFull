@@ -106,11 +106,7 @@ export class GunlistComponent implements OnInit {
             userId: this.userService.getUserId()
         };
         this.storageService.setItem('inventory', inventory);
-        this.apiService.setInventory(inventory).subscribe(data => {
-            this.storageService.setItem('inventory', data);
-            this.close.emit();
-        });
-
+        this.close.emit();
     }
 
     removeMyGun(item: any) {

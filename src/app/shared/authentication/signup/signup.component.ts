@@ -8,6 +8,7 @@ import {Tab3Service} from '../../../tab3/tab3.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ProfileImageService} from '../../services/profile-image.service';
+import {WizardService} from '../signup-wizard/wizard.service';
 
 @Component({
     selector: 'app-signup',
@@ -32,6 +33,7 @@ export class SignupComponent implements OnInit {
                 private platform: Platform,
                 private tab3Service: Tab3Service,
                 private ref: ChangeDetectorRef,
+                private wizardService: WizardService,
                 public domSanitizer: DomSanitizer,
                 private storageService: StorageService,
                 private actionSheetController: ActionSheetController,
@@ -65,34 +67,16 @@ export class SignupComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-        const loading = await this.loadingController.create({
-            message: 'Adding you to the system, please wait',
-            duration: 1000000000,
-        });
-        await loading.present();
 
         this.registerForm.value.img_path = this.picture;
         if (this.registerForm.value.age) {
             this.registerForm.value.age = this.registerForm.value.age.toString();
         }
-        this.apiService.signup(this.registerForm.value).subscribe((returnedValue) => {
 
-                this.apiService.login({
-                    username: this.registerForm.value.email,
-                    password: this.registerForm.value.password
-                }).subscribe((data) => {
-                    loading.dismiss();
-                    this.storageService.setItem('profileData', data);
-                    this.tab3Service.passProfileFromRegister.next(data);
-                    loading.dismiss();
-                    this.move.emit({data});
-                });
+        this.wizardService.registerForm = this.registerForm;
+        this.tab3Service.passProfileFromRegister.next(this.registerForm.value);
+        this.move.emit();
 
-            }, (error) => {
-                this.errorMessage = error;
-                this.notifyError();
-            }
-        );
     }
 
     async notifyError() {

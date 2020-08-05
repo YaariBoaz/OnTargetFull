@@ -4,6 +4,8 @@ import {trigger, transition, useAnimation} from '@angular/animations';
 import {StorageService} from '../../services/storage.service';
 import {AlertController, LoadingController} from '@ionic/angular';
 import {ApiService} from '../../services/api.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
 
 
 @Component({
@@ -18,6 +20,8 @@ export class SigninComponent implements OnInit {
     password;
     socket;
     isFirstLoad = true;
+    registerForm: FormGroup;
+    submitted = false;
 
     constructor(
         private router: Router,
@@ -25,6 +29,8 @@ export class SigninComponent implements OnInit {
         private apiService: ApiService,
         public alertController: AlertController,
         public loadingController: LoadingController,
+        private formBuilder: FormBuilder,
+        private userService: UserService
     ) {
 
 
@@ -34,16 +40,19 @@ export class SigninComponent implements OnInit {
 
     }
 
-    ngOnInit() {
+    get f() {
+        return this.registerForm.controls;
+    }
 
-        setTimeout(() => {
-            if (this.storageService.getItem('isLoggedIn')) {
-                this.splash = false;
-                // this.router.navigateByUrl('/home/tabs/tab1');
-            } else {
-                this.splash = false;
-            }
-        }, 5000);
+
+    ngOnInit() {
+        if (this.storageService.getItem('isLoggedIn')) {
+            this.router.navigateByUrl('/home/tabs/tab1');
+        }
+        this.registerForm = this.formBuilder.group({
+            email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+            password: ['', [Validators.required, Validators.minLength(6)]]
+        });
     }
 
 
@@ -87,19 +96,27 @@ export class SigninComponent implements OnInit {
     }
 
     async onLogin() {
-        const loading = await this.loadingController.create({
-            message: 'Please wait...',
-            duration: 2000
-        });
-        await loading.present();
-        this.apiService.login({
-            username: this.userName,
-            password: this.password
-        }).subscribe(data => {
-            this.storageService.setItem('isLoggedIn', true);
-            this.storageService.setItem('profileData', data);
-            this.router.navigateByUrl('/home/tabs/tab1');
-        });
+        this.submitted = true;
+        if (this.registerForm.invalid) {
+            return;
+        } else {
+            const loading = await this.loadingController.create({
+                message: 'Please wait...',
+                duration: 2000
+            });
+            await loading.present();
+            this.apiService.login({
+                username: this.registerForm.value.email,
+                password: this.registerForm.value.password
+            }).subscribe(data => {
+                this.userService.setUser(data);
+                this.apiService.getDashboardData(this.userService.getUserId());
+                this.storageService.setItem('isLoggedIn', true);
+                this.storageService.setItem('profileData', data);
+                this.router.navigateByUrl('/home/tabs/tab1');
+            });
+        }
+
     }
 
     backToSignin() {

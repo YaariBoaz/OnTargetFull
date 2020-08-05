@@ -12,6 +12,7 @@ import {HitrationDataModel, Tab1Service} from './tab1-service.service';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import {TabsService} from '../tabs/tabs.service';
 
 @Component({
     selector: 'app-tab1',
@@ -43,6 +44,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 private tab1Service: Tab1Service,
                 private userService: UserService,
                 private zone: NgZone,
+                private tabsService: TabsService,
                 private storageService: StorageService) {
 
     }
@@ -50,6 +52,9 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit(): void {
         this.profile = this.userService.getUser();
         this.handleOfflineScenario();
+        this.tabsService.$notifyTab1.subscribe(() => {
+            this.handleOfflineScenario();
+        });
     }
 
 
@@ -70,7 +75,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     onActivityClicked(train: HistoryModel) {
         this.storageService.passhistoricalTrainingsDate(train);
-        this.router.navigate(['/home/tabs/tab1/activity-history']);
+        this.router.navigateByUrl('home/tabs/tab1/activity-history');
     }
 
     private handleOnlineScenario() {
@@ -84,14 +89,17 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         }
         this.hits = this.data.hitRatioChart.totalHits;
         this.shots = this.data.hitRatioChart.totalShots;
+
+
+
         // this.tab1Service.setTextInCenterForHitRatio(this.hitRatioChart);
         console.log('---DATA--- ' + this.data);
         this.data.trainingHistory.forEach(train => {
-            const monthName = new Date(train.date).toLocaleString('default', {month: 'long'});
+            const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
             if (!(this.historicTrainings[monthName])) {
                 this.historicTrainings[monthName] = {};
             }
-            const tempDate = new Date(train.date);
+            const tempDate = new Date(train.drillDate);
             const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
             const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
             if ((!this.historicTrainings[monthName][key])) {
@@ -111,11 +119,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        this.zone.runOutsideAngular(() => {
-            this.setupHitratioChart();
-            this.setupRateOfFireChart();
 
-        });
     }
 
     ngOnDestroy() {
@@ -217,6 +221,4 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         });
     }
 }
-
-
 

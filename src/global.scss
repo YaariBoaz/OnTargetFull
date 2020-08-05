@@ -45,11 +45,11 @@
 
 .header-wrapper {
   display: flex;
- }
-
-.mat-horizontal-stepper-header-container {
-  background: $headerBG;
 }
+
+
+
+
 
 .mat-step-icon {
   background-color: $warm_grey !important;
@@ -57,33 +57,59 @@
 
 .mat-step-icon-selected {
   background-color: $deep_sea_blue !important;
+  border-color: #ce564b !important;
 }
 
 .mat-horizontal-content-container {
   height: 100% !important;
   padding: 0 !important;
-}
-.mat-horizontal-stepper-content{
-  height: 100% !important;
+  background: white;
 }
 
 
-.mat-step-label{
+
+
+.mat-step-label {
   color: $warm_grey !important;
+  font-size: 2.5vw !important;
+  min-width: 40px !important;
 }
 
-mat-step-header{
+.mat-step-label-selected {
+  font-size: 2.5vw !important;
+  min-width: 40px !important;
+
+}
+
+mat-step-header {
   display: flex !important;
   flex-direction: column !important;
 }
 
-.mat-step-icon-state-number{
+.mat-step-icon-state-number {
   margin-top: 1vh !important;
   margin-bottom: 1vh !important;
+  height: 50px !important;
+  width: 50px !important;
+  background: white !important;
+  color: black !important;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.mat-horizontal-stepper-content[aria-expanded="false"] {
-  display: none !important;
+.mat-horizontal-stepper-header-container{
+  background-color: white !important;
+   padding-left: 32px;
+  padding-right: 32px;
+}
+
+.mat-stepper-horizontal-line {
+  border-top-width: 1px !important;
+  border-top-style: solid !important;
+  flex: auto !important;
+  height: 2px !important;
+  margin: 0 -16px !important;
+  min-width: 32px !important;
+  background: #cccccc !important;
 }
 
 
@@ -92,3 +118,6 @@ mat-step-header{
 }
 
 
+.mat-stepper-horizontal{
+  height: 100% !important;
+}

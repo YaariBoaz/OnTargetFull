@@ -12,12 +12,12 @@ const routes: Routes = [
         loadChildren: () => import('./shared/authentication/signup-wizard/wizard.module').then(m => m.WizardModule),
     },
     {
-        path: '',
+        path: 'home',
         loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
 
     },
     {
-        path: 'home',
+        path: '',
         loadChildren: () => import('./shared/authentication/signin/signin.module').then(m => m.SigninModule),
 
     }

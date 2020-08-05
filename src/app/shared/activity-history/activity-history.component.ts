@@ -75,12 +75,32 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
                 const arrayOfTrainings = date['value']['data'];
                 this.numOfTrainings = arrayOfTrainings.length;
                 this.drills = arrayOfTrainings;
+                this.drills.forEach(drill => {
+                    drill.shotItems.forEach(shot => {
+                        shot.time = this.miliToTime(parseInt(shot.time));
+                        shot.timeSplit = this.miliToTime(parseInt(shot.timeSplit));
+                    });
+                });
+
                 // this.stats = date.stata;
                 // this.summaryObject = date.summaryObject;
             }
 
         });
 
+    }
+
+    miliToTime(duration) {
+        // tslint:disable-next-line:radix
+        const milliseconds: any = parseInt(String((duration % 1000) / 100));
+        let seconds: any = Math.floor((duration / 1000) % 60);
+        let minutes: any = Math.floor((duration / (1000 * 60)) % 60);
+        let hours: any = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+        hours = (hours < 10) ? '0' + hours : hours;
+        minutes = (minutes < 10) ? '0' + minutes : minutes;
+        seconds = (seconds < 10) ? '0' + seconds : seconds;
+        return minutes + ':' + seconds + '.' + milliseconds;
     }
 
     handleOnlineScenario() {

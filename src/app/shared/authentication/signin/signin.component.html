@@ -2,21 +2,36 @@
     <div class="bg-image"></div>
     <div class="shadow"></div>
     <section class="wrapper">
-        <img src="assets/ontarget.png">
-        <div class="centerPart" *ngIf="!splash">
-            <div class="signin-wrapper" *ngIf="!splash && isSignIn">
+        <img src="./assets/icons/new/login/image18@3x.png">
+        <div class="centerPart">
+            <div class="signin-wrapper" >
                 <div class="regular-wrapper">
-                    <input type="email" [(ngModel)]="userName" placeholder="Email">
-                    <input [(ngModel)]="password" type="password" placeholder="Password">
-                    <span (click)="onLogin()">GO!</span>
+                    <form [formGroup]="registerForm" class="form-register" (ngSubmit)="onLogin()">
+                        <div class="form-group">
+                            <input type="text" formControlName="email" class="form-control"
+                                   [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div class="error-message" *ngIf="f.email.errors.required">Email is required</div>
+                                <div class="error-message" *ngIf="f.email.errors.email">Email must be a valid email
+                                    address
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" formControlName="password" class="form-control"
+                                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div class="error-message" *ngIf="f.password.errors.required">Password is required</div>
+                                <div class="error-message" *ngIf="f.password.errors.minlength">Password must be at least
+                                    6 characters
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <span class="start-session-btn" (click)="onLogin()">Start Session</span>
+                    <span class="forgot-message">Forgot your password?</span>
                 </div>
-                <span (click)="goToSignUp()"> Forgot Password</span>
-                <!--                <div class="social">-->
-                <!--                    <button (click)="onFBClick()" class="loginBtn loginBtn&#45;&#45;facebook">-->
-                <!--                        Login with Facebook-->
-                <!--                    </button>-->
-                <!--                </div>-->
-                <span (click)="goToSignUp()"> Create an account</span>
+                <span class="create-account" (click)="goToSignUp()"> Create an account</span>
             </div>
         </div>
     </section>

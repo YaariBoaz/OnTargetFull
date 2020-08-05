@@ -9,7 +9,7 @@ section {
   background: #080808de;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 
   .container {
     width: 100%;
@@ -65,3 +65,11 @@ section {
   }
 }
 
+.btnClose {
+  width: 40vw;
+  border-radius: 8px;
+  height: 8vh;
+  background: $black_two;
+  color: white;
+  font-size: 6vw;
+}

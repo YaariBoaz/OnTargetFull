@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StepperSelectionEvent} from '@angular/cdk/stepper';
 import {MatHorizontalStepper, MatStepper} from '@angular/material/stepper';
@@ -14,16 +14,19 @@ import {Subscription} from 'rxjs';
 export class SignupWizardComponent implements OnInit {
     @ViewChild(MatHorizontalStepper, {static: true}) stepper: MatHorizontalStepper;
 
-    isLinear = false;
+    isLinear = true;
+
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
-    selectedIndex = 0;
     thirdFormGroup: FormGroup;
+    fourthGroup: FormGroup;
+
+    selectedIndex = 0;
     isInThirdStep = false;
     profile: any;
     private subscription: Subscription;
 
-    constructor(private platform: Platform, private formBuilder: FormBuilder, private router: Router, private ref: ChangeDetectorRef) {
+    constructor(private platform: Platform, private formBuilder: FormBuilder, private router: Router, private ref: ChangeDetectorRef, private zone: NgZone) {
         document.addEventListener('backbutton', (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -39,36 +42,34 @@ export class SignupWizardComponent implements OnInit {
 
     ngOnInit() {
         this.firstFormGroup = this.formBuilder.group({
-            firstCtrl: ['', Validators.required]
+            firstCtrl: []
         });
         this.secondFormGroup = this.formBuilder.group({
-            secondCtrl: ['', Validators.required]
+            secondCtrl: []
         });
         this.thirdFormGroup = this.formBuilder.group({
-            thirdCtrl: ['', Validators.required]
+            thirdCtrl: []
         });
 
     }
 
 
     onSelectionChanged($event: StepperSelectionEvent) {
-        console.log('Signup wizard stepper index: ' + $event);
-        if ($event.selectedIndex === 2) {
-            this.isInThirdStep = true;
-        }
         this.selectedIndex = $event.selectedIndex;
     }
 
     onMoveToTargetSearch($event, stepper: MatStepper) {
-        stepper.next();
+        this.zone.run(() => {
+            stepper.next();
+        });
     }
 
     finishedWizard() {
 
     }
 
-    onBackToLogin(index) {
-
+    onBackToLogin() {
+        this.router.navigateByUrl('');
     }
 
 

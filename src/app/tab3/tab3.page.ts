@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Tab3Service} from './tab3.service';
 import {InventoryModel} from '../shared/models/InventoryModel';
 import {ProfileImageService} from '../shared/services/profile-image.service';
+import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
 
 @Component({
     selector: 'app-tab3',
@@ -17,6 +18,8 @@ import {ProfileImageService} from '../shared/services/profile-image.service';
     styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
+    @Output() move: EventEmitter<any> = new EventEmitter<any>();
+
     croppedImagepath;
     profile;
     images;
@@ -31,6 +34,8 @@ export class Tab3Page implements OnInit {
     isEditMode = false;
     selectTarget = false;
     showHeader = false;
+    isFromWizard: boolean;
+
     constructor(private storageService: StorageService,
                 private ref: ChangeDetectorRef,
                 private crop: Crop,
@@ -38,10 +43,13 @@ export class Tab3Page implements OnInit {
                 private alertCtrl: AlertController,
                 private tab3Service: Tab3Service,
                 public domSanitizer: DomSanitizer,
-                private profileImageService: ProfileImageService
+                private profileImageService: ProfileImageService,
+                private wizardService: WizardService
     ) {
         if (this.router.url === '/home/tabs/tab3') {
             this.showHeader = true;
+        } else {
+            this.isFromWizard = true;
         }
     }
 
@@ -161,10 +169,20 @@ export class Tab3Page implements OnInit {
 
     selectImage() {
         const image = this.profileImageService.selectImage();
-        //this.registerForm.value.img_path = this.profileImageService.selectImage();
+        // this.registerForm.value.img_path = this.profileImageService.selectImage();
         this.ref.detectChanges();
     }
 
 
+    finishWizard() {
+        this.wizardService.registerUser();
+        this.move.emit();
+    }
+
+    onHideTargets() {
+        this.selectTarget = false;
+        this.myTarget = this.storageService.getItem('target');
+
+    }
 }
 

@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 export class TargetListComponent implements OnInit {
     isScanning = false;
     devices = [];
+    @Output()
+    close = new EventEmitter();
 
     constructor(private ble: BleService, private storageService: StorageService, private router: Router) {
     }
@@ -20,14 +22,18 @@ export class TargetListComponent implements OnInit {
         this.isScanning = true;
         setTimeout(() => {
             this.isScanning = false;
-            this.devices = this.ble.getDevices().filter(o => o.name && o.name.toLowerCase().indexOf('adl') > -1);
+            this.devices = this.ble.getDevices();
         }, 6000);
 
     }
 
     connectBle(device: any) {
         this.storageService.setItem('target', device);
-        this.storageService.setItem('regisered', true);
-        this.router.navigateByUrl('/home/tabs/tab1');
+        this.close.emit();
+
+    }
+
+    closeDialog() {
+        this.close.emit();
     }
 }

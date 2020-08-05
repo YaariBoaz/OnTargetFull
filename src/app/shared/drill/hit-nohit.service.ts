@@ -18,7 +18,6 @@ export class HitNohitService {
     resetDrillSubject = new BehaviorSubject(false);
     drillFinished = false;
     timeConfig: any;
-    shots = [];
     DEFUALT_PAGEDATA = {
         distanceFromCenter: 0,
         splitTime: '',
@@ -64,6 +63,8 @@ export class HitNohitService {
     overallDate: Entry = null;
     currentSplitTime: string;
     currenOverTime: string;
+    doubleSplits = [];
+    finalSplits = [];
 
     constructor(private shootingService: ShootingService,
                 private storageService: StorageService,
@@ -97,12 +98,8 @@ export class HitNohitService {
     initStats() {
         this.pageData.counter = 0;
         this.drillIsFinished = false;
-        this.shots = [];
-        this.stats = [];
         this.summaryObject = this.DEFAULT_SUMMARY_OBJECT;
         this.drillFinished = false;
-        this.shots = [];
-        this.stats = [];
         if (!this.pageData) {
             this.pageData = this.pageData;
         } else {
@@ -168,26 +165,27 @@ export class HitNohitService {
             updatedData.trainingHistory = [];
         }
 
+        const splits = [];
+        this.stats.forEach(stat => {
+            splits.push(stat.pageData.splitTime);
+        });
+
 
         const drill: DrillModel = {
             date: new Date().toJSON(),
             drillType: this.drill.drillType,
             day: new Date().toLocaleString('en-us', {weekday: 'long'}),
-            hits: this.shots.length,
+            hits: this.stats.length,
             points: this.pageData.points,
             range: this.drill.range,
-            recommendation: null,
-            shots: this.shots,
-            timeLimit: null,
+            splitTimes: this.finalSplits,
             totalShots: this.drill.numOfBullets,
             userId: this.userService.getUserId(),
-            avgSplit: this.summaryObject.split,
-            disFromCenter: this.summaryObject.distanceFromCenter
         };
 
 
         updatedData.trainingHistory.push({
-            date: new Date().toString(),
+            drillDate: new Date().toString(),
             day: new Date().toLocaleString('en-us', {weekday: 'long'}),
             drillType: this.drill.drillType,
             totalShots: this.drill.numOfBullets,
@@ -195,20 +193,20 @@ export class HitNohitService {
             timeLimit: null,
             splitAvg: this.pageData.splitTime,
             points: this.pageData.points,
-            avgDistanceFromCenter: this.pageData.distanceFromCenter,
-            shots: this.shots,
+            avgDistFromCenter: this.pageData.distanceFromCenter,
+            hits: this.stats,
             stata: this.stats,
             summaryObject: this.summaryObject,
             recommendation: null
         });
 
-        // updatedData.hitRatioChart.totalHits += this.shots.length;
-        // updatedData.hitRatioChart.totalShots += this.drill.numOfBullets;
-        // updatedData = this.updateBestResults(updatedData);
-
         this.storageService.setItem('homeData', updatedData);
-        // this.apiService.syncData(drill).subscribe(data => {
-        // });
+        this.apiService.syncData(drill).subscribe(data => {
+            this.apiService.getDashboardData(this.userService.getUserId()).subscribe((data1) => {
+                this.storageService.setItem('homeData', data1);
+            });
+        });
+
     }
 
     resetDrill() {
@@ -218,6 +216,8 @@ export class HitNohitService {
 
 
     getTotalAndSplitTimes(): SplitAndTotalTime {
+        const obj = this.doubleSplits.find(o => o.str === this.currentSplitTime);
+        this.finalSplits.push(obj.mili);
         return {
             splitTime: this.currentSplitTime,
             totalTime: this.currenOverTime
@@ -283,55 +283,34 @@ export class HitNohitService {
         });
     }
 
-    getElapsedTime(entry: Entry): TimeSpan {
-        let totalSeconds = Math.floor((new Date().getTime() - entry.created.getTime()) / 1000);
+    getElapsedTime(entry: Entry): string {
+        const duration: any = new Date().getTime() - entry.created.getTime();
 
-        let hours = 0;
-        let minutes = 0;
-        let seconds = 0;
+        // tslint:disable-next-line:radix
+        const milliseconds: any = parseInt(String((duration % 1000) / 100));
+        let seconds: any = Math.floor((duration / 1000) % 60);
+        let minutes: any = Math.floor((duration / (1000 * 60)) % 60);
+        let hours: any = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-        if (totalSeconds >= 3600) {
-            hours = Math.floor(totalSeconds / 3600);
-            totalSeconds -= 3600 * hours;
-        }
+        hours = (hours < 10) ? '0' + hours : hours;
+        minutes = (minutes < 10) ? '0' + minutes : minutes;
+        seconds = (seconds < 10) ? '0' + seconds : seconds;
+        this.doubleSplits.push({mili: duration, str: minutes + ':' + seconds + '.' + milliseconds});
+        return minutes + ':' + seconds + '.' + milliseconds;
 
-        if (totalSeconds >= 60) {
-            minutes = Math.floor(totalSeconds / 60);
-            totalSeconds -= 60 * minutes;
-        }
-
-        seconds = totalSeconds;
-
-        if (hours < 10) {
-            // @ts-ignore
-            hours = '0' + hours;
-        }
-        if (minutes < 10) {
-            // @ts-ignore
-            minutes = '0' + minutes;
-        }
-        if (seconds < 10) {
-            // @ts-ignore
-            seconds = '0' + seconds;
-        }
-        return {
-            hours,
-            minutes,
-            seconds
-        };
     }
 
     startSplitInterval() {
         this.splitSubscription = interval(100).subscribe(() => {
-            const timespan: TimeSpan = this.getElapsedTime(this.splitDate);
-            this.currentSplitTime = timespan.minutes + ':' + timespan.seconds;
+            const timespan = this.getElapsedTime(this.splitDate);
+            this.currentSplitTime = timespan;
         });
     }
 
     startOverallInterval() {
         this.overallSubscription = interval(1000).subscribe(() => {
-            const timespan: TimeSpan = this.getElapsedTime(this.overallDate);
-            this.currenOverTime = timespan.minutes + ':' + timespan.seconds;
+            const timespan = this.getElapsedTime(this.overallDate);
+            this.currenOverTime = timespan;
         });
     }
 }
@@ -344,14 +323,14 @@ export interface SplitAndTotalTime {
 
 
 export class TimeSpan {
-    hours: number;
     minutes: number;
     seconds: number;
+    milliseconds: number;
 
-    constructor(hours, minuts, seconds) {
-        this.hours = hours;
+    constructor(minuts, seconds, milliseconds) {
         this.minutes = minuts;
         this.seconds = seconds;
+        this.milliseconds = milliseconds;
     }
 
     toString() {

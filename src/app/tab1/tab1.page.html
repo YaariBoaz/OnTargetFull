@@ -111,10 +111,7 @@
                     <p class="titleSummary">Fast Avg Split</p>
                     <p class="valueSummary">{{data.bestScores.avgSplit | number : '1.2-2'}}</p>
                 </div>
-                <div class="text-container">
-                    <p class="titleSummary">Best Avg Distance</p>
-                    <p class="valueSummary">{{data.bestScores.avgDistance | number : '1.2-2'}}</p>
-                </div>
+
                 <div class="text-container">
                     <p class="titleSummary">Last Shooting Session</p>
                     <p class="valueSummary">{{data.bestScores.lastShooting | date:'fullDate'}}</p>
@@ -127,8 +124,7 @@
                 <p class="training-log-header"> Training Log</p>
             </div>
             <div class="history-container" *ngIf="historicTrainings">
-                <div class="train-line" *ngFor="let train of historicTrainings | keyvalue"
-                >
+                <div class="train-line" *ngFor="let train of historicTrainings | keyvalue">
                     <div class="month">
                         <h1>{{train.key}}</h1>
                         <div *ngFor="let trainInmonth of train.value | keyvalue"

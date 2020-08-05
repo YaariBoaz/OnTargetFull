@@ -1,30 +1,32 @@
-<div class="main-container" #stepper>
-    <mat-horizontal-stepper [linear]="isLinear" #stepper (selectionChange)="onSelectionChanged($event)">
-        <mat-step [stepControl]="firstFormGroup">
-            <div class="terms-and-condition">
-                <ng-template matStepLabel>Terms And Condition</ng-template>
-                <img src="../../../../assets/ontarget.png">
-                <p class="terms-condition-text">By using this application, You agree to the
-                    <span class="link">Terms And Condition</span> and<br>
-                    <span class="link">Privacy Policy</span>
-                </p>
-
-                <button class="btn-accept-continue" mat-button matStepperNext>Accept and continue</button>
-            </div>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-            <ng-template matStepLabel>Register</ng-template>
-            <div *ngIf="isInThirdStep" class="disable-wrapper"></div>
-            <app-signup [class.isInThirdStep]="isInThirdStep === true" (back)="onBackToLogin($event)"
-                        (move)="onMoveToTargetSearch($event,stepper)"></app-signup>
-        </mat-step>
-        <mat-step [stepControl]="thirdFormGroup">
-            <ng-template matStepLabel>Personal Details</ng-template>
-            <app-tab3></app-tab3>
-        </mat-step>
-    </mat-horizontal-stepper>
-    <div (click)="onBackToLogin()" class="back-btn-float">
-        <img src="./assets/icons/exit.png">
-        <span>Back To Login</span>
+<section>
+    <p class="sign-up-title"> Sign Up</p>
+    <div class="main-container" #stepper>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper (selectionChange)="onSelectionChanged($event)">
+            <mat-step [completed]="false" [stepControl]="firstFormGroup">
+                <div class="terms-and-condition">
+                    <img src="./assets/icons/new/wizard/paper@3x.png">
+                    <p class="terms-condition-text">
+                        By using this application, You agree to the
+                        <span class="link">Terms And Condition</span> and<br>
+                        <span class="link">Privacy Policy</span>
+                    </p>
+                    <div class="btn-wrapper">
+                        <button class="btn-accept-continue" mat-button matStepperNext>Accept and continue</button>
+                        <button class="btn-cancel-continue" mat-button matStepperNext>Accept and continue</button>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step [completed]="false" [stepControl]="secondFormGroup">
+                <app-signup (back)="onBackToLogin()"
+                            (move)="onMoveToTargetSearch($event,stepper)"></app-signup>
+            </mat-step>
+            <mat-step [completed]="false" [stepControl]="thirdFormGroup">
+                <app-tab3 (move)="onMoveToTargetSearch($event,stepper)"></app-tab3>
+            </mat-step>
+            <!--            <mat-step [completed]="false" [stepControl]="fourthGroup">-->
+            <!--                <ng-template matStepLabel>Summary</ng-template>-->
+            <!--                <app-wizard-summary></app-wizard-summary>-->
+            <!--            </mat-step>-->
+        </mat-horizontal-stepper>
     </div>
-</div>
+</section>

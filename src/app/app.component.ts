@@ -3,8 +3,7 @@ import {Platform} from '@ionic/angular';
 import {InitService} from './shared/services/init.service';
 import {LoadingController} from '@ionic/angular';
 import {BleService} from './shared/services/ble.service';
-import {transition, trigger, useAnimation} from '@angular/animations';
- import {Plugins} from '@capacitor/core';
+import {Plugins} from '@capacitor/core';
 
 const {SplashScreen} = Plugins;
 

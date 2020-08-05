@@ -6,7 +6,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  .sentences{
+
+  .sentences {
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -15,20 +16,21 @@
 
 .bg-image {
   /* The image used */
-  background-image: url("../../../../assets/images/bg/loginBG.png");
+  background-image: url("../../../../assets/icons/new/login/PHOTO-2020-07-29-14-22-43@3x.png");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.shadow{
-  position: absolute;
-  width: 100%;
+
+.shadow {
+  mask-image: url("../../../../assets/icons/new/login/Mask Group 2@3x.png");
   height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(74, 74, 74, 0.7);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .wrapper {
   position: absolute;
   height: 100%;
@@ -56,39 +58,24 @@
       text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
 
       .regular-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 45%;
+        height: 250px;
         align-items: center;
+        padding: 0 16px;
 
         input {
-          width: 70%;
           padding: 1em;
           border-radius: 8px;
           text-align: center;
+          width: 343px;
+          height: 56px;
+          border: white;
         }
-
-        span {
-          border: 1px solid $army-brown;
-          border-radius: 8px;
-          width: 30%;
-          text-align: center;
-          height: 45px;
-          color: $army-brown;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-
-      span {
-        color: white;
-        font-size: 7vw;
-        font-weight: lighter;
       }
     }
   }
@@ -152,4 +139,42 @@
 }
 
 
+.form-register {
+  width: 100%;
+  height: 142px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.error-message {
+  color: darkorange;
+  padding: 0.5em;
+}
+
+.start-session-btn {
+  width: 343px;
+  height: 56px;
+  background-color: #ce564b;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.forgot-message {
+  color: white;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.15px;
+  width: 100%;
+  text-align: right;
+}
+
+.create-account {
+  color: white;
+  font-size: 24px;
+  letter-spacing: 0.19px;
+}

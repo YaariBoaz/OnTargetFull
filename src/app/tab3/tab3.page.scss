@@ -107,7 +107,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 25%;
+    height: 20%;
 
     img {
       height: 20vw;
@@ -127,7 +127,7 @@ header {
 
   .user-details {
     display: flex;
-    height: 30%;
+    height: 25%;
 
     .read-mode {
       display: flex;
@@ -170,7 +170,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 35%;
+    height: 30%;
 
     div {
       display: flex;
@@ -315,4 +315,21 @@ hr {
   margin-top: 2vh;
   font-size: 4vw;
   font-weight: 100;
+}
+
+.finish-wizard {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background-color: #3b3838;
+    width: 40%;
+     height: 7vw;
+    margin: 0.5em auto;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 8px;
+  }
 }

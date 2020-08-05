@@ -79,10 +79,6 @@ export class SightlistComponent implements OnInit {
         };
         this.storageService.setItem('inventory', inventory);
 
-        this.apiService.setInventory(inventory).subscribe(data => {
-            this.storageService.setItem('inventory', data);
-            this.close.emit();
-        });
 
         this.storageService.setItem('sightList', this.mySights);
         this.close.emit();

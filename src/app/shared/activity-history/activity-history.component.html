@@ -58,7 +58,7 @@
                 </div>
                 <div class="stats">
                     <div class="hits">
-                        <div><h1>{{drill.shots.length}}</h1>/<h2>{{drill.totalShots}}</h2></div>
+                        <div><h1>{{drill.shotItems.length}}</h1>/<h2>{{drill.numberOfBullets}}</h2></div>
                         <span class="hint">HITS</span>
                     </div>
                     <div class="range">
@@ -66,100 +66,60 @@
                         <span class="hint">RANGE</span>
                     </div>
                 </div>
-                <div class="description">
-                    <p>Recommendation</p>
-                    <span>{{drill.recommendation.Recommendation}}</span>
-                </div>
                 <hr style="height: 1px;width: 40%;background: #cdcdcd;">
 
                 <mat-accordion *ngIf="drill &&  drill.drillType">
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                + See your shots
+                                + See your stats
                             </mat-panel-title>
                         </mat-expansion-panel-header>
-                        <div class="panel">
-                            <div class="main-image" #screen [ngSwitch]="drill.drillType">
-                                <img *ngSwitchCase="'Bullseye'" #container src="../../../assets/images/bullseye_red.png"
-                                     alt="bullsEye"
-                                >
-                                <img
-                                    #container src="../../../../assets/icons/Hostage.png" alt="Hostage"
-                                    *ngSwitchCase="'Hostage'">
-                                <img
-                                    #container src="../../../assets/images/bullseye_red.png"
-                                    *ngSwitchCase="'Zero'">
-                                <div *ngFor="let shot of drill.shots let i = index"
-                                     style="position: absolute;height:100%;width:100%">
-                                    <img src="../../../assets/images/bullethit.png"
-                                         style="position: absolute;height:35px;width:35px"
-                                         [style.top.px]=shot.y
-                                         [style.right.px]=shot.x
-                                    >
-                                    <span style="position: absolute;height:20px;width:20px"
-                                          [style.top.px]=(shot.y+9)
-                                          [style.right.px]=(shot.x+2)>{{i + 1}}</span>
-                                </div>
-                            </div>
-                        </div>
                         <div class="stats-container">
                             <div class="header-wrapper">
                                 <p class="title">Bullets</p>
-                                <p class="title">AVG-DIS</p>
                                 <p class="title">Time</p>
                                 <p class="title">Split</p>
-                                <p class="title">Points</p>
                             </div>
-                            <div class="details" *ngFor="let stat of drill.stata">
+                            <div class="details" *ngFor="let stat of drill.shotItems">
                                 <div class="box">
-                                    <p>{{stat.pageData.counter}}</p>
+                                    <p>{{stat.shotNumber}}</p>
                                 </div>
-
-                                <div class="box">
-                                    <p>{{stat.pageData.distanceFromCenter | number : '1.2-2'}}</p>
-                                </div>
-
                                 <div class="box">
                                     <p>
-                                        {{stat.interval}}
+                                        {{stat.time}}
                                     </p>
                                 </div>
-
                                 <div class="box">
-                                    <p>{{stat.pageData.splitTime}}</p>
-                                </div>
-
-                                <div class="box">
-                                    <p>{{stat.pageData.points | number : '1.2-2'}}</p>
+                                    <p>{{stat.timeSplit}}</p>
                                 </div>
                             </div>
                             <div class="divider">
                                 <hr>
                             </div>
-                            <div class="summmaryRow" *ngIf="drill.summaryObject">
-                                <div class="box">
-                                    <p>{{drill.summaryObject.counter}}</p>
-                                </div>
+<!--                            <div class="summmaryRow" *ngIf="drill.summaryObject">-->
+<!--                                <div class="box">-->
+<!--                                    <p>{{drill.summaryObject.counter}}</p>-->
+<!--                                </div>-->
 
-                                <div class="box">
-                                    <p>{{drill.summaryObject.distanceFromCenter | number : '1.2-2'}}</p>
-                                </div>
+<!--                                <div class="box">-->
+<!--                                    <p>{{drill.summaryObject.distanceFromCenter | number : '1.2-2'}}</p>-->
+<!--                                </div>-->
 
-                                <div class="box">
-                                    <p>
-                                        {{drill.summaryObject.totalTime}}
-                                    </p>
-                                </div>
+<!--                                <div class="box">-->
+<!--                                    <p>-->
+<!--                                        {{drill.summaryObject.totalTime}}-->
+<!--                                    </p>-->
+<!--                                </div>-->
 
-                                <div class="box">
-                                    <p>{{drill.summaryObject.split}}</p>
-                                </div>
+<!--                                <div class="box">-->
+<!--                                    <p>{{drill.summaryObject.split}}</p>-->
+<!--                                </div>-->
 
-                                <div class="box">
-                                    <p>{{drill.summaryObject.points | number : '1.2-2'}}</p>
-                                </div>
-                            </div>
+<!--                                <div class="box">-->
+<!--                                    <p>{{drill.summaryObject.points | number : '1.2-2'}}</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
                     </mat-expansion-panel>
                 </mat-accordion>

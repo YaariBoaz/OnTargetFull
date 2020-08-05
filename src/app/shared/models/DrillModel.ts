@@ -7,11 +7,7 @@ export interface DrillModel {
     hits: number;
     totalShots: number;
     range: number;
-    timeLimit: string;
     points: number;
-    recommendation: HistoryValueItemReccomendationModel;
-    shots: Array<HistoryValueItemShotModel>;
+    splitTimes: Array<string>;
     userId: string;
-    avgSplit: number;
-    disFromCenter: number;
 }

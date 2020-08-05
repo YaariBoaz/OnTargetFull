@@ -128,11 +128,6 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     async onTargetChosen(target) {
-        const confirm = await this.confirmationAlert('Do you want to set this target as defualt?');
-        if (confirm) {
-            this.storageService.setItem('target', target);
-        }
-
         this.selectedTarget = target;
         this.shootingService.chosenTarget = target;
         this.bleService.connect(target.id);
@@ -140,11 +135,11 @@ export class SelectTargetModalComponent implements OnInit {
 
     startTraining() {
         this.hitNohitService.resetDrill();
-        this.router.navigateByUrl('/tab2/select');
+        this.router.navigateByUrl('home/tabs/tab2/select');
     }
 
     onBackPressed() {
-        this.router.navigateByUrl('/tab2');
+        this.router.navigateByUrl('home/tabs/tab2');
     }
 
     onGetTargets() {

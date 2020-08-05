@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatAccordion, MatExpansionModule, MatMenuModule} from '@angular/material';
 import {Camera} from '@ionic-native/camera/ngx';
 import {Tab3Service} from '../tab3/tab3.service';
+import {ActivityHistoryComponent} from '../shared/activity-history/activity-history.component';
 
 @NgModule({
     imports: [
@@ -26,12 +27,12 @@ import {Tab3Service} from '../tab3/tab3.service';
             {path: '', component: Tab1Page},
             {
                 path: 'activity-history',
-                loadChildren: () => import('../shared/activity-history/activity-history.module.js').then(m => m.ActivityHistoryModule)
+                component: ActivityHistoryComponent
             },
         ])
     ],
     providers: [Camera, Tab3Service],
-    declarations: [Tab1Page],
+    declarations: [Tab1Page, ActivityHistoryComponent],
 
 })
 export class Tab1PageModule {

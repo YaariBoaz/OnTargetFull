@@ -11,13 +11,13 @@
     </header>
     <div class="user-img-name">
         <div *ngIf="!profile.img" class="edit-container" (click)="selectImage()">
-            Upload Image
+            <img src="assets/avatar.svg">
         </div>
         <div class="image-and-name">
             <div *ngIf="profile.img" class="round-border">
                 <img [src]="domSanitizer.bypassSecurityTrustUrl(profile.img)">
             </div>
-            <div *ngIf="profile.firstName" class="name"> {{profile.firstName}} {{ profile.lastName}}</div>
+            <div *ngIf="profile.first_name" class="name"> {{profile.first_name}} {{ profile.last_name}}</div>
         </div>
     </div>
     <hr>
@@ -33,7 +33,7 @@
             </div>
             <div>
                 <h3> Country</h3>
-                <h3 class="value"> {{profile.conutry}}</h3>
+                <h3 class="value"> {{profile.country}}</h3>
             </div>
             <div>
                 <h3> State</h3>
@@ -89,12 +89,8 @@
             <img src="../../assets/icons/gun-shooting-target.png">
             <h5> SIGHT </h5>
             <div *ngIf="mySights" class="gunsWrapper" (click)="onSelectSights()">
-                <div>
-                    <div *ngFor="let sight of mySights;let i = index">
-                        {{sight}}
-                        <span class="coma" *ngIf="i < mySights.length-1">,</span>
-                    </div>
-                </div>
+                <label>{{mySights[0]}}</label>
+                <label *ngIf="mySights.length>1"> ... </label>
             </div>
             <span (click)="onSelectSights()" *ngIf="!mySights"> Select Default Sight</span>
         </div>
@@ -106,10 +102,13 @@
             <span (click)="onSelectTarget()" *ngIf="myTarget"> {{myTarget.name}}</span>
         </div>
     </div>
+    <div *ngIf="isFromWizard" class="finish-wizard">
+        <button (click)="finishWizard()"> Finish Wizard</button>
+    </div>
 </section>
 <app-gunlist (close)="onHidetWeapons()" class="gunlist" *ngIf="isGunList"></app-gunlist>
 <app-sightlist (close)="onHideSights()" class="gunlist" *ngIf="isSightList"></app-sightlist>
-<app-target-list *ngIf="selectTarget"></app-target-list>
+<app-target-list (close)="onHideTargets()" *ngIf="selectTarget"></app-target-list>
 
 
 
