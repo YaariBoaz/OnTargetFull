@@ -18,10 +18,10 @@
                 <span class="amount" *ngIf="points">{{points}}</span>
                 <p>points</p>
             </div>
-            <div *ngIf="!profile.picture" class="avatar">
-                <h1>{{profile.initials}}</h1>
+            <div *ngIf="!profile?.picture" class="avatar">
+                <h1>{{profile?.initials}}</h1>
             </div>
-            <div *ngIf="profile.img" class="avatar">
+            <div *ngIf="profile?.img" class="avatar">
                 <img [src]="profile.img"/>
             </div>
             <div class="place">

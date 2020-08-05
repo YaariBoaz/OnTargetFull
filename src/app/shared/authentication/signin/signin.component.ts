@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
         private formBuilder: FormBuilder,
         private userService: UserService
     ) {
-
+        this.router.navigateByUrl('/home/tabs/tab1');
 
     }
 

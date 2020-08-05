@@ -34,9 +34,11 @@
                  class="target-rectangle regular"
                  (click)="onTargetChosen(target)">{{target.name}}</div>
         </div>
-        <button [class.btn-disable]="!this.selectedTarget ||!this.selectedTarget.targetConnected"
-                [disabled]="!this.selectedTarget || !this.selectedTarget.targetConnected"
-                class="startSession" (click)="startTraining()"> START SESSION
+<!--        <button [class.btn-disable]="!this.selectedTarget ||!this.selectedTarget.targetConnected"-->
+<!--                [disabled]="!this.selectedTarget || !this.selectedTarget.targetConnected"-->
+<!--                class="startSession" (click)="startTraining()"> START SESSION-->
+<!--        </button>-->
+        <button class="startSession" (click)="startTraining()"> START SESSION
         </button>
     </div>
     <ng-template #noTargets>

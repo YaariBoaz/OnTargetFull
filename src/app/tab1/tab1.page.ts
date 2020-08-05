@@ -87,29 +87,33 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         if (this.data.trainingHistory) {
             this.extractPoints();
         }
-        this.hits = this.data.hitRatioChart.totalHits;
-        this.shots = this.data.hitRatioChart.totalShots;
-
+        if (this.data.hitRatioChart) {
+            this.hits = this.data.hitRatioChart.totalHits;
+            this.shots = this.data.hitRatioChart.totalShots;
+        }
 
 
         // this.tab1Service.setTextInCenterForHitRatio(this.hitRatioChart);
         console.log('---DATA--- ' + this.data);
-        this.data.trainingHistory.forEach(train => {
-            const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
-            if (!(this.historicTrainings[monthName])) {
-                this.historicTrainings[monthName] = {};
-            }
-            const tempDate = new Date(train.drillDate);
-            const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
-            const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
-            if ((!this.historicTrainings[monthName][key])) {
-                this.historicTrainings[monthName][key] = {
-                    data: [],
-                    day
-                };
-            }
-            this.historicTrainings[monthName][key].data.push(train);
-        });
+        if (this.data.trainingHistory) {
+            this.data.trainingHistory.forEach(train => {
+                const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
+                if (!(this.historicTrainings[monthName])) {
+                    this.historicTrainings[monthName] = {};
+                }
+                const tempDate = new Date(train.drillDate);
+                const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
+                const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
+                if ((!this.historicTrainings[monthName][key])) {
+                    this.historicTrainings[monthName][key] = {
+                        data: [],
+                        day
+                    };
+                }
+                this.historicTrainings[monthName][key].data.push(train);
+            });
+        }
+
     }
 
     datesAreOnSameDay(first, second) {

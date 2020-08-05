@@ -59,7 +59,7 @@ section.target-selection {
         justify-content: space-between;
         align-items: center;
         padding: 0.5em;
-        border-bottom: 1px solid  #80808082;
+        border-bottom: 1px solid #80808082;
 
         .target-and-image {
           display: flex;
@@ -218,21 +218,6 @@ ion-icon {
   border: 1px solid black;
 }
 
-
-.custom-loading {
-  div.loading-wrapper {
-    background-image: url("../../../assets/loader.gif");
-  }
-}
-
-.loading-wrapper {
-  background-image: url("../../../assets/loader.gif") !important;
-}
-
-.loading-wrapper.sc-ion-loading-md {
-  background-image: url("../../../assets/loader.gif") !important;
-
-}
 
 .noPrimary {
   display: flex;
