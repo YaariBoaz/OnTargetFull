@@ -23,7 +23,6 @@
 @import "~@ionic/angular/css/flex-utils.css";
 @import "assets/colors";
 
-
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
@@ -44,7 +43,6 @@
   font-weight: 300;
   src: url("assets/fonts/Roboto-Thin.ttf");
 }
-
 
 body, html {
   margin: 0;
@@ -75,10 +73,6 @@ body, html {
   display: flex;
 }
 
-
-
-
-
 .mat-step-icon {
   background-color: $warm_grey !important;
 }
@@ -87,15 +81,6 @@ body, html {
   background-color: $deep_sea_blue !important;
   border-color: #ce564b !important;
 }
-
-.mat-horizontal-content-container {
-  height: 100% !important;
-  padding: 0 !important;
-  background: white;
-}
-
-
-
 
 .mat-step-label {
   color: $warm_grey !important;
@@ -124,29 +109,39 @@ mat-step-header {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.mat-horizontal-stepper-header-container{
+.mat-horizontal-stepper-header-container {
   background-color: white !important;
-   padding-left: 32px;
+  padding-left: 32px;
   padding-right: 32px;
 }
 
 .mat-stepper-horizontal-line {
   border-top-width: 1px !important;
   border-top-style: solid !important;
-  flex: auto !important;
   height: 2px !important;
   margin: 0 -16px !important;
   min-width: 32px !important;
   background: #cccccc !important;
 }
 
-
 .scroll-content {
   padding-bottom: 0 !important;
 }
 
-
-.mat-stepper-horizontal{
+.mat-stepper-horizontal {
   height: 100% !important;
 }
 
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus  {
+  background-color: white !important;
+}
