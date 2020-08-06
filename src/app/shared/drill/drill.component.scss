@@ -177,6 +177,7 @@ section.drill-results {
 
     div.results-table {
       width: 353px;
+      position: relative;
 
       table {
         display: block;
@@ -296,6 +297,25 @@ section.drill-results {
           text-align: right;
           margin: 0;
         }
+      }
+
+
+      p.flashing-number {
+        width: 152px;
+        font-size: 265px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.17;
+        letter-spacing: 3.42px;
+        text-align: center;
+        color: rgba(206, 86, 75, 0.81);
+        margin: 0;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     }
   }
