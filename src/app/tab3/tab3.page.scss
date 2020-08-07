@@ -1,335 +1,587 @@
 @import "../../assets/colors";
 
-.tab3-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+:host {
+  overflow-y: scroll;
 }
 
-header {
+section.profile {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: $headerBG;
-  height: 10%;
+  width: 100%;
+  height: 100%;
 
-  div.personal-titles {
+  label.image {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
-    padding: 0.2em 0;
+    justify-content: space-around;
 
-    p {
-      margin: 0;
-      color: $profile-bg;
-      font-size: 6vw;
+    input {
+      visibility: hidden;
+      display: none;
     }
 
-    p.weapon {
-      color: $profile-bg;
-      font-weight: 300;
-      font-size: 4vw;
-    }
-  }
-
-  div.personal-widget {
-    background-color: white;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-
-    width: 50%;
-    height: 11vw;
-
-    div.avatar {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 100%;
-      background-color: $profile-bg;
-
-      width: 15vw;
-      height: 15vw;
+    div.circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 63px;
+      border: solid 2px #d4d4d4;
+      background-color: #f2f2f2;
 
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
+      position: relative;
 
-      h1 {
-        color: white;
-        text-align: center;
-        margin: 0;
-        font-size: 6vw;
+      svg {
+        width: 30.5px;
+        height: 24px;
+      }
+
+      div.add {
+        width: 21px;
+        height: 21px;
+        opacity: 1;
+        border-radius: 63px;
+        border: solid 1px #ffffff;
+        background-color: #71e076;
+        color: #ffffff;
+
+        position: absolute;
+        bottom: 5px;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
       }
     }
+  }
 
-    div.points,
-    div.place {
+  div.form {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0 16px;
+
+    div.row {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      box-sizing: border-box;
-      padding: 0.2em;
-      width: 30%;
-      color: $profile-bg;
+      margin-bottom: 24px;
 
-      span.amount {
-        color: $profile-bg;
-        font-weight: 700;
-        font-size: 4vw;
+      &:first-of-type {
+        margin-top: 24px;
       }
 
       p {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 1.88px;
+        color: rgba(0, 0, 0, 0.87);
         margin: 0;
-        font-size: 3vw;
-      }
-    }
-  }
-}
-
-
-.wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: $white_three;
-
-  .user-img-name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 20%;
-
-    img {
-      height: 20vw;
-      border-radius: 50%;
-      width: 20vw;
-    }
-
-    img.camera-icon {
-      height: 25vw;
-      padding: 1.5em;
-    }
-
-    h5 {
-      margin: 0;
-    }
-  }
-
-  .user-details {
-    display: flex;
-    height: 25%;
-
-    .read-mode {
-      display: flex;
-      justify-content: space-between;
-      width: 70%;
-      flex-direction: column;
-
-    }
-
-    .edit-mode {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      justify-content: space-between;
-    }
-
-
-    .edit-input-wrapper {
-      width: 70vw;
-      justify-content: space-between;
-    }
-
-    div {
-      display: flex;
-      flex-direction: row;
-
-      h3 {
-        margin: 0;
-        padding: 0;
-        padding-left: 15px;
+        width: 40%;
       }
 
-      h3.value {
-        color: $profile-bg;
-      }
-    }
-  }
+      input {
+        width: 106px;
+        height: 40px;
+        border-radius: 4px;
+        border: solid 1px #f2f2f2;
+        background-color: #ffffff;
+        color: rgba(0, 0, 0, 0.87);
 
-  .default-drill {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 30%;
+        box-sizing: border-box;
+        padding: 12px;
 
-    div {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding-left: 10px;
-      padding-right: 10px;
-      align-items: center;
-
-      img {
-        width: 12vw;
-        border-radius: 100%;
-        border: 1px solid $profile-bg;
-      }
-
-      span {
-        padding: 0.5em;
-        border: 1px solid;
+        font-size: 14px;
+        line-height: 1.14;
+        letter-spacing: 0.24px;
         text-align: left;
-        padding-left: 10px;
-        font-size: 3vw;
-        background: black;
-        color: white;
-        border-radius: 6px;
-        min-width: 200px;
-        text-align: center;
+      }
+
+      select {
+        width: 214px;
+        height: 40px;
+        border-radius: 4px;
+        border: solid 1px #f2f2f2;
+        background-color: #ffffff;
+        color: rgba(0, 0, 0, 0.87);
+        box-sizing: border-box;
+        padding: 12px;
+
+        font-size: 14px;
+        line-height: 1.14;
+        letter-spacing: 0.24px;
+        text-align: left;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        background-image: linear-gradient(45deg, transparent 50%, #7f7f7f 50%),
+        linear-gradient(135deg, #7f7f7f 50%, transparent 50%),
+        linear-gradient(to right, #f2f2f2, #f2f2f2);
+        background-position: calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0;
+        background-size: 5px 5px, 5px 5px, 1px 40px;
+        background-repeat: no-repeat;
+
+        &:focus {
+          background-image: linear-gradient(45deg, #f2f2f2 50%, transparent 50%),
+          linear-gradient(135deg, transparent 50%, #f2f2f2 50%),
+          linear-gradient(to right, #ccc, #ccc);
+          background-position: calc(100% - 15px) 1em,
+          calc(100% - 20px) 1em,
+          calc(100% - 2.5em) 0.5em;
+          background-size: 5px 5px,
+          5px 5px,
+          1px 1.5em;
+          background-repeat: no-repeat;
+          border-color: #f2f2f2;
+          outline: 0;
+        }
+      }
+
+      a {
+        font-size: 16px;
+        line-height: 1.19;
+        letter-spacing: 0.21px;
+        color: #4d89f5;
+        width: 50%;
       }
     }
+
   }
-}
 
-hr {
-  width: 93%;
-  height: 1px;
-  background: #00000085;
-}
+  div.weapon-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    box-sizing: border-box;
+    padding: 0 16px;
 
 
-.gunsWrapper {
-  border: 1px solid;
-  height: 45px;
+    div.container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      margin-bottom: 24px;
+      height: 40px;
 
-  .coma {
-    border: 0 !important;
-    margin: 0;
-    padding: 0 !important;
+      div.title-and-icon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        svg {
+          width: 25px;
+          height: 25px;
+          margin-right: 0.5em;
+        }
+
+        p {
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 1.88px;
+          color: rgba(0, 0, 0, 0.87);
+          margin: 0;
+        }
+
+      }
+
+      &:first-of-type {
+        margin-top: 24px;
+      }
+    }
+
+    button.select-button {
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 1.25px;
+
+      border-radius: 4px;
+      border: solid 1px #ce564b;
+      background-color: #ffffff;
+      color: #ce564b;
+      width: 214px;
+      height: 100%;
+    }
   }
-}
+  div.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 16px;
+    margin-bottom: 33px;
 
-.gunlist {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.isDisabled {
-  pointer-events: none;
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
-
-.camera {
-  width: 15vw !important;
-  height: 15vw !important;
-  border-radius: 0px !important;
-}
-
-
-.image-and-name {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.round-border {
-  border: 0.5vw solid #70524b;
-  position: relative;
-  height: 20vw;
-  border-radius: 50%;
-  width: 20vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ion-icon {
-    position: absolute;
-    bottom: 0;
-    border: 1px solid lightblue;
-    border-radius: 20px;
-    padding: 0.1em;
-    color: blue;
-    right: -12px;
-    background: white;
+    button.confirm {
+      margin-bottom: 10px;
+    }
   }
-}
 
-.menuBtn {
-  position: absolute;
-  top: 2%;
-  right: 2%;
-  background-color: transparent;
+  button.confirm {
+    height: 56px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    background-color: #ce564b;
 
-  span {
-    font-size: 40px;
-    font-weight: bold;
-    color: $profile-bg;
-  }
-}
-
-.edit-btn {
-  background-color: #3b3838;
-  width: 60%;
-  height: 8vw;
-  height: 8vw;
-  margin: 0.5em auto;
-  color: white;
-  font-size: 1.2em;
-}
-
-.add-ip {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-
-  label {
-    color: $warm_grey;
-  }
-}
-
-
-.edit-icon {
-  position: absolute !important;
-  height: 8vw !important;
-  width: 8vw !important;
-  top: 10% !important;
-}
-
-.name {
-  margin-top: 2vh;
-  font-size: 4vw;
-  font-weight: 100;
-}
-
-.finish-wizard {
-  height: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  button {
-    background-color: #3b3838;
-    width: 40%;
-     height: 7vw;
-    margin: 0.5em auto;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 1.25px;
     color: white;
-    font-size: 1.2em;
-    border-radius: 8px;
+  }
+  button.cancel {
+    height: 56px;
+    border-radius: 4px;
+    border: solid 1px #ce564b;
+    background-color: #ffffff;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 1.25px;
+    color: #ce564b;
   }
 }
+
+//.tab3-container {
+//  height: 100%;
+//  width: 100%;
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//header {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//  justify-content: space-evenly;
+//  background-color: $headerBG;
+//  height: 10%;
+//
+//  div.personal-titles {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    box-sizing: border-box;
+//    padding: 0.2em 0;
+//
+//    p {
+//      margin: 0;
+//      color: $profile-bg;
+//      font-size: 6vw;
+//    }
+//
+//    p.weapon {
+//      color: $profile-bg;
+//      font-weight: 300;
+//      font-size: 4vw;
+//    }
+//  }
+//
+//  div.personal-widget {
+//    background-color: white;
+//    border-radius: 25px;
+//    display: flex;
+//    align-items: center;
+//    justify-content: space-between;
+//    position: relative;
+//
+//    width: 50%;
+//    height: 11vw;
+//
+//    div.avatar {
+//      position: absolute;
+//      top: 50%;
+//      left: 50%;
+//      transform: translate(-50%, -50%);
+//      border-radius: 100%;
+//      background-color: $profile-bg;
+//
+//      width: 15vw;
+//      height: 15vw;
+//
+//      display: flex;
+//      flex-direction: column;
+//      align-items: center;
+//      justify-content: space-around;
+//
+//      h1 {
+//        color: white;
+//        text-align: center;
+//        margin: 0;
+//        font-size: 6vw;
+//      }
+//    }
+//
+//    div.points,
+//    div.place {
+//      display: flex;
+//      flex-direction: column;
+//      align-items: center;
+//      box-sizing: border-box;
+//      padding: 0.2em;
+//      width: 30%;
+//      color: $profile-bg;
+//
+//      span.amount {
+//        color: $profile-bg;
+//        font-weight: 700;
+//        font-size: 4vw;
+//      }
+//
+//      p {
+//        margin: 0;
+//        font-size: 3vw;
+//      }
+//    }
+//  }
+//}
+//
+//
+//.wrapper {
+//  height: 100%;
+//  width: 100%;
+//  display: flex;
+//  flex-direction: column;
+//  background-color: $white_three;
+//
+//  .user-img-name {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    justify-content: space-evenly;
+//    height: 20%;
+//
+//    img {
+//      height: 20vw;
+//      border-radius: 50%;
+//      width: 20vw;
+//    }
+//
+//    img.camera-icon {
+//      height: 25vw;
+//      padding: 1.5em;
+//    }
+//
+//    h5 {
+//      margin: 0;
+//    }
+//  }
+//
+//  .user-details {
+//    display: flex;
+//    height: 25%;
+//
+//    .read-mode {
+//      display: flex;
+//      justify-content: space-between;
+//      width: 70%;
+//      flex-direction: column;
+//
+//    }
+//
+//    .edit-mode {
+//      display: flex;
+//      flex-direction: column;
+//      width: 100%;
+//      justify-content: space-between;
+//    }
+//
+//
+//    .edit-input-wrapper {
+//      width: 70vw;
+//      justify-content: space-between;
+//    }
+//
+//    div {
+//      display: flex;
+//      flex-direction: row;
+//
+//      h3 {
+//        margin: 0;
+//        padding: 0;
+//        padding-left: 15px;
+//      }
+//
+//      h3.value {
+//        color: $profile-bg;
+//      }
+//    }
+//  }
+//
+//  .default-drill {
+//    display: flex;
+//    flex-direction: column;
+//    justify-content: space-around;
+//    height: 30%;
+//
+//    div {
+//      display: flex;
+//      flex-direction: row;
+//      justify-content: space-between;
+//      padding-left: 10px;
+//      padding-right: 10px;
+//      align-items: center;
+//
+//      img {
+//        width: 12vw;
+//        border-radius: 100%;
+//        border: 1px solid $profile-bg;
+//      }
+//
+//      span {
+//        padding: 0.5em;
+//        border: 1px solid;
+//        text-align: left;
+//        padding-left: 10px;
+//        font-size: 3vw;
+//        background: black;
+//        color: white;
+//        border-radius: 6px;
+//        min-width: 200px;
+//        text-align: center;
+//      }
+//    }
+//  }
+//}
+//
+//hr {
+//  width: 93%;
+//  height: 1px;
+//  background: #00000085;
+//}
+//
+//
+//.gunsWrapper {
+//  border: 1px solid;
+//  height: 45px;
+//
+//  .coma {
+//    border: 0 !important;
+//    margin: 0;
+//    padding: 0 !important;
+//  }
+//}
+//
+//.gunlist {
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  height: 100%;
+//  width: 100%;
+//}
+//
+//.isDisabled {
+//  pointer-events: none;
+//  border: 1px solid #999999;
+//  background-color: #cccccc;
+//  color: #666666;
+//}
+//
+//.camera {
+//  width: 15vw !important;
+//  height: 15vw !important;
+//  border-radius: 0px !important;
+//}
+//
+//
+//.image-and-name {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//}
+//
+//.round-border {
+//  border: 0.5vw solid #70524b;
+//  position: relative;
+//  height: 20vw;
+//  border-radius: 50%;
+//  width: 20vw;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//
+//  ion-icon {
+//    position: absolute;
+//    bottom: 0;
+//    border: 1px solid lightblue;
+//    border-radius: 20px;
+//    padding: 0.1em;
+//    color: blue;
+//    right: -12px;
+//    background: white;
+//  }
+//}
+//
+//.menuBtn {
+//  position: absolute;
+//  top: 2%;
+//  right: 2%;
+//  background-color: transparent;
+//
+//  span {
+//    font-size: 40px;
+//    font-weight: bold;
+//    color: $profile-bg;
+//  }
+//}
+//
+//.edit-btn {
+//  background-color: #3b3838;
+//  width: 60%;
+//  height: 8vw;
+//  height: 8vw;
+//  margin: 0.5em auto;
+//  color: white;
+//  font-size: 1.2em;
+//}
+//
+//.add-ip {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: baseline;
+//
+//  label {
+//    color: $warm_grey;
+//  }
+//}
+//
+//
+//.edit-icon {
+//  position: absolute !important;
+//  height: 8vw !important;
+//  width: 8vw !important;
+//  top: 10% !important;
+//}
+//
+//.name {
+//  margin-top: 2vh;
+//  font-size: 4vw;
+//  font-weight: 100;
+//}
+//
+//.finish-wizard {
+//  height: 10%;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//
+//  button {
+//    background-color: #3b3838;
+//    width: 40%;
+//     height: 7vw;
+//    margin: 0.5em auto;
+//    color: white;
+//    font-size: 1.2em;
+//    border-radius: 8px;
+//  }
+//}

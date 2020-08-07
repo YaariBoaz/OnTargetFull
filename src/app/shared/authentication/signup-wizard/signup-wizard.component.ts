@@ -14,6 +14,14 @@ import {Subscription} from 'rxjs';
 export class SignupWizardComponent implements OnInit {
     @ViewChild(MatHorizontalStepper, {static: true}) stepper: MatHorizontalStepper;
 
+    public stepOneComplete: boolean;
+    public stepTwoComplete: boolean;
+    public stepThreeComplete: boolean;
+
+    public stepOneActive: boolean;
+    public stepTwoActive: boolean;
+    public stepThreeActive: boolean;
+
     isLinear = true;
 
     firstFormGroup: FormGroup;
@@ -41,6 +49,12 @@ export class SignupWizardComponent implements OnInit {
 
 
     ngOnInit() {
+        this.stepOneActive = true;
+
+        // this.stepThreeActive = true;
+        // this.stepTwoComplete = true;
+        // this.stepOneComplete = true;
+
         this.firstFormGroup = this.formBuilder.group({
             firstCtrl: []
         });
@@ -73,4 +87,25 @@ export class SignupWizardComponent implements OnInit {
     }
 
 
+    activeNextStep() {
+        this.stepOneComplete = true;
+        this.stepTwoActive = true;
+    }
+
+    backToFirst() {
+        this.stepThreeComplete = false;
+        this.stepThreeActive = false;
+
+        this.stepTwoComplete = false;
+        this.stepTwoActive = false;
+
+        this.stepOneActive = true;
+        this.stepOneComplete = false;
+
+    }
+
+    completeStepTwo() {
+        this.stepTwoComplete = true;
+        this.stepThreeActive = true;
+    }
 }

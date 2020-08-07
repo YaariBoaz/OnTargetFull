@@ -58,6 +58,7 @@ export class Tab3Page implements OnInit {
     }
 
     initActctions() {
+
         this.profile = this.storageService.getItem('profileData');
         const inventory: InventoryModel = this.storageService.getItem('inventory');
         if (!inventory) {
@@ -77,6 +78,10 @@ export class Tab3Page implements OnInit {
                 this.profile = profile;
             }
         });
+
+        // Remove this
+        this.profile.email = 'evi@adl.solutions';
+        this.profile.age = 35;
     }
 
     ngOnInit(): void {

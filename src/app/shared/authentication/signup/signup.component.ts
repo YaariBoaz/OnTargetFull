@@ -16,9 +16,11 @@ import {WizardService} from '../signup-wizard/wizard.service';
     styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-
     @Output() back: EventEmitter<any>;
     @Output() move: EventEmitter<any> = new EventEmitter<any>();
+    @Output() backToFirst: EventEmitter<any> = new EventEmitter<any>();
+    @Output() stepTwoComplete: EventEmitter<any> = new EventEmitter<any>();
+
     registerForm: FormGroup;
     submitted = false;
     errorMessage;
@@ -166,5 +168,14 @@ export class SignupComponent implements OnInit {
 
     changeState($event: Event) {
 
+    }
+
+
+    returnToPreviusStage() {
+        this.backToFirst.emit(true);
+    }
+
+    continueToThird() {
+        this.stepTwoComplete.emit(true);
     }
 }
