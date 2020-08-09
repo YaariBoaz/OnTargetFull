@@ -3,16 +3,14 @@ import {IonSlides, Platform} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {UserService} from '../shared/services/user.service';
 import {NetworkService} from '../shared/services/network.service';
-import {LineChartMetaData, lineChartMetaData} from './charts/line';
 import {StorageService} from '../shared/services/storage.service';
 import {DashboardModel} from '../shared/models/dashboard-model';
-import {DoghnuChartMetaData, doghnuChartMetaData} from './charts/doghnut';
 import {HistoryModel} from '../shared/models/HistoryModel';
-import {HitrationDataModel, Tab1Service} from './tab1-service.service';
+import {Tab1Service} from './tab1-service.service';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import {TabsService} from '../tabs/tabs.service';
+import {Chart} from 'chart.js';
 
 @Component({
     selector: 'app-tab1',
@@ -21,6 +19,16 @@ import {TabsService} from '../tabs/tabs.service';
 })
 export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('slides', {static: false}) slides: IonSlides;
+    @ViewChild('lineChart', {static: true}) lineChart;
+    @ViewChild('scatter', {static: true}) scatter;
+    @ViewChild('radio', {static: true}) radio;
+
+    line: any;
+    scatterChartIns;
+    radioChartInst;
+
+    colorArray: any;
+
     private hitRatiochart: am4charts.PieChart;
     private rateOfFireChart: am4charts.XYChart;
 
@@ -33,6 +41,11 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         height: 10
 
     };
+    slideOpts = {
+        slidesPerView: 1,
+        spaceBetween: 0
+    };
+
     private hasConnection: boolean;
     private data: DashboardModel;
     historicTrainings = {};
@@ -54,6 +67,173 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         this.handleOfflineScenario();
         this.tabsService.$notifyTab1.subscribe(() => {
             this.handleOfflineScenario();
+        });
+        this.createLineChart();
+        this.createScatterChart();
+        this.createRadioChart();
+
+
+    }
+
+    createLineChart() {
+        this.line = new Chart(this.lineChart.nativeElement, {
+            type: 'line',
+            data: {
+                labels: [100, 250, 200, 450, 300, 600],
+                datasets: [
+                    {
+                        data: [100, 250, 200, 450, 300, 600],
+                        label: 'Africa',
+                        borderColor: '#ce564b',
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                elements: {
+                    line: {
+                        tension: 0,
+                        borderWidth: 2,
+                    },
+                    point: {
+                        radius: 0
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                responsive: true,
+                title: {
+                    display: false,
+                },
+                scales: {
+                    xAxes: [{
+                        display: false,
+
+                    }],
+                    yAxes: [{
+                        display: false,
+
+                    }]
+                }
+            }
+
+        });
+    }
+
+    createScatterChart() {
+        this.scatterChartIns = new Chart(this.scatter.nativeElement, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                        label: 'Scatter Dataset',
+                        borderColor: '#ce564b',
+                        pointBackgroundColor: '#ce564b',
+                        fill: false,
+                        data: [
+                            {
+                                x: 1,
+                                y: 0
+                            },
+                            {
+                                x: 0,
+                                y: 2
+                            },
+                            {
+                                x: 3,
+                                y: 1
+                            },
+                            {
+                                x: 4,
+                                y: 2.5
+                            },
+                            {
+                                x: 5,
+                                y: 1
+                            },
+                            {
+                                x: 6,
+                                y: 0
+                            }
+
+                        ]
+                    }
+                ]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                responsive: true,
+                title: {
+                    display: false,
+                },
+                elements: {
+                    point: {
+                        radius: 5,
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 25,
+                        right: 5,
+                        bottom: 20,
+                        top: 15
+                    }
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            type: 'linear',
+                            position: 'bottom',
+                            display: false,
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            display: false,
+                        }
+                    ]
+                }
+            }
+        });
+    }
+
+    createRadioChart() {
+        this.radioChartInst = new Chart(this.radio.nativeElement, {
+            type: 'doughnut',
+            data: {
+                labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
+                datasets: [
+                    {
+                        borderColor: '#1C00ff00',
+                        label: 'Population (millions)',
+                        backgroundColor: ['#ce564b', '#d4d4d4'],
+                        data: [200, 200]
+                    }
+                ]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                responsive: true,
+                title: {
+                    display: false,
+                },
+                scales: {
+                    xAxes: [{
+                        display: false,
+
+                    }],
+                    yAxes: [{
+                        display: false,
+
+                    }]
+                },
+                cutoutPercentage: 90
+            }
         });
     }
 
