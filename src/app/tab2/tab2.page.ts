@@ -12,7 +12,6 @@ import {TabsService} from '../tabs/tabs.service';
 })
 export class Tab2Page implements OnInit {
     @ViewChild('slides', {static: false}) slides;
-
     public selectedDrillType = 'Hit/NoHit';
     slideOpts = {
         slidesPerView: 2.1,

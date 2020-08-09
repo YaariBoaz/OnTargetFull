@@ -5,458 +5,273 @@ section.dashboard {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  color: white;
-  background-color: $white_three;
-  overflow-y: auto;
+  position: relative;
 
-  p {
-    margin: 0;
+  background-image: url("/assets/dashboard-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    &.name {
-      color: darkgoldenrod;
-      font-size: 1.2em;
+  div.menu {
+    position: absolute;
+    top: 50px;
+    right: 5px;
+
+    button {
+      font-size: 35px;
     }
   }
 
-  header {
+  h3 {
+    font-size: 40px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.18;
+    letter-spacing: 0.52px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.87);
+
+    padding: 31px 0 38px 42px;
+  }
+
+  div.profile {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    background-color: $headerBG;
-    height: 20vh;
-    padding: 0.5em;
-
-    div.personal-titles {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-sizing: border-box;
-      padding: 0.2em 0;
-
-      p {
-        margin: 0;
-        color: $profile-bg;
-        font-size: 6vw;
-      }
-
-      p.weapon {
-        color: $profile-bg;
-        font-weight: 300;
-        font-size: 4vw;
-        padding: 0.5em;
-      }
-    }
-
-    div.personal-widget {
-      background-color: white;
-      border-radius: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-
-      width: 50%;
-      height: 11vw;
-
-      div.avatar {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 100%;
-        background-color: $profile-bg;
-
-        width: 15vw;
-        height: 15vw;
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-
-        h1 {
-          color: white;
-          text-align: center;
-          margin: 0;
-          font-size: 6vw;
-        }
-
-        img {
-          border-radius: 50%;
-          height: 15vw;
-          width: 15vw;
-        }
-      }
-
-      div.points,
-      div.place {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-sizing: border-box;
-        padding: 0.2em;
-        width: 30%;
-        color: $profile-bg;
-
-        span.amount {
-          color: $profile-bg;
-           font-size: 3vw;
-        }
-
-        p {
-          margin: 0;
-          font-size: 3vw;
-        }
-      }
-    }
-  }
-
-  // Only bg
-  div.container-background {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: $white_three;
-    overflow-y: auto;
-  }
-
-  div.gray {
-    background-color: rgba(231, 231, 231, 0.8);
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    color: white;
-  }
-
-  div.slider-stats {
     box-sizing: border-box;
-    padding: 0.5em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    div.chart-and-stats {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-      padding-bottom: 6vw;
+    padding: 0 16px;
+
+    div.avatar {
+      width: 75px;
+      height: 75px;
+      border-radius: 38px;
+      margin-right: 26px;
+
+      background-image: url("/assets/avatar.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
-    div.stats-precision,
     div.stats {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-      padding-left: 15px;
+      justify-content: space-between;
 
-      h1 {
-        margin: 0;
-        color: $profile-bg;
-        font-weight: 400;
-        font-size: 6.5vw;
+      div.text-and-icon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div.container {
+          width: 24px;
+          height: 24px;
+          border-radius: 5px;
+          -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+          background-color: #363636;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+
+          svg {
+            fill: white;
+            stroke: white;
+          }
+          margin-right: 8px;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.14;
+          letter-spacing: 2.18px;
+          text-align: left;
+          color: rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
+  }
+
+  div.slides {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 34px;
+
+    div.slide-container {
+      width: 235px;
+      height: 261px;
+      border-radius: 20px;
+
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      background-color: #e4e4e4;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      box-sizing: border-box;
+      padding: 30px 43px;
+
+      div.chart-container {
+        width: 141px;
+        height: 141px;
+      }
+
+      &.center {
+        div.chart-container {
+          background-image: url("/assets/taget-fadded.svg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
       }
 
       p {
         margin: 0;
-        color: #b9b9b9;
-        font-size: 5vw;
-        font-weight: 300;
+        font-size: 12px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.17;
+        letter-spacing: 1.88px;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.8);
+      }
 
-        b {
-          color: $army-brown;
-          font-size: 7vw;
-          font-weight: 400;
+      p.middle {
+        font-size: 16px;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.19;
+        letter-spacing: normal;
+        text-align: left;
+        color: rgba(0, 0, 0, 0.8);
+        padding-bottom: 19px;
+
+        &.floating {
+          position: absolute;
+          top: 160px;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          font-size: 16px;
+          font-weight: 300;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.19;
+          letter-spacing: normal;
+          text-align: left;
+          color: rgba(0, 0, 0, 0.8);
         }
       }
+
     }
 
-    .rateOfFireChartContainer,
-    div.hitRatioChartContainer {
+  }
 
-      div.lie {
-        border-radius: 100%;
-        background-color: white;
-        width: 75%;
-        height: 100%;
-        box-sizing: border-box;
-        padding: 1em;
+  div.static-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    padding-top: 17px;
+    padding-bottom: 29px;
+
+    div.image-container {
+      width: 163px;
+      height: 161px;
+
+      border-radius: 20px;
+      backdrop-filter: blur(13.6px);
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      background-color: #e4e4e4;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      p {
+        font-size: 13px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.15;
+        letter-spacing: normal;
+        text-align: left;
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
+
+  div.date {
+    display: flex;
+    flex-direction: column;
+
+    div.month {
+      display: flex;
+      align-items: center;
+      margin-bottom: 19px;
+
+      padding-left: 26px;
+
+      div.icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.8);
+
+        margin-right: 8px;
 
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-      }
 
-      div.sumPrecent {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    .rateOfFireChartContainer {
-      width: 80%;
-      align-self: center;
-    }
-
-    /* ARROWS */
-    .stats-rateOfFire {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-      padding-left: 15px;
-
-      span {
-        color: darkgray;
-      }
-
-      h1 {
-        margin: 0;
-        color: $profile-bg;
-        font-weight: 400;
-        font-size: 9.5vw;
       }
 
       p {
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.17;
+        letter-spacing: 1.88px;
+        color: rgba(0, 0, 0, 0.8);
         margin: 0;
-        color: #b9b9b9;
-        font-size: 5vw;
-        font-weight: 300;
+      }
+    }
+
+    div.day {
+      box-sizing: border-box;
+      padding-left: 56px;
+
+      display: flex;
+      align-items: center;
+
+      p {
+        margin: 0;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: 0.24px;
+        color: rgba(0, 0, 0, 0.8);
 
         b {
-          color: $cerulean;
-          font-size: 7vw;
-          font-weight: 400;
+          padding-right: 16px;
         }
       }
     }
-
   }
 
-  div.stats-precision {
-    p {
-      color: $coral_pink !important;
-      font-size: 7vw !important;
-      font-weight: 400 !important;
-    }
-
-    span {
-      color: #838383;
-      font-size: 4vw;
-    }
-  }
-
-  div.summaryContainer {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 0.5em;
-    justify-content: space-evenly;
-
-    div.text-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      padding: 0.5em;
-
-      p.titleSummary {
-        color: $warm_grey;
-        font-size: 0.8rem;
-      }
-
-      p.valueSummary {
-        color: $profile-bg;
-        font-size: 1.1rem;
-      }
-    }
-  }
-
-  .stats-text {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    svg {
-      height: 20px;
-      width: 20px;
-    }
-
-    p {
-      color: $black_two;
-      margin: 0;
-      font-size: 4vw;
-      padding-left: 10px;
-    }
-  }
-
-}
-
-.history-container {
-
-  overflow-y: auto;
-
-
-}
-
-.training-log-header {
-  color: #707070;
-  font-size: 7vw;
-  text-align: center;
-  padding: 0.5em;
-}
-
-div.arrow-left,
-div.arrow-right {
-  width: 35px;
-  height: 35px;
-  display: flex !important;
-  justify-content: flex-end;
-
-  svg {
-    width: 35px;
-    height: 35px;
-  }
-}
-
-div.arrow-left {
-  left: 0vw;
-}
-
-div.arrow-right {
-  right: 0vw;
-}
-
-.top-container {
-}
-
-.history-container {
-  background-color: white;
-  padding-top: 20px;
-
-  .train-line {
-    display: flex;
-    justify-content: space-around;
-    color: black;
-    align-items: center;
-
-    .right-side-and-train-info-container {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 90%;
-
-      .right-side {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        height: 20vw;
-        width: 20%;
-
-        .circle {
-          border: 2px solid #e9d7bf;
-          height: 4vw;
-          width: 4vw;
-          border-radius: 100%;
-        }
-
-        hr {
-          background-color: #cbcbcb;
-          height: 3vw;
-          width: 0.5vw;
-          margin: 0;
-        }
-      }
-
-      .train-info {
-        display: flex;
-        flex-direction: column;
-
-        div {
-
-          .date {
-            margin-right: 20px;
-            font-weight: 600;
-            font-size: 5vw;
-          }
-
-          .day {
-            color: #5a5a5a;
-            font-size: 4.8vw;
-          }
-
-          .light-text {
-            color: #848484;
-            font-weight: 100;
-          }
-        }
-      }
-    }
-
-    .arrow-right {
-      svg {
-        height: 6vw;
-        fill: #f0e3d2;
-      }
-    }
-  }
-}
-
-.menuBtn {
-  position: absolute;
-  top: 0px;
-  right: 5px;
-  background-color: transparent;
-
-  span {
-    font-size: 40px;
-    font-weight: bold;
-    color: $profile-bg;
-  }
-}
-
-
-.month {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
-  h1 {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    padding: 0.5em;
-    background: lightgray;
-    font-weight: 800;
-  }
-
-  div {
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.ios-mode {
-  padding-top: 20px !important;
-}
-
-.menuBtniOs {
-  top: 60px;
-}
-
-.precent {
-  color: black;
-  position: absolute;
-  left: 50%;
-  top: 50%;
 }
