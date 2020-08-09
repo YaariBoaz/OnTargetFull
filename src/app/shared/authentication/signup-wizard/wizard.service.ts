@@ -18,6 +18,7 @@ export class WizardService {
     notifyWizardSummaryStart = new BehaviorSubject(false);
     notifyWeaponWasSet = new BehaviorSubject(false);
     notifyScopeWasSet = new BehaviorSubject(false);
+    isFromListScreen = false;
 
     constructor(private apiService: ApiService,
                 private storageService: StorageService,

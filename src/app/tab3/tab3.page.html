@@ -21,7 +21,8 @@
                             <path id="Path_16039"
                                   d="M119.13 130.8a7.125 7.125 0 1 0 5.043 2.087 7.143 7.143 0 0 0-5.043-2.087zm3.942 11.1a5.6 5.6 0 0 1-7.884 0 5.541 5.541 0 0 1-1.623-3.942 5.664 5.664 0 0 1 1.623-3.942 5.541 5.541 0 0 1 3.942-1.623 5.664 5.664 0 0 1 3.942 1.623 5.541 5.541 0 0 1 1.623 3.942 5.424 5.424 0 0 1-1.623 3.942z"
                                   class="cls-258" data-name="Path 16039" transform="translate(-103.884 -124.568)"/>
-                            <circle id="Ellipse_517" cx="1.42" cy="1.42" r="1.42" class="cls-258" data-name="Ellipse 517"
+                            <circle id="Ellipse_517" cx="1.42" cy="1.42" r="1.42" class="cls-258"
+                                    data-name="Ellipse 517"
                                     transform="translate(24.145 6.203)"/>
                         </g>
                     </g>
@@ -30,7 +31,27 @@
             <div class="add">+</div>
         </div>
     </label>
-
+    <div class="do-you-have-target">
+        <div class="top-row">
+            <div class="svg-wrapper">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.01 18.01">
+                    <defs>
+                        <style>.cls-1 {
+                            fill: #fff;
+                        }</style>
+                    </defs>
+                    <title>goal</title>
+                    <path id="goal" class="cls-1"
+                          d="M16.68,4.3l.87-.87a.52.52,0,0,0-.33-.9L15.6,2.4,15.47.78A.54.54,0,0,0,14.9.29a.52.52,0,0,0-.33.16l-.88.87a9,9,0,1,0,3,3ZM14.59,2.93a.52.52,0,0,0,.48.48l.93.08L14.74,4.75l-1.37-.12-.12-1.37L14.51,2ZM10.79,9A1.8,1.8,0,1,1,9,7.21a1.77,1.77,0,0,1,.84.21L8.63,8.63a.52.52,0,0,0,.74.74l1.21-1.21A1.77,1.77,0,0,1,10.79,9ZM10.6,6.65a2.83,2.83,0,1,0,.75.74l1.5-1.5a4.93,4.93,0,1,1-.74-.75Zm4,8a7.94,7.94,0,0,1-11.46-11l.23-.24a8,8,0,0,1,9.55-1.29l-.6.6a.51.51,0,0,0-.15.36V3.1l.07.84a6,6,0,1,0,1.8,1.81l.84.07h.29l0,0h0l0,0h0s0,0,0,0l.6-.59a8,8,0,0,1-1.3,9.54Z"
+                          transform="translate(0 0)"/>
+                </svg>
+            </div>
+            <span class="title">I have my OWN TARGET</span>
+        </div>
+        <p>If you already have your own target, simply connect it to the App, so you don’t need to pair it before every
+            use.</p>
+        <button> Connect My Target</button>
+    </div>
     <div class="form">
         <div class="row">
             <p>AGE</p>
@@ -86,7 +107,11 @@
                 </svg>
                 <p>WEAPON:</p>
             </div>
-            <button class="select-button">SELECT</button>
+            <button *ngIf="!myGuns || myGuns.length === 0" class="select-button" (click)="onSelectWeapons()">SELECT
+            </button>
+            <div class="gunslist" *ngIf="myGuns && myGuns.length > 0" (click)="onSelectWeapons()">
+                {{myGuns.join(', ')}}
+            </div>
         </div>
 
         <div class="container">
@@ -124,7 +149,11 @@
                 </svg>
                 <p>SIGHT:</p>
             </div>
-            <button class="select-button">SELECT</button>
+            <button *ngIf="!mySights || mySights.length === 0" class="select-button" (click)="onSelectSights()">SELECT
+            </button>
+            <div class="gunslist" *ngIf="mySights && mySights.length > 0" (click)="onSelectSights()">
+                {{mySights.join(', ')}}
+            </div>
         </div>
 
         <div class="container">
@@ -165,11 +194,15 @@
                         </g>
                     </g>
                 </svg>
-                <p>AMMO:</p>
+                <p>Target:</p>
             </div>
-            <button class="select-button">SELECT</button>
+            <button *ngIf="!myTarget" class="select-button" (click)="onSelectTarget()">SELECT</button>
+            <div class="gunslist" *ngIf="myTarget" (click)="onSelectTarget()">
+                {{myTarget.name}}
+            </div>
         </div>
     </div>
+
 
     <div class="controls">
         <button class="confirm" (click)="activeNextStep()">ACCEPT AND CONTINUE</button>

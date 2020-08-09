@@ -13,7 +13,6 @@ import {StorageService} from '../shared/services/storage.service';
 import {Camera} from '@ionic-native/Camera/ngx';
 import {File} from '@ionic-native/file/ngx';
 import {Crop} from '@ionic-native/crop/ngx';
-import {TargetListComponent} from './target-list/target-list.component';
 
 // @ts-ignore
 @NgModule({
@@ -24,13 +23,11 @@ import {TargetListComponent} from './target-list/target-list.component';
         SharedModule,
         MatMenuModule,
         // IonicStorageModule.forRoot(),
-        RouterModule.forChild([ {path: '', component: Tab3Page}])
+        RouterModule.forChild([{path: '', component: Tab3Page}])
     ],
     providers: [StorageService, Camera, Crop, File],
-    declarations: [  CDVPhotoLibraryPipe],
-    exports: [
-
-    ],
+    declarations: [CDVPhotoLibraryPipe],
+    exports: [],
     entryComponents: [GunlistComponent, SightlistComponent]
 })
 export class Tab3PageModule {

@@ -1,8 +1,11 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StorageService} from '../../shared/services/storage.service';
 import {InventoryModel} from '../../shared/models/InventoryModel';
 import {UserService} from '../../shared/services/user.service';
 import {ApiService} from '../../shared/services/api.service';
+import {Router} from '@angular/router';
+import {AlertController} from '@ionic/angular';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
     selector: 'app-sightlist',
@@ -26,7 +29,14 @@ export class SightlistComponent implements OnInit {
     mySights = null;
     inventory: InventoryModel;
 
-    constructor(private storageService: StorageService, private userService: UserService, private apiService: ApiService) {
+    constructor(
+        private storageService: StorageService,
+        private userService: UserService,
+        private apiService: ApiService,
+        private router: Router,
+        public dialogRef: MatDialogRef<SightlistComponent>,
+        private changeDetection: ChangeDetectorRef,
+        public alertController: AlertController) {
     }
 
     ngOnInit() {
@@ -39,52 +49,48 @@ export class SightlistComponent implements OnInit {
         this.loadedSightList = this.DEFAULT_SIGHTS;
     }
 
-    filterList($event) {
-        this.initializeItems();
-
-        const searchTerm = $event.srcElement.value;
-
-        if (!searchTerm) {
-            return;
-        }
-
-        this.sightList = this.sightList.filter(currentGoal => {
-            if (currentGoal && searchTerm) {
-                if (currentGoal.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
-
     initializeItems(): void {
         this.sightList = this.loadedSightList;
     }
 
     onBackPressed() {
-
+        this.dialogRef.close();
     }
+
+    async sightWasSelected(item) {
+        const alert = await this.alertController.create({
+            header: 'Duplicate Error',
+            message: item.model + ' is already selected',
+            buttons: ['OK']
+        });
+        await alert.present();
+        }
+
 
     onAddSight(item) {
-        this.mySights.push(item);
+        if (!this.mySights) {
+            this.mySights = [];
+        }
+        if (this.mySights.filter(o => o === item).length === 0) {
+            this.mySights.push(item);
+            let inventory = this.storageService.getItem('inventory');
+            if (!inventory) {
+                inventory = {};
+            }
+            inventory.sight = this.mySights;
+            this.storageService.setItem('inventory', inventory);
+        } else {
+            this.sightWasSelected(item);
+        }
+        this.changeDetection.detectChanges();
     }
 
-    onSaveMySights() {
-
-        const inventory: InventoryModel = {
-            wepons: this.inventory.wepons,
-            sight: this.mySights,
-            userId: this.userService.getUserId()
-        };
-        this.storageService.setItem('inventory', inventory);
-
-
-        this.storageService.setItem('sightList', this.mySights);
-        this.close.emit();
-    }
 
     onRemoveFromList(item: any) {
         this.mySights.splice(this.mySights.indexOf(item), 1);
+    }
+
+    isSightSelected(sight: string) {
+        return this.mySights.includes(sight);
     }
 }

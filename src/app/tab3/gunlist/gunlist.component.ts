@@ -1,9 +1,11 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import {StorageService} from '../../shared/services/storage.service';
 import {ApiService} from '../../shared/services/api.service';
 import {InventoryModel} from '../../shared/models/InventoryModel';
 import {UserService} from '../../shared/services/user.service';
+import {Router} from '@angular/router';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
     selector: 'app-gunlist',
@@ -14,14 +16,18 @@ export class GunlistComponent implements OnInit {
     @Output()
     close = new EventEmitter();
     public goalList: any[];
-    public DEFUALT_GUNS: {};
+    public DEFUALT_GUNS: [];
     models = null;
     myGuns = null;
     private selectedGunType = '';
 
+
     constructor(private storageService: StorageService,
                 public alertController: AlertController,
                 private apiService: ApiService,
+                private changeDetection: ChangeDetectorRef,
+                private router: Router,
+                public dialogRef: MatDialogRef<GunlistComponent>,
                 private userService: UserService) {
     }
 
@@ -35,30 +41,9 @@ export class GunlistComponent implements OnInit {
         this.DEFUALT_GUNS = this.storageService.getItem('gunList');
     }
 
-    filterList($event) {
-        const searchTerm = $event.srcElement.value;
-        if (!searchTerm) {
-            return;
-        }
-
-        this.goalList = this.goalList.filter(currentGoal => {
-            if (currentGoal && searchTerm) {
-                if (currentGoal.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
-
 
     onBackPressed() {
-
-    }
-
-    onShowModel(item) {
-        this.selectedGunType = item.key;
-        this.models = this.DEFUALT_GUNS[item.key];
+        this.dialogRef.close();
     }
 
     async gunWasSelected(item) {
@@ -85,17 +70,18 @@ export class GunlistComponent implements OnInit {
         if (!this.myGuns) {
             this.myGuns = [];
         }
-        if (this.myGuns.filter(o => o === item.model).length === 0) {
-            this.myGuns.push(item.model);
+        if (this.myGuns.filter(o => o === item).length === 0) {
+            this.myGuns.push(item);
+            let inventory = this.storageService.getItem('inventory');
+            if (!inventory) {
+                inventory = {};
+            }
+            inventory.wepons = this.myGuns;
+            this.storageService.setItem('inventory', inventory);
         } else {
             this.gunWasSelected(item);
         }
-        this.DEFUALT_GUNS [this.selectedGunType].forEach(model => {
-            if (model.model === item.model) {
-                model.isSelected = !model.isSelected;
-            }
-        });
-        this.models = null;
+        this.changeDetection.detectChanges();
     }
 
     onSaveWeapons() {
@@ -111,5 +97,9 @@ export class GunlistComponent implements OnInit {
 
     removeMyGun(item: any) {
         this.myGuns.splice(this.myGuns.indexOf(item), 1);
+    }
+
+    isWeaponSelected(weapon) {
+        return this.myGuns.includes(weapon);
     }
 }

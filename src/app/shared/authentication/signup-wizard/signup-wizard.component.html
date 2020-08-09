@@ -137,7 +137,15 @@
             (backToFirst)="backToFirst($event)">
     </app-signup>
 
-    <app-tab3 (move)="onMoveToTargetSearch($event,stepper)" *ngIf="stepTwoComplete"></app-tab3>
+    <app-tab3 (stepThreeComplete)="completeStepTwo($event)" (move)="onMoveToTargetSearch($event,stepper)" *ngIf="stepTwoComplete"></app-tab3>
+
+    <div *ngIf="stepFourActive">
+        <img src="assets/icons/right.svg">
+        <p> New account created successfully </p>
+        <p> You will be redirected to the home screen </p>
+        <p> You will be redirected to the home </p>
+        <p> screen in <span>3</span> seconds. </p>
+    </div>
 
 </section>
 

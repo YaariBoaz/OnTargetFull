@@ -5,6 +5,7 @@ import {MatHorizontalStepper, MatStepper} from '@angular/material/stepper';
 import {Router} from '@angular/router';
 import {Platform} from '@ionic/angular';
 import {Subscription} from 'rxjs';
+import {WizardService} from './wizard.service';
 
 @Component({
     selector: 'app-signup-wizard',
@@ -21,6 +22,7 @@ export class SignupWizardComponent implements OnInit {
     public stepOneActive: boolean;
     public stepTwoActive: boolean;
     public stepThreeActive: boolean;
+    public stepFourActive: boolean;
 
     isLinear = true;
 
@@ -33,8 +35,14 @@ export class SignupWizardComponent implements OnInit {
     isInThirdStep = false;
     profile: any;
     private subscription: Subscription;
+;
 
-    constructor(private platform: Platform, private formBuilder: FormBuilder, private router: Router, private ref: ChangeDetectorRef, private zone: NgZone) {
+    constructor(private platform: Platform,
+                private formBuilder: FormBuilder,
+                private router: Router,
+                private ref: ChangeDetectorRef,
+                private zone: NgZone,
+                private wizardService: WizardService) {
         document.addEventListener('backbutton', (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -49,6 +57,9 @@ export class SignupWizardComponent implements OnInit {
 
 
     ngOnInit() {
+        if (this.wizardService.isFromListScreen) {
+
+        }
         this.stepOneActive = true;
 
         // this.stepThreeActive = true;
@@ -107,5 +118,10 @@ export class SignupWizardComponent implements OnInit {
     completeStepTwo() {
         this.stepTwoComplete = true;
         this.stepThreeActive = true;
+    }
+
+    completeStepThree() {
+        this.stepThreeComplete = true;
+        this.stepFourActive = true;
     }
 }

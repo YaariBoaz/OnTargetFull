@@ -1,40 +1,18 @@
-<ion-content>
+<section>
     <header>
-        <ion-icon style="position: absolute;left: 0;padding-left: 10px;" (click)="onSaveMySights()" ios="ios-arrow-back"
-                  md="md-arrow-back"></ion-icon>
-        <h1>Select Sight</h1>
-    </header>
-    <div class="wrapper">
-        <ion-searchbar
-                showcancelbutton=""
-                (ionInput)="filterList($event)"
-        ></ion-searchbar>
-        <div *ngIf="mySights">
-            <div class="allGuns">
-                <img src="../../../assets/icons/rifle.png">
-                <h1>My Sight</h1>
-            </div>
-            <ion-list>
-                <ion-item *ngFor="let item of mySights">
-                    <ion-label>{{ item}}</ion-label>
-                    <ion-icon (click)="onRemoveFromList(item)" ios="ios-close-circle" md="md-close-circle"
-                              size="large"></ion-icon>
-                </ion-item>
-            </ion-list>
-        </div>
         <div>
-            <div class="allGuns">
-                <img src="../../../assets/icons/rifle.png">
-                <h1>All Sights</h1>
-            </div>
-            <ion-list>
-                <ion-item *ngFor="let item of DEFAULT_SIGHTS">
-                    <ion-label (click)="onAddSight(item)">{{ item }}</ion-label>
-                </ion-item>
-            </ion-list>
+            <img (click)="onBackPressed()" src="assets/icons/Arrow%20@3x.png">
+            <span>Select Sight</span>
         </div>
+    </header>
+    <div class="content">
+        <div class="all-weapons-title"> All Sights</div>
+        <div class="weapon-list-wrapper">
+            <div (click)="onAddSight(sight)" class="weapon-list" *ngFor="let sight of DEFAULT_SIGHTS">
+                <span class="weapon-title">{{sight}}</span>
+                <img *ngIf="isSightSelected(sight)" src="assets/icons/Icon%20-%20Check%20Circle%20-%20Filled.svg">
+            </div>
+        </div>
+        <div class="place-holder"></div>
     </div>
-    <div class="saveBtn">
-        <button (click)="onSaveMySights()"> Save</button>
-    </div>
-</ion-content>
+</section>

@@ -1,12 +1,14 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
 import {ShootingService} from '../services/shooting.service';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {StorageService} from '../services/storage.service';
 import {BleService} from '../services/ble.service';
-import {AlertController, LoadingController, ToastController} from '@ionic/angular';
+import {AlertController, LoadingController, Platform, ToastController} from '@ionic/angular';
 import {HitNohitService} from '../drill/hit-nohit.service';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
     selector: 'app-select-target-modal',
@@ -24,6 +26,8 @@ export class SelectTargetModalComponent implements OnInit {
     selectedTarget = null;
     primaryTarget: null;
     private loading: HTMLIonLoadingElement;
+    personalTarget: any;
+    private isFromWizard = false;
 
     constructor(private http: HttpClient,
                 private bleService: BleService,
@@ -31,8 +35,12 @@ export class SelectTargetModalComponent implements OnInit {
                 private shootingService: ShootingService,
                 public loadingController: LoadingController,
                 private hitNohitService: HitNohitService,
+                private screenOrientation: ScreenOrientation,
+                @Inject(MAT_DIALOG_DATA) public data: any,
                 private cd: ChangeDetectorRef,
                 public toastController: ToastController,
+                public dialogRef: MatDialogRef<SelectTargetModalComponent>,
+                private platform: Platform,
                 public aletMdl: AlertController,
                 private router: Router) {
 
@@ -40,6 +48,16 @@ export class SelectTargetModalComponent implements OnInit {
 
 
     ngOnInit() {
+        if (this.data && this.data.isFromWizard) {
+            this.isFromWizard = true;
+        }
+        this.platform.ready().then(() => {
+            this.screenOrientation.unlock();
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
+
+            });
+        });
+
         this.primaryTarget = this.storageService.getItem('target');
         this.myTargets = this.storageService.getItem('ble');
         if (this.myTargets && this.primaryTarget) {
@@ -127,10 +145,9 @@ export class SelectTargetModalComponent implements OnInit {
         await this.loading.present();
     }
 
-    async onTargetChosen(target) {
-        this.selectedTarget = target;
-        this.shootingService.chosenTarget = target;
-        this.bleService.connect(target.id);
+    async onTargetChosen() {
+        this.shootingService.chosenTarget = this.selectedTarget;
+        this.bleService.connect(this.selectedTarget.id);
     }
 
     startTraining() {
@@ -139,7 +156,7 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     onBackPressed() {
-        this.router.navigateByUrl('home/tabs/tab2');
+        this.dialogRef.close();
     }
 
     onGetTargets() {
@@ -180,5 +197,13 @@ export class SelectTargetModalComponent implements OnInit {
             backdropDismiss: true
         });
         await this.loading.present();
+    }
+
+    onTargetSelected(target: any) {
+        this.myTargets.forEach(t => {
+            t.isSelected = true;
+        });
+        target.isSelected = true;
+        this.storageService.setItem('personalTarget', target);
     }
 }

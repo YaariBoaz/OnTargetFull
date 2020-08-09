@@ -1,33 +1,41 @@
 <section class="target-selection">
     <header>
-        <p>Select Target</p>
+        <div>
+            <img (click)="onBackPressed()" src="assets/icons/Arrow%20@3x.png">
+            <span>Select Target</span>
+        </div>
     </header>
-    <div class="target-list-wrapper">
-        <div class="top-bar">
-            <div class="target-image-wifi-wrapper">
-                <div class="target-and-image">
-                    <img src="../../../assets/images/brown_icon_target.png">
-                    <p>Target</p>
-                </div>
-                <div (click)="reScan()" class="connect-to-wifi">
-                    Scan
+    <div class="content">
+        <div *ngIf="personalTarget">
+            <div class="personal-target-title"> Personal Target</div>
+            <div class="personal-target-name">
+                E1n1
+            </div>
+        </div>
+        <hr>
+
+        <div class="ble-img" *ngIf="!myTargets || myTargets.length==0">
+            <img src="assets/icons/Group%20834.svg">
+        </div>
+        <div class="targets-list-container" *ngIf="myTargets.length > 0 ">
+            <div class="targets-list" *ngFor="let target of  myTargets; let i = index">
+                <div class="targets-count"> Traget #{{i}}</div>
+                <div (click)="onTargetSelected(target)" class="target-name">
+                    <span>  {{target.name | uppercase }}</span>
+                    <img *ngIf="target.isSelected" src="assets/icons/Icon%20-%20Check%20Circle%20-%20Filled.svg">
                 </div>
             </div>
         </div>
-        <div class="target-list" *ngIf="myTargets; else noTargets">
-            <div [class.connected]="target.targetConnected === true" *ngFor="let target of myTargets"
-                 class="target-rectangle regular"
-                 (click)="onTargetChosen(target)">{{target.name}}</div>
+
+        <div class="buttons-container" *ngIf="!isFromWizard">
+            <button class="btn-connect" *ngIf="!myTargets ||  myTargets.length === 0" (click)="reScan()"> Scan</button>
+            <button class="btn-connect" *ngIf="myTargets.length > 0" (click)="onTargetChosen()"> Connect</button>
+            <button class="btn-connect" *ngIf="selectedTarget && selectedTarget.targetConnected"
+                    routerLink="[home/tabs/tab2/select]"> Go!
+            </button>
+            <button class="btn-setings"> Bluetooth Settings</button>
         </div>
-        <button class="startSession" (click)="startTraining()"> START SESSION
-        </button>
     </div>
-    <ng-template #noTargets>
-        <div class="noConnection">
-            <p>No Targets Found Please Check Your Connection</p>
-            <img class="no-targets-image" src="../../../assets/images/bg/broken-weapon.svg">
-        </div>
-    </ng-template>
 </section>
 
 

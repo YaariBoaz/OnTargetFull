@@ -5,7 +5,7 @@ import {SharedModule} from '../shared.module';
 
 
 @NgModule({
-    declarations: [SelectTargetModalComponent],
+    declarations: [],
     imports: [
         CommonModule,
         SharedModule

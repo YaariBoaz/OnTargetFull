@@ -11,6 +11,10 @@ import {Tab3Service} from './tab3.service';
 import {InventoryModel} from '../shared/models/InventoryModel';
 import {ProfileImageService} from '../shared/services/profile-image.service';
 import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
+import {MatDialog} from '@angular/material';
+import {GunlistComponent} from './gunlist/gunlist.component';
+import {SightlistComponent} from './sightlist/sightlist.component';
+import {SelectTargetModalComponent} from '../shared/select-target-modal/select-target-modal.component';
 
 @Component({
     selector: 'app-tab3',
@@ -19,7 +23,7 @@ import {WizardService} from '../shared/authentication/signup-wizard/wizard.servi
 })
 export class Tab3Page implements OnInit {
     @Output() move: EventEmitter<any> = new EventEmitter<any>();
-
+    @Output() stepThreeComplete: EventEmitter<any> = new EventEmitter<any>();
     croppedImagepath;
     profile;
     images;
@@ -44,7 +48,8 @@ export class Tab3Page implements OnInit {
                 private tab3Service: Tab3Service,
                 public domSanitizer: DomSanitizer,
                 private profileImageService: ProfileImageService,
-                private wizardService: WizardService
+                private wizardService: WizardService,
+                public dialog: MatDialog
     ) {
         if (this.router.url === '/home/tabs/tab3') {
             this.showHeader = true;
@@ -61,6 +66,7 @@ export class Tab3Page implements OnInit {
 
         this.profile = this.storageService.getItem('profileData');
         const inventory: InventoryModel = this.storageService.getItem('inventory');
+        const target = this.storageService.getItem('personalTarget');
         if (!inventory) {
             this.myGuns = null;
             this.mySights = null;
@@ -68,7 +74,9 @@ export class Tab3Page implements OnInit {
             this.myGuns = inventory.wepons;
             this.mySights = inventory.sight;
         }
-        this.myTarget = this.storageService.getItem('target');
+        if (target) {
+            this.myTarget = target;
+        }
         if (!this.profile) {
             this.profile = {};
         }
@@ -88,80 +96,33 @@ export class Tab3Page implements OnInit {
         this.initActctions();
     }
 
-
-    /*
-          SOCIAL MEDIA SHARE CODE
-
-
-        // shareEmail(item) {
-        //     const body = ' Dear ' + item.data.fullName + '.' + '\r\n' +
-        //         'It was great fun shooting with you at the range.' + '\r\n' +
-        //         'We attached your session from today for you to keep, share and see our capabilities.' + '\r\n' +
-        //         'Please visit our website ( https://www.adlsmartshooting.com/ ) and contact us for any more questions.' + '\r\n' +
-        //         'don\'t forget to follow us on Instagram and tag @adlontarget' + '\r\n' +
-        //         'Best regards.';
-        //
-        //     this.storage.get('adl-contacts').then((storageData) => {
-        //         this.emailComposer.isAvailable().then((available: boolean) => {
-        //             if (available) {
-        //                 const email = {
-        //                     to: item.data.email,
-        //                     subject: 'Your results from ADL Smart Shooting Target',
-        //                     body,
-        //                     attachments: [
-        //                         item.urlForUpload
-        //                     ],
-        //                 };
-        //
-        //                 this.emailComposer.open(email);
-        //             }
-        //         });
-        //     });
-        // }
-
-        // shareInstagram(item) {
-        //     this.socialSharing.shareViaInstagram('Hello', item.urlForUpload).then(() => {
-        //
-        //     }).catch((e) => {
-        //         alert(e);
-        //         // Sharing via email is not possible
-        //     });
-        //
-        // }
-        //
-        // shareFacebook(item) {
-        //     this.socialSharing.shareViaFacebook('This is My Shots..', item.urlForUpload, item.urlForUpload).then(() => {
-        //
-        //     });
-        // }
-    */
-
-
-    onRefresh() {
-
-    }
-
     onSelectWeapons() {
-        this.isGunList = true;
-    }
+        const dialogRef = this.dialog.open(GunlistComponent, {
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+            height: '100%',
+            width: '100%',
+            panelClass: 'dialog-bg'
+        });
 
-    onHidetWeapons() {
-        const inventory: InventoryModel = this.storageService.getItem('inventory');
-        this.isGunList = false;
-        this.myGuns = inventory.wepons;
+        dialogRef.afterClosed().subscribe(result => {
+            this.myGuns = this.storageService.getItem('inventory').wepons;
+        });
     }
 
     onSelectSights() {
-        this.isSightList = true;
+        const dialogRef = this.dialog.open(SightlistComponent, {
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+            height: '100%',
+            width: '100%',
+            panelClass: 'dialog-bg'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.mySights = this.storageService.getItem('inventory').sight;
+        });
     }
-
-
-    onHideSights() {
-        const inventory: InventoryModel = this.storageService.getItem('inventory');
-        this.isSightList = false;
-        this.mySights = inventory.sight;
-    }
-
 
     onSaveProfile() {
         this.isEditMode = false;
@@ -169,7 +130,19 @@ export class Tab3Page implements OnInit {
     }
 
     async onSelectTarget() {
-        this.selectTarget = true;
+        const dialogRef = this.dialog.open(SelectTargetModalComponent, {
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+            height: '100%',
+            width: '100%',
+            data: {
+                isFromWizard: true
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.myTarget = this.storageService.getItem('personalTarget');
+        });
     }
 
     selectImage() {

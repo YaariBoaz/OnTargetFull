@@ -142,6 +142,16 @@ textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
-select:-webkit-autofill:focus  {
+select:-webkit-autofill:focus {
   background-color: white !important;
 }
+
+.dialog-bg {
+  background-color: white;
+}
+
+.mat-dialog-container {
+  background-color: white;
+}
+
+
