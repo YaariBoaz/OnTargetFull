@@ -13,7 +13,9 @@
                     </filter>
                 </defs>
                 <g filter="url(#Arrow_)">
-                    <path id="Arrow_2" fill="rgba(0,0,0,0.6)" fill-rule="evenodd" d="M720.456 1174.787a.721.721 0 0 0 1 0 .69.69 0 0 0 0-.988l-7.554-7.438 7.552-7.18a.686.686 0 0 0 0-.984.712.712 0 0 0-1 0l-8.441 8.164z" data-name="Arrow" transform="translate(-703.01 -1151.99)"/>
+                    <path id="Arrow_2" fill="rgba(0,0,0,0.6)" fill-rule="evenodd"
+                          d="M720.456 1174.787a.721.721 0 0 0 1 0 .69.69 0 0 0 0-.988l-7.554-7.438 7.552-7.18a.686.686 0 0 0 0-.984.712.712 0 0 0-1 0l-8.441 8.164z"
+                          data-name="Arrow" transform="translate(-703.01 -1151.99)"/>
                 </g>
             </svg>
         </div>
@@ -156,10 +158,26 @@
             </div>
 
             <div class="show-more" [ngClass]="{'active': openShowMore }">
-                <p *ngIf="!openShowMore"> SEE TARGET </p>
+                <p *ngIf="!openShowMore">
+                    SEE TARGET
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
+                        <defs>
+                            <style>.cls-1555 {
+                                fill: #707070;
+                            }</style>
+                        </defs>
+                        <title>Group 846</title>
+                        <g id="Group_846" data-name="Group 846">
+                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
+                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
+                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
+                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
+                        </g>
+                    </svg>
+                </p>
                 <div class="hidden-content">
                     <ng-container *ngIf="openShowMore">
-                        <!-- Place your shit here. -->
+                        <!-- Insert your hidden shit here. -->
                     </ng-container>
                 </div>
             </div>
@@ -202,9 +220,26 @@
 
             <!-- If this will be a loop you can use index or something -->
             <div class="show-more" #menu>
-                <p class="see-target" (click)="toggleMenu(menu)"> SEE TARGET </p>
+                <p class="see-target" (click)="toggleMenu(menu)">
+                    SEE TARGET
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
+                        <defs>
+                            <style>.cls-1555 {
+                                fill: #707070;
+                            }</style>
+                        </defs>
+                        <title>Group 846</title>
+                        <g id="Group_846" data-name="Group 846">
+                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
+                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
+                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
+                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
+                        </g>
+                    </svg>
+                </p>
+
                 <div class="hidden-content">
-                    <ng-container >
+                    <ng-container>
                         <svg xmlns="http://www.w3.org/2000/svg" width="160.188" height="160.188"
                              viewBox="0 0 160.188 160.188">
                             <defs>
@@ -249,7 +284,23 @@
                                       transform="translate(-462.227 -211.629)"/>
                             </g>
                         </svg>
-                        <p class="close-target" (click)="toggleMenu(menu)"> CLOSE TARGET </p>
+                        <p class="close-target" (click)="toggleMenu(menu)">
+                            CLOSE TARGET
+                             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
+                        <defs>
+                            <style>.cls-1555 {
+                                fill: #707070;
+                            }</style>
+                        </defs>
+                        <title>Group 846</title>
+                        <g id="Group_846" data-name="Group 846">
+                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
+                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
+                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
+                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
+                        </g>
+                    </svg>
+                        </p>
                     </ng-container>
 
                 </div>
@@ -293,9 +344,25 @@
 
             <!-- If this will be a loop you can use index or something -->
             <div class="show-more" #menu2>
-                <p class="see-target" (click)="toggleMenu(menu2)"> SEE TARGET </p>
+                <p class="see-target" (click)="toggleMenu(menu2)">
+                    SEE TARGET
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
+                        <defs>
+                            <style>.cls-1555 {
+                                fill: #707070;
+                            }</style>
+                        </defs>
+                        <title>Group 846</title>
+                        <g id="Group_846" data-name="Group 846">
+                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
+                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
+                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
+                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
+                        </g>
+                    </svg>
+                </p>
                 <div class="hidden-content">
-                    <ng-container >
+                    <ng-container>
                         <svg xmlns="http://www.w3.org/2000/svg" width="160.188" height="160.188"
                              viewBox="0 0 160.188 160.188">
                             <defs>
@@ -340,7 +407,23 @@
                                       transform="translate(-462.227 -211.629)"/>
                             </g>
                         </svg>
-                        <p class="close-target" (click)="toggleMenu(menu2)"> CLOSE TARGET </p>
+                        <p class="close-target" (click)="toggleMenu(menu2)">
+                            CLOSE TARGET
+                             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
+                        <defs>
+                            <style>.cls-1555 {
+                                fill: #707070;
+                            }</style>
+                        </defs>
+                        <title>Group 846</title>
+                        <g id="Group_846" data-name="Group 846">
+                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
+                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
+                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
+                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
+                        </g>
+                    </svg>
+                        </p>
                     </ng-container>
 
                 </div>
@@ -384,9 +467,25 @@
 
             <!-- If this will be a loop you can use index or something -->
             <div class="show-more" #menu3>
-                <p class="see-target" (click)="toggleMenu(menu3)"> SEE TARGET </p>
+                <p class="see-target" (click)="toggleMenu(menu3)">
+                    SEE TARGET
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
+                        <defs>
+                            <style>.cls-1555 {
+                                fill: #707070;
+                            }</style>
+                        </defs>
+                        <title>Group 846</title>
+                        <g id="Group_846" data-name="Group 846">
+                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
+                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
+                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
+                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
+                        </g>
+                    </svg>
+                </p>
                 <div class="hidden-content">
-                    <ng-container >
+                    <ng-container>
                         <svg xmlns="http://www.w3.org/2000/svg" width="160.188" height="160.188"
                              viewBox="0 0 160.188 160.188">
                             <defs>
@@ -431,7 +530,23 @@
                                       transform="translate(-462.227 -211.629)"/>
                             </g>
                         </svg>
-                        <p class="close-target" (click)="toggleMenu(menu3)"> CLOSE TARGET </p>
+                        <p class="close-target" (click)="toggleMenu(menu3)">
+                            CLOSE TARGET
+                             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
+                        <defs>
+                            <style>.cls-1555 {
+                                fill: #707070;
+                            }</style>
+                        </defs>
+                        <title>Group 846</title>
+                        <g id="Group_846" data-name="Group 846">
+                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
+                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
+                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
+                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
+                        </g>
+                    </svg>
+                        </p>
                     </ng-container>
 
                 </div>

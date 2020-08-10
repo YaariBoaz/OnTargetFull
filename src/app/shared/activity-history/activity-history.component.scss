@@ -226,6 +226,7 @@ section.activity-history {
         flex-direction: column;
         padding: 0 24px;
         height: 48px;
+        margin-bottom: 24px;
 
         p.title {
           font-size: 12px;
@@ -265,6 +266,17 @@ section.activity-history {
           line-height: 1.1;
           letter-spacing: 1.56px;
           color: #707070;
+          margin: 0;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          svg {
+            width: auto;
+            height: 5px;
+            margin: 8px 0;
+          }
         }
 
         p.close-target {
@@ -280,7 +292,15 @@ section.activity-history {
 
         &.active {
           p.close-target {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            svg {
+              width: auto;
+              height: 5px;
+              margin: 8px 0;
+            }
           }
 
           p.see-target {
@@ -289,7 +309,13 @@ section.activity-history {
 
           div.hidden-content {
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
             height: 200px;
+            svg {
+              margin-bottom: 10px;
+            }
           }
         }
       }
