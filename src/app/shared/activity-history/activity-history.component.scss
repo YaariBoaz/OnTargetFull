@@ -1,311 +1,298 @@
 @import "../../../assets/colors";
 
-:host {
-  height: 100%;
-}
-
-.activity-history {
+section.activity-history {
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
-  flex-direction: column;
-  background: #f9f9f9;
+  box-sizing: border-box;
+  padding: 24px 0;
 
   header {
-    align-items: center;
-    height: 25vw;
     display: flex;
-    background-color: $headerBG;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 56px;
+    margin-bottom: 16px;
+    padding: 0 15px;
 
-    .back-btn-container {
-      position: absolute;
-      left: 5px;
-
-      svg {
-        height: 20px;
-        width: 20px;
-      }
-    }
-
-    h1 {
-      width: 100%;
+    p.title {
+      font-size: 20px;
+      font-weight: 700;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.2;
+      letter-spacing: 0.26px;
       text-align: center;
+      color: rgba(0, 0, 0, 0.8);
       margin: 0;
     }
+
+    div.menu {
+      span {
+        font-size: 30px;
+        font-weight: 700;
+      }
+    }
   }
 
-  .train-line {
+  div.date {
     display: flex;
-    color: black;
     align-items: center;
-    background: white;
-    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.19), 0 0px 5px rgba(0, 0, 0, 0.23);
+    padding: 0 24px;
+    div.icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.8);
 
-    .right-side-and-train-info-container {
-      width: 60vw;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      padding-left: 10px;
+      justify-content: space-around;
+      margin-right: 8px;
 
-      .right-side {
+      svg {
+        fill: white;
+      }
+
+    }
+    div.day-and-drill {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      align-items: flex-start;
+
+      p {
+        font-size: 12px;
+        line-height: 14px;
+        color: #707070;
+        margin: 0;
+      }
+
+      div.day {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        height: 20vw;
-        padding-right: 20px;
-
-        .circle {
-          border: 2px solid #e9d7bf;
-          height: 4vw;
-          width: 4vw;
-          border-radius: 100%;
-        }
-
-        hr {
-          background-color: #cbcbcb;
-          height: 3vw;
-          width: 0.5vw;
-          margin: 0;
-        }
-      }
-
-      .train-info {
-        .date {
-          font-weight: 600;
-          font-size: 5vw;
-        }
-
-        .day {
-          color: #5a5a5a;
-          font-size: 4.8vw;
-        }
-
-        .light-text {
-          color: #848484;
-          font-weight: 100;
-        }
-      }
-    }
-  }
-
-  .history-card {
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    margin-bottom: 15px;
-
-    .info-wrapper {
-      width: 100%;
-      background: white;
-    }
-
-    .right-line {
-      width: 15px;
-      background: #dfa14c;
-    }
-
-    .title {
-      display: flex;
-      background: white;
-      align-items: center;
-      height: 10vw;
-      width: 20%;
-      justify-content: center;
-      img {
-        height: 15vw;
-        width: 15vw;
-        padding: 0.5em;
-      }
-
-      div {
-        display: flex;
-         flex-direction: column;
-        padding-left: 5px;
 
         p {
           margin: 0;
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 1.88px;
+          color: rgba(0, 0, 0, 0.8);
+          padding-right: 0.5em;
+
+          b {
+            margin: 0;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 14px;
+            color: rgba(0, 0, 0, 0.8);
+            letter-spacing: initial;
+          }
         }
       }
     }
+    margin-bottom: 32px;
+  }
 
-    .stats {
-      background-color: #eae8e8;
-      display: flex;
-      justify-content: space-evenly;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      height: 20vw;
-      align-items: center;
+  div.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    overflow-y: scroll;
 
-      .hits {
+    div.card {
+      display: flex;
+      flex-direction: column;
+
+      width: 343px;
+      //min-height: 212px;
+      border-radius: 14px;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      background-color: #ffffff;
+      margin-bottom: 24px;
+
+      div.target {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 24px;
+        margin: 24px 0 16px 0;
+
+        div.icon {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+
+          height: 24px;
+          width: 24px;
+          border-radius: 5px;
+          background-color: #ce564b;
+          margin-right: 8px;
+        }
+
+        div.stats {
+          display: flex;
+          flex-direction: column;
+          p {
+            font-size: 12px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.17;
+            letter-spacing: normal;
+            text-align: left;
+            color: #373737;
+            margin: 0;
+          }
+
+          p.counter {
+            margin: 0;
+            font-size: 12px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.17;
+            letter-spacing: 1.88px;
+            text-align: left;
+            color: #373737;
+
+          }
+        }
+      }
+
+      div.score {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 24px;
+        background-color: rgba(228, 228, 228, 0.4);
+        height: 48px;
+        margin-bottom: 8px;
+
+        div.hits,
+        div.range,
+        div.time {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          height: 38px;
+          justify-content: space-evenly;
+
+          p.score-value {
+            font-size: 17px;
+            line-height: 11px;
+            letter-spacing: 0.22px;
+            color: rgba(0, 0, 0, 0.87);
+            font-weight: 300;
+
+            b {
+              font-size: 17px;
+              line-height: 11px;
+              letter-spacing: 0.22px;
+              color: rgba(0, 0, 0, 0.87);
+              margin: 0;
+            }
+
+          }
+
+          b {
+            font-size: 17px;
+            line-height: 11px;
+            letter-spacing: 0.22px;
+            color: rgba(0, 0, 0, 0.87);
+            margin: 0;
+
+          }
+
+          p {
+            font-size: 10px;
+            line-height: 11px;
+            letter-spacing: 0.13px;
+            color: rgba(0, 0, 0, 0.87);
+            margin: 0;
+          }
+        }
+      }
+
+      div.desc {
+        display: flex;
+        flex-direction: column;
+        padding: 0 24px;
+        height: 48px;
+
+        p.title {
+          font-size: 12px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.17;
+          letter-spacing: 1.88px;
+          color: rgba(0, 0, 0, 0.87);
+          margin: 0;
+          padding-bottom: 4px;
+        }
+
+        p {
+          font-size: 12px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.17;
+          letter-spacing: normal;
+          text-align: left;
+          color: rgba(0, 0, 0, 0.47);
+          margin: 0;
+        }
+      }
+
+      div.show-more {
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        div {
-          display: flex;
+        p {
+          font-size: 10px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.1;
+          letter-spacing: 1.56px;
+          color: #707070;
+        }
+
+        p.close-target {
+          display: none;
+        }
+
+        div.hidden-content {
+          flex-direction: column;
           align-items: center;
+          transition: all 0.3s;
+          display: none;
+        }
 
-          h1 {
-            margin: 0
+        &.active {
+          p.close-target {
+            display: block;
           }
 
-          h2 {
-            margin: 0
+          p.see-target {
+            display: none;
+          }
+
+          div.hidden-content {
+            display: flex;
+            height: 200px;
           }
         }
       }
-
-      .range {
-        text-align: center;
-
-        h1 {
-          margin: 0
-        }
-
-        h2 {
-          margin: 0
-        }
-      }
-    }
-
-    .description {
-      padding: 0.5em;
-      background-color: white;
-
-      p {
-        color: #acacac;
-        font-size: 4vw;
-        margin: 0;
-        font-weight: 100;
-      }
-    }
-
-    .more-info {
-      display: flex;
-      justify-content: center;
     }
   }
-
-}
-
-.activity-history-container {
-  padding-right: 13px;
-  padding-left: 10px;
-  padding-top: 30px;
-  overflow-y: auto;
-}
-
-.see-target {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  p {
-    padding-right: 10px;
-  }
-}
-
-.target-container {
-
-}
-
-.accordion {
-  background-color: #fff;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: center;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-.active, .accordion:hover {
-  background-color: #fff;
-}
-
-.accordion:after {
-  content: '\002B';
-  color: #777;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2212";
-}
-
-.panel {
-
-}
-
-.menuBtn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: transparent;
-
-  span {
-    font-size: 40px;
-    font-weight: bold;
-    color: $profile-bg;
-  }
-}
-
-.main-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  img {
-    width: 70vw;
-  }
-}
-
-.ios-mode {
-  padding-top: 20px !important;
-  height: 50vw !important;
-  margin-bottom: 30px;
-}
-
-.trend-line-ios {
-  height: 60vw;
-}
-
-.details {
-  display: flex;
-  color: black;
-  justify-content: space-around;
-}
-
-.summmaryRow {
-  display: flex;
-  color: black;
-  justify-content: space-around;
-  background: #d3d3d382;
-  font-weight: bold;
-}
-
-.header-wrapper {
-  color: black;
-  background: #d3d3d382;
-  font-weight: bold;
-
-  p {
-    background: transparent !important;
-  }
-}
-
-.box{
-  display: flex;
-  width: 20%;
-  justify-content: center;
 }

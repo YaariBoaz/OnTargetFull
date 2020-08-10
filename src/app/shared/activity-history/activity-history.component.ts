@@ -18,6 +18,7 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         day: 'Tuesday',
         numberOfDrills: 6
     };
+    openShowMore = false;
     drills: HistoryValueItemModel[];
     hasConnection;
     currentDay;
@@ -105,6 +106,14 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
 
     handleOnlineScenario() {
 
+    }
+
+    toggleMenu(menu: HTMLElement) {
+        if (menu.classList.contains('active')) {
+            menu.classList.remove('active');
+        } else {
+            menu.classList.add('active');
+        }
     }
 }
 
