@@ -1,38 +1,60 @@
-<ion-content>
-    <div class="bg-image"></div>
-    <div class="shadow"></div>
-    <section class="wrapper">
-        <img src="assets/icons/new/login/image18@3x.png">
-        <div class="centerPart">
-            <div class="signin-wrapper" >
-                <div class="regular-wrapper">
-                    <form [formGroup]="registerForm" class="form-register" (ngSubmit)="onLogin()">
-                        <div class="form-group">
-                            <input type="text" formControlName="email" class="form-control"
-                                   [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
-                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                <div class="error-message" *ngIf="f.email.errors.required">Email is required</div>
-                                <div class="error-message" *ngIf="f.email.errors.email">Email must be a valid email
-                                    address
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" formControlName="password" class="form-control"
-                                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                <div class="error-message" *ngIf="f.password.errors.required">Password is required</div>
-                                <div class="error-message" *ngIf="f.password.errors.minlength">Password must be at least
-                                    6 characters
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <span class="start-session-btn" (click)="onLogin()">Start Session</span>
-                    <span class="forgot-message">Forgot your password?</span>
+<section class="login">
+    <img class="logo" src="/assets/logo.png" alt="logo">
+
+    <div class="form">
+        <form [formGroup]="registerForm" (ngSubmit)="onLogin()">
+            <div class="row">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email">
+                </mat-form-field>
+
+                <div class="errors" *ngIf="submitted && f.email.errors">
+                    <p class="error-message" *ngIf="f.email.errors.required">Email is required</p>
+                    <p class="error-message" *ngIf="f.email.errors.email">Email must be a valid email
+                        address
+                    </p>
                 </div>
-                <span class="create-account" (click)="goToSignUp()"> Create an account</span>
             </div>
-        </div>
-    </section>
-</ion-content>
+
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password">
+                </mat-form-field>
+
+
+                <div class="errors" *ngIf="submitted && f.password.errors">
+                    <p class="error-message" *ngIf="f.password.errors.required">Password is required</p>
+                    <p class="error-message" *ngIf="f.password.errors.minlength">Password must be at least 6
+                        characters </p>
+                </div>
+            </div>
+        </form>
+        <button class="start">START SESSION</button>
+        <p class="forgot">Forgot your password?</p>
+    </div>
+
+    <a href="">Create an account</a>
+
+</section>
+
+
+<!--<ion-content>-->
+<!--<div class="bg-image"></div>-->
+<!--<div class="shadow"></div>-->
+<!--<section class="wrapper">-->
+<!--<img src="assets/icons/new/login/image18@3x.png">-->
+<!--<div class="centerPart">-->
+<!--<div class="signin-wrapper" >-->
+<!--<div class="regular-wrapper">-->
+<!---->
+<!--<span class="start-session-btn" (click)="onLogin()">Start Session</span>-->
+<!--<span class="forgot-message">Forgot your password?</span>-->
+<!--</div>-->
+<!--<span class="create-account" (click)="goToSignUp()"> Create an account</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+<!--</ion-content>-->
