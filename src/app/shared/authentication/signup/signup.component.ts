@@ -55,6 +55,7 @@ export class SignupComponent implements OnInit {
             country: [],
             state: [],
         });
+        console.log(this.registerForm)
     }
 
 

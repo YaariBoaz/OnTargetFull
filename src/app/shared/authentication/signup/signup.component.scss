@@ -36,8 +36,6 @@ section.sign-up {
 
       p {
         position: absolute;
-        top: 0;
-        left: 20px;
         margin: 0;
         height: 14px;
         font-size: 12px;
@@ -48,9 +46,16 @@ section.sign-up {
         letter-spacing: 0.4px;
         text-align: left;
         color: #bfbfbf;
-        background-color: white;
+
         padding: 0 10px;
         z-index: 1;
+        transition: all 0.3s;
+
+        transform: translateY(-50%);
+        top: 50%;
+        left: 20px;
+
+
       }
 
       input {
@@ -62,6 +67,7 @@ section.sign-up {
         color: #000;
         box-sizing: border-box;
         padding: 0.5em;
+
       }
 
       svg.eye {
@@ -71,6 +77,14 @@ section.sign-up {
         top: 50%;
         right: 20px;
         transform: translateY(-50%);
+      }
+
+      label.hasValue p,
+      label:focus-within p {
+        top: 0;
+        transform: translateY(0%);
+        left: 20px;
+        background-color: white;
       }
     }
   }
