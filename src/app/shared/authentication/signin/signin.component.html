@@ -4,12 +4,10 @@
     <div class="form">
         <form [formGroup]="registerForm" (ngSubmit)="onLogin()">
             <div class="row">
-
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Email">
                 </mat-form-field>
-
                 <div class="errors" *ngIf="submitted && f.email.errors">
                     <p class="error-message" *ngIf="f.email.errors.required">Email is required</p>
                     <p class="error-message" *ngIf="f.email.errors.email">Email must be a valid email

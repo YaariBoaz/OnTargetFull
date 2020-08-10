@@ -57,6 +57,9 @@ section.login {
 
 
         ::ng-deep {
+
+
+
           .mat-form-field {
             width: 100%;
             font-weight: normal;
@@ -72,12 +75,14 @@ section.login {
             padding-bottom: 0 !important;
           }
 
-          .mat-input-element {
-            caret-color: #ce564b;
+          .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+            color: #ce564b;
           }
-          ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-            color: #ce564b !important;
+
+          .mat-form-field.mat-focused .mat-form-field-label {
+            color: #ce564b;
           }
+
         }
       }
     }
