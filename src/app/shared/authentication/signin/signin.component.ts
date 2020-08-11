@@ -6,6 +6,9 @@ import {AlertController, LoadingController} from '@ionic/angular';
 import {ApiService} from '../../services/api.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
+import {MatDialog} from '@angular/material';
+import {ErrorModalComponent} from '../../popups/error-modal/error-modal.component';
+import {AccessModalComponent} from '../../popups/access-modal/access-modal.component';
 
 
 @Component({
@@ -24,6 +27,7 @@ export class SigninComponent implements OnInit {
     submitted = false;
 
     constructor(
+        public dialog: MatDialog,
         private router: Router,
         private storageService: StorageService,
         private apiService: ApiService,
@@ -46,6 +50,20 @@ export class SigninComponent implements OnInit {
 
 
     ngOnInit() {
+        // const dialogRef = this.dialog.open(ErrorModalComponent, {
+        //     width: '344px',
+        //     data: {
+        //         modalType: 'general'
+        //     }
+        // });
+
+
+        const dialogRef = this.dialog.open(AccessModalComponent, {
+            width: '350px',
+        });
+
+
+
         if (this.storageService.getItem('isLoggedIn')) {
             this.router.navigateByUrl('/home/tabs/tab1');
         }
