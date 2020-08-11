@@ -7,10 +7,10 @@
                 <input type="text" formControlName="first_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"/>
             </label>
+        </div>
 
-            <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
-                <div *ngIf="f.first_name.errors.required">First Name is required</div>
-            </div>
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
         </div>
 
         <div class="row">
@@ -19,9 +19,10 @@
                 <input type="text" formControlName="last_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"/>
             </label>
-            <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
-                <div *ngIf="f.last_name.errors.required">Last Name is required</div>
-            </div>
+        </div>
+
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
         </div>
 
         <div class="row">
@@ -30,9 +31,10 @@
                 <input type="email" formControlName="email" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
             </label>
-            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
-                <div *ngIf="f.age.errors.required">Last Name is required</div>
-            </div>
+        </div>
+
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
         </div>
 
         <div class="row">
@@ -65,6 +67,10 @@
             </div>
         </div>
 
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
+        </div>
+
         <div class="row">
             <label [ngClass]="{'hasValue': registerForm.controls.label.dirty || registerForm.controls.label.touched }">
                 <p>Label</p>
@@ -95,8 +101,11 @@
             </div>
         </div>
 
-
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
+        </div>
     </form>
+
     <div class="controls">
         <button class="confirm" (click)="continueToThird()">ACCEPT AND CONTINUE</button>
         <button class="cancel" (click)="returnToPreviusStage()">CANCEL</button>
