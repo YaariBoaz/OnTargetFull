@@ -79,8 +79,8 @@ export class SelectTargetModalComponent implements OnInit {
                 }
             }
             this.cd.detectChanges();
-        });
 
+        });
 
         this.bleService.notifyDissconnect.subscribe((flag) => {
             if (this.selectedTarget) {
