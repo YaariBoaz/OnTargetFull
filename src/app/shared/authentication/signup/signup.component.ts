@@ -50,8 +50,17 @@ export class SignupComponent implements OnInit {
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
+<<<<<<< HEAD
             confirmPassword: new FormControl(null, [Validators.required])
         }, {validator: this.passwordConfirming});
+=======
+            age: [],
+            gender: [],
+            country: [],
+            state: [],
+        });
+        console.log(this.registerForm)
+>>>>>>> login-css
     }
 
 

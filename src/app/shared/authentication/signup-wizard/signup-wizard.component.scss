@@ -35,6 +35,7 @@ section.sign-up-wizard {
         height: 50px;
         border-radius: 25px;
         border: solid 2px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
 
         p {
           font-size: 22px;
@@ -45,6 +46,12 @@ section.sign-up-wizard {
           letter-spacing: 0.28px;
           text-align: left;
           color: rgba(0, 0, 0, 0.87);
+        }
+
+        svg {
+          fill: #ce564b;
+          width: 25px;
+          height: 15px;
         }
 
         &.active {

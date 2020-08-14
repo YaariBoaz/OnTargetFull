@@ -2,7 +2,7 @@
     <form class="signInForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
         <div class="row">
-            <label>
+            <label [ngClass]="{'hasValue': registerForm.controls.first_name.dirty || registerForm.controls.first_name.touched }">
                 <p>First Name</p>
                 <input type="text" formControlName="first_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"/>
@@ -14,7 +14,7 @@
         </div>
 
         <div class="row">
-            <label>
+            <label [ngClass]="{'hasValue': registerForm.controls.last_name.dirty || registerForm.controls.last_name.touched }">
                 <p>Last Name</p>
                 <input type="text" formControlName="last_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"/>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="row">
-            <label>
+            <label [ngClass]="{'hasValue': registerForm.controls.email.dirty || registerForm.controls.email.touched }">
                 <p>Email</p>
                 <input type="email" formControlName="email" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
@@ -37,10 +37,14 @@
         </div>
 
         <div class="row">
-            <label>
+            <label [ngClass]="{'hasValue': registerForm.controls.password.dirty || registerForm.controls.password.touched }">
                 <p>Password</p>
                 <input type="password" formControlName="password" class="form-control"
+<<<<<<< HEAD
                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" #password/>
+=======
+                       [ngClass]="{ 'is-invalid': submitted && f.age.errors }" #password/>
+>>>>>>> login-css
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
                     <defs>
                         <clipPath id="clip-path">
@@ -68,10 +72,15 @@
         </div>
 
         <div class="row">
-            <label>
+            <label [ngClass]="{'hasValue': registerForm.controls.label.dirty || registerForm.controls.label.touched }">
                 <p>Label</p>
+<<<<<<< HEAD
                 <input type="password" formControlName="confirmPassword" class="form-control" #confirmPassword
                        [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"/>
+=======
+                <input type="password" formControlName="label" class="form-control" #password
+                       [ngClass]="{ 'is-invalid': submitted && f.age.errors }"/>
+>>>>>>> login-css
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
                     <defs>
                         <clipPath id="clip-path">
