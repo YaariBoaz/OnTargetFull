@@ -1,4 +1,15 @@
-import {ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    Input,
+    NgZone,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    SimpleChanges,
+    ViewChild
+} from '@angular/core';
 import {ShootingService} from '../services/shooting.service';
 import {DrillObject} from '../../tab2/tab2.page';
 import {StorageService} from '../services/storage.service';
@@ -82,6 +93,8 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     isFinish = false;
     shotNumber = 0;
     loader;
+    isHitNoHit = true;
+    drillHasNotStarted = true;
 
     constructor(
         private screenOrientation: ScreenOrientation,
@@ -95,12 +108,16 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         private cd: ChangeDetectorRef,
         public loadingController: LoadingController,
         private router: Router,
+        private ngZone: NgZone,
         public alertController: AlertController,
-        private hitNohitService: HitNohitService
+        private hitNohitService: HitNohitService,
     ) {
-
         this.drill = this.shootingService.selectedDrill;
         console.log(this.drill);
+        for (let i = 0; i < this.drill.numOfBullets; i++) {
+            this.stats.push({});
+        }
+
 
         this.hitNohitService.setDrill(this.drill);
         this.hitNohitService.initStats();
@@ -108,8 +125,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnInit() {
-        // No supported on chrome throws errors " NOT AVAILABLE ON THIS DEVICE  "
-        // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
 
         this.hitNohitService.hitArrived.subscribe((data) => {
             if (data !== null) {
@@ -218,16 +234,53 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         }
     }
 
-    onBackPressed() {
+    async onBackPressed() {
         this.initStats();
-        this.router.navigateByUrl('/home/tabs/tab2/select2');
+        if (this.stats.length !== this.drill.numOfBullets) {
+            const alert = await this.alertController.create({
+                cssClass: 'my-custom-class',
+                header: 'Confirm!',
+                message: 'You haven\'t finished your drill, Do you want to save the data?',
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            console.log('Pressed Cancel');
+                        }
+                    }, {
+                        text: 'Yes',
+                        handler: () => {
+                            this.ngZone.runGuarded(() => {
+                                this.hitNohitService.updateHistory();
+                                this.router.navigateByUrl('home/tabs/tab2/select');
+                                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
+                            });
+                        }
+                    },
+                    {
+                        text: 'No',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            this.ngZone.runGuarded(() => {
+                                console.log('Pressed No');
+                                this.router.navigateByUrl('home/tabs/tab2/select');
+                                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                            });
+                        }
+                    }
+                ]
+            });
+            await alert.present();
+        }
     }
 
     ionViewWillEnter() {
         this.drill = this.shootingService.selectedDrill;
         this.countupTimerService.stopTimer();
         this.countupTimerService.setTimervalue(0);
-        this.initStats();
     }
 
     ngOnDestroy() {
@@ -243,8 +296,51 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
 
-    restartShooting() {
-        this.initStats();
+    async restartShooting() {
+
+        if (this.stats.length !== this.drill.numOfBullets) {
+            const alert = await this.alertController.create({
+                cssClass: 'my-custom-class',
+                header: 'Confirm!',
+                message: 'You haven\'t finished your drill, Do you want to save the data?',
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            console.log('Pressed Cancel');
+                        }
+                    }, {
+                        text: 'Yes',
+                        handler: () => {
+                            this.ngZone.runGuarded(() => {
+                                this.hitNohitService.updateHistory();
+                                this.initStats();
+                                this.bleService.resetShots();
+                                this.stats = [];
+                            });
+                        }
+                    },
+                    {
+                        text: 'No',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            this.ngZone.runGuarded(() => {
+                                this.initStats();
+                                this.bleService.resetShots();
+                                this.stats = [];
+                            });
+                        }
+                    }
+                ]
+            });
+            await alert.present();
+        } else {
+            this.initStats();
+            this.bleService.resetShots();
+            this.stats = [];
+        }
     }
 
     resetShots() {
@@ -264,14 +360,16 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     activateCounter() {
         this.counter = 1;
         this.showCounter = true;
+
         const interval = setInterval(() => {
             this.counter++;
             if (this.counter > 3) {
                 this.counter = 0;
                 this.showResults = true;
                 this.showCounter = false;
+                this.drillHasNotStarted = false;
                 clearInterval(interval);
             }
-        }, 3000);
+        }, 1000);
     }
 }

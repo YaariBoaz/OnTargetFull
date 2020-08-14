@@ -155,3 +155,8 @@ select:-webkit-autofill:focus {
 }
 
 
+.alert-button-group.sc-ion-alert-md {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

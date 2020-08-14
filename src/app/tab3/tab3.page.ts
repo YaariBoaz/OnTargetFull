@@ -24,6 +24,8 @@ import {SelectTargetModalComponent} from '../shared/select-target-modal/select-t
 export class Tab3Page implements OnInit {
     @Output() move: EventEmitter<any> = new EventEmitter<any>();
     @Output() stepThreeComplete: EventEmitter<any> = new EventEmitter<any>();
+    @Input() form: any;
+
     croppedImagepath;
     profile;
     images;
@@ -39,6 +41,7 @@ export class Tab3Page implements OnInit {
     selectTarget = false;
     showHeader = false;
     isFromWizard: boolean;
+    showState = false;
 
     constructor(private storageService: StorageService,
                 private ref: ChangeDetectorRef,
@@ -94,6 +97,9 @@ export class Tab3Page implements OnInit {
 
     ngOnInit(): void {
         this.initActctions();
+        this.form.age = null;
+        this.form.country = null;
+        this.form.state = null;
     }
 
     onSelectWeapons() {
@@ -153,6 +159,9 @@ export class Tab3Page implements OnInit {
 
 
     finishWizard() {
+        this.form.sights = this.mySights;
+        this.form.weapons = this.myGuns;
+        this.form.target = this.myTarget;
         this.wizardService.registerUser();
         this.move.emit();
     }
@@ -161,6 +170,21 @@ export class Tab3Page implements OnInit {
         this.selectTarget = false;
         this.myTarget = this.storageService.getItem('target');
 
+    }
+
+    onCountrySelected(value: string) {
+        if (value === 'United States of America') {
+            this.showState = true;
+            this.form.country = value;
+        }
+    }
+
+    onStateSelected(value: string) {
+        this.form.state = value;
+    }
+
+    onGenderSelected(value: string) {
+        this.form.gender = value;
     }
 }
 

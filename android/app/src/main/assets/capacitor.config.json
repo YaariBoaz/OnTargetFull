@@ -22,6 +22,8 @@
   },
   "server": {
     "url": "http://10.0.0.5:8100",
-    "cleartext": true
+    "cleartext": true,
+    "originalUrl": "http://10.0.0.5:8100",
+    "originalCleartext": true
   }
 }

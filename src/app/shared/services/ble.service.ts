@@ -22,7 +22,7 @@ const TEMPERATURE_CHARACTERISTIC = 'bbb1';
 })
 export class BleService {
     private devices: any[];
-    private peripheral: any;
+    peripheral: any;
     private dataFromDevice;
     notifyShotArrived = new BehaviorSubject(0);
     notifyTargetConnected = new BehaviorSubject(false);
@@ -38,10 +38,16 @@ export class BleService {
         if (!this.devices) {
             this.devices = [];
         }
+
+
+        this.ngZone.onError.subscribe((e) => {
+            debugger;
+        });
+
     }
 
-
     scan() {
+        console.log('*************** SCAN STARTED ***************************');
         this.setStatus('Scanning for Bluetooth LE Devices');
         this.devices = [];  // clear list
         this.storage.setItem('ble', this.devices);
@@ -55,12 +61,10 @@ export class BleService {
         }, 6000);
     }
 
-
     setStatus(message) {
         console.log(message);
 
     }
-
 
     onDeviceDiscovered(device) {
         console.log('Discovered ' + JSON.stringify(device, null, 2));
@@ -82,7 +86,6 @@ export class BleService {
         });
     }
 
-
     resetShots() {
         const txe = new TextEncoder();
         if (this.peripheral && this.peripheral.id) {
@@ -92,7 +95,6 @@ export class BleService {
             });
         }
     }
-
 
     // If location permission is denied, you'll end up here
     scanError(error) {
@@ -119,14 +121,13 @@ export class BleService {
         );
     }
 
-    private onConnected(peripheral: any) {
+    onConnected(peripheral: any) {
         console.log('Connected to ' + peripheral.name + ' ' + peripheral.id);
         this.ngZone.run(() => {
             this.peripheral = peripheral;
         });
         this.handleRead(peripheral.id, SERVICE_2, SERVICE_2_CHAR);
     }
-
 
     onDeviceDisconnected(peripheral) {
         alert('The peripheral unexpectedly disconnected');
@@ -144,8 +145,7 @@ export class BleService {
         );
     }
 
-
-    private handleRead(id, service, characteristic) {
+    handleRead(id, service, characteristic) {
         this.subscription = this.ble.startNotification(id, service, characteristic).subscribe(data => {
             const dec = new TextDecoder();
             const enc = new TextEncoder();
@@ -165,9 +165,9 @@ export class BleService {
         });
     }
 
-
     distory() {
-        this.ble.disconnect(this.peripheral.id).then(() => {
+        this.ble.disconnect(this.currentTargetId).then(() => {
+            this.notifyDissconnect.next(true);
             console.log('Called Disconnect');
         });
     }
@@ -175,13 +175,29 @@ export class BleService {
     isConnected() {
         return this.ble.isConnected(this.peripheral);
     }
-
-    private activatRecconectProcess() {
-        this.ble.isConnected(this.currentTargetId).then((status) => {
-            if (!status) {
-                debugger
-                this.connect(this.currentTargetId);
+    activatRecconectProcess() {
+        this.ble.disconnect(this.currentTargetId).then(() => {
+            this.notifyDissconnect.next(true);
+            console.log('Called Disconnect');
+            debugger;
+            try {
+                this.subscription = this.ble.connect(this.currentTargetId).subscribe(
+                    (peripheral) => {
+                        this.notifyTargetConnected.next(true);
+                        this.onConnected(peripheral);
+                    },
+                    peripheral => {
+                        console.log('Disconnected', 'The peripheral unexpectedly disconnected');
+                        this.activatRecconectProcess();
+                    }, () => {
+                        debugger;
+                    }
+                );
                 this.notifyDissconnect.next(true);
+
+
+            } catch (e) {
+                debugger;
             }
         });
     }

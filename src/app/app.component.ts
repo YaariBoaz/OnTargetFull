@@ -23,6 +23,8 @@ export class AppComponent implements OnDestroy, OnInit {
         public ble: BleService,
         public loadingController: LoadingController
     ) {
+
+
         SplashScreen.hide();
         this.initService.getDashboard();
         this.initService.getSights();
@@ -30,9 +32,7 @@ export class AppComponent implements OnDestroy, OnInit {
         this.platform.ready().then(() => {
             this.ble.scan();
             window.addEventListener('beforeunload', () => {
-                this.ble.isConnected().then(() => {
-                    this.ble.distory();
-                });
+                this.ble.distory();
             });
         });
     }

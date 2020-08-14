@@ -8,7 +8,7 @@ section.edit-drill {
   header {
     position: relative;
 
-    background-image: linear-gradient(#00000054, #00000054),    url("../../assets/edit-drill.jpg");
+    background-image: linear-gradient(#00000054, #00000054), url("../../assets/edit-drill.jpg");
     background-size: 100% 200px;
     background-position: center center;
     background-repeat: no-repeat;
@@ -16,28 +16,32 @@ section.edit-drill {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-start;
     box-sizing: border-box;
 
-    p {
-      color: white;
-      margin: 0;
+    div {
+      display: flex;
+      align-items: center;
       padding-top: 40px;
+      justify-content: center;
+      p {
+        color: white;
+        margin: 0;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.26px;
+      }
 
-      font-size: 20px;
-      line-height: 24px;
-      letter-spacing: 0.26px;
+      svg {
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        left: 1em;
+      }
+
     }
 
-    svg.back-button {
-      width: 35px;
-      height: 35px;
-      position: absolute;
-      top: 50%;
-      left: 1em;
-      transform: translateY(-50%);
-    }
+
   }
 
   div.main-content {
@@ -310,5 +314,6 @@ section.edit-drill {
     color: white;
     margin: 32px 0;
   }
+
 }
 

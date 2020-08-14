@@ -21,10 +21,11 @@
         </div>
 
         <div class="info">
-            <p>Hit/No Hit</p>
+            <p>{{drill.drillType}}t</p>
             <p class="seperator">|</p>
-            <p>ACOG TA31F 4×32</p>
+            <p>{{drill.weapon}}</p>
             <p class="seperator">|</p>
+            <p>{{drill.range}}</p>
             <p>Meters</p>
         </div>
 
@@ -36,7 +37,8 @@
         <!--                <button mat-menu-item>Item 2</button>-->
         <!--            </mat-menu>-->
 
-        <button class="start" (click)="activateCounter()">START</button>
+        <button *ngIf="drillHasNotStarted" class="start" (click)="activateCounter()">START</button>
+        <button *ngIf="!drillHasNotStarted" class="start" (click)="restartShooting()">RESTART</button>
     </header>
     <div class="main-screen">
         <div class="connection-details">
@@ -71,50 +73,52 @@
             </div>
         </div>
         <div class="target">
-            <svg xmlns="http://www.w3.org/2000/svg" width="282.232" height="282.232" viewBox="0 0 282.232 282.232">
-                <defs>
-                    <style>
-                        g#target_svg_fixed .cls-1 {
-                            fill: #fbfbfb
-                        }
+            <div class="some-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="282.232" height="282.232" viewBox="0 0 282.232 282.232">
+                    <defs>
+                        <style>
+                            g#target_svg_fixed .cls-1 {
+                                fill: #fbfbfb
+                            }
 
-                        g#target_svg_fixed .cls-2 {
-                            fill: #ce564b
-                        }
-                    </style>
-                </defs>
-                <g id="target_svg_fixed" data-name="target svg fixed">
-                    <g id="Group_498" data-name="Group 498">
-                        <g id="Path_440-2">
-                            <path id="Path_443"
-                                  d="M140.5 281.027a146.968 146.968 0 0 1-28.223-2.79 131.807 131.807 0 0 1-26.254-8.2 128.354 128.354 0 0 1-23.793-12.963 160.183 160.183 0 0 1-20.839-17.065 122.861 122.861 0 0 1-17.065-20.839 152.218 152.218 0 0 1-12.963-23.793A140.9 140.9 0 0 1 .2 140.732a135.088 135.088 0 0 1 2.954-28.223 131.808 131.808 0 0 1 8.2-26.254 128.35 128.35 0 0 1 12.967-23.794 160.179 160.179 0 0 1 17.065-20.839 122.861 122.861 0 0 1 20.839-17.065 152.217 152.217 0 0 1 23.793-12.963 138.853 138.853 0 0 1 26.254-8.2A134.98 134.98 0 0 1 140.5.6a146.969 146.969 0 0 1 28.223 2.79 131.81 131.81 0 0 1 26.254 8.2 128.351 128.351 0 0 1 23.793 12.963 160.176 160.176 0 0 1 20.839 17.065 129.652 129.652 0 0 1 17.065 20.839 152.226 152.226 0 0 1 12.963 23.793 138.86 138.86 0 0 1 8.2 26.254 134.986 134.986 0 0 1 2.789 28.223 146.978 146.978 0 0 1-2.789 28.223 131.816 131.816 0 0 1-8.2 26.254A128.355 128.355 0 0 1 256.671 219a160.178 160.178 0 0 1-17.065 20.839 129.651 129.651 0 0 1-20.839 17.065 152.217 152.217 0 0 1-23.793 12.963 138.857 138.857 0 0 1-26.254 8.2 135.086 135.086 0 0 1-28.22 2.96z"
-                                  class="cls-1" data-name="Path 443" transform="translate(.62 .385)"/>
-                            <path id="Path_444"
-                                  d="M140.816 1.641a145.279 145.279 0 0 0-28.059 2.79 135.241 135.241 0 0 0-26.254 8.2 142.806 142.806 0 0 0-23.629 12.8A136 136 0 0 0 42.2 42.5a148.45 148.45 0 0 0-17.066 20.674A131.623 131.623 0 0 0 12.335 86.8a143.463 143.463 0 0 0-8.2 26.254 142.515 142.515 0 0 0 0 56.118 135.241 135.241 0 0 0 8.2 26.254 142.808 142.808 0 0 0 12.8 23.629A136 136 0 0 0 42.2 239.733 148.45 148.45 0 0 0 62.874 256.8 131.616 131.616 0 0 0 86.5 269.6a143.457 143.457 0 0 0 26.254 8.2 142.517 142.517 0 0 0 56.118 0 135.239 135.239 0 0 0 26.254-8.2 142.8 142.8 0 0 0 23.629-12.8 136 136 0 0 0 20.675-17.065 148.445 148.445 0 0 0 17.07-20.677 131.621 131.621 0 0 0 12.8-23.629 143.465 143.465 0 0 0 8.2-26.254 142.516 142.516 0 0 0 0-56.118 135.248 135.248 0 0 0-8.2-26.257 142.81 142.81 0 0 0-12.8-23.629A136.006 136.006 0 0 0 239.433 42.5a148.449 148.449 0 0 0-20.675-17.065 131.623 131.623 0 0 0-23.629-12.8 143.463 143.463 0 0 0-26.254-8.2 145.28 145.28 0 0 0-28.059-2.79m0-1.641A141.116 141.116 0 1 1-.3 141.116 141.109 141.109 0 0 1 140.816 0z"
-                                  class="cls-2" data-name="Path 444" transform="translate(.3)"/>
+                            g#target_svg_fixed .cls-2 {
+                                fill: #ce564b
+                            }
+                        </style>
+                    </defs>
+                    <g id="target_svg_fixed" data-name="target svg fixed">
+                        <g id="Group_498" data-name="Group 498">
+                            <g id="Path_440-2">
+                                <path id="Path_443"
+                                      d="M140.5 281.027a146.968 146.968 0 0 1-28.223-2.79 131.807 131.807 0 0 1-26.254-8.2 128.354 128.354 0 0 1-23.793-12.963 160.183 160.183 0 0 1-20.839-17.065 122.861 122.861 0 0 1-17.065-20.839 152.218 152.218 0 0 1-12.963-23.793A140.9 140.9 0 0 1 .2 140.732a135.088 135.088 0 0 1 2.954-28.223 131.808 131.808 0 0 1 8.2-26.254 128.35 128.35 0 0 1 12.967-23.794 160.179 160.179 0 0 1 17.065-20.839 122.861 122.861 0 0 1 20.839-17.065 152.217 152.217 0 0 1 23.793-12.963 138.853 138.853 0 0 1 26.254-8.2A134.98 134.98 0 0 1 140.5.6a146.969 146.969 0 0 1 28.223 2.79 131.81 131.81 0 0 1 26.254 8.2 128.351 128.351 0 0 1 23.793 12.963 160.176 160.176 0 0 1 20.839 17.065 129.652 129.652 0 0 1 17.065 20.839 152.226 152.226 0 0 1 12.963 23.793 138.86 138.86 0 0 1 8.2 26.254 134.986 134.986 0 0 1 2.789 28.223 146.978 146.978 0 0 1-2.789 28.223 131.816 131.816 0 0 1-8.2 26.254A128.355 128.355 0 0 1 256.671 219a160.178 160.178 0 0 1-17.065 20.839 129.651 129.651 0 0 1-20.839 17.065 152.217 152.217 0 0 1-23.793 12.963 138.857 138.857 0 0 1-26.254 8.2 135.086 135.086 0 0 1-28.22 2.96z"
+                                      class="cls-1" data-name="Path 443" transform="translate(.62 .385)"/>
+                                <path id="Path_444"
+                                      d="M140.816 1.641a145.279 145.279 0 0 0-28.059 2.79 135.241 135.241 0 0 0-26.254 8.2 142.806 142.806 0 0 0-23.629 12.8A136 136 0 0 0 42.2 42.5a148.45 148.45 0 0 0-17.066 20.674A131.623 131.623 0 0 0 12.335 86.8a143.463 143.463 0 0 0-8.2 26.254 142.515 142.515 0 0 0 0 56.118 135.241 135.241 0 0 0 8.2 26.254 142.808 142.808 0 0 0 12.8 23.629A136 136 0 0 0 42.2 239.733 148.45 148.45 0 0 0 62.874 256.8 131.616 131.616 0 0 0 86.5 269.6a143.457 143.457 0 0 0 26.254 8.2 142.517 142.517 0 0 0 56.118 0 135.239 135.239 0 0 0 26.254-8.2 142.8 142.8 0 0 0 23.629-12.8 136 136 0 0 0 20.675-17.065 148.445 148.445 0 0 0 17.07-20.677 131.621 131.621 0 0 0 12.8-23.629 143.465 143.465 0 0 0 8.2-26.254 142.516 142.516 0 0 0 0-56.118 135.248 135.248 0 0 0-8.2-26.257 142.81 142.81 0 0 0-12.8-23.629A136.006 136.006 0 0 0 239.433 42.5a148.449 148.449 0 0 0-20.675-17.065 131.623 131.623 0 0 0-23.629-12.8 143.463 143.463 0 0 0-26.254-8.2 145.28 145.28 0 0 0-28.059-2.79m0-1.641A141.116 141.116 0 1 1-.3 141.116 141.109 141.109 0 0 1 140.816 0z"
+                                      class="cls-2" data-name="Path 444" transform="translate(.3)"/>
+                            </g>
                         </g>
+                        <ellipse id="Ellipse_456" cx="106.822" cy="107.314" fill="#ce564b" opacity="0.791" rx="106.822"
+                                 ry="107.314" transform="translate(34.344 33.868)"/>
+                        <circle id="Ellipse_457" cx="89.264" cy="89.264" r="89.264" class="cls-1"
+                                transform="rotate(-80.782 145.735 84.709)"/>
+                        <circle id="Ellipse_458" cx="63.174" cy="63.174" r="63.174" class="cls-2"
+                                transform="translate(77.991 78.008)"/>
+                        <circle id="Ellipse_459" cx="35.115" cy="35.115" r="35.115" class="cls-1"
+                                transform="translate(106.05 106.067)"/>
+                        <circle id="Ellipse_460" cx="20.557" cy="20.557" r="20.557" class="cls-2"
+                                transform="translate(120.608 120.624)"/>
+                        <path id="Rectangle_362" d="M0 0H5.579V100.258H0z" class="cls-1"
+                              transform="translate(137.556 5.973)"/>
+                        <path id="Rectangle_361" d="M0 0H100.75V5.579H0z" class="cls-1"
+                              transform="translate(6.613 136.916)"/>
+                        <path id="Rectangle_360" d="M0 0H103.048V5.579H0z" class="cls-1"
+                              transform="translate(173.327 136.916)"/>
+                        <path id="Path_439" d="M540.3 310.2h5.579v104.032H540.3z" class="cls-1"
+                              transform="translate(-402.744 -136.529)"/>
                     </g>
-                    <ellipse id="Ellipse_456" cx="106.822" cy="107.314" fill="#ce564b" opacity="0.791" rx="106.822"
-                             ry="107.314" transform="translate(34.344 33.868)"/>
-                    <circle id="Ellipse_457" cx="89.264" cy="89.264" r="89.264" class="cls-1"
-                            transform="rotate(-80.782 145.735 84.709)"/>
-                    <circle id="Ellipse_458" cx="63.174" cy="63.174" r="63.174" class="cls-2"
-                            transform="translate(77.991 78.008)"/>
-                    <circle id="Ellipse_459" cx="35.115" cy="35.115" r="35.115" class="cls-1"
-                            transform="translate(106.05 106.067)"/>
-                    <circle id="Ellipse_460" cx="20.557" cy="20.557" r="20.557" class="cls-2"
-                            transform="translate(120.608 120.624)"/>
-                    <path id="Rectangle_362" d="M0 0H5.579V100.258H0z" class="cls-1"
-                          transform="translate(137.556 5.973)"/>
-                    <path id="Rectangle_361" d="M0 0H100.75V5.579H0z" class="cls-1"
-                          transform="translate(6.613 136.916)"/>
-                    <path id="Rectangle_360" d="M0 0H103.048V5.579H0z" class="cls-1"
-                          transform="translate(173.327 136.916)"/>
-                    <path id="Path_439" d="M540.3 310.2h5.579v104.032H540.3z" class="cls-1"
-                          transform="translate(-402.744 -136.529)"/>
-                </g>
-            </svg>
-
+                </svg>
+                <div class="counter-shot">{{shotNumber}}</div>
+            </div>
             <div class="welcome-message" *ngIf="!showResults">
                 <div class="text">
                     <p>Hi, Evi! Let’s start new drill.</p>
@@ -260,108 +264,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
+                    <tr *ngFor="let shot of stats; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td> {{shot.pageData.points}}</td>
+                        <td> {{shot.pageData.totalTime}}</td>
+                        <td> {{shot.pageData.splitTime}}</td>
                     </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-                    <tr>
-                        <td> 1</td>
-                        <td> 8</td>
-                        <td> 00:22</td>
-                        <td> 00:99</td>
-                    </tr>
-
-
                     </tbody>
                 </table>
 
-                <p class="flashing-number">8</p>
+                <p *ngIf="!isHitNoHit" class="flashing-number">{{shotNumber }}</p>
                 <!-- IF the is a loop then place this outside the loop -->
                 <div class="table-sum">
                     <p> total: 7 of 7</p>
@@ -395,130 +307,4 @@
             </svg>
         </div>
     </div>
-
-    <!--<div class="target-details">-->
-    <!--<div class="icons">-->
-    <!--<div class="wifi-status">-->
-    <!--<img src="../../../assets/icons/connected_icon_2709.svg">-->
-    <!--<p class="connected" *ngIf="isConnected">Connected</p>-->
-    <!--<p class="not-connected" *ngIf="!isConnected">Disconnected</p>-->
-    <!--</div>-->
-    <!--<div class="wifi-status">-->
-    <!--<img src="../../../assets/icons/full_battery_icon_2.svg">-->
-    <!--<p class="high-battery" *ngIf="batteryPrecent > 50">{{batteryPrecent}}%</p>-->
-    <!--<p class="low-battery" *ngIf="batteryPrecent <= 50">{{batteryPrecent}}%</p>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="clear-target">-->
-
-    <!--<button class="menuBtn" נ-->
-    <!--#menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" style="">-->
-    <!--Press To <span>Finish</span>-->
-    <!--</button>-->
-    <!--<mat-menu #menu="matMenu">-->
-    <!--<button mat-menu-item (click)="restartShooting()">Restart Drill</button>-->
-    <!--<button mat-menu-item (click)="onBackPressed()">New Drill</button>-->
-    <!--</mat-menu>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="main-image-wraper">-->
-    <!--<div [class.isHistory]="isHistory===true" class="main-image" #screen [ngSwitch]="drill.drillType">-->
-    <!--<h4 class="hit-number">{{shotNumber}}</h4>-->
-    <!--<div *ngSwitchCase="'Hit/No Hit'">-->
-    <!--<div *ngIf="!isFinish">-->
-    <!--<img style="width:100%;" #container-->
-    <!--src="../../../assets/images/hitnohit/defualt.png"-->
-    <!--alt="bullsEye">-->
-    <!--</div>-->
-    <!--<div *ngIf="isFinish">-->
-    <!--<img style="width:100%;" #container src="../../../assets/images/hitnohit/drill-finish.jpg">-->
-    <!--</div>-->
-
-    <!--</div>-->
-    <!--<div *ngSwitchCase="'Bullseye'">-->
-    <!--<img *ngIf="shots.length < shootingService.numberOfBullersPerDrill && !drillFinishedBefore"-->
-    <!--style="width:100%;" #container-->
-    <!--src="../../../assets/images/bullseye_red.png"-->
-    <!--alt="bullsEye">-->
-    <!--<img *ngIf="shots.length >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"-->
-    <!--style="width:100%;"-->
-    <!--#container src="../../../assets/images/bullseye_black.png">-->
-    <!--</div>-->
-    <!--<div *ngSwitchCase="'Hostage'">-->
-    <!--<img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore"-->
-    <!--style="width:100%;"-->
-    <!--#container src="../../../assets/icons/Hostage.png" alt="Hostage"-->
-    <!--&gt;-->
-    <!--<img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"-->
-    <!--style="width:100%;"-->
-    <!--#container src="../../../assets/icons/Hostage_Finish.png" alt="Hostage"-->
-    <!--&gt;-->
-    <!--</div>-->
-    <!--<div *ngSwitchCase="'Zero'">-->
-    <!--<img *ngIf="shots < shootingService.numberOfBullersPerDrill  && !drillFinishedBefore"-->
-    <!--style="width:100%;"-->
-    <!--#container src="../../../assets/icons/Zero.png" alt="Hostage"-->
-    <!--&gt;-->
-    <!--<img *ngIf="shots >= shootingService.numberOfBullersPerDrill || drillFinishedBefore"-->
-    <!--style="width:100%;"-->
-    <!--#container src="../../../../assets/icons/Zero_Finish.png.png" alt="Hostage">-->
-    <!--</div>-->
-    <!--<img *ngFor="let shot of shots" src="../../../assets/images/bullethit.png"-->
-    <!--style="position: absolute;height:35px;width:35px"-->
-    <!--[style.top.px]=shot.y-->
-    <!--[style.right.px]=shot.x-->
-    <!--&gt;-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="table-wrapper">-->
-    <!--<div scrollY="true" class="table-stats-container">-->
-    <!--<div class="header-wrapper">-->
-    <!--<div class="box">Bullets</div>-->
-    <!--<div class="box">Time</div>-->
-    <!--<div class="box">Split</div>-->
-    <!--<div class="box">Points</div>-->
-    <!--</div>-->
-    <!--<div class="details" *ngFor="let stat of stats">-->
-    <!--<div class="box">-->
-    <!--<p>{{stat.pageData.counter}}/{{shootingService.numberOfBullersPerDrill}}</p>-->
-    <!--</div>-->
-
-    <!--<div class="box">-->
-    <!--<p>-->
-    <!--{{stat.interval}}-->
-    <!--</p>-->
-    <!--</div>-->
-
-    <!--<div class="box">-->
-    <!--<p>{{stat.pageData.splitTime}}</p>-->
-    <!--</div>-->
-
-    <!--<div class="box">-->
-    <!--<p>{{stat.pageData.points | number : '1.2-2'}}</p>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="divider">-->
-    <!--<hr>-->
-    <!--</div>-->
-    <!--<div class="summmaryRow">-->
-    <!--<div class="box">-->
-    <!--<p>{{summaryObject.counter}}</p>-->
-    <!--</div>-->
-
-    <!--<div class="box">-->
-    <!--<p>-->
-    <!--{{summaryObject.totalTime}}-->
-    <!--</p>-->
-    <!--</div>-->
-
-    <!--<div class="box">-->
-    <!--<p>{{summaryObject.split}}</p>-->
-    <!--</div>-->
-
-    <!--<div class="box">-->
-    <!--<p>{{summaryObject.points | number : '1.2-2'}}</p>-->
-    <!--</div>-->
-    <!--</div>-->
 </section>

@@ -4,6 +4,9 @@ import {AlertController} from '@ionic/angular';
 import {ShootingService} from '../shared/services/shooting.service';
 import {StorageService} from '../shared/services/storage.service';
 import {TabsService} from '../tabs/tabs.service';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {BleService} from '../shared/services/ble.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-tab2',
@@ -22,7 +25,7 @@ export class Tab2Page implements OnInit {
     myGuns;
     drill: DrillObject = {
         numOfBullets: 5,
-        weapon: 'M-4',
+        weapon: 'M4 Carbine',
         range: 150,
         rangeUOM: 'Meters',
         sight: 'V6 5-30 X 50',
@@ -30,14 +33,19 @@ export class Tab2Page implements OnInit {
         drillType: 'Hit/No Hit',
         shots: new Array<{ x, y }>()
     };
-
+    connectedTarget = null;
 
     constructor(public modalController: ModalController,
                 private tabService: TabsService,
                 public alertController: AlertController,
                 private  shootingService: ShootingService,
                 private storageService: StorageService,
+                private ble: BleService,
+                private screenOrientation: ScreenOrientation,
+                private router: Router,
                 private platform: Platform) {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        this.connectedTarget = this.ble.peripheral;
         this.initComponents();
     }
 
@@ -108,7 +116,13 @@ export class Tab2Page implements OnInit {
         }
     }
 
+    connectToTarget() {
 
+    }
+
+    onBackPressed() {
+        this.router.navigateByUrl('home/tabs/tab2');
+    }
 }
 
 export interface DrillObject {

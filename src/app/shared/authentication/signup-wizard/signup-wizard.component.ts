@@ -35,7 +35,8 @@ export class SignupWizardComponent implements OnInit {
     isInThirdStep = false;
     profile: any;
     private subscription: Subscription;
-;
+    sigunUpFormDetails: any;
+
 
     constructor(private platform: Platform,
                 private formBuilder: FormBuilder,
@@ -115,7 +116,15 @@ export class SignupWizardComponent implements OnInit {
 
     }
 
-    completeStepTwo() {
+    completeStepTwo(f) {
+        this.sigunUpFormDetails = {
+            email: f.email,
+            first_name: f.first_name,
+            img_path: null,
+            last_name: f.last_name,
+            password: f.password
+        };
+
         this.stepTwoComplete = true;
         this.stepThreeActive = true;
     }

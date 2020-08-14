@@ -282,7 +282,8 @@ section.profile {
   display: flex;
   flex-direction: column;
   margin-left: 16px;
-
+  margin-bottom: 42px;
+  margin-top: 48px;
   .top-row {
     display: flex;
      margin-left: 16px;
@@ -345,5 +346,8 @@ section.profile {
     letter-spacing: 1.25px;
     text-align: center;
     color: #ce564b;
+    align-self: center;
+    margin-bottom: 16px;
+    background-color: white;
   }
 }

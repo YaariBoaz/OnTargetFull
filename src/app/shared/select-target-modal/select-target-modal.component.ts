@@ -8,7 +8,6 @@ import {BleService} from '../services/ble.service';
 import {AlertController, LoadingController, Platform, ToastController} from '@ionic/angular';
 import {HitNohitService} from '../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
     selector: 'app-select-target-modal',
@@ -28,6 +27,9 @@ export class SelectTargetModalComponent implements OnInit {
     private loading: HTMLIonLoadingElement;
     personalTarget: any;
     private isFromWizard = false;
+    targetIsConnected = false;
+    targetNotSelected = true;
+    connectedClicked = false;
 
     constructor(private http: HttpClient,
                 private bleService: BleService,
@@ -36,21 +38,17 @@ export class SelectTargetModalComponent implements OnInit {
                 public loadingController: LoadingController,
                 private hitNohitService: HitNohitService,
                 private screenOrientation: ScreenOrientation,
-                @Inject(MAT_DIALOG_DATA) public data: any,
                 private cd: ChangeDetectorRef,
                 public toastController: ToastController,
-                public dialogRef: MatDialogRef<SelectTargetModalComponent>,
                 private platform: Platform,
                 public aletMdl: AlertController,
                 private router: Router) {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
     }
 
 
     ngOnInit() {
-        if (this.data && this.data.isFromWizard) {
-            this.isFromWizard = true;
-        }
         this.platform.ready().then(() => {
             this.screenOrientation.unlock();
             this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
@@ -70,13 +68,19 @@ export class SelectTargetModalComponent implements OnInit {
 
         this.bleService.notifyTargetConnected.subscribe(status => {
             if (status) {
+                this.connectedClicked = false;
+                if (!this.selectedTarget) {
+                    this.selectedTarget = this.shootingService.chosenTarget = this.selectedTarget;
+                }
                 this.selectedTarget.targetConnected = status;
+                this.targetIsConnected = true;
                 if (this.loading) {
                     this.loading.dismiss();
                 }
             }
-
+            this.cd.detectChanges();
         });
+
 
         this.bleService.notifyDissconnect.subscribe((flag) => {
             if (this.selectedTarget) {
@@ -85,6 +89,9 @@ export class SelectTargetModalComponent implements OnInit {
             if (this.loading) {
                 this.loading.dismiss();
             }
+
+            this.targetConnected = false;
+            this.targetIsConnected = false;
         });
 
         this.bleService.scanFinished.subscribe((flag) => {
@@ -133,7 +140,6 @@ export class SelectTargetModalComponent implements OnInit {
         });
     }
 
-
     async showConnectingLoader() {
         this.loading = await this.loadingController.create({
             duration: 5000,
@@ -156,7 +162,7 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     onBackPressed() {
-        this.dialogRef.close();
+        //this.dialogRef.close();
     }
 
     onGetTargets() {
@@ -204,6 +210,16 @@ export class SelectTargetModalComponent implements OnInit {
             t.isSelected = true;
         });
         target.isSelected = true;
-        this.storageService.setItem('personalTarget', target);
+        this.storageService.setItem('slectedTarget', target);
+        this.selectedTarget = target;
+        this.targetNotSelected = false;
+    }
+
+    onGoToEditDrill() {
+        this.router.navigateByUrl('home/tabs/tab2/select');
+    }
+
+    onDiscconectTest() {
+        this.bleService.distory();
     }
 }

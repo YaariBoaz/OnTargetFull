@@ -129,15 +129,17 @@
         </div>
     </ng-container>
 
-
     <app-signup
             *ngIf="stepOneComplete && !stepTwoComplete"
             (back)="onBackToLogin()"
             (stepTwoComplete)="completeStepTwo($event)"
-            (backToFirst)="backToFirst($event)">
+            (backToFirst)="backToFirst()">
     </app-signup>
 
-    <app-tab3 (stepThreeComplete)="completeStepTwo($event)" (move)="onMoveToTargetSearch($event,stepper)" *ngIf="stepTwoComplete"></app-tab3>
+
+
+    <app-tab3 (stepThreeComplete)="completeStepThree()" (move)="onMoveToTargetSearch($event,stepper)" [form]="sigunUpFormDetails"
+              *ngIf="stepTwoComplete"></app-tab3>
 
     <div *ngIf="stepFourActive">
         <img src="assets/icons/right.svg">

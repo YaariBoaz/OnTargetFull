@@ -98,6 +98,7 @@ export class HitNohitService {
     initStats() {
         this.pageData.counter = 0;
         this.drillIsFinished = false;
+        this.stats = [];
         this.summaryObject = this.DEFAULT_SUMMARY_OBJECT;
         this.drillFinished = false;
         if (!this.pageData) {

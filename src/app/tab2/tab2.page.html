@@ -1,25 +1,34 @@
 <section class="edit-drill">
-    <ion-item #mainSection></ion-item>
+    <!--    <ion-item #mainSection></ion-item>-->
     <header [class.ios-mode]="this.platform.is('ios')">
-        <p> Edit Drill</p>
-
-        <!--        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu"-->
-        <!--                style="">-->
-        <!--            <span>⋮</span>-->
-        <!--        </button>-->
-        <!--        <mat-menu #menu="matMenu">-->
-        <!--            <button mat-menu-item>Item 1</button>-->
-        <!--            <button mat-menu-item>Item 2</button>-->
-        <!--        </mat-menu>-->
+        <div>
+            <svg (click)="onBackPressed()" xmlns="http://www.w3.org/2000/svg" width="27.656" height="35"
+                 viewBox="0 0 27.656 35">
+                <defs>
+                    <filter id="Arrow_" width="27.656" height="35" x="0" y="0" filterUnits="userSpaceOnUse">
+                        <feOffset dy="3"/>
+                        <feGaussianBlur result="blur" stdDeviation="3"/>
+                        <feFlood flood-opacity=".161"/>
+                        <feComposite in2="blur" operator="in"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                </defs>
+                <g filter="url(#Arrow_)">
+                    <path id="Arrow_2" fill="#fff" fill-rule="evenodd"
+                          d="M720.456 1174.787a.721.721 0 0 0 1 0 .69.69 0 0 0 0-.988l-7.554-7.438 7.552-7.18a.686.686 0 0 0 0-.984.712.712 0 0 0-1 0l-8.441 8.164z"
+                          data-name="Arrow" transform="translate(-703.01 -1151.99)"/>
+                </g>
+            </svg>
+            <p> Edit Drill</p>
+        </div>
     </header>
 
     <div class="main-content">
 
-        <div class="drill-name">
-            <p>DRILL NAME</p>
-            <h3>Surprise Drill - Standing</h3>
-        </div>
-
+        <!--        <div class="drill-name">-->
+        <!--            <p>DRILL NAME</p>-->
+        <!--            <h3>Surprise Drill - Standing</h3>-->
+        <!--        </div>-->
         <div class="basic-settings">
             <p class="red-title">BASIC SETTINGS</p>
 
@@ -43,7 +52,7 @@
                         </svg>
                         <p>CONNECTED TARGET:</p>
                     </div>
-                    <p class="connected-target">E1n1</p>
+                    <p *ngIf="connectedTarget" class="connected-target">{{connectedTarget?.name}}</p>
                 </div>
 
                 <div class="row">
@@ -101,28 +110,28 @@
                     [options]="slideOpts ">
             <ion-slide>
                 <img #img src="../../assets/Artboard1.jpg" alt="target-cartboard"
-                     (click)="selectedDrillType = img.getAttribute('id')"
-                     [ngClass]="{'selected': selectedDrillType === img.getAttribute('id') }" [attr.id]="'Hit/NoHit'">
+                     (click)="drill.drillType = img.getAttribute('id')"
+                     [ngClass]="{'selected': drill.drillType === img.getAttribute('id') }" [attr.id]="'Hit/NoHit'">
             </ion-slide>
             <ion-slide>
                 <img #img2 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="selectedDrillType = img2.getAttribute('id')"
-                     [ngClass]="{'selected': selectedDrillType === img2.getAttribute('id') }" [attr.id]="'Hostage'">
+                     (click)="drill.drillType = img2.getAttribute('id')"
+                     [ngClass]="{'selected': drill.drillType === img2.getAttribute('id') }" [attr.id]="'Hostage'">
             </ion-slide>
             <ion-slide>
                 <img #img3 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="selectedDrillType = img3.getAttribute('id')"
-                     [ngClass]="{'selected': selectedDrillType === img3.getAttribute('id') }" [attr.id]="'noIdea'">
+                     (click)="drill.drillType = img3.getAttribute('id')"
+                     [ngClass]="{'selected': drill.drillType === img3.getAttribute('id') }" [attr.id]="'noIdea'">
             </ion-slide>
             <ion-slide>
                 <img #img4 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="selectedDrillType = img4.getAttribute('id')"
-                     [ngClass]="{'selected': selectedDrillType === img4.getAttribute('id') }" [attr.id]="'noIdea2'">
+                     (click)="drill.drillType = img4.getAttribute('id')"
+                     [ngClass]="{'selected': drill.drillType === img4.getAttribute('id') }" [attr.id]="'noIdea2'">
             </ion-slide>
             <ion-slide>
                 <img #img5 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="selectedDrillType = img5.getAttribute('id')"
-                     [ngClass]="{'selected': selectedDrillType === img5.getAttribute('id') }" [attr.id]="'noIdea3'">
+                     (click)="drill.drillType = img5.getAttribute('id')"
+                     [ngClass]="{'selected': drill.drillType === img5.getAttribute('id') }" [attr.id]="'noIdea3'">
             </ion-slide>
         </ion-slides>
 
@@ -229,11 +238,11 @@
                     </svg>
                     <p>WEAPON:</p>
                 </div>
-                <select>
-                    <option value="m4">M-4</option>
+                <select  [(ngModel)]='drill.weapon'>
                     <option *ngFor="let gun of myGuns" [value]="gun">{{gun}}</option>
                 </select>
             </div>
+
 
             <div class="container">
                 <div class="title-and-icon">
@@ -271,7 +280,6 @@
                     <p>SIGHT:</p>
                 </div>
                 <select>
-                    <option value="ar-15 7">AR-15 7</option>
                     <option *ngFor="let sight of mySights" [value]="sight">{{sight}}</option>
                 </select>
             </div>
@@ -326,7 +334,8 @@
             </div>
         </div>
 
-        <button class="startSessionBtn" (click)="startSesstion()" routerLink="/home/tabs/tab2/select2"> START SESSION        </button>
+        <button class="startSessionBtn" (click)="startSesstion()" routerLink="/home/tabs/tab2/select2"> START SESSION
+        </button>
 
     </div>
 
