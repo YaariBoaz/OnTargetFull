@@ -1,0 +1,48 @@
+<section class="access-modal">
+    <div class="close" (click)="closeModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+            <path id="close" fill-rule="evenodd"
+                  d="M8.642 7.063l5.408-5.407a.933.933 0 0 0-1.32-1.32L7.323 5.743 1.916.336A.933.933 0 0 0 .6 1.656L6 7.063.6 12.469a.933.933 0 1 0 1.32 1.32l5.403-5.408 5.406 5.407a.933.933 0 0 0 1.32-1.32z"
+                  transform="translate(-.323 -.063)"/>
+        </svg>
+    </div>
+    <p class="title"> Allow access? </p>
+    <div class="main-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="37.845" height="64.572" viewBox="0 0 37.845 64.572">
+            <defs>
+                <style>
+                    .cls-1 {
+                        fill: #ce564b
+                    }
+                </style>
+            </defs>
+            <g id="Group_479" data-name="Group 479">
+                <g id="Group_477" data-name="Group 477">
+                    <g id="Group_476" data-name="Group 476">
+                        <path id="Path_15961"
+                              d="M281.707 978.422H255.36a5.755 5.755 0 0 1-5.749-5.749V919.6a5.755 5.755 0 0 1 5.749-5.748h26.347a5.755 5.755 0 0 1 5.749 5.748v53.075a5.755 5.755 0 0 1-5.749 5.747zm-26.347-61.506a2.684 2.684 0 0 0-2.68 2.682v53.075a2.685 2.685 0 0 0 2.68 2.683h26.347a2.685 2.685 0 0 0 2.68-2.683V919.6a2.684 2.684 0 0 0-2.68-2.682z"
+                              class="cls-1" data-name="Path 15961" transform="translate(-249.611 -913.85)"/>
+                        <path id="Rectangle_1725" d="M0 0H34.777V3.067H0z" class="cls-1" data-name="Rectangle 1725"
+                              transform="translate(1.534 6.274)"/>
+                        <path id="Rectangle_1726" d="M0 0H34.777V3.067H0z" class="cls-1" data-name="Rectangle 1726"
+                              transform="translate(1.534 49.871)"/>
+                    </g>
+                    <path id="Path_15962"
+                          d="M271.275 972.522h-5.483a1.533 1.533 0 1 1 0-3.067h5.483a1.533 1.533 0 1 1 0 3.067z"
+                          class="cls-1" data-name="Path 15962" transform="translate(-249.611 -913.85)"/>
+                </g>
+                <g id="Group_478" data-name="Group 478" transform="translate(16.005 16.747)">
+                    <path id="Path_15963"
+                          d="M265.616 954.062a2.92 2.92 0 1 1 2.917 2.81 2.84 2.84 0 0 1-2.917-2.81zm5.6-23.465l-.43 17.326h-4.51l-.43-17.326z"
+                          class="cls-1" data-name="Path 15963" transform="translate(-265.616 -930.597)"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <p class="text">onTarget would like to access to camera </p>
+
+    <div class="controls">
+        <button class="confirm" (click)="continueToThird()">GRANT ACCESS</button>
+        <button class="cancel" (click)="returnToPreviusStage()">NOT NOW</button>
+    </div>
+</section>

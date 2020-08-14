@@ -7,10 +7,10 @@
                 <input type="text" formControlName="first_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"/>
             </label>
+        </div>
 
-            <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
-                <div *ngIf="f.first_name.errors.required">First Name is required</div>
-            </div>
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
         </div>
 
         <div class="row">
@@ -19,9 +19,10 @@
                 <input type="text" formControlName="last_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"/>
             </label>
-            <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
-                <div *ngIf="f.last_name.errors.required">Last Name is required</div>
-            </div>
+        </div>
+
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
         </div>
 
         <div class="row">
@@ -30,10 +31,17 @@
                 <input type="email" formControlName="email" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
             </label>
+<<<<<<< HEAD
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                 <div *ngIf="f.email.errors.required">Email is required</div>
                 <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
             </div>
+=======
+        </div>
+
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
+>>>>>>> popups-and-fixes
         </div>
 
         <div class="row">
@@ -69,6 +77,10 @@
                 <div *ngIf="f.password.errors.required">Password is required</div>
                 <div *ngIf="f.password.errors.invalid">Password Must match</div>
             </div>
+        </div>
+
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
         </div>
 
         <div class="row">
@@ -107,8 +119,11 @@
             </div>
         </div>
 
-
+        <div class="errors" *ngIf="submitted && f.first_name.errors">
+            <p *ngIf="f.first_name.errors.required">First Name is required</p>
+        </div>
     </form>
+
     <div class="controls">
         <button class="confirm" (click)="onSubmit()" >CONTINUE</button>
         <button class="cancel" (click)="returnToPreviusStage()">CANCEL</button>

@@ -19,7 +19,6 @@ section.sign-up {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
     div.row {
       display: flex;
       flex-direction: column;
@@ -55,7 +54,6 @@ section.sign-up {
         top: 50%;
         left: 20px;
 
-
       }
 
       input {
@@ -85,6 +83,20 @@ section.sign-up {
         transform: translateY(0%);
         left: 20px;
         background-color: white;
+      }
+    }
+
+    // Errors
+    div.errors {
+      box-sizing: border-box;
+      padding: 0 10px;
+      p {
+        font-size: 12px;
+        line-height: 1.17;
+        letter-spacing: 0.4px;
+        text-align: left;
+        color: #ce564b;
+        margin: 0;
       }
     }
   }
