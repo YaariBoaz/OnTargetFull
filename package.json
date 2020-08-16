@@ -4,6 +4,7 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
+    "resources": "cordova-res ios && cordova-res android && node scripts/resources.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
