@@ -10,9 +10,6 @@ import {SightlistComponent} from './sightlist/sightlist.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {SharedModule} from '../shared/shared.module';
 import {StorageService} from '../shared/services/storage.service';
-import {Camera} from '@ionic-native/Camera/ngx';
-import {File} from '@ionic-native/file/ngx';
-import {Crop} from '@ionic-native/crop/ngx';
 
 // @ts-ignore
 @NgModule({
@@ -25,7 +22,7 @@ import {Crop} from '@ionic-native/crop/ngx';
         // IonicStorageModule.forRoot(),
         RouterModule.forChild([{path: '', component: Tab3Page}])
     ],
-    providers: [StorageService, Camera, Crop, File],
+    providers: [StorageService],
     declarations: [CDVPhotoLibraryPipe],
     exports: [],
     entryComponents: [GunlistComponent, SightlistComponent]

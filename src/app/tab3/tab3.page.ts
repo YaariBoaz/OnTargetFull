@@ -1,12 +1,10 @@
 import {Component, OnInit, NgZone, ChangeDetectorRef, Input, Output, EventEmitter} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {StorageService} from '../shared/services/storage.service';
-import {Camera, CameraOptions} from '@ionic-native/Camera/ngx';
-import {File} from '@ionic-native/file/ngx';
-import {ActionSheetController, AlertController} from '@ionic/angular';
+import {Camera, CameraOptions, PictureSourceType} from '@ionic-native/camera/ngx';
+import {ActionSheetController, AlertController, Platform} from '@ionic/angular';
 import {Crop} from '@ionic-native/crop/ngx';
-import {Base64} from '@ionic-native/base64/ngx';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {Tab3Service} from './tab3.service';
 import {InventoryModel} from '../shared/models/InventoryModel';
 import {ProfileImageService} from '../shared/services/profile-image.service';
@@ -14,7 +12,8 @@ import {WizardService} from '../shared/authentication/signup-wizard/wizard.servi
 import {MatDialog} from '@angular/material';
 import {GunlistComponent} from './gunlist/gunlist.component';
 import {SightlistComponent} from './sightlist/sightlist.component';
-import {SelectTargetModalComponent} from '../shared/select-target-modal/select-target-modal.component';
+import {SelectTargetComponent} from '../shared/select-target-modal/select-target-component';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 
 @Component({
     selector: 'app-tab3',
@@ -42,15 +41,20 @@ export class Tab3Page implements OnInit {
     showHeader = false;
     isFromWizard: boolean;
     showState = false;
+    private registerForm: any;
+    submitted;
 
     constructor(private storageService: StorageService,
                 private ref: ChangeDetectorRef,
                 private crop: Crop,
+                private formBuilder: FormBuilder,
                 private router: Router,
+                private platform: Platform,
+                private actionSheetController: ActionSheetController,
+                private camera: Camera,
                 private alertCtrl: AlertController,
                 private tab3Service: Tab3Service,
                 public domSanitizer: DomSanitizer,
-                private profileImageService: ProfileImageService,
                 private wizardService: WizardService,
                 public dialog: MatDialog
     ) {
@@ -59,6 +63,16 @@ export class Tab3Page implements OnInit {
         } else {
             this.isFromWizard = true;
         }
+
+        this.registerForm = this.formBuilder.group({
+            first_name: ['', Validators.required],
+            age: [],
+            gender: [],
+            country: [],
+            state: [],
+            last_name: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+        });
     }
 
     ionViewDidEnter() {
@@ -96,6 +110,9 @@ export class Tab3Page implements OnInit {
     }
 
     ngOnInit(): void {
+        if (!this.form) {
+            this.form = {};
+        }
         this.initActctions();
         this.form.age = null;
         this.form.country = null;
@@ -136,7 +153,7 @@ export class Tab3Page implements OnInit {
     }
 
     async onSelectTarget() {
-        const dialogRef = this.dialog.open(SelectTargetModalComponent, {
+        const dialogRef = this.dialog.open(SelectTargetComponent, {
             maxWidth: '100vw',
             maxHeight: '100vh',
             height: '100%',
@@ -147,23 +164,49 @@ export class Tab3Page implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
+            debugger
             this.myTarget = this.storageService.getItem('personalTarget');
         });
     }
 
-    selectImage() {
-        const image = this.profileImageService.selectImage();
-        // this.registerForm.value.img_path = this.profileImageService.selectImage();
-        this.ref.detectChanges();
+    async selectImage() {
+        const actionSheet = await this.actionSheetController.create({
+            header: 'Select Image source',
+            buttons: [{
+                text: 'Load from Library',
+                handler: () => {
+                    this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+                }
+            },
+                {
+                    text: 'Use Camera',
+                    handler: () => {
+                        this.pickImage(this.camera.PictureSourceType.CAMERA);
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel'
+                }
+            ]
+        });
+        await actionSheet.present();
     }
 
 
     finishWizard() {
-        this.form.sights = this.mySights;
-        this.form.weapons = this.myGuns;
-        this.form.target = this.myTarget;
-        this.wizardService.registerUser();
-        this.move.emit();
+        if (this.router.url === '/home/tabs/tab3') {
+            // update user.
+        } else {
+            this.form.sights = this.mySights;
+            this.form.weapons = this.myGuns;
+            this.form.target = this.myTarget;
+            this.form.profilePicture = this.profile.picture;
+            this.wizardService.moreInfoForm = this.form;
+            this.wizardService.registerUser();
+            this.move.emit();
+        }
+
     }
 
     onHideTargets() {
@@ -185,6 +228,51 @@ export class Tab3Page implements OnInit {
 
     onGenderSelected(value: string) {
         this.form.gender = value;
+    }
+
+    pickImage(sourceType) {
+        const options: CameraOptions = {
+            quality: 100,
+            sourceType,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            correctOrientation: true,
+        };
+        this.camera.getPicture(options).then((imageData) => {
+            // imageData is either a base64 encoded string or a file URI
+            // If it's base64 (DATA_URL):
+            const base64Image = 'data:image/jpeg;base64,' + imageData;
+            this.profile.picture = base64Image;
+            this.ref.detectChanges();
+            return base64Image;
+        }, (err) => {
+            console.log(err);
+        });
+    }
+
+    get f() {
+        return this.registerForm.controls;
+    }
+
+    cropImage(fileUrl) {
+        // this.crop.crop(fileUrl, {quality: 100})
+        //     .then(
+        //         newPath => {
+        //             this.showCroppedImage(newPath.split('?')[0]);
+        //         },
+        //         error => {
+        //             alert('Error cropping image' + error);
+        //         }
+        //     );
+    }
+
+    onBackPressed() {
+
+    }
+
+    onSubmit() {
+
     }
 }
 

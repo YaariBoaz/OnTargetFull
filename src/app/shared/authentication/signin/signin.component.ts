@@ -56,12 +56,11 @@ export class SigninComponent implements OnInit {
         //         modalType: 'general'
         //     }
         // });
-
-
-        const dialogRef = this.dialog.open(AccessModalComponent, {
-            width: '350px',
-        });
-
+        //
+        //
+        // const dialogRef = this.dialog.open(AccessModalComponent, {
+        //     width: '350px',
+        // });
 
 
         if (this.storageService.getItem('isLoggedIn')) {
@@ -114,26 +113,26 @@ export class SigninComponent implements OnInit {
     }
 
     async onLogin() {
-        this.submitted = true;
-        if (this.registerForm.invalid) {
-            return;
-        } else {
-            const loading = await this.loadingController.create({
-                message: 'Please wait...',
-                duration: 2000
-            });
-            await loading.present();
-            this.apiService.login({
-                username: this.registerForm.value.email,
-                password: this.registerForm.value.password
-            }).subscribe(data => {
-                this.userService.setUser(data);
-                this.apiService.getDashboardData(this.userService.getUserId());
-                this.storageService.setItem('isLoggedIn', true);
-                this.storageService.setItem('profileData', data);
-                this.router.navigateByUrl('/home/tabs/tab1');
-            });
-        }
+        // this.submitted = true;
+        // if (this.registerForm.invalid) {
+        //     return;
+        // } else {
+        const loading = await this.loadingController.create({
+            message: 'Please wait...',
+            duration: 2000
+        });
+        await loading.present();
+        this.apiService.login({
+            username: this.registerForm.value.email,
+            password: this.registerForm.value.password
+        }).subscribe(data => {
+            this.userService.setUser(data);
+            this.apiService.getDashboardData(this.userService.getUserId());
+            this.storageService.setItem('isLoggedIn', true);
+            this.storageService.setItem('profileData', data);
+            this.router.navigateByUrl('/home/tabs/tab1');
+        });
+        // }
 
     }
 

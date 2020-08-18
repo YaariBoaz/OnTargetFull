@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, NgZone} from '@angular/core';
 import {TabsService} from './tabs.service';
 import {Router} from '@angular/router';
 
@@ -13,7 +13,7 @@ export class TabsPage {
     splash = true;
     tabBarElement: any;
 
-    constructor(private tabService: TabsService, private router: Router) {
+    constructor(private tabService: TabsService, private router: Router, private zone: NgZone) {
         this.tabBarElement = document.querySelector('.tabbar');
     }
 

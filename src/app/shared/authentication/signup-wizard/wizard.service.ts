@@ -19,6 +19,7 @@ export class WizardService {
     notifyWeaponWasSet = new BehaviorSubject(false);
     notifyScopeWasSet = new BehaviorSubject(false);
     isFromListScreen = false;
+    moreInfoForm: any;
 
     constructor(private apiService: ApiService,
                 private storageService: StorageService,
@@ -28,36 +29,25 @@ export class WizardService {
 
     }
 
+
     registerUser() {
+        let myTarget = this.storageService.getItem('personalTarget');
+        myTarget = {
+            id: myTarget.id,
+            name: myTarget.name
+        };
+        const toSend = {} as any;
+        toSend.userInfo = this.registerForm.value;
+        toSend.sights = this.moreInfoForm.sights;
+        toSend.weapons = this.moreInfoForm.weapons;
+        toSend.target = this.moreInfoForm.target;
+        toSend.target = myTarget;
         this.notifyWizardSummaryStart.next(true);
-
-        this.apiService.signup(this.registerForm.value).subscribe((returnedValue) => {
-            this.apiService.login({
-                username: this.registerForm.value.email,
-                password: this.registerForm.value.password
-            }).subscribe((data) => {
-                this.storageService.setItem('profileData', data);
-                this.tab3Service.passProfileFromRegister.next(data);
-                this.notifyUserWasRegisterd.next(true);
-                setTimeout(() => {
-                    const inventory: InventoryModel = this.storageService.getItem('inventory');
-                    inventory.userId = this.userService.getUserId();
-                    this.apiService.setInventory(inventory).subscribe(inventoryData => {
-                        if (inventoryData) {
-                            this.notifyWeaponWasSet.next(true);
-                            setTimeout(() => {
-                                this.notifyScopeWasSet.next(true);
-                            }, 1000);
-
-                            setTimeout(() => {
-                                this.notifyTargetAssigned.next(true);
-                            }, 3000);
-                        }
-                    });
-                }, 2000);
-
-            });
+        debugger
+        this.apiService.signup(toSend).subscribe((returnedValue) => {
+            ;
         });
+
     }
 
 

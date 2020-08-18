@@ -1,6 +1,6 @@
 <section class="dashboard">
     <!--[class.ios-mode]="this.platform.is('ios')"-->
-    <h3>Hi, Evi</h3>
+    <h3>Hi, {{profile?.firstName}}</h3>
     <div class="menu">
         <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button
                 [matMenuTriggerFor]="menu" style="">

@@ -18,9 +18,10 @@ import {MaterialModule} from './shared/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from './shared/shared.module';
 import {Camera} from '@ionic-native/camera/ngx';
-import {GlobalErrorHandler} from './core/errors.service';
 import {CdTimerModule} from 'angular-cd-timer';
 import {BleService} from './shared/services/ble.service';
+import {Crop} from '@ionic-native/crop/ngx';
+import {SelectTargetComponent} from './shared/select-target-modal/select-target-component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {BleService} from './shared/services/ble.service';
         BLE,
         BluetoothSerial,
         Camera,
-        BleService
+        BleService,
+        Crop
     ],
     exports: [MaterialModule],
     bootstrap: [AppComponent]

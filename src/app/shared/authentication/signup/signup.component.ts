@@ -47,20 +47,15 @@ export class SignupComponent implements OnInit {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             first_name: ['', Validators.required],
-            last_name: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-<<<<<<< HEAD
-            confirmPassword: new FormControl(null, [Validators.required])
-        }, {validator: this.passwordConfirming});
-=======
             age: [],
             gender: [],
             country: [],
             state: [],
-        });
-        console.log(this.registerForm)
->>>>>>> login-css
+            last_name: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            confirmPassword: new FormControl(null, [Validators.required])
+        }, {validator: this.passwordConfirming});
     }
 
 
@@ -69,27 +64,7 @@ export class SignupComponent implements OnInit {
     }
 
     async onSubmit() {
-        this.submitted = true;
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
 
-        this.registerForm.value.img_path = this.picture;
-        if (this.registerForm.value.age) {
-            this.registerForm.value.age = this.registerForm.value.age.toString();
-        }
-
-        this.wizardService.registerForm = this.registerForm;
-        this.tab3Service.passProfileFromRegister.next(this.registerForm.value);
-        this.stepTwoComplete.emit(this.registerForm);
-    }
-
-
-    passwordConfirming(c: AbstractControl): { invalid: boolean } {
-        if (c.get('password').value !== c.get('confirmPassword').value) {
-            return {invalid: true};
-        }
     }
 
 
@@ -188,6 +163,26 @@ export class SignupComponent implements OnInit {
     }
 
     continueToThird() {
+        this.submitted = true;
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            return;
+        }
 
+        this.registerForm.value.img_path = this.picture;
+        if (this.registerForm.value.age) {
+            this.registerForm.value.age = this.registerForm.value.age.toString();
+        }
+
+        this.wizardService.registerForm = this.registerForm;
+        this.tab3Service.passProfileFromRegister.next(this.registerForm.value);
+        this.stepTwoComplete.emit(this.registerForm);
+    }
+
+
+    passwordConfirming(c: AbstractControl): { invalid: boolean } {
+        if (c.get('password').value !== c.get('confirmPassword').value) {
+            return {invalid: true};
+        }
     }
 }

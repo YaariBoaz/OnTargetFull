@@ -7,10 +7,10 @@
                 <input type="text" formControlName="first_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"/>
             </label>
-        </div>
 
-        <div class="errors" *ngIf="submitted && f.first_name.errors">
-            <p *ngIf="f.first_name.errors.required">First Name is required</p>
+            <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
+                <div *ngIf="f.first_name.errors.required">First Name is required</div>
+            </div>
         </div>
 
         <div class="row">
@@ -19,10 +19,9 @@
                 <input type="text" formControlName="last_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"/>
             </label>
-        </div>
-
-        <div class="errors" *ngIf="submitted && f.first_name.errors">
-            <p *ngIf="f.first_name.errors.required">First Name is required</p>
+            <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
+                <div *ngIf="f.last_name.errors.required">Last Name is required</div>
+            </div>
         </div>
 
         <div class="row">
@@ -31,28 +30,16 @@
                 <input type="email" formControlName="email" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
             </label>
-<<<<<<< HEAD
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                 <div *ngIf="f.email.errors.required">Email is required</div>
-                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
             </div>
-=======
-        </div>
-
-        <div class="errors" *ngIf="submitted && f.first_name.errors">
-            <p *ngIf="f.first_name.errors.required">First Name is required</p>
->>>>>>> popups-and-fixes
         </div>
 
         <div class="row">
             <label [ngClass]="{'hasValue': registerForm.controls.password.dirty || registerForm.controls.password.touched }">
                 <p>Password</p>
                 <input type="password" formControlName="password" class="form-control"
-<<<<<<< HEAD
-                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" #password/>
-=======
                        [ngClass]="{ 'is-invalid': submitted && f.age.errors }" #password/>
->>>>>>> login-css
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
                     <defs>
                         <clipPath id="clip-path">
@@ -75,62 +62,25 @@
             </label>
             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                 <div *ngIf="f.password.errors.required">Password is required</div>
-                <div *ngIf="f.password.errors.invalid">Password Must match</div>
             </div>
-        </div>
-
-        <div class="errors" *ngIf="submitted && f.first_name.errors">
-            <p *ngIf="f.first_name.errors.required">First Name is required</p>
         </div>
 
         <div class="row">
-            <label [ngClass]="{'hasValue': registerForm.controls.label.dirty || registerForm.controls.label.touched }">
-                <p>Label</p>
-<<<<<<< HEAD
-                <input type="password" formControlName="confirmPassword" class="form-control" #confirmPassword
-                       [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"/>
-=======
-                <input type="password" formControlName="label" class="form-control" #password
-                       [ngClass]="{ 'is-invalid': submitted && f.age.errors }"/>
->>>>>>> login-css
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
-                    <defs>
-                        <clipPath id="clip-path">
-                            <path d="M0 0H24V24H0z" class="cls-1"/>
-                        </clipPath>
-                        <style>
-                            .cls-1 {
-                                fill: none
-                            }
-                        </style>
-                    </defs>
-                    <g id="Icon_Visibility_Filled" clip-path="url(#clip-path)"
-                       data-name="Icon / Visibility / Filled" opacity="0.5">
-                        <path id="Path_988"
-                              d="M24-39a11.827 11.827 0 0 0-11 7.5A11.827 11.827 0 0 0 24-24a11.827 11.827 0 0 0 11-7.5A11.827 11.827 0 0 0 24-39zm0 12.5a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5zm0-8a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
-                              data-name="Path 988" transform="translate(-12 44)"/>
-                        <path id="Box" d="M0 0H24V24H0z" class="cls-1"/>
-                    </g>
-                </svg>
+            <label [ngClass]="{'hasValue': registerForm.controls.password.dirty || registerForm.controls.password.touched }">
+            <p>Password</p>
+            <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" #confirmPassword />
             </label>
             <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                <div *ngIf="f.confirmPassword.errors.required">Password is required</div>
-                <div *ngIf="f.confirmPassword.errors.minlength">Password must be at least 6 characters</div>
+                <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
             </div>
         </div>
 
-        <div class="errors" *ngIf="submitted && f.first_name.errors">
-            <p *ngIf="f.first_name.errors.required">First Name is required</p>
-        </div>
     </form>
-
     <div class="controls">
-        <button class="confirm" (click)="onSubmit()" >CONTINUE</button>
+        <button class="confirm" (click)="continueToThird()">ACCEPT AND CONTINUE</button>
         <button class="cancel" (click)="returnToPreviusStage()">CANCEL</button>
     </div>
 </section>
-
-
-
 
 

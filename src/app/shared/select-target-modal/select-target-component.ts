@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, NgZone, OnInit} from '@angular/core';
 import {ShootingService} from '../services/shooting.service';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -8,13 +8,14 @@ import {BleService} from '../services/ble.service';
 import {AlertController, LoadingController, Platform, ToastController} from '@ionic/angular';
 import {HitNohitService} from '../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
-    selector: 'app-select-target-modal',
-    templateUrl: './select-target-modal.component.html',
-    styleUrls: ['./select-target-modal.component.scss'],
+    selector: 'app-select-target',
+    templateUrl: './select-target-component.html',
+    styleUrls: ['./select-target.component.scss'],
 })
-export class SelectTargetModalComponent implements OnInit {
+export class SelectTargetComponent implements OnInit {
     targets = [];
     BASE_URL_HTTP = '192.168.0.86:8087';
     socket;
@@ -40,6 +41,7 @@ export class SelectTargetModalComponent implements OnInit {
                 private screenOrientation: ScreenOrientation,
                 private cd: ChangeDetectorRef,
                 public toastController: ToastController,
+                private zone: NgZone,
                 private platform: Platform,
                 public aletMdl: AlertController,
                 private router: Router) {
@@ -162,7 +164,6 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     onBackPressed() {
-        //this.dialogRef.close();
     }
 
     onGetTargets() {
@@ -222,4 +223,6 @@ export class SelectTargetModalComponent implements OnInit {
     onDiscconectTest() {
         this.bleService.distory();
     }
+
+
 }

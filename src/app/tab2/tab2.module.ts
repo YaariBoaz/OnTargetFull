@@ -6,10 +6,9 @@ import {FormsModule} from '@angular/forms';
 import {Tab2Page} from './tab2.page';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
-import {SelectTargetModalComponent} from '../shared/select-target-modal/select-target-modal.component';
+import {SelectTargetComponent} from '../shared/select-target-modal/select-target-component';
 import {DrillComponent} from '../shared/drill/drill.component';
 import {SharedModule} from '../shared/shared.module';
-import {TargetSelectionModule} from '../shared/select-target-modal/target-selection.module';
 import {DrillModule} from '../shared/drill/drill.module';
 
 // @ts-ignore
@@ -23,10 +22,9 @@ import {DrillModule} from '../shared/drill/drill.module';
         FormsModule,
         SharedModule,
         MatMenuModule,
-        TargetSelectionModule,
         DrillModule,
         RouterModule.forChild([
-            {path: '', component: SelectTargetModalComponent},
+            {path: '', component: SelectTargetComponent},
             {path: 'select', component: Tab2Page},
             {path: 'select2', component: DrillComponent}])
     ],

@@ -27,7 +27,7 @@
 
 
     <div class="content">
-        <div *ngIf="personalTarget">
+        <div *ngIf="personalTarget && !isFromWizard">
             <div class="personal-target-title"> Personal Target</div>
             <div class="personal-target-name">
                 E1n1
@@ -49,14 +49,16 @@
         </div>
 
 
-        <div class="buttons-container" *ngIf="!isFromWizard">
-            <button class="btn-connect" *ngIf="!this.targetIsConnected" [disabled]="targetNotSelected" (click)="onTargetChosen();connectedClicked = true;">
+        <div class="buttons-container">
+            <button class="btn-connect" *ngIf="!this.targetIsConnected" [disabled]="targetNotSelected"
+                    (click)="onTargetChosen();connectedClicked = true;">
                 Connect
             </button>
             <button class="btn-connect" *ngIf="targetIsConnected"
                     (click)="onGoToEditDrill()"> Continue
             </button>
         </div>
+
     </div>
 </section>
 

@@ -6,7 +6,7 @@
             <div class="row">
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input matInput placeholder="Email">
+                    <input  formControlName="email" matInput placeholder="Email">
                 </mat-form-field>
                 <div class="errors" *ngIf="submitted && f.email.errors">
                     <p class="error-message" *ngIf="f.email.errors.required">Email is required</p>
@@ -19,10 +19,8 @@
             <div class="row">
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput placeholder="Password">
+                    <input  formControlName="password" type="password" matInput placeholder="Password">
                 </mat-form-field>
-
-
                 <div class="errors" *ngIf="submitted && f.password.errors">
                     <p class="error-message" *ngIf="f.password.errors.required">Password is required</p>
                     <p class="error-message" *ngIf="f.password.errors.minlength">Password must be at least 6
@@ -30,29 +28,13 @@
                 </div>
             </div>
         </form>
-        <button class="start">START SESSION</button>
+        <button class="start" (click)="onLogin()">START SESSION</button>
         <p class="forgot">Forgot your password?</p>
     </div>
 
-    <a href="">Create an account</a>
+    <a (click)="goToSignUp()">Create an account</a>
+
 
 </section>
 
 
-<!--<ion-content>-->
-<!--<div class="bg-image"></div>-->
-<!--<div class="shadow"></div>-->
-<!--<section class="wrapper">-->
-<!--<img src="assets/icons/new/login/image18@3x.png">-->
-<!--<div class="centerPart">-->
-<!--<div class="signin-wrapper" >-->
-<!--<div class="regular-wrapper">-->
-<!---->
-<!--<span class="start-session-btn" (click)="onLogin()">Start Session</span>-->
-<!--<span class="forgot-message">Forgot your password?</span>-->
-<!--</div>-->
-<!--<span class="create-account" (click)="goToSignUp()"> Create an account</span>-->
-<!--</div>-->
-<!--</div>-->
-<!--</section>-->
-<!--</ion-content>-->
