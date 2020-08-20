@@ -108,6 +108,11 @@ section.drill-results {
     padding: 0 1em;
     padding-left: 100px;
 
+    svg {
+      height: auto;
+      width: 250px;
+    }
+
     .some-wrapper {
       position: relative;
       .counter-shot {
@@ -195,12 +200,17 @@ section.drill-results {
 
     div.results-table {
       width: 353px;
+      height: 250px;
       position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
       table {
         display: block;
 
-        height: 254px;
+        height: 200px;
         width: 353px;
         border-radius: 5px;
 
@@ -257,7 +267,7 @@ section.drill-results {
           width: 100%;
           display: block;
           overflow-y: scroll;
-          height: 214px;
+          height: 160px;
 
           tr {
             width: 100%;
@@ -319,8 +329,7 @@ section.drill-results {
 
 
       p.flashing-number {
-        width: 152px;
-        font-size: 265px;
+        font-size: 205px;
         font-weight: bold;
         font-stretch: normal;
         font-style: normal;
