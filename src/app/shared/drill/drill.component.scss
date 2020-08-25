@@ -7,7 +7,7 @@ section.drill-results {
   flex-direction: column;
 
   background-image: linear-gradient(#e4e4e496, #e4e4e496), url("../../../assets/drill-results.jpg");
-  background-size: 100% auto;
+  background-size: 100% 100%;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
@@ -16,7 +16,7 @@ section.drill-results {
     height: 48px;
     background-color: #363636;
     box-sizing: border-box;
-    padding: 10px 16px;
+    padding: 10px 16pxsi;
 
     display: flex;
     align-items: center;
@@ -365,3 +365,6 @@ section.drill-results {
 
 
 
+::ng-deep ion-tab-bar{
+  display: none;
+}

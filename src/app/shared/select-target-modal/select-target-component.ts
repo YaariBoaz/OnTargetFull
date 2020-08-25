@@ -51,6 +51,7 @@ export class SelectTargetComponent implements OnInit {
 
 
     ngOnInit() {
+        this.targetConnected = this.bleService.isConnectedFlag;
         this.platform.ready().then(() => {
             this.screenOrientation.unlock();
             this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
@@ -72,7 +73,7 @@ export class SelectTargetComponent implements OnInit {
             if (status) {
                 this.connectedClicked = false;
                 if (!this.selectedTarget) {
-                    this.selectedTarget = this.shootingService.chosenTarget = this.selectedTarget;
+                    this.selectedTarget = this.shootingService.chosenTarget;
                 }
                 this.selectedTarget.targetConnected = status;
                 this.targetIsConnected = true;

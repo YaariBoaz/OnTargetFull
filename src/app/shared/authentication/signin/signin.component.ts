@@ -9,6 +9,7 @@ import {UserService} from '../../services/user.service';
 import {MatDialog} from '@angular/material';
 import {ErrorModalComponent} from '../../popups/error-modal/error-modal.component';
 import {AccessModalComponent} from '../../popups/access-modal/access-modal.component';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 
 @Component({
@@ -33,11 +34,12 @@ export class SigninComponent implements OnInit {
         private apiService: ApiService,
         public alertController: AlertController,
         public loadingController: LoadingController,
+        private screenOrientation: ScreenOrientation,
         private formBuilder: FormBuilder,
         private userService: UserService
     ) {
         // this.router.navigateByUrl('/home/tabs/tab1');
-
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     }
 
     ionViewDidLoad() {

@@ -13,7 +13,7 @@ export class ShootingService {
     targetsArrived = new BehaviorSubject(null);
     chosenTarget: any;
     RNADOM_SHOTS = [0, 16, 32, 48];
-
+    drillStarteEvent = new BehaviorSubject(null);
     constructor(private http: HttpClient) {
     }
 

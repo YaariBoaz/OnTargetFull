@@ -276,10 +276,10 @@
                 <p *ngIf="!isHitNoHit" class="flashing-number">{{shotNumber }}</p>
                 <!-- IF the is a loop then place this outside the loop -->
                 <div class="table-sum">
-                    <p> total: 7 of 7</p>
-                    <p> 8</p>
-                    <p> 01:31</p>
-                    <p> 00:09</p>
+                    <p> total:{{stats.length}} of {{drill.numOfBullets}}</p>
+                    <p> {{summaryObject.points}}</p>
+                    <p>{{summaryObject.totalTime}}</p>
+                    <p> {{summaryObject.split}}</p>
                 </div>
             </div>
         </div>

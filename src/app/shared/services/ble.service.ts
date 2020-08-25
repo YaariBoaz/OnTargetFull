@@ -30,7 +30,7 @@ export class BleService {
     private subscription: Subscription;
     scanFinished = new BehaviorSubject<any>(false);
     currentTargetId: any;
-
+    isConnectedFlag = false;
 
     constructor(private storage: StorageService, public ble: BLE, private ngZone: NgZone, private bluetoothSerial: BluetoothSerial) {
         console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             INIT BLE SERVICE                %%%%%%%%%%%%%%%%%%%%%%%%');
@@ -109,6 +109,7 @@ export class BleService {
         this.currentTargetId = deviceId;
         this.subscription = this.ble.connect(deviceId).subscribe(
             (peripheral) => {
+                this.isConnectedFlag = false;
                 this.notifyTargetConnected.next(true);
                 this.onConnected(peripheral);
             },
@@ -122,6 +123,7 @@ export class BleService {
     }
 
     onConnected(peripheral: any) {
+        this.isConnectedFlag = false;
         console.log('Connected to ' + peripheral.name + ' ' + peripheral.id);
         this.ngZone.run(() => {
             this.peripheral = peripheral;
@@ -167,6 +169,7 @@ export class BleService {
 
     distory() {
         this.ble.disconnect(this.currentTargetId).then(() => {
+            this.isConnectedFlag = false;
             this.notifyDissconnect.next(true);
             console.log('Called Disconnect');
         });
@@ -175,14 +178,16 @@ export class BleService {
     isConnected() {
         return this.ble.isConnected(this.peripheral);
     }
+
     activatRecconectProcess() {
         this.ble.disconnect(this.currentTargetId).then(() => {
+            this.isConnectedFlag = false;
             this.notifyDissconnect.next(true);
             console.log('Called Disconnect');
-            debugger;
             try {
                 this.subscription = this.ble.connect(this.currentTargetId).subscribe(
                     (peripheral) => {
+                        this.isConnectedFlag = false;
                         this.notifyTargetConnected.next(true);
                         this.onConnected(peripheral);
                     },
@@ -193,6 +198,7 @@ export class BleService {
                         debugger;
                     }
                 );
+
                 this.notifyDissconnect.next(true);
 
 

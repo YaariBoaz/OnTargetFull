@@ -65,6 +65,7 @@ export class HitNohitService {
     currenOverTime: string;
     doubleSplits = [];
     finalSplits = [];
+    drillFinishedNotify = new BehaviorSubject(null);
 
     constructor(private shootingService: ShootingService,
                 private storageService: StorageService,
@@ -153,6 +154,7 @@ export class HitNohitService {
             this.finishDrill();
             this.updateHistory();
             isFinish = true;
+            this.drillFinishedNotify.next(true);
         }
 
         this.notifyHitArrived(isFinish, num);

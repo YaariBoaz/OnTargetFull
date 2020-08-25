@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {ModalController, Platform} from '@ionic/angular';
 import {AlertController} from '@ionic/angular';
 import {ShootingService} from '../shared/services/shooting.service';
@@ -42,6 +42,7 @@ export class Tab2Page implements OnInit {
                 private storageService: StorageService,
                 private ble: BleService,
                 private screenOrientation: ScreenOrientation,
+                private zone: NgZone,
                 private router: Router,
                 private platform: Platform) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
@@ -84,6 +85,7 @@ export class Tab2Page implements OnInit {
 
 
     startSesstion() {
+        this.shootingService.drillStarteEvent.next(true);
         this.shootingService.selectedDrill = this.drill;
         this.shootingService.numberOfBullersPerDrill = this.drill.numOfBullets;
     }
@@ -121,7 +123,11 @@ export class Tab2Page implements OnInit {
     }
 
     onBackPressed() {
-        this.router.navigateByUrl('home/tabs/tab2');
+
+        this.zone.run(() => {
+            this.router.navigateByUrl('home/tabs/tab2');
+        });
+
     }
 }
 

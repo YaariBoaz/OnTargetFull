@@ -1,6 +1,6 @@
 <section class="dashboard">
     <!--[class.ios-mode]="this.platform.is('ios')"-->
-    <h3>Hi, {{profile?.firstName}}</h3>
+    <h3>Hi, Lovie</h3>
     <div class="menu">
         <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button
                 [matMenuTriggerFor]="menu" style="">
@@ -258,7 +258,7 @@
             </div>
             <p>JULY</p>
         </div>
-        <div class="day">
+        <div class="day" (click)="onActivityClicked()">
             <p><b>16.7.2020</b></p>
             <p>Thursday</p>
         </div>

@@ -4,6 +4,7 @@ import {InitService} from './shared/services/init.service';
 import {LoadingController} from '@ionic/angular';
 import {BleService} from './shared/services/ble.service';
 import {Plugins} from '@capacitor/core';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 const {SplashScreen} = Plugins;
 
@@ -21,10 +22,11 @@ export class AppComponent implements OnDestroy, OnInit {
         private platform: Platform,
         private initService: InitService,
         public ble: BleService,
-        public loadingController: LoadingController
+        public loadingController: LoadingController,
+        private screenOrientation: ScreenOrientation
     ) {
 
-
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         SplashScreen.hide();
         this.initService.getDashboard();
         this.initService.getSights();

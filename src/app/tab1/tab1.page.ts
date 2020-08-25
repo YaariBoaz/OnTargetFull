@@ -11,6 +11,7 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import {TabsService} from '../tabs/tabs.service';
 import {Chart} from 'chart.js';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 @Component({
     selector: 'app-tab1',
@@ -58,11 +59,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 private userService: UserService,
                 private zone: NgZone,
                 private tabsService: TabsService,
+                private screenOrientation: ScreenOrientation,
                 private storageService: StorageService) {
 
     }
 
     ngOnInit(): void {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.profile = this.userService.getUser();
         this.handleOfflineScenario();
         this.tabsService.$notifyTab1.subscribe(() => {

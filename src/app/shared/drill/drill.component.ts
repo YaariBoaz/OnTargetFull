@@ -95,6 +95,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     loader;
     isHitNoHit = true;
     drillHasNotStarted = true;
+    drillIsFinished = false;
 
     constructor(
         private screenOrientation: ScreenOrientation,
@@ -114,8 +115,10 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     ) {
         this.drill = this.shootingService.selectedDrill;
         console.log(this.drill);
-        for (let i = 0; i < this.drill.numOfBullets; i++) {
-            this.stats.push({});
+        if (this.drill) {
+            for (let i = 0; i < this.drill.numOfBullets; i++) {
+                this.stats.push({});
+            }
         }
 
 
@@ -125,10 +128,24 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnInit() {
+        const content = document.querySelector('ion-tab-bar');
+        content.style.display = 'none';
+
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
 
+        this.hitNohitService.drillFinishedNotify.subscribe(data => {
+            if (data) {
+                this.drillIsFinished = true;
+            }
+        });
+
+        this.shootingService.drillStarteEvent.subscribe(data => {
+            if (data) {
+                this.drillIsFinished = false;
+            }
+        });
         this.hitNohitService.hitArrived.subscribe((data) => {
-            if (data !== null) {
+            if (data !== null && !this.drillHasNotStarted) {
                 this.shotNumber = data.hitNumber;
                 this.stats = data.statsData.stats;
                 this.pageData = data.statsData.page;
@@ -235,6 +252,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     async onBackPressed() {
+        this.drillIsFinished = false;
+        const content = document.querySelector('ion-tab-bar');
+        content.style.display = 'flex';
         this.initStats();
         if (this.stats.length !== this.drill.numOfBullets) {
             const alert = await this.alertController.create({
@@ -297,7 +317,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
 
     async restartShooting() {
-
+        this.drillIsFinished = false;
         if (this.stats.length !== this.drill.numOfBullets) {
             const alert = await this.alertController.create({
                 cssClass: 'my-custom-class',
