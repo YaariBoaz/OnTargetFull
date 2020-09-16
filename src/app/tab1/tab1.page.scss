@@ -47,10 +47,11 @@ section.dashboard {
       border-radius: 38px;
       margin-right: 26px;
 
-      background-image: url("/assets/lavi.jpg");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+      img {
+        border-radius: 100%;
+        width: 75px;
+        height: 75px;
+      }
     }
 
     div.stats {
@@ -80,6 +81,7 @@ section.dashboard {
             fill: white;
             stroke: white;
           }
+
           margin-right: 8px;
         }
 

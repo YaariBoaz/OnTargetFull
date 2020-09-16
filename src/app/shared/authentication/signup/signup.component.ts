@@ -47,15 +47,14 @@ export class SignupComponent implements OnInit {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             first_name: ['', Validators.required],
-            age: [],
-            gender: [],
-            country: [],
-            state: [],
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             confirmPassword: new FormControl(null, [Validators.required])
         }, {validator: this.passwordConfirming});
+        if (this.wizardService.registerForm) {
+            this.registerForm = this.wizardService.registerForm;
+        }
     }
 
 
@@ -163,6 +162,7 @@ export class SignupComponent implements OnInit {
     }
 
     continueToThird() {
+        this.stepTwoComplete.emit(this.registerForm);
         this.submitted = true;
         // stop here if form is invalid
         if (this.registerForm.invalid) {

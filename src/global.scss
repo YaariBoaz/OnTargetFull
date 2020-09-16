@@ -160,3 +160,13 @@ select:-webkit-autofill:focus {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.red-snackbar {
+  background: red;
+  color: white;
+}
+
+.green-snackbar {
+  background: green;
+  color: white;
+}

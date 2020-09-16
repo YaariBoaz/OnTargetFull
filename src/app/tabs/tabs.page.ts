@@ -1,6 +1,8 @@
 import {Component, NgZone} from '@angular/core';
 import {TabsService} from './tabs.service';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {Platform} from '@ionic/angular';
 
 
 @Component({
@@ -12,9 +14,21 @@ import {Router} from '@angular/router';
 export class TabsPage {
     splash = true;
     tabBarElement: any;
+    private subscription: Subscription;
+    currentTab = 'tab1';
 
-    constructor(private tabService: TabsService, private router: Router, private zone: NgZone) {
+    constructor(private tabService: TabsService, private router: Router, private zone: NgZone, private platform: Platform) {
         this.tabBarElement = document.querySelector('.tabbar');
+    }
+
+    ionViewDidEnter() {
+        this.subscription = this.platform.backButton.subscribeWithPriority(9999, () => {
+
+        });
+    }
+
+    ionViewWillLeave() {
+        this.subscription.unsubscribe();
     }
 
     ionViewDidLoad() {

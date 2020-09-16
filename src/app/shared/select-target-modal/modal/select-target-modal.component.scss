@@ -1,4 +1,4 @@
-@import "../../../assets/colors";
+@import "../../../../assets/colors";
 
 section {
   header {
@@ -109,6 +109,7 @@ section {
       align-items: center;
 
       .btn-connect {
+        z-index: 999;
         width: 343px;
         height: 56px;
         border-radius: 4px;
@@ -124,6 +125,7 @@ section {
         text-align: center;
         color: #ffffff;
       }
+
       .btn-connect:disabled {
         background-color: #ce564bb3;
       }
@@ -211,7 +213,8 @@ section {
 
 .scan-container {
   display: flex;
-align-items: center;
+  align-items: center;
+
   .choose-target {
     display: flex;
     align-items: center;
@@ -237,7 +240,9 @@ align-items: center;
       margin-left: 18px;
     }
   }
+
   button {
+    z-index: 999;
     width: 128px;
     height: 40px;
     border-radius: 4px;
@@ -254,4 +259,5 @@ align-items: center;
     margin-right: 24px;
   }
 }
+
 

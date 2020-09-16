@@ -14,6 +14,7 @@ import {GunlistComponent} from './gunlist/gunlist.component';
 import {SightlistComponent} from './sightlist/sightlist.component';
 import {SelectTargetComponent} from '../shared/select-target-modal/select-target-component';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {SelectTargetModalComponent} from '../shared/select-target-modal/modal/select-target-modal.component';
 
 @Component({
     selector: 'app-tab3',
@@ -103,10 +104,6 @@ export class Tab3Page implements OnInit {
                 this.profile = profile;
             }
         });
-
-        // Remove this
-        this.profile.email = 'evi@adl.solutions';
-        this.profile.age = 35;
     }
 
     ngOnInit(): void {
@@ -117,6 +114,7 @@ export class Tab3Page implements OnInit {
         this.form.age = null;
         this.form.country = null;
         this.form.state = null;
+        this.form.gendre = 'Male';
     }
 
     onSelectWeapons() {
@@ -153,7 +151,8 @@ export class Tab3Page implements OnInit {
     }
 
     async onSelectTarget() {
-        const dialogRef = this.dialog.open(SelectTargetComponent, {
+        this.wizardService.selectTargetFromWizardOpened.next(true);
+        const dialogRef = this.dialog.open(SelectTargetModalComponent, {
             maxWidth: '100vw',
             maxHeight: '100vh',
             height: '100%',
@@ -164,7 +163,6 @@ export class Tab3Page implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            debugger
             this.myTarget = this.storageService.getItem('personalTarget');
         });
     }
@@ -227,7 +225,6 @@ export class Tab3Page implements OnInit {
     }
 
     onGenderSelected(value: string) {
-        this.form.gender = value;
     }
 
     pickImage(sourceType) {

@@ -369,6 +369,8 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
 
+
+
     onReconnect() {
         this.bleService.connect(this.bleService.currentTargetId);
     }
@@ -378,13 +380,13 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     activateCounter() {
-        this.counter = 1;
+        this.counter = 3;
         this.showCounter = true;
 
         const interval = setInterval(() => {
-            this.counter++;
-            if (this.counter > 3) {
-                this.counter = 0;
+            this.counter--;
+            if (this.counter < 1) {
+                this.counter = 3;
                 this.showResults = true;
                 this.showCounter = false;
                 this.drillHasNotStarted = false;

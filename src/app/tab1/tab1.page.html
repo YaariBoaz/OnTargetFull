@@ -1,5 +1,6 @@
 <section class="dashboard">
     <!--[class.ios-mode]="this.platform.is('ios')"-->
+<!--    <h3>Hi, {{profile.firstName}}</h3>-->
     <h3>Hi, Lovie</h3>
     <div class="menu">
         <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button
@@ -13,7 +14,13 @@
     </div>
 
     <div class="profile">
-        <div class="avatar"></div>
+        <div class="avatar" *ngIf="profile.img">
+<!--            <img [src]="profile.img">-->
+            <img src="../../assets/lavi.jpg" height="882" width="1012"/>
+        </div>
+        <div class="avatar" *ngIf="!profile.img">
+            <img src="assets/avatar.jpg">
+        </div>
         <div class="stats">
             <div class="text-and-icon">
                 <div class="container">
@@ -78,7 +85,7 @@
             <ion-slide>
                 <div class="slide-container">
                     <p>RATE OF FILE</p>
-                    <P class="middle">95</P>
+                    <P class="middle">{{data.rateOfFireChart.userAvg}}</P>
 
                     <div class="chart-container">
                         <canvas width="100%" height="100%" #lineChart></canvas>
@@ -96,7 +103,8 @@
             <ion-slide>
                 <div class="slide-container">
                     <p>HIT RATIO</p>
-                    <P class="middle floating"><b>100</b>/200</P>
+                    <P class="middle floating"><b>{{data.hitRatioChart.totalHits}}</b>/{{data.hitRatioChart.totalShots}}
+                    </P>
                     <div class="chart-container">
                         <canvas width="100%" height="100%" #radio></canvas>
                     </div>
@@ -107,7 +115,7 @@
 
     <div class="static-images">
         <div class="image-container">
-            <p>1.30</p>
+            <p>{{data.bestScores.avgSplit}}</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">
                 <defs>
                     <style>
@@ -140,7 +148,7 @@
         </div>
 
         <div class="image-container">
-            <p>5</p>
+            <p>{{data.bestScores.longestShot}}</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="89" height="61" viewBox="0 0 89 61">
                 <defs>
                     <style>

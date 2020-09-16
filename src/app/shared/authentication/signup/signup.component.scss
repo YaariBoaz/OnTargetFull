@@ -12,7 +12,7 @@ section.sign-up {
   justify-content: space-between;
   box-sizing: border-box;
   padding: 0 16px;
-
+  overflow-y: auto;
   form.signInForm {
     width: 100%;
     height: 100%;

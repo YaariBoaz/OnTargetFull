@@ -8,6 +8,8 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 const {SplashScreen} = Plugins;
 
+
+
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',

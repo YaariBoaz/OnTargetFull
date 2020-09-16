@@ -30,7 +30,7 @@ export class Tab2Page implements OnInit {
         rangeUOM: 'Meters',
         sight: 'V6 5-30 X 50',
         ammo: 'Creedmor 6.5',
-        drillType: 'Hit/No Hit',
+        drillType: 'Hit/NoHit',
         shots: new Array<{ x, y }>()
     };
     connectedTarget = null;
@@ -82,6 +82,7 @@ export class Tab2Page implements OnInit {
 
         });
     }
+
 
 
     startSesstion() {
@@ -138,6 +139,6 @@ export interface DrillObject {
     rangeUOM: string;
     sight: string;
     ammo: string;
-    drillType: string;
+        drillType: string;
     shots: Array<{ x: number, y: number }>;
 }

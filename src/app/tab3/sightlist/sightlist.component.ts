@@ -80,7 +80,7 @@ export class SightlistComponent implements OnInit {
             inventory.sight = this.mySights;
             this.storageService.setItem('inventory', inventory);
         } else {
-            this.sightWasSelected(item);
+            this.mySights.splice(this.mySights.indexOf(item), 1);
         }
         this.changeDetection.detectChanges();
     }

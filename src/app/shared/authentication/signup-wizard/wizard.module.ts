@@ -9,7 +9,7 @@ import {GunlistComponent} from '../../../tab3/gunlist/gunlist.component';
 import {SightlistComponent} from '../../../tab3/sightlist/sightlist.component';
 import {SelectTargetComponent} from '../../select-target-modal/select-target-component';
 import {MatDialogModule} from '@angular/material/dialog';
-import {AppModule} from '../../../app.module';
+import {SelectTargetModalComponent} from '../../select-target-modal/modal/select-target-modal.component';
 
 export const routes: Routes = [
     {path: '', component: SignupWizardComponent},
@@ -22,7 +22,6 @@ export const routes: Routes = [
 
 @NgModule({
     imports: [
-        AppModule,
         CommonModule,
         SharedModule,
         RouterModule.forChild(routes),
@@ -31,8 +30,10 @@ export const routes: Routes = [
     declarations: [
         SignupWizardComponent,
         SignupComponent,
-        WizardSummaryComponent],
+        WizardSummaryComponent,
+        ],
     providers: [],
+    entryComponents: [SelectTargetModalComponent],
 
     exports: [SignupWizardComponent]
 })

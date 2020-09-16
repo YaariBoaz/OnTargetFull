@@ -39,7 +39,7 @@
             <label [ngClass]="{'hasValue': registerForm.controls.password.dirty || registerForm.controls.password.touched }">
                 <p>Password</p>
                 <input type="password" formControlName="password" class="form-control"
-                       [ngClass]="{ 'is-invalid': submitted && f.age.errors }" #password/>
+                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" #password/>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
                     <defs>
                         <clipPath id="clip-path">
@@ -66,8 +66,8 @@
         </div>
 
         <div class="row">
-            <label [ngClass]="{'hasValue': registerForm.controls.password.dirty || registerForm.controls.password.touched }">
-            <p>Password</p>
+            <label [ngClass]="{'hasValue': registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched }">
+            <p>Confirm Password</p>
             <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" #confirmPassword />
             </label>
             <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
@@ -78,7 +78,7 @@
 
     </form>
     <div class="controls">
-        <button class="confirm" (click)="continueToThird()">ACCEPT AND CONTINUE</button>
+        <button class="confirm" (click)="continueToThird()">CONTINUE</button>
         <button class="cancel" (click)="returnToPreviusStage()">CANCEL</button>
     </div>
 </section>

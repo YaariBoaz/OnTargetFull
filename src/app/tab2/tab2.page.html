@@ -52,7 +52,7 @@
                         </svg>
                         <p>CONNECTED TARGET:</p>
                     </div>
-                    <p *ngIf="connectedTarget" class="connected-target">{{connectedTarget?.name}}</p>
+                     <p class="connected-target">E1N1</p>
                 </div>
 
                 <div class="row">
@@ -112,11 +112,13 @@
                 <img #img src="../../assets/Artboard1.jpg" alt="target-cartboard"
                      (click)="drill.drillType = img.getAttribute('id')"
                      [ngClass]="{'selected': drill.drillType === img.getAttribute('id') }" [attr.id]="'Hit/NoHit'">
+
             </ion-slide>
             <ion-slide>
                 <img #img2 src="../../assets/Artboard2.jpg" alt="target-cartboard"
                      (click)="drill.drillType = img2.getAttribute('id')"
                      [ngClass]="{'selected': drill.drillType === img2.getAttribute('id') }" [attr.id]="'Hostage'">
+
             </ion-slide>
             <ion-slide>
                 <img #img3 src="../../assets/Artboard2.jpg" alt="target-cartboard"

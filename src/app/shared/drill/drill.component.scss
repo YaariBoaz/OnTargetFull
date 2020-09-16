@@ -16,7 +16,7 @@ section.drill-results {
     height: 48px;
     background-color: #363636;
     box-sizing: border-box;
-    padding: 10px 16pxsi;
+    padding: 10px 16px;
 
     display: flex;
     align-items: center;
@@ -108,17 +108,17 @@ section.drill-results {
     padding: 0 1em;
     padding-left: 100px;
 
-    svg {
-      height: auto;
-      width: 250px;
+    img {
+      height: 295px;
+      width: 295px;
     }
 
     .some-wrapper {
       position: relative;
       .counter-shot {
         position: absolute;
-        top: 131px;
-        left: 136px;
+        top: 0px;
+        left: 0px;
         font-family: Roboto;
         font-size: 22px;
         font-weight: normal;
@@ -128,6 +128,11 @@ section.drill-results {
         letter-spacing: normal;
         text-align: left;
         color: rgba(0, 0, 0, 0.81);
+        height: 295px;
+        width: 295px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
       }
     }
 
@@ -376,4 +381,253 @@ section.drill-results {
 
 ::ng-deep ion-tab-bar{
   display: none;
+}
+
+
+
+div.targetHoly {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+
+  img {
+    height: auto;
+    width: 250px;
+  }
+
+  .some-wrapper {
+    position: relative;
+    .counter-shot {
+      position: absolute;
+      top: 131px;
+      left: 136px;
+      font-family: Roboto;
+      font-size: 22px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.14;
+      letter-spacing: normal;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.81);
+    }
+  }
+
+  div.welcome-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 50vh;
+    background-color: #e4e4e49c;
+    position: relative;
+    border-radius: 4px;
+
+    div.dot {
+      position: absolute;
+      background-color: gray;
+      width: 9px;
+      height: 9px;
+      border-radius: 100%;
+
+      &.one {
+        top: 0.5em;
+        left: 0.5em;
+      }
+
+      &.two {
+        top: 0.5em;
+        right: 0.5em;
+      }
+
+      &.three {
+        bottom: 0.5em;
+        left: 0.5em;
+      }
+
+      &.four {
+        bottom: 0.5em;
+        right: 0.5em;
+      }
+    }
+
+    div.text {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        margin: 0;
+        font-size: 6vh;
+        line-height: 40px;
+        letter-spacing: 0.19px;
+        color: rgba(0, 0, 0, 0.8);
+        text-align: center;
+      }
+    }
+
+    svg {
+      width: 52px;
+      height: 45.4px;
+
+      g#arrow {
+        fill: rgba(0, 0, 0, 0.8);
+      }
+    }
+
+  }
+
+  div.results-table {
+    width: 353px;
+    height: 250px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    table {
+      display: block;
+
+      height: 200px;
+      width: 353px;
+      border-radius: 5px;
+
+      direction: rtl;
+
+      thead {
+        width: 100%;
+        display: block;
+        height: 40px;
+
+        tr {
+          display: flex;
+          align-items: center;
+          flex-direction: row-reverse;
+
+          width: 100%;
+          height: 40px;
+          background: #e4e4e4;
+
+          box-sizing: border-box;
+          padding: 0 1em;
+
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+
+          th {
+            color: #e4e4e4;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(100% / 4);
+            box-sizing: border-box;
+            padding: 0 0.5em;
+
+            svg {
+              width: 24px;
+              height: 24px;
+              margin-right: 0.5em;
+              fill: white;
+            }
+
+            p {
+              margin: 0;
+              font-size: 12px;
+              line-height: 14px;
+              letter-spacing: 0.12px;
+              color: rgba(0, 0, 0, 0.87);
+            }
+          }
+        }
+      }
+
+      tbody {
+        width: 100%;
+        display: block;
+        overflow-y: scroll;
+        height: 160px;
+
+        tr {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          height: 40px;
+          justify-content: space-around;
+          background-color: white;
+          flex-direction: row-reverse;
+
+          box-sizing: border-box;
+          padding: 0 1em;
+
+          &:nth-child(even) {
+            background-color: #e4e4e4;
+          }
+
+          td {
+            width: calc(100% / 4);
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0.12px;
+
+            box-sizing: border-box;
+            padding: 0 0.5em;
+
+          }
+        }
+
+      }
+    }
+
+    div.table-sum {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+      background-color: #262626;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 0 1em;
+
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+
+      p {
+        width: calc(100% / 4);
+        color: white;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.12px;
+        box-sizing: border-box;
+        padding: 0 0.5em;
+        text-align: right;
+        margin: 0;
+      }
+    }
+
+
+    p.flashing-number {
+      font-size: 205px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.17;
+      letter-spacing: 3.42px;
+      text-align: center;
+      color: rgba(206, 86, 75, 0.81);
+      margin: 0;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
 }

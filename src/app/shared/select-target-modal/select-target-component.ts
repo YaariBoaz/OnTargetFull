@@ -159,6 +159,7 @@ export class SelectTargetComponent implements OnInit {
         this.bleService.connect(this.selectedTarget.id);
     }
 
+
     startTraining() {
         this.hitNohitService.resetDrill();
         this.router.navigateByUrl('home/tabs/tab2/select');
@@ -208,17 +209,18 @@ export class SelectTargetComponent implements OnInit {
     }
 
     onTargetSelected(target: any) {
-        this.myTargets.forEach(t => {
-            t.isSelected = true;
-        });
         target.isSelected = true;
         this.storageService.setItem('slectedTarget', target);
         this.selectedTarget = target;
         this.targetNotSelected = false;
     }
 
+
     onGoToEditDrill() {
-        this.router.navigateByUrl('home/tabs/tab2/select');
+        this.zone.run(() => {
+            // Your router is here
+            this.router.navigateByUrl('home/tabs/tab2/select');
+        });
     }
 
     onDiscconectTest() {

@@ -79,7 +79,7 @@ export class GunlistComponent implements OnInit {
             inventory.wepons = this.myGuns;
             this.storageService.setItem('inventory', inventory);
         } else {
-            this.gunWasSelected(item);
+            this.myGuns.splice(this.myGuns.indexOf(item), 1);
         }
         this.changeDetection.detectChanges();
     }

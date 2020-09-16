@@ -9,6 +9,8 @@ import {AlertController, LoadingController, Platform, ToastController} from '@io
 import {HitNohitService} from '../../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {WizardService} from '../../authentication/signup-wizard/wizard.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-select-target-modal',
@@ -42,13 +44,21 @@ export class SelectTargetModalComponent implements OnInit {
                 private cd: ChangeDetectorRef,
                 public dialogRef: MatDialogRef<SelectTargetModalComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any,
-                public toastController: ToastController,
+                private snackBar: MatSnackBar,
+                private wizardService: WizardService,
                 private zone: NgZone,
                 private platform: Platform,
                 public aletMdl: AlertController,
                 private router: Router) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.isFromWizard = this.data.isFromWizard;
+
+        document.addEventListener('backbutton', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            this.dialogRef.close();
+            this.wizardService.selectTargetFromWizardOpened.next(true);
+        }, false);
 
     }
 
@@ -111,9 +121,9 @@ export class SelectTargetModalComponent implements OnInit {
                     // this.connectToPrimaryTarget();
                     amountOfTargetsFound = this.myTargets.length;
                     // this.clearPrimaryFromList();
-                    this.showToast('Found ' + amountOfTargetsFound + ' Targets in range', 'success');
+                    this.showToast('Found ' + amountOfTargetsFound + ' Targets in range', 'success', true);
                 } else {
-                    this.showToast('No targets were found, Try scanning again.', 'danger');
+                    this.showToast('No targets were found, Try scanning again.', 'danger', false);
                 }
             }
         });
@@ -129,14 +139,17 @@ export class SelectTargetModalComponent implements OnInit {
         }
     }
 
-    async showToast(msg: string, color: string) {
-        const toast = await this.toastController.create({
-            message: msg,
-            color,
-            duration: 2000
+    showToast(msg: string, color: string, flag) {
+        let className = 'red-snackbar';
+        if (flag) {
+            className = 'green-snackbar';
+        }
+        this.snackBar.open(msg, '', {
+            duration: 3000,
+            panelClass: [className]
         });
-        toast.present();
     }
+
 
     getOnlineTargets() {
         this.http.get(this.GET_TARGETS_API).subscribe((data: any) => {
@@ -167,7 +180,7 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     onBackPressed() {
-        // this.dialogRef.close();
+
     }
 
     onGetTargets() {

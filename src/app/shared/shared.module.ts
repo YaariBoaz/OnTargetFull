@@ -14,9 +14,10 @@ import {HitNohitService} from './drill/hit-nohit.service';
 import {TermsAndConditionComponent} from './components/terms-and-condition/terms-and-condition.component';
 import {SelectTargetComponent} from './select-target-modal/select-target-component';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {SelectTargetModalComponent} from './select-target-modal/modal/select-target-modal.component';
 
 @NgModule({
-    declarations: [Tab3Page, GunlistComponent, SightlistComponent, TermsAndConditionComponent, SelectTargetComponent],
+    declarations: [Tab3Page, GunlistComponent, SightlistComponent, TermsAndConditionComponent, SelectTargetComponent, SelectTargetModalComponent],
 
     imports: [
         CommonModule,
@@ -35,9 +36,8 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
         FormsModule,
         ReactiveFormsModule,
         Tab3Page, GunlistComponent, SightlistComponent,
-        SelectTargetComponent
+        SelectTargetModalComponent
     ],
-    entryComponents: [SelectTargetComponent],
 
 
 })

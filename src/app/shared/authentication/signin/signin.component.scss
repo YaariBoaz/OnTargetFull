@@ -41,6 +41,7 @@ section.login {
           width: 100%;
           box-sizing: border-box;
           padding: 0 32px;
+
           p.error-message {
             font-size: 12px;
             font-weight: normal;
@@ -57,7 +58,6 @@ section.login {
 
 
         ::ng-deep {
-
 
 
           .mat-form-field {
@@ -118,6 +118,14 @@ section.login {
     }
 
   }
+}
+
+.create-account-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 10%;
 
   a {
     font-size: 20px;
@@ -128,10 +136,6 @@ section.login {
     letter-spacing: 0.19px;
     text-align: left;
     color: #ffffff;
-
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: inline-block;
   }
 }

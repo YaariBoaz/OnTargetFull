@@ -128,6 +128,7 @@ export class SigninComponent implements OnInit {
             username: this.registerForm.value.email,
             password: this.registerForm.value.password
         }).subscribe(data => {
+            debugger;
             this.userService.setUser(data);
             this.apiService.getDashboardData(this.userService.getUserId());
             this.storageService.setItem('isLoggedIn', true);

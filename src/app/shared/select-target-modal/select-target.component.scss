@@ -124,6 +124,7 @@ section {
         text-align: center;
         color: #ffffff;
       }
+
       .btn-connect:disabled {
         background-color: #ce564bb3;
       }
@@ -211,7 +212,8 @@ section {
 
 .scan-container {
   display: flex;
-align-items: center;
+  align-items: center;
+
   .choose-target {
     display: flex;
     align-items: center;
@@ -237,6 +239,7 @@ align-items: center;
       margin-left: 18px;
     }
   }
+
   button {
     width: 128px;
     height: 40px;
@@ -255,3 +258,27 @@ align-items: center;
   }
 }
 
+.scanAnimation {
+  animation: pulse-red 2s infinite;
+}
+
+
+@keyframes pulse-red {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+    border-radius: 100%;
+  }
+
+  70% {
+    transform: scale(1.5);
+    box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+    border-radius: 100%;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+    border-radius: 100%;
+  }
+}

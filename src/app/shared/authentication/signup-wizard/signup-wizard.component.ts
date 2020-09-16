@@ -36,7 +36,7 @@ export class SignupWizardComponent implements OnInit {
     profile: any;
     private subscription: Subscription;
     sigunUpFormDetails: any;
-
+    isTargetModalOpned = false;
 
     constructor(private platform: Platform,
                 private formBuilder: FormBuilder,
@@ -44,14 +44,25 @@ export class SignupWizardComponent implements OnInit {
                 private ref: ChangeDetectorRef,
                 private zone: NgZone,
                 private wizardService: WizardService) {
+
+        this.wizardService.selectTargetFromWizardOpened.subscribe(flag => {
+            this.isTargetModalOpned = flag;
+        });
         document.addEventListener('backbutton', (event) => {
             event.preventDefault();
             event.stopPropagation();
-            if (this.stepper.selectedIndex === 0) {
-                this.router.navigateByUrl('');
+            if (this.isTargetModalOpned) {
+                this.isTargetModalOpned = false;
             } else {
-                this.stepper.previous();
+                if (!this.stepOneComplete) {
+                    this.router.navigateByUrl('');
+                } else if (this.stepOneComplete && !this.stepTwoComplete) {
+                    this.stepOneComplete = false;
+                } else if (this.stepTwoComplete) {
+                    this.stepTwoComplete = false;
+                }
             }
+
             this.ref.detectChanges();
         }, false);
     }
@@ -118,15 +129,16 @@ export class SignupWizardComponent implements OnInit {
 
     completeStepTwo(f) {
         this.sigunUpFormDetails = {
-            email: f.email,
-            first_name: f.first_name,
+            email: f.value.email,
+            first_name: f.value.first_name,
             img_path: null,
-            last_name: f.last_name,
-            password: f.password
+            last_name: f.value.last_name,
+            password: f.value.password
         };
 
         this.stepTwoComplete = true;
         this.stepThreeActive = true;
+        this.ref.detectChanges();
     }
 
     completeStepThree() {

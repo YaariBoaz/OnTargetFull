@@ -77,7 +77,6 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
 
     }
-
     createLineChart() {
         this.line = new Chart(this.lineChart.nativeElement, {
             type: 'line',
