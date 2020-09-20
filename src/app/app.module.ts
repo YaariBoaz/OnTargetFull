@@ -23,12 +23,14 @@ import {BleService} from './shared/services/ble.service';
 import {Crop} from '@ionic-native/crop/ngx';
 import {SelectTargetComponent} from './shared/select-target-modal/select-target-component';
 import {CommonModule} from '@angular/common';
+import {NgPipesModule} from 'ngx-pipes';
 
 
+// @ts-ignore
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [BrowserModule, CommonModule, ReactiveFormsModule, SharedModule, CdTimerModule
+    imports: [BrowserModule,  CommonModule, ReactiveFormsModule, SharedModule, CdTimerModule
         , FormsModule, IonicModule.forRoot(), HttpClientModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule],
     providers: [
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},

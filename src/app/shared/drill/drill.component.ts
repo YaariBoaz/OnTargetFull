@@ -40,6 +40,13 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     @ViewChild('screen', {static: false}) screen: ElementRef;
     @ViewChild('canvas', {static: false}) canvas: ElementRef;
     @ViewChild('downloadLink', {static: false}) downloadLink: ElementRef;
+
+
+    /* FOR DEMO */
+
+
+    /*  END FOR DEMO*/
+
     shots = [];
     drill: DrillObject;
     testConfig: any;
@@ -80,6 +87,67 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         totalTime: 0,
         counter: 0
     };
+
+
+    fakeShots = [{y: 87, x: 140},
+        {y: 186, x: 163},
+        {y: 132, x: 55},
+        {y: 131, x: 95},
+        {y: 133, x: 117},
+        {y: 131, x: 95},
+        {y: 119, x: 168}
+    ];
+
+
+    fakeStats = [{
+        pageData: {
+            points: 2,
+            totalTime: '00:01:23',
+            splitTime: '00:01:23',
+            distanceFromCenter: 0.45,
+            index: 1,
+        }
+    },
+        {
+            pageData: {
+                points: 2,
+                distanceFromCenter: 0.45,
+                splitTime: '00:02:01',
+                totalTime: '00:03:24',
+                index: 2,
+            }
+        },
+        {
+            pageData: {
+                points: 2,
+                distanceFromCenter: 0.68,
+                splitTime: '00:01:01',
+                totalTime: '00:04:25',
+                index: 3,
+            },
+
+        },
+        {
+            pageData: {
+                points: 2,
+                distanceFromCenter: 0.22,
+                splitTime: '00:03:47',
+                totalTime: '00:07:12',
+                index: 4,
+            },
+
+        },
+        {
+            pageData: {
+                points: 2,
+                distanceFromCenter: 0.22,
+                splitTime: '00:02:12',
+                totalTime: '00:09:24',
+                index: 5,
+            },
+
+        }];
+
 
     height: number;
     width: number;
@@ -231,6 +299,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         console.log('This is in the init stats of the session');
         this.drillFinished = false;
         this.shots = [];
+
         this.stats = [];
         this.shotNumber = 0;
         this.isFinish = false;
@@ -249,6 +318,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
             this.countupTimerService.stopTimer();
             this.countupTimerService.setTimervalue(0);
         }
+
     }
 
     async onBackPressed() {
@@ -287,7 +357,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                             this.ngZone.runGuarded(() => {
                                 console.log('Pressed No');
                                 this.router.navigateByUrl('home/tabs/tab2/select');
-                                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                                //  this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
                             });
                         }
                     }
@@ -369,8 +439,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
 
-
-
     onReconnect() {
         this.bleService.connect(this.bleService.currentTargetId);
     }
@@ -390,8 +458,64 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                 this.showResults = true;
                 this.showCounter = false;
                 this.drillHasNotStarted = false;
+                this.startFakeShooting(0);
                 clearInterval(interval);
             }
         }, 1000);
     }
+
+
+    // processData(input) {
+    //     this.handleShot_MSG(input);
+    // }
+
+    //
+    // handleShot_MSG(dataArray) {
+    //     if (!this.width && !this.height) {
+    //         this.height = this.container.nativeElement.offsetHeight;
+    //         this.width = this.container.nativeElement.offsetWidth;
+    //     }
+    //     this.handelShoot(this.height, this.width, {xCoord, yCoord});
+    // }
+    //
+    // handelShoot(parentImageHeight, parentImageWidth, data) {
+    //     if (this.pageData.counter === 0) {
+    //         // this.countupTimerService.startTimer();
+    //     }
+    //     const x = data.xCoord;
+    //     const y = data.yCoord;
+    //
+    //     const width = parentImageWidth;
+    //     const height = parentImageHeight;
+    //
+    //
+    //     const deltaX = width / 8;
+    //     const deltaY = height / 8;
+    //
+    //
+    //     const normalizeX = x / 8;
+    //     const normalizeY = y / 8;
+    //
+    //
+    //     const px = deltaX * normalizeX;
+    //     let py = deltaY * normalizeY;
+    //     py = py - deltaY;
+    //
+    //
+    //     this.shots.push({x: px, y: py});
+    //
+    // }
+
+
+    private startFakeShooting(index) {
+        if (index < 5) {
+            setTimeout(() => {
+                this.stats = [this.fakeStats[index], ...this.stats];
+
+                this.shots.push(this.fakeShots[index]);
+                this.startFakeShooting(index + 1);
+            }, 1212);
+        }
+    }
 }
+

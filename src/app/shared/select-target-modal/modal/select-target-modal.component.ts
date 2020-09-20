@@ -50,7 +50,7 @@ export class SelectTargetModalComponent implements OnInit {
                 private platform: Platform,
                 public aletMdl: AlertController,
                 private router: Router) {
-        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.isFromWizard = this.data.isFromWizard;
 
         document.addEventListener('backbutton', (event) => {
@@ -65,10 +65,10 @@ export class SelectTargetModalComponent implements OnInit {
 
     ngOnInit() {
         this.platform.ready().then(() => {
-            this.screenOrientation.unlock();
-            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
-
-            });
+            //this.screenOrientation.unlock();
+            // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
+            //
+            // });
         });
 
         this.primaryTarget = this.storageService.getItem('target');

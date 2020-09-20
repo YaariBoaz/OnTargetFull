@@ -106,7 +106,7 @@ section.drill-results {
     width: 100%;
     box-sizing: border-box;
     padding: 0 1em;
-    padding-left: 100px;
+    //padding-left: 100px;
 
     img {
       height: 295px;
@@ -115,6 +115,7 @@ section.drill-results {
 
     .some-wrapper {
       position: relative;
+
       .counter-shot {
         position: absolute;
         top: 0px;
@@ -127,6 +128,7 @@ section.drill-results {
         line-height: 1.14;
         letter-spacing: normal;
         text-align: left;
+        color: rgba(0, 0, 0, 0.81);
         color: rgba(0, 0, 0, 0.81);
         height: 295px;
         width: 295px;
@@ -204,7 +206,7 @@ section.drill-results {
     }
 
     div.results-table {
-      width: 353px;
+      width: 420px;
       height: 250px;
       position: relative;
 
@@ -216,7 +218,7 @@ section.drill-results {
         display: block;
 
         height: 200px;
-        width: 353px;
+        width: 420px;
         border-radius: 5px;
 
         direction: rtl;
@@ -236,7 +238,6 @@ section.drill-results {
             background: #e4e4e4;
 
             box-sizing: border-box;
-            padding: 0 1em;
 
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -296,7 +297,7 @@ section.drill-results {
               font-size: 12px;
               line-height: 14px;
               letter-spacing: 0.12px;
-
+              text-align: left;
               box-sizing: border-box;
               padding: 0 0.5em;
 
@@ -375,14 +376,9 @@ section.drill-results {
 }
 
 
-
-
-
-
-::ng-deep ion-tab-bar{
+::ng-deep ion-tab-bar {
   display: none;
 }
-
 
 
 div.targetHoly {
@@ -403,6 +399,7 @@ div.targetHoly {
 
   .some-wrapper {
     position: relative;
+
     .counter-shot {
       position: absolute;
       top: 131px;
@@ -630,4 +627,16 @@ div.targetHoly {
       transform: translate(-50%, -50%);
     }
   }
+}
+
+.hit {
+  background: greenyellow;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border: 1px solid;
+  height: 20px;
+  width: 20px;
 }

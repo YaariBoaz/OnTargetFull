@@ -35,7 +35,8 @@
         <hr>
 
         <div class="ble-img" *ngIf="!myTargets || myTargets.length==0">
-            <img src="assets/icons/Group%20834.svg">
+            <img *ngIf="!isScanning" src="assets/icons/Group%20834.svg">
+            <img *ngIf="isScanning" class="scanAnimation" src="assets/icons/Group%20770.svg">
         </div>
         <div class="targets-list-container" *ngIf="myTargets.length > 0 ">
             <div class="targets-list" *ngFor="let target of  myTargets; let i = index">
@@ -50,7 +51,7 @@
 
         <div class="buttons-container">
             <button class="btn-connect" *ngIf="!this.targetIsConnected" [disabled]="targetNotSelected"
-                    (click)="onTargetChosen();connectedClicked = true;">
+                    (click)="onTargetChosen();connectedClicked = true;targetIsConnected = true;">
                 Connect
             </button>
             <button class="btn-connect" *ngIf="targetIsConnected"

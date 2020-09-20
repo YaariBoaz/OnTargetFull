@@ -3,13 +3,17 @@ import {CommonModule} from '@angular/common';
 import {DrillComponent} from './drill.component';
 import {SharedModule} from '../shared.module';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {NgPipesModule} from 'ngx-pipes';
+import {ReversePipe} from './reverseArray';
 
 
+// @ts-ignore
 @NgModule({
-    declarations: [DrillComponent],
+    declarations: [DrillComponent, ReversePipe],
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
+        NgPipesModule
     ],
     providers: [ScreenOrientation],
     exports: [DrillComponent]

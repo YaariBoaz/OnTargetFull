@@ -54,6 +54,8 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
 
+    
+
     async presentLoadingWithOptions() {
         const loading = await this.loadingController.create({
             cssClass: 'my-custom-class',

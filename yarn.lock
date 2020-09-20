@@ -6458,6 +6458,13 @@ ngx-animate@^1.0.1:
   resolved "https://registry.yarnpkg.com/ngx-animate/-/ngx-animate-1.0.1.tgz#bb7275cc9f5d5b02575bc05470772f9022a41172"
   integrity sha512-usZMhm0sX4Ptm/Ni9YmhlprD+L+zqx7xu0un8AMzxRqS6ZO5/cpd951B9VPcJ+ZmoKCRuNF3SmGLuVkft7OuhQ==
 
+ngx-pipes@^2.7.5:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/ngx-pipes/-/ngx-pipes-2.7.5.tgz#22e2e4b7015ae9103210dfa2dacd6f4ae4411639"
+  integrity sha512-hlxHzu+snGJ038Z+HdkgEZRlZeE7suDTLWJD1yUP11eAM+xLPJAur1QtvvtZTHRHutOc7Wij1keBtuWIS9D0JQ==
+  dependencies:
+    tslib "^2.0.0"
+
 ngx-timer@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/ngx-timer/-/ngx-timer-1.0.6.tgz#e24e6c2fa79d7159aa6b5513fc5d5307195adbb1"
@@ -9132,6 +9139,11 @@ tslib@^1.10.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"
   integrity sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==
+
+tslib@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
+  integrity sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
 
 tslint@~5.15.0:
   version "5.15.0"

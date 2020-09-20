@@ -31,6 +31,7 @@ export class SelectTargetComponent implements OnInit {
     targetIsConnected = false;
     targetNotSelected = true;
     connectedClicked = false;
+    isScanning = false;
 
     constructor(private http: HttpClient,
                 private bleService: BleService,
@@ -45,7 +46,7 @@ export class SelectTargetComponent implements OnInit {
                 private platform: Platform,
                 public aletMdl: AlertController,
                 private router: Router) {
-        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+       // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
     }
 
@@ -53,10 +54,10 @@ export class SelectTargetComponent implements OnInit {
     ngOnInit() {
         this.targetConnected = this.bleService.isConnectedFlag;
         this.platform.ready().then(() => {
-            this.screenOrientation.unlock();
-            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
-
-            });
+            // this.screenOrientation.unlock();
+            // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
+            //
+            // });
         });
 
         this.primaryTarget = this.storageService.getItem('target');
@@ -98,22 +99,28 @@ export class SelectTargetComponent implements OnInit {
         });
 
         this.bleService.scanFinished.subscribe((flag) => {
-            if (flag) {
-                if (this.loading) {
-                    this.loading.dismiss();
-                }
-                this.myTargets = this.storageService.getItem('ble');
-                this.cd.detectChanges();
-                let amountOfTargetsFound = 0;
-                if (this.myTargets.length > 0) {
-                    // this.connectToPrimaryTarget();
-                    amountOfTargetsFound = this.myTargets.length;
-                    // this.clearPrimaryFromList();
-                    this.showToast('Found ' + amountOfTargetsFound + ' Targets in range', 'success');
-                } else {
-                    this.showToast('No targets were found, Try scanning again.', 'danger');
-                }
+            if (this.isScanning) {
+                this.isScanning = false;
+                this.myTargets.push({
+                    name: 'E1N1'
+                });
             }
+            // if (flag) {
+            //     if (this.loading) {
+            //         this.loading.dismiss();
+            //     }
+            //     this.myTargets = this.storageService.getItem('ble');
+            //     this.cd.detectChanges();
+            //     let amountOfTargetsFound = 0;
+            //     if (this.myTargets.length > 0) {
+            //         // this.connectToPrimaryTarget();
+            //         amountOfTargetsFound = this.myTargets.length;
+            //         // this.clearPrimaryFromList();
+            //         this.showToast('Found ' + amountOfTargetsFound + ' Targets in range', 'success');
+            //     } else {
+            //         this.showToast('No targets were found, Try scanning again.', 'danger');
+            //     }
+            // }
         });
     }
 
@@ -197,15 +204,8 @@ export class SelectTargetComponent implements OnInit {
     }
 
     async reScan() {
+        this.isScanning = true;
         this.bleService.scan();
-        this.loading = await this.loadingController.create({
-            duration: 5000,
-            message: 'Scanning For Targets',
-            translucent: true,
-            cssClass: 'custom-class custom-loading',
-            backdropDismiss: true
-        });
-        await this.loading.present();
     }
 
     onTargetSelected(target: any) {

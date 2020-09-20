@@ -41,8 +41,7 @@ export class BleService {
 
 
         this.ngZone.onError.subscribe((e) => {
-            debugger;
-        });
+         });
 
     }
 
