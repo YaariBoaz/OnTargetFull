@@ -3,14 +3,20 @@ import {ApiService} from './api.service';
 import {StorageService} from './storage.service';
 import {UserService} from './user.service';
 import {BLE} from '@ionic-native/ble/ngx';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class InitService {
-
+    notifyError = new BehaviorSubject(null);
+    isLoading = new BehaviorSubject(false);
     constructor(private apiService: ApiService, private storageService: StorageService, private userService: UserService, public ble: BLE) {
 
+    }
+
+    notifyOnErrorFunc(error) {
+        this.notifyError.next(error);
     }
 
     getWeapons() {

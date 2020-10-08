@@ -10,6 +10,9 @@ import {SightlistComponent} from '../../../tab3/sightlist/sightlist.component';
 import {SelectTargetComponent} from '../../select-target-modal/select-target-component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {SelectTargetModalComponent} from '../../select-target-modal/modal/select-target-modal.component';
+import {PreviewAnyFile} from '@ionic-native/preview-any-file/ngx';
+import {File} from '@ionic-native/File/ngx';
+import {ErrorModalComponent} from "../../../shared/popups/error-modal/error-modal.component";
 
 export const routes: Routes = [
     {path: '', component: SignupWizardComponent},
@@ -31,9 +34,9 @@ export const routes: Routes = [
         SignupWizardComponent,
         SignupComponent,
         WizardSummaryComponent,
-        ],
-    providers: [],
-    entryComponents: [SelectTargetModalComponent],
+    ],
+    providers: [PreviewAnyFile, File],
+    entryComponents: [SelectTargetModalComponent, ErrorModalComponent],
 
     exports: [SignupWizardComponent]
 })

@@ -1,20 +1,21 @@
-import {Component, OnInit, NgZone, ChangeDetectorRef, Input, Output, EventEmitter} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {StorageService} from '../shared/services/storage.service';
-import {Camera, CameraOptions, PictureSourceType} from '@ionic-native/camera/ngx';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ActionSheetController, AlertController, Platform} from '@ionic/angular';
 import {Crop} from '@ionic-native/crop/ngx';
 import {Router} from '@angular/router';
 import {Tab3Service} from './tab3.service';
 import {InventoryModel} from '../shared/models/InventoryModel';
-import {ProfileImageService} from '../shared/services/profile-image.service';
 import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
 import {MatDialog} from '@angular/material';
 import {GunlistComponent} from './gunlist/gunlist.component';
 import {SightlistComponent} from './sightlist/sightlist.component';
-import {SelectTargetComponent} from '../shared/select-target-modal/select-target-component';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {SelectTargetModalComponent} from '../shared/select-target-modal/modal/select-target-modal.component';
+import {InitService} from "../shared/services/init.service";
+import {ErrorModalComponent} from "../shared/popups/error-modal/error-modal.component";
+
 
 @Component({
     selector: 'app-tab3',
@@ -33,7 +34,7 @@ export class Tab3Page implements OnInit {
     ip: any;
     isGunList = false;
     isSightList = false;
-
+    hasError = true;
     myGuns = null;
     mySights = null;
     myTarget = null;
@@ -56,9 +57,9 @@ export class Tab3Page implements OnInit {
                 private alertCtrl: AlertController,
                 private tab3Service: Tab3Service,
                 public domSanitizer: DomSanitizer,
+                private initService: InitService,
                 private wizardService: WizardService,
-                public dialog: MatDialog
-    ) {
+                public dialog: MatDialog) {
         if (this.router.url === '/home/tabs/tab3') {
             this.showHeader = true;
         } else {
@@ -74,6 +75,8 @@ export class Tab3Page implements OnInit {
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
         });
+
+
     }
 
     ionViewDidEnter() {
@@ -201,10 +204,17 @@ export class Tab3Page implements OnInit {
             this.form.target = this.myTarget;
             this.form.profilePicture = this.profile.picture;
             this.wizardService.moreInfoForm = this.form;
+            console.log('In finishWizard' + new Date());
+            this.initService.isLoading.next(true);
             this.wizardService.registerUser();
-            this.move.emit();
+            this.initService.notifyError.subscribe((error) => {
+                if (error) {
+                    const dialogRef = this.dialog.open(ErrorModalComponent, {
+                        data: {modalType: 'general'}
+                    });
+                }
+            })
         }
-
     }
 
     onHideTargets() {

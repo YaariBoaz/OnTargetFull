@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {DrillComponent} from './drill.component';
 import {SharedModule} from '../shared.module';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {NgPipesModule} from 'ngx-pipes';
 import {ReversePipe} from './reverseArray';
 
 
@@ -13,8 +12,7 @@ import {ReversePipe} from './reverseArray';
     imports: [
         CommonModule,
         SharedModule,
-        NgPipesModule
-    ],
+     ],
     providers: [ScreenOrientation],
     exports: [DrillComponent]
 })

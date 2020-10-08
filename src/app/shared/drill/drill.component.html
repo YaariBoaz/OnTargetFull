@@ -75,7 +75,7 @@
         <div class="targetHoly" *ngIf="!showResults">
             <div class="welcome-message" *ngIf="!showResults">
                 <div class="text">
-                    <p>Hi, Lovie! Let’s start new drill.</p>
+                    <p>Hi, {{profile?.firstName}}! Let’s start new drill.</p>
                     <p> Press button to start!</p>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="47.932" height="45.389" viewBox="0 0 47.932 45.389">
@@ -239,7 +239,7 @@
 
 
         <div class="target" *ngIf="showResults">
-            <div class="some-wrapper">
+            <div class="some-wrapper" #container>
                 <img *ngIf="!drillIsFinished" src="assets/bullseye.png">
                 <img *ngIf="drillIsFinished" src="assets/bullseye-finish.png">
                 <!--                <div class="counter-shot">{{shotNumber}}</div>-->

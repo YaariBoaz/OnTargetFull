@@ -66,7 +66,7 @@ export class SigninComponent implements OnInit {
 
 
         if (this.storageService.getItem('isLoggedIn')) {
-            this.router.navigateByUrl('/home/tabs/tab1');
+            this.router.navigateByUrl('');
         }
         this.registerForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
@@ -81,6 +81,7 @@ export class SigninComponent implements OnInit {
         //         if (response.authResponse.userID !== '') {
         //             this.fb.api(
         //                 // tslint:disable-next-line:max-line-length
+        // tslint:disable-next-line:max-line-length
         //                 'me?fields=id,name,email,first_name,last_name,picture.width(600).height(600).as(picture_small),picture.width(360).height(360).as(picture_large)',
         //                 [])
         //                 .then((profileData) => {
@@ -115,10 +116,9 @@ export class SigninComponent implements OnInit {
     }
 
     async onLogin() {
-        // this.submitted = true;
-        // if (this.registerForm.invalid) {
-        //     return;
-        // } else {
+         if (this.registerForm.invalid) {
+            return;
+        } else {
         const loading = await this.loadingController.create({
             message: 'Please wait...',
             duration: 2000
@@ -132,9 +132,9 @@ export class SigninComponent implements OnInit {
             this.apiService.getDashboardData(this.userService.getUserId());
             this.storageService.setItem('isLoggedIn', true);
             this.storageService.setItem('profileData', data);
-            this.router.navigateByUrl('/home/tabs/tab1');
+            this.router.navigateByUrl('');
         });
-        // }
+         }
 
     }
 

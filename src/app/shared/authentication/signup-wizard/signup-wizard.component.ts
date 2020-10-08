@@ -6,6 +6,9 @@ import {Router} from '@angular/router';
 import {Platform} from '@ionic/angular';
 import {Subscription} from 'rxjs';
 import {WizardService} from './wizard.service';
+import {PreviewAnyFile} from '@ionic-native/preview-any-file/ngx';
+import {HttpClient} from '@angular/common/http';
+import {File} from '@ionic-native/File/ngx';
 
 @Component({
     selector: 'app-signup-wizard',
@@ -37,17 +40,24 @@ export class SignupWizardComponent implements OnInit {
     private subscription: Subscription;
     sigunUpFormDetails: any;
     isTargetModalOpned = false;
+    assetPath1 = './assets//docs/ADLTOU.doc';
+    assetPath2 = './assets//docs/ADLPrivacyPolicy.doc';
 
     constructor(private platform: Platform,
                 private formBuilder: FormBuilder,
                 private router: Router,
                 private ref: ChangeDetectorRef,
                 private zone: NgZone,
+                private file: File,
+                private http: HttpClient,
+                private previewAnyFile: PreviewAnyFile,
                 private wizardService: WizardService) {
 
         this.wizardService.selectTargetFromWizardOpened.subscribe(flag => {
             this.isTargetModalOpned = flag;
         });
+
+
         document.addEventListener('backbutton', (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -88,6 +98,26 @@ export class SignupWizardComponent implements OnInit {
             thirdCtrl: []
         });
 
+    }
+
+    openTerms() {
+        this.http.get(this.assetPath1, {responseType: 'blob'}).subscribe(fileBlob => {
+            let fileName = this.assetPath1.replace(/^.*(\\|\/|\:)/, '');
+            const writeDirectory = this.platform.is('ios') ? this.file.syncedDataDirectory : this.file.externalDataDirectory;
+            this.file.writeFile(writeDirectory, fileName, fileBlob, {replace: true}).then(fileProp => {
+                this.previewAnyFile.preview(fileProp.nativeURL);
+            })
+        });
+    }
+
+    openPrivacy() {
+        this.http.get(this.assetPath2, {responseType: 'blob'}).subscribe(fileBlob => {
+            let fileName = this.assetPath2.replace(/^.*(\\|\/|\:)/, '');
+            const writeDirectory = this.platform.is('ios') ? this.file.syncedDataDirectory : this.file.externalDataDirectory;
+            this.file.writeFile(writeDirectory, fileName, fileBlob, {replace: true}).then(fileProp => {
+                this.previewAnyFile.preview(fileProp.nativeURL);
+            })
+        });
     }
 
 

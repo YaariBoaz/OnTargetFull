@@ -1014,10 +1014,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@capacitor/android@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-1.5.1.tgz#d34b036470e79f4e830e49f13ea9f3067c142a71"
-  integrity sha512-dubGu+Im5uqdkLBX9c0azGF1v3AY1HTlWxZmjn7qN48AXJL3woxCi4TVv2MEXJRxgfQq5Aunqu6rsmF/bDaOHw==
+"@capacitor/android@^2.1.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-2.4.2.tgz#ddc55bf0ea78214a0a760330a439916093792d00"
+  integrity sha512-0OpOmsno6yFyN0tOEhE9LkAqQrnTGUxz49+ZdivieI3axFe3CpxbFhcfIsJtr96q9jhkspkYPMqGNZm3gPKjaA==
 
 "@capacitor/cli@^1.5.3":
   version "1.5.3"
@@ -1036,10 +1036,10 @@
     which "^1.3.0"
     xml2js "^0.4.19"
 
-"@capacitor/core@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-1.5.1.tgz#d2529a460623545e9c28d6e59bff20867cf3e41f"
-  integrity sha512-3ncsiM+G1w4/osKbtPXGfHGOp/A1WKein1EVDX3O151aqjNf44F+n/zweZG1XvtOmY4AHNaQcHYO/s9nMOmPOw==
+"@capacitor/core@^2.1.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-2.4.2.tgz#f11d943febad2bb70f042ac87e354e9602250b82"
+  integrity sha512-xQyJSZo50+aAvX3ZsX5h2xJDjz1LQxGT0A6/qD1pqJVEUeDhzdfYMbxCPWbmqSONZXddHtwrTiIsjq1Wd+ukuQ==
   dependencies:
     tslib "^1.9.0"
 
@@ -1108,6 +1108,13 @@
   version "5.26.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/file/-/file-5.26.0.tgz#1529a4f5381c74cc866564e9cb26f06158c84826"
   integrity sha512-sJONMhwEpZtONU59m0Rs6PmzD+C3lcaZkc7TryAXgF+9F6XUjhZu6efis3qzgxWHTMXNr7vBdrzfLAQB5bCGMA==
+  dependencies:
+    "@types/cordova" latest
+
+"@ionic-native/preview-any-file@^5.28.0":
+  version "5.28.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/preview-any-file/-/preview-any-file-5.28.0.tgz#f873b07a60bb93ffd022c16c6fb124ab48b61cac"
+  integrity sha512-lO7Gah31aOfM8+BNjtvOft+XhqHSwYQoxc/aKNcUwO5x8+G36GDTQVmEiJZgzoNareY72h1/sugkjuJmVNTp0w==
   dependencies:
     "@types/cordova" latest
 
@@ -2939,6 +2946,15 @@ copy-webpack-plugin@5.1.1:
     serialize-javascript "^2.1.2"
     webpack-log "^2.0.0"
 
+cordova-plugin-androidx-adapter@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-androidx-adapter/-/cordova-plugin-androidx-adapter-1.1.1.tgz#67c1553b4358a54827b5930d2590569749ad0f47"
+  integrity sha512-ePt0WG7Y8jOFx2x3A6oXQyxzavis2ANw2hFlm7MU/H7ez1QKPXmWjA1zIIx4T/QdKWM5D8fLH60t2PyJmKSsOg==
+  dependencies:
+    performance-now "^2.1.0"
+    q "^1.4.1"
+    recursive-readdir "^2.2.2"
+
 cordova-plugin-ble-central@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ble-central/-/cordova-plugin-ble-central-1.2.5.tgz#3bb8a8bbc584fa620928e220ea5ddd31020afc8b"
@@ -2968,6 +2984,11 @@ cordova-plugin-file@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-file/-/cordova-plugin-file-6.0.2.tgz#f3911479f8357e9aacb5576674f8d95b31a1fb20"
   integrity sha512-m7cughw327CjONN/qjzsTpSesLaeybksQh420/gRuSXJX5Zt9NfgsSbqqKDon6jnQ9Mm7h7imgyO2uJ34XMBtA==
+
+cordova-plugin-preview-any-file@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-preview-any-file/-/cordova-plugin-preview-any-file-0.1.7.tgz#3c19a33e93f8b44c2ec0ad156acbc9539531f7d3"
+  integrity sha512-nhJmP2izQurpAlzBFBWpVHw8WZpuMCWshWrf0L5jP6en6x+v6fs0OqnN3axIMCTALLYXNhYh6RU0s8b5l07DVA==
 
 cordova-plugin-screen-orientation@^3.0.2:
   version "3.0.2"
@@ -7650,6 +7671,13 @@ readdirp@~3.3.0:
   integrity sha512-zz0pAkSPOXXm1viEwygWIPSPkcBYjW1xU5j/JBh5t9bGCJwa6f9+BJa6VaB2g+b55yVrmXzqkyLf4xaWYM0IkQ==
   dependencies:
     picomatch "^2.0.7"
+
+recursive-readdir@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
+  integrity sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==
+  dependencies:
+    minimatch "3.0.4"
 
 reflect-metadata@^0.1.2:
   version "0.1.13"

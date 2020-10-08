@@ -126,7 +126,7 @@ export class Tab2Page implements OnInit {
     onBackPressed() {
 
         this.zone.run(() => {
-            this.router.navigateByUrl('home/tabs/tab2');
+            this.router.navigateByUrl('/tab2');
         });
 
     }

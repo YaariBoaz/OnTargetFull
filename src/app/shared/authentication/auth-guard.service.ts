@@ -13,9 +13,16 @@ export class AuthGuardService implements CanLoad {
 
 
     canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-        const val = localStorage.isLoggedIn;
-        const boolValue = val.toLowerCase() === 'true' ? true : false;
-        return boolValue;
+        // debugger;
+        // const val = localStorage.isLoggedIn;
+        // if (!val) {
+        //     this.router.navigateByUrl('/signin');
+        //     return false;
+        // } else {
+        //     const boolValue = val.toLowerCase() === 'true' ? true : false;
+        //     return true;
+        // }
+        return true;
     }
 
 }

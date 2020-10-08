@@ -28,6 +28,10 @@
     <param name="onload" value="true"/>
   </feature>
 
+  <feature name="PreviewAnyFile">
+    <param name="ios-package" value="HWPPreviewAnyFile"/>
+  </feature>
+
   <feature name="CDVOrientation">
     <param name="ios-package" value="CDVOrientation"/>
   </feature>

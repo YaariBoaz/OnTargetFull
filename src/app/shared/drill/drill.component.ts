@@ -196,6 +196,8 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnInit() {
+        this.gateway.height = this.container.nativeElement.offsetHeight;
+        this.width = this.container.nativeElement.offsetWidth;
         const content = document.querySelector('ion-tab-bar');
         content.style.display = 'none';
 
@@ -344,7 +346,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                         handler: () => {
                             this.ngZone.runGuarded(() => {
                                 this.hitNohitService.updateHistory();
-                                this.router.navigateByUrl('home/tabs/tab2/select');
+                                this.router.navigateByUrl('/tab2/select');
                                 this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
                             });
@@ -356,7 +358,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                         handler: (blah) => {
                             this.ngZone.runGuarded(() => {
                                 console.log('Pressed No');
-                                this.router.navigateByUrl('home/tabs/tab2/select');
+                                this.router.navigateByUrl('/tab2/select');
                                 //  this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
                             });
                         }

@@ -11,14 +11,14 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [SigninComponent, ErrorModalComponent, AccessModalComponent],
+    declarations: [SigninComponent, ],
     imports: [
         SharedModule,
         CommonModule,
         RouterModule.forChild(routes)
     ],
-    exports: [SigninComponent],
     entryComponents: [ErrorModalComponent, AccessModalComponent],
+    exports: [SigninComponent, ErrorModalComponent],
     providers: []
 })
 export class SigninModule {

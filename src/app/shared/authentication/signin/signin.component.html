@@ -1,4 +1,4 @@
-<section class="login">
+<section class="login" *ngIf="!forgotPassword">
     <img class="logo" src="/assets/logo.png" alt="logo">
 
     <div class="form">
@@ -29,7 +29,7 @@
             </div>
         </form>
         <button class="start" (click)="onLogin()">START SESSION</button>
-        <p class="forgot">Forgot your password?</p>
+        <p class="forgot" (click)="forgotPassword =true;">Forgot your password?</p>
     </div>
     <div class="create-account-container">
         <a (click)="goToSignUp()">Create an account</a>
@@ -37,4 +37,18 @@
 
 </section>
 
-
+<section *ngIf="forgotPassword" class="login">
+    <img class="logo" src="/assets/logo.png" alt="logo">
+    <form [formGroup]="registerForm" (ngSubmit)="onLogin()">
+        <div class="row">
+            <h4 style="text-align: center;color: white;">Please enter your email, A reset password email will be sent to this address</h4>
+            <mat-form-field appearance="outline" style="padding: 0.5em;width: 100%  ">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput placeholder="Email" [(ngModel)]="resetemail">
+            </mat-form-field>
+            <div class="create-account-container">
+                <a (click)="resetPassword()">Reset Password</a>
+            </div>
+        </div>
+    </form>
+</section>

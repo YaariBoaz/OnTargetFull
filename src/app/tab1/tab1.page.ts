@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {IonSlides, Platform} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {InitService} from '../shared/services/init.service';
+import {BleService} from '../shared/services/ble.service';
 import {UserService} from '../shared/services/user.service';
 import {NetworkService} from '../shared/services/network.service';
 import {StorageService} from '../shared/services/storage.service';
@@ -20,9 +22,9 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 })
 export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('slides', {static: false}) slides: IonSlides;
-    @ViewChild('lineChart', {static: true}) lineChart;
-    @ViewChild('scatter', {static: true}) scatter;
-    @ViewChild('radio', {static: true}) radio;
+    @ViewChild('lineChart', {static: false}) lineChart;
+    @ViewChild('scatter', {static: false}) scatter;
+    @ViewChild('radio', {static: false}) radio;
 
     line: any;
     scatterChartIns;
@@ -47,10 +49,11 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         spaceBetween: 0
     };
 
-    private hasConnection: boolean;
-    private data: DashboardModel;
+    hasConnection: boolean;
+    data: DashboardModel;
     historicTrainings = {};
     points = 0;
+    showUi = false;
 
     constructor(private platform: Platform,
                 private networkService: NetworkService,
@@ -58,26 +61,46 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 private tab1Service: Tab1Service,
                 private userService: UserService,
                 private zone: NgZone,
+                private ble: BleService,
                 private tabsService: TabsService,
+                private initService: InitService,
                 private screenOrientation: ScreenOrientation,
                 private storageService: StorageService) {
-
+        console.log('In constructor Tab1Page' + new Date());
     }
 
     ngOnInit(): void {
-        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.profile = this.userService.getUser();
-        this.handleOfflineScenario();
-        this.tabsService.$notifyTab1.subscribe(() => {
+        if (!localStorage.isLoggedIn) {
+            this.router.navigateByUrl('/signin');
+        } else {
+            this.showUi = true;
+            console.log('In ngOnInit START Tab1Page' + new Date());
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+            this.profile = this.userService.getUser();
             this.handleOfflineScenario();
-        });
-        this.createLineChart();
-        this.createScatterChart();
-        this.createRadioChart();
+            this.tabsService.$notifyTab1.subscribe(() => {
+                this.handleOfflineScenario();
+            });
+            setTimeout(() => {
+                this.createLineChart();
+                this.createScatterChart();
+                this.createRadioChart();
+            }, 1000);
+            this.initService.isLoading.next(false);
 
-
+            console.log('In ngOnInit END Tab1Page' + new Date());
+        }
     }
+
+
+    onDiscconectTarget() {
+        this.ble.distory();
+    }
+
     createLineChart() {
+        if (this.lineChart.nativeElement) {
+
+        }
         this.line = new Chart(this.lineChart.nativeElement, {
             type: 'line',
             data: {
@@ -212,7 +235,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                         borderColor: '#1C00ff00',
                         label: 'Population (millions)',
                         backgroundColor: ['#ce564b', '#d4d4d4'],
-                        data: [200, 200]
+                        data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots]
                     }
                 ]
             },
@@ -330,10 +353,10 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
             color: '#d9d9d9'
         }];
 
-// Set inner radius
+        // Set inner radius
         this.hitRatiochart.innerRadius = am4core.percent(50);
 
-// Add and configure Series
+        // Add and configure Series
         const pieSeries = this.hitRatiochart.series.push(new am4charts.PieSeries());
         pieSeries.dataFields.value = 'litres';
         pieSeries.dataFields.category = 'text';
@@ -341,7 +364,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         pieSeries.slices.template.strokeWidth = 2;
         pieSeries.slices.template.strokeOpacity = 1;
 
-// This creates initial animation
+        // This creates initial animation
         pieSeries.hiddenState.properties.opacity = 1;
         pieSeries.hiddenState.properties.endAngle = -90;
         pieSeries.hiddenState.properties.startAngle = -90;
@@ -369,7 +392,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
             color: '#d9d9d9'
         }];
 
-// Create axes
+        // Create axes
 
         const categoryAxis = this.rateOfFireChart.xAxes.push(new am4charts.CategoryAxis());
         categoryAxis.dataFields.category = 'country';
@@ -388,7 +411,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
         const valueAxis = this.rateOfFireChart.yAxes.push(new am4charts.ValueAxis());
 
-// Create series
+        // Create series
         const series = this.rateOfFireChart.series.push(new am4charts.ColumnSeries());
         series.dataFields.valueY = 'visits';
         series.dataFields.categoryX = 'country';

@@ -176,7 +176,7 @@ export class SelectTargetModalComponent implements OnInit {
 
     startTraining() {
         this.hitNohitService.resetDrill();
-        this.router.navigateByUrl('home/tabs/tab2/select');
+        this.router.navigateByUrl('/tab2/select');
     }
 
     onBackPressed() {
@@ -240,7 +240,7 @@ export class SelectTargetModalComponent implements OnInit {
                 this.dialogRef.close();
             });
         } else {
-            this.router.navigateByUrl('home/tabs/tab2/select');
+            this.router.navigateByUrl('/tab2/select');
         }
     }
 

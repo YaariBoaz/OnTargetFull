@@ -39,6 +39,9 @@ export class AppComponent implements OnDestroy, OnInit {
                 this.ble.distory();
             });
         });
+        this.initService.isLoading.subscribe(data =>{
+
+        })
     }
 
     ngOnInit() {

@@ -130,8 +130,8 @@
                 </svg>
                 <p class="terms-condition-text">
                     By using this application, You agree to the
-                    <a>Terms And Condition</a> and<br>
-                    <a>Privacy Policy</a>
+                    <a (click)="openTerms()">Terms And Condition</a> and<br>
+                    <a (click)="openPrivacy()">Privacy Policy</a>
                 </p>
             </div>
         </div>
@@ -149,8 +149,7 @@
     </app-signup>
 
 
-
-    <app-tab3 (stepThreeComplete)="completeStepThree()" (move)="onMoveToTargetSearch($event,stepper)" [form]="sigunUpFormDetails"
+    <app-tab3 (stepThreeComplete)="completeStepThree()" [form]="sigunUpFormDetails"
               *ngIf="stepTwoComplete"></app-tab3>
 
     <div *ngIf="stepFourActive">

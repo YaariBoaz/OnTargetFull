@@ -3,6 +3,7 @@ import {BLE} from '@ionic-native/ble/ngx';
 import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
 import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
 import {StorageService} from './storage.service';
+import {GatewayService} from "./gateway.service";
 
 const SERVICE_1 = '1800';
 const SERVICE_2 = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -31,29 +32,29 @@ export class BleService {
     scanFinished = new BehaviorSubject<any>(false);
     currentTargetId: any;
     isConnectedFlag = false;
+    isGateway: boolean;
+    private gatewayTargets: { gateway: any; target: any };
+    private notifyResetGateway = new BehaviorSubject(false);
 
-    constructor(private storage: StorageService, public ble: BLE, private ngZone: NgZone, private bluetoothSerial: BluetoothSerial) {
+    constructor(
+        private storage: StorageService,
+        public ble: BLE,
+        private ngZone: NgZone,
+        private bluetoothSerial: BluetoothSerial,
+        private gatewayService: GatewayService) {
         console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             INIT BLE SERVICE                %%%%%%%%%%%%%%%%%%%%%%%%');
         this.devices = this.storage.getItem('ble');
         if (!this.devices) {
             this.devices = [];
         }
-
-
-        this.ngZone.onError.subscribe((e) => {
-         });
-
     }
 
-    scan() {
+    scan(options?: PushSubscriptionOptionsInit) {
         console.log('*************** SCAN STARTED ***************************');
         this.setStatus('Scanning for Bluetooth LE Devices');
         this.devices = [];  // clear list
         this.storage.setItem('ble', this.devices);
-        this.ble.scan([], 5).subscribe(
-            device => this.onDeviceDiscovered(device),
-            error => this.scanError(error)
-        );
+        this.ble.scan([], 5).subscribe(device => this.onDeviceDiscovered(device), error => this.scanError(error));
         setTimeout(() => {
             this.storage.setItem('ble', this.devices);
             this.scanFinished.next(true);
@@ -72,7 +73,11 @@ export class BleService {
                 if (device.name.toLowerCase().includes('adl') ||
                     device.name.toLowerCase().includes('e64') ||
                     device.name.toLowerCase().includes('e16') ||
+                    device.name.toLowerCase().includes('egateway') ||
                     device.name.toLowerCase().includes('e1')) {
+                    if (device.name.toLowerCase().includes('egateway')) {
+                        this.isGateway = true;
+                    }
                     if (this.devices.length === 0) {
                         this.devices.push(device);
                         this.storage.setItem('ble', this.devices);
@@ -84,6 +89,8 @@ export class BleService {
             }
         });
     }
+
+
 
     resetShots() {
         const txe = new TextEncoder();
@@ -103,6 +110,7 @@ export class BleService {
     getDevices() {
         return this.devices;
     }
+
 
     connect(deviceId) {
         this.currentTargetId = deviceId;
@@ -146,25 +154,46 @@ export class BleService {
         );
     }
 
+
+
+
+    
     handleRead(id, service, characteristic) {
-        this.subscription = this.ble.startNotification(id, service, characteristic).subscribe(data => {
+        this.subscription = this.ble.startNotification(id, service, characteristic).subscribe((data) => {
             const dec = new TextDecoder();
             const enc = new TextEncoder();
             const buffer = new Uint8Array(data);
-            if (dec.decode(buffer) === 'Clear') {
-                console.log('Target cleared shots');
+            if (this.isGateway) {
+                this.parseGatewayMessage(buffer)
             } else {
-                // @ts-ignore
-                const encodedString = enc.encode(buffer);
-                // tslint:disable-next-line:radix
-                const text = parseInt(dec.decode(encodedString));
-                this.notifyShotArrived.next(text);
-                this.ngZone.run(() => {
-                    console.log('Read from: ' + service + ' ' + service + ' has arrived: ' + text);
-                });
+                if (dec.decode(buffer) === 'Clear') {
+                    console.log('Target cleared shots');
+                } else {
+                    // @ts-ignore
+                    const encodedString = enc.encode(buffer);
+                    // tslint:disable-next-line:radix
+                    const text = parseInt(dec.decode(encodedString));
+                    this.notifyShotArrived.next(text);
+                    this.ngZone.run(() => {
+                        console.log('Read from: ' + service + ' ' + service + ' has arrived: ' + text);
+                    });
+                }
             }
         });
     }
+
+    parseGatewayMessage(buffer: Uint8Array) {
+        const messageFromGatewaty = String.fromCharCode.apply(null, buffer);
+        if (messageFromGatewaty.indexOf('<') > -1) {
+            this.gatewayService.processData(messageFromGatewaty);
+        } else if (messageFromGatewaty.indexOf('Connecting') > -1) {
+            this.gatewayTargets = {gateway: this.currentTargetId, target: messageFromGatewaty.split(' ')[3]};
+            this.notifyTargetConnected.next(true);
+        } else if (messageFromGatewaty.indexOf("Disconnected") > -1) {
+            this.activatRecconectProcess();
+        }
+    }
+
 
     distory() {
         this.ble.disconnect(this.currentTargetId).then(() => {
@@ -205,5 +234,21 @@ export class BleService {
                 debugger;
             }
         });
+    }
+
+    resetGateway() {
+        this.ble.write(this.currentTargetId, SERVICE_2, SERVICE_2_CHAR_WRITE, this.str2ab('R')).then((data) => {
+            this.notifyResetGateway.next(true)
+        })
+
+    }
+
+    str2ab(str) {
+        var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
+        var bufView = new Uint16Array(buf);
+        for (var i = 0, strLen = str.length; i < strLen; i++) {
+            bufView[i] = str.charCodeAt(i);
+        }
+        return buf;
     }
 }

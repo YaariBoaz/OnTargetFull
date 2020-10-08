@@ -1,22 +1,19 @@
-<section class="dashboard">
-    <!--[class.ios-mode]="this.platform.is('ios')"-->
-<!--    <h3>Hi, {{profile.firstName}}</h3>-->
-    <h3>Hi, Lovie</h3>
+<section *ngIf="showUi" class="dashboard" [class.ios-mode]="this.platform.is('ios')">
+    <h3>Hi, {{profile?.firstName}}</h3>
     <div class="menu">
-        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button
-                [matMenuTriggerFor]="menu" style="">
+        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu"
+            style="">
             <span>⋮</span>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="onActivityClicked(null)">Item 1</button>
-            <button mat-menu-item>Item 2</button>
-        </mat-menu>
+            <button mat-menu-item (click)="onDiscconectTarget()">Disconnect Target</button>
+         </mat-menu>
     </div>
 
     <div class="profile">
         <div class="avatar" *ngIf="profile.img">
-<!--            <img [src]="profile.img">-->
-            <img src="../../assets/lavi.jpg" height="882" width="1012"/>
+            <img *ngIf="profile.img" [src]="profile.img">
+            <img *ngIf="!profile.img" src="../../assets/avatar.jpg" />
         </div>
         <div class="avatar" *ngIf="!profile.img">
             <img src="assets/avatar.jpg">
@@ -34,11 +31,11 @@
                         </defs>
                         <g id="favorite">
                             <path id="Path_16889"
-                                  d="M11.95 2.05a7 7 0 0 0-9.9 9.9 7 7 0 0 0 9.9-9.9zM7 13.18A6.18 6.18 0 1 1 13.18 7 6.187 6.187 0 0 1 7 13.18z"
-                                  class="cls-11523" data-name="Path 16889"/>
+                                d="M11.95 2.05a7 7 0 0 0-9.9 9.9 7 7 0 0 0 9.9-9.9zM7 13.18A6.18 6.18 0 1 1 13.18 7 6.187 6.187 0 0 1 7 13.18z"
+                                class="cls-11523" data-name="Path 16889" />
                             <path id="Path_16890"
-                                  d="M100 84.71a.41.41 0 0 0-.331-.279l-2.621-.381-1.172-2.375a.41.41 0 0 0-.736 0l-1.167 2.375-2.621.381a.41.41 0 0 0-.227.7l1.9 1.849-.448 2.61a.41.41 0 0 0 .6.432l2.344-1.232 2.344 1.232a.41.41 0 0 0 .6-.432L98 86.979l1.9-1.849a.41.41 0 0 0 .1-.42zm-2.727 1.832a.41.41 0 0 0-.118.363l.344 2-1.8-.946a.41.41 0 0 0-.382 0l-1.8.946.344-2a.41.41 0 0 0-.118-.363l-1.456-1.419 2.012-.292a.41.41 0 0 0 .309-.224l.9-1.823.9 1.823a.41.41 0 0 0 .309.224l2.012.292z"
-                                  class="cls-11523" data-name="Path 16890" transform="translate(-88.513 -79.22)"/>
+                                d="M100 84.71a.41.41 0 0 0-.331-.279l-2.621-.381-1.172-2.375a.41.41 0 0 0-.736 0l-1.167 2.375-2.621.381a.41.41 0 0 0-.227.7l1.9 1.849-.448 2.61a.41.41 0 0 0 .6.432l2.344-1.232 2.344 1.232a.41.41 0 0 0 .6-.432L98 86.979l1.9-1.849a.41.41 0 0 0 .1-.42zm-2.727 1.832a.41.41 0 0 0-.118.363l.344 2-1.8-.946a.41.41 0 0 0-.382 0l-1.8.946.344-2a.41.41 0 0 0-.118-.363l-1.456-1.419 2.012-.292a.41.41 0 0 0 .309-.224l.9-1.823.9 1.823a.41.41 0 0 0 .309.224l2.012.292z"
+                                class="cls-11523" data-name="Path 16890" transform="translate(-88.513 -79.22)" />
                         </g>
                     </svg>
                 </div>
@@ -48,7 +45,7 @@
             <div class="text-and-icon">
                 <div class="container">
                     <svg xmlns="http://www.w3.org/2000/svg" id="_004-aim" width="13.5" height="13.5" data-name="004-aim"
-                         viewBox="0 0 13.5 13.5">
+                        viewBox="0 0 13.5 13.5">
                         <defs>
                             <style>
                                 .cls-18661 {
@@ -57,22 +54,22 @@
                             </style>
                         </defs>
                         <path id="Path_1182"
-                              d="M7.516 13.281a5.766 5.766 0 1 1 5.766-5.766 5.772 5.772 0 0 1-5.766 5.766zm0-10.406a4.641 4.641 0 1 0 4.641 4.641 4.646 4.646 0 0 0-4.641-4.641z"
-                              class="cls-18661" data-name="Path 1182" transform="translate(-.766 -.766)"/>
+                            d="M7.516 13.281a5.766 5.766 0 1 1 5.766-5.766 5.772 5.772 0 0 1-5.766 5.766zm0-10.406a4.641 4.641 0 1 0 4.641 4.641 4.646 4.646 0 0 0-4.641-4.641z"
+                            class="cls-18661" data-name="Path 1182" transform="translate(-.766 -.766)" />
                         <path id="Path_1183"
-                              d="M11.563 3.094A.563.563 0 0 1 11 2.531V.563a.563.563 0 0 1 1.125 0v1.968a.563.563 0 0 1-.562.563z"
-                              class="cls-18661" data-name="Path 1183" transform="translate(-4.813)"/>
+                            d="M11.563 3.094A.563.563 0 0 1 11 2.531V.563a.563.563 0 0 1 1.125 0v1.968a.563.563 0 0 1-.562.563z"
+                            class="cls-18661" data-name="Path 1183" transform="translate(-4.813)" />
                         <path id="Path_1184"
-                              d="M21.031 12.125h-1.968a.563.563 0 0 1 0-1.125h1.969a.563.563 0 0 1 0 1.125z"
-                              class="cls-18661" data-name="Path 1184" transform="translate(-8.094 -4.813)"/>
+                            d="M21.031 12.125h-1.968a.563.563 0 0 1 0-1.125h1.969a.563.563 0 0 1 0 1.125z"
+                            class="cls-18661" data-name="Path 1184" transform="translate(-8.094 -4.813)" />
                         <path id="Path_1185"
-                              d="M11.563 21.594a.563.563 0 0 1-.563-.563v-1.968a.563.563 0 0 1 1.125 0v1.969a.563.563 0 0 1-.562.562z"
-                              class="cls-18661" data-name="Path 1185" transform="translate(-4.813 -8.094)"/>
+                            d="M11.563 21.594a.563.563 0 0 1-.563-.563v-1.968a.563.563 0 0 1 1.125 0v1.969a.563.563 0 0 1-.562.562z"
+                            class="cls-18661" data-name="Path 1185" transform="translate(-4.813 -8.094)" />
                         <path id="Path_1186" d="M2.531 12.125H.563a.563.563 0 0 1 0-1.125h1.968a.563.563 0 0 1 0 1.125z"
-                              class="cls-18661" data-name="Path 1186" transform="translate(0 -4.813)"/>
+                            class="cls-18661" data-name="Path 1186" transform="translate(0 -4.813)" />
                         <path id="Path_1187"
-                              d="M10.688 12.375a1.688 1.688 0 1 1 1.688-1.687 1.69 1.69 0 0 1-1.688 1.687zm0-2.25a.563.563 0 1 0 .563.563.563.563 0 0 0-.563-.563z"
-                              class="cls-18661" data-name="Path 1187" transform="translate(-3.938 -3.938)"/>
+                            d="M10.688 12.375a1.688 1.688 0 1 1 1.688-1.687 1.69 1.69 0 0 1-1.688 1.687zm0-2.25a.563.563 0 1 0 .563.563.563.563 0 0 0-.563-.563z"
+                            class="cls-18661" data-name="Path 1187" transform="translate(-3.938 -3.938)" />
                     </svg>
                 </div>
                 <p>125 POINTS</p>
@@ -83,12 +80,18 @@
     <div class="slides">
         <ion-slides #slides effect=“slide” class="sliders" pager="true" [options]="slideOpts">
             <ion-slide>
-                <div class="slide-container">
+                <div class="slide-container" *ngIf="data.rateOfFireChart">
                     <p>RATE OF FILE</p>
-                    <P class="middle">{{data.rateOfFireChart.userAvg}}</P>
+                    <P class="middle">{{data.rateOfFireChart.userAvg | number : '1.2-2'}}</P>
 
                     <div class="chart-container">
                         <canvas width="100%" height="100%" #lineChart></canvas>
+                    </div>
+                </div>
+                <div class="slide-container" *ngIf="!data.rateOfFireChart">
+                    <p>RATE OF FILE</p>
+                    <div class="chart-container">
+                        <p class="middle" style=" text-align: center;">No Data</p>
                     </div>
                 </div>
             </ion-slide>
@@ -101,7 +104,7 @@
                 </div>
             </ion-slide>
             <ion-slide>
-                <div class="slide-container">
+                <div class="slide-container" *ngIf="data.hitRatioChart">
                     <p>HIT RATIO</p>
                     <P class="middle floating"><b>{{data.hitRatioChart.totalHits}}</b>/{{data.hitRatioChart.totalShots}}
                     </P>
@@ -109,12 +112,18 @@
                         <canvas width="100%" height="100%" #radio></canvas>
                     </div>
                 </div>
+                <div class="slide-container" *ngIf="!data.hitRatioChart">
+                    <p>HIT RATIO</p>
+                    <div class="chart-container">
+                        <p class="middle">No Data</p>
+                    </div>
+                </div>
             </ion-slide>
         </ion-slides>
     </div>
 
     <div class="static-images">
-        <div class="image-container">
+        <div class="image-container" *ngIf="data.bestScores">
             <p>{{data.bestScores.avgSplit}}</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">
                 <defs>
@@ -126,28 +135,60 @@
                 </defs>
                 <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">
                     <path id="Path_16662" fill="none" stroke="#ce564b"
-                          d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"
-                          data-name="Path 16662" transform="translate(2331 -18027)"/>
+                        d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"
+                        data-name="Path 16662" transform="translate(2331 -18027)" />
                     <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884" rx="2"
-                          transform="translate(31 539)"/>
+                        transform="translate(31 539)" />
                     <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885" rx="2"
-                          transform="translate(54 502)"/>
+                        transform="translate(54 502)" />
                     <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886" rx="2"
-                          transform="translate(78 528)"/>
+                        transform="translate(78 528)" />
                     <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887" rx="2.5"
-                          transform="translate(103 463)"/>
+                        transform="translate(103 463)" />
                     <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888" rx="2"
-                          transform="translate(128 507)"/>
+                        transform="translate(128 507)" />
                     <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889" rx="2"
-                          transform="translate(144 493)"/>
+                        transform="translate(144 493)" />
                     <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890" rx="2"
-                          transform="translate(159 526)"/>
+                        transform="translate(159 526)" />
+                </g>
+            </svg>
+            <p>FAST AVG SPLIT</p>
+        </div>
+        <div class="image-container" *ngIf="!data.bestScores">
+            <p>No Data</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">
+                <defs>
+                    <style>
+                        .cls-22256 {
+                            fill: #ce564b
+                        }
+                    </style>
+                </defs>
+                <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">
+                    <path id="Path_16662" fill="none" stroke="#ce564b"
+                        d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"
+                        data-name="Path 16662" transform="translate(2331 -18027)" />
+                    <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884" rx="2"
+                        transform="translate(31 539)" />
+                    <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885" rx="2"
+                        transform="translate(54 502)" />
+                    <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886" rx="2"
+                        transform="translate(78 528)" />
+                    <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887" rx="2.5"
+                        transform="translate(103 463)" />
+                    <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888" rx="2"
+                        transform="translate(128 507)" />
+                    <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889" rx="2"
+                        transform="translate(144 493)" />
+                    <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890" rx="2"
+                        transform="translate(159 526)" />
                 </g>
             </svg>
             <p>FAST AVG SPLIT</p>
         </div>
 
-        <div class="image-container">
+        <div class="image-container" *ngIf="data.bestScores">
             <p>{{data.bestScores.longestShot}}</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="89" height="61" viewBox="0 0 89 61">
                 <defs>
@@ -159,21 +200,53 @@
                 </defs>
                 <g id="Group_836" data-name="Group 836" transform="translate(-229 -266)">
                     <rect id="Rectangle_1876" width="7" height="31" class="cls-111252" data-name="Rectangle 1876" rx="2"
-                          transform="translate(229 296)"/>
+                        transform="translate(229 296)" />
                     <rect id="Rectangle_1877" width="7" height="22" class="cls-111252" data-name="Rectangle 1877" rx="2"
-                          transform="translate(240 305)"/>
+                        transform="translate(240 305)" />
                     <rect id="Rectangle_1878" width="7" height="39" class="cls-111252" data-name="Rectangle 1878" rx="2"
-                          transform="translate(252 288)"/>
+                        transform="translate(252 288)" />
                     <rect id="Rectangle_1879" width="7" height="48" class="cls-111252" data-name="Rectangle 1879" rx="2"
-                          transform="translate(264 279)"/>
+                        transform="translate(264 279)" />
                     <rect id="Rectangle_1880" width="7" height="35" class="cls-111252" data-name="Rectangle 1880" rx="2"
-                          transform="translate(276 292)"/>
+                        transform="translate(276 292)" />
                     <rect id="Rectangle_1881" width="7" height="61" class="cls-111252" data-name="Rectangle 1881" rx="2"
-                          transform="translate(287 266)"/>
+                        transform="translate(287 266)" />
                     <rect id="Rectangle_1882" width="7" height="54" class="cls-111252" data-name="Rectangle 1882" rx="2"
-                          transform="translate(300 273)"/>
+                        transform="translate(300 273)" />
                     <rect id="Rectangle_1883" width="7" height="44" class="cls-111252" data-name="Rectangle 1883" rx="2"
-                          transform="translate(311 283)"/>
+                        transform="translate(311 283)" />
+                </g>
+            </svg>
+            <p>LONGEST SHOT</p>
+        </div>
+        <div class="image-container" *ngIf="!data.bestScores">
+            <p>No Data</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">
+                <defs>
+                    <style>
+                        .cls-22256 {
+                            fill: #ce564b
+                        }
+                    </style>
+                </defs>
+                <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">
+                    <path id="Path_16662" fill="none" stroke="#ce564b"
+                        d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"
+                        data-name="Path 16662" transform="translate(2331 -18027)" />
+                    <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884" rx="2"
+                        transform="translate(31 539)" />
+                    <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885" rx="2"
+                        transform="translate(54 502)" />
+                    <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886" rx="2"
+                        transform="translate(78 528)" />
+                    <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887" rx="2.5"
+                        transform="translate(103 463)" />
+                    <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888" rx="2"
+                        transform="translate(128 507)" />
+                    <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889" rx="2"
+                        transform="translate(144 493)" />
+                    <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890" rx="2"
+                        transform="translate(159 526)" />
                 </g>
             </svg>
             <p>LONGEST SHOT</p>
@@ -184,7 +257,7 @@
         <div class="month">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" id="calendar_8_" width="16" height="16" data-name="calendar (8)"
-                     viewBox="0 0 16 16">
+                    viewBox="0 0 16 16">
                     <defs>
                         <style>
                             .cls-1 {
@@ -195,71 +268,71 @@
                     <g id="Group_801" data-name="Group 801">
                         <g id="Group_800" data-name="Group 800">
                             <path id="Path_16651"
-                                  d="M14.286 1.714h-1.715V.571a.571.571 0 1 0-1.143 0v1.143H4.571V.571a.571.571 0 1 0-1.143 0v1.143H1.714A1.714 1.714 0 0 0 0 3.429v10.857A1.714 1.714 0 0 0 1.714 16h12.572A1.714 1.714 0 0 0 16 14.286V3.429a1.714 1.714 0 0 0-1.714-1.715zm.571 12.571a.571.571 0 0 1-.571.571H1.714a.571.571 0 0 1-.571-.571V6.857h13.714zm0-8.571H1.143V3.429a.571.571 0 0 1 .571-.571h1.715V4a.571.571 0 1 0 1.142 0V2.857h6.857V4a.571.571 0 1 0 1.143 0V2.857h1.714a.571.571 0 0 1 .571.571v2.286z"
-                                  class="cls-1" data-name="Path 16651"/>
+                                d="M14.286 1.714h-1.715V.571a.571.571 0 1 0-1.143 0v1.143H4.571V.571a.571.571 0 1 0-1.143 0v1.143H1.714A1.714 1.714 0 0 0 0 3.429v10.857A1.714 1.714 0 0 0 1.714 16h12.572A1.714 1.714 0 0 0 16 14.286V3.429a1.714 1.714 0 0 0-1.714-1.715zm.571 12.571a.571.571 0 0 1-.571.571H1.714a.571.571 0 0 1-.571-.571V6.857h13.714zm0-8.571H1.143V3.429a.571.571 0 0 1 .571-.571h1.715V4a.571.571 0 1 0 1.142 0V2.857h6.857V4a.571.571 0 1 0 1.143 0V2.857h1.714a.571.571 0 0 1 .571.571v2.286z"
+                                class="cls-1" data-name="Path 16651" />
                         </g>
                     </g>
                     <g id="Group_803" data-name="Group 803" transform="translate(2.857 8)">
                         <g id="Group_802" data-name="Group 802">
                             <path id="Path_16652"
-                                  d="M87.047 238.933H85.9a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16652" transform="translate(-85.333 -238.933)"/>
+                                d="M87.047 238.933H85.9a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
+                                class="cls-1" data-name="Path 16652" transform="translate(-85.333 -238.933)" />
                         </g>
                     </g>
                     <g id="Group_805" data-name="Group 805" transform="translate(6.857 8)">
                         <g id="Group_804" data-name="Group 804">
                             <path id="Path_16653"
-                                  d="M206.514 238.933h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16653" transform="translate(-204.8 -238.933)"/>
+                                d="M206.514 238.933h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
+                                class="cls-1" data-name="Path 16653" transform="translate(-204.8 -238.933)" />
                         </g>
                     </g>
                     <g id="Group_807" data-name="Group 807" transform="translate(10.857 8)">
                         <g id="Group_806" data-name="Group 806">
                             <path id="Path_16654"
-                                  d="M325.981 238.933h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16654" transform="translate(-324.267 -238.933)"/>
+                                d="M325.981 238.933h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
+                                class="cls-1" data-name="Path 16654" transform="translate(-324.267 -238.933)" />
                         </g>
                     </g>
                     <g id="Group_809" data-name="Group 809" transform="translate(2.857 10.286)">
                         <g id="Group_808" data-name="Group 808">
                             <path id="Path_16655"
-                                  d="M87.047 307.2H85.9a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16655" transform="translate(-85.333 -307.2)"/>
+                                d="M87.047 307.2H85.9a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
+                                class="cls-1" data-name="Path 16655" transform="translate(-85.333 -307.2)" />
                         </g>
                     </g>
                     <g id="Group_811" data-name="Group 811" transform="translate(6.857 10.286)">
                         <g id="Group_810" data-name="Group 810">
                             <path id="Path_16656"
-                                  d="M206.514 307.2h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16656" transform="translate(-204.8 -307.2)"/>
+                                d="M206.514 307.2h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
+                                class="cls-1" data-name="Path 16656" transform="translate(-204.8 -307.2)" />
                         </g>
                     </g>
                     <g id="Group_813" data-name="Group 813" transform="translate(10.857 10.286)">
                         <g id="Group_812" data-name="Group 812">
                             <path id="Path_16657"
-                                  d="M325.981 307.2h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16657" transform="translate(-324.267 -307.2)"/>
+                                d="M325.981 307.2h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
+                                class="cls-1" data-name="Path 16657" transform="translate(-324.267 -307.2)" />
                         </g>
                     </g>
                     <g id="Group_815" data-name="Group 815" transform="translate(2.857 12.571)">
                         <g id="Group_814" data-name="Group 814">
                             <path id="Path_16658"
-                                  d="M87.047 375.467H85.9a.571.571 0 1 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16658" transform="translate(-85.333 -375.467)"/>
+                                d="M87.047 375.467H85.9a.571.571 0 1 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
+                                class="cls-1" data-name="Path 16658" transform="translate(-85.333 -375.467)" />
                         </g>
                     </g>
                     <g id="Group_817" data-name="Group 817" transform="translate(6.857 12.571)">
                         <g id="Group_816" data-name="Group 816">
                             <path id="Path_16659"
-                                  d="M206.514 375.467h-1.143a.571.571 0 1 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16659" transform="translate(-204.8 -375.467)"/>
+                                d="M206.514 375.467h-1.143a.571.571 0 1 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
+                                class="cls-1" data-name="Path 16659" transform="translate(-204.8 -375.467)" />
                         </g>
                     </g>
                     <g id="Group_819" data-name="Group 819" transform="translate(10.857 12.571)">
                         <g id="Group_818" data-name="Group 818">
                             <path id="Path_16660"
-                                  d="M325.981 375.467h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                                  class="cls-1" data-name="Path 16660" transform="translate(-324.267 -375.467)"/>
+                                d="M325.981 375.467h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
+                                class="cls-1" data-name="Path 16660" transform="translate(-324.267 -375.467)" />
                         </g>
                     </g>
                 </svg>
@@ -272,4 +345,3 @@
         </div>
     </div>
 </section>
-

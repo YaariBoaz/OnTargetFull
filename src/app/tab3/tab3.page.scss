@@ -4,6 +4,10 @@
   overflow-y: scroll;
 }
 
+.cock {
+
+}
+
 section.profile {
   display: flex;
   flex-direction: column;
@@ -444,7 +448,7 @@ header {
   bottom: -50px;
   border-radius: 100%;
   background: #848889;
-  padding: 0.5em;
+  padding: 1px;
 }
 
 
@@ -485,9 +489,11 @@ form.signInForm {
       padding: 0.5em;
       width: 100%;
       height: 42px;
+
       div {
         display: flex;
         align-items: center;
+
         span {
           margin-left: 16px;
           margin-right: 64px;
@@ -608,4 +614,9 @@ form.signInForm {
       color: #4d89f5;
     }
   }
+}
+
+.body {
+  height: 60%;
+  overflow-y: auto;
 }
