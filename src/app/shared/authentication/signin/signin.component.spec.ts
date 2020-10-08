@@ -10,7 +10,7 @@ describe('SinginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SigninComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SigninComponent);

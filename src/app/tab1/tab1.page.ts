@@ -14,6 +14,7 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import {TabsService} from '../tabs/tabs.service';
 import {Chart} from 'chart.js';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {ApiService} from "../shared/services/api.service";
 
 @Component({
     selector: 'app-tab1',
@@ -64,6 +65,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 private ble: BleService,
                 private tabsService: TabsService,
                 private initService: InitService,
+                private apiService: ApiService,
                 private screenOrientation: ScreenOrientation,
                 private storageService: StorageService) {
         console.log('In constructor Tab1Page' + new Date());
@@ -73,23 +75,19 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         if (!localStorage.isLoggedIn) {
             this.router.navigateByUrl('/signin');
         } else {
-            this.showUi = true;
-            console.log('In ngOnInit START Tab1Page' + new Date());
-            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-            this.profile = this.userService.getUser();
-            this.handleOfflineScenario();
-            this.tabsService.$notifyTab1.subscribe(() => {
+            this.apiService.getDashboardData(this.userService.getUserId()).subscribe(data => {
+                this.storageService.setItem('homeData', data);
+                this.showUi = true;
+                console.log('In ngOnInit START Tab1Page' + new Date());
+                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                this.profile = this.userService.getUser();
                 this.handleOfflineScenario();
+                this.initService.isLoading.next(false);
+                console.log('In ngOnInit END Tab1Page' + new Date());
+                this.initService.isLoading.next(false);
             });
-            setTimeout(() => {
-                this.createLineChart();
-                this.createScatterChart();
-                this.createRadioChart();
-            }, 1000);
-            this.initService.isLoading.next(false);
-
-            console.log('In ngOnInit END Tab1Page' + new Date());
         }
+
     }
 
 
@@ -97,169 +95,178 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         this.ble.distory();
     }
 
+    onLogout() {
+        localStorage.setItem('isLoggedIn', null);
+        this.router.navigateByUrl('signin');
+    }
+
     createLineChart() {
-        if (this.lineChart.nativeElement) {
-
-        }
-        this.line = new Chart(this.lineChart.nativeElement, {
-            type: 'line',
-            data: {
-                labels: [100, 250, 200, 450, 300, 600],
-                datasets: [
-                    {
-                        data: [100, 250, 200, 450, 300, 600],
-                        label: 'Africa',
-                        borderColor: '#ce564b',
-                        fill: false
-                    }
-                ]
-            },
-            options: {
-                elements: {
-                    line: {
-                        tension: 0,
-                        borderWidth: 2,
+        if (this.lineChart && this.lineChart.nativeElement) {
+            this.line = new Chart(this.lineChart.nativeElement, {
+                type: 'line',
+                data: {
+                    labels: [100, 250, 200, 450, 300, 600],
+                    datasets: [
+                        {
+                            data: [100, 250, 200, 450, 300, 600],
+                            label: 'Africa',
+                            borderColor: '#ce564b',
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    elements: {
+                        line: {
+                            tension: 0,
+                            borderWidth: 2,
+                        },
+                        point: {
+                            radius: 0
+                        }
                     },
-                    point: {
-                        radius: 0
+                    legend: {
+                        display: false
+                    },
+                    responsive: true,
+                    title: {
+                        display: false,
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: false,
+
+                        }],
+                        yAxes: [{
+                            display: false,
+
+                        }]
                     }
-                },
-                legend: {
-                    display: false
-                },
-                responsive: true,
-                title: {
-                    display: false,
-                },
-                scales: {
-                    xAxes: [{
-                        display: false,
-
-                    }],
-                    yAxes: [{
-                        display: false,
-
-                    }]
                 }
-            }
 
-        });
+            });
+        }
     }
 
     createScatterChart() {
-        this.scatterChartIns = new Chart(this.scatter.nativeElement, {
-            type: 'scatter',
-            data: {
-                datasets: [
-                    {
-                        label: 'Scatter Dataset',
-                        borderColor: '#ce564b',
-                        pointBackgroundColor: '#ce564b',
-                        fill: false,
-                        data: [
-                            {
-                                x: 1,
-                                y: 0
-                            },
-                            {
-                                x: 0,
-                                y: 2
-                            },
-                            {
-                                x: 3,
-                                y: 1
-                            },
-                            {
-                                x: 4,
-                                y: 2.5
-                            },
-                            {
-                                x: 5,
-                                y: 1
-                            },
-                            {
-                                x: 6,
-                                y: 0
-                            }
+        if (this.scatter && this.scatter.nativeElement) {
+            this.scatterChartIns = new Chart(this.scatter.nativeElement, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: 'Scatter Dataset',
+                            borderColor: '#ce564b',
+                            pointBackgroundColor: '#ce564b',
+                            fill: false,
+                            data: [
+                                {
+                                    x: 1,
+                                    y: 0
+                                },
+                                {
+                                    x: 0,
+                                    y: 2
+                                },
+                                {
+                                    x: 3,
+                                    y: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 2.5
+                                },
+                                {
+                                    x: 5,
+                                    y: 1
+                                },
+                                {
+                                    x: 6,
+                                    y: 0
+                                }
 
-                        ]
-                    }
-                ]
-            },
-            options: {
-                legend: {
-                    display: false
-                },
-                responsive: true,
-                title: {
-                    display: false,
-                },
-                elements: {
-                    point: {
-                        radius: 5,
-                    }
-                },
-                layout: {
-                    padding: {
-                        left: 25,
-                        right: 5,
-                        bottom: 20,
-                        top: 15
-                    }
-                },
-                scales: {
-                    xAxes: [
-                        {
-                            type: 'linear',
-                            position: 'bottom',
-                            display: false,
-                        }
-                    ],
-                    yAxes: [
-                        {
-                            display: false,
+                            ]
                         }
                     ]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    responsive: true,
+                    title: {
+                        display: false,
+                    },
+                    elements: {
+                        point: {
+                            radius: 5,
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 25,
+                            right: 5,
+                            bottom: 20,
+                            top: 15
+                        }
+                    },
+                    scales: {
+                        xAxes: [
+                            {
+                                type: 'linear',
+                                position: 'bottom',
+                                display: false,
+                            }
+                        ],
+                        yAxes: [
+                            {
+                                display: false,
+                            }
+                        ]
+                    }
                 }
-            }
-        });
+            });
+        }
+
     }
 
     createRadioChart() {
-        this.radioChartInst = new Chart(this.radio.nativeElement, {
-            type: 'doughnut',
-            data: {
-                labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
-                datasets: [
-                    {
-                        borderColor: '#1C00ff00',
-                        label: 'Population (millions)',
-                        backgroundColor: ['#ce564b', '#d4d4d4'],
-                        data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots]
-                    }
-                ]
-            },
-            options: {
-                legend: {
-                    display: false
+        if (this.radioChartInst) {
+            this.radioChartInst = new Chart(this.radio.nativeElement, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
+                    datasets: [
+                        {
+                            borderColor: '#1C00ff00',
+                            label: 'Population (millions)',
+                            backgroundColor: ['#ce564b', '#d4d4d4'],
+                            data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots]
+                        }
+                    ]
                 },
-                responsive: true,
-                title: {
-                    display: false,
-                },
-                scales: {
-                    xAxes: [{
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    responsive: true,
+                    title: {
                         display: false,
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: false,
 
-                    }],
-                    yAxes: [{
-                        display: false,
+                        }],
+                        yAxes: [{
+                            display: false,
 
-                    }]
-                },
-                cutoutPercentage: 90
-            }
-        });
+                        }]
+                    },
+                    cutoutPercentage: 90
+                }
+            });
+        }
     }
 
 
@@ -280,7 +287,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     onActivityClicked(train: HistoryModel) {
         this.storageService.passhistoricalTrainingsDate(train);
-        this.router.navigateByUrl('home/tabs/tab1/activity-history');
+        this.router.navigateByUrl('/tab1/activity-history');
     }
 
     private handleOnlineScenario() {
@@ -318,7 +325,11 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 this.historicTrainings[monthName][key].data.push(train);
             });
         }
-
+        setTimeout(() => {
+            this.createLineChart();
+            this.createScatterChart();
+            this.createRadioChart();
+        }, 100)
     }
 
     datesAreOnSameDay(first, second) {

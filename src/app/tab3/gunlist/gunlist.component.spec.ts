@@ -10,7 +10,7 @@ describe('GunlistComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GunlistComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(GunlistComponent);

@@ -20,6 +20,7 @@ import {MatSnackBar} from '@angular/material';
 export class SelectTargetModalComponent implements OnInit {
     targets = [];
     BASE_URL_HTTP = '192.168.0.86:8087';
+    isScanning = true;
     socket;
     GET_TARGETS_API;
     chosenTarget = null;
@@ -111,6 +112,7 @@ export class SelectTargetModalComponent implements OnInit {
 
         this.bleService.scanFinished.subscribe((flag) => {
             if (flag) {
+                this.isScanning = false;
                 if (this.loading) {
                     this.loading.dismiss();
                 }
@@ -212,6 +214,7 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     async reScan() {
+        this.isScanning = true;
         this.bleService.scan();
         this.loading = await this.loadingController.create({
             duration: 5000,

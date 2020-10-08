@@ -3,7 +3,8 @@ import {BLE} from '@ionic-native/ble/ngx';
 import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
 import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
 import {StorageService} from './storage.service';
-import {GatewayService} from "./gateway.service";
+import {GatewayService} from './gateway.service';
+import {InitService} from './init.service';
 
 const SERVICE_1 = '1800';
 const SERVICE_2 = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -35,11 +36,13 @@ export class BleService {
     isGateway: boolean;
     private gatewayTargets: { gateway: any; target: any };
     private notifyResetGateway = new BehaviorSubject(false);
+    gateways = [];
 
     constructor(
         private storage: StorageService,
         public ble: BLE,
         private ngZone: NgZone,
+        private initService: InitService,
         private bluetoothSerial: BluetoothSerial,
         private gatewayService: GatewayService) {
         console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             INIT BLE SERVICE                %%%%%%%%%%%%%%%%%%%%%%%%');
@@ -50,7 +53,6 @@ export class BleService {
     }
 
     scan(options?: PushSubscriptionOptionsInit) {
-        console.log('*************** SCAN STARTED ***************************');
         this.setStatus('Scanning for Bluetooth LE Devices');
         this.devices = [];  // clear list
         this.storage.setItem('ble', this.devices);
@@ -74,9 +76,10 @@ export class BleService {
                     device.name.toLowerCase().includes('e64') ||
                     device.name.toLowerCase().includes('e16') ||
                     device.name.toLowerCase().includes('egateway') ||
+                    device.name.toLowerCase().includes('nordic') ||
                     device.name.toLowerCase().includes('e1')) {
-                    if (device.name.toLowerCase().includes('egateway')) {
-                        this.isGateway = true;
+                    if (device.name.toLowerCase().includes('egateway') || device.name.toLowerCase().includes('nordic')) {
+                        this.gateways.push(device.id);
                     }
                     if (this.devices.length === 0) {
                         this.devices.push(device);
@@ -91,8 +94,8 @@ export class BleService {
     }
 
 
-
     resetShots() {
+        this.gatewayService.initStats();
         const txe = new TextEncoder();
         if (this.peripheral && this.peripheral.id) {
             this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('C\n').buffer).then((prmise) => {
@@ -113,6 +116,10 @@ export class BleService {
 
 
     connect(deviceId) {
+        if (this.gateways.indexOf(deviceId) > -1) {
+            this.isGateway = true;
+            this.initService.isGateway = true;
+        }
         this.currentTargetId = deviceId;
         this.subscription = this.ble.connect(deviceId).subscribe(
             (peripheral) => {
@@ -124,7 +131,6 @@ export class BleService {
                 console.log('Disconnected', 'The peripheral unexpectedly disconnected');
                 this.activatRecconectProcess();
             }, () => {
-                debugger;
             }
         );
     }
@@ -155,16 +161,13 @@ export class BleService {
     }
 
 
-
-
-    
     handleRead(id, service, characteristic) {
         this.subscription = this.ble.startNotification(id, service, characteristic).subscribe((data) => {
             const dec = new TextDecoder();
             const enc = new TextEncoder();
             const buffer = new Uint8Array(data);
             if (this.isGateway) {
-                this.parseGatewayMessage(buffer)
+                this.parseGatewayMessage(buffer);
             } else {
                 if (dec.decode(buffer) === 'Clear') {
                     console.log('Target cleared shots');
@@ -184,12 +187,13 @@ export class BleService {
 
     parseGatewayMessage(buffer: Uint8Array) {
         const messageFromGatewaty = String.fromCharCode.apply(null, buffer);
+        console.log('MESSAGE ARRIVED: ' + messageFromGatewaty);
         if (messageFromGatewaty.indexOf('<') > -1) {
             this.gatewayService.processData(messageFromGatewaty);
         } else if (messageFromGatewaty.indexOf('Connecting') > -1) {
             this.gatewayTargets = {gateway: this.currentTargetId, target: messageFromGatewaty.split(' ')[3]};
             this.notifyTargetConnected.next(true);
-        } else if (messageFromGatewaty.indexOf("Disconnected") > -1) {
+        } else if (messageFromGatewaty.indexOf('Disconnected') > -1) {
             this.activatRecconectProcess();
         }
     }
@@ -223,7 +227,6 @@ export class BleService {
                         console.log('Disconnected', 'The peripheral unexpectedly disconnected');
                         this.activatRecconectProcess();
                     }, () => {
-                        debugger;
                     }
                 );
 
@@ -231,22 +234,21 @@ export class BleService {
 
 
             } catch (e) {
-                debugger;
             }
         });
     }
 
     resetGateway() {
         this.ble.write(this.currentTargetId, SERVICE_2, SERVICE_2_CHAR_WRITE, this.str2ab('R')).then((data) => {
-            this.notifyResetGateway.next(true)
-        })
+            this.notifyResetGateway.next(true);
+        });
 
     }
 
     str2ab(str) {
-        var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
-        var bufView = new Uint16Array(buf);
-        for (var i = 0, strLen = str.length; i < strLen; i++) {
+        const buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
+        const bufView = new Uint16Array(buf);
+        for (let i = 0, strLen = str.length; i < strLen; i++) {
             bufView[i] = str.charCodeAt(i);
         }
         return buf;

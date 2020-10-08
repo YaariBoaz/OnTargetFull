@@ -213,7 +213,7 @@ export class Tab3Page implements OnInit {
                         data: {modalType: 'general'}
                     });
                 }
-            })
+            });
         }
     }
 

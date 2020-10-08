@@ -65,7 +65,7 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     }
 
     onBackPressed() {
-        this.router.navigateByUrl('/home/tabs/tab1');
+        this.router.navigateByUrl('/tab1');
     }
 
     handleOfflineScenario() {

@@ -287,3 +287,19 @@ section {
     border-radius: 100%;
   }
 }
+
+
+.ble-img-abs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+  position: absolute;
+  top: 30%;
+  left:36%;
+  img {
+    width: 178px;
+    height: 178px;
+  }
+}
+

@@ -25,7 +25,7 @@ import {AccessModalComponent} from "../shared/popups/access-modal/access-modal.c
         CommonModule,
         MatMenuModule,
         MatExpansionModule,
-        IonicModule.forRoot(),
+        IonicModule,
         FormsModule,
         ReactiveFormsModule
     ],

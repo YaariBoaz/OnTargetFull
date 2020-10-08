@@ -162,7 +162,6 @@ export class SignupComponent implements OnInit {
     }
 
     continueToThird() {
-        this.stepTwoComplete.emit(this.registerForm);
         this.submitted = true;
         // stop here if form is invalid
         if (this.registerForm.invalid) {

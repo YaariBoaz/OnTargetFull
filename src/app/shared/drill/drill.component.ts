@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     ChangeDetectorRef,
     Component,
     ElementRef,
@@ -21,6 +22,8 @@ import {HitNohitService} from './hit-nohit.service';
 import {Router} from '@angular/router';
 import {AlertController, LoadingController, ToastController} from '@ionic/angular';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {GatewayService} from '../services/gateway.service';
+import {InitService} from "../services/init.service";
 
 
 @Component({
@@ -28,10 +31,94 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
     templateUrl: './drill.component.html',
     styleUrls: ['./drill.component.scss'],
 })
-export class DrillComponent implements OnInit, OnChanges, OnDestroy {
+export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+
+
     public counter = 0;
     public showCounter = false;
     public showResults = false;
+
+    fakeShots = [{y: 87, x: 140},
+        {y: 186, x: 163},
+        {y: 132, x: 55},
+        {y: 131, x: 95},
+        {y: 133, x: 117},
+        {y: 131, x: 95},
+        {y: 119, x: 168}
+    ];
+
+
+    fakeStats = [
+        {
+            pageData: {
+                points: 2,
+                totalTime: '00:00:01',
+                splitTime: '00:00:01',
+                distanceFromCenter: 0.45,
+                index: 1,
+                totalPoints: 3,
+                totalSplit: '00:00:01',
+                totalTimeSummary: '00:00:01',
+                distanceFromCenterAvg: 0.45
+            }
+        },
+        {
+            pageData: {
+                points: 2,
+                distanceFromCenter: 0.52,
+                splitTime: '00:00:08',
+                totalTime: '00:00:09',
+                index: 2,
+                totalPoints: 2,
+                totalSplit: '00:00:04',
+                totalTimeSummary: '00:00:09',
+                distanceFromCenterAvg: 0.485
+            }
+        },
+        {
+            pageData: {
+                points: 2,
+                distanceFromCenter: 0.68,
+                splitTime: '00:00:05',
+                totalTime: '00:00:14',
+                index: 3,
+                totalPoints: 1,
+                totalSplit: '00:00:03',
+                totalTimeSummary: '00:00:14',
+                distanceFromCenterAvg: 0.55
+            },
+
+        },
+        {
+            pageData: {
+                points: 2,
+                distanceFromCenter: 0.31,
+                splitTime: '00:00:03',
+                totalTime: '00:00:17',
+                index: 4,
+                totalPoints: 3,
+                totalSplit: '00:00:04',
+                totalTimeSummary: '00:00:17',
+                distanceFromCenterAvg: 0.457
+
+
+            },
+
+        },
+        {
+            pageData: {
+                points: 5,
+                distanceFromCenter: 0.22,
+                splitTime: '00:00:09',
+                totalTime: '00:00:26',
+                index: 5,
+                totalPoints: 4,
+                totalSplit: '00:00:05',
+                totalTimeSummary: '00:00:26',
+                distanceFromCenterAvg: 0.436
+            },
+
+        }];
 
 
     @Input() isHistory = false;
@@ -46,7 +133,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
 
     /*  END FOR DEMO*/
-
+    profile: any;
     shots = [];
     drill: DrillObject;
     testConfig: any;
@@ -89,66 +176,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     };
 
 
-    fakeShots = [{y: 87, x: 140},
-        {y: 186, x: 163},
-        {y: 132, x: 55},
-        {y: 131, x: 95},
-        {y: 133, x: 117},
-        {y: 131, x: 95},
-        {y: 119, x: 168}
-    ];
-
-
-    fakeStats = [{
-        pageData: {
-            points: 2,
-            totalTime: '00:01:23',
-            splitTime: '00:01:23',
-            distanceFromCenter: 0.45,
-            index: 1,
-        }
-    },
-        {
-            pageData: {
-                points: 2,
-                distanceFromCenter: 0.45,
-                splitTime: '00:02:01',
-                totalTime: '00:03:24',
-                index: 2,
-            }
-        },
-        {
-            pageData: {
-                points: 2,
-                distanceFromCenter: 0.68,
-                splitTime: '00:01:01',
-                totalTime: '00:04:25',
-                index: 3,
-            },
-
-        },
-        {
-            pageData: {
-                points: 2,
-                distanceFromCenter: 0.22,
-                splitTime: '00:03:47',
-                totalTime: '00:07:12',
-                index: 4,
-            },
-
-        },
-        {
-            pageData: {
-                points: 2,
-                distanceFromCenter: 0.22,
-                splitTime: '00:02:12',
-                totalTime: '00:09:24',
-                index: 5,
-            },
-
-        }];
-
-
     height: number;
     width: number;
     private interval;
@@ -164,6 +191,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     isHitNoHit = true;
     drillHasNotStarted = true;
     drillIsFinished = false;
+    isGateway = false;
 
     constructor(
         private screenOrientation: ScreenOrientation,
@@ -174,36 +202,41 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         private userService: UserService,
         private apiService: ApiService,
         private bleService: BleService,
+        private gateway: GatewayService,
         private cd: ChangeDetectorRef,
         public loadingController: LoadingController,
         private router: Router,
         private ngZone: NgZone,
+        private initService: InitService,
         public alertController: AlertController,
         private hitNohitService: HitNohitService,
     ) {
         this.drill = this.shootingService.selectedDrill;
         console.log(this.drill);
-        if (this.drill) {
-            for (let i = 0; i < this.drill.numOfBullets; i++) {
-                this.stats.push({});
-            }
-        }
-
-
+        this.isGateway = this.initService.isGateway;
         this.hitNohitService.setDrill(this.drill);
         this.hitNohitService.initStats();
         this.setTimeElapse();
     }
 
+
+    ngAfterViewInit(): void {
+    }
+
     ngOnInit() {
-        this.gateway.height = this.container.nativeElement.offsetHeight;
-        this.width = this.container.nativeElement.offsetWidth;
+
         const content = document.querySelector('ion-tab-bar');
         content.style.display = 'none';
 
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
 
         this.hitNohitService.drillFinishedNotify.subscribe(data => {
+            if (data) {
+                this.drillIsFinished = true;
+            }
+        });
+
+        this.gateway.drillFinishedNotify.subscribe(data => {
             if (data) {
                 this.drillIsFinished = true;
             }
@@ -224,6 +257,26 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                 this.cd.detectChanges();
             }
         });
+
+
+        this.gateway.hitArrived.subscribe((data) => {
+            if (data) {
+                this.shotNumber = data.hitNumber;
+                this.stats = data.statsData.stats;
+                this.pageData = data.statsData.pageData;
+                this.isFinish = data.statsData.isFinish;
+                this.summaryObject = data.statsData.summaryObject;
+                this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
+                this.cd.detectChanges();
+            }
+        });
+
+        this.gateway.notifyShotArrivedFromGateway.subscribe((data) => {
+            if (data) {
+                this.shots.push({x: data.x, y: data.y});
+            }
+        });
+
 
         this.hitNohitService.resetDrillSubject.subscribe((flag) => {
             if (flag) {
@@ -296,7 +349,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
 
     initStats() {
+
         this.hitNohitService.initStats();
+        this.gateway.initStats();
         this.resetShots();
         console.log('This is in the init stats of the session');
         this.drillFinished = false;
@@ -328,7 +383,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         const content = document.querySelector('ion-tab-bar');
         content.style.display = 'flex';
         this.initStats();
-        if (this.stats.length !== this.drill.numOfBullets) {
+        if (this.drill === null || this.stats.length !== this.drill.numOfBullets) {
             const alert = await this.alertController.create({
                 cssClass: 'my-custom-class',
                 header: 'Confirm!',
@@ -359,7 +414,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                             this.ngZone.runGuarded(() => {
                                 console.log('Pressed No');
                                 this.router.navigateByUrl('/tab2/select');
-                                //  this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
                             });
                         }
                     }
@@ -445,10 +500,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         this.bleService.connect(this.bleService.currentTargetId);
     }
 
-    onGoBack() {
-
-    }
-
     activateCounter() {
         this.counter = 3;
         this.showCounter = true;
@@ -460,62 +511,52 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                 this.showResults = true;
                 this.showCounter = false;
                 this.drillHasNotStarted = false;
-                this.startFakeShooting(0);
+                // this.startFakeShootingHitNoHit(0);
                 clearInterval(interval);
+                if (this.isGateway) {
+                    setTimeout(() => {
+                        this.gateway.height = this.container.nativeElement.offsetHeight;
+                        this.gateway.width = this.container.nativeElement.offsetWidth;
+                        this.gateway.startTimer();
+                    }, 100);
+                }
+
             }
         }, 1000);
     }
-
-
-    // processData(input) {
-    //     this.handleShot_MSG(input);
-    // }
-
-    //
-    // handleShot_MSG(dataArray) {
-    //     if (!this.width && !this.height) {
-    //         this.height = this.container.nativeElement.offsetHeight;
-    //         this.width = this.container.nativeElement.offsetWidth;
-    //     }
-    //     this.handelShoot(this.height, this.width, {xCoord, yCoord});
-    // }
-    //
-    // handelShoot(parentImageHeight, parentImageWidth, data) {
-    //     if (this.pageData.counter === 0) {
-    //         // this.countupTimerService.startTimer();
-    //     }
-    //     const x = data.xCoord;
-    //     const y = data.yCoord;
-    //
-    //     const width = parentImageWidth;
-    //     const height = parentImageHeight;
-    //
-    //
-    //     const deltaX = width / 8;
-    //     const deltaY = height / 8;
-    //
-    //
-    //     const normalizeX = x / 8;
-    //     const normalizeY = y / 8;
-    //
-    //
-    //     const px = deltaX * normalizeX;
-    //     let py = deltaY * normalizeY;
-    //     py = py - deltaY;
-    //
-    //
-    //     this.shots.push({x: px, y: py});
-    //
-    // }
-
 
     private startFakeShooting(index) {
         if (index < 5) {
             setTimeout(() => {
                 this.stats = [this.fakeStats[index], ...this.stats];
-
+                // @ts-ignore
+                this.summaryObject.points = this.fakeStats[index].pageData.totalPoints
+                // @ts-ignore
+                this.summaryObject.split = this.fakeStats[index].pageData.totalSplit
+                // @ts-ignore
+                this.summaryObject.totalTime = this.fakeStats[index].pageData.totalTime
+                // @ts-ignore
+                this.summaryObject.distanceFromCenterAvg = this.fakeStats[index].pageData.distanceFromCenterAvg
                 this.shots.push(this.fakeShots[index]);
                 this.startFakeShooting(index + 1);
+            }, 1212);
+        }
+    }
+
+    private startFakeShootingHitNoHit(index) {
+        if (index < 5) {
+            setTimeout(() => {
+                this.stats = [this.fakeStats[index], ...this.stats];
+                // @ts-ignore
+                this.summaryObject.points = this.fakeStats[index].pageData.totalPoints
+                // @ts-ignore
+                this.summaryObject.split = this.fakeStats[index].pageData.totalSplit
+                // @ts-ignore
+                this.summaryObject.totalTime = this.fakeStats[index].pageData.totalTime
+                // @ts-ignore
+                this.summaryObject.distanceFromCenterAvg = this.fakeStats[index].pageData.distanceFromCenterAvg
+                this.shotNumber = index+1;
+                this.startFakeShootingHitNoHit(index + 1);
             }, 1212);
         }
     }

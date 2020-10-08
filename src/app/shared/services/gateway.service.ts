@@ -4,6 +4,9 @@ import {DrillObject} from '../../tab2/tab2.page';
 import {StorageService} from './storage.service';
 import {BehaviorSubject} from 'rxjs';
 import {CountupTimerService} from 'ngx-timer';
+import {DrillModel} from "../models/DrillModel";
+import {ApiService} from "./api.service";
+import {UserService} from "./user.service";
 
 @Injectable({
     providedIn: 'root'
@@ -27,29 +30,53 @@ export class GatewayService {
         counter: 0,
         points: 0,
         lastShotTime: null,
-        totalTime: {} as any
+        totalTime: '00:00:00'
     };
-    private batteryPrecent: number;
-    private container: any;
+    DEFAULT_PAGE_DATA = {
+        distanceFromCenter: 0,
+        splitTime: '',
+        rateOfFire: 0,
+        counter: 0,
+        points: 0,
+        lastShotTime: null,
+        totalTime: '00:00:00'
+    };
+    private batteryPercent: number;
     hitArrived = new BehaviorSubject(null);
     summaryObject = {
         points: 0,
         distanceFromCenter: 0,
-        split: 0,
+        split: '0',
         totalTime: 0,
         counter: 0
     };
     notifyShotArrivedFromGateway = new BehaviorSubject(null);
 
     // tslint:disable-next-line:max-line-length
-    constructor(private shootingService: ShootingService, private storageService: StorageService, private countupTimerService: CountupTimerService) {
+    drillFinishedNotify = new BehaviorSubject(null);
+
+    constructor(private shootingService: ShootingService,
+                private storageService: StorageService,
+                private countupTimerService: CountupTimerService,
+                private apiService: ApiService, private userService: UserService) {
     }
 
 
+    initStats() {
+        this.shots = [];
+        this.stats = [];
+        this.drillFinished = false;
+        this.pageData = this.DEFAULT_PAGE_DATA;
+        this.startTimer();
+    }
+
+    startTimer() {
+        this.countupTimerService.startTimer();
+    }
+
     public handelShoot(parentImageHeight, parentImageWidth, data) {
-        if (this.pageData.counter === 0) {
-            // this.countupTimerService.startTimer();
-        }
+        this.pageData.counter++;
+
         const x = data.xCoord;
         const y = data.yCoord;
 
@@ -71,47 +98,51 @@ export class GatewayService {
 
 
         if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
-            this.updateStats(x, y, false);
+            this.updateStats(px, py, false);
             this.finishDrill();
-            this.updateHistory(parentImageHeight, parentImageWidth);
+            this.updateHistory();
         } else {
 
-            this.updateStats(x, y, false);
+            this.updateStats(px, py, false);
         }
-        this.notifyShotArrivedFromGateway.next({x, y});
     }
 
 
-    public updateHistory(parentImageHeight, parentImageWidth) {
-        let updatedData = {} as any;
-        updatedData = this.storageService.getItem('homeData');
+    public updateHistory() {
+        this.drill = this.shootingService.selectedDrill;
+        let updatedData = this.storageService.getItem('homeData');
 
         if (!updatedData.trainingHistory) {
             updatedData.trainingHistory = [];
         }
-        const recommendation = this.shootingService.getRecommendation(this.shots, {
-            X: parentImageWidth / 2,
-            Y: parentImageHeight / 2
-        });
+        const splits = [];
+        this.stats.forEach(item => {
+            splits.push(item.pageData.splitTime);
+        })
+        // const recommendation = this.shootingService.getRecommendation(this.shots, {
+        //     X: parentImageWidth / 2,
+        //     Y: parentImageHeight / 2
+        // });
 
-        updatedData.trainingHistory.push({
-            date: new Date().toString(),
-            day: new Date().toLocaleString('en-us', {weekday: 'long'}),
+
+        const drill: DrillModel = {
+            date: new Date().toJSON(),
             drillType: this.drill.drillType,
-            totalShots: this.drill.numOfBullets,
-            range: this.drill.range,
-            timeLimit: null,
+            day: new Date().toLocaleString('en-us', {weekday: 'long'}),
+            hits: this.stats.length,
             points: this.pageData.points,
-            shots: this.shots,
-            stata: this.stats,
-            recommendation
+            range: this.drill.range,
+            splitTimes: splits,
+            totalShots: this.drill.numOfBullets,
+            userId: this.userService.getUserId(),
+        };
+
+        this.apiService.syncData(drill).subscribe(() => {
+            this.apiService.getDashboardData(this.userService.getUserId()).subscribe((data1) => {
+                this.storageService.setItem('homeData', data1);
+            });
         });
 
-        updatedData.hitRatioChart.data[0] += this.shots.length;
-        updatedData.hitRatioChart.data[1] += this.drill.numOfBullets - this.shots.length;
-        updatedData = this.updateBestResults(updatedData);
-
-        this.storageService.setItem('homeData', updatedData);
     }
 
 
@@ -130,7 +161,7 @@ export class GatewayService {
 
 
     public updateStats(x, y, isFinish) {
-        this.pageData.counter++;
+
         console.log('counter:', this.pageData.counter);
         const currentdist: number = parseFloat(this.calculateBulletDistanceFromCenter(x, y).toFixed(2));
         this.pageData.points += this.calcScore(currentdist);
@@ -139,36 +170,47 @@ export class GatewayService {
         if (!this.pageData.lastShotTime) {
             this.pageData.lastShotTime = new Date();
         }
-        this.pageData.totalTime = (this.pageData.totalTime + ((new Date().getTime() - this.pageData.lastShotTime.getTime()) / 1000));
-        this.pageData.lastShotTime = new Date();
 
-        this.pageData.splitTime = (this.countupTimerService.totalSeconds / this.pageData.counter).toFixed(2);
+
+        // this.pageData.totalTime = (this.pageData.totalTime + ((new Date().getTime() - this.pageData.lastShotTime.getTime()) / 1000));
+        // this.pageData.lastShotTime = new Date();
+
         this.countupTimerService.getTimerValue().subscribe((time) => {
+            this.pageData.totalTime = time.hours + ':' + time.mins + ':' + time.seconds;
+
+            if (this.stats.length === 0) {
+                this.pageData.splitTime = time.hours + ':' + time.mins + ':' + time.seconds;
+            } else {
+                this.pageData.splitTime = this.getTimeDiffrence(this.stats[this.stats.length - 1].pageData.totalTime,
+                    time.hours + ':' + time.mins + ':' + time.seconds);
+            }
             this.stats.push({
                 pageData: Object.assign({}, this.pageData),
                 interval: time.hours + ':' + time.mins + ':' + time.seconds
             });
+
+
             let points = 0;
             let distanceFromCenter = 0;
-            let split = 0;
 
-            this.stats.forEach(stat => {
-                points += stat.pageData.points;
-                distanceFromCenter += stat.pageData.distanceFromCenter;
-                const splitArr = stat.pageData.splitTime.split('.');
-                split += parseFloat(splitArr[0] + '.' + splitArr[1].substr(0, 2));
-            });
+            // tslint:disable-next-line:prefer-for-of
+            for (let i = 0; i < this.stats.length; i++) {
+                points += this.stats[i].pageData.points;
+                distanceFromCenter += this.stats[i].pageData.distanceFromCenter;
+            }
+
 
             const statsLength = this.stats.length;
             this.summaryObject = {
                 points: points / statsLength,
                 distanceFromCenter: distanceFromCenter / statsLength,
-                split: split / statsLength,
+                split: this.getSummarySplit(this.countupTimerService.totalSeconds, statsLength),
                 totalTime: this.stats[statsLength - 1].interval,
                 counter: this.stats[statsLength - 1].pageData.counter
             };
             this.hitArrived.next({
                 statsData: {
+                    shot: {x, y},
                     stats: this.stats,
                     pageData: this.pageData,
                     isFinish,
@@ -176,14 +218,14 @@ export class GatewayService {
                 }
             });
         });
+
+
     }
 
     public finishDrill() {
         this.drillFinishedBefore = true;
         this.drillFinished = true;
-        // this.countupTimerService.stopTimer();
-        console.log('FINISH!!!!!!!!!!!!!!!!!');
-        this.updateHistory(this.height, this.width);
+        this.drillFinishedNotify.next(true);
     }
 
     public calculateBulletDistanceFromCenter(xT, yT): number {
@@ -343,7 +385,7 @@ export class GatewayService {
         } else if (bCharge < 0) {
             bCharge = 1;
         }
-        this.batteryPrecent = bCharge;
+        this.batteryPercent = bCharge;
         console.log('[Battery Precent]: ' + bCharge);
     }
 
@@ -365,4 +407,54 @@ export class GatewayService {
     }
 
 
+    getTimeDiffrence(str1, str2) {
+        console.log('In getTimeDifference: first STR: ' + str1 + ' second STR: ' + str2);
+        const arr1 = str1.split(':');
+        const arr2 = str2.split(':');
+        // tslint:disable-next-line:radix
+        const hoursArr1 = parseInt(arr1[0]);
+        // tslint:disable-next-line:radix
+        const hoursArr2 = parseInt(arr2[0]);
+        // tslint:disable-next-line:radix
+        const minArr1 = parseInt(arr1[1]);
+        // tslint:disable-next-line:radix
+        const minArr2 = parseInt(arr2[1]);
+        // tslint:disable-next-line:radix
+        const secArr1 = parseInt(arr1[2]);
+        // tslint:disable-next-line:radix
+        const secArr2 = parseInt(arr2[2]);
+
+
+        let newHour = Math.abs(hoursArr1 - hoursArr2);
+        let newMin = Math.abs(minArr1 - minArr2);
+
+        let newSec = Math.abs(secArr1 - secArr2);
+        if (newHour < 10) {
+            newHour = ('0' + newHour) as any;
+        }
+        if (newMin < 10) {
+            newMin = ('0' + newMin) as any;
+        }
+        if (newSec < 10) {
+            newSec = ('0' + newSec) as any;
+        }
+        console.log('New Split is : ' + newHour + ':' + newMin + ':' + newSec);
+        return newHour + ':' + newMin + ':' + newSec;
+    }
+
+
+    private getSummarySplit(totalSeconds: any, statsLength: number) {
+        const res = totalSeconds / statsLength;
+        if (res < 10) {
+            return '00:00:0' + res;
+
+        } else if (res >= 10 && res < 100) {
+            if (res % 1 != 0) {
+                const mili = Math.round(res % 1);
+                return '00:0' + Math.round(res) + ':' + mili;
+            } else {
+                return '00:' + Math.round(res) + ':00';
+            }
+        }
+    }
 }

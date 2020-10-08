@@ -9,7 +9,6 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 const {SplashScreen} = Plugins;
 
 
-
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
@@ -18,7 +17,7 @@ const {SplashScreen} = Plugins;
 export class AppComponent implements OnDestroy, OnInit {
     private devices;
     splash = true;
-
+    isLoding = false;
 
     constructor(
         private platform: Platform,
@@ -28,20 +27,33 @@ export class AppComponent implements OnDestroy, OnInit {
         private screenOrientation: ScreenOrientation
     ) {
 
+
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         SplashScreen.hide();
         this.initService.getDashboard();
         this.initService.getSights();
         this.initService.getWeapons();
         this.platform.ready().then(() => {
+
+
+            this.platform.backButton.subscribeWithPriority(9999, () => {
+                document.addEventListener('backbutton', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    console.log('hello');
+                }, false);
+
+            });
+
             this.ble.scan();
             window.addEventListener('beforeunload', () => {
                 this.ble.distory();
             });
         });
-        this.initService.isLoading.subscribe(data =>{
-
-        })
+        this.initService.isLoading.subscribe((isLoading: boolean) => {
+            console.log('IS LOADING IS : ' + isLoading);
+            this.isLoding = isLoading;
+        });
     }
 
     ngOnInit() {
@@ -56,8 +68,6 @@ export class AppComponent implements OnDestroy, OnInit {
         });
     }
 
-
-    
 
     async presentLoadingWithOptions() {
         const loading = await this.loadingController.create({

@@ -8,6 +8,7 @@ import {Tab3Service} from '../../../tab3/tab3.service';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
+import {InitService} from '../../services/init.service';
 
 @Injectable({
     providedIn: 'root'
@@ -27,6 +28,7 @@ export class WizardService {
     constructor(private apiService: ApiService,
                 private storageService: StorageService,
                 private tab3Service: Tab3Service,
+                private initService: InitService,
                 private userService: UserService,
                 private router: Router) {
     }
@@ -58,34 +60,42 @@ export class WizardService {
             sights: [],
             weapons: [],
             target: {
-                id: "string",
-                name: "string"
+                id: 'string',
+                name: 'string'
             }
-        }
-        if (this.moreInfoForm.age)
+        };
+        if (this.moreInfoForm.age) {
             toSend.age = this.moreInfoForm.age.toString();
+        }
         toSend.email = this.registerForm.value.email;
         toSend.first_name = this.registerForm.value.first_name;
         toSend.last_name = this.registerForm.value.last_name;
         toSend.password = this.registerForm.value.password;
-        if (this.moreInfoForm.gendre)
-            toSend.gender = this.moreInfoForm.gendre
-        if (this.moreInfoForm.state)
+        if (this.moreInfoForm.gendre) {
+            toSend.gender = this.moreInfoForm.gendre;
+        }
+        if (this.moreInfoForm.state) {
             toSend.state = this.moreInfoForm.state;
-        if (this.moreInfoForm.conutry)
+        }
+        if (this.moreInfoForm.conutry) {
             toSend.conutry = this.moreInfoForm.conutry;
-        if (this.moreInfoForm.profilePicture)
+        }
+        if (this.moreInfoForm.profilePicture) {
             toSend.img_path = this.moreInfoForm.profilePicture;
-        if (this.moreInfoForm.sights)
+        }
+        if (this.moreInfoForm.sights) {
             toSend.sights = this.moreInfoForm.sights;
-        if (this.moreInfoForm.weapons)
+        }
+        if (this.moreInfoForm.weapons) {
             toSend.weapons = this.moreInfoForm.weapons;
-        if (this.moreInfoForm.target)
+        }
+        if (this.moreInfoForm.target) {
             toSend.target = this.moreInfoForm.target;
+        }
         toSend.target = myTarget;
 
         console.log('In registerUser Before HTTP For Register' + new Date());
-
+        this.initService.isLoading.next(true);
         this.apiService.signup(toSend).subscribe((returnedValue) => {
             console.log('In registerUser AFTER HTTP For Register BEFORE SignIn' + new Date());
             this.apiService.login({

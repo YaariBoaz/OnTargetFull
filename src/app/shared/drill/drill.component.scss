@@ -307,6 +307,8 @@ section.drill-results {
         }
       }
 
+
+
       div.table-sum {
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
         background-color: #262626;
@@ -379,7 +381,9 @@ section.drill-results {
 ::ng-deep ion-tab-bar {
   display: none;
 }
-
+td{
+  text-align: left;
+}
 
 div.targetHoly {
   position: absolute;
@@ -390,7 +394,7 @@ div.targetHoly {
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  justify-content: center;
+  justify-content: space-around;
 
   img {
     height: auto;
@@ -640,3 +644,6 @@ div.targetHoly {
   height: 20px;
   width: 20px;
 }
+
+table tbody { display:block; max-height:450px; overflow-y:scroll; }
+table thead, table tbody tr { display:table; width:100%; table-layout:fixed; }

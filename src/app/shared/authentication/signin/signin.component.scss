@@ -139,3 +139,17 @@ section.login {
     display: inline-block;
   }
 }
+.x{
+  background: black;
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+  border: 1px solid white;
+}

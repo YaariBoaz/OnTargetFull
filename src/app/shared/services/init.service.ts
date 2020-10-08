@@ -3,16 +3,18 @@ import {ApiService} from './api.service';
 import {StorageService} from './storage.service';
 import {UserService} from './user.service';
 import {BLE} from '@ionic-native/ble/ngx';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class InitService {
     notifyError = new BehaviorSubject(null);
-    isLoading = new BehaviorSubject(false);
-    constructor(private apiService: ApiService, private storageService: StorageService, private userService: UserService, public ble: BLE) {
+    isLoading = new Subject();
+    isGateway = false;
 
+    constructor(private apiService: ApiService, private storageService: StorageService, private userService: UserService, public ble: BLE) {
+        this.getDashboard();
     }
 
     notifyOnErrorFunc(error) {
@@ -32,12 +34,12 @@ export class InitService {
     }
 
     getDashboard() {
-        const userId = this.userService.getUserId();
-        if (userId) {
-            this.apiService.getDashboardData(userId).subscribe(data => {
-                this.storageService.setItem('homeData', data);
-            });
-        }
+        // const userId = this.userService.getUserId();
+        // if (userId) {
+        //     this.apiService.getDashboardData(userId).subscribe(data => {
+        //         this.storageService.setItem('homeData', data);
+        //     });
+        // }
     }
 
     startBLEScan() {

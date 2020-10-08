@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {trigger, transition, useAnimation} from '@angular/animations';
 import {StorageService} from '../../services/storage.service';
 import {AlertController, LoadingController} from '@ionic/angular';
 import {ApiService} from '../../services/api.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {MatDialog} from '@angular/material';
-import {ErrorModalComponent} from '../../popups/error-modal/error-modal.component';
-import {AccessModalComponent} from '../../popups/access-modal/access-modal.component';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {SigninModalComponent} from '../../popups/signin-modal/signin-modal.component';
+import {InitService} from '../../services/init.service';
+import {Platform} from '@ionic/angular';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -26,16 +27,19 @@ export class SigninComponent implements OnInit {
     isFirstLoad = true;
     registerForm: FormGroup;
     submitted = false;
+    subscription: Subscription
 
     constructor(
         public dialog: MatDialog,
         private router: Router,
         private storageService: StorageService,
         private apiService: ApiService,
+        private initService: InitService,
         public alertController: AlertController,
         public loadingController: LoadingController,
         private screenOrientation: ScreenOrientation,
         private formBuilder: FormBuilder,
+        private platform: Platform,
         private userService: UserService
     ) {
         // this.router.navigateByUrl('/home/tabs/tab1');
@@ -43,7 +47,9 @@ export class SigninComponent implements OnInit {
     }
 
     ionViewDidLoad() {
-
+        // this.subscription = this.platform.backButton.subscribeWithPriority(9999, () => {
+        //     console.log('Clicked Back And Doing Shit');
+        // });
     }
 
     get f() {
@@ -51,19 +57,11 @@ export class SigninComponent implements OnInit {
     }
 
 
-    ngOnInit() {
-        // const dialogRef = this.dialog.open(ErrorModalComponent, {
-        //     width: '344px',
-        //     data: {
-        //         modalType: 'general'
-        //     }
-        // });
-        //
-        //
-        // const dialogRef = this.dialog.open(AccessModalComponent, {
-        //     width: '350px',
-        // });
+    ionViewWillLeave() {
+    }
 
+
+    ngOnInit() {
 
         if (this.storageService.getItem('isLoggedIn')) {
             this.router.navigateByUrl('');
@@ -116,25 +114,36 @@ export class SigninComponent implements OnInit {
     }
 
     async onLogin() {
-         if (this.registerForm.invalid) {
+        if (this.registerForm.invalid) {
+            const dialogRef = this.dialog.open(SigninModalComponent, {
+                width: '344px',
+                data: {
+                    modalType: 'general'
+                }
+            });
             return;
         } else {
-        const loading = await this.loadingController.create({
-            message: 'Please wait...',
-            duration: 2000
-        });
-        await loading.present();
-        this.apiService.login({
-            username: this.registerForm.value.email,
-            password: this.registerForm.value.password
-        }).subscribe(data => {
-            this.userService.setUser(data);
-            this.apiService.getDashboardData(this.userService.getUserId());
-            this.storageService.setItem('isLoggedIn', true);
-            this.storageService.setItem('profileData', data);
-            this.router.navigateByUrl('');
-        });
-         }
+            this.initService.isLoading.next(true);
+            this.apiService.login({
+                username: this.registerForm.value.email,
+                password: this.registerForm.value.password
+            }).subscribe(data => {
+                    this.userService.setUser(data);
+                    this.storageService.setItem('isLoggedIn', true);
+                    this.storageService.setItem('profileData', data);
+                    this.initService.isLoading.next(false);
+                    this.router.navigateByUrl('');
+                },
+                (error) => {
+                    this.initService.isLoading.next(false);
+                    const dialogRef = this.dialog.open(SigninModalComponent, {
+                        width: '344px',
+                        data: {
+                            modalType: 'general'
+                        }
+                    });
+                });
+        }
 
     }
 

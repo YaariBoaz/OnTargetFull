@@ -97,6 +97,20 @@ section {
       }
     }
 
+    .ble-img-abs{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 35px;
+      position: absolute;
+      top: 30%;
+      left:36%;
+      img {
+        width: 178px;
+        height: 178px;
+      }
+    }
+
     .buttons-container {
       display: flex;
       flex-direction: column;
@@ -260,4 +274,28 @@ section {
   }
 }
 
+.scanAnimation {
+  animation: pulse-red 2s infinite;
+}
+
+
+@keyframes pulse-red {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+    border-radius: 100%;
+  }
+
+  70% {
+    transform: scale(1.5);
+    box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+    border-radius: 100%;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+    border-radius: 100%;
+  }
+}
 

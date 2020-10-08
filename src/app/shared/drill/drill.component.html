@@ -21,7 +21,7 @@
         </div>
 
         <div class="info">
-            <p>{{drill?.drillType}}t</p>
+            <p>{{drill?.drillType}}</p>
             <p class="seperator">|</p>
             <p>{{drill?.weapon}}</p>
             <p class="seperator">|</p>
@@ -72,7 +72,53 @@
         <!--                <p>10%</p>-->
         <!--            </div>-->
         <!--        </div>-->
-        <div class="targetHoly" *ngIf="!showResults">
+        <div class="targetHoly" *ngIf="!isGateway">
+            <div *ngIf="showResults" class="some-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="282.232" height="282.232" viewBox="0 0 282.232 282.232">
+                    <defs>
+                        <style>
+                            g#target_svg_fixed .cls-1 {
+                                fill: #fbfbfb
+                            }
+
+                            g#target_svg_fixed .cls-2 {
+                                fill: #ce564b
+                            }
+                        </style>
+                    </defs>
+                    <g id="target_svg_fixed" data-name="target svg fixed">
+                        <g id="Group_498" data-name="Group 498">
+                            <g id="Path_440-2">
+                                <path id="Path_443"
+                                      d="M140.5 281.027a146.968 146.968 0 0 1-28.223-2.79 131.807 131.807 0 0 1-26.254-8.2 128.354 128.354 0 0 1-23.793-12.963 160.183 160.183 0 0 1-20.839-17.065 122.861 122.861 0 0 1-17.065-20.839 152.218 152.218 0 0 1-12.963-23.793A140.9 140.9 0 0 1 .2 140.732a135.088 135.088 0 0 1 2.954-28.223 131.808 131.808 0 0 1 8.2-26.254 128.35 128.35 0 0 1 12.967-23.794 160.179 160.179 0 0 1 17.065-20.839 122.861 122.861 0 0 1 20.839-17.065 152.217 152.217 0 0 1 23.793-12.963 138.853 138.853 0 0 1 26.254-8.2A134.98 134.98 0 0 1 140.5.6a146.969 146.969 0 0 1 28.223 2.79 131.81 131.81 0 0 1 26.254 8.2 128.351 128.351 0 0 1 23.793 12.963 160.176 160.176 0 0 1 20.839 17.065 129.652 129.652 0 0 1 17.065 20.839 152.226 152.226 0 0 1 12.963 23.793 138.86 138.86 0 0 1 8.2 26.254 134.986 134.986 0 0 1 2.789 28.223 146.978 146.978 0 0 1-2.789 28.223 131.816 131.816 0 0 1-8.2 26.254A128.355 128.355 0 0 1 256.671 219a160.178 160.178 0 0 1-17.065 20.839 129.651 129.651 0 0 1-20.839 17.065 152.217 152.217 0 0 1-23.793 12.963 138.857 138.857 0 0 1-26.254 8.2 135.086 135.086 0 0 1-28.22 2.96z"
+                                      class="cls-1" data-name="Path 443" transform="translate(.62 .385)"/>
+                                <path id="Path_444"
+                                      d="M140.816 1.641a145.279 145.279 0 0 0-28.059 2.79 135.241 135.241 0 0 0-26.254 8.2 142.806 142.806 0 0 0-23.629 12.8A136 136 0 0 0 42.2 42.5a148.45 148.45 0 0 0-17.066 20.674A131.623 131.623 0 0 0 12.335 86.8a143.463 143.463 0 0 0-8.2 26.254 142.515 142.515 0 0 0 0 56.118 135.241 135.241 0 0 0 8.2 26.254 142.808 142.808 0 0 0 12.8 23.629A136 136 0 0 0 42.2 239.733 148.45 148.45 0 0 0 62.874 256.8 131.616 131.616 0 0 0 86.5 269.6a143.457 143.457 0 0 0 26.254 8.2 142.517 142.517 0 0 0 56.118 0 135.239 135.239 0 0 0 26.254-8.2 142.8 142.8 0 0 0 23.629-12.8 136 136 0 0 0 20.675-17.065 148.445 148.445 0 0 0 17.07-20.677 131.621 131.621 0 0 0 12.8-23.629 143.465 143.465 0 0 0 8.2-26.254 142.516 142.516 0 0 0 0-56.118 135.248 135.248 0 0 0-8.2-26.257 142.81 142.81 0 0 0-12.8-23.629A136.006 136.006 0 0 0 239.433 42.5a148.449 148.449 0 0 0-20.675-17.065 131.623 131.623 0 0 0-23.629-12.8 143.463 143.463 0 0 0-26.254-8.2 145.28 145.28 0 0 0-28.059-2.79m0-1.641A141.116 141.116 0 1 1-.3 141.116 141.109 141.109 0 0 1 140.816 0z"
+                                      class="cls-2" data-name="Path 444" transform="translate(.3)"/>
+                            </g>
+                        </g>
+                        <ellipse id="Ellipse_456" cx="106.822" cy="107.314" fill="#ce564b" opacity="0.791" rx="106.822"
+                                 ry="107.314" transform="translate(34.344 33.868)"/>
+                        <circle id="Ellipse_457" cx="89.264" cy="89.264" r="89.264" class="cls-1"
+                                transform="rotate(-80.782 145.735 84.709)"/>
+                        <circle id="Ellipse_458" cx="63.174" cy="63.174" r="63.174" class="cls-2"
+                                transform="translate(77.991 78.008)"/>
+                        <circle id="Ellipse_459" cx="35.115" cy="35.115" r="35.115" class="cls-1"
+                                transform="translate(106.05 106.067)"/>
+                        <circle id="Ellipse_460" cx="20.557" cy="20.557" r="20.557" class="cls-2"
+                                transform="translate(120.608 120.624)"/>
+                        <path id="Rectangle_362" d="M0 0H5.579V100.258H0z" class="cls-1"
+                              transform="translate(137.556 5.973)"/>
+                        <path id="Rectangle_361" d="M0 0H100.75V5.579H0z" class="cls-1"
+                              transform="translate(6.613 136.916)"/>
+                        <path id="Rectangle_360" d="M0 0H103.048V5.579H0z" class="cls-1"
+                              transform="translate(173.327 136.916)"/>
+                        <path id="Path_439" d="M540.3 310.2h5.579v104.032H540.3z" class="cls-1"
+                              transform="translate(-402.744 -136.529)"/>
+                    </g>
+                </svg>
+                <div class="counter-shot">{{shotNumber}}</div>
+            </div>
             <div class="welcome-message" *ngIf="!showResults">
                 <div class="text">
                     <p>Hi, {{profile?.firstName}}! Let’s start new drill.</p>
@@ -128,40 +174,16 @@
                             </svg>
                         </th>
                         <th>
-                            <p>Points</p>
+                            <p>Split</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <defs>
-                                    <style>
-                                        .cls-3 {
-                                            fill: #fff
-                                        }
-                                    </style>
-                                </defs>
                                 <g id="Icon_Favorite_Filled" data-name="Icon / Favorite / Filled"
-                                   transform="translate(.123)">
-                                    <path id="Box" fill="none" d="M0 0H18V18H0z" transform="translate(2.877 3)"/>
-                                    <rect id="Rectangle_1865" width="24" height="24" fill="#363636"
-                                          data-name="Rectangle 1865" rx="5" transform="translate(-.123)"/>
-                                    <g id="_004-aim" data-name="004-aim" transform="translate(4.902 5.25)">
-                                        <path id="Path_1182"
-                                              d="M7.516 13.281a5.766 5.766 0 1 1 5.766-5.766 5.772 5.772 0 0 1-5.766 5.766zm0-10.406a4.641 4.641 0 1 0 4.641 4.641 4.646 4.646 0 0 0-4.641-4.641z"
-                                              class="cls-3" data-name="Path 1182" transform="translate(-.766 -.766)"/>
-                                        <path id="Path_1183"
-                                              d="M11.563 3.094A.563.563 0 0 1 11 2.531V.563a.563.563 0 0 1 1.125 0v1.968a.563.563 0 0 1-.562.563z"
-                                              class="cls-3" data-name="Path 1183" transform="translate(-4.813)"/>
-                                        <path id="Path_1184"
-                                              d="M21.031 12.125h-1.968a.563.563 0 0 1 0-1.125h1.969a.563.563 0 0 1 0 1.125z"
-                                              class="cls-3" data-name="Path 1184" transform="translate(-8.094 -4.813)"/>
-                                        <path id="Path_1185"
-                                              d="M11.563 21.594a.563.563 0 0 1-.563-.563v-1.968a.563.563 0 0 1 1.125 0v1.969a.563.563 0 0 1-.562.562z"
-                                              class="cls-3" data-name="Path 1185" transform="translate(-4.813 -8.094)"/>
-                                        <path id="Path_1186"
-                                              d="M2.531 12.125H.563a.563.563 0 0 1 0-1.125h1.968a.563.563 0 0 1 0 1.125z"
-                                              class="cls-3" data-name="Path 1186" transform="translate(0 -4.813)"/>
-                                        <path id="Path_1187"
-                                              d="M10.688 12.375a1.688 1.688 0 1 1 1.688-1.687 1.69 1.69 0 0 1-1.688 1.687zm0-2.25a.563.563 0 1 0 .563.563.563.563 0 0 0-.563-.563z"
-                                              class="cls-3" data-name="Path 1187" transform="translate(-3.938 -3.938)"/>
-                                    </g>
+                                   transform="translate(-.057)">
+                                    <path id="Box" fill="none" d="M0 0H18V18H0z" transform="translate(3.057 3)"/>
+                                    <rect id="Rectangle_1867" width="24" height="24" fill="#363636"
+                                          data-name="Rectangle 1867" rx="5" transform="translate(.057)"/>
+                                    <path id="_005-split" fill="#fff"
+                                          d="M11.985 2.209L9.776 0 7.567 2.209l.663.663 1.078-1.078v1.89a2.354 2.354 0 0 1-.808 1.78L6.66 7.055a3.355 3.355 0 0 0-.671.795 3.2 3.2 0 0 0-.659-.79l-1.84-1.6a2.354 2.354 0 0 1-.813-1.78V1.794l1.078 1.078.663-.663L2.209 0 0 2.209l.663.663L1.74 1.794v1.89a3.291 3.291 0 0 0 1.136 2.488l1.84 1.595a2.346 2.346 0 0 1 .8 1.77V12h.937V9.542a2.36 2.36 0 0 1 .824-1.78l1.832-1.59a3.291 3.291 0 0 0 1.136-2.488v-1.89l1.078 1.078zm0 0"
+                                          data-name="005-split" transform="translate(5.937 6)"/>
                                 </g>
                             </svg>
                         </th>
@@ -200,45 +222,30 @@
                                 </g>
                             </svg>
                         </th>
-                        <th>
-                            <p>Split</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <g id="Icon_Favorite_Filled" data-name="Icon / Favorite / Filled"
-                                   transform="translate(-.057)">
-                                    <path id="Box" fill="none" d="M0 0H18V18H0z" transform="translate(3.057 3)"/>
-                                    <rect id="Rectangle_1867" width="24" height="24" fill="#363636"
-                                          data-name="Rectangle 1867" rx="5" transform="translate(.057)"/>
-                                    <path id="_005-split" fill="#fff"
-                                          d="M11.985 2.209L9.776 0 7.567 2.209l.663.663 1.078-1.078v1.89a2.354 2.354 0 0 1-.808 1.78L6.66 7.055a3.355 3.355 0 0 0-.671.795 3.2 3.2 0 0 0-.659-.79l-1.84-1.6a2.354 2.354 0 0 1-.813-1.78V1.794l1.078 1.078.663-.663L2.209 0 0 2.209l.663.663L1.74 1.794v1.89a3.291 3.291 0 0 0 1.136 2.488l1.84 1.595a2.346 2.346 0 0 1 .8 1.77V12h.937V9.542a2.36 2.36 0 0 1 .824-1.78l1.832-1.59a3.291 3.291 0 0 0 1.136-2.488v-1.89l1.078 1.078zm0 0"
-                                          data-name="005-split" transform="translate(5.937 6)"/>
-                                </g>
-                            </svg>
-                        </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let shot of stats; let i = index">
                         <td>{{i + 1}}</td>
-                        <td> {{shot?.pageData?.points}}</td>
-                        <td> {{shot?.pageData?.totalTime}}</td>
                         <td> {{shot?.pageData?.splitTime}}</td>
+                        <td> {{shot?.pageData?.totalTime}}</td>
                     </tr>
                     </tbody>
                 </table>
 
-                <p *ngIf="!isHitNoHit" class="flashing-number">{{shotNumber }}</p>
+                <p *ngIf="!isHitNoHit" class="flashing-number">{{shotNumber}}</p>
                 <!-- IF the is a loop then place this outside the loop -->
                 <div class="table-sum">
                     <p> total:{{stats?.length}} of {{drill?.numOfBullets}}</p>
                     <p> {{summaryObject?.points}}</p>
-                    <p>{{summaryObject?.totalTime}}</p>
                     <p> {{summaryObject?.split}}</p>
+                    <p>{{summaryObject?.totalTime}}</p>
                 </div>
             </div>
         </div>
 
 
-        <div class="target" *ngIf="showResults">
+        <div class="target" *ngIf="isGateway">
             <div class="some-wrapper" #container>
                 <img *ngIf="!drillIsFinished" src="assets/bullseye.png">
                 <img *ngIf="drillIsFinished" src="assets/bullseye-finish.png">
@@ -272,7 +279,6 @@
                 <div class="dot three"></div>
                 <div class="dot four"></div>
             </div>
-
             <div *ngIf="showResults" class="results-table">
                 <table>
                     <thead>
@@ -431,8 +437,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let shot of stats; let i = index">
-                        <td>{{shot.pageData.index}}</td>
+                    <tr *ngFor="let shot of stats; let  i = index">
+                        <td>{{i +1}}</td>
                         <td> {{shot.pageData.points}}</td>
                         <td> {{shot.pageData.distanceFromCenter}}</td>
                         <td> {{shot.pageData.totalTime}}</td>
@@ -445,9 +451,10 @@
                 <!-- IF the is a loop then place this outside the loop -->
                 <div class="table-sum">
                     <p> total:{{stats?.length}} of {{drill?.numOfBullets}}</p>
-                    <p> {{summaryObject?.points}}</p>
-                    <p>{{summaryObject?.totalTime}}</p>
-                    <p> {{summaryObject?.split}}</p>
+                    <p> {{summaryObject?.points }}</p>
+                    <p> {{summaryObject?.distanceFromCenterAvg}}</p>
+                    <p>{{summaryObject?.totalTime }}</p>
+                    <p> {{summaryObject?.split }}</p>
                 </div>
             </div>
         </div>

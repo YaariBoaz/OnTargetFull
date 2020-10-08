@@ -8,6 +8,11 @@ import {AuthGuardService} from './shared/authentication/auth-guard.service';
 // ];
 const routes: Routes = [
     {
+        path: 'signin',
+        loadChildren: () => import('./shared/authentication/signin/signin.module').then(m => m.SigninModule),
+
+    },
+    {
         path: 'wizard',
         loadChildren: () => import('./shared/authentication/signup-wizard/wizard.module').then(m => m.WizardModule),
     },
@@ -17,11 +22,8 @@ const routes: Routes = [
         canLoad: [AuthGuardService]
 
     },
-    {
-        path: 'signin',
-        loadChildren: () => import('./shared/authentication/signin/signin.module').then(m => m.SigninModule),
-
-    }
+    {path: 'not-found', loadChildren: () => import('./shared/authentication/signin/signin.module').then(m => m.SigninModule),},
+    {path: '**', redirectTo: 'not-found'}
 ];
 
 @NgModule({
@@ -32,7 +34,3 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
-
-
-
-

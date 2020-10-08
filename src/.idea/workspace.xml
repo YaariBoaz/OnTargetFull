@@ -41,6 +41,10 @@
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shared/popups/signin-modal/signin-modal.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shared/popups/signin-modal/signin-modal.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shared/popups/signin-modal/signin-modal.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shared/popups/signin-modal/signin-modal.component.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/shared/services/gateway.service.spec.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/shared/services/gateway.service.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/shared/services/interceptor.service.spec.ts" afterDir="false" />
@@ -49,9 +53,13 @@
       <change afterPath="$PROJECT_DIR$/assets/docs/ADLPrivacyPolicy.doc" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/assets/docs/ADLTOU.doc" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/assets/icons/loader.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../capacitor.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../capacitor.config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/App/App/capacitor.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/App/App/capacitor.config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/App/App/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/App/App/config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
@@ -61,27 +69,41 @@
       <change beforePath="$PROJECT_DIR$/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/home/home.page.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/home.page.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/auth-guard.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/auth-guard.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard-summary/wizard-summary.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard-summary/wizard-summary.component.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup/signup.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup/signup.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup/signup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup/signup.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/modal/select-target-modal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/modal/select-target-modal.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/modal/select-target-modal.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/modal/select-target-modal.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/modal/select-target-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/modal/select-target-modal.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/services/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/select-target.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/select-target.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/services/ble.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/ble.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/services/init.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/init.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/shared.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/tab1/tab1.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/tab1/tab1.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.page.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/tab2/tab2.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab2/tab2.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tab3/tab3.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tab3/tab3.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab2/tab2.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab2/tab2.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab3/gunlist/gunlist.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/gunlist/gunlist.component.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/tab3/tab3.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.page.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.page.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/tabs/tabs-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tabs/tabs-routing.module.ts" afterDir="false" />
@@ -126,7 +148,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -156,6 +178,9 @@
       <workItem from="1600935933016" duration="9070000" />
       <workItem from="1601198497624" duration="3624000" />
       <workItem from="1601362765640" duration="639000" />
+      <workItem from="1601803819570" duration="843000" />
+      <workItem from="1601966448859" duration="24040000" />
+      <workItem from="1602056328311" duration="11476000" />
     </task>
     <servers />
   </component>
@@ -196,32 +221,37 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="711" y="388" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600761820507" />
-    <state x="-2276" y="319" width="1736" height="856" key="DiffContextDialog" timestamp="1600947865480">
+    <state x="-2276" y="319" width="1736" height="856" maximized="true" key="DiffContextDialog" timestamp="1602051439699">
       <screen x="-1920" y="130" width="1920" height="1040" />
     </state>
     <state x="14" y="-8" width="1736" height="856" maximized="true" key="DiffContextDialog/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600936598536" />
-    <state x="-2276" y="319" width="1736" height="856" key="DiffContextDialog/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600947865480" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1601363687961">
+    <state x="-2276" y="319" width="1736" height="856" maximized="true" key="DiffContextDialog/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602051439699" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1602087221466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/-1920.130.1920.1040/0.0.1920.1040/1920.0.1280.720@0.0.1920.1040" timestamp="1601363687960" />
     <state x="-1180" y="404" key="FileChooserDialogImpl/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600943662036" />
+    <state x="740" y="274" key="FileChooserDialogImpl/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602087221466" />
     <state x="740" y="274" key="FileChooserDialogImpl/460.2160.1000.464/0.0.1920.1040/0.1080.1280.720@0.0.1920.1040" timestamp="1596648576526" />
     <state x="463" y="166" key="SettingsEditor" timestamp="1600934472202">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="166" key="SettingsEditor/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600934472202" />
     <state x="463" y="166" key="SettingsEditor/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600774279167" />
-    <state x="92" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600948031671">
+    <state x="92" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602051155941">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1828" y="222" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600686082320" />
-    <state x="92" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600948031671" />
-    <state x="669" y="271" width="581" height="498" key="find.popup" timestamp="1601203888038">
+    <state x="92" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602051155941" />
+    <state x="566" y="149" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601978520831">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="566" y="149" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601978520831" />
+    <state x="669" y="271" width="581" height="534" key="find.popup" timestamp="1602072849080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="669" y="271" width="581" height="498" key="find.popup/-1920.130.1920.1040/0.0.1920.1040/1920.0.1280.720@0.0.1920.1040" timestamp="1601203888038" />
-    <state x="669" y="271" width="581" height="498" key="find.popup/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600677692276" />
+    <state x="669" y="271" width="581" height="534" key="find.popup/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602072849080" />
     <state x="669" y="271" width="581" height="498" key="find.popup/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600778503513" />
     <state x="823" y="405" width="348" height="298" key="org.angular.cli.generate" timestamp="1600773677048">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -233,12 +263,12 @@
     </state>
     <state x="-1304" y="370" key="run.anything.popup/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600938551141" />
     <state x="616" y="240" key="run.anything.popup/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600778124760" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601363674305">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602087211622">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.130.1920.1040/0.0.1920.1040/1920.0.1280.720@0.0.1920.1040" timestamp="1601363674305" />
     <state x="-1297" y="355" width="672" height="678" key="search.everywhere.popup/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600940764466" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600947848018" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602087211622" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600780108189" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/460.2160.1000.464/0.0.1920.1040/0.1080.1280.720@0.0.1920.1040" timestamp="1596648414213" />
   </component>
@@ -247,13 +277,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/shared/services/ble.service.ts</url>
-          <line>239</line>
+          <line>246</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts</url>
-          <line>19</line>
+          <line>18</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/shared/models/DrillModel.ts</url>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -34,10 +34,11 @@
     <div class="create-account-container">
         <a (click)="goToSignUp()">Create an account</a>
     </div>
-
+    <span> Version 1.000</span>
 </section>
 
 <section *ngIf="forgotPassword" class="login">
+    <div (click)="forgotPassword = !forgotPassword" class="x"> X </div>
     <img class="logo" src="/assets/logo.png" alt="logo">
     <form [formGroup]="registerForm" (ngSubmit)="onLogin()">
         <div class="row">
@@ -51,4 +52,5 @@
             </div>
         </div>
     </form>
+
 </section>

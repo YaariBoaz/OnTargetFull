@@ -7,6 +7,7 @@ import {TabsService} from '../tabs/tabs.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {BleService} from '../shared/services/ble.service';
 import {Router} from '@angular/router';
+import {InitService} from "../shared/services/init.service";
 
 @Component({
     selector: 'app-tab2',
@@ -38,6 +39,7 @@ export class Tab2Page implements OnInit {
     constructor(public modalController: ModalController,
                 private tabService: TabsService,
                 public alertController: AlertController,
+                private initService: InitService,
                 private  shootingService: ShootingService,
                 private storageService: StorageService,
                 private ble: BleService,
@@ -58,7 +60,18 @@ export class Tab2Page implements OnInit {
 
     initComponents() {
         this.mySights = this.storageService.getItem('sightList');
+        // this.mySights.push('M5');
+        // this.mySights.push('Iron');
+        // this.mySights.push('Iron');
+        this.mySights.splice(2, 0, "Wizer");
+
+
         this.myGuns = this.storageService.getItem('gunList');
+        // this.myGuns.push('AR15');
+        // this.myGuns.push('Jericho 941f');
+         this.myGuns.splice(2, 0, "Circus");
+
+
         this.setSightsAndWeapons();
     }
 
@@ -67,7 +80,11 @@ export class Tab2Page implements OnInit {
         this.slides.getActiveIndex().then(index => {
             switch (index) {
                 case 0:
-                    this.drill.drillType = 'Hit/NoHit';
+                    if (!this.initService.isGateway) {
+                        this.drill.drillType = 'Hit/NoHit';
+                    } else {
+                        this.drill.drillType = 'BullsEye';
+                    }
                     break;
                 case 1:
                     this.drill.drillType = 'BullsEye';
@@ -84,8 +101,12 @@ export class Tab2Page implements OnInit {
     }
 
 
-
     startSesstion() {
+        if (this.initService.isGateway) {
+            if (this.drill.drillType === 'Hit/NoHit') {
+                this.drill.drillType = 'BullsEye';
+            }
+        }
         this.shootingService.drillStarteEvent.next(true);
         this.shootingService.selectedDrill = this.drill;
         this.shootingService.numberOfBullersPerDrill = this.drill.numOfBullets;
@@ -139,6 +160,6 @@ export interface DrillObject {
     rangeUOM: string;
     sight: string;
     ammo: string;
-        drillType: string;
+    drillType: string;
     shots: Array<{ x: number, y: number }>;
 }
