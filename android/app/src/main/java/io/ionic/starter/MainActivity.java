@@ -1,4 +1,5 @@
 package io.ionic.starter;
+
 import android.os.Bundle;
 
 import com.getcapacitor.BridgeActivity;
@@ -14,7 +15,7 @@ public class MainActivity extends BridgeActivity {
     // Initializes the Bridge
     this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
       // Additional plugins you've installed go here
-       // Ex: add(TotallyAwesomePlugin.class);
+      // Ex: add(TotallyAwesomePlugin.class);
     }});
   }
 }

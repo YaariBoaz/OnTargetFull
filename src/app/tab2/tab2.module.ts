@@ -31,6 +31,9 @@ import {DrillModule} from '../shared/drill/drill.module';
     providers: [/*Screenshot*/],
     declarations: [Tab2Page],
     entryComponents: [],
+    exports: [
+        Tab2Page
+    ]
 })
 export class Tab2PageModule {
 }

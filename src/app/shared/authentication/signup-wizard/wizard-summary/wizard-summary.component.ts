@@ -8,49 +8,7 @@ import {Router} from '@angular/router';
     selector: 'app-wizard-summary',
     templateUrl: './wizard-summary.component.html',
     styleUrls: ['./wizard-summary.component.scss'],
-    animations: [
-        trigger('zoomIn1', [transition('* => *', useAnimation(zoomIn, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {timing: 6}
-        }))]),
-        trigger('zoomIn2', [transition('* => *', useAnimation(zoomIn, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {timing: 7}
-        }))]),
-        trigger('zoomIn3', [transition('* => *', useAnimation(zoomIn, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {timing: 8}
-        }))]),
-        trigger('zoomIn4', [transition('* => *', useAnimation(zoomIn, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {timing: 9}
-        }))]),
 
-        trigger('zoomIn5', [transition('* => *', useAnimation(zoomIn, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {timing: 10}
-        }))]),
-        trigger('bounceInUp', [transition('* => *', useAnimation(bounceInUp, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 4, timing: 6}
-        }))]),
-        trigger('bounceInRight', [transition('* => *', useAnimation(bounceInRight, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 2, timing: 2}
-        }))]),
-        trigger('bounceInLeft', [transition('* => *', useAnimation(bounceInLeft, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 3, timing: 4}
-        }))]),
-        trigger('bounceInUp', [transition('* => *', useAnimation(bounceInUp, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 4, timing: 6}
-        }))]),
-        trigger('bounceInDown', [transition('* => *', useAnimation(bounceInDown, {
-            // Set the duration to 5seconds and delay to 2seconds
-            params: {deley: 5, timing: 8}
-        }))])
-    ],
 })
 export class WizardSummaryComponent implements OnInit {
 
@@ -115,7 +73,7 @@ export class WizardSummaryComponent implements OnInit {
                 setTimeout(() => {
                     this.addTargetStart = false;
                     this.addTargetComplete = true;
-                    this.router.navigateByUrl('/home/tabs/tab1');
+                    this.router.navigateByUrl('/home');
                 }, 3000);
             }
         });

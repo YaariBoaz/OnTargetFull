@@ -10,6 +10,7 @@ import {ApiService} from '../services/api.service';
 import {tap} from 'rxjs/operators';
 import {BleService} from '../services/ble.service';
 import {BehaviorSubject, interval, of, Subscription} from 'rxjs';
+import * as moment from 'moment';
 
 @Injectable({
     providedIn: 'root'
@@ -67,6 +68,18 @@ export class HitNohitService {
     finalSplits = [];
     drillFinishedNotify = new BehaviorSubject(null);
 
+    DEFAULT_PAGE_DATA = {
+        distanceFromCenter: 0,
+        splitTime: '',
+        rateOfFire: 0,
+        counter: 0,
+        points: 0,
+        lastShotTime: null,
+        totalTime: '00:00:00'
+    };
+    private firstTime: string;
+    private lastTime: string;
+
     constructor(private shootingService: ShootingService,
                 private storageService: StorageService,
                 private userService: UserService,
@@ -97,57 +110,45 @@ export class HitNohitService {
 
 
     initStats() {
-        this.pageData.counter = 0;
-        this.drillIsFinished = false;
         this.stats = [];
-        this.summaryObject = this.DEFAULT_SUMMARY_OBJECT;
         this.drillFinished = false;
-        if (!this.pageData) {
-            this.pageData = this.pageData;
-        } else {
-            this.pageData.counter = 0;
-            this.pageData.distanceFromCenter = 0;
-            this.pageData.splitTime = '0:00';
-            this.pageData.rateOfFire = 0;
-            this.pageData.points = 0;
-            this.pageData.totalTime = '0:00';
-        }
+        this.pageData = this.DEFAULT_PAGE_DATA;
+        this.startTimer();
 
     }
 
+    startTimer() {
+        // tslint:disable-next-line:no-shadowed-variable max-line-length
+        const now = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        this.firstTime = now;
+        this.lastTime = now;
+    }
+
+
     updateStats(num) {
         this.pageData.counter++;
-        if (num === 0) {
-            this.splitDate = {
-                created: new Date(),
-                id: 'split'
-            };
-            this.overallDate = {
-                created: new Date(),
-                id: 'overall'
-            };
-            this.createFirstShotData();
-            this.startSplitInterval();
-            this.startOverallInterval();
-        } else {
-            const totalAndSplitTime: SplitAndTotalTime = this.getTotalAndSplitTimes();
-            console.log('Inside updateStats totalAndSplitTime is: ', totalAndSplitTime);
-            if (!totalAndSplitTime.splitTime || !totalAndSplitTime.totalTime) {
-                totalAndSplitTime.splitTime = '00:00';
-                totalAndSplitTime.totalTime = '00:00';
-            }
-            this.pageData.totalTime = totalAndSplitTime.totalTime;
-            this.pageData.splitTime = totalAndSplitTime.splitTime;
-            this.pageData.points += 2;
-            this.stats.push({pageData: Object.assign({}, this.pageData), interval: this.pageData.totalTime});
-            this.splitDate = {
-                created: new Date(),
-                id: 'split'
-            };
-            console.log('Inside updateStats pageData is: ', this.pageData);
-        }
+        // tslint:disable-next-line:max-line-length
+        const now = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
 
-        this.handleSummaryData();
+        const split = moment.utc(moment(now, 'DD/MM/YYYY HH:mm:ss').diff(moment(this.lastTime,
+            'DD/MM/YYYY HH:mm:ss'))).format('HH:mm:ss');
+        const total = moment.utc(moment(now, 'DD/MM/YYYY HH:mm:ss').diff(moment(this.firstTime,
+            'DD/MM/YYYY HH:mm:ss'))).format('HH:mm:ss');
+
+        // tslint:disable-next-line:max-line-length
+        this.lastTime = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+
+        this.pageData.totalTime = total;
+        this.pageData.splitTime = split;
+        this.stats.push({pageData: Object.assign({}, this.pageData), interval: this.pageData.totalTime});
+
+
+        this.summaryObject = {
+            // @ts-ignore
+            split: this.getSummarySplit(this.pageData.totalTime, this.stats.length),
+            totalTime: this.stats[this.stats.length - 1].interval,
+            counter: this.stats[this.stats.length - 1].pageData.counter
+        };
 
         let isFinish = false;
         if (this.pageData.counter >= this.shootingService.numberOfBullersPerDrill) {
@@ -204,7 +205,7 @@ export class HitNohitService {
         });
 
         this.storageService.setItem('homeData', updatedData);
-        this.apiService.syncData(drill).subscribe(data => {
+        this.apiService.syncDataHitNoHit(drill).subscribe(data => {
             this.apiService.getDashboardData(this.userService.getUserId()).subscribe((data1) => {
                 this.storageService.setItem('homeData', data1);
             });
@@ -316,6 +317,64 @@ export class HitNohitService {
             this.currenOverTime = timespan;
         });
     }
+
+    private getSummarySplit(timeString: any, statsLength: number) {
+        const timeArray = timeString.split(':');
+        let hour = 0;
+        let minutes = 0;
+        let seconds = 0;
+        if (timeArray[0] !== '00') {
+            let time = 0;
+            if (timeArray[0].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[0]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[0].charAt(1));
+            }
+            hour = time * 3600;
+        }
+
+        if (timeArray[1] !== '00') {
+            let time = 0;
+            if (timeArray[1].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[1]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[1].charAt(1));
+            }
+            minutes = time * 60;
+        }
+
+        if (timeArray[2] !== '00') {
+            let time = 0;
+            if (timeArray[2].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[2]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[2].charAt(1));
+            }
+            seconds = time;
+        }
+
+        const totalSeconds = hour + minutes + seconds;
+
+        const res = Math.round(totalSeconds / statsLength);
+        if (res < 10) {
+            return '00:00:0' + res;
+
+        } else if (res >= 10 && res < 100) {
+            if (res % 1 !== 0) {
+                const mili = Math.round(res % 1);
+                return '00:0' + Math.round(res) + ':' + mili;
+            } else {
+                return '00:' + Math.round(res) + ':00';
+            }
+        }
+    }
+
 }
 
 export interface SplitAndTotalTime {

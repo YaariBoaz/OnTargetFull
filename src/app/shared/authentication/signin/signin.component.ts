@@ -27,7 +27,9 @@ export class SigninComponent implements OnInit {
     isFirstLoad = true;
     registerForm: FormGroup;
     submitted = false;
-    subscription: Subscription
+    subscription: Subscription;
+    forgotPassword;
+    resetemail;
 
     constructor(
         public dialog: MatDialog,
@@ -149,5 +151,9 @@ export class SigninComponent implements OnInit {
 
     backToSignin() {
         this.router.navigateByUrl('wizard');
+    }
+
+    resetPassword() {
+
     }
 }

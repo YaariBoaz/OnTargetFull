@@ -29,15 +29,16 @@ export class AppComponent implements OnDestroy, OnInit {
 
 
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        SplashScreen.hide();
         this.initService.getDashboard();
         this.initService.getSights();
         this.initService.getWeapons();
         this.platform.ready().then(() => {
 
-
+            SplashScreen.hide().then(r => {
+                console.log('!!!!!!  HIDE SPLASH  !!!!');
+            });
             this.platform.backButton.subscribeWithPriority(9999, () => {
-                document.addEventListener('backbutton', function (event) {
+                document.addEventListener('backbutton', function(event) {
                     event.preventDefault();
                     event.stopPropagation();
                     console.log('hello');

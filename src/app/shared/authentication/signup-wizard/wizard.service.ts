@@ -110,7 +110,8 @@ export class WizardService {
                     this.storageService.setItem('isLoggedIn', true);
                     this.storageService.setItem('profileData', data);
                     console.log('In registerUser BEFORE rout to dashboard' + new Date());
-                    this.router.navigateByUrl('/home/tabs/tab1');
+                    this.router.navigateByUrl('/home');
+                    this.initService.notifySignupFinished.next(true);
                 }
             });
         });

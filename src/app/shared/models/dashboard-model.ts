@@ -33,7 +33,7 @@ export class RateOfFireChart {
     bestRate: number;
     chartData: any;
     chartLabels: Array<string>;
-
+    userAvg;
     constructor(props) {
         this.bestRate = 0;
         this.chartData = null;

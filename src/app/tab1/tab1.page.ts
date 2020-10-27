@@ -12,9 +12,10 @@ import {Tab1Service} from './tab1-service.service';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import {TabsService} from '../tabs/tabs.service';
-import {Chart} from 'chart.js';
+import {Chart, ChartType} from 'chart.js';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {ApiService} from "../shared/services/api.service";
+import {ApiService} from '../shared/services/api.service';
+import {Label, MultiDataSet} from 'ng2-charts';
 
 @Component({
     selector: 'app-tab1',
@@ -32,6 +33,14 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     radioChartInst;
 
     colorArray: any;
+
+    public doughnutChartLabels: Label[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+    public doughnutChartData: MultiDataSet = [
+        [350, 450, 100],
+        [50, 150, 120],
+        [250, 130, 70],
+    ];
+    public doughnutChartType: ChartType = 'doughnut';
 
     private hitRatiochart: am4charts.PieChart;
     private rateOfFireChart: am4charts.XYChart;
@@ -55,6 +64,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     historicTrainings = {};
     points = 0;
     showUi = false;
+    isNotTrainedYet = false;
 
     constructor(private platform: Platform,
                 private networkService: NetworkService,
@@ -75,21 +85,38 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         if (!localStorage.isLoggedIn) {
             this.router.navigateByUrl('/signin');
         } else {
-            this.apiService.getDashboardData(this.userService.getUserId()).subscribe(data => {
-                this.storageService.setItem('homeData', data);
-                this.showUi = true;
-                console.log('In ngOnInit START Tab1Page' + new Date());
-                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-                this.profile = this.userService.getUser();
-                this.handleOfflineScenario();
-                this.initService.isLoading.next(false);
-                console.log('In ngOnInit END Tab1Page' + new Date());
-                this.initService.isLoading.next(false);
-            });
+            this.initDashboard();
         }
+        this.initService.notifySignupFinished.subscribe((data) => {
+            if (data) {
+                this.initService.isLoading.next(false);
+            }
+        });
 
+        this.initService.newDashboardData.subscribe(data => {
+            if (data) {
+                this.initDashboard();
+            }
+        });
     }
 
+
+    initDashboard() {
+        this.apiService.getDashboardData(this.userService.getUserId()).subscribe(data => {
+            if (!data) {
+                this.isNotTrainedYet = true;
+            }
+            this.storageService.setItem('homeData', data);
+            this.showUi = true;
+            console.log('In ngOnInit START Tab1Page' + new Date());
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+            this.profile = this.userService.getUser();
+            this.handleOfflineScenario();
+            this.initService.isLoading.next(false);
+            console.log('In ngOnInit END Tab1Page' + new Date());
+            this.initService.isLoading.next(false);
+        });
+    }
 
     onDiscconectTarget() {
         this.ble.distory();
@@ -230,12 +257,12 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     }
 
+
     createRadioChart() {
         if (this.radioChartInst) {
             this.radioChartInst = new Chart(this.radio.nativeElement, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
                     datasets: [
                         {
                             borderColor: '#1C00ff00',
@@ -263,12 +290,10 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
                         }]
                     },
-                    cutoutPercentage: 90
                 }
             });
         }
     }
-
 
     slideChanged() {
         this.slides.getActiveIndex().then((index: number) => {
@@ -296,40 +321,43 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     private handleOfflineScenario() {
         this.data = this.storageService.getItem('homeData');
-        if (this.data.trainingHistory) {
-            this.extractPoints();
-        }
-        if (this.data.hitRatioChart) {
-            this.hits = this.data.hitRatioChart.totalHits;
-            this.shots = this.data.hitRatioChart.totalShots;
-        }
+        if (this.data) {
+            if (this.data.trainingHistory) {
+                this.extractPoints();
+            }
+            if (this.data.hitRatioChart) {
+                this.hits = this.data.hitRatioChart.totalHits;
+                this.shots = this.data.hitRatioChart.totalShots;
+            }
 
+            console.log('---DATA--- ' + this.data);
+            if (this.data.trainingHistory) {
+                this.data.trainingHistory.forEach(train => {
+                    const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
+                    if (!(this.historicTrainings[monthName])) {
+                        this.historicTrainings[monthName] = {};
+                    }
+                    const tempDate = new Date(train.drillDate);
+                    const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
+                    const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
+                    if ((!this.historicTrainings[monthName][key])) {
+                        this.historicTrainings[monthName][key] = {
+                            data: [],
+                            day
+                        };
+                    }
+                    this.historicTrainings[monthName][key].data.push(train);
+                });
+            }
+        }
 
         // this.tab1Service.setTextInCenterForHitRatio(this.hitRatioChart);
-        console.log('---DATA--- ' + this.data);
-        if (this.data.trainingHistory) {
-            this.data.trainingHistory.forEach(train => {
-                const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
-                if (!(this.historicTrainings[monthName])) {
-                    this.historicTrainings[monthName] = {};
-                }
-                const tempDate = new Date(train.drillDate);
-                const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
-                const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
-                if ((!this.historicTrainings[monthName][key])) {
-                    this.historicTrainings[monthName][key] = {
-                        data: [],
-                        day
-                    };
-                }
-                this.historicTrainings[monthName][key].data.push(train);
-            });
-        }
+
         setTimeout(() => {
             this.createLineChart();
             this.createScatterChart();
             this.createRadioChart();
-        }, 100)
+        }, 100);
     }
 
     datesAreOnSameDay(first, second) {
@@ -439,6 +467,10 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         this.data.trainingHistory.forEach((train) => {
             this.points += train.points;
         });
+    }
+
+    isIos() {
+        return this.platform.is('ios');
     }
 }
 

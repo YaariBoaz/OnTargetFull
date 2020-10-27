@@ -12,7 +12,7 @@ import {ReversePipe} from './reverseArray';
     imports: [
         CommonModule,
         SharedModule,
-     ],
+    ],
     providers: [ScreenOrientation],
     exports: [DrillComponent]
 })

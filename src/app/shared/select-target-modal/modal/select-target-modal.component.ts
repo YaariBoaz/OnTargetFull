@@ -28,9 +28,9 @@ export class SelectTargetModalComponent implements OnInit {
     targetConnected = false;
     selectedTarget = null;
     primaryTarget: null;
-    private loading: HTMLIonLoadingElement;
+    loading: HTMLIonLoadingElement;
     personalTarget: any;
-    private isFromWizard = false;
+    isFromWizard = false;
     targetIsConnected = false;
     targetNotSelected = true;
     connectedClicked = false;

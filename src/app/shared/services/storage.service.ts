@@ -247,6 +247,9 @@ export class StorageService {
 
 
     setItem(key: string, value: any) {
+        if (!this.data) {
+            this.data = {};
+        }
         this.data[key] = value;
         localStorage.setItem(key, JSON.stringify(value));
     }

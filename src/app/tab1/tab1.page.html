@@ -1,13 +1,16 @@
-<section *ngIf="showUi" class="dashboard" [class.ios-mode]="this.platform.is('ios')">
+<section *ngIf="showUi" class="dashboard" [class.ios-mode]="this.isIos()">
     <h3>Hi, {{profile?.firstName}}</h3>
     <div class="menu">
-        <button [class.menuBtniOs]="this.platform.is('ios')" class="menuBtn" mat-button [matMenuTriggerFor]="menu"
+        <button [class.menuBtniOs]="this.isIos()" class="menuBtn" mat-button [matMenuTriggerFor]="menu"
                 style="">
             <span>⋮</span>
+
+
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="onDiscconectTarget()">Disconnect Target</button>
             <button mat-menu-item (click)="onLogout()">Logout</button>
+            <button mat-menu-item>Version 1.001</button>
         </mat-menu>
     </div>
 
@@ -19,7 +22,7 @@
         <div class="avatar" *ngIf="!profile.img">
             <img src="assets/avatar.jpg">
         </div>
-        <div class="stats">
+        <div class="stats" *ngIf="!isNotTrainedYet">
             <div class="text-and-icon">
                 <div class="container">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
@@ -78,7 +81,7 @@
         </div>
     </div>
 
-    <div class="slides">
+    <div *ngIf="!isNotTrainedYet" class="slides">
         <ion-slides #slides effect=“slide” class="sliders" pager="true" [options]="slideOpts">
             <ion-slide>
                 <div class="slide-container" *ngIf="data.rateOfFireChart">
@@ -110,7 +113,10 @@
                     <P class="middle floating"><b>{{data.hitRatioChart.totalHits}}</b>/{{data.hitRatioChart.totalShots}}
                     </P>
                     <div class="chart-container">
-                        <canvas width="100%" height="100%" #radio></canvas>
+                        <!--                        <canvas baseChart-->
+                        <!--                                [data]="doughnutChartData"-->
+                        <!--                                [chartType]="doughnutChartType">-->
+                        <!--                        </canvas>-->
                     </div>
                 </div>
                 <div class="slide-container" *ngIf="!data.hitRatioChart">
@@ -123,7 +129,7 @@
         </ion-slides>
     </div>
 
-    <div class="static-images">
+    <div *ngIf="!isNotTrainedYet" class="static-images">
         <div class="image-container" *ngIf="data.bestScores">
             <p>{{data.bestScores.avgSplit}}</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">
@@ -254,7 +260,7 @@
         </div>
     </div>
 
-    <div class="date">
+    <div *ngIf="!isNotTrainedYet" class="date">
         <div class="month">
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" id="calendar_8_" width="16" height="16" data-name="calendar (8)"
@@ -340,9 +346,13 @@
             </div>
             <p>JULY</p>
         </div>
-        <div class="day" (click)="onActivityClicked()">
+        <div class="day" (click)="onActivityClicked(null)">
             <p><b>16.7.2020</b></p>
             <p>Thursday</p>
         </div>
+    </div>
+
+    <div *ngIf="isNotTrainedYet" class="no-train">
+        <p>What are you waiting for? Lets go shoot some bullets!</p>
     </div>
 </section>

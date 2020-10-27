@@ -11,6 +11,10 @@ export class ApiService {
     BASE_URL = 'htttp://192.168.0.1:8089/';
     BACKOFFICE_URL = 'https://adlbackoffice20200309103113.azurewebsites.net/';
 
+    // BASE_URL = 'http://192.168.0.104/';
+    // BASE_URL = 'htttp:/127.0.0.1:5001/';
+    // BACKOFFICE_URL = 'http://192.168.0.104:9080/';
+
     constructor(private http: HttpClient) {
     }
 
@@ -30,24 +34,28 @@ export class ApiService {
         return this.http.post(this.BACKOFFICE_URL + 'Login/authenticate', loginDetails);
     }
 
-    syncData(dataToSync) {
+    syncDataHitNoHit(dataToSync) {
         return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadHitNotHitDrills', dataToSync);
     }
 
+    syncDataGateway(dataToSync) {
+        return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadDrills', dataToSync);
+    }
+
     getWeapons() {
-        return this.http.get(this.BACKOFFICE_URL + '/DeviceData/getWeapons');
+        return this.http.get(this.BACKOFFICE_URL + 'DeviceData/getWeapons');
     }
 
     getSights() {
-        return this.http.get(this.BACKOFFICE_URL + '/DeviceData/getSights');
+        return this.http.get(this.BACKOFFICE_URL + 'DeviceData/getSights');
     }
 
     getInventory() {
-        return this.http.get(this.BACKOFFICE_URL + '/DeviceData/getInventory');
+        return this.http.get(this.BACKOFFICE_URL + 'DeviceData/getInventory');
     }
 
     setInventory(inventoryModel: InventoryModel) {
-        return this.http.post(this.BACKOFFICE_URL + '/DeviceData/setInventory', inventoryModel);
+        return this.http.post(this.BACKOFFICE_URL + 'DeviceData/setInventory', inventoryModel);
     }
 
 

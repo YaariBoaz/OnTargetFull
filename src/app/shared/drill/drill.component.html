@@ -237,7 +237,6 @@
                 <!-- IF the is a loop then place this outside the loop -->
                 <div class="table-sum">
                     <p> total:{{stats?.length}} of {{drill?.numOfBullets}}</p>
-                    <p> {{summaryObject?.points}}</p>
                     <p> {{summaryObject?.split}}</p>
                     <p>{{summaryObject?.totalTime}}</p>
                 </div>
@@ -437,8 +436,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let shot of stats; let  i = index">
-                        <td>{{i +1}}</td>
+                    <tr *ngFor="let shot of stats; let  i = index ">
+                        <td>{{i + 1}}</td>
                         <td> {{shot.pageData.points}}</td>
                         <td> {{shot.pageData.distanceFromCenter}}</td>
                         <td> {{shot.pageData.totalTime}}</td>
@@ -452,7 +451,7 @@
                 <div class="table-sum">
                     <p> total:{{stats?.length}} of {{drill?.numOfBullets}}</p>
                     <p> {{summaryObject?.points }}</p>
-                    <p> {{summaryObject?.distanceFromCenterAvg}}</p>
+                    <p> {{summaryObject?.distanceFromCenter}}</p>
                     <p>{{summaryObject?.totalTime }}</p>
                     <p> {{summaryObject?.split }}</p>
                 </div>

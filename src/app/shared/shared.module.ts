@@ -17,9 +17,10 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {SelectTargetModalComponent} from './select-target-modal/modal/select-target-modal.component';
 import {ErrorModalComponent} from "../shared/popups/error-modal/error-modal.component";
 import {AccessModalComponent} from "../shared/popups/access-modal/access-modal.component";
+import { ReversePipe } from './pipes/reverse.pipe';
 
 @NgModule({
-    declarations: [Tab3Page, AccessModalComponent, GunlistComponent, SightlistComponent, TermsAndConditionComponent, SelectTargetComponent, SelectTargetModalComponent, ErrorModalComponent],
+    declarations: [Tab3Page, AccessModalComponent, GunlistComponent, SightlistComponent, TermsAndConditionComponent, SelectTargetComponent, SelectTargetModalComponent, ErrorModalComponent, ReversePipe],
 
     imports: [
         CommonModule,
@@ -39,7 +40,7 @@ import {AccessModalComponent} from "../shared/popups/access-modal/access-modal.c
         ReactiveFormsModule,
         Tab3Page, GunlistComponent, SightlistComponent,
         SelectTargetModalComponent,
-        ErrorModalComponent, AccessModalComponent
+        ErrorModalComponent, AccessModalComponent, ReversePipe, SelectTargetComponent
     ],
 
 

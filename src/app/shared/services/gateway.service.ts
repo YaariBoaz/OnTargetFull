@@ -4,9 +4,13 @@ import {DrillObject} from '../../tab2/tab2.page';
 import {StorageService} from './storage.service';
 import {BehaviorSubject} from 'rxjs';
 import {CountupTimerService} from 'ngx-timer';
-import {DrillModel} from "../models/DrillModel";
-import {ApiService} from "./api.service";
-import {UserService} from "./user.service";
+import {DrillModel} from '../models/DrillModel';
+import {ApiService} from './api.service';
+import {UserService} from './user.service';
+import * as moment from 'moment';
+import {now} from 'moment';
+import {DrillResultModel, DrillSession, ShotItem} from '../drill/constants';
+import {InitService} from './init.service'; // add this 1 of 4
 
 @Injectable({
     providedIn: 'root'
@@ -47,16 +51,20 @@ export class GatewayService {
         points: 0,
         distanceFromCenter: 0,
         split: '0',
-        totalTime: 0,
+        totalTime: '00:00:00',
         counter: 0
     };
     notifyShotArrivedFromGateway = new BehaviorSubject(null);
 
     // tslint:disable-next-line:max-line-length
     drillFinishedNotify = new BehaviorSubject(null);
+    lastTime;
+    firstTime;
+    hits = [];
 
     constructor(private shootingService: ShootingService,
                 private storageService: StorageService,
+                private initService: InitService,
                 private countupTimerService: CountupTimerService,
                 private apiService: ApiService, private userService: UserService) {
     }
@@ -64,6 +72,7 @@ export class GatewayService {
 
     initStats() {
         this.shots = [];
+        this.hits = [];
         this.stats = [];
         this.drillFinished = false;
         this.pageData = this.DEFAULT_PAGE_DATA;
@@ -71,7 +80,10 @@ export class GatewayService {
     }
 
     startTimer() {
-        this.countupTimerService.startTimer();
+        // tslint:disable-next-line:no-shadowed-variable max-line-length
+        const now = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        this.firstTime = now;
+        this.lastTime = now;
     }
 
     public handelShoot(parentImageHeight, parentImageWidth, data) {
@@ -79,7 +91,7 @@ export class GatewayService {
 
         const x = data.xCoord;
         const y = data.yCoord;
-
+        this.hits.push({x, y});
         const width = parentImageWidth;
         const height = parentImageHeight;
 
@@ -98,12 +110,12 @@ export class GatewayService {
 
 
         if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
-            this.updateStats(px, py, false);
+            this.updateStats(px, py, false, {x, y});
             this.finishDrill();
             this.updateHistory();
         } else {
 
-            this.updateStats(px, py, false);
+            this.updateStats(px, py, false, {x, y});
         }
     }
 
@@ -111,35 +123,33 @@ export class GatewayService {
     public updateHistory() {
         this.drill = this.shootingService.selectedDrill;
         let updatedData = this.storageService.getItem('homeData');
-
+        if (!updatedData) {
+            updatedData = {};
+        }
         if (!updatedData.trainingHistory) {
             updatedData.trainingHistory = [];
         }
         const splits = [];
         this.stats.forEach(item => {
             splits.push(item.pageData.splitTime);
-        })
+        });
         // const recommendation = this.shootingService.getRecommendation(this.shots, {
         //     X: parentImageWidth / 2,
         //     Y: parentImageHeight / 2
         // });
 
 
-        const drill: DrillModel = {
-            date: new Date().toJSON(),
-            drillType: this.drill.drillType,
-            day: new Date().toLocaleString('en-us', {weekday: 'long'}),
-            hits: this.stats.length,
-            points: this.pageData.points,
-            range: this.drill.range,
-            splitTimes: splits,
-            totalShots: this.drill.numOfBullets,
-            userId: this.userService.getUserId(),
+        const drill: DrillSession = {
+            sessionId: this.userService.getUserId(),
+            sessionName: this.drill.drillType,
+            sessionDateTime: new Date().toString(),
+            users: this.getUserModelObject()
         };
 
-        this.apiService.syncData(drill).subscribe(() => {
+        this.apiService.syncDataGateway(drill).subscribe(() => {
             this.apiService.getDashboardData(this.userService.getUserId()).subscribe((data1) => {
                 this.storageService.setItem('homeData', data1);
+                this.initService.newDashboardData.next(true);
             });
         });
 
@@ -160,10 +170,11 @@ export class GatewayService {
     }
 
 
-    public updateStats(x, y, isFinish) {
+    public updateStats(x, y, isFinish, distanceFromCenterPoints) {
 
         console.log('counter:', this.pageData.counter);
-        const currentdist: number = parseFloat(this.calculateBulletDistanceFromCenter(x, y).toFixed(2));
+        const currentdist: number = parseFloat(this.calculateBulletDistanceFromCenter(distanceFromCenterPoints.x,
+            distanceFromCenterPoints.y).toFixed(2));
         this.pageData.points += this.calcScore(currentdist);
         // tslint:disable-next-line:max-line-length
         this.pageData.distanceFromCenter = parseFloat(((this.pageData.distanceFromCenter + currentdist) / this.pageData.counter).toFixed(2));
@@ -175,50 +186,58 @@ export class GatewayService {
         // this.pageData.totalTime = (this.pageData.totalTime + ((new Date().getTime() - this.pageData.lastShotTime.getTime()) / 1000));
         // this.pageData.lastShotTime = new Date();
 
-        this.countupTimerService.getTimerValue().subscribe((time) => {
-            this.pageData.totalTime = time.hours + ':' + time.mins + ':' + time.seconds;
 
-            if (this.stats.length === 0) {
-                this.pageData.splitTime = time.hours + ':' + time.mins + ':' + time.seconds;
-            } else {
-                this.pageData.splitTime = this.getTimeDiffrence(this.stats[this.stats.length - 1].pageData.totalTime,
-                    time.hours + ':' + time.mins + ':' + time.seconds);
-            }
-            this.stats.push({
-                pageData: Object.assign({}, this.pageData),
-                interval: time.hours + ':' + time.mins + ':' + time.seconds
-            });
+        // tslint:disable-next-line:no-shadowed-variable max-line-length
+        const now = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
 
+        const split = moment.utc(moment(now, 'DD/MM/YYYY HH:mm:ss').diff(moment(this.lastTime,
+            'DD/MM/YYYY HH:mm:ss'))).format('HH:mm:ss');
+        const total = moment.utc(moment(now, 'DD/MM/YYYY HH:mm:ss').diff(moment(this.firstTime,
+            'DD/MM/YYYY HH:mm:ss'))).format('HH:mm:ss');
 
-            let points = 0;
-            let distanceFromCenter = 0;
+        // tslint:disable-next-line:max-line-length
+        this.lastTime = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
 
-            // tslint:disable-next-line:prefer-for-of
-            for (let i = 0; i < this.stats.length; i++) {
-                points += this.stats[i].pageData.points;
-                distanceFromCenter += this.stats[i].pageData.distanceFromCenter;
-            }
-
-
-            const statsLength = this.stats.length;
-            this.summaryObject = {
-                points: points / statsLength,
-                distanceFromCenter: distanceFromCenter / statsLength,
-                split: this.getSummarySplit(this.countupTimerService.totalSeconds, statsLength),
-                totalTime: this.stats[statsLength - 1].interval,
-                counter: this.stats[statsLength - 1].pageData.counter
-            };
-            this.hitArrived.next({
-                statsData: {
-                    shot: {x, y},
-                    stats: this.stats,
-                    pageData: this.pageData,
-                    isFinish,
-                    summaryObject: this.summaryObject
-                }
-            });
+        this.pageData.totalTime = total;
+        this.pageData.splitTime = split;
+        this.pageData.distanceFromCenter = Math.round((this.calculateBulletDistanceFromCenter(distanceFromCenterPoints.x,
+            distanceFromCenterPoints.y) + Number.EPSILON) * 100) / 100;
+        this.stats.push({
+            pageData: Object.assign({}, this.pageData),
+            interval: this.pageData.totalTime
         });
 
+
+        let points = 0;
+        let distanceFromCenter = 0;
+
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.stats.length; i++) {
+            points += this.stats[i].pageData.points;
+            distanceFromCenter += this.stats[i].pageData.distanceFromCenter;
+        }
+
+
+        const statsLength = this.stats.length;
+        this.summaryObject = {
+            points: Math.round(points / statsLength),
+            distanceFromCenter: this.getSummaryDistanceFromCenter(this.stats),
+            split: this.getSummarySplit(this.pageData.totalTime, statsLength),
+            totalTime: this.stats[statsLength - 1].interval,
+            counter: this.stats[statsLength - 1].pageData.counter
+        };
+
+        this.hitArrived.next({
+            statsData: {
+                shot: {x, y},
+                stats: this.stats,
+                pageData: this.pageData,
+                isFinish,
+                summaryObject: this.summaryObject
+            }
+        });
+
+        // tslint:disable-next-line:max-line-length
 
     }
 
@@ -443,18 +462,166 @@ export class GatewayService {
     }
 
 
-    private getSummarySplit(totalSeconds: any, statsLength: number) {
-        const res = totalSeconds / statsLength;
+    private getSummarySplit(timeString: any, statsLength: number) {
+        const timeArray = timeString.split(':');
+        let hour = 0;
+        let minutes = 0;
+        let seconds = 0;
+        if (timeArray[0] !== '00') {
+            let time = 0;
+            if (timeArray[0].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[0]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[0].charAt(1));
+            }
+            hour = time * 3600;
+        }
+
+        if (timeArray[1] !== '00') {
+            let time = 0;
+            if (timeArray[1].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[1]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[1].charAt(1));
+            }
+            minutes = time * 60;
+        }
+
+        if (timeArray[2] !== '00') {
+            let time = 0;
+            if (timeArray[2].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[2]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[2].charAt(1));
+            }
+            seconds = time;
+        }
+
+        const totalSeconds = hour + minutes + seconds;
+
+        const res = Math.round(totalSeconds / statsLength);
         if (res < 10) {
             return '00:00:0' + res;
 
         } else if (res >= 10 && res < 100) {
-            if (res % 1 != 0) {
+            if (res % 1 !== 0) {
                 const mili = Math.round(res % 1);
                 return '00:0' + Math.round(res) + ':' + mili;
             } else {
                 return '00:' + Math.round(res) + ':00';
             }
         }
+    }
+
+    private getSummaryDistanceFromCenter(stats: any[]): number {
+        let avg = 0;
+        stats.forEach(item => {
+            avg += item.pageData.distanceFromCenter;
+        });
+        avg = avg / stats.length;
+        return Math.round((avg + Number.EPSILON) * 100) / 100;
+    }
+
+    private getUserModelObject(): DrillResultModel[] {
+        const arr = new Array<DrillResultModel>();
+        const shotItems: ShotItem[] = new Array();
+        this.stats.forEach(stat => {
+            shotItems.push({
+                disFromCenter: stat.pageData.distanceFromCenter.toString(),
+                hitHostage: false,
+                isHeader: false,
+                isOdd: false,
+                orbital: 0,
+                score: this.pageData.points,
+                shotNumber: 0,
+                time: this.pageData.totalTime,
+                timeSplit: this.pageData.splitTime
+            });
+        });
+
+        const item: DrillResultModel = {
+            avgDistFromCenter: this.summaryObject.distanceFromCenter,
+            drillDate: new Date(),
+            description: '',
+            drillId: 1,
+            drillTitle: this.drill.drillType,
+            drillType: this.drill.drillType,
+            hits: this.hits,
+            imageIdFullKey: 0,
+            imageIdKey: '',
+            images: null,
+            maxNumberOfPoints: 100000,
+            numberOfBullets: this.drill.numOfBullets,
+            pointsGained: this.summaryObject.points,
+            range: this.drill.range,
+            realibilty: '',
+            recommendation: '',
+            shooterId: 1,
+            shotItems,
+            sight: this.drill.sight,
+            splitAvg: this.timeStringToSeconds(this.summaryObject.split),
+            targetId: 0,
+            targetIP: '',
+            timeElapsed: this.summaryObject.totalTime,
+            timeLimit: 0,
+            weapon: this.drill.weapon,
+            useMoq: false,
+            userId: this.userService.getUserId(),
+            userName: this.userService.getUser().name
+
+        };
+        const finalArray = new Array<DrillResultModel>();
+        finalArray.push(item);
+        return finalArray;
+    }
+
+    private timeStringToSeconds(timeString: string): number {
+        const timeArray = timeString.split(':');
+        let hour = 0;
+        let minutes = 0;
+        let seconds = 0;
+        if (timeArray[0] !== '00') {
+            let time = 0;
+            if (timeArray[0].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[0]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[0].charAt(1));
+            }
+            hour = time * 3600;
+        }
+
+        if (timeArray[1] !== '00') {
+            let time = 0;
+            if (timeArray[1].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[1]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[1].charAt(1));
+            }
+            minutes = time * 60;
+        }
+
+        if (timeArray[2] !== '00') {
+            let time = 0;
+            if (timeArray[2].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[2]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[2].charAt(1));
+            }
+            seconds = time;
+        }
+
+        return hour + minutes + seconds;
     }
 }

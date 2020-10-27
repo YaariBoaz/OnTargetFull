@@ -15,21 +15,22 @@ import {InitService} from '../services/init.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuardService implements CanLoad {
+export class AuthGuardService implements CanActivate {
 
     constructor(private router: Router, private initService: InitService) {
     }
 
-
-    canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         const val = localStorage.isLoggedIn;
-        console.log('#########################################################  Login is:  ############################################' + val);
         if (val === 'null') {
+            // @ts-ignore
+            this.router.navigateByUrl('/signin');
             return false;
         } else {
             return true;
         }
     }
+
 
 }
 

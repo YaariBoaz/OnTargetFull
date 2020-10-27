@@ -20,6 +20,7 @@ import {
 import {HitNohitService} from '../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {BleNewService} from '../services/ble-new.service';
 
 @Component({
     selector: 'app-select-target',
@@ -36,9 +37,9 @@ export class SelectTargetComponent implements OnInit {
     targetConnected = false;
     selectedTarget = null;
     primaryTarget: null;
-    private loading: HTMLIonLoadingElement;
+    loading: HTMLIonLoadingElement;
     personalTarget: any;
-    private isFromWizard = false;
+    isFromWizard = false;
     targetIsConnected = false;
     targetNotSelected = true;
     connectedClicked = false;
@@ -46,7 +47,7 @@ export class SelectTargetComponent implements OnInit {
 
     constructor(
         private http: HttpClient,
-        private bleService: BleService,
+        private  bleService: BleService,
         private storageService: StorageService,
         private shootingService: ShootingService,
         public loadingController: LoadingController,
@@ -59,16 +60,16 @@ export class SelectTargetComponent implements OnInit {
         public aletMdl: AlertController,
         private router: Router
     ) {
-        // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     }
 
     ngOnInit() {
-        this.targetConnected = this.bleService.isConnectedFlag;
+        // this.targetConnected = this.bleService.isConnectedFlag;
         this.platform.ready().then(() => {
-            // this.screenOrientation.unlock();
-            // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
-            //
-            // });
+            this.screenOrientation.unlock();
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) => {
+
+            });
         });
 
         this.primaryTarget = this.storageService.getItem('target');
@@ -79,34 +80,6 @@ export class SelectTargetComponent implements OnInit {
                 return obj.id !== this.primaryTarget.id;
             });
         }
-
-        this.bleService.notifyTargetConnected.subscribe((status) => {
-            if (status) {
-                this.connectedClicked = false;
-                if (!this.selectedTarget) {
-                    this.selectedTarget = this.shootingService.chosenTarget;
-                }
-                this.selectedTarget.targetConnected = status;
-                this.targetIsConnected = true;
-                if (this.loading) {
-                    this.loading.dismiss();
-                }
-            }
-            this.cd.detectChanges();
-        });
-
-        this.bleService.notifyDissconnect.subscribe((flag) => {
-            if (this.selectedTarget) {
-                this.selectedTarget.targetConnected = false;
-            }
-            if (this.loading) {
-                this.loading.dismiss();
-            }
-
-            this.targetConnected = false;
-            this.targetIsConnected = false;
-        });
-
         this.bleService.scanFinished.subscribe((flag) => {
             this.isScanning = false;
             if (flag) {
@@ -173,7 +146,7 @@ export class SelectTargetComponent implements OnInit {
 
     async onTargetChosen() {
         this.shootingService.chosenTarget = this.selectedTarget;
-        this.bleService.connect(this.selectedTarget.id);
+        this.targetIsConnected = true;
     }
 
     startTraining() {
@@ -225,6 +198,8 @@ export class SelectTargetComponent implements OnInit {
     }
 
     onGoToEditDrill() {
+        this.shootingService.chosenTarget = this.selectedTarget;
+        this.targetIsConnected = true;
         this.zone.run(() => {
             // Your router is here
             this.router.navigateByUrl('/tab2/select');
@@ -232,7 +207,7 @@ export class SelectTargetComponent implements OnInit {
     }
 
     onDiscconectTest() {
-        this.bleService.distory();
+        ////  this.bleService.distory();
     }
 }
 

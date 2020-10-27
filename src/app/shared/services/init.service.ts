@@ -12,6 +12,8 @@ export class InitService {
     notifyError = new BehaviorSubject(null);
     isLoading = new Subject();
     isGateway = false;
+    notifySignupFinished = new BehaviorSubject(null);
+    newDashboardData = new BehaviorSubject(null);
 
     constructor(private apiService: ApiService, private storageService: StorageService, private userService: UserService, public ble: BLE) {
         this.getDashboard();
@@ -43,10 +45,10 @@ export class InitService {
     }
 
     startBLEScan() {
-        console.log('In start Scanning');
-        this.ble.startScan([]).subscribe(data => {
-            const lom = String.fromCharCode.apply(null, new Uint8Array(data.advertisement));
-        });
+        // console.log('In start Scanning');
+        // this.ble.startScan([]).subscribe(data => {
+        //     const lom = String.fromCharCode.apply(null, new Uint8Array(data.advertisement));
+        // });
     }
 
     isRegistered() {

@@ -13,8 +13,8 @@ import {GunlistComponent} from './gunlist/gunlist.component';
 import {SightlistComponent} from './sightlist/sightlist.component';
 import {FormBuilder, Validators} from '@angular/forms';
 import {SelectTargetModalComponent} from '../shared/select-target-modal/modal/select-target-modal.component';
-import {InitService} from "../shared/services/init.service";
-import {ErrorModalComponent} from "../shared/popups/error-modal/error-modal.component";
+import {InitService} from '../shared/services/init.service';
+import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class Tab3Page implements OnInit {
     showHeader = false;
     isFromWizard: boolean;
     showState = false;
-    private registerForm: any;
+    registerForm: any;
     submitted;
 
     constructor(private storageService: StorageService,
@@ -196,7 +196,7 @@ export class Tab3Page implements OnInit {
 
 
     finishWizard() {
-        if (this.router.url === '/home/tabs/tab3') {
+        if (this.router.url === '/home') {
             // update user.
         } else {
             this.form.sights = this.mySights;
@@ -280,6 +280,14 @@ export class Tab3Page implements OnInit {
 
     onSubmit() {
 
+    }
+
+    getPlarform() {
+        return this.platform.is('ios');
+    }
+
+    isTab3() {
+        return this.router.url === '/home';
     }
 }
 

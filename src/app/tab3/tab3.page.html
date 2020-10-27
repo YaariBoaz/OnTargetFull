@@ -1,8 +1,8 @@
-<section class="profile" *ngIf="router.url === '/home/tabs/tab3'; else notTabs">
-    <header [class.ios-mode]="this.platform.is('ios')">
+<section class="profile" *ngIf="isTab3(); else notTabs">
+    <header [class.ios-mode]="this.getPlarform()">
         <div>
-            <p> Edit Drill</p>
-            <img *ngIf="profile.img" [src]=profile.img>
+            <p> Profile </p>
+            <img class="avatar" *ngIf="profile.img" [src]=profile.img>
             <img class="avatar" *ngIf="!profile.img" src="assets/avatar.png">
         </div>
     </header>
@@ -76,7 +76,6 @@
                 <div *ngIf="f.email.errors.required">Email is required</div>
             </div>
         </div>
-
 
 
         <div class="row">
@@ -245,7 +244,7 @@
     </div>
 
 
-    <div class="controls">
+    <div class="controls" *ngIf="!isEditMode">
         <button class="confirm" (click)="finishWizard();isEditMode = false">Finish</button>
         <button class="cancel" (click)="isEditMode=false">CANCEL</button>
     </div>

@@ -23,19 +23,19 @@ const TEMPERATURE_CHARACTERISTIC = 'bbb1';
     providedIn: 'root'
 })
 export class BleService {
-    private devices: any[];
+    devices: any[];
     peripheral: any;
-    private dataFromDevice;
+    dataFromDevice;
     notifyShotArrived = new BehaviorSubject(0);
     notifyTargetConnected = new BehaviorSubject(false);
-    notifyDissconnect = new BehaviorSubject(false);
-    private subscription: Subscription;
+    notifyDissconnect = new BehaviorSubject(null);
+    subscription: Subscription;
     scanFinished = new BehaviorSubject<any>(false);
     currentTargetId: any;
     isConnectedFlag = false;
     isGateway: boolean;
-    private gatewayTargets: { gateway: any; target: any };
-    private notifyResetGateway = new BehaviorSubject(false);
+    gatewayTargets: { gateway: any; target: any };
+    notifyResetGateway = new BehaviorSubject(false);
     gateways = [];
 
     constructor(
@@ -52,8 +52,7 @@ export class BleService {
         }
     }
 
-    scan(options?: PushSubscriptionOptionsInit) {
-        this.setStatus('Scanning for Bluetooth LE Devices');
+    scan() {
         this.devices = [];  // clear list
         this.storage.setItem('ble', this.devices);
         this.ble.scan([], 5).subscribe(device => this.onDeviceDiscovered(device), error => this.scanError(error));
@@ -119,6 +118,8 @@ export class BleService {
         if (this.gateways.indexOf(deviceId) > -1) {
             this.isGateway = true;
             this.initService.isGateway = true;
+        } else {
+            this.resetShots();
         }
         this.currentTargetId = deviceId;
         this.subscription = this.ble.connect(deviceId).subscribe(
@@ -128,7 +129,7 @@ export class BleService {
                 this.onConnected(peripheral);
             },
             peripheral => {
-                console.log('Disconnected', 'The peripheral unexpectedly disconnected');
+                console.log('DEVICE DISCONNECT IT SELF', peripheral);
                 this.activatRecconectProcess();
             }, () => {
             }
@@ -202,19 +203,19 @@ export class BleService {
     distory() {
         this.ble.disconnect(this.currentTargetId).then(() => {
             this.isConnectedFlag = false;
-            this.notifyDissconnect.next(true);
+            this.notifyDissconnect.next({isManually: true, status: true});
             console.log('Called Disconnect');
         });
     }
 
-    isConnected() {
+    isConnected(): Promise<any> {
         return this.ble.isConnected(this.peripheral);
     }
 
     activatRecconectProcess() {
         this.ble.disconnect(this.currentTargetId).then(() => {
             this.isConnectedFlag = false;
-            this.notifyDissconnect.next(true);
+            this.notifyDissconnect.next({isManually: false, status: true});
             console.log('Called Disconnect');
             try {
                 this.subscription = this.ble.connect(this.currentTargetId).subscribe(
@@ -226,13 +227,7 @@ export class BleService {
                     peripheral => {
                         console.log('Disconnected', 'The peripheral unexpectedly disconnected');
                         this.activatRecconectProcess();
-                    }, () => {
-                    }
-                );
-
-                this.notifyDissconnect.next(true);
-
-
+                    });
             } catch (e) {
             }
         });

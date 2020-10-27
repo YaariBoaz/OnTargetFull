@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from './shared/authentication/auth-guard.service';
+import {TabsPage} from './tabs/tabs.page';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,18 +18,18 @@ const routes: Routes = [
         loadChildren: () => import('./shared/authentication/signup-wizard/wizard.module').then(m => m.WizardModule),
     },
     {
-        path: '',
-        loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-        canLoad: [AuthGuardService]
+        path: 'home',
+        component: TabsPage,
+        canActivate: [AuthGuardService]
 
     },
-    {path: 'not-found', loadChildren: () => import('./shared/authentication/signin/signin.module').then(m => m.SigninModule),},
-    {path: '**', redirectTo: 'not-found'}
+    {path: 'not-found', component: TabsPage, canActivate: [AuthGuardService]},
+    {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {enableTracing: true})
     ],
     exports: [RouterModule]
 })

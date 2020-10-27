@@ -7,7 +7,7 @@ import {TabsService} from '../tabs/tabs.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {BleService} from '../shared/services/ble.service';
 import {Router} from '@angular/router';
-import {InitService} from "../shared/services/init.service";
+import {InitService} from '../shared/services/init.service';
 
 @Component({
     selector: 'app-tab2',
@@ -63,13 +63,13 @@ export class Tab2Page implements OnInit {
         // this.mySights.push('M5');
         // this.mySights.push('Iron');
         // this.mySights.push('Iron');
-        this.mySights.splice(2, 0, "Wizer");
+        this.mySights.splice(2, 0, 'Wizer');
 
 
         this.myGuns = this.storageService.getItem('gunList');
         // this.myGuns.push('AR15');
         // this.myGuns.push('Jericho 941f');
-         this.myGuns.splice(2, 0, "Circus");
+        this.myGuns.splice(2, 0, 'Circus');
 
 
         this.setSightsAndWeapons();
@@ -147,9 +147,13 @@ export class Tab2Page implements OnInit {
     onBackPressed() {
 
         this.zone.run(() => {
-            this.router.navigateByUrl('/tab2');
+            this.router.navigateByUrl('/home');
         });
 
+    }
+
+    isiOS() {
+        return this.platform.is('ios');
     }
 }
 

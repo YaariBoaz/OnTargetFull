@@ -22,18 +22,14 @@ import {ActivityHistoryComponent} from '../shared/activity-history/activity-hist
         SharedModule,
         ChartsModule,
         MatIconModule,
-        MatMenuModule,
-        RouterModule.forChild([
-            {path: '', component: Tab1Page},
-            {
-                path: 'activity-history',
-                component: ActivityHistoryComponent
-            },
-        ])
+        MatMenuModule
     ],
     providers: [Camera, Tab3Service],
     declarations: [Tab1Page, ActivityHistoryComponent],
 
+    exports: [
+        Tab1Page
+    ]
 })
 export class Tab1PageModule {
 }

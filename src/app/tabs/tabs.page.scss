@@ -15,85 +15,90 @@ div.icon {
   p {
     margin: 0;
     text-align: center;
-    font-weight: 300;
-    color: #909090;
+    font-weight: 500;
+    color: #7f7f7f;
     transition: all 0.3s;
   }
 
   svg {
-    height: 30px;
-    width: 30px;
+    height: 17.8px;
+    width: 17.8px;
+    fill: #7f7f7f;
     transition: all 0.3s;
   }
 
   &.active {
-    svg .cls-2 {
-      fill: $dull_orange
+    svg {
+      fill: #ce564b
     }
 
     p {
-      color: $dull_orange;
+      color: #ce564b;
     }
   }
 }
 
 #custom-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 100000;
-    width:100%;
-    background-color: #002a3e;
-  }
-
-  .flb {
-    background-color: #3ebffb;
-    height:100%;
-    width:100%;
-    animation: pulse 1s linear forwards;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-  .Aligner-item {
-    max-width: 50%;
-  }
-  .Aligner-item--top {
-    align-self: flex-start;
-  }
-  .Aligner-item--bottom {
-    align-self: flex-end;
-  }
-  #custom-overlay img {
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    height: auto;
-    animation: animation 3100ms linear infinite both;
-    animation-delay: 1s;
-  }
-
-
-  @keyframes pulse {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
-  }
-
-
-.gifContainer{
-    position: absolute;
-    height: 100% !important;
-    width: 100% !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  width: 100%;
+  background-color: #002a3e;
 }
 
-.logoImage{
+.flb {
+  background-color: #3ebffb;
+  height: 100%;
+  width: 100%;
+  animation: pulse 1s linear forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.Aligner-item {
+  max-width: 50%;
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+
+#custom-overlay img {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: auto;
+  animation: animation 3100ms linear infinite both;
+  animation-delay: 1s;
+}
+
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.gifContainer {
+  position: absolute;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.logoImage {
   z-index: 9999;
   right: 2%;
   position: absolute;
@@ -115,5 +120,29 @@ div.icon {
 #myBar {
   z-index: 9999;
   height: 5px;
-  background-color:#eb8500;
+  background-color: #eb8500;
+}
+
+
+.tabs-container {
+  height: 100%;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  height: 100%;
+
+}
+
+:host ::ng-deep .mat-tab-body.mat-tab-body-active {
+  height: 100%;
+
+}
+
+
+:host ::ng-deep .mat-tab-label {
+  opacity: 1 !important;
+}
+
+:host ::ng-deep mat-ink-bar {
+  color: green !important;
 }

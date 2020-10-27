@@ -1,8 +1,9 @@
-import {Component, NgZone} from '@angular/core';
+import {Component, NgZone, ViewChild} from '@angular/core';
 import {TabsService} from './tabs.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Platform} from '@ionic/angular';
+import {MatTabChangeEvent} from '@angular/material';
 
 
 @Component({
@@ -12,6 +13,7 @@ import {Platform} from '@ionic/angular';
 
 })
 export class TabsPage {
+    selectedTab = 0;
     splash = true;
     tabBarElement: any;
     private subscription: Subscription;
@@ -62,5 +64,9 @@ export class TabsPage {
         } else {
             return 'tab1';
         }
+    }
+
+    tabChanged($event: MatTabChangeEvent) {
+        this.selectedTab = $event.index;
     }
 }

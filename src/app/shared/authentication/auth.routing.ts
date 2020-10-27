@@ -4,7 +4,7 @@ import {TabsPage} from '../../tabs/tabs.page';
 
 
 const routes: Routes = [
-    {path: '', redirectTo: 'signin'},
+    {path: '', redirectTo: 'signin', pathMatch: 'full'},
     {
 
         path: 'wizard',

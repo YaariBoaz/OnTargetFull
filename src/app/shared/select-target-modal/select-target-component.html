@@ -54,11 +54,7 @@
 
 
         <div class="buttons-container">
-            <button class="btn-connect" *ngIf="!this.targetIsConnected" [disabled]="targetNotSelected"
-                    (click)="onTargetChosen();connectedClicked = true;targetIsConnected = true;">
-                Connect
-            </button>
-            <button class="btn-connect" *ngIf="targetIsConnected"
+            <button class="btn-connect" [disabled]="targetNotSelected"
                     (click)="onGoToEditDrill()"> Continue
             </button>
         </div>
