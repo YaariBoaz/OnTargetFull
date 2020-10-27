@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "adl.onTarget",
   "appName": "onTarget",
   "bundledWebRuntime": false,
   "npmClient": "npm",
@@ -7,8 +7,8 @@
   "cordova": {},
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 3000,
-      "launchAutoHide": true,
+      "launchShowDuration": 10000,
+      "launchAutoHide": false,
       "backgroundColor": "#ffffffff",
       "androidSplashResourceName": "splash",
       "androidScaleType": "CENTER_CROP",
