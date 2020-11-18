@@ -1014,7 +1014,7 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@capacitor/android@^2.1.2":
+"@capacitor/android@^2.4.2":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-2.4.2.tgz#ddc55bf0ea78214a0a760330a439916093792d00"
   integrity sha512-0OpOmsno6yFyN0tOEhE9LkAqQrnTGUxz49+ZdivieI3axFe3CpxbFhcfIsJtr96q9jhkspkYPMqGNZm3gPKjaA==
@@ -1036,10 +1036,10 @@
     which "^1.3.0"
     xml2js "^0.4.19"
 
-"@capacitor/core@^2.1.2":
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-2.4.2.tgz#f11d943febad2bb70f042ac87e354e9602250b82"
-  integrity sha512-xQyJSZo50+aAvX3ZsX5h2xJDjz1LQxGT0A6/qD1pqJVEUeDhzdfYMbxCPWbmqSONZXddHtwrTiIsjq1Wd+ukuQ==
+"@capacitor/core@^1.5.1":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-1.5.3.tgz#254d4d0c56e01a1837551970b1f09befec15c1cf"
+  integrity sha512-Tohy9+koVDAc7+HaZmXzcRQSGhrvUczcifmvI9o4KamhXJSGajJCdDZV+n7FUqWpfDf470kKiA+SeyhD7OeL1w==
   dependencies:
     tslib "^1.9.0"
 
@@ -1066,6 +1066,13 @@
   version "5.26.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/ble/-/ble-5.26.0.tgz#52beb6907543fe8dc7ac8bbf3aea178d2566a977"
   integrity sha512-qahJ62eyHVxeTqCzYdd2zc6B6nDjSo0hqLq4ZMI6OYLH4KXxuuWoI77p2wGgUfLbH3hl68wUtm0bsOw+cbgqLA==
+  dependencies:
+    "@types/cordova" latest
+
+"@ionic-native/bluetooth-le@^5.28.0":
+  version "5.29.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/bluetooth-le/-/bluetooth-le-5.29.0.tgz#f11615d16d11977185032ebd6d58167e2e0fe6a7"
+  integrity sha512-SzdQ6kmicsW6yuCjxInLWEUPSd2uzzxmOitVtcSGd7LZaTAtMdRB/DC1kHG1R8orLLY1mcQmRpMBqYlduCPslg==
   dependencies:
     "@types/cordova" latest
 
@@ -1097,6 +1104,13 @@
   dependencies:
     "@types/cordova" latest
 
+"@ionic-native/document-viewer@^5.29.0":
+  version "5.29.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/document-viewer/-/document-viewer-5.29.0.tgz#b165cb943e6745473acc2c7e6ad296ebd16143bb"
+  integrity sha512-xPimGgqu4ihtzb/L1FZNtEjLkb1lOOVAAif4kxXJcmszl7s4oc+3lQKaeFw8fvYV4H+MqMiIPk06f2DPMGDUEg==
+  dependencies:
+    "@types/cordova" latest
+
 "@ionic-native/facebook@^5.22.0":
   version "5.22.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/facebook/-/facebook-5.22.0.tgz#32efd5f58b51b7c1564b9de6cce90dd30d779cf5"
@@ -1108,6 +1122,13 @@
   version "5.26.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/file/-/file-5.26.0.tgz#1529a4f5381c74cc866564e9cb26f06158c84826"
   integrity sha512-sJONMhwEpZtONU59m0Rs6PmzD+C3lcaZkc7TryAXgF+9F6XUjhZu6efis3qzgxWHTMXNr7vBdrzfLAQB5bCGMA==
+  dependencies:
+    "@types/cordova" latest
+
+"@ionic-native/native-page-transitions@^5.29.0":
+  version "5.29.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/native-page-transitions/-/native-page-transitions-5.29.0.tgz#1d63231a2511597008017d91d7c4ffbbe75ca890"
+  integrity sha512-a+Dsr0ZI25Wgq5lnrFz+IljKnCDxvmbADUFbtesP+spLd+CXUoAzL+9Rm3Z5/hQaWo0pOZ4mHslS1cxytF7Bhg==
   dependencies:
     "@types/cordova" latest
 
@@ -2755,6 +2776,11 @@ colors@^1.1.0:
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
   integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
 
+com.telerik.plugins.nativepagetransitions@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/com.telerik.plugins.nativepagetransitions/-/com.telerik.plugins.nativepagetransitions-0.7.0.tgz#caaa82722fdc27540dd4c36d17bfc8e32053850a"
+  integrity sha512-FdNmTG1K+j9EvxuDxU5h3aBYDuDyN893f0MEUWrhCROWAP9nSGUZcuV9TCthes7MSwQDiSQKN2057NfFtZZCTA==
+
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
@@ -2946,15 +2972,6 @@ copy-webpack-plugin@5.1.1:
     serialize-javascript "^2.1.2"
     webpack-log "^2.0.0"
 
-cordova-plugin-androidx-adapter@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-androidx-adapter/-/cordova-plugin-androidx-adapter-1.1.1.tgz#67c1553b4358a54827b5930d2590569749ad0f47"
-  integrity sha512-ePt0WG7Y8jOFx2x3A6oXQyxzavis2ANw2hFlm7MU/H7ez1QKPXmWjA1zIIx4T/QdKWM5D8fLH60t2PyJmKSsOg==
-  dependencies:
-    performance-now "^2.1.0"
-    q "^1.4.1"
-    recursive-readdir "^2.2.2"
-
 cordova-plugin-ble-central@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ble-central/-/cordova-plugin-ble-central-1.2.5.tgz#3bb8a8bbc584fa620928e220ea5ddd31020afc8b"
@@ -2965,6 +2982,11 @@ cordova-plugin-bluetooth-serial@^0.4.7:
   resolved "https://registry.yarnpkg.com/cordova-plugin-bluetooth-serial/-/cordova-plugin-bluetooth-serial-0.4.7.tgz#1e4606ec6d42b7c23f60a74a87c7c4a4ec3828c0"
   integrity sha1-HkYG7G1Ct8I/YKdKh8fEpOw4KMA=
 
+cordova-plugin-bluetoothle@^6.0.2:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-bluetoothle/-/cordova-plugin-bluetoothle-6.1.0.tgz#ac8186d9688e9ac0a924f73462588c02a0fe6c38"
+  integrity sha512-7/65BKM4rpl8l5QhXKq7JZZtlncugscYk4dNa4de/49j3uyvw6dL9qpGJ02tc0LR429r+5NuJKEnCcsaUeoDQA==
+
 cordova-plugin-camera@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/cordova-plugin-camera/-/cordova-plugin-camera-4.1.0.tgz#6474a3e080c4662aa00fd7425705d301c693ddc0"
@@ -2974,6 +2996,11 @@ cordova-plugin-crop@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/cordova-plugin-crop/-/cordova-plugin-crop-0.4.0.tgz#4d9e8982ccfb38e04fa909c87b4bec06e2d1d92b"
   integrity sha1-TZ6Jgsz7OOBPqQnIe0vsBuLR2Ss=
+
+cordova-plugin-document-viewer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-document-viewer/-/cordova-plugin-document-viewer-1.0.0.tgz#6baaaa748e1d5df810c0ffa588baaacbb9227019"
+  integrity sha512-LQZiWVU543rLJ0wYoawSdMrAfoxBLWCx8a2CuQjFeav4U9CN16QAh1VHetHaHicp5ZEwTC7Zq/0TNbak6A7bVw==
 
 cordova-plugin-facebook4@^6.3.0:
   version "6.3.0"
@@ -5621,6 +5648,11 @@ jest-worker@24.9.0:
     merge-stream "^2.0.0"
     supports-color "^6.1.0"
 
+jetifier@^1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/jetifier/-/jetifier-1.6.6.tgz#fec8bff76121444c12dc38d2dad6767c421dab68"
+  integrity sha512-JNAkmPeB/GS2tCRqUzRPsTOHpGDah7xP18vGJfIjZC+W2sxEHbxgJxetIjIqhjQ3yYbYNEELkM/spKLtwoOSUQ==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -5962,10 +5994,15 @@ lodash.clonedeep@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
 
+lodash.deburr@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/lodash.deburr/-/lodash.deburr-4.1.0.tgz#ddb1bbb3ef07458c0177ba07de14422cb033ff9b"
+  integrity sha1-3bG7s+8HRYwBd7oH3hRCLLAz/5s=
+
 lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.5:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
 log-symbols@^2.1.0:
   version "2.2.0"
@@ -6373,6 +6410,11 @@ moment@^2.10.2:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
+moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -6465,6 +6507,13 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
+ng-connection-service@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ng-connection-service/-/ng-connection-service-1.0.4.tgz#02854a6eabd9a8fe44f0ad63024289652039a179"
+  integrity sha512-WrZfK+hUzrJS77ItxXI08rUN6Av77W3+LsaJEPufyo2wRe7Tn8xG18FHHEbbgqKkJeDT/yGJBH2xOaT+1jb22g==
+  dependencies:
+    tslib "^1.9.0"
+
 ng2-charts@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/ng2-charts/-/ng2-charts-2.3.0.tgz#e4dd1f7fe12dc2635d5e8c4f101a8d4c4f433754"
@@ -6479,12 +6528,13 @@ ngx-animate@^1.0.1:
   resolved "https://registry.yarnpkg.com/ngx-animate/-/ngx-animate-1.0.1.tgz#bb7275cc9f5d5b02575bc05470772f9022a41172"
   integrity sha512-usZMhm0sX4Ptm/Ni9YmhlprD+L+zqx7xu0un8AMzxRqS6ZO5/cpd951B9VPcJ+ZmoKCRuNF3SmGLuVkft7OuhQ==
 
-ngx-pipes@^2.7.5:
-  version "2.7.5"
-  resolved "https://registry.yarnpkg.com/ngx-pipes/-/ngx-pipes-2.7.5.tgz#22e2e4b7015ae9103210dfa2dacd6f4ae4411639"
-  integrity sha512-hlxHzu+snGJ038Z+HdkgEZRlZeE7suDTLWJD1yUP11eAM+xLPJAur1QtvvtZTHRHutOc7Wij1keBtuWIS9D0JQ==
+ngx-extended-pdf-viewer@^5.2.1:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/ngx-extended-pdf-viewer/-/ngx-extended-pdf-viewer-5.3.0.tgz#a7310aa3748250b8b492e173e61e56616d8f1a39"
+  integrity sha512-CqVNQA9PYW7j1AlpUMOi31YJpUX/rZUOlCkr6WzIde7vY48fppUanywHVf3XSzK1fHgTJes7MI2dSNf03Wng2w==
   dependencies:
-    tslib "^2.0.0"
+    lodash.deburr "^4.1.0"
+    tslib "^1.9.0"
 
 ngx-timer@^1.0.6:
   version "1.0.6"
@@ -7671,13 +7721,6 @@ readdirp@~3.3.0:
   integrity sha512-zz0pAkSPOXXm1viEwygWIPSPkcBYjW1xU5j/JBh5t9bGCJwa6f9+BJa6VaB2g+b55yVrmXzqkyLf4xaWYM0IkQ==
   dependencies:
     picomatch "^2.0.7"
-
-recursive-readdir@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
-  integrity sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==
-  dependencies:
-    minimatch "3.0.4"
 
 reflect-metadata@^0.1.2:
   version "0.1.13"
@@ -9167,11 +9210,6 @@ tslib@^1.10.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"
   integrity sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==
-
-tslib@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
-  integrity sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
 
 tslint@~5.15.0:
   version "5.15.0"
