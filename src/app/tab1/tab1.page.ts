@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {IonSlides, Platform} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {InitService} from '../shared/services/init.service';
@@ -16,6 +16,9 @@ import {Chart, ChartType} from 'chart.js';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {ApiService} from '../shared/services/api.service';
 import {Label, MultiDataSet} from 'ng2-charts';
+import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
+import {ActivityHistoryComponent} from '../shared/activity-history/activity-history.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
     selector: 'app-tab1',
@@ -26,7 +29,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('slides', {static: false}) slides: IonSlides;
     @ViewChild('lineChart', {static: false}) lineChart;
     @ViewChild('scatter', {static: false}) scatter;
-    @ViewChild('radio', {static: false}) radio;
+    @ViewChild('radioChartInst', {static: false}) radio;
 
     line: any;
     scatterChartIns;
@@ -73,12 +76,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 private userService: UserService,
                 private zone: NgZone,
                 private ble: BleService,
+                public dialog: MatDialog,
+                private  cd: ChangeDetectorRef,
                 private tabsService: TabsService,
                 private initService: InitService,
                 private apiService: ApiService,
                 private screenOrientation: ScreenOrientation,
                 private storageService: StorageService) {
-        console.log('In constructor Tab1Page' + new Date());
     }
 
     ngOnInit(): void {
@@ -102,28 +106,36 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
 
     initDashboard() {
-        this.apiService.getDashboardData(this.userService.getUserId()).subscribe(data => {
+        let userId = this.userService.getUserId();
+        if (!userId) {
+            userId = localStorage.getItem('userId');
+        }
+
+        this.apiService.getDashboardData(userId).subscribe(data => {
             if (!data) {
                 this.isNotTrainedYet = true;
             }
             this.storageService.setItem('homeData', data);
             this.showUi = true;
-            console.log('In ngOnInit START Tab1Page' + new Date());
-            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
             this.profile = this.userService.getUser();
             this.handleOfflineScenario();
             this.initService.isLoading.next(false);
-            console.log('In ngOnInit END Tab1Page' + new Date());
             this.initService.isLoading.next(false);
+            this.cd.detectChanges();
         });
     }
 
     onDiscconectTarget() {
-        this.ble.distory();
+        this.initService.distory();
     }
 
     onLogout() {
+        localStorage.setItem('userId', null);
         localStorage.setItem('isLoggedIn', null);
+        localStorage.setItem('profileData', null);
+        localStorage.setItem('homeData', null);
+        localStorage.setItem('sightList', null);
+        localStorage.setItem('gunList', null);
         this.router.navigateByUrl('signin');
     }
 
@@ -259,7 +271,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
 
     createRadioChart() {
-        if (this.radioChartInst) {
+        if (this.radio) {
             this.radioChartInst = new Chart(this.radio.nativeElement, {
                 type: 'doughnut',
                 data: {
@@ -268,11 +280,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                             borderColor: '#1C00ff00',
                             label: 'Population (millions)',
                             backgroundColor: ['#ce564b', '#d4d4d4'],
-                            data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots]
+                            data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots
+                            - this.data.hitRatioChart.totalHits]
                         }
                     ]
                 },
                 options: {
+                    cutoutPercentage: 85,
                     legend: {
                         display: false
                     },
@@ -311,9 +325,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onActivityClicked(train: HistoryModel) {
-        this.storageService.passhistoricalTrainingsDate(train);
-        this.router.navigateByUrl('/tab1/activity-history');
+        this.storageService.passhistoricalTrainingsDate(this.data.trainingHistory);
+        this.dialog.open(ActivityHistoryComponent, {
+            panelClass: 'full-screen-modal',
+            data: {modalType: 'general'}
+        });
     }
+
 
     private handleOnlineScenario() {
 
@@ -330,7 +348,6 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 this.shots = this.data.hitRatioChart.totalShots;
             }
 
-            console.log('---DATA--- ' + this.data);
             if (this.data.trainingHistory) {
                 this.data.trainingHistory.forEach(train => {
                     const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
@@ -471,6 +488,14 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     isIos() {
         return this.platform.is('ios');
+    }
+
+    doRefresh(event) {
+        console.log('Pull Event Triggered!');
+        this.initDashboard();
+        setTimeout(() => {
+            event.target.complete();
+        }, 1000);
     }
 }
 

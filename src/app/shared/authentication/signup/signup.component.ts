@@ -9,6 +9,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ProfileImageService} from '../../services/profile-image.service';
 import {WizardService} from '../signup-wizard/wizard.service';
+import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 
 @Component({
     selector: 'app-signup',
@@ -27,6 +28,7 @@ export class SignupComponent implements OnInit {
     picture: string;
     isEditMode = true;
     private showStates = false;
+    fieldTextType: boolean;
 
     constructor(private apiService: ApiService,
                 public loadingController: LoadingController,
@@ -34,6 +36,7 @@ export class SignupComponent implements OnInit {
                 private formBuilder: FormBuilder,
                 private platform: Platform,
                 private tab3Service: Tab3Service,
+                private nativePageTransitions: NativePageTransitions,
                 private ref: ChangeDetectorRef,
                 private wizardService: WizardService,
                 public domSanitizer: DomSanitizer,
@@ -50,11 +53,41 @@ export class SignupComponent implements OnInit {
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
-            confirmPassword: new FormControl(null, [Validators.required])
-        }, {validator: this.passwordConfirming});
+            confirmPassword: ['', Validators.required],
+        }, {
+            validator: this.mustMatch('password', 'confirmPassword')
+        });
+
+
         if (this.wizardService.registerForm) {
             this.registerForm = this.wizardService.registerForm;
         }
+    }
+
+    toggleFieldTextType() {
+        this.fieldTextType = !this.fieldTextType;
+    }
+
+
+    ionViewWillLeave() {
+
+        const options: NativeTransitionOptions = {
+            direction: 'up',
+            duration: 500,
+            slowdownfactor: 3,
+            slidePixels: 20,
+            iosdelay: 100,
+            androiddelay: 150,
+            fixedPixelsTop: 0,
+            fixedPixelsBottom: 60
+        };
+
+        this.nativePageTransitions.slide(options)
+            .then(() => {
+            })
+            .catch(() => {
+            });
+
     }
 
 
@@ -163,7 +196,6 @@ export class SignupComponent implements OnInit {
 
     continueToThird() {
         this.submitted = true;
-        // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
         }
@@ -176,6 +208,25 @@ export class SignupComponent implements OnInit {
         this.wizardService.registerForm = this.registerForm;
         this.tab3Service.passProfileFromRegister.next(this.registerForm.value);
         this.stepTwoComplete.emit(this.registerForm);
+    }
+
+    mustMatch(controlName: string, matchingControlName: string) {
+        return (formGroup: FormGroup) => {
+            const control = formGroup.controls[controlName];
+            const matchingControl = formGroup.controls[matchingControlName];
+
+            if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+                // return if another validator has already found an error on the matchingControl
+                return;
+            }
+
+            // set error on matchingControl if validation fails
+            if (control.value !== matchingControl.value) {
+                matchingControl.setErrors({mustMatch: true});
+            } else {
+                matchingControl.setErrors(null);
+            }
+        };
     }
 
 

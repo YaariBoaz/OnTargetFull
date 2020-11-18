@@ -1,10 +1,12 @@
 // @ts-ignore
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, Inject, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {NetworkService} from '../services/network.service';
 import {StorageService} from '../services/storage.service';
 import {Router} from '@angular/router';
 import {Platform} from '@ionic/angular';
 import {HistoryModel, HistoryValueItemModel} from '../models/HistoryModel';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {ImodalType} from '../popups/error-modal/error-modal.component';
 
 // @ts-ignore
 @Component({
@@ -13,6 +15,8 @@ import {HistoryModel, HistoryValueItemModel} from '../models/HistoryModel';
     styleUrls: ['./activity-history.component.scss'],
 })
 export class ActivityHistoryComponent implements OnInit, OnChanges {
+    @ViewChild('container', {static: false}) container: ElementRef;
+
     train = {
         date: '05.07.18',
         day: 'Tuesday',
@@ -26,9 +30,11 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     beutifiedDate;
     stats = [];
     summaryObject;
+    trains;
 
     constructor(private  router: Router,
                 private  networkService: NetworkService,
+                public dialogRef: MatDialogRef<ActivityHistoryComponent>,
                 private stoargeService: StorageService,
                 private platform: Platform) {
         this.networkService.hasConnectionSubject$.subscribe(hasConnection => {
@@ -65,30 +71,40 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     }
 
     onBackPressed() {
-        this.router.navigateByUrl('/tab1');
+        this.dialogRef.close();
     }
 
     handleOfflineScenario() {
-        this.stoargeService.historicalTrainingsDate$.subscribe((date: HistoryModel) => {
-            if (date) {
-                this.beutifiedDate = date.key;
-                this.currentDay = date.value.data[0].day;
-                const arrayOfTrainings = date['value']['data'];
-                this.numOfTrainings = arrayOfTrainings.length;
-                this.drills = arrayOfTrainings;
-                this.drills.forEach(drill => {
-                    drill.shotItems.forEach(shot => {
-                        shot.time = this.miliToTime(parseInt(shot.time));
-                        shot.timeSplit = this.miliToTime(parseInt(shot.timeSplit));
+        this.stoargeService.historicalTrainingsDate$.subscribe((data: HistoryModel) => {
+            if (data) {
+                this.trains = data;
+                this.trains.forEach(train => {
+                    train.hits.forEach(hit => {
+
+                        const x = hit.x;
+                        const y = hit.y;
+
+                        const nominalStep = 8;
+                        const width = 295;
+                        const height = 295;
+
+                        const deltaX = width / nominalStep;
+                        const deltaY = height / nominalStep;
+
+                        const widthCorrection = (0.0628 * width - 7.6862);
+                        const heigthCorrection = (-0.0628 * height - 8.3138);
+
+                        const xPos = (width - (deltaX * (x / nominalStep))) + widthCorrection;
+                        const yPos = ((deltaY * (y / nominalStep))) + heigthCorrection;
+
+
+                        hit.x = xPos;
+                        hit.y = yPos;
                     });
                 });
-
-                // this.stats = date.stata;
-                // this.summaryObject = date.summaryObject;
             }
 
         });
-
     }
 
     miliToTime(duration) {

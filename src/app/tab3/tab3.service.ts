@@ -7,6 +7,7 @@ import {BehaviorSubject} from 'rxjs';
 export class Tab3Service {
     passProfileFromRegister = new BehaviorSubject(null);
     isFromRegister = new BehaviorSubject<any>(null);
+    notifyComingToMe = new BehaviorSubject(false);
 
     constructor() {
     }
@@ -14,4 +15,6 @@ export class Tab3Service {
     notifyOnRegister() {
         this.isFromRegister.next(true);
     }
+
+
 }

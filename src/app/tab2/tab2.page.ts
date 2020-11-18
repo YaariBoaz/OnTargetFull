@@ -8,6 +8,7 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {BleService} from '../shared/services/ble.service';
 import {Router} from '@angular/router';
 import {InitService} from '../shared/services/init.service';
+import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 
 @Component({
     selector: 'app-tab2',
@@ -41,6 +42,7 @@ export class Tab2Page implements OnInit {
                 public alertController: AlertController,
                 private initService: InitService,
                 private  shootingService: ShootingService,
+                private nativePageTransitions: NativePageTransitions,
                 private storageService: StorageService,
                 private ble: BleService,
                 private screenOrientation: ScreenOrientation,
@@ -51,6 +53,29 @@ export class Tab2Page implements OnInit {
         this.connectedTarget = this.ble.peripheral;
         this.initComponents();
     }
+
+    ionViewWillLeave() {
+
+        const options: NativeTransitionOptions = {
+            direction: 'up',
+            duration: 500,
+            slowdownfactor: 3,
+            slidePixels: 20,
+            iosdelay: 100,
+            androiddelay: 150,
+            fixedPixelsTop: 0,
+            fixedPixelsBottom: 60
+        };
+
+        this.nativePageTransitions.slide(options)
+            .then(() => {
+            })
+            .catch(() => {
+            });
+
+    }
+
+
 
     ngOnInit(): void {
         this.tabService.$notifyTab2.subscribe(() => {

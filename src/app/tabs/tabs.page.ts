@@ -68,5 +68,15 @@ export class TabsPage {
 
     tabChanged($event: MatTabChangeEvent) {
         this.selectedTab = $event.index;
+        switch ($event.index) {
+            case 0:
+                this.tabService.notifyTab1();
+                break;
+            case 1:
+                this.tabService.notifyTab2();
+                break;
+            case 2:
+                this.tabService.notifyTab3();
+        }
     }
 }

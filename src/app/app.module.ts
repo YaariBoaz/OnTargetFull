@@ -4,7 +4,7 @@ import {RouteReuseStrategy} from '@angular/router';
 
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
-import { BluetoothLE } from '@ionic-native/bluetooth-le/ngx';
+import {BluetoothLE} from '@ionic-native/bluetooth-le/ngx';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,12 +27,15 @@ import {GatewayService} from './shared/services/gateway.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpErrorInterceptor} from './shared/services/interceptor.service';
 import {TabsPageModule} from './tabs/tabs.module';
+import {NoConnetionErroComponent} from './shared/popups/no-connection/no-connetion-error';
+import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
+import {NativePageTransitions} from '@ionic-native/native-page-transitions/ngx';
 
 
 // @ts-ignore
 @NgModule({
     declarations: [AppComponent],
-    entryComponents: [],
+    entryComponents: [ErrorModalComponent],
     imports: [
         BrowserModule,
         CommonModule,
@@ -51,6 +54,7 @@ import {TabsPageModule} from './tabs/tabs.module';
     providers: [
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         InitService,
+        NativePageTransitions,
         StorageService,
         Tab1Service,
         UserService,

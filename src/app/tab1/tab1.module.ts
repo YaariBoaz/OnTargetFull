@@ -26,7 +26,7 @@ import {ActivityHistoryComponent} from '../shared/activity-history/activity-hist
     ],
     providers: [Camera, Tab3Service],
     declarations: [Tab1Page, ActivityHistoryComponent],
-
+    entryComponents: [ActivityHistoryComponent],
     exports: [
         Tab1Page
     ]

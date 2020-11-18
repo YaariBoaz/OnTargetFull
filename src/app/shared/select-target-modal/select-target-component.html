@@ -26,27 +26,24 @@
 
 
     <div class="content">
-        <div *ngIf="personalTarget && !isFromWizard">
+        <div *ngIf="personalTarget && !isFromWizard && this.isPersonalTargetAround">
             <div class="personal-target-title"> Personal Target</div>
-            <div class="personal-target-name">
-                E1n1
+            <div (click)="onTargetSelected(this.personalTarget); personalChosen = true;" class="target-name">
+                <span>  {{this.personalTarget.name}}</span>
+                <img *ngIf="personalChosen"
+                     src="assets/icons/Icon%20-%20Check%20Circle%20-%20Filled.svg">
             </div>
         </div>
         <hr>
 
-        <div class="ble-img" *ngIf="!myTargets || myTargets.length==0">
-            <img *ngIf="!isScanning" src="assets/icons/Group%20834.svg">
+        <div class="ble-img" *ngIf="isScanning">
             <img *ngIf="isScanning" class="scanAnimation" src="assets/icons/Group%20770.svg">
         </div>
-        <div class="ble-img-abs" *ngIf="isScanning">
-            <img *ngIf="isScanning" class="scanAnimation" src="assets/icons/Group%20770.svg">
-        </div>
-
         <div class="targets-list-container" *ngIf="myTargets.length > 0 ">
             <div class="targets-list" *ngFor="let target of  myTargets; let i = index">
                 <div class="targets-count"> Traget #{{i}}</div>
                 <div (click)="onTargetSelected(target)" class="target-name">
-                    <span>  {{target.name | uppercase }}</span>
+                    <span>  {{target.name}}</span>
                     <img *ngIf="target.isSelected" src="assets/icons/Icon%20-%20Check%20Circle%20-%20Filled.svg">
                 </div>
             </div>

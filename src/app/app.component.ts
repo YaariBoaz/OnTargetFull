@@ -5,8 +5,14 @@ import {LoadingController} from '@ionic/angular';
 import {BleService} from './shared/services/ble.service';
 import {Plugins} from '@capacitor/core';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {PopupsService} from './shared/services/popups.service';
+import {NoConnetionErroComponent} from './shared/popups/no-connection/no-connetion-error';
+import {MatDialog} from '@angular/material';
+import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
+import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 
 const {SplashScreen} = Plugins;
+const {Network} = Plugins;
 
 
 @Component({
@@ -22,37 +28,60 @@ export class AppComponent implements OnDestroy, OnInit {
     constructor(
         private platform: Platform,
         private initService: InitService,
+        private nativePageTransitions: NativePageTransitions,
         public ble: BleService,
+        private popupsService: PopupsService,
         public loadingController: LoadingController,
-        private screenOrientation: ScreenOrientation
+        private screenOrientation: ScreenOrientation,
+        public dialog: MatDialog
     ) {
 
 
+        Network.addListener('networkStatusChange', (status) => {
+            if (!status.connected) {
+                const dialogRef = this.dialog.open(ErrorModalComponent, {
+                    data: {modalType: 'wifi'}
+                });
+            }
+        });
+
+
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.initService.getDashboard();
         this.initService.getSights();
         this.initService.getWeapons();
         this.platform.ready().then(() => {
 
             SplashScreen.hide().then(r => {
-                console.log('!!!!!!  HIDE SPLASH  !!!!');
+                let options: NativeTransitionOptions = {
+                    direction: 'up',
+                    duration: 500,
+                    slowdownfactor: 3,
+                    slidePixels: 20,
+                    iosdelay: 100,
+                    androiddelay: 150,
+                    fixedPixelsTop: 0,
+                    fixedPixelsBottom: 60
+                };
+
+                this.nativePageTransitions.slide(options)
+                    .then(() => {
+                    })
+                    .catch(() => {
+                    });
             });
             this.platform.backButton.subscribeWithPriority(9999, () => {
                 document.addEventListener('backbutton', function(event) {
                     event.preventDefault();
                     event.stopPropagation();
-                    console.log('hello');
                 }, false);
 
             });
 
-            this.ble.scan();
             window.addEventListener('beforeunload', () => {
-                this.ble.distory();
+                this.initService.distory();
             });
         });
         this.initService.isLoading.subscribe((isLoading: boolean) => {
-            console.log('IS LOADING IS : ' + isLoading);
             this.isLoding = isLoading;
         });
     }
@@ -82,12 +111,10 @@ export class AppComponent implements OnDestroy, OnInit {
         await loading.present();
 
         const {role, data} = await loading.onDidDismiss();
-        console.log('Loading dismissed with role:', role);
     }
 
 
     ngOnDestroy(): void {
-        console.log('App Destoryed');
 
     }
 

@@ -1,4 +1,5 @@
 <ng-container>
+    <pre>{{data | json}}</pre>
     <section class="error-modal">
         <div class="close" (click)="closeModal()">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
@@ -8,7 +9,7 @@
             </svg>
         </div>
 
-        <ng-container *ngIf="data.modalType.toString() === 'wifi' ">
+        <ng-container>
             <div class="main-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="57.624" height="45.524" viewBox="0 0 57.624 45.524">
                     <defs>
@@ -37,10 +38,12 @@
         <ng-container *ngIf="data.modalType.toString() === 'blueTooth' ">
             <div class="main-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35.218" height="65.189" viewBox="0 0 35.218 65.189">
-                    <path id="Path_15960" fill="#ce564b" d="M178.414 978.422a1.581 1.581 0 0 1-1.583-1.582v-27.305L162.9 963.511a1.581 1.581 0 0 1-2.239 0 1.589 1.589 0 0 1 0-2.24l15.4-15.446-15.4-15.446a1.583 1.583 0 0 1 2.241-2.236l13.931 13.974v-27.3a1.576 1.576 0 0 1 .977-1.463 1.6 1.6 0 0 1 .608-.12 1.568 1.568 0 0 1 1.116.462l15.42 15.422a1.583 1.583 0 0 1 0 2.236l-14.428 14.475 14.429 14.471a1.587 1.587 0 0 1 0 2.237l-15.423 15.421a1.565 1.565 0 0 1-1.118.464zm1.582-5.4l11.6-11.6L180 949.781zm0-31.143l11.6-11.638-11.6-11.6z" data-name="Path 15960" transform="translate(-160.198 -913.233)"/>
+                    <path id="Path_15960" fill="#ce564b"
+                          d="M178.414 978.422a1.581 1.581 0 0 1-1.583-1.582v-27.305L162.9 963.511a1.581 1.581 0 0 1-2.239 0 1.589 1.589 0 0 1 0-2.24l15.4-15.446-15.4-15.446a1.583 1.583 0 0 1 2.241-2.236l13.931 13.974v-27.3a1.576 1.576 0 0 1 .977-1.463 1.6 1.6 0 0 1 .608-.12 1.568 1.568 0 0 1 1.116.462l15.42 15.422a1.583 1.583 0 0 1 0 2.236l-14.428 14.475 14.429 14.471a1.587 1.587 0 0 1 0 2.237l-15.423 15.421a1.565 1.565 0 0 1-1.118.464zm1.582-5.4l11.6-11.6L180 949.781zm0-31.143l11.6-11.638-11.6-11.6z"
+                          data-name="Path 15960" transform="translate(-160.198 -913.233)"/>
                 </svg>
             </div>
-            <p>Bluetooth has been turned off.  Please turn Bluetooth on and try again.</p>
+            <p>Bluetooth has been turned off. Please turn Bluetooth on and try again.</p>
         </ng-container>
 
         <ng-container *ngIf="data.modalType.toString() === 'general' ">
@@ -48,20 +51,30 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="37.845" height="64.572" viewBox="0 0 37.845 64.572">
                     <defs>
                         <style>
-                            .cls-1{fill:#ce564b}
+                            .cls-1 {
+                                fill: #ce564b
+                            }
                         </style>
                     </defs>
                     <g id="Group_479" data-name="Group 479" transform="translate(-249.611 -913.85)">
                         <g id="Group_477" data-name="Group 477">
                             <g id="Group_476" data-name="Group 476">
-                                <path id="Path_15961" d="M281.707 978.422H255.36a5.755 5.755 0 0 1-5.749-5.749V919.6a5.755 5.755 0 0 1 5.749-5.748h26.347a5.755 5.755 0 0 1 5.749 5.748v53.075a5.755 5.755 0 0 1-5.749 5.747zm-26.347-61.506a2.684 2.684 0 0 0-2.68 2.682v53.075a2.685 2.685 0 0 0 2.68 2.683h26.347a2.685 2.685 0 0 0 2.68-2.683V919.6a2.684 2.684 0 0 0-2.68-2.682z" class="cls-1" data-name="Path 15961"/>
-                                <path id="Rectangle_1725" d="M0 0H34.777V3.067H0z" class="cls-1" data-name="Rectangle 1725" transform="translate(251.145 920.124)"/>
-                                <path id="Rectangle_1726" d="M0 0H34.777V3.067H0z" class="cls-1" data-name="Rectangle 1726" transform="translate(251.145 963.721)"/>
+                                <path id="Path_15961"
+                                      d="M281.707 978.422H255.36a5.755 5.755 0 0 1-5.749-5.749V919.6a5.755 5.755 0 0 1 5.749-5.748h26.347a5.755 5.755 0 0 1 5.749 5.748v53.075a5.755 5.755 0 0 1-5.749 5.747zm-26.347-61.506a2.684 2.684 0 0 0-2.68 2.682v53.075a2.685 2.685 0 0 0 2.68 2.683h26.347a2.685 2.685 0 0 0 2.68-2.683V919.6a2.684 2.684 0 0 0-2.68-2.682z"
+                                      class="cls-1" data-name="Path 15961"/>
+                                <path id="Rectangle_1725" d="M0 0H34.777V3.067H0z" class="cls-1"
+                                      data-name="Rectangle 1725" transform="translate(251.145 920.124)"/>
+                                <path id="Rectangle_1726" d="M0 0H34.777V3.067H0z" class="cls-1"
+                                      data-name="Rectangle 1726" transform="translate(251.145 963.721)"/>
                             </g>
-                            <path id="Path_15962" d="M271.275 972.522h-5.483a1.533 1.533 0 1 1 0-3.067h5.483a1.533 1.533 0 1 1 0 3.067z" class="cls-1" data-name="Path 15962"/>
+                            <path id="Path_15962"
+                                  d="M271.275 972.522h-5.483a1.533 1.533 0 1 1 0-3.067h5.483a1.533 1.533 0 1 1 0 3.067z"
+                                  class="cls-1" data-name="Path 15962"/>
                         </g>
                         <g id="Group_478" data-name="Group 478">
-                            <path id="Path_15963" d="M265.616 954.062a2.92 2.92 0 1 1 2.917 2.81 2.84 2.84 0 0 1-2.917-2.81zm5.6-23.465l-.43 17.326h-4.51l-.43-17.326z" class="cls-1" data-name="Path 15963"/>
+                            <path id="Path_15963"
+                                  d="M265.616 954.062a2.92 2.92 0 1 1 2.917 2.81 2.84 2.84 0 0 1-2.917-2.81zm5.6-23.465l-.43 17.326h-4.51l-.43-17.326z"
+                                  class="cls-1" data-name="Path 15963"/>
                         </g>
                     </g>
                 </svg>

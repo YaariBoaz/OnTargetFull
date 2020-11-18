@@ -26,6 +26,7 @@ import {GatewayService} from '../services/gateway.service';
 import {InitService} from '../services/init.service';
 import {FakeData} from './fakeData';
 import {ConstantData} from './constants';
+import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 
 
 @Component({
@@ -47,6 +48,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     @ViewChild('screen', {static: false}) screen: ElementRef;
     @ViewChild('canvas', {static: false}) canvas: ElementRef;
     @ViewChild('downloadLink', {static: false}) downloadLink: ElementRef;
+    @ViewChild('scrollMe', {static: true}) myScrollContainer: ElementRef;
 
 
     /* FOR DEMO */
@@ -97,6 +99,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         public toastController: ToastController,
         private userService: UserService,
         private apiService: ApiService,
+        private nativePageTransitions: NativePageTransitions,
         private bleService: BleService,
         private gateway: GatewayService,
         private cd: ChangeDetectorRef,
@@ -121,6 +124,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     }
 
     ngOnInit() {
+        this.profile = this.userService.getUser();
         this.removeTabs();
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
         this.registerNotifications();
@@ -205,48 +209,12 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     async onBackPressed() {
         this.drillIsFinished = false;
         const content: any = document.querySelector('mat-tab-header');
-        content.style.display = 'flex';
+        if (content) {
+            content.style.display = 'flex';
+        }
         this.initStats();
         if (this.drill === null || this.stats.length !== this.drill.numOfBullets) {
-            const alert = await this.alertController.create({
-                cssClass: 'my-custom-class',
-                header: 'Confirm!',
-                message: 'You haven\'t finished your drill, Do you want to save the data?',
-                buttons: [
-                    {
-                        text: 'Cancel',
-                        role: 'cancel',
-                        cssClass: 'secondary',
-                        handler: (blah) => {
-                            console.log('Pressed Cancel');
-                        }
-                    }, {
-                        text: 'Yes',
-                        handler: () => {
-                            this.ngZone.runGuarded(() => {
-                                this.bleService.distory();
-                                this.hitNohitService.updateHistory();
-                                this.router.navigateByUrl('/tab2/select');
-                                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-
-                            });
-                        }
-                    },
-                    {
-                        text: 'No',
-                        cssClass: 'secondary',
-                        handler: (blah) => {
-                            this.ngZone.runGuarded(() => {
-                                this.bleService.distory();
-                                console.log('Pressed No');
-                                this.router.navigateByUrl('/tab2/select');
-                                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-                            });
-                        }
-                    }
-                ]
-            });
-            await alert.present();
+            await this.closeDrillBeforeFinish(false);
         }
     }
 
@@ -283,43 +251,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     async restartShooting() {
         this.drillIsFinished = false;
         if (this.stats.length !== this.drill.numOfBullets) {
-            const alert = await this.alertController.create({
-                cssClass: 'my-custom-class',
-                header: 'Confirm!',
-                message: 'You haven\'t finished your drill, Do you want to save the data?',
-                buttons: [
-                    {
-                        text: 'Cancel',
-                        role: 'cancel',
-                        cssClass: 'secondary',
-                        handler: (blah) => {
-                            console.log('Pressed Cancel');
-                        }
-                    }, {
-                        text: 'Yes',
-                        handler: () => {
-                            this.ngZone.runGuarded(() => {
-                                this.hitNohitService.updateHistory();
-                                this.initStats();
-                                this.bleService.resetShots();
-                                this.stats = [];
-                            });
-                        }
-                    },
-                    {
-                        text: 'No',
-                        cssClass: 'secondary',
-                        handler: (blah) => {
-                            this.ngZone.runGuarded(() => {
-                                this.initStats();
-                                this.bleService.resetShots();
-                                this.stats = [];
-                            });
-                        }
-                    }
-                ]
-            });
-            await alert.present();
+            await this.closeDrillBeforeFinish(true);
         } else {
             this.initStats();
             this.bleService.resetShots();
@@ -332,6 +264,65 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         this.stats = [];
     }
 
+
+    async closeDrillBeforeFinish(isReset) {
+        const alert = await this.alertController.create({
+            cssClass: 'my-custom-class',
+            header: 'Confirm!',
+            message: 'You haven\'t finished your drill, Do you want to save the data?',
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: (blah) => {
+                        console.log('Pressed Cancel');
+                    }
+                }, {
+                    text: 'Yes',
+                    handler: () => {
+                        this.ngZone.runGuarded(() => {
+                            if (this.isGateway) {
+                                this.gateway.updateHistory();
+                                this.gateway.initStats();
+                            } else {
+                                this.hitNohitService.updateHistory();
+                                this.hitNohitService.initStats();
+                            }
+                            this.initStats();
+                            this.bleService.resetShots();
+                            this.stats = Object.assign(this.stats, []);
+                            if (!isReset) {
+                                this.router.navigateByUrl('/tab2/select');
+                                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                            }
+                        });
+                    }
+                },
+                {
+                    text: 'No',
+                    cssClass: 'secondary',
+                    handler: (blah) => {
+                        this.ngZone.runGuarded(() => {
+                            if (this.isGateway) {
+                                this.gateway.initStats();
+                            } else {
+                                this.hitNohitService.initStats();
+                            }
+                            this.initStats();
+                            this.bleService.resetShots();
+                            this.stats = Object.assign(this.stats, []);
+                            if (!isReset) {
+                                this.router.navigateByUrl('/tab2/select');
+                                this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                            }
+                        });
+                    }
+                }
+            ]
+        });
+        await alert.present();
+    }
 
     onReconnect() {
         this.bleService.connect(this.bleService.currentTargetId);
@@ -399,7 +390,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
 
     private removeTabs() {
         const content: any = document.querySelector('mat-tab-header');
-        content.style.display = 'none';
+        if (content) {
+            content.style.display = 'none';
+        }
     }
 
     private registerNotifications() {
@@ -443,7 +436,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
             }
         });
         this.gateway.hitArrived.subscribe((data) => {
-            if (data) {
+            if (data && !this.isFinish && data.statsData.stats.length > 0) {
                 this.shotNumber = data.hitNumber;
                 this.stats = data.statsData.stats;
                 this.pageData = data.statsData.pageData;
@@ -451,6 +444,11 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 this.summaryObject = data.statsData.summaryObject;
                 this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
                 this.cd.detectChanges();
+                this.scrollToBottom();
+                if (this.drill.numOfBullets === this.stats.length) {
+                    this.drillIsFinished = true;
+                    this.cd.detectChanges();
+                }
             }
         });
         this.gateway.notifyShotArrivedFromGateway.subscribe((data) => {
@@ -465,19 +463,47 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         this.bleService.notifyTargetConnected.subscribe(status => {
             if (status) {
                 this.isConnected = true;
-                this.initStats();
-                const loader = this.showToast('Target Connected', 'success');
+                // const loader = this.showToast('Target Connected', 'success');
             }
         });
         this.bleService.notifyDissconnect.subscribe((flag) => {
             if (flag) {
                 if (!flag.isManually) {
-                    this.isConnected = false;
-                    this.cd.detectChanges();
-                    const loader = this.showToast('The target has been disconnected \n System trying to reconnect', 'danger');
+                    // this.isConnected = false;
+                    // this.cd.detectChanges();
+                    // const loader = this.showToast('The target has been disconnected \n System trying to reconnect', 'danger');
                 }
             }
         });
     }
+
+    scrollToBottom() {
+        try {
+            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        } catch (err) {
+        }
+    }
+
+    ionViewWillLeave() {
+
+        const options: NativeTransitionOptions = {
+            direction: 'up',
+            duration: 500,
+            slowdownfactor: 3,
+            slidePixels: 20,
+            iosdelay: 100,
+            androiddelay: 150,
+            fixedPixelsTop: 0,
+            fixedPixelsBottom: 60
+        };
+
+        this.nativePageTransitions.slide(options)
+            .then(() => {
+            })
+            .catch(() => {
+            });
+
+    }
+
 }
 

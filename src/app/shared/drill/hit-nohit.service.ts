@@ -163,8 +163,10 @@ export class HitNohitService {
 
     updateHistory() {
         this.drill = this.shootingService.selectedDrill;
-        const updatedData: DashboardModel = this.storageService.getItem('homeData');
-
+        let updatedData: any = this.storageService.getItem('homeData');
+        if (!updatedData) {
+            updatedData = {};
+        }
         if (!updatedData.trainingHistory) {
             updatedData.trainingHistory = [];
         }

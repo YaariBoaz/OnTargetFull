@@ -32,15 +32,16 @@
             </label>
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                 <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Invalid Email</div>
             </div>
         </div>
 
         <div class="row">
             <label [ngClass]="{'hasValue': registerForm.controls.password.dirty || registerForm.controls.password.touched }">
                 <p>Password</p>
-                <input type="password" formControlName="password" class="form-control"
+                <input [type]="fieldTextType ? 'text' : 'password'" formControlName="password" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" #password/>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
+                <svg  (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
                     <defs>
                         <clipPath id="clip-path">
                             <path d="M0 0H24V24H0z" class="cls-1"/>
@@ -67,8 +68,28 @@
 
         <div class="row">
             <label [ngClass]="{'hasValue': registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched }">
-            <p>Confirm Password</p>
-            <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" #confirmPassword />
+                <p>Confirm Password</p>
+                <input [type]="fieldTextType ? 'text' : 'password'" formControlName="confirmPassword" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" #confirmPassword/>
+                <svg  (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
+                    <defs>
+                        <clipPath id="clip-path">
+                            <path d="M0 0H24V24H0z" class="cls-1"/>
+                        </clipPath>
+                        <style>
+                            .cls-1 {
+                                fill: none
+                            }
+                        </style>
+                    </defs>
+                    <g id="Icon_Visibility_Filled" clip-path="url(#clip-path)"
+                       data-name="Icon / Visibility / Filled" opacity="0.5">
+                        <path id="Path_988"
+                              d="M24-39a11.827 11.827 0 0 0-11 7.5A11.827 11.827 0 0 0 24-24a11.827 11.827 0 0 0 11-7.5A11.827 11.827 0 0 0 24-39zm0 12.5a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5zm0-8a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
+                              data-name="Path 988" transform="translate(-12 44)"/>
+                        <path id="Box" d="M0 0H24V24H0z" class="cls-1"/>
+                    </g>
+                </svg>
             </label>
             <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                 <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>

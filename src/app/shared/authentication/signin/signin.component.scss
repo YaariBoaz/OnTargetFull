@@ -1,5 +1,7 @@
 @import "../../../../assets/colors";
-
+.disabled{
+  background-color: gray;
+}
 section.login {
   display: flex;
   flex-direction: column;
@@ -14,7 +16,7 @@ section.login {
 
   img.logo {
     width: 93px;
-    height: 130px;
+    height: 15vh;
     margin: 50px auto 79px auto;
   }
 

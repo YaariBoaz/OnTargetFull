@@ -11,6 +11,7 @@ import {SigninModalComponent} from '../../popups/signin-modal/signin-modal.compo
 import {InitService} from '../../services/init.service';
 import {Platform} from '@ionic/angular';
 import {Subscription} from 'rxjs';
+import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class SigninComponent implements OnInit {
     subscription: Subscription;
     forgotPassword;
     resetemail;
+    fieldTextType: boolean;
 
     constructor(
         public dialog: MatDialog,
@@ -42,6 +44,7 @@ export class SigninComponent implements OnInit {
         private screenOrientation: ScreenOrientation,
         private formBuilder: FormBuilder,
         private platform: Platform,
+        private nativePageTransitions: NativePageTransitions,
         private userService: UserService
     ) {
         // this.router.navigateByUrl('/home/tabs/tab1');
@@ -56,10 +59,6 @@ export class SigninComponent implements OnInit {
 
     get f() {
         return this.registerForm.controls;
-    }
-
-
-    ionViewWillLeave() {
     }
 
 
@@ -115,21 +114,38 @@ export class SigninComponent implements OnInit {
         this.router.navigateByUrl('wizard');
     }
 
-    async onLogin() {
-        if (this.registerForm.invalid) {
-            const dialogRef = this.dialog.open(SigninModalComponent, {
-                width: '344px',
-                data: {
-                    modalType: 'general'
-                }
+    ionViewWillLeave() {
+
+        const options: NativeTransitionOptions = {
+            direction: 'up',
+            duration: 500,
+            slowdownfactor: 3,
+            slidePixels: 20,
+            iosdelay: 100,
+            androiddelay: 150,
+            fixedPixelsTop: 0,
+            fixedPixelsBottom: 60
+        };
+
+        this.nativePageTransitions.slide(options)
+            .then(() => {
+            })
+            .catch(() => {
             });
+
+    }
+
+    async onLogin() {
+        this.submitted = true;
+        if (this.registerForm.invalid) {
             return;
         } else {
             this.initService.isLoading.next(true);
             this.apiService.login({
                 username: this.registerForm.value.email,
                 password: this.registerForm.value.password
-            }).subscribe(data => {
+            }).subscribe((data: any) => {
+                    localStorage.setItem('userId', data.id);
                     this.userService.setUser(data);
                     this.storageService.setItem('isLoggedIn', true);
                     this.storageService.setItem('profileData', data);
@@ -155,5 +171,9 @@ export class SigninComponent implements OnInit {
 
     resetPassword() {
 
+    }
+
+    toggleFieldTextType() {
+        this.fieldTextType = !this.fieldTextType;
     }
 }

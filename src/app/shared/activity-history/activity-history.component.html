@@ -1,5 +1,4 @@
 <section class="activity-history">
-    <!--[class.ios-mode]="this.platform.is('ios')"-->
     <header>
         <div class="back-button" (click)="onBackPressed()">
             <svg xmlns="http://www.w3.org/2000/svg" width="27.656" height="35" viewBox="0 0 27.656 35">
@@ -24,635 +23,65 @@
         <div class="menu">
             <span>⋮</span>
         </div>
-        <!--[matMenuTriggerFor]="menu"-->
-
-        <!--<button class="menu-button" >-->
-        <!--</button>-->
-
-        <!--<mat-menu #menu="matMenu">-->
-        <!--<button mat-menu-item>Item 1</button>-->
-        <!--<button mat-menu-item>Item 2</button>-->
-        <!--</mat-menu>-->
-
     </header>
-
-    <div class="date">
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" id="calendar_8_" width="16" height="16" data-name="calendar (8)"
-                 viewBox="0 0 16 16">
-                <g id="Group_801" data-name="Group 801">
-                    <g id="Group_800" data-name="Group 800">
-                        <path id="Path_16651"
-                              d="M14.286 1.714h-1.715V.571a.571.571 0 1 0-1.143 0v1.143H4.571V.571a.571.571 0 1 0-1.143 0v1.143H1.714A1.714 1.714 0 0 0 0 3.429v10.857A1.714 1.714 0 0 0 1.714 16h12.572A1.714 1.714 0 0 0 16 14.286V3.429a1.714 1.714 0 0 0-1.714-1.715zm.571 12.571a.571.571 0 0 1-.571.571H1.714a.571.571 0 0 1-.571-.571V6.857h13.714zm0-8.571H1.143V3.429a.571.571 0 0 1 .571-.571h1.715V4a.571.571 0 1 0 1.142 0V2.857h6.857V4a.571.571 0 1 0 1.143 0V2.857h1.714a.571.571 0 0 1 .571.571v2.286z"
-                              data-name="Path 16651"/>
-                    </g>
-                </g>
-                <g id="Group_803" data-name="Group 803" transform="translate(2.857 8)">
-                    <g id="Group_802" data-name="Group 802">
-                        <path id="Path_16652"
-                              d="M87.047 238.933H85.9a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                              data-name="Path 16652" transform="translate(-85.333 -238.933)"/>
-                    </g>
-                </g>
-                <g id="Group_805" data-name="Group 805" transform="translate(6.857 8)">
-                    <g id="Group_804" data-name="Group 804">
-                        <path id="Path_16653"
-                              d="M206.514 238.933h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                              data-name="Path 16653" transform="translate(-204.8 -238.933)"/>
-                    </g>
-                </g>
-                <g id="Group_807" data-name="Group 807" transform="translate(10.857 8)">
-                    <g id="Group_806" data-name="Group 806">
-                        <path id="Path_16654"
-                              d="M325.981 238.933h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                              data-name="Path 16654" transform="translate(-324.267 -238.933)"/>
-                    </g>
-                </g>
-                <g id="Group_809" data-name="Group 809" transform="translate(2.857 10.286)">
-                    <g id="Group_808" data-name="Group 808">
-                        <path id="Path_16655"
-                              d="M87.047 307.2H85.9a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                              data-name="Path 16655" transform="translate(-85.333 -307.2)"/>
-                    </g>
-                </g>
-                <g id="Group_811" data-name="Group 811" transform="translate(6.857 10.286)">
-                    <g id="Group_810" data-name="Group 810">
-                        <path id="Path_16656"
-                              d="M206.514 307.2h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
-                              data-name="Path 16656" transform="translate(-204.8 -307.2)"/>
-                    </g>
-                </g>
-                <g id="Group_813" data-name="Group 813" transform="translate(10.857 10.286)">
-                    <g id="Group_812" data-name="Group 812">
-                        <path id="Path_16657"
-                              d="M325.981 307.2h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                              data-name="Path 16657" transform="translate(-324.267 -307.2)"/>
-                    </g>
-                </g>
-                <g id="Group_815" data-name="Group 815" transform="translate(2.857 12.571)">
-                    <g id="Group_814" data-name="Group 814">
-                        <path id="Path_16658"
-                              d="M87.047 375.467H85.9a.571.571 0 1 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
-                              data-name="Path 16658" transform="translate(-85.333 -375.467)"/>
-                    </g>
-                </g>
-                <g id="Group_817" data-name="Group 817" transform="translate(6.857 12.571)">
-                    <g id="Group_816" data-name="Group 816">
-                        <path id="Path_16659"
-                              d="M206.514 375.467h-1.143a.571.571 0 1 0 0 1.143h1.143a.571.571 0 1 0 0-1.143z"
-                              data-name="Path 16659" transform="translate(-204.8 -375.467)"/>
-                    </g>
-                </g>
-                <g id="Group_819" data-name="Group 819" transform="translate(10.857 12.571)">
-                    <g id="Group_818" data-name="Group 818">
-                        <path id="Path_16660"
-                              d="M325.981 375.467h-1.143a.571.571 0 0 0 0 1.143h1.143a.571.571 0 0 0 0-1.143z"
-                              data-name="Path 16660" transform="translate(-324.267 -375.467)"/>
-                    </g>
-                </g>
-            </svg>
-        </div>
-        <div class="day-and-drill">
-            <div class="day">
-                <p><b>16.7.2020, </b></p>
-                <p>Thursday</p>
-            </div>
-            <p>2 Drills</p>
-        </div>
-    </div>
-
-    <div class="cards">
-        <div class="card">
-
-            <div class="target">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                        <path id="goal" fill="#fff"
-                              d="M16.679 4.3l.873-.873a.527.527 0 0 0-.329-.9L15.6 2.4 15.467.777a.527.527 0 0 0-.9-.328l-.873.873A9 9 0 0 0 2.636 15.364 9 9 0 0 0 16.679 4.3zM14.59 2.929a.528.528 0 0 0 .481.481l.929.079-1.258 1.261-1.375-.116-.117-1.376L14.511 2zM10.793 9a1.795 1.795 0 1 1-.955-1.584L8.627 8.627a.527.527 0 1 0 .746.746l1.211-1.211a1.781 1.781 0 0 1 .209.838zM10.6 6.649a2.851 2.851 0 1 0 .746.746l1.506-1.506a4.963 4.963 0 1 1-.746-.746zm4.013 7.969A7.945 7.945 0 1 1 3.382 3.382a7.949 7.949 0 0 1 9.544-1.291l-.595.595a.527.527 0 0 0-.154.359v.058l.071.841a6.017 6.017 0 1 0 1.806 1.806l.841.071h.127l.033-.006.021-.005.032-.01.02-.007.031-.013.019-.009.03-.017.018-.01.03-.022.014-.01a.523.523 0 0 0 .041-.037l.595-.595a7.949 7.949 0 0 1-1.291 9.544zm0 0"/>
-                    </svg>
+    <ion-list class="cards" scrollY="true">
+        <ion-item *ngFor="let train of trains;let i=index;">
+            <div class="card">
+                <div class="target">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path id="goal" fill="#fff"
+                                  d="M16.679 4.3l.873-.873a.527.527 0 0 0-.329-.9L15.6 2.4 15.467.777a.527.527 0 0 0-.9-.328l-.873.873A9 9 0 0 0 2.636 15.364 9 9 0 0 0 16.679 4.3zM14.59 2.929a.528.528 0 0 0 .481.481l.929.079-1.258 1.261-1.375-.116-.117-1.376L14.511 2zM10.793 9a1.795 1.795 0 1 1-.955-1.584L8.627 8.627a.527.527 0 1 0 .746.746l1.211-1.211a1.781 1.781 0 0 1 .209.838zM10.6 6.649a2.851 2.851 0 1 0 .746.746l1.506-1.506a4.963 4.963 0 1 1-.746-.746zm4.013 7.969A7.945 7.945 0 1 1 3.382 3.382a7.949 7.949 0 0 1 9.544-1.291l-.595.595a.527.527 0 0 0-.154.359v.058l.071.841a6.017 6.017 0 1 0 1.806 1.806l.841.071h.127l.033-.006.021-.005.032-.01.02-.007.031-.013.019-.009.03-.017.018-.01.03-.022.014-.01a.523.523 0 0 0 .041-.037l.595-.595a7.949 7.949 0 0 1-1.291 9.544zm0 0"/>
+                        </svg>
+                    </div>
+                    <div class="stats">
+                        <p class="counter">DRILL # {{i + 1}}</p>
+                        <p>{{train.pointsGained}} points</p>
+                    </div>
                 </div>
-                <div class="stats">
-                    <p class="counter">DRILL # 1</p>
-                    <p>12 points</p>
+                <div class="score">
+                    <div class="hits">
+                        <p class="score-value"><b>{{train.hits.length}}/ {{train.numberOfBullets}}</b></p>
+                        <p>HITS</p>
+                    </div>
+
+                    <div class="range">
+                        <b>{{train.range}}</b>
+                        <p>RANGE</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="score">
-                <div class="hits">
-                    <p class="score-value"><b>10/</b>12</p>
-                    <p>HITS</p>
-                </div>
-
-                <div class="range">
-                    <b>150</b>
-                    <p>RANGE</p>
-                </div>
-
-                <div class="time">
-                    <p>NO TIME LIMIT</p>
-                </div>
-            </div>
-            <div class="desc">
-                <p class="title">DESCRIPTION</p>
-                <p>No extra info on this drill</p>
-            </div>
-
-            <div class="show-more" [ngClass]="{'active': openShowMore }">
-                <p *ngIf="!openShowMore">
-                    SEE TARGET
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
-                        <defs>
-                            <style>.cls-1555 {
-                                fill: #707070;
-                            }</style>
-                        </defs>
-                        <title>Group 846</title>
-                        <g id="Group_846" data-name="Group 846">
-                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
-                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
-                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
-                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
-                        </g>
-                    </svg>
-                </p>
-                <div class="hidden-content">
-                    <ng-container *ngIf="openShowMore">
-                        <!-- Insert your hidden shit here. -->
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-
-            <div class="target">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                        <path id="goal" fill="#fff"
-                              d="M16.679 4.3l.873-.873a.527.527 0 0 0-.329-.9L15.6 2.4 15.467.777a.527.527 0 0 0-.9-.328l-.873.873A9 9 0 0 0 2.636 15.364 9 9 0 0 0 16.679 4.3zM14.59 2.929a.528.528 0 0 0 .481.481l.929.079-1.258 1.261-1.375-.116-.117-1.376L14.511 2zM10.793 9a1.795 1.795 0 1 1-.955-1.584L8.627 8.627a.527.527 0 1 0 .746.746l1.211-1.211a1.781 1.781 0 0 1 .209.838zM10.6 6.649a2.851 2.851 0 1 0 .746.746l1.506-1.506a4.963 4.963 0 1 1-.746-.746zm4.013 7.969A7.945 7.945 0 1 1 3.382 3.382a7.949 7.949 0 0 1 9.544-1.291l-.595.595a.527.527 0 0 0-.154.359v.058l.071.841a6.017 6.017 0 1 0 1.806 1.806l.841.071h.127l.033-.006.021-.005.032-.01.02-.007.031-.013.019-.009.03-.017.018-.01.03-.022.014-.01a.523.523 0 0 0 .041-.037l.595-.595a7.949 7.949 0 0 1-1.291 9.544zm0 0"/>
-                    </svg>
-                </div>
-                <div class="stats">
-                    <p class="counter">DRILL # 1</p>
-                    <p>12 points</p>
-                </div>
-            </div>
-
-            <div class="score">
-                <div class="hits">
-                    <p class="score-value"><b>10/</b>12</p>
-                    <p>HITS</p>
-                </div>
-
-                <div class="range">
-                    <b>150</b>
-                    <p>RANGE</p>
-                </div>
-
-                <div class="time">
-                    <p>NO TIME LIMIT</p>
-                </div>
-            </div>
-            <div class="desc">
-                <p class="title">DESCRIPTION</p>
-                <p>Surprise drills, 3 bullets at a time. Pre-planned jam and magazine switch.</p>
-            </div>
-
-            <!-- If this will be a loop you can use index or something -->
-            <div class="show-more" #menu>
-                <p class="see-target" (click)="toggleMenu(menu)">
-                    SEE TARGET
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
-                        <defs>
-                            <style>.cls-1555 {
-                                fill: #707070;
-                            }</style>
-                        </defs>
-                        <title>Group 846</title>
-                        <g id="Group_846" data-name="Group 846">
-                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
-                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
-                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
-                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
-                        </g>
-                    </svg>
-                </p>
-
-                <div class="hidden-content">
-                    <ng-container>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="160.188" height="160.188"
-                             viewBox="0 0 160.188 160.188">
+                <div class="show-more" [ngClass]="{'active': openShowMore }" style=" margin: 0.5em;">
+                    <div *ngIf="!train.openShowMore" (click)="train.openShowMore = !train.openShowMore;"
+                         style="display: flex;justify-content: center;     color: #707070;align-items: center;flex-direction: column;">
+                        <span class="see-target">SEE TARGET</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5"
+                             style=" width: 16px;  height: 5px;">
                             <defs>
-                                <style>
-                                    .cls-1222 {
-                                        fill: #fbfbfb
-                                    }
-
-                                    .cls-2223112 {
-                                        fill: #ce564b
-                                    }
-                                </style>
+                                <style>.cls-1555 {
+                                    fill: #707070;
+                                }</style>
                             </defs>
-                            <g id="target_svg_fixed" data-name="target svg fixed">
-                                <g id="Group_498" data-name="Group 498">
-                                    <g id="Path_440-2">
-                                        <path id="Path_443"
-                                              d="M79.828 159.763a83.414 83.414 0 0 1-16.019-1.583 74.811 74.811 0 0 1-14.9-4.657 72.849 72.849 0 0 1-13.5-7.357 90.914 90.914 0 0 1-11.828-9.686 69.734 69.734 0 0 1-9.686-11.828 86.4 86.4 0 0 1-7.357-13.5A79.974 79.974 0 0 1 .2 80.135a76.672 76.672 0 0 1 1.676-16.019 74.811 74.811 0 0 1 4.657-14.9 72.848 72.848 0 0 1 7.357-13.5 90.912 90.912 0 0 1 9.686-11.828A69.733 69.733 0 0 1 35.4 14.2a86.394 86.394 0 0 1 13.5-7.357 78.809 78.809 0 0 1 14.9-4.657A76.611 76.611 0 0 1 79.828.6a83.416 83.416 0 0 1 16.019 1.583 74.812 74.812 0 0 1 14.9 4.657 72.848 72.848 0 0 1 13.5 7.357 90.91 90.91 0 0 1 11.828 9.686 73.587 73.587 0 0 1 9.686 11.828 86.4 86.4 0 0 1 7.357 13.5 78.812 78.812 0 0 1 4.657 14.9 76.615 76.615 0 0 1 1.583 16.019 83.419 83.419 0 0 1-1.583 16.019 74.814 74.814 0 0 1-4.657 14.9 72.852 72.852 0 0 1-7.357 13.5 90.912 90.912 0 0 1-9.686 11.828 73.585 73.585 0 0 1-11.828 9.686 86.393 86.393 0 0 1-13.5 7.357 78.812 78.812 0 0 1-14.9 4.657 76.672 76.672 0 0 1-16.019 1.686z"
-                                              class="cls-1222" data-name="Path 443" transform="translate(.266 -.041)"/>
-                                        <path id="Path_444"
-                                              d="M79.794.931a82.457 82.457 0 0 0-15.926 1.584 76.759 76.759 0 0 0-14.9 4.657 81.053 81.053 0 0 0-13.411 7.264 77.193 77.193 0 0 0-11.735 9.686 84.257 84.257 0 0 0-9.686 11.735 74.706 74.706 0 0 0-7.265 13.41 81.426 81.426 0 0 0-4.657 14.9 80.888 80.888 0 0 0 0 31.851 76.759 76.759 0 0 0 4.657 14.9 81.054 81.054 0 0 0 7.264 13.411 77.192 77.192 0 0 0 9.686 11.735 84.258 84.258 0 0 0 11.735 9.686 74.7 74.7 0 0 0 13.411 7.264 81.42 81.42 0 0 0 14.9 4.657 80.889 80.889 0 0 0 31.851 0 76.757 76.757 0 0 0 14.9-4.657 81.051 81.051 0 0 0 13.411-7.264 77.192 77.192 0 0 0 11.735-9.686 84.252 84.252 0 0 0 9.686-11.735 74.706 74.706 0 0 0 7.264-13.411 81.425 81.425 0 0 0 4.657-14.9 80.889 80.889 0 0 0 0-31.851 76.762 76.762 0 0 0-4.657-14.9 81.056 81.056 0 0 0-7.264-13.411 77.193 77.193 0 0 0-9.686-11.735 84.256 84.256 0 0 0-11.735-9.686 74.706 74.706 0 0 0-13.411-7.264 81.426 81.426 0 0 0-14.9-4.657A82.457 82.457 0 0 0 79.794.931m0-.931A80.094 80.094 0 1 1-.3 80.094 80.09 80.09 0 0 1 79.794 0z"
-                                              class="cls-2223112" data-name="Path 444" transform="translate(.3)"/>
-                                    </g>
-                                </g>
-                                <ellipse id="Ellipse_456" cx="60.629" cy="60.909" fill="#ce564b" opacity="0.791"
-                                         rx="60.629" ry="60.909" transform="translate(19.493 19.223)"/>
-                                <circle id="Ellipse_457" cx="50.664" cy="50.664" r="50.664" class="cls-1222"
-                                        transform="rotate(-80.782 82.715 48.079)"/>
-                                <circle id="Ellipse_458" cx="35.856" cy="35.856" r="35.856" class="cls-2223112"
-                                        transform="translate(44.266 44.275)"/>
-                                <circle id="Ellipse_459" cx="19.93" cy="19.93" r="19.93" class="cls-1222"
-                                        transform="translate(60.192 60.201)"/>
-                                <circle id="Ellipse_460" cx="11.668" cy="11.668" r="11.668" class="cls-2223112"
-                                        transform="translate(68.454 68.463)"/>
-                                <path id="Rectangle_362" d="M0 0H3.167V56.904H0z" class="cls-1222"
-                                      transform="translate(78.073 3.39)"/>
-                                <path id="Rectangle_361" d="M0 0H57.183V3.167H0z" class="cls-1222"
-                                      transform="translate(3.753 77.71)"/>
-                                <path id="Rectangle_360" d="M0 0H58.487V3.167H0z" class="cls-1222"
-                                      transform="translate(98.376 77.71)"/>
-                                <path id="Path_439" d="M540.3 310.2h3.167v59.046H540.3z" class="cls-1222"
-                                      transform="translate(-462.227 -211.629)"/>
+                            <title>Group 846</title>
+                            <g id="Group_846" data-name="Group 846">
+                                <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
+                                      d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
+                                <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
+                                      d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
                             </g>
                         </svg>
-                        <p class="close-target" (click)="toggleMenu(menu)">
-                            CLOSE TARGET
-                             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
-                        <defs>
-                            <style>.cls-1555 {
-                                fill: #707070;
-                            }</style>
-                        </defs>
-                        <title>Group 846</title>
-                        <g id="Group_846" data-name="Group 846">
-                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
-                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
-                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
-                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
-                        </g>
-                    </svg>
-                        </p>
-                    </ng-container>
-
+                    </div>
+                    <div class="hidden-content" #container>
+                        <ng-container *ngIf="train.openShowMore">
+                            <img src="assets/bullseye.png">
+                            <div class="hit" *ngFor="let shot of train.hits; let i = index" style="position: absolute;  "
+                                 [style.top.px]=shot.y
+                                 [style.right.px]=shot.x>
+                                {{i + 1}}
+                            </div>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="card">
-
-            <div class="target">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                        <path id="goal" fill="#fff"
-                              d="M16.679 4.3l.873-.873a.527.527 0 0 0-.329-.9L15.6 2.4 15.467.777a.527.527 0 0 0-.9-.328l-.873.873A9 9 0 0 0 2.636 15.364 9 9 0 0 0 16.679 4.3zM14.59 2.929a.528.528 0 0 0 .481.481l.929.079-1.258 1.261-1.375-.116-.117-1.376L14.511 2zM10.793 9a1.795 1.795 0 1 1-.955-1.584L8.627 8.627a.527.527 0 1 0 .746.746l1.211-1.211a1.781 1.781 0 0 1 .209.838zM10.6 6.649a2.851 2.851 0 1 0 .746.746l1.506-1.506a4.963 4.963 0 1 1-.746-.746zm4.013 7.969A7.945 7.945 0 1 1 3.382 3.382a7.949 7.949 0 0 1 9.544-1.291l-.595.595a.527.527 0 0 0-.154.359v.058l.071.841a6.017 6.017 0 1 0 1.806 1.806l.841.071h.127l.033-.006.021-.005.032-.01.02-.007.031-.013.019-.009.03-.017.018-.01.03-.022.014-.01a.523.523 0 0 0 .041-.037l.595-.595a7.949 7.949 0 0 1-1.291 9.544zm0 0"/>
-                    </svg>
-                </div>
-                <div class="stats">
-                    <p class="counter">DRILL # 1</p>
-                    <p>12 points</p>
-                </div>
-            </div>
-
-            <div class="score">
-                <div class="hits">
-                    <p class="score-value"><b>10/</b>12</p>
-                    <p>HITS</p>
-                </div>
-
-                <div class="range">
-                    <b>150</b>
-                    <p>RANGE</p>
-                </div>
-
-                <div class="time">
-                    <p>NO TIME LIMIT</p>
-                </div>
-            </div>
-            <div class="desc">
-                <p class="title">DESCRIPTION</p>
-                <p>Surprise drills, 3 bullets at a time. Pre-planned jam and magazine switch.</p>
-            </div>
-
-            <!-- If this will be a loop you can use index or something -->
-            <div class="show-more" #menu2>
-                <p class="see-target" (click)="toggleMenu(menu2)">
-                    SEE TARGET
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
-                        <defs>
-                            <style>.cls-1555 {
-                                fill: #707070;
-                            }</style>
-                        </defs>
-                        <title>Group 846</title>
-                        <g id="Group_846" data-name="Group 846">
-                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
-                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
-                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
-                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
-                        </g>
-                    </svg>
-                </p>
-                <div class="hidden-content">
-                    <ng-container>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="160.188" height="160.188"
-                             viewBox="0 0 160.188 160.188">
-                            <defs>
-                                <style>
-                                    .cls-1222 {
-                                        fill: #fbfbfb
-                                    }
-
-                                    .cls-2223112 {
-                                        fill: #ce564b
-                                    }
-                                </style>
-                            </defs>
-                            <g id="target_svg_fixed" data-name="target svg fixed">
-                                <g id="Group_498" data-name="Group 498">
-                                    <g id="Path_440-2">
-                                        <path id="Path_443"
-                                              d="M79.828 159.763a83.414 83.414 0 0 1-16.019-1.583 74.811 74.811 0 0 1-14.9-4.657 72.849 72.849 0 0 1-13.5-7.357 90.914 90.914 0 0 1-11.828-9.686 69.734 69.734 0 0 1-9.686-11.828 86.4 86.4 0 0 1-7.357-13.5A79.974 79.974 0 0 1 .2 80.135a76.672 76.672 0 0 1 1.676-16.019 74.811 74.811 0 0 1 4.657-14.9 72.848 72.848 0 0 1 7.357-13.5 90.912 90.912 0 0 1 9.686-11.828A69.733 69.733 0 0 1 35.4 14.2a86.394 86.394 0 0 1 13.5-7.357 78.809 78.809 0 0 1 14.9-4.657A76.611 76.611 0 0 1 79.828.6a83.416 83.416 0 0 1 16.019 1.583 74.812 74.812 0 0 1 14.9 4.657 72.848 72.848 0 0 1 13.5 7.357 90.91 90.91 0 0 1 11.828 9.686 73.587 73.587 0 0 1 9.686 11.828 86.4 86.4 0 0 1 7.357 13.5 78.812 78.812 0 0 1 4.657 14.9 76.615 76.615 0 0 1 1.583 16.019 83.419 83.419 0 0 1-1.583 16.019 74.814 74.814 0 0 1-4.657 14.9 72.852 72.852 0 0 1-7.357 13.5 90.912 90.912 0 0 1-9.686 11.828 73.585 73.585 0 0 1-11.828 9.686 86.393 86.393 0 0 1-13.5 7.357 78.812 78.812 0 0 1-14.9 4.657 76.672 76.672 0 0 1-16.019 1.686z"
-                                              class="cls-1222" data-name="Path 443" transform="translate(.266 -.041)"/>
-                                        <path id="Path_444"
-                                              d="M79.794.931a82.457 82.457 0 0 0-15.926 1.584 76.759 76.759 0 0 0-14.9 4.657 81.053 81.053 0 0 0-13.411 7.264 77.193 77.193 0 0 0-11.735 9.686 84.257 84.257 0 0 0-9.686 11.735 74.706 74.706 0 0 0-7.265 13.41 81.426 81.426 0 0 0-4.657 14.9 80.888 80.888 0 0 0 0 31.851 76.759 76.759 0 0 0 4.657 14.9 81.054 81.054 0 0 0 7.264 13.411 77.192 77.192 0 0 0 9.686 11.735 84.258 84.258 0 0 0 11.735 9.686 74.7 74.7 0 0 0 13.411 7.264 81.42 81.42 0 0 0 14.9 4.657 80.889 80.889 0 0 0 31.851 0 76.757 76.757 0 0 0 14.9-4.657 81.051 81.051 0 0 0 13.411-7.264 77.192 77.192 0 0 0 11.735-9.686 84.252 84.252 0 0 0 9.686-11.735 74.706 74.706 0 0 0 7.264-13.411 81.425 81.425 0 0 0 4.657-14.9 80.889 80.889 0 0 0 0-31.851 76.762 76.762 0 0 0-4.657-14.9 81.056 81.056 0 0 0-7.264-13.411 77.193 77.193 0 0 0-9.686-11.735 84.256 84.256 0 0 0-11.735-9.686 74.706 74.706 0 0 0-13.411-7.264 81.426 81.426 0 0 0-14.9-4.657A82.457 82.457 0 0 0 79.794.931m0-.931A80.094 80.094 0 1 1-.3 80.094 80.09 80.09 0 0 1 79.794 0z"
-                                              class="cls-2223112" data-name="Path 444" transform="translate(.3)"/>
-                                    </g>
-                                </g>
-                                <ellipse id="Ellipse_456" cx="60.629" cy="60.909" fill="#ce564b" opacity="0.791"
-                                         rx="60.629" ry="60.909" transform="translate(19.493 19.223)"/>
-                                <circle id="Ellipse_457" cx="50.664" cy="50.664" r="50.664" class="cls-1222"
-                                        transform="rotate(-80.782 82.715 48.079)"/>
-                                <circle id="Ellipse_458" cx="35.856" cy="35.856" r="35.856" class="cls-2223112"
-                                        transform="translate(44.266 44.275)"/>
-                                <circle id="Ellipse_459" cx="19.93" cy="19.93" r="19.93" class="cls-1222"
-                                        transform="translate(60.192 60.201)"/>
-                                <circle id="Ellipse_460" cx="11.668" cy="11.668" r="11.668" class="cls-2223112"
-                                        transform="translate(68.454 68.463)"/>
-                                <path id="Rectangle_362" d="M0 0H3.167V56.904H0z" class="cls-1222"
-                                      transform="translate(78.073 3.39)"/>
-                                <path id="Rectangle_361" d="M0 0H57.183V3.167H0z" class="cls-1222"
-                                      transform="translate(3.753 77.71)"/>
-                                <path id="Rectangle_360" d="M0 0H58.487V3.167H0z" class="cls-1222"
-                                      transform="translate(98.376 77.71)"/>
-                                <path id="Path_439" d="M540.3 310.2h3.167v59.046H540.3z" class="cls-1222"
-                                      transform="translate(-462.227 -211.629)"/>
-                            </g>
-                        </svg>
-                        <p class="close-target" (click)="toggleMenu(menu2)">
-                            CLOSE TARGET
-                             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
-                        <defs>
-                            <style>.cls-1555 {
-                                fill: #707070;
-                            }</style>
-                        </defs>
-                        <title>Group 846</title>
-                        <g id="Group_846" data-name="Group 846">
-                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
-                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
-                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
-                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
-                        </g>
-                    </svg>
-                        </p>
-                    </ng-container>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-
-            <div class="target">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                        <path id="goal" fill="#fff"
-                              d="M16.679 4.3l.873-.873a.527.527 0 0 0-.329-.9L15.6 2.4 15.467.777a.527.527 0 0 0-.9-.328l-.873.873A9 9 0 0 0 2.636 15.364 9 9 0 0 0 16.679 4.3zM14.59 2.929a.528.528 0 0 0 .481.481l.929.079-1.258 1.261-1.375-.116-.117-1.376L14.511 2zM10.793 9a1.795 1.795 0 1 1-.955-1.584L8.627 8.627a.527.527 0 1 0 .746.746l1.211-1.211a1.781 1.781 0 0 1 .209.838zM10.6 6.649a2.851 2.851 0 1 0 .746.746l1.506-1.506a4.963 4.963 0 1 1-.746-.746zm4.013 7.969A7.945 7.945 0 1 1 3.382 3.382a7.949 7.949 0 0 1 9.544-1.291l-.595.595a.527.527 0 0 0-.154.359v.058l.071.841a6.017 6.017 0 1 0 1.806 1.806l.841.071h.127l.033-.006.021-.005.032-.01.02-.007.031-.013.019-.009.03-.017.018-.01.03-.022.014-.01a.523.523 0 0 0 .041-.037l.595-.595a7.949 7.949 0 0 1-1.291 9.544zm0 0"/>
-                    </svg>
-                </div>
-                <div class="stats">
-                    <p class="counter">DRILL # 1</p>
-                    <p>12 points</p>
-                </div>
-            </div>
-
-            <div class="score">
-                <div class="hits">
-                    <p class="score-value"><b>10/</b>12</p>
-                    <p>HITS</p>
-                </div>
-
-                <div class="range">
-                    <b>150</b>
-                    <p>RANGE</p>
-                </div>
-
-                <div class="time">
-                    <p>NO TIME LIMIT</p>
-                </div>
-            </div>
-            <div class="desc">
-                <p class="title">DESCRIPTION</p>
-                <p>Surprise drills, 3 bullets at a time. Pre-planned jam and magazine switch.</p>
-            </div>
-
-            <!-- If this will be a loop you can use index or something -->
-            <div class="show-more" #menu3>
-                <p class="see-target" (click)="toggleMenu(menu3)">
-                    SEE TARGET
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
-                        <defs>
-                            <style>.cls-1555 {
-                                fill: #707070;
-                            }</style>
-                        </defs>
-                        <title>Group 846</title>
-                        <g id="Group_846" data-name="Group 846">
-                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
-                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
-                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
-                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
-                        </g>
-                    </svg>
-                </p>
-                <div class="hidden-content">
-                    <ng-container>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="160.188" height="160.188"
-                             viewBox="0 0 160.188 160.188">
-                            <defs>
-                                <style>
-                                    .cls-1222 {
-                                        fill: #fbfbfb
-                                    }
-
-                                    .cls-2223112 {
-                                        fill: #ce564b
-                                    }
-                                </style>
-                            </defs>
-                            <g id="target_svg_fixed" data-name="target svg fixed">
-                                <g id="Group_498" data-name="Group 498">
-                                    <g id="Path_440-2">
-                                        <path id="Path_443"
-                                              d="M79.828 159.763a83.414 83.414 0 0 1-16.019-1.583 74.811 74.811 0 0 1-14.9-4.657 72.849 72.849 0 0 1-13.5-7.357 90.914 90.914 0 0 1-11.828-9.686 69.734 69.734 0 0 1-9.686-11.828 86.4 86.4 0 0 1-7.357-13.5A79.974 79.974 0 0 1 .2 80.135a76.672 76.672 0 0 1 1.676-16.019 74.811 74.811 0 0 1 4.657-14.9 72.848 72.848 0 0 1 7.357-13.5 90.912 90.912 0 0 1 9.686-11.828A69.733 69.733 0 0 1 35.4 14.2a86.394 86.394 0 0 1 13.5-7.357 78.809 78.809 0 0 1 14.9-4.657A76.611 76.611 0 0 1 79.828.6a83.416 83.416 0 0 1 16.019 1.583 74.812 74.812 0 0 1 14.9 4.657 72.848 72.848 0 0 1 13.5 7.357 90.91 90.91 0 0 1 11.828 9.686 73.587 73.587 0 0 1 9.686 11.828 86.4 86.4 0 0 1 7.357 13.5 78.812 78.812 0 0 1 4.657 14.9 76.615 76.615 0 0 1 1.583 16.019 83.419 83.419 0 0 1-1.583 16.019 74.814 74.814 0 0 1-4.657 14.9 72.852 72.852 0 0 1-7.357 13.5 90.912 90.912 0 0 1-9.686 11.828 73.585 73.585 0 0 1-11.828 9.686 86.393 86.393 0 0 1-13.5 7.357 78.812 78.812 0 0 1-14.9 4.657 76.672 76.672 0 0 1-16.019 1.686z"
-                                              class="cls-1222" data-name="Path 443" transform="translate(.266 -.041)"/>
-                                        <path id="Path_444"
-                                              d="M79.794.931a82.457 82.457 0 0 0-15.926 1.584 76.759 76.759 0 0 0-14.9 4.657 81.053 81.053 0 0 0-13.411 7.264 77.193 77.193 0 0 0-11.735 9.686 84.257 84.257 0 0 0-9.686 11.735 74.706 74.706 0 0 0-7.265 13.41 81.426 81.426 0 0 0-4.657 14.9 80.888 80.888 0 0 0 0 31.851 76.759 76.759 0 0 0 4.657 14.9 81.054 81.054 0 0 0 7.264 13.411 77.192 77.192 0 0 0 9.686 11.735 84.258 84.258 0 0 0 11.735 9.686 74.7 74.7 0 0 0 13.411 7.264 81.42 81.42 0 0 0 14.9 4.657 80.889 80.889 0 0 0 31.851 0 76.757 76.757 0 0 0 14.9-4.657 81.051 81.051 0 0 0 13.411-7.264 77.192 77.192 0 0 0 11.735-9.686 84.252 84.252 0 0 0 9.686-11.735 74.706 74.706 0 0 0 7.264-13.411 81.425 81.425 0 0 0 4.657-14.9 80.889 80.889 0 0 0 0-31.851 76.762 76.762 0 0 0-4.657-14.9 81.056 81.056 0 0 0-7.264-13.411 77.193 77.193 0 0 0-9.686-11.735 84.256 84.256 0 0 0-11.735-9.686 74.706 74.706 0 0 0-13.411-7.264 81.426 81.426 0 0 0-14.9-4.657A82.457 82.457 0 0 0 79.794.931m0-.931A80.094 80.094 0 1 1-.3 80.094 80.09 80.09 0 0 1 79.794 0z"
-                                              class="cls-2223112" data-name="Path 444" transform="translate(.3)"/>
-                                    </g>
-                                </g>
-                                <ellipse id="Ellipse_456" cx="60.629" cy="60.909" fill="#ce564b" opacity="0.791"
-                                         rx="60.629" ry="60.909" transform="translate(19.493 19.223)"/>
-                                <circle id="Ellipse_457" cx="50.664" cy="50.664" r="50.664" class="cls-1222"
-                                        transform="rotate(-80.782 82.715 48.079)"/>
-                                <circle id="Ellipse_458" cx="35.856" cy="35.856" r="35.856" class="cls-2223112"
-                                        transform="translate(44.266 44.275)"/>
-                                <circle id="Ellipse_459" cx="19.93" cy="19.93" r="19.93" class="cls-1222"
-                                        transform="translate(60.192 60.201)"/>
-                                <circle id="Ellipse_460" cx="11.668" cy="11.668" r="11.668" class="cls-2223112"
-                                        transform="translate(68.454 68.463)"/>
-                                <path id="Rectangle_362" d="M0 0H3.167V56.904H0z" class="cls-1222"
-                                      transform="translate(78.073 3.39)"/>
-                                <path id="Rectangle_361" d="M0 0H57.183V3.167H0z" class="cls-1222"
-                                      transform="translate(3.753 77.71)"/>
-                                <path id="Rectangle_360" d="M0 0H58.487V3.167H0z" class="cls-1222"
-                                      transform="translate(98.376 77.71)"/>
-                                <path id="Path_439" d="M540.3 310.2h3.167v59.046H540.3z" class="cls-1222"
-                                      transform="translate(-462.227 -211.629)"/>
-                            </g>
-                        </svg>
-                        <p class="close-target" (click)="toggleMenu(menu3)">
-                            CLOSE TARGET
-                             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16 5">
-                        <defs>
-                            <style>.cls-1555 {
-                                fill: #707070;
-                            }</style>
-                        </defs>
-                        <title>Group 846</title>
-                        <g id="Group_846" data-name="Group 846">
-                            <path id="Rectangle_1895" data-name="Rectangle 1895" class="cls-1555"
-                                  d="M1,0H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,1H0A1,1,0,0,1,1,0Z"/>
-                            <path id="Rectangle_1896" data-name="Rectangle 1896" class="cls-1555"
-                                  d="M1,3H15a1,1,0,0,1,1,1h0a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4H0A1,1,0,0,1,1,3Z"/>
-                        </g>
-                    </svg>
-                        </p>
-                    </ng-container>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--<div class="train-line">-->
-    <!--<div class="right-side-and-train-info-container">-->
-    <!--<div class="right-side">-->
-    <!--<div class="circle"></div>-->
-    <!--<hr>-->
-    <!--<hr>-->
-    <!--<hr>-->
-    <!--</div>-->
-    <!--<div class="train-info">-->
-    <!--<p><span class="date">{{beutifiedDate}}</span>, <span class="day">{{currentDay}}</span></p>-->
-    <!--<p class="light-text"> {{numOfTrainings}} Drills</p>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="activity-history-container">-->
-    <!--<div class="history-card" *ngFor="let drill of drills; let i = index">-->
-    <!--<div class="right-line">-->
-
-    <!--</div>-->
-    <!--<div class="info-wrapper">-->
-    <!--<div class="title">-->
-    <!--<div class="img-container" [ngSwitch]="drill.drillType">-->
-    <!--<img *ngSwitchCase="'Zero'" src="../../assets/images/bullseye_black.png">-->
-    <!--<img *ngSwitchCase="'Hostage'" src="../../assets/images/conv_a_bullseye_head.png">-->
-    <!--</div>-->
-    <!--<div>-->
-    <!--<p>Drill {{i + 1}}</p>-->
-    <!--<span>{{drill.points}} Points</span>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="stats">-->
-    <!--<div class="hits">-->
-    <!--<div><h1>{{drill.shotItems.length}}</h1>/<h2>{{drill.numberOfBullets}}</h2></div>-->
-    <!--<span class="hint">HITS</span>-->
-    <!--</div>-->
-    <!--<div class="range">-->
-    <!--<h1 class="meter">{{drill.range}}</h1>-->
-    <!--<span class="hint">RANGE</span>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<hr style="height: 1px;width: 40%;background: #cdcdcd;">-->
-
-    <!--<mat-accordion *ngIf="drill &&  drill.drillType">-->
-    <!--<mat-expansion-panel>-->
-    <!--<mat-expansion-panel-header>-->
-    <!--<mat-panel-title>-->
-    <!--+ See your stats-->
-    <!--</mat-panel-title>-->
-    <!--</mat-expansion-panel-header>-->
-    <!--<div class="stats-container">-->
-    <!--<div class="header-wrapper">-->
-    <!--<p class="title">Bullets</p>-->
-    <!--<p class="title">Time</p>-->
-    <!--<p class="title">Split</p>-->
-    <!--</div>-->
-    <!--<div class="details" *ngFor="let stat of drill.shotItems">-->
-    <!--<div class="box">-->
-    <!--<p>{{stat.shotNumber}}</p>-->
-    <!--</div>-->
-    <!--<div class="box">-->
-    <!--<p>-->
-    <!--{{stat.time}}-->
-    <!--</p>-->
-    <!--</div>-->
-    <!--<div class="box">-->
-    <!--<p>{{stat.timeSplit}}</p>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="divider">-->
-    <!--<hr>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;                            <div class="summmaryRow" *ngIf="drill.summaryObject">&ndash;&gt;-->
-    <!--&lt;!&ndash;                                <div class="box">&ndash;&gt;-->
-    <!--&lt;!&ndash;                                    <p>{{drill.summaryObject.counter}}</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;                                <div class="box">&ndash;&gt;-->
-    <!--&lt;!&ndash;                                    <p>{{drill.summaryObject.distanceFromCenter | number : '1.2-2'}}</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;                                <div class="box">&ndash;&gt;-->
-    <!--&lt;!&ndash;                                    <p>&ndash;&gt;-->
-    <!--&lt;!&ndash;                                        {{drill.summaryObject.totalTime}}&ndash;&gt;-->
-    <!--&lt;!&ndash;                                    </p>&ndash;&gt;-->
-    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;                                <div class="box">&ndash;&gt;-->
-    <!--&lt;!&ndash;                                    <p>{{drill.summaryObject.split}}</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;                                <div class="box">&ndash;&gt;-->
-    <!--&lt;!&ndash;                                    <p>{{drill.summaryObject.points | number : '1.2-2'}}</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-    <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
-    <!--</div>-->
-    <!--</mat-expansion-panel>-->
-    <!--</mat-accordion>-->
-
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+        </ion-item>
+    </ion-list>
 </section>

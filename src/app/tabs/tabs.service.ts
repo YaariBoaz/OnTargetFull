@@ -6,9 +6,9 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class TabsService {
 
-    $notifyTab1 = new BehaviorSubject<any>(null);
-    $notifyTab2 = new BehaviorSubject<any>(null);
-    $notifyTab3 = new BehaviorSubject<any>(null);
+    $notifyTab1 = new BehaviorSubject<any>(false);
+    $notifyTab2 = new BehaviorSubject<any>(false);
+    $notifyTab3 = new BehaviorSubject<any>(false);
 
 
     constructor() {

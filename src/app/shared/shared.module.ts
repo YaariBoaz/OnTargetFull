@@ -15,12 +15,13 @@ import {TermsAndConditionComponent} from './components/terms-and-condition/terms
 import {SelectTargetComponent} from './select-target-modal/select-target-component';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {SelectTargetModalComponent} from './select-target-modal/modal/select-target-modal.component';
-import {ErrorModalComponent} from "../shared/popups/error-modal/error-modal.component";
-import {AccessModalComponent} from "../shared/popups/access-modal/access-modal.component";
-import { ReversePipe } from './pipes/reverse.pipe';
+import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
+import {AccessModalComponent} from '../shared/popups/access-modal/access-modal.component';
+import {ReversePipe} from './pipes/reverse.pipe';
+import {NoConnetionErroComponent} from './popups/no-connection/no-connetion-error';
 
 @NgModule({
-    declarations: [Tab3Page, AccessModalComponent, GunlistComponent, SightlistComponent, TermsAndConditionComponent, SelectTargetComponent, SelectTargetModalComponent, ErrorModalComponent, ReversePipe],
+    declarations: [Tab3Page, NoConnetionErroComponent, AccessModalComponent, GunlistComponent, SightlistComponent, TermsAndConditionComponent, SelectTargetComponent, SelectTargetModalComponent, ErrorModalComponent, ReversePipe],
 
     imports: [
         CommonModule,

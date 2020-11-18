@@ -12,7 +12,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {SelectTargetModalComponent} from '../../select-target-modal/modal/select-target-modal.component';
 import {PreviewAnyFile} from '@ionic-native/preview-any-file/ngx';
 import {File} from '@ionic-native/File/ngx';
-import {ErrorModalComponent} from "../../../shared/popups/error-modal/error-modal.component";
+import {ErrorModalComponent} from '../../../shared/popups/error-modal/error-modal.component';
+import {DocumentViewer} from '@ionic-native/document-viewer/ngx';
+import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
 
 export const routes: Routes = [
     {path: '', component: SignupWizardComponent},
@@ -28,14 +30,15 @@ export const routes: Routes = [
         CommonModule,
         SharedModule,
         RouterModule.forChild(routes),
-        MatDialogModule
+        MatDialogModule,
+        NgxExtendedPdfViewerModule
     ],
     declarations: [
         SignupWizardComponent,
         SignupComponent,
         WizardSummaryComponent,
     ],
-    providers: [PreviewAnyFile, File],
+    providers: [PreviewAnyFile, File, DocumentViewer],
     entryComponents: [SelectTargetModalComponent, ErrorModalComponent],
 
     exports: [SignupWizardComponent]

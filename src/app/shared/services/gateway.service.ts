@@ -77,6 +77,16 @@ export class GatewayService {
         this.drillFinished = false;
         this.pageData = this.DEFAULT_PAGE_DATA;
         this.startTimer();
+        this.hitArrived.next({
+            statsData: {
+                shot: null,
+                stats: [],
+                pageData: null,
+                isFinish: false,
+                summaryObject: null
+            }
+        });
+
     }
 
     startTimer() {
@@ -87,35 +97,37 @@ export class GatewayService {
     }
 
     public handelShoot(parentImageHeight, parentImageWidth, data) {
-        this.pageData.counter++;
 
         const x = data.xCoord;
         const y = data.yCoord;
-        this.hits.push({x, y});
+
+        const nominalStep = 8;
         const width = parentImageWidth;
         const height = parentImageHeight;
 
+        const deltaX = width / nominalStep;
+        const deltaY = height / nominalStep;
 
-        const deltaX = width / 8;
-        const deltaY = height / 8;
+        const widthCorrection = (0.0628 * width - 7.6862);
+        const heigthCorrection = (-0.0628 * height - 8.3138);
 
-
-        const normalizeX = x / 8;
-        const normalizeY = y / 8;
-
-
-        const px = deltaX * normalizeX;
-        let py = deltaY * normalizeY;
-        py = py - deltaY;
+        const xPos = (width - (deltaX * (x / nominalStep))) + widthCorrection;
+        const yPos = ((deltaY * (y / nominalStep))) + heigthCorrection;
 
 
-        if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
-            this.updateStats(px, py, false, {x, y});
+        this.pageData.counter++;
+        this.hits.push({xPos, yPos});
+
+        if (this.pageData.counter > this.shootingService.numberOfBullersPerDrill) {
+            console.log('Shot After Drill Finished - Ignoring It');
+
+        } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
+            this.updateStats(xPos, yPos, false, {x, y});
             this.finishDrill();
             this.updateHistory();
         } else {
 
-            this.updateStats(px, py, false, {x, y});
+            this.updateStats(xPos, yPos, false, {x, y});
         }
     }
 
@@ -369,17 +381,21 @@ export class GatewayService {
 
     // Parses X/Y to normal state
     public handleShot_MSG(dataArray) {
-        const x = dataArray[2];
-        let xCoord = 0;
-        if (x && x !== '') {
-            xCoord = parseFloat(x);
+        const targetName = dataArray[0];
+        const target = this.storageService.getItem('slectedTarget');
+        if (targetName === target.name) {
+            const x = dataArray[2];
+            let xCoord = 0;
+            if (x && x !== '') {
+                xCoord = parseFloat(x);
+            }
+            const y = dataArray[3];
+            let yCoord = 0;
+            if (y && y !== '') {
+                yCoord = parseFloat(dataArray[3]);
+            }
+            this.handelShoot(this.height, this.width, {xCoord, yCoord});
         }
-        const y = dataArray[3];
-        let yCoord = 0;
-        if (y && y !== '') {
-            yCoord = parseFloat(dataArray[3]);
-        }
-        this.handelShoot(this.height, this.width, {xCoord, yCoord});
     }
 
     public hanldeBateryTime_MSG(dataArray) {
@@ -392,6 +408,7 @@ export class GatewayService {
     }
 
     public handleBatteryPrecentage_MSG(dataArray) {
+        const targetName = dataArray[0];
         const b = dataArray[2];
         let heartRate = 0;
         if (b && b !== '') {

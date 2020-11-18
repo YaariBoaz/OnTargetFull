@@ -3,6 +3,7 @@ import {BehaviorSubject} from 'rxjs';
 import {ApiService} from './api.service';
 import {HistoryModel, HistoryValueItemModel} from '../models/HistoryModel';
 import {BestScores, DashboardModel, HitRatioChart, RateOfFireChart} from '../models/dashboard-model';
+import {BleService} from './ble.service';
 
 
 @Injectable({
@@ -11,195 +12,6 @@ import {BestScores, DashboardModel, HitRatioChart, RateOfFireChart} from '../mod
 export class StorageService {
 
     DEFAULT_DATA: DashboardModel = new DashboardModel();
-
-    // TEMP_TRAINING_HISTORY: DashboardModel = [
-    //     {
-    //         date: 'Fri Feb 28 2020 13:02:29 GMT+0200 (Israel Standard Time)',
-    //         day: 'Friday',
-    //         drillType: 'Bullseye',
-    //         hits: 10,
-    //         totalShots: 5,
-    //         range: 150,
-    //         timeLimit: null,
-    //         points: 10,
-    //         recommendation: {
-    //             Probabilty: 0,
-    //             Recommendation: 'Tightening Grip While Pulling Trigger'
-    //         },
-    //         shots: [
-    //             {
-    //                 x: 244.2,
-    //                 y: 259.375
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 259.375
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 259.375
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 208.5
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 106.75
-    //             }
-    //         ],
-    //         email: 'boazy@gmail.com'
-    //     },
-    //     {
-    //         date: 'Fri Feb 28 2020 13:37:37 GMT+0200 (Israel Standard Time)',
-    //         day: 'Friday',
-    //         drillType: 'Bullseye',
-    //         hits: 10,
-    //         totalShots: 5,
-    //         range: 150,
-    //         timeLimit: null,
-    //         points: 10,
-    //         shots: [
-    //             {
-    //                 x: 244.2,
-    //                 y: 259.375
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 208.5
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 106.75
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 157.625
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 208.5
-    //             }
-    //         ],
-    //         recommendation: {
-    //             Probabilty: 0,
-    //             Recommendation: 'Tightening Grip While Pulling Trigger'
-    //         },
-    //         email: 'boazy@gmail.com'
-    //     },
-    //     {
-    //         date: 'Fri Feb 28 2020 13:40:06 GMT+0200 (Israel Standard Time)',
-    //         day: 'Friday',
-    //         drillType: 'Bullseye',
-    //         hits: 10,
-    //         totalShots: 5,
-    //         range: 150,
-    //         timeLimit: null,
-    //         points: 10,
-    //         shots: [
-    //             {
-    //                 x: 244.2,
-    //                 y: 259.375
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 208.5
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 157.625
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 106.75
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 208.5
-    //             }
-    //         ],
-    //         recommendation: {
-    //             Probabilty: 0,
-    //             Recommendation: 'Tightening Grip While Pulling Trigger'
-    //         },
-    //         email: 'boazy@gmail.com'
-    //     },
-    //     {
-    //         date: 'Fri Feb 28 2020 13:40:42 GMT+0200 (Israel Standard Time)',
-    //         day: 'Friday',
-    //         drillType: 'Bullseye',
-    //         hits: 10,
-    //         totalShots: 5,
-    //         range: 150,
-    //         timeLimit: null,
-    //         points: 10,
-    //         shots: [
-    //             {
-    //                 x: 244.2,
-    //                 y: 259.375
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 208.5
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 157.625
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 106.75
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 157.625
-    //             }
-    //         ],
-    //         recommendation: {
-    //             Probabilty: 0,
-    //             Recommendation: 'Tightening Grip While Pulling Trigger'
-    //         },
-    //         email: 'boazy@gmail.com'
-    //     },
-    //     {
-    //         date: 'Fri Feb 28 2020 13:43:02 GMT+0200 (Israel Standard Time)',
-    //         day: 'Friday',
-    //         drillType: 'Bullseye',
-    //         hits: 10,
-    //         totalShots: 5,
-    //         range: 150,
-    //         timeLimit: null,
-    //         points: 10,
-    //         shots: [
-    //             {
-    //                 x: 244.2,
-    //                 y: 259.375
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 208.5
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 157.625
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 106.75
-    //             },
-    //             {
-    //                 x: 244.2,
-    //                 y: 157.625
-    //             }
-    //         ],
-    //         recommendation: {
-    //             Probabilty: 0.75,
-    //             Recommendation: 'Good Shooting'
-    //         },
-    //         email: 'boazy@gmail.com'
-    //     }
-    // ];
-
     data = {};
     DATA_NAME = 'homeData';
     historicalTrainingsDate$ = new BehaviorSubject<any>(null);
@@ -255,8 +67,8 @@ export class StorageService {
     }
 
 
-    passhistoricalTrainingsDate(date: HistoryModel) {
-        this.historicalTrainingsDate$.next(date);
+    passhistoricalTrainingsDate(data) {
+        this.historicalTrainingsDate$.next(data);
     }
 
     private handleMockData() {

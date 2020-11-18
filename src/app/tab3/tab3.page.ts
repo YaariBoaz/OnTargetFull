@@ -15,6 +15,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {SelectTargetModalComponent} from '../shared/select-target-modal/modal/select-target-modal.component';
 import {InitService} from '../shared/services/init.service';
 import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
+import {TabsService} from '../tabs/tabs.service';
 
 
 @Component({
@@ -48,6 +49,7 @@ export class Tab3Page implements OnInit {
 
     constructor(private storageService: StorageService,
                 private ref: ChangeDetectorRef,
+                private tabService: TabsService,
                 private crop: Crop,
                 private formBuilder: FormBuilder,
                 private router: Router,
@@ -60,8 +62,10 @@ export class Tab3Page implements OnInit {
                 private initService: InitService,
                 private wizardService: WizardService,
                 public dialog: MatDialog) {
-        if (this.router.url === '/home/tabs/tab3') {
+        if (this.router.url === '/home') {
             this.showHeader = true;
+            this.isFromWizard = false;
+
         } else {
             this.isFromWizard = true;
         }
@@ -76,7 +80,11 @@ export class Tab3Page implements OnInit {
             email: ['', [Validators.required, Validators.email]],
         });
 
-
+        this.tabService.$notifyTab3.subscribe(flag => {
+            if (flag) {
+                this.initActctions();
+            }
+        });
     }
 
     ionViewDidEnter() {
@@ -107,6 +115,26 @@ export class Tab3Page implements OnInit {
                 this.profile = profile;
             }
         });
+
+        if (this.profile.firstName) {
+            this.registerForm.get('first_name').setValue(this.profile.firstName);
+        } else {
+            this.registerForm.get('first_name').setValue(this.profile.first_name);
+        }
+
+
+        if (this.profile.lastnName) {
+            this.registerForm.get('last_name').setValue(this.profile.firstName);
+        } else {
+            this.registerForm.get('last_name').setValue(this.profile.last_name);
+        }
+        this.registerForm.get('gender').setValue(this.profile.gender);
+        this.registerForm.get('country').setValue(this.profile.country);
+        this.registerForm.get('state').setValue(this.profile.state);
+        this.registerForm.get('email').setValue(this.profile.email);
+
+
+        this.ref.detectChanges();
     }
 
     ngOnInit(): void {
@@ -234,7 +262,8 @@ export class Tab3Page implements OnInit {
         this.form.state = value;
     }
 
-    onGenderSelected(value: string) {
+    onGenderSelected(value) {
+        this.registerForm.get('gender').setValue(value);
     }
 
     pickImage(sourceType) {
@@ -288,6 +317,10 @@ export class Tab3Page implements OnInit {
 
     isTab3() {
         return this.router.url === '/home';
+    }
+
+    onSaveChanges() {
+
     }
 }
 

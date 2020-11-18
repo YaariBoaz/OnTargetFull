@@ -9,6 +9,9 @@ import {WizardService} from './wizard.service';
 import {PreviewAnyFile} from '@ionic-native/preview-any-file/ngx';
 import {HttpClient} from '@angular/common/http';
 import {File} from '@ionic-native/File/ngx';
+import {DocumentViewer} from '@ionic-native/document-viewer/ngx';
+import {DocumentViewerOptions} from '@ionic-native/document-viewer';
+import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 
 @Component({
     selector: 'app-signup-wizard',
@@ -42,14 +45,18 @@ export class SignupWizardComponent implements OnInit {
     isTargetModalOpned = false;
     assetPath1 = './assets//docs/ADLTOU.doc';
     assetPath2 = './assets//docs/ADLPrivacyPolicy.doc';
+    isShowUOT = false;
+    isPrivatePolicy = false;
 
     constructor(private platform: Platform,
                 private formBuilder: FormBuilder,
                 private router: Router,
+                private nativePageTransitions: NativePageTransitions,
                 private ref: ChangeDetectorRef,
                 private zone: NgZone,
                 private file: File,
                 private http: HttpClient,
+                private documentV: DocumentViewer,
                 private previewAnyFile: PreviewAnyFile,
                 private wizardService: WizardService) {
 
@@ -77,6 +84,27 @@ export class SignupWizardComponent implements OnInit {
         }, false);
     }
 
+    ionViewWillLeave() {
+
+        const options: NativeTransitionOptions = {
+            direction: 'up',
+            duration: 500,
+            slowdownfactor: 3,
+            slidePixels: 20,
+            iosdelay: 100,
+            androiddelay: 150,
+            fixedPixelsTop: 0,
+            fixedPixelsBottom: 60
+        };
+
+        this.nativePageTransitions.slide(options)
+            .then(() => {
+            })
+            .catch(() => {
+            });
+
+    }
+
 
     ngOnInit() {
         if (this.wizardService.isFromListScreen) {
@@ -101,23 +129,33 @@ export class SignupWizardComponent implements OnInit {
     }
 
     openTerms() {
-        this.http.get(this.assetPath1, {responseType: 'blob'}).subscribe(fileBlob => {
-            let fileName = this.assetPath1.replace(/^.*(\\|\/|\:)/, '');
-            const writeDirectory = this.platform.is('ios') ? this.file.syncedDataDirectory : this.file.externalDataDirectory;
-            this.file.writeFile(writeDirectory, fileName, fileBlob, {replace: true}).then(fileProp => {
-                this.previewAnyFile.preview(fileProp.nativeURL);
-            })
-        });
+        const os = this.getMobileOperatingSystem();
+        if (os === 'iOS') {
+            const baseUrl = location.href.replace('/index.html', '');
+            this.documentV.viewDocument(baseUrl + '/assets/docs/ADLTOU.pdf', 'application/pdf', {title: 'Terms Of Use'});
+
+        } else {
+            const options: DocumentViewerOptions = {
+                title: 'Terms Of Use'
+            };
+            this.documentV.viewDocument('file:///android_asset/www/assets/docs/ADLTOU.pdf', 'application/pdf', options);
+        }
+
+
     }
 
     openPrivacy() {
-        this.http.get(this.assetPath2, {responseType: 'blob'}).subscribe(fileBlob => {
-            let fileName = this.assetPath2.replace(/^.*(\\|\/|\:)/, '');
-            const writeDirectory = this.platform.is('ios') ? this.file.syncedDataDirectory : this.file.externalDataDirectory;
-            this.file.writeFile(writeDirectory, fileName, fileBlob, {replace: true}).then(fileProp => {
-                this.previewAnyFile.preview(fileProp.nativeURL);
-            })
-        });
+        const os = this.getMobileOperatingSystem();
+        if (os === 'iOS') {
+            const baseUrl = location.href.replace('/index.html', '');
+            this.documentV.viewDocument(baseUrl + '/assets/docs/ADLPrivacyPolicy.pdf', 'application/pdf', {title: 'Terms Of Use'});
+
+        } else {
+            const options: DocumentViewerOptions = {
+                title: 'Privacy Policy'
+            };
+            this.documentV.viewDocument('file:///android_asset/www/assets/docs/ADLPrivacyPolicy.pdf', 'application/pdf', options);
+        }
     }
 
 
@@ -142,6 +180,7 @@ export class SignupWizardComponent implements OnInit {
 
     activeNextStep() {
         this.stepOneComplete = true;
+        this.stepOneActive = false;
         this.stepTwoActive = true;
     }
 
@@ -167,12 +206,52 @@ export class SignupWizardComponent implements OnInit {
         };
 
         this.stepTwoComplete = true;
+        this.stepTwoActive = false;
         this.stepThreeActive = true;
         this.ref.detectChanges();
     }
 
     completeStepThree() {
         this.stepThreeComplete = true;
+        this.stepThreeActive = false;
         this.stepFourActive = true;
+    }
+
+
+    getMobileOperatingSystem() {
+        const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+
+        // Windows Phone must come first because its UA also contains "Android"
+        if (/windows phone/i.test(userAgent)) {
+            return 'Windows Phone';
+        }
+
+        if (/android/i.test(userAgent)) {
+            return 'Android';
+        }
+
+        // iOS detection from: http://stackoverflow.com/a/9039885/177710
+        if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
+            return 'iOS';
+        }
+
+        return 'unknown';
+    }
+
+    back() {
+        if (this.stepOneActive) {
+            this.router.navigateByUrl('');
+        }
+        if (this.stepTwoActive) {
+            this.backToFirst();
+        }
+        if (this.stepThreeActive) {
+            this.stepTwoActive = true;
+            this.stepThreeActive = false;
+        }
+        if (this.stepFourActive) {
+            this.stepThreeActive = true;
+            this.stepFourActive = false;
+        }
     }
 }

@@ -45,7 +45,6 @@ export class BleService {
         private initService: InitService,
         private bluetoothSerial: BluetoothSerial,
         private gatewayService: GatewayService) {
-        console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             INIT BLE SERVICE                %%%%%%%%%%%%%%%%%%%%%%%%');
         this.devices = this.storage.getItem('ble');
         if (!this.devices) {
             this.devices = [];
@@ -78,6 +77,7 @@ export class BleService {
                     device.name.toLowerCase().includes('nordic') ||
                     device.name.toLowerCase().includes('e1')) {
                     if (device.name.toLowerCase().includes('egateway') || device.name.toLowerCase().includes('nordic')) {
+                        device.name = 'eTarget E1n1';
                         this.gateways.push(device.id);
                     }
                     if (this.devices.length === 0) {
@@ -138,11 +138,14 @@ export class BleService {
 
     onConnected(peripheral: any) {
         this.isConnectedFlag = false;
+        if (!this.isGateway) {
+            this.resetShots();
+        }
         console.log('Connected to ' + peripheral.name + ' ' + peripheral.id);
         this.ngZone.run(() => {
             this.peripheral = peripheral;
         });
-        this.handleRead(peripheral.id, SERVICE_2, SERVICE_2_CHAR);
+        this.handleRead(peripheral.name, peripheral.id, SERVICE_2, SERVICE_2_CHAR);
     }
 
     onDeviceDisconnected(peripheral) {
@@ -162,8 +165,9 @@ export class BleService {
     }
 
 
-    handleRead(id, service, characteristic) {
+    handleRead(name, id, service, characteristic) {
         this.subscription = this.ble.startNotification(id, service, characteristic).subscribe((data) => {
+            const target = this.storage.getItem('slectedTarget');
             const dec = new TextDecoder();
             const enc = new TextEncoder();
             const buffer = new Uint8Array(data);
@@ -183,10 +187,12 @@ export class BleService {
                     });
                 }
             }
+
         });
     }
 
     parseGatewayMessage(buffer: Uint8Array) {
+        const target = this.storage.getItem('slectedTarget');
         const messageFromGatewaty = String.fromCharCode.apply(null, buffer);
         console.log('MESSAGE ARRIVED: ' + messageFromGatewaty);
         if (messageFromGatewaty.indexOf('<') > -1) {
@@ -199,14 +205,6 @@ export class BleService {
         }
     }
 
-
-    distory() {
-        this.ble.disconnect(this.currentTargetId).then(() => {
-            this.isConnectedFlag = false;
-            this.notifyDissconnect.next({isManually: true, status: true});
-            console.log('Called Disconnect');
-        });
-    }
 
     isConnected(): Promise<any> {
         return this.ble.isConnected(this.peripheral);
