@@ -269,6 +269,7 @@ export class SelectTargetComponent implements OnInit {
                     device.name.toLowerCase().includes('egateway') ||
                     device.name.toLowerCase().includes('nordic') ||
                     device.name.toLowerCase().includes('e1')) {
+                    this.myTargets.push({name: device.name, isSelected: true})
                     this.connectToGetTargetName(device.id);
                 }
             }

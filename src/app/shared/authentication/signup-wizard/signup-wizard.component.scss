@@ -1,5 +1,6 @@
 @import "../../../../assets/colors";
 
+
 section.sign-up-wizard {
   display: flex;
   flex-direction: column;
@@ -376,4 +377,10 @@ section.sign-up-wizard {
       height: 25px;
     }
   }
+}
+
+.iphone{
+  background-color: white;
+  margin-bottom: env(safe-area-inset-bottom);
+  margin-top: env(safe-area-inset-bottom);
 }

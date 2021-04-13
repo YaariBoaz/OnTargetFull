@@ -29,7 +29,7 @@ export class SignupWizardComponent implements OnInit {
     public stepTwoActive: boolean;
     public stepThreeActive: boolean;
     public stepFourActive: boolean;
-
+    isShowHeader = true;
     isLinear = true;
 
     firstFormGroup: FormGroup;
@@ -105,6 +105,10 @@ export class SignupWizardComponent implements OnInit {
 
     }
 
+    hideShowKeyboard(event) {
+        this.isShowHeader = event;
+    }
+
 
     ngOnInit() {
         if (this.wizardService.isFromListScreen) {
@@ -142,6 +146,15 @@ export class SignupWizardComponent implements OnInit {
         }
 
 
+    }
+
+    isIphone() {
+        const iPhone = /iPhone/.test(navigator.userAgent) && !(window as any).MSStream;
+        const aspect = window.screen.width / window.screen.height;
+        if (iPhone && aspect.toFixed(3) === '0.462') {
+            return true;
+        }
+        return false;
     }
 
     openPrivacy() {

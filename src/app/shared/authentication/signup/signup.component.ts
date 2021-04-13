@@ -1,15 +1,17 @@
 import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StorageService} from '../../services/storage.service';
 import {ApiService} from '../../services/api.service';
 import {ActionSheetController, AlertController, LoadingController, Platform} from '@ionic/angular';
 import {Tab3Service} from '../../../tab3/tab3.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
-import {ProfileImageService} from '../../services/profile-image.service';
 import {WizardService} from '../signup-wizard/wizard.service';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
+import {KeyboardInfo, KeyboardResize, Plugins} from '@capacitor/core';
+
+const { Keyboard } = Plugins;
 
 @Component({
     selector: 'app-signup',
@@ -21,7 +23,9 @@ export class SignupComponent implements OnInit {
     @Output() move: EventEmitter<any> = new EventEmitter<any>();
     @Output() backToFirst: EventEmitter<any> = new EventEmitter<any>();
     @Output() stepTwoComplete: EventEmitter<any> = new EventEmitter<any>();
+    @Output() hideShowKeyboard: EventEmitter<any> = new EventEmitter<any>();
 
+    isKeyboardOpen = false;
     registerForm: FormGroup;
     submitted = false;
     errorMessage;
@@ -62,7 +66,16 @@ export class SignupComponent implements OnInit {
         if (this.wizardService.registerForm) {
             this.registerForm = this.wizardService.registerForm;
         }
+        Keyboard.addListener('keyboardDidShow', (info: KeyboardInfo) => {
+            this.isKeyboardOpen = true;
+            this.ref.detectChanges();
+         });
+        Keyboard.addListener('keyboardWillHide', () => {
+            this.isKeyboardOpen = false;
+
+        });
     }
+
 
     toggleFieldTextType() {
         this.fieldTextType = !this.fieldTextType;
@@ -138,6 +151,15 @@ export class SignupComponent implements OnInit {
             ]
         });
         await actionSheet.present();
+    }
+
+    isIphone() {
+        const iPhone = /iPhone/.test(navigator.userAgent) && !(window as any).MSStream;
+        const aspect = window.screen.width / window.screen.height;
+        if (iPhone && aspect.toFixed(3) === '0.462') {
+            return true;
+        }
+        return false;
     }
 
 

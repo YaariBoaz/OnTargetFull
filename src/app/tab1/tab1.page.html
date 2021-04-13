@@ -24,11 +24,11 @@
         </div>
 
         <div class="profile">
-            <div class="avatar" *ngIf="profile.img">
-                <img *ngIf="profile.img" [src]="profile.img">
+            <div class="avatar" *ngIf="profile?.img">
+                <img *ngIf="profile?.img" [src]="profile?.img">
                 <img *ngIf="!profile.img" src="../../assets/avatar.jpg"/>
             </div>
-            <div class="avatar" *ngIf="!profile.img">
+            <div class="avatar" *ngIf="!profile?.img">
                 <img src="assets/avatar.jpg">
             </div>
             <div class="stats" *ngIf="!isNotTrainedYet">

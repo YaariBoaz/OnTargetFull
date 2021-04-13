@@ -34,7 +34,7 @@ export class SelectTargetModalComponent implements OnInit {
     targetIsConnected = false;
     targetNotSelected = true;
     connectedClicked = false;
-
+git
     constructor(private http: HttpClient,
                 private bleService: BleService,
                 private storageService: StorageService,

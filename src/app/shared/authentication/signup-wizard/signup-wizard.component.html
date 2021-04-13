@@ -1,4 +1,4 @@
-<section class="sign-up-wizard">
+<section class="sign-up-wizard" [class.iphone]="isIphone()">
     <div class="back" *ngIf="stepTwoActive || stepThreeActive || stepFourActive">
         <img (click)="back()" src="assets/icons/Arrow%20@3x.png"><span>Back </span>
     </div>
@@ -146,6 +146,7 @@
     <app-signup
             *ngIf="stepOneComplete && !stepTwoComplete"
             (back)="onBackToLogin()"
+            (hideShowKeyboard)="hideShowKeyboard($event)"
             (stepTwoComplete)="completeStepTwo($event)"
             (backToFirst)="backToFirst()">
     </app-signup>

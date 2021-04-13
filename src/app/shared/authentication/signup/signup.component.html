@@ -1,5 +1,5 @@
-<section class="sign-up">
-    <form class="signInForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<section class="sign-up" [class.iphone]="isIphone()">
+    <form class="signInForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()" [class.addpading]="isIphone() && isKeyboardOpen">
 
         <div class="row">
             <label [ngClass]="{'hasValue': registerForm.controls.first_name.dirty || registerForm.controls.first_name.touched }">
@@ -41,7 +41,8 @@
                 <p>Password</p>
                 <input [type]="fieldTextType ? 'text' : 'password'" formControlName="password" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" #password/>
-                <svg  (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
+                <svg (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     class="eye" viewBox="0 0 24 24">
                     <defs>
                         <clipPath id="clip-path">
                             <path d="M0 0H24V24H0z" class="cls-1"/>
@@ -69,9 +70,11 @@
         <div class="row">
             <label [ngClass]="{'hasValue': registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched }">
                 <p>Confirm Password</p>
-                <input [type]="fieldTextType ? 'text' : 'password'" formControlName="confirmPassword" class="form-control"
+                <input [type]="fieldTextType ? 'text' : 'password'" formControlName="confirmPassword"
+                       class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" #confirmPassword/>
-                <svg  (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="eye" viewBox="0 0 24 24">
+                <svg (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     class="eye" viewBox="0 0 24 24">
                     <defs>
                         <clipPath id="clip-path">
                             <path d="M0 0H24V24H0z" class="cls-1"/>
