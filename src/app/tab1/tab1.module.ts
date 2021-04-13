@@ -12,6 +12,8 @@ import {MatAccordion, MatExpansionModule, MatMenuModule} from '@angular/material
 import {Camera} from '@ionic-native/camera/ngx';
 import {Tab3Service} from '../tab3/tab3.service';
 import {ActivityHistoryComponent} from '../shared/activity-history/activity-history.component';
+import {SigninModule} from '../shared/authentication/signin/signin.module';
+import {WizardModule} from '../shared/authentication/signup-wizard/wizard.module';
 
 @NgModule({
     imports: [
@@ -22,7 +24,9 @@ import {ActivityHistoryComponent} from '../shared/activity-history/activity-hist
         SharedModule,
         ChartsModule,
         MatIconModule,
-        MatMenuModule
+        MatMenuModule,
+        SigninModule,
+        WizardModule
     ],
     providers: [Camera, Tab3Service],
     declarations: [Tab1Page, ActivityHistoryComponent],

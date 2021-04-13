@@ -1,4 +1,5 @@
-<ion-content color="light">
+<app-singin *ngIf="showSignin"></app-singin>
+<ion-content *ngIf="showRegular" color="light">
     <ion-refresher slot="fixed" disabled="false" (ionRefresh)="doRefresh($event)" pullFactor="0.5" pullMin="100"
                    pullMax="200">
         <ion-refresher-content

@@ -63,6 +63,7 @@
             </label>
             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                 <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength"> Name must be at least 6 characters long.</div>
             </div>
         </div>
 

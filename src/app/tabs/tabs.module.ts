@@ -23,7 +23,7 @@ import {SharedModule} from '../shared/shared.module';
         Tab1PageModule,
         Tab2PageModule,
         Tab3PageModule,
-        SharedModule
+        SharedModule,
     ],
     providers: [TabsService],
     declarations: [TabsPage],

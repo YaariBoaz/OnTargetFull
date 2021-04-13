@@ -91,6 +91,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     fakeShots = FakeData.fakeShots;
 
 
+
     constructor(
         private screenOrientation: ScreenOrientation,
         private storageService: StorageService,
@@ -212,7 +213,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         if (content) {
             content.style.display = 'flex';
         }
-        this.initStats();
+
         if (this.drill === null || this.stats.length !== this.drill.numOfBullets) {
             await this.closeDrillBeforeFinish(false);
         }
@@ -339,6 +340,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 this.showResults = true;
                 this.showCounter = false;
                 this.drillHasNotStarted = false;
+                this.bleService.resetShots();
                 clearInterval(interval);
                 if (this.isGateway) {
                     setTimeout(() => {

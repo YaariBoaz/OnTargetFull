@@ -27,6 +27,7 @@ export class Tab3Page implements OnInit {
     @Output() move: EventEmitter<any> = new EventEmitter<any>();
     @Output() stepThreeComplete: EventEmitter<any> = new EventEmitter<any>();
     @Input() form: any;
+    @Input() isFromWizardInput: boolean;
 
     croppedImagepath;
     profile;
@@ -94,6 +95,7 @@ export class Tab3Page implements OnInit {
     initActctions() {
 
         this.profile = this.storageService.getItem('profileData');
+        debugger
         const inventory: InventoryModel = this.storageService.getItem('inventory');
         const target = this.storageService.getItem('personalTarget');
         if (!inventory) {
@@ -224,25 +226,21 @@ export class Tab3Page implements OnInit {
 
 
     finishWizard() {
-        if (this.router.url === '/home') {
-            // update user.
-        } else {
-            this.form.sights = this.mySights;
-            this.form.weapons = this.myGuns;
-            this.form.target = this.myTarget;
-            this.form.profilePicture = this.profile.picture;
-            this.wizardService.moreInfoForm = this.form;
-            console.log('In finishWizard' + new Date());
-            this.initService.isLoading.next(true);
-            this.wizardService.registerUser();
-            this.initService.notifyError.subscribe((error) => {
-                if (error) {
-                    const dialogRef = this.dialog.open(ErrorModalComponent, {
-                        data: {modalType: 'general'}
-                    });
-                }
-            });
-        }
+        this.form.sights = this.mySights;
+        this.form.weapons = this.myGuns;
+        this.form.target = this.myTarget;
+        this.form.profilePicture = this.profile.picture;
+        this.wizardService.moreInfoForm = this.form;
+        console.log('In finishWizard' + new Date());
+        this.initService.isLoading.next(true);
+        this.wizardService.registerUser();
+        this.initService.notifyError.subscribe((error) => {
+            if (error) {
+                const dialogRef = this.dialog.open(ErrorModalComponent, {
+                    data: {modalType: 'general'}
+                });
+            }
+        });
     }
 
     onHideTargets() {
@@ -316,7 +314,7 @@ export class Tab3Page implements OnInit {
     }
 
     isTab3() {
-        return this.router.url === '/home';
+        return this.isFromWizardInput;
     }
 
     onSaveChanges() {

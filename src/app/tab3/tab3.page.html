@@ -1,4 +1,4 @@
-<section class="profile" *ngIf="isTab3(); else notTabs">
+<section class="profile" *ngIf="!isTab3(); else notTabs">
     <header [class.ios-mode]="this.getPlarform()">
         <div>
             <p> Profile </p>
