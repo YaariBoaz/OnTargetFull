@@ -103,15 +103,12 @@ export class WizardService {
                 password: toSend.password
             }).subscribe((data) => {
                 if (data) {
-                    console.log('In registerUser AFTER SignIn' + new Date());
                     this.userService.setUser(data);
                     this.apiService.getDashboardData(this.userService.getUserId());
                     this.apiService.getDashboardData(this.userService.getUserId());
                     this.storageService.setItem('isLoggedIn', true);
                     this.storageService.setItem('profileData', data);
-                    console.log('In registerUser BEFORE rout to dashboard' + new Date());
-                    this.router.navigateByUrl('/home');
-                    this.initService.notifySignupFinished.next(true);
+                    this.notifyUserWasRegisterd.next(true);
                 }
             });
         });

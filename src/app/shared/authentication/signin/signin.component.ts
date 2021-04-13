@@ -12,6 +12,7 @@ import {InitService} from '../../services/init.service';
 import {Platform} from '@ionic/angular';
 import {Subscription} from 'rxjs';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
+import {WizardService} from '../signup-wizard/wizard.service';
 
 
 @Component({
@@ -32,6 +33,8 @@ export class SigninComponent implements OnInit {
     forgotPassword;
     resetemail;
     fieldTextType: boolean;
+    showWizard = false;
+    showSignin = true;
 
     constructor(
         public dialog: MatDialog,
@@ -43,12 +46,18 @@ export class SigninComponent implements OnInit {
         public loadingController: LoadingController,
         private screenOrientation: ScreenOrientation,
         private formBuilder: FormBuilder,
+        private wizardService: WizardService,
         private platform: Platform,
         private nativePageTransitions: NativePageTransitions,
         private userService: UserService
     ) {
         // this.router.navigateByUrl('/home/tabs/tab1');
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        const content: any = document.querySelector('mat-tab-header');
+        if (content) {
+            content.style.display = 'none';
+        }
+
     }
 
     ionViewDidLoad() {
@@ -111,7 +120,8 @@ export class SigninComponent implements OnInit {
     }
 
     goToSignUp() {
-        this.router.navigateByUrl('wizard');
+        this.showWizard = true;
+        this.showSignin = false;
     }
 
     ionViewWillLeave() {
@@ -135,6 +145,7 @@ export class SigninComponent implements OnInit {
 
     }
 
+
     async onLogin() {
         this.submitted = true;
         if (this.registerForm.invalid) {
@@ -150,7 +161,7 @@ export class SigninComponent implements OnInit {
                     this.storageService.setItem('isLoggedIn', true);
                     this.storageService.setItem('profileData', data);
                     this.initService.isLoading.next(false);
-                    this.router.navigateByUrl('');
+                    this.wizardService.notifyUserWasRegisterd.next(true);
                 },
                 (error) => {
                     this.initService.isLoading.next(false);
@@ -175,5 +186,10 @@ export class SigninComponent implements OnInit {
 
     toggleFieldTextType() {
         this.fieldTextType = !this.fieldTextType;
+    }
+
+    closeWizard() {
+        this.showSignin = true;
+        this.showWizard = false;
     }
 }

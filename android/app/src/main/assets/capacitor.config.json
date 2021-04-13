@@ -23,5 +23,12 @@
         "style": "dark"
       }
     }
+<<<<<<< HEAD
+=======
+  },
+  "server": {
+    "url": "http://192.168.30.96:8100",
+    "cleartext": true
+>>>>>>> d083207a50246080ae05abd9e92bf3053afc384f
   }
 }

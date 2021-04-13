@@ -36,11 +36,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb195e86-ced8-4599-a54e-fcf0617378aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../capacitor.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../capacitor.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../android/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../resources/android/xml/network_security_config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/.npmignore" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/assets/capacitor.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/assets/capacitor.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/java/io/ionic/starter/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/java/adl/onTarget/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-hdpi-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-hdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-hdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-mdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-mdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xhdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xxhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xxhdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xxxhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xxxhdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-hdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-hdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-mdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-mdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xhdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xxhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xxhdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xxxhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xxxhdpi/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup/signup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup/signup.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/drill/hit-nohit.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/hit-nohit.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab1/tab1.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/tab1/tab1.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab1/tab1.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab3/tab3.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tabs/tabs.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tabs/tabs.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +121,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/app/shared/drill/drill.component.ts" root0="SKIP_INSPECTION" />
@@ -76,11 +149,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/AHM/package/main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -114,6 +187,10 @@
       <workItem from="1601966448859" duration="24040000" />
       <workItem from="1602056328311" duration="11476000" />
       <workItem from="1602423611203" duration="23000" />
+      <workItem from="1616326384674" duration="125000" />
+      <workItem from="1616739883874" duration="1202000" />
+      <workItem from="1617521408702" duration="24000" />
+      <workItem from="1618213920336" duration="7309000" />
     </task>
     <servers />
   </component>
@@ -144,66 +221,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="586" y="201" key="#Inspections" timestamp="1600761604545">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="586" y="201" key="#Inspections/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600761604545" />
-    <state x="711" y="388" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1600761820507">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="711" y="388" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600761820507" />
-    <state x="-2276" y="319" width="1736" height="856" maximized="true" key="DiffContextDialog" timestamp="1602051439699">
-      <screen x="-1920" y="130" width="1920" height="1040" />
-    </state>
-    <state x="14" y="-8" width="1736" height="856" maximized="true" key="DiffContextDialog/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600936598536" />
-    <state x="-2276" y="319" width="1736" height="856" maximized="true" key="DiffContextDialog/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602051439699" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1602423632937">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/-1920.130.1920.1040/0.0.1920.1040/1920.0.1280.720@0.0.1920.1040" timestamp="1601363687960" />
-    <state x="-1180" y="404" key="FileChooserDialogImpl/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600943662036" />
-    <state x="740" y="274" key="FileChooserDialogImpl/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602423632937" />
-    <state x="740" y="274" key="FileChooserDialogImpl/460.2160.1000.464/0.0.1920.1040/0.1080.1280.720@0.0.1920.1040" timestamp="1596648576526" />
-    <state x="463" y="166" key="SettingsEditor" timestamp="1600934472202">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="463" y="166" key="SettingsEditor/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600934472202" />
-    <state x="463" y="166" key="SettingsEditor/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600774279167" />
-    <state x="92" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602051155941">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="-1828" y="222" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600686082320" />
-    <state x="92" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602051155941" />
-    <state x="566" y="149" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601978520831">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="566" y="149" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601978520831" />
-    <state x="669" y="271" width="581" height="534" key="find.popup" timestamp="1602072849080">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="669" y="271" width="581" height="498" key="find.popup/-1920.130.1920.1040/0.0.1920.1040/1920.0.1280.720@0.0.1920.1040" timestamp="1601203888038" />
-    <state x="669" y="271" width="581" height="534" key="find.popup/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602072849080" />
-    <state x="669" y="271" width="581" height="498" key="find.popup/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600778503513" />
-    <state x="823" y="405" width="348" height="298" key="org.angular.cli.generate" timestamp="1600773677048">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="823" y="405" width="348" height="298" key="org.angular.cli.generate/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600674693575" />
-    <state x="823" y="405" width="348" height="298" key="org.angular.cli.generate/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600773677048" />
-    <state x="-1304" y="370" key="run.anything.popup" timestamp="1600938551141">
-      <screen x="-1920" y="130" width="1920" height="1040" />
-    </state>
-    <state x="-1304" y="370" key="run.anything.popup/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600938551141" />
-    <state x="616" y="240" key="run.anything.popup/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600778124760" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602087211622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.130.1920.1040/0.0.1920.1040/1920.0.1280.720@0.0.1920.1040" timestamp="1601363674305" />
-    <state x="-1297" y="355" width="672" height="678" key="search.everywhere.popup/-1920.130.1920.1040/0.0.1920.1040@-1920.130.1920.1040" timestamp="1600940764466" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.130.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602087211622" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1280.693/2380.1080.1000.504/0.0.1920.1040@0.0.1920.1040" timestamp="1600780108189" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/460.2160.1000.464/0.0.1920.1040/0.1080.1280.720@0.0.1920.1040" timestamp="1596648414213" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

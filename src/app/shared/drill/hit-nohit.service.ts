@@ -111,8 +111,10 @@ export class HitNohitService {
 
     initStats() {
         this.stats = [];
-        this.drillFinished = false;
+        this.drillIsFinished = false;
         this.pageData = this.DEFAULT_PAGE_DATA;
+        this.pageData.counter = 0;
+        this.bleService.resetShots();
         this.startTimer();
 
     }

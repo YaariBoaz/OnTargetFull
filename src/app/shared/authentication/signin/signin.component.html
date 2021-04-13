@@ -1,4 +1,4 @@
-<section class="login" *ngIf="!forgotPassword">
+<section class="login" *ngIf="showSignin">
     <img class="logo" src="/assets/logo.png" alt="logo">
 
     <div class="form">
@@ -20,7 +20,8 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input formControlName="password" [type]="fieldTextType ? 'text' : 'password'"  matInput placeholder="Password">
+                    <input formControlName="password" [type]="fieldTextType ? 'text' : 'password'" matInput
+                           placeholder="Password">
                     <mat-icon (click)="toggleFieldTextType()" matSuffix>remove_red_eye</mat-icon>
                 </mat-form-field>
                 <div class="errors" *ngIf="submitted && f.password.errors">
@@ -38,7 +39,7 @@
     </div>
 
 </section>
-
+<app-signup-wizard (closWizard)="closeWizard()" *ngIf="showWizard"></app-signup-wizard>
 <section *ngIf="forgotPassword" class="login">
     <div (click)="forgotPassword = !forgotPassword" class="x"> X</div>
     <img class="logo" src="/assets/logo.png" alt="logo">

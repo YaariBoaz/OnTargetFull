@@ -2,10 +2,6 @@
 <resources>
     <string name="app_name">onTarget</string>
     <string name="title_activity_main">onTarget</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
-    <string name="fb_app_name">some</string>
-    <string name="fb_app_id">some</string>
-
-
+    <string name="package_name">adl.onTarget</string>
+    <string name="custom_url_scheme">adl.onTarget</string>
 </resources>

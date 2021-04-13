@@ -6,6 +6,7 @@ import {SigninComponent} from './signin.component';
 import {ErrorModalComponent} from '../../popups/error-modal/error-modal.component';
 import {AccessModalComponent} from '../../popups/access-modal/access-modal.component';
 import {SigninModalComponent} from '../../popups/signin-modal/signin-modal.component';
+import {WizardModule} from '../signup-wizard/wizard.module';
 
 export const routes: Routes = [
     {path: '', component: SigninComponent}
@@ -16,7 +17,8 @@ export const routes: Routes = [
     imports: [
         SharedModule,
         CommonModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        WizardModule
     ],
     entryComponents: [ErrorModalComponent, AccessModalComponent, SigninModalComponent],
     exports: [SigninComponent, ErrorModalComponent],

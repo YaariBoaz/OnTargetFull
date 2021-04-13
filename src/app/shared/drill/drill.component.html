@@ -67,7 +67,8 @@
         </div>
         <div class="targetHoly" *ngIf="!isGateway">
             <div *ngIf="showResults" class="some-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" width="282.232" height="282.232" viewBox="0 0 282.232 282.232">
+                <svg *ngIf="!drillIsFinished" xmlns="http://www.w3.org/2000/svg" width="282.232" height="282.232"
+                     viewBox="0 0 282.232 282.232">
                     <defs>
                         <style>
                             g#target_svg_fixed .cls-1 {
@@ -110,6 +111,7 @@
                               transform="translate(-402.744 -136.529)"/>
                     </g>
                 </svg>
+                <img *ngIf="drillIsFinished" src="assets/bullseye-finish.png">
                 <div class="counter-shot">{{shotNumber}}</div>
             </div>
             <div class="welcome-message" *ngIf="!showResults">

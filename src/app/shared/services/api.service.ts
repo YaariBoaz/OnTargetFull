@@ -40,7 +40,7 @@ export class ApiService {
 
     syncDataGateway(dataToSync) {
         return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadDrills', dataToSync);
-    }
+    }ng
 
     getWeapons() {
         return this.http.get(this.BACKOFFICE_URL + 'DeviceData/getWeapons');

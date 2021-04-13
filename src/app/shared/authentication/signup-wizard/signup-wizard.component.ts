@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, NgZone, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {StepperSelectionEvent} from '@angular/cdk/stepper';
 import {MatHorizontalStepper, MatStepper} from '@angular/material/stepper';
@@ -20,7 +20,7 @@ import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/nati
 })
 export class SignupWizardComponent implements OnInit {
     @ViewChild(MatHorizontalStepper, {static: true}) stepper: MatHorizontalStepper;
-
+    @Output() closWizard = new EventEmitter();
     public stepOneComplete: boolean;
     public stepTwoComplete: boolean;
     public stepThreeComplete: boolean;
@@ -59,6 +59,13 @@ export class SignupWizardComponent implements OnInit {
                 private documentV: DocumentViewer,
                 private previewAnyFile: PreviewAnyFile,
                 private wizardService: WizardService) {
+
+
+        const content: any = document.querySelector('mat-tab-header');
+        if (content) {
+            content.style.display = 'none';
+        }
+
 
         this.wizardService.selectTargetFromWizardOpened.subscribe(flag => {
             this.isTargetModalOpned = flag;

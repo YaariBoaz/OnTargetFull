@@ -19,6 +19,7 @@ import {Label, MultiDataSet} from 'ng2-charts';
 import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
 import {ActivityHistoryComponent} from '../shared/activity-history/activity-history.component';
 import {MatDialog} from '@angular/material';
+import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
 
 @Component({
     selector: 'app-tab1',
@@ -68,6 +69,9 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     points = 0;
     showUi = false;
     isNotTrainedYet = false;
+    showWizard = false;
+    showSignin = false;
+    showRegular = true;
 
     constructor(private platform: Platform,
                 private networkService: NetworkService,
@@ -81,16 +85,38 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 private tabsService: TabsService,
                 private initService: InitService,
                 private apiService: ApiService,
+                private wizardService: WizardService,
                 private screenOrientation: ScreenOrientation,
                 private storageService: StorageService) {
+        if (localStorage.isLoggedIn && localStorage.isLoggedIn === 'true') {
+            this.showSignin = false;
+            this.showRegular = true;
+            this.showWizard = false;
+        } else {
+            this.showSignin = true;
+            this.showRegular = false;
+            this.showWizard = false;
+        }
+        this.wizardService.notifyUserWasRegisterd.subscribe(data => {
+            if (data) {
+                this.showSignin = false;
+                this.showRegular = true;
+                this.showWizard = false;
+                this.initDashboard();
+                const content: any = document.querySelector('mat-tab-header');
+                if (content) {
+                    content.style.display = 'flex';
+                }
+            }
+        });
     }
 
+
     ngOnInit(): void {
-        if (!localStorage.isLoggedIn) {
-            this.router.navigateByUrl('/signin');
-        } else {
+        if (this.showRegular) {
             this.initDashboard();
         }
+
         this.initService.notifySignupFinished.subscribe((data) => {
             if (data) {
                 this.initService.isLoading.next(false);
@@ -136,7 +162,9 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         localStorage.setItem('homeData', null);
         localStorage.setItem('sightList', null);
         localStorage.setItem('gunList', null);
-        this.router.navigateByUrl('signin');
+        this.showSignin = true;
+        this.showRegular = false;
+        this.showWizard = false;
     }
 
     createLineChart() {
