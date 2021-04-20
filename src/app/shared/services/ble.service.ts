@@ -37,6 +37,7 @@ export class BleService {
     gatewayTargets: { gateway: any; target: any };
     notifyResetGateway = new BehaviorSubject(false);
     gateways = [];
+    private activatRecconectProcessCount = 0;
 
     constructor(
         private storage: StorageService,
@@ -122,7 +123,7 @@ export class BleService {
             this.resetShots();
         }
         this.currentTargetId = deviceId;
-        this.subscription = this.ble.connect(deviceId).subscribe(
+        this.ble.connect(deviceId).subscribe(
             (peripheral) => {
                 this.isConnectedFlag = false;
                 this.notifyTargetConnected.next(true);
@@ -166,6 +167,7 @@ export class BleService {
 
 
     handleRead(name, id, service, characteristic) {
+
         this.subscription = this.ble.startNotification(id, service, characteristic).subscribe((data) => {
             const target = this.storage.getItem('slectedTarget');
             const dec = new TextDecoder();
@@ -195,6 +197,7 @@ export class BleService {
         const target = this.storage.getItem('slectedTarget');
         const messageFromGatewaty = String.fromCharCode.apply(null, buffer);
         console.log('MESSAGE ARRIVED: ' + messageFromGatewaty);
+
         if (messageFromGatewaty.indexOf('<') > -1) {
             this.gatewayService.processData(messageFromGatewaty);
         } else if (messageFromGatewaty.indexOf('Connecting') > -1) {
@@ -208,6 +211,10 @@ export class BleService {
 
     isConnected(): Promise<any> {
         return this.ble.isConnected(this.peripheral);
+    }
+
+    dissconect() {
+        return this.ble.disconnect(this.currentTargetId);
     }
 
     activatRecconectProcess() {
@@ -224,7 +231,12 @@ export class BleService {
                     },
                     peripheral => {
                         console.log('Disconnected', 'The peripheral unexpectedly disconnected');
-                        this.activatRecconectProcess();
+                        if (this.activatRecconectProcessCount < 5) {
+                            this.activatRecconectProcessCount++;
+                            this.activatRecconectProcess();
+                        } else {
+                            this.activatRecconectProcessCount = 0;
+                        }
                     });
             } catch (e) {
             }

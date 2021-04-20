@@ -18,7 +18,7 @@ import {InitService} from './init.service'; // add this 1 of 4
 export class GatewayService {
     drillFinishedBefore = false;
     drillFinished = false;
-
+    notifyTargetConnectedToGateway = new BehaviorSubject(null);
 
     height: number;
     width: number;
@@ -36,7 +36,7 @@ export class GatewayService {
         lastShotTime: null,
         totalTime: '00:00:00'
     };
-    DEFAULT_PAGE_DATA = {
+    readonly DEFAULT_PAGE_DATA = {
         distanceFromCenter: 0,
         splitTime: '',
         rateOfFire: 0,
@@ -409,6 +409,7 @@ export class GatewayService {
 
     public handleBatteryPrecentage_MSG(dataArray) {
         const targetName = dataArray[0];
+        this.notifyTargetConnectedToGateway.next(targetName);
         const b = dataArray[2];
         let heartRate = 0;
         if (b && b !== '') {

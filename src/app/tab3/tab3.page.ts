@@ -95,7 +95,6 @@ export class Tab3Page implements OnInit {
     initActctions() {
 
         this.profile = this.storageService.getItem('profileData');
-        debugger
         const inventory: InventoryModel = this.storageService.getItem('inventory');
         const target = this.storageService.getItem('personalTarget');
         if (!inventory) {

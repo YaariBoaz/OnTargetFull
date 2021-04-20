@@ -155,7 +155,7 @@ export class HitNohitService {
         let isFinish = false;
         if (this.pageData.counter >= this.shootingService.numberOfBullersPerDrill) {
             this.finishDrill();
-            this.updateHistory();
+            //this.updateHistory();
             isFinish = true;
             this.drillFinishedNotify.next(true);
         }
