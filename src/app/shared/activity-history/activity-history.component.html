@@ -41,7 +41,7 @@
                 </div>
                 <div class="score">
                     <div class="hits">
-                        <p class="score-value"><b>{{train.hits.length}}/ {{train.numberOfBullets}}</b></p>
+                        <p class="score-value"><b>{{train.rawHitsLocation.length}}/ {{train.numberOfBullets}}</b></p>
                         <p>HITS</p>
                     </div>
 
@@ -73,7 +73,7 @@
                     <div class="hidden-content" #container>
                         <ng-container *ngIf="train.openShowMore">
                             <img src="assets/bullseye.png">
-                            <div class="hit" *ngFor="let shot of train.hits; let i = index" style="position: absolute;  "
+                            <div class="hit" *ngFor="let shot of train.rawHitsLocation; let i = index" style="position: absolute;  "
                                  [style.top.px]=shot.y
                                  [style.right.px]=shot.x>
                                 {{i + 1}}

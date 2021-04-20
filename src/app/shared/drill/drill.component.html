@@ -65,8 +65,7 @@
                 <p>10%</p>
             </div>
         </div>
-        <div cla
-             s="targetHoly" *ngIf="!isGateway">
+        <div class="targetHoly" *ngIf="!isGateway">
             <div *ngIf="showResults" class="some-wrapper">
                 <svg *ngIf="!drillIsFinished" xmlns="http://www.w3.org/2000/svg" width="282.232" height="282.232"
                      viewBox="0 0 282.232 282.232">
@@ -245,8 +244,7 @@
                 <img *ngIf="!drillIsFinished" src="assets/bullseye.png">
                 <img *ngIf="drillIsFinished" src="assets/bullseye-finish.png">
                 <!--                <div class="counter-shot">{{shotNumber}}</div>-->
-                <div class="hit" *ngFor="let shot of shots; let i = index" style="position: absolute;  "==]
-1
+                <div class="hit" *ngFor="let shot of shots; let i = index" style="position: absolute;  "
                      [style.top.px]=shot.y
                      [style.left.px]=shot.x>
                     {{i + 1}}
@@ -449,5 +447,3 @@
         </div>
     </div>
 </section>
-4202+603
-12++6

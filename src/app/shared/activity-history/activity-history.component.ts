@@ -79,7 +79,7 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
             if (data) {
                 this.trains = data;
                 this.trains.forEach(train => {
-                    train.hits.forEach(hit => {
+                    train.rawHitsLocation.forEach(hit => {
 
                         const x = hit.x;
                         const y = hit.y;
