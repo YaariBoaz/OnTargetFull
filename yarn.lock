@@ -1043,13 +1043,6 @@
   dependencies:
     tslib "^1.9.0"
 
-"@capacitor/core@latest":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-2.1.0.tgz#11178b082c9f00bcff7c7f13f5cb68d07a85aad6"
-  integrity sha512-KIDj067PGaNSIODqzDp99vPs7CVpx+SRVrfgcQ9MNvpTUFsnDx/taRixbucizj8lLH2mhK12dH/4TjU7eqXQ4A==
-  dependencies:
-    tslib "^1.9.0"
-
 "@capacitor/ios@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-1.5.1.tgz#9a0120ae500f37c6dc38b25c6ecfbe131013f70a"
@@ -2488,13 +2481,6 @@ canonical-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/canonical-path/-/canonical-path-1.0.0.tgz#fcb470c23958def85081856be7a86e904f180d1d"
   integrity sha512-feylzsbDxi1gPZ1IjystzIQZagYYLvfKrSuygUCgf7z6x790VEzze5QEkdSV1U58RA7Hi0+v6fv4K54atOzATg==
-
-cap-bluetooth-low-energy-client@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/cap-bluetooth-low-energy-client/-/cap-bluetooth-low-energy-client-1.0.0.tgz#425e436f571c98045b3cb577058a25e0291baf60"
-  integrity sha512-LI1kv2h+056Z7kSWGUPlvD+M6CIXDv+vaeHR/RnSo28XITRADBZ+cdTKiq9nOfmzogJgQMXheyXdtGV+R3158Q==
-  dependencies:
-    "@capacitor/core" latest
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -7742,9 +7728,9 @@ querystring@0.2.0:
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
 querystringify@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
-  integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
+  integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
 quote-stream@^1.0.1:
   version "1.0.2"
@@ -9632,9 +9618,9 @@ urix@^0.1.0:
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
 
 url-parse@^1.4.3:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
-  integrity sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
+  integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
