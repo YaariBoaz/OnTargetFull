@@ -172,6 +172,7 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     async onTargetChosen() {
+        debugger;
         this.shootingService.chosenTarget = this.selectedTarget;
         this.bleService.connect(this.selectedTarget.id);
     }
@@ -231,6 +232,7 @@ export class SelectTargetModalComponent implements OnInit {
             t.isSelected = true;
         });
         target.isSelected = true;
+        this.shootingService.chosenTarget = target;
         this.storageService.setItem('slectedTarget', target);
         this.selectedTarget = target;
         this.targetNotSelected = false;

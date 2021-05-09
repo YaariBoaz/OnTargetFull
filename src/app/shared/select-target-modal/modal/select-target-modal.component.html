@@ -41,7 +41,7 @@
         <div class="targets-list-container" *ngIf="myTargets.length > 0 ">
             <div class="targets-list" *ngFor="let target of  myTargets; let i = index">
                 <div class="targets-count"> Traget #{{i}}</div>
-                <div (click)="onTargetSelected(target)" class="target-name">
+                    <div (click)="onTargetSelected(target);this.shootingService.chosenTarget = target" class="target-name">
                     <span>  {{target.name}}</span>
                     <img *ngIf="target.isSelected" src="assets/icons/Icon%20-%20Check%20Circle%20-%20Filled.svg">
                 </div>

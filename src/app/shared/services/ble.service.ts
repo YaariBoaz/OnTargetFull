@@ -5,6 +5,7 @@ import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
 import {StorageService} from './storage.service';
 import {GatewayService} from './gateway.service';
 import {InitService} from './init.service';
+import {ShootingService} from './shooting.service';
 
 const SERVICE_1 = '1800';
 const SERVICE_2 = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -43,6 +44,7 @@ export class BleService {
         private storage: StorageService,
         public ble: BLE,
         private ngZone: NgZone,
+        private shootingService: ShootingService,
         private initService: InitService,
         private bluetoothSerial: BluetoothSerial,
         private gatewayService: GatewayService) {
@@ -194,6 +196,7 @@ export class BleService {
     }
 
     parseGatewayMessage(buffer: Uint8Array) {
+        const selectedTarget = this.shootingService.chosenTarget;
         const target = this.storage.getItem('slectedTarget');
         const messageFromGatewaty = String.fromCharCode.apply(null, buffer);
         console.log('MESSAGE ARRIVED: ' + messageFromGatewaty);

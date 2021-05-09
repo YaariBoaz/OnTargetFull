@@ -4,13 +4,12 @@ import {DrillObject} from '../../tab2/tab2.page';
 import {StorageService} from './storage.service';
 import {BehaviorSubject} from 'rxjs';
 import {CountupTimerService} from 'ngx-timer';
-import {DrillModel} from '../models/DrillModel';
 import {ApiService} from './api.service';
 import {UserService} from './user.service';
 import * as moment from 'moment';
-import {now} from 'moment';
 import {DrillResultModel, DrillSession, ShotItem} from '../drill/constants';
-import {InitService} from './init.service'; // add this 1 of 4
+import {InitService} from './init.service';
+import {TargetType} from "../models/target-type.enum"; // add this 1 of 4
 
 @Injectable({
     providedIn: 'root'
@@ -96,7 +95,7 @@ export class GatewayService {
         this.lastTime = now;
     }
 
-    public handelShoot(parentImageHeight, parentImageWidth, data) {
+    handelShoot(parentImageHeight, parentImageWidth, data) {
 
         const x = data.xCoord;
         const y = data.yCoord;
@@ -132,7 +131,7 @@ export class GatewayService {
     }
 
 
-    public updateHistory() {
+    updateHistory() {
         this.drill = this.shootingService.selectedDrill;
         let updatedData = this.storageService.getItem('homeData');
         if (!updatedData) {
@@ -168,7 +167,7 @@ export class GatewayService {
     }
 
 
-    public updateBestResults(updatedData) {
+    updateBestResults(updatedData) {
         if (this.pageData.distanceFromCenter > updatedData.bestScores.avgDistance) {
             updatedData.bestScores.avgDistance = this.pageData.distanceFromCenter;
         }
@@ -182,7 +181,7 @@ export class GatewayService {
     }
 
 
-    public updateStats(x, y, isFinish, distanceFromCenterPoints) {
+    updateStats(x, y, isFinish, distanceFromCenterPoints) {
 
         console.log('counter:', this.pageData.counter);
         const currentdist: number = parseFloat(this.calculateBulletDistanceFromCenter(distanceFromCenterPoints.x,
@@ -253,13 +252,13 @@ export class GatewayService {
 
     }
 
-    public finishDrill() {
+    finishDrill() {
         this.drillFinishedBefore = true;
         this.drillFinished = true;
         this.drillFinishedNotify.next(true);
     }
 
-    public calculateBulletDistanceFromCenter(xT, yT): number {
+    calculateBulletDistanceFromCenter(xT, yT): number {
         // Calculate distance from center:
         // Get number of sensor on the X axis:
         let xSensorNumber = -1.0;
@@ -336,7 +335,7 @@ export class GatewayService {
 
     }
 
-    public calcScore(dis) {
+    calcScore(dis) {
         if (dis < 5) {
             return 1;
         } else if (dis >= 5 && dis < 10) {
@@ -352,14 +351,14 @@ export class GatewayService {
         }
     }
 
-    public processData(input) {
+    processData(input) {
         const dataArray = input.replace('<,', '').replace(',>', '').split(',');
         const dataLength = dataArray.length;
         if (dataLength === 4) {
             const primB = dataArray[1];
             switch (primB) {
                 case ('S'):
-                    this.handleShot_MSG(dataArray);
+                    this.handleShot_MSG_NEW(dataArray[2], dataArray[3]);
                     break;
                 case ('T'):
                     this.hanldeBateryTime_MSG(dataArray);
@@ -379,8 +378,68 @@ export class GatewayService {
         }
     }
 
-    // Parses X/Y to normal state
-    public handleShot_MSG(dataArray) {
+
+    handleShot_MSG_NEW(x, y) {
+        const targetId = this.storageService.getItem('slectedTarget').name;
+        const targetType = this.getTargetType(targetId);
+        let nominalStep;
+        let n;
+        if (targetType == TargetType.Type_64) {
+            nominalStep = 15;
+            n = 1;
+            x = 0.25 * x - n;
+            y = 0.25 * y - n;
+            y -= 0.5;
+            x -= 0.5;
+        } else if (targetType == TargetType.Type_16) {
+            nominalStep = 7;
+            n = 5;
+            x = 0.25 * x - n;
+            y = 0.25 * y - n;
+            y -= 0.5;
+            x -= 0.5;
+        } else // case of 128 target
+        {
+            let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
+            disPointFromCenter128 = disPointFromCenter128 / 10;
+            // 7 is half the width of the ellipse representing the bullet hit on the UI
+            // we want to place the bullet in the middle of the cordination and not the left 0 position so we reduce 7
+            x = ((this.width / 490) * x) - 7;
+            y = (this.height / 490) * y;
+
+            let data128 =
+                {
+                    disFromCenter: disPointFromCenter128,
+                    xPosition: x,
+                    yPositon: y,
+                    Orbital: this.calcOrbital(disPointFromCenter128)
+                }
+            ;
+
+            this.pageData.counter++;
+            const xPos = data128.xPosition;
+            const yPos = data128.yPositon;
+
+            this.hits.push({xPos, yPos});
+
+            if (this.pageData.counter > this.shootingService.numberOfBullersPerDrill) {
+                console.log('Shot After Drill Finished - Ignoring It');
+
+            } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
+                this.updateStats(xPos, yPos, false, {x, y});
+                this.finishDrill();
+                this.updateHistory();
+            } else {
+
+                this.updateStats(xPos, yPos, false, {x, y});
+            }
+            return data128;
+
+        }
+
+    }
+
+    handleShot_MSG(dataArray) {
         const targetName = dataArray[0];
         const target = this.storageService.getItem('slectedTarget');
         if (targetName === target.name) {
@@ -398,7 +457,7 @@ export class GatewayService {
         }
     }
 
-    public hanldeBateryTime_MSG(dataArray) {
+    hanldeBateryTime_MSG(dataArray) {
         const t = dataArray[2];
         let bTime = 0;
         if (t && t !== '') {
@@ -407,7 +466,7 @@ export class GatewayService {
         }
     }
 
-    public handleBatteryPrecentage_MSG(dataArray) {
+    handleBatteryPrecentage_MSG(dataArray) {
         const targetName = dataArray[0];
         this.notifyTargetConnectedToGateway.next(targetName);
         const b = dataArray[2];
@@ -426,7 +485,7 @@ export class GatewayService {
         console.log('[Battery Precent]: ' + bCharge);
     }
 
-    public handleImpact_MSG(dataArray) {
+    handleImpact_MSG(dataArray) {
         const i1 = dataArray[2];
         let byte1 = 0;
         {
@@ -641,5 +700,33 @@ export class GatewayService {
         }
 
         return hour + minutes + seconds;
+    }
+
+    private calcOrbital(dis: number) {
+        if (dis <= 2) {
+            return 0;
+        } else if (dis > 2 && dis <= 4) {
+            return 1;
+        } else if (dis > 4 && dis <= 7) {
+            return 2;
+        } else if (dis > 7 && dis <= 10) {
+            return 3;
+        } else if (dis > 10 && dis <= 14) {
+            return 4;
+        } else {
+            return 5;
+        }
+    }
+
+    private getTargetType(chosenTarget: any): TargetType {
+        const num = parseInt(chosenTarget.split('e')[1].split('n')[0]);
+        switch (num) {
+            case 16:
+                return TargetType.Type_16;
+            case 64:
+                return TargetType.Type_64;
+            case 128:
+                return TargetType.Type_128;
+        }
     }
 }
