@@ -1043,13 +1043,6 @@
   dependencies:
     tslib "^1.9.0"
 
-"@capacitor/core@latest":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-2.1.0.tgz#11178b082c9f00bcff7c7f13f5cb68d07a85aad6"
-  integrity sha512-KIDj067PGaNSIODqzDp99vPs7CVpx+SRVrfgcQ9MNvpTUFsnDx/taRixbucizj8lLH2mhK12dH/4TjU7eqXQ4A==
-  dependencies:
-    tslib "^1.9.0"
-
 "@capacitor/ios@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-1.5.1.tgz#9a0120ae500f37c6dc38b25c6ecfbe131013f70a"
@@ -2488,13 +2481,6 @@ canonical-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/canonical-path/-/canonical-path-1.0.0.tgz#fcb470c23958def85081856be7a86e904f180d1d"
   integrity sha512-feylzsbDxi1gPZ1IjystzIQZagYYLvfKrSuygUCgf7z6x790VEzze5QEkdSV1U58RA7Hi0+v6fv4K54atOzATg==
-
-cap-bluetooth-low-energy-client@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/cap-bluetooth-low-energy-client/-/cap-bluetooth-low-energy-client-1.0.0.tgz#425e436f571c98045b3cb577058a25e0291baf60"
-  integrity sha512-LI1kv2h+056Z7kSWGUPlvD+M6CIXDv+vaeHR/RnSo28XITRADBZ+cdTKiq9nOfmzogJgQMXheyXdtGV+R3158Q==
-  dependencies:
-    "@capacitor/core" latest
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -5025,9 +5011,9 @@ hmac-drbg@^1.0.0:
     minimalistic-crypto-utils "^1.0.1"
 
 hosted-git-info@^2.1.4, hosted-git-info@^2.6.0, hosted-git-info@^2.7.1:
-  version "2.8.8"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
-  integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 hpack.js@^2.1.6:
   version "2.1.6"
