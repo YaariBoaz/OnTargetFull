@@ -46,7 +46,7 @@
     "@swimlane/ngx-charts": "^13.0.2",
     "angular-cd-timer": "^1.0.0",
     "angularx-social-login": "^2.2.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "com.telerik.plugins.nativepagetransitions": "^0.7.0",
     "cordova-android": "8.1.0",
     "cordova-plugin-ble-central": "^1.2.5",
