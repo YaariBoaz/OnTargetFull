@@ -17,7 +17,7 @@ import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/nati
 })
 export class Tab2Page implements OnInit {
     @ViewChild('slides', {static: false}) slides;
-    public selectedDrillType = 'Hit/NoHit';
+    public selectedDrillType: DrillType = DrillType.Regular;
     slideOpts = {
         slidesPerView: 2.1,
         spaceBetween: 3
@@ -32,7 +32,7 @@ export class Tab2Page implements OnInit {
         rangeUOM: 'Meters',
         sight: 'V6 5-30 X 50',
         ammo: 'Creedmor 6.5',
-        drillType: 'Hit/NoHit',
+        drillType: DrillType.Regular,
         shots: new Array<{ x, y }>()
     };
     connectedTarget = null;
@@ -41,16 +41,14 @@ export class Tab2Page implements OnInit {
                 private tabService: TabsService,
                 public alertController: AlertController,
                 private initService: InitService,
-                private  shootingService: ShootingService,
+                private shootingService: ShootingService,
                 private nativePageTransitions: NativePageTransitions,
                 private storageService: StorageService,
-                private ble: BleService,
                 private screenOrientation: ScreenOrientation,
                 private zone: NgZone,
                 private router: Router,
                 private platform: Platform) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.connectedTarget = this.ble.peripheral;
         this.initComponents();
     }
 
@@ -74,7 +72,6 @@ export class Tab2Page implements OnInit {
             });
 
     }
-
 
 
     ngOnInit(): void {
@@ -106,19 +103,19 @@ export class Tab2Page implements OnInit {
             switch (index) {
                 case 0:
                     if (!this.initService.isGateway) {
-                        this.drill.drillType = 'Hit/NoHit';
+                        this.drill.drillType = DrillType.Regular;
                     } else {
-                        this.drill.drillType = 'BullsEye';
+                        this.drill.drillType = DrillType.Regular;
                     }
                     break;
                 case 1:
-                    this.drill.drillType = 'BullsEye';
+                    this.drill.drillType = DrillType.Regular;
                     break;
                 case 1:
-                    this.drill.drillType = 'Zero';
+                    this.drill.drillType = DrillType.Zero;
                     break;
                 case 2:
-                    this.drill.drillType = 'Hostage';
+                    this.drill.drillType = DrillType.Hostage;
                     break;
             }
 
@@ -127,11 +124,6 @@ export class Tab2Page implements OnInit {
 
 
     startSesstion() {
-        if (this.initService.isGateway) {
-            if (this.drill.drillType === 'Hit/NoHit') {
-                this.drill.drillType = 'BullsEye';
-            }
-        }
         this.shootingService.drillStarteEvent.next(true);
         this.shootingService.selectedDrill = this.drill;
         this.shootingService.numberOfBullersPerDrill = this.drill.numOfBullets;
@@ -189,6 +181,15 @@ export interface DrillObject {
     rangeUOM: string;
     sight: string;
     ammo: string;
-    drillType: string;
+    drillType: DrillType;
     shots: Array<{ x: number, y: number }>;
+}
+
+export enum DrillType {
+    Regular,
+    Hostage,
+    ABC,
+    Zero,
+    Surprise,
+    Surprise3Z
 }

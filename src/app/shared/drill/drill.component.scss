@@ -95,18 +95,14 @@ section.drill-results {
   }
 
   div.target {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
-    box-sizing: border-box;
-    padding: 0 1em;
+    padding-left: 15px;
+    padding-right: 15px;
     //padding-left: 100px;
+
+
 
     img {
       height: 295px;
@@ -115,6 +111,9 @@ section.drill-results {
 
     .some-wrapper {
       position: relative;
+      width: 50%;
+      display: flex;
+      justify-content: center;
 
       .counter-shot {
         position: absolute;
@@ -202,19 +201,16 @@ section.drill-results {
     }
 
     div.results-table {
-      width: 420px;
-      height: 250px;
-      position: relative;
-
       display: flex;
-      flex-direction: column;
+      width: 50%;
       justify-content: center;
+      align-items: center;
 
       table {
         display: block;
 
         height: 200px;
-        width: 420px;
+        width: 100%;
         border-radius: 5px;
 
         direction: rtl;
@@ -315,7 +311,7 @@ section.drill-results {
 
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
-
+        width: 100%;
         p {
           width: calc(100% / 4);
           color: white;
@@ -401,7 +397,6 @@ div.targetHoly {
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
 
     .counter-shot {
       position: absolute;

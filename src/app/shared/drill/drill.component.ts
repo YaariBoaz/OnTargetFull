@@ -12,7 +12,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {ShootingService} from '../services/shooting.service';
-import {DrillObject} from '../../tab2/tab2.page';
+import {DrillObject, DrillType} from '../../tab2/tab2.page';
 import {StorageService} from '../services/storage.service';
 import {countUpTimerConfigModel, CountupTimerService, timerTexts} from 'ngx-timer';
 import {UserService} from '../services/user.service';
@@ -25,7 +25,7 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {GatewayService} from '../services/gateway.service';
 import {InitService} from '../services/init.service';
 import {FakeData} from './fakeData';
-import {ConstantData} from './constants';
+import {ConstantData, TargetType} from './constants';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 
 
@@ -89,8 +89,16 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     selectedTarget: any;
     fakeStats = FakeData.fakeStats;
     fakeShots = FakeData.fakeShots;
+    targetType: TargetType;
 
 
+    public get targetTypeEnum(): typeof TargetType {
+        return TargetType;
+    }
+
+    public get drillTypeEnum(): typeof DrillType {
+        return DrillType;
+    }
     constructor(
         private screenOrientation: ScreenOrientation,
         private storageService: StorageService,
@@ -112,7 +120,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     ) {
         this.drill = this.shootingService.selectedDrill;
         this.selectedTarget = this.shootingService.chosenTarget;
-        debugger
+        this.setTargetType(JSON.parse(localStorage.getItem('slectedTarget')).name);
         this.isGateway = this.initService.isGateway;
         this.hitNohitService.setDrill(this.drill);
         this.hitNohitService.initStats();
@@ -435,7 +443,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         });
     }
 
-    private registerGatewayNotifications() {
+    registerGatewayNotifications() {
         this.gateway.drillFinishedNotify.subscribe(data => {
             if (data) {
                 this.drillIsFinished = true;
@@ -465,7 +473,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
 
     }
 
-    private registerBLENotifications() {
+    registerBLENotifications() {
         this.bleService.notifyTargetConnected.subscribe(status => {
             if (status) {
                 this.isConnected = true;
@@ -511,5 +519,14 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
 
     }
 
+    setTargetType(name) {
+        if (name === '003' || name.indexOf('64')) {
+            this.targetType = TargetType.Type_64;
+        } else if (name.indexOf('128') > -1) {
+            this.targetType = TargetType.Type_128;
+        } else {
+            this.targetType = TargetType.Type_16;
+        }
+    }
 }
 

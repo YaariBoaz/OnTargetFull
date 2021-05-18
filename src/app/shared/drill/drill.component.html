@@ -1,5 +1,3 @@
-<!--*ngIf="drill"   REMOVED THIS -->
-
 <section class="drill-results">
     <header [class.isHistoryBG]="isHistory===true">
         <div class="back-button" (click)="onBackPressed()">
@@ -237,19 +235,46 @@
                 </div>
             </div>
         </div>
-
-
         <div class="target" *ngIf="isGateway">
             <div *ngIf="showResults" class="some-wrapper" #container>
-                <img *ngIf="!drillIsFinished" src="assets/bullseye.png">
-                <img *ngIf="drillIsFinished" src="assets/bullseye-finish.png">
+                <div *ngIf="targetType === targetTypeEnum.Type_64">
+                    <div *ngIf="drill.drillType === drillTypeEnum.Regular">
+                        <img *ngIf="!drillIsFinished" src="assets/targets/64/e64_score.png">
+                        <img *ngIf="drillIsFinished" src="assets/targets/64/e64_score_finish.png">
+                    </div>
+                    <div *ngIf="drill.drillType === drillTypeEnum.Zero">
+                        <img *ngIf="!drillIsFinished" src="assets/targets/64/e64_Zero.png">
+                        <img *ngIf="drillIsFinished" src="assets/targets/64/e64_Zero_finish.png">
+                    </div>
+                    <div *ngIf="drill.drillType === drillTypeEnum.Hostage">
+                        <img *ngIf="!drillIsFinished" src="assets/targets/64/Hostage_png_e64.png">
+                        <img *ngIf="drillIsFinished" src="assets/targets/64/Hostage_png_e64_finish.png">
+                    </div>
+                </div>
+                <div *ngIf="targetType === targetTypeEnum.Type_128">
+                    <div *ngIf="drill.drillType === drillTypeEnum.Regular">
+                        <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_score.png">
+                        <img *ngIf="drillIsFinished" src="assets/targets/128/e128_score_finish.png">
+                    </div>
+                    <div *ngIf="drill.drillType === drillTypeEnum.Regular">
+                        <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_score.png">
+                        <img *ngIf="drillIsFinished" src="assets/targets/128/e64_score_finish.png">
+                    </div>
+                    <div *ngIf="drill.drillType === drillTypeEnum.Zero">
+                        <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_zero.png">
+                        <img *ngIf="drillIsFinished" src="assets/targets/128/e128_zero.png">
+                    </div>
+                    <div *ngIf="drill.drillType === drillTypeEnum.Hostage">
+                        <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_Hostage.png">
+                        <img *ngIf="drillIsFinished" src="assets/targets/128/e128_Hostage_Finish.png">
+                    </div>
+                </div>
                 <!--                <div class="counter-shot">{{shotNumber}}</div>-->
                 <div class="hit" *ngFor="let shot of shots; let i = index" style="position: absolute;  "
                      [style.top.px]=shot.y
                      [style.left.px]=shot.x>
                     {{i + 1}}
                 </div>
-
             </div>
             <div class="welcome-message" *ngIf="!showResults">
                 <div class="text">
@@ -269,6 +294,7 @@
                 </svg>
 
                 <div class="dot one"></div>
+                +
                 <div class="dot two"></div>
                 <div class="dot three"></div>
                 <div class="dot four"></div>
@@ -422,7 +448,6 @@
                 </div>
             </div>
         </div>
-
         <div class="counter" *ngIf="showCounter">
             <svg xmlns="http://www.w3.org/2000/svg" width="125" height="190" viewBox="0 0 125 190" class="one"
                  *ngIf="counter === 1">

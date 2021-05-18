@@ -21,7 +21,17 @@ import {ReversePipe} from './pipes/reverse.pipe';
 import {NoConnetionErroComponent} from './popups/no-connection/no-connetion-error';
 
 @NgModule({
-    declarations: [Tab3Page, NoConnetionErroComponent, AccessModalComponent, GunlistComponent, SightlistComponent, TermsAndConditionComponent, SelectTargetComponent, SelectTargetModalComponent, ErrorModalComponent, ReversePipe],
+    declarations: [
+        Tab3Page,
+        NoConnetionErroComponent,
+        AccessModalComponent,
+        GunlistComponent,
+        SightlistComponent,
+        TermsAndConditionComponent,
+        SelectTargetComponent,
+        SelectTargetModalComponent,
+        ErrorModalComponent,
+        ReversePipe],
 
     imports: [
         CommonModule,

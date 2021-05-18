@@ -52,7 +52,7 @@ export class SelectTargetComponent implements OnInit {
 
     constructor(
         private http: HttpClient,
-        private  bleService: BleService,
+        private bleService: BleService,
         private storageService: StorageService,
         private shootingService: ShootingService,
         public loadingController: LoadingController,
@@ -238,6 +238,7 @@ export class SelectTargetComponent implements OnInit {
                     this.bleService.notifyTargetConnected.subscribe(data => {
                         this.isConnected = true;
                         this.targetNotSelected = false;
+                        this.cd.detectChanges();
                     });
                 });
             } else {
@@ -245,12 +246,14 @@ export class SelectTargetComponent implements OnInit {
                 this.bleService.notifyTargetConnected.subscribe(data => {
                     this.isConnected = true;
                     this.targetNotSelected = false;
+                    this.cd.detectChanges();
                 });
             }
 
         } else {
             this.isConnected = true;
             this.targetNotSelected = false;
+            this.cd.detectChanges();
         }
     }
 
@@ -272,14 +275,16 @@ export class SelectTargetComponent implements OnInit {
 
     initGatewayScan() {
         this.myTargets = [];
-        this.ble.scan([], 5).subscribe(device => this.onDeviceDiscoveredInitialScan(device), error => this.scanErrorInitialScan(error));
+        this.ble.scan([], 5).subscribe(device => {
+            debugger
+        });
         setTimeout(() => {
             this.isScanning = false;
         }, 5500);
     }
 
     private scanErrorInitialScan(error: any) {
-
+        console.error('BLE SCAN ERROR', error);
     }
 
     private onDeviceDiscoveredInitialScan(device: any) {

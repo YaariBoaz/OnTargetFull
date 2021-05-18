@@ -31,11 +31,6 @@
     <param name="android-package" value="de.sitewaerts.cordova.documentviewer.DocumentViewerPlugin"/>
   </feature>
 
-  <feature name="FacebookConnectPlugin">
-    <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin"/>
-    <param name="onload" value="true"/>
-  </feature>
-
   <feature name="File">
     <param name="android-package" value="org.apache.cordova.file.FileUtils"/>
     <param name="onload" value="true"/>
@@ -49,9 +44,8 @@
     <param name="android-package" value="cordova.plugins.screenorientation.CDVOrientation"/>
   </feature>
 
-  <feature name="Whitelist">
-    <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin"/>
-    <param name="onload" value="true"/>
+  <feature name="Device">
+    <param name="android-package" value="org.apache.cordova.device.Device"/>
   </feature>
 
   <feature name="StatusBar">
@@ -59,8 +53,9 @@
     <param name="onload" value="true"/>
   </feature>
 
-  <feature name="Device">
-    <param name="android-package" value="org.apache.cordova.device.Device"/>
+  <feature name="Whitelist">
+    <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin"/>
+    <param name="onload" value="true"/>
   </feature>
 
   

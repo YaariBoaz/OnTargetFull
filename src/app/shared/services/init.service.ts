@@ -5,7 +5,6 @@ import {UserService} from './user.service';
 import {BLE} from '@ionic-native/ble/ngx';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {GatewayService} from './gateway.service';
-import {BleService} from './ble.service';
 
 
 @Injectable({
@@ -22,7 +21,10 @@ export class InitService {
     private targets = [];
     private currentTargetId;
 
-    constructor(private ngZone: NgZone, private apiService: ApiService, private storageService: StorageService, private userService: UserService, public ble: BLE) {
+    constructor(private ngZone: NgZone,
+                private apiService: ApiService,
+                private storageService: StorageService,
+                public ble: BLE) {
     }
 
     distory() {

@@ -52,7 +52,7 @@ export class AppComponent implements OnDestroy, OnInit {
         this.platform.ready().then(() => {
 
             SplashScreen.hide().then(r => {
-                let options: NativeTransitionOptions = {
+                const options: NativeTransitionOptions = {
                     direction: 'up',
                     duration: 500,
                     slowdownfactor: 3,
@@ -70,7 +70,7 @@ export class AppComponent implements OnDestroy, OnInit {
                     });
             });
             this.platform.backButton.subscribeWithPriority(9999, () => {
-                document.addEventListener('backbutton', function(event) {
+                document.addEventListener('backbutton', (event) => {
                     event.preventDefault();
                     event.stopPropagation();
                 }, false);

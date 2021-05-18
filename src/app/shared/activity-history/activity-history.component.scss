@@ -345,8 +345,8 @@ section.activity-history {
 }
 
 img {
-  height: 295px;
-  width: 295px;
+  height: auto;
+  width: 250px;
 }
 
 .see-target {
@@ -706,10 +706,9 @@ img {
   }
 
   img {
-    height: 295px;
-    width: 295px;
+    height: auto;
+    width: 250px;
   }
-
   .see-target {
     font-family: Roboto;
     font-size: 10px;
@@ -940,4 +939,12 @@ div.card {
       }
     }
   }
+}
+
+td{
+  text-align: center;
+}
+
+table{
+  width: 100%;
 }

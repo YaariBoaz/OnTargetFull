@@ -32,8 +32,8 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     summaryObject;
     trains;
 
-    constructor(private  router: Router,
-                private  networkService: NetworkService,
+    constructor(private router: Router,
+                private networkService: NetworkService,
                 public dialogRef: MatDialogRef<ActivityHistoryComponent>,
                 private stoargeService: StorageService,
                 private platform: Platform) {
@@ -78,30 +78,6 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         this.stoargeService.historicalTrainingsDate$.subscribe((data: HistoryModel) => {
             if (data) {
                 this.trains = data;
-                this.trains.forEach(train => {
-                    train.rawHitsLocation.forEach(hit => {
-
-                        const x = hit.x;
-                        const y = hit.y;
-
-                        const nominalStep = 8;
-                        const width = 295;
-                        const height = 295;
-
-                        const deltaX = width / nominalStep;
-                        const deltaY = height / nominalStep;
-
-                        const widthCorrection = (0.0628 * width - 7.6862);
-                        const heigthCorrection = (-0.0628 * height - 8.3138);
-
-                        const xPos = (width - (deltaX * (x / nominalStep))) + widthCorrection;
-                        const yPos = ((deltaY * (y / nominalStep))) + heigthCorrection;
-
-
-                        hit.x = xPos;
-                        hit.y = yPos;
-                    });
-                });
             }
 
         });

@@ -1,15 +1,14 @@
 import {Injectable} from '@angular/core';
 import {ShootingService} from './shooting.service';
-import {DrillObject} from '../../tab2/tab2.page';
+import {DrillObject, DrillType} from '../../tab2/tab2.page';
 import {StorageService} from './storage.service';
 import {BehaviorSubject} from 'rxjs';
 import {CountupTimerService} from 'ngx-timer';
 import {ApiService} from './api.service';
 import {UserService} from './user.service';
 import * as moment from 'moment';
-import {DrillResultModel, DrillSession, ShotItem} from '../drill/constants';
+import {DrillInfo, DrillStatus, ShotItem, TargetType} from '../drill/constants';
 import {InitService} from './init.service';
-import {TargetType} from "../models/target-type.enum"; // add this 1 of 4
 
 @Injectable({
     providedIn: 'root'
@@ -115,7 +114,7 @@ export class GatewayService {
 
 
         this.pageData.counter++;
-        this.hits.push({xPos, yPos});
+        this.hits.push({x: xPos, y: yPos});
 
         if (this.pageData.counter > this.shootingService.numberOfBullersPerDrill) {
             console.log('Shot After Drill Finished - Ignoring It');
@@ -150,11 +149,51 @@ export class GatewayService {
         // });
 
 
-        const drill: DrillSession = {
+        const drill: DrillInfo = {
             sessionId: this.userService.getUserId(),
-            sessionName: this.drill.drillType,
-            sessionDateTime: new Date().toString(),
-            users: this.getUserModelObject()
+            sessionDateTime: new Date(),
+            userId: this.userService.getUserId(),
+            shotItems: this.getShotItems(),
+            drillDate: new Date(),
+            pointsGained: this.summaryObject.points,
+            timeLimit: 0,
+            bulletsHit: this.hits.length - 1,
+            numberOfBullets: this.drill.numOfBullets,
+            drillTitle: DrillType[this.drill.drillType],
+            maxNumberOfPoints: 100000,
+            range: this.drill.range,
+            imageIdKey: '',
+            imageIdFullKey: 0,
+            hitsWithViewAdjustments: null,
+            avgDistFromCenter: this.summaryObject.distanceFromCenter,
+            description: '',
+            targetId: this.storageService.getItem('slectedTarget').name,
+            targetIP: '0',
+            useMoq: false,
+            drillType: this.drill.drillType,
+            splitAvg: this.timeStringToSeconds(this.summaryObject.split).toString(),
+            numericSplitAvg: this.timeStringToSeconds(this.summaryObject.split),
+            timeElapsed: this.summaryObject.totalTime,
+            recomendation: '',
+            wepon: this.drill.weapon,
+            sight: this.drill.sight,
+            ammo: this.drill.ammo,
+            realibilty: '',
+            b2Drop: 0,
+            exposeTime: 0,
+            hideTime: 0,
+            rawHitsLocation: this.hits,
+            userName: this.userService.getUser().name,
+            status: DrillStatus.Done,
+            hitsToPass: 0,
+            grouping: 0,
+            center: null,
+            epochTime: 0,
+            targetType: this.getTargetType(this.storageService.getItem('slectedTarget').name),
+            zone1Counter: 0,
+            zone2Counter: 0,
+            zone3Counter: 0,
+            location: null
         };
 
         this.apiService.syncDataGateway(drill).subscribe(() => {
@@ -165,7 +204,6 @@ export class GatewayService {
         });
 
     }
-
 
     updateBestResults(updatedData) {
         if (this.pageData.distanceFromCenter > updatedData.bestScores.avgDistance) {
@@ -179,7 +217,6 @@ export class GatewayService {
         }
         return updatedData;
     }
-
 
     updateStats(x, y, isFinish, distanceFromCenterPoints) {
 
@@ -378,65 +415,73 @@ export class GatewayService {
         }
     }
 
-
     handleShot_MSG_NEW(x, y) {
         const targetId = this.storageService.getItem('slectedTarget').name;
         const targetType = this.getTargetType(targetId);
         let nominalStep;
         let n;
-        if (targetType == TargetType.Type_64) {
+        let xPos;
+        let yPos;
+        let is128 = false;
+        if (targetType === TargetType.Type_64) {
             nominalStep = 15;
             n = 1;
             x = 0.25 * x - n;
             y = 0.25 * y - n;
             y -= 0.5;
             x -= 0.5;
-        } else if (targetType == TargetType.Type_16) {
+            xPos = x;
+            yPos = y;
+        } else if (targetType === TargetType.Type_16) {
             nominalStep = 7;
             n = 5;
             x = 0.25 * x - n;
             y = 0.25 * y - n;
             y -= 0.5;
             x -= 0.5;
-        } else // case of 128 target
-        {
+            xPos = x;
+            yPos = y;
+        } else { // 128
             let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
             disPointFromCenter128 = disPointFromCenter128 / 10;
             // 7 is half the width of the ellipse representing the bullet hit on the UI
             // we want to place the bullet in the middle of the cordination and not the left 0 position so we reduce 7
             x = ((this.width / 490) * x) - 7;
             y = (this.height / 490) * y;
-
-            let data128 =
-                {
-                    disFromCenter: disPointFromCenter128,
-                    xPosition: x,
-                    yPositon: y,
-                    Orbital: this.calcOrbital(disPointFromCenter128)
-                }
-            ;
-
-            this.pageData.counter++;
-            const xPos = data128.xPosition;
-            const yPos = data128.yPositon;
-
-            this.hits.push({xPos, yPos});
-
-            if (this.pageData.counter > this.shootingService.numberOfBullersPerDrill) {
-                console.log('Shot After Drill Finished - Ignoring It');
-
-            } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
-                this.updateStats(xPos, yPos, false, {x, y});
-                this.finishDrill();
-                this.updateHistory();
-            } else {
-
-                this.updateStats(xPos, yPos, false, {x, y});
-            }
-            return data128;
-
+            this.hits.push({x, y});
+            is128 = true;
         }
 
+        if (!is128) {
+            const w = this.width;
+            const h = this.height;
+            const xStep = w / nominalStep;
+            const yStep = h / nominalStep;
+
+            xPos = w - (xStep * x);
+            yPos = yStep * y;
+
+            xPos -= 5;
+            yPos -= 5;
+            this.hits.push({x: xPos, y: yPos});
+        }
+
+
+        const disPointFromCenter = 1.905 * Math.sqrt(Math.pow((nominalStep / 2 - x), 2) + Math.pow((nominalStep / 2 - y), 2));
+
+        const orb = this.calcOrbital(disPointFromCenter);
+        this.pageData.counter++;
+        if (this.pageData.counter > this.shootingService.numberOfBullersPerDrill) {
+            console.log('Shot After Drill Finished - Ignoring It');
+
+        } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
+            this.updateStats(xPos, yPos, false, {x, y});
+            this.finishDrill();
+            this.updateHistory();
+        } else {
+
+            this.updateStats(xPos, yPos, false, {x, y});
+        }
     }
 
     handleShot_MSG(dataArray) {
@@ -502,7 +547,6 @@ export class GatewayService {
         this.storageService.setItem('target-impacts', deviceImpacts);
     }
 
-
     getTimeDiffrence(str1, str2) {
         console.log('In getTimeDifference: first STR: ' + str1 + ' second STR: ' + str2);
         const arr1 = str1.split(':');
@@ -538,8 +582,7 @@ export class GatewayService {
         return newHour + ':' + newMin + ':' + newSec;
     }
 
-
-    private getSummarySplit(timeString: any, statsLength: number) {
+    getSummarySplit(timeString: any, statsLength: number) {
         const timeArray = timeString.split(':');
         let hour = 0;
         let minutes = 0;
@@ -596,7 +639,7 @@ export class GatewayService {
         }
     }
 
-    private getSummaryDistanceFromCenter(stats: any[]): number {
+    getSummaryDistanceFromCenter(stats: any[]): number {
         let avg = 0;
         stats.forEach(item => {
             avg += item.pageData.distanceFromCenter;
@@ -605,8 +648,7 @@ export class GatewayService {
         return Math.round((avg + Number.EPSILON) * 100) / 100;
     }
 
-    private getUserModelObject(): DrillResultModel[] {
-        const arr = new Array<DrillResultModel>();
+    getShotItems() {
         const shotItems: ShotItem[] = new Array();
         this.stats.forEach(stat => {
             shotItems.push({
@@ -614,51 +656,17 @@ export class GatewayService {
                 hitHostage: false,
                 isHeader: false,
                 isOdd: false,
-                orbital: 0,
-                score: this.pageData.points,
-                shotNumber: 0,
+                orbital: '0',
+                score: this.pageData.points.toString(),
+                shotNumber: '0',
                 time: this.pageData.totalTime,
                 timeSplit: this.pageData.splitTime
             });
         });
-
-        const item: DrillResultModel = {
-            avgDistFromCenter: this.summaryObject.distanceFromCenter,
-            drillDate: new Date(),
-            description: '',
-            drillId: 1,
-            drillTitle: this.drill.drillType,
-            drillType: this.drill.drillType,
-            hits: this.hits,
-            imageIdFullKey: 0,
-            imageIdKey: '',
-            images: null,
-            maxNumberOfPoints: 100000,
-            numberOfBullets: this.drill.numOfBullets,
-            pointsGained: this.summaryObject.points,
-            range: this.drill.range,
-            realibilty: '',
-            recommendation: '',
-            shooterId: 1,
-            shotItems,
-            sight: this.drill.sight,
-            splitAvg: this.timeStringToSeconds(this.summaryObject.split),
-            targetId: 0,
-            targetIP: '',
-            timeElapsed: this.summaryObject.totalTime,
-            timeLimit: 0,
-            weapon: this.drill.weapon,
-            useMoq: false,
-            userId: this.userService.getUserId(),
-            userName: this.userService.getUser().name
-
-        };
-        const finalArray = new Array<DrillResultModel>();
-        finalArray.push(item);
-        return finalArray;
+        return shotItems;
     }
 
-    private timeStringToSeconds(timeString: string): number {
+    timeStringToSeconds(timeString: string): number {
         const timeArray = timeString.split(':');
         let hour = 0;
         let minutes = 0;
@@ -702,7 +710,7 @@ export class GatewayService {
         return hour + minutes + seconds;
     }
 
-    private calcOrbital(dis: number) {
+    calcOrbital(dis: number) {
         if (dis <= 2) {
             return 0;
         } else if (dis > 2 && dis <= 4) {
@@ -718,7 +726,11 @@ export class GatewayService {
         }
     }
 
-    private getTargetType(chosenTarget: any): TargetType {
+    getTargetType(chosenTarget: any): TargetType {
+        if (chosenTarget === '003') {
+            return TargetType.Type_64;
+        }
+        // tslint:disable-next-line:radix
         const num = parseInt(chosenTarget.split('e')[1].split('n')[0]);
         switch (num) {
             case 16:
