@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { DrillComponent } from './drill.component';
@@ -7,7 +7,7 @@ describe('SessionModalComponent', () => {
   let component: DrillComponent;
   let fixture: ComponentFixture<DrillComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DrillComponent ],
       imports: [IonicModule.forRoot()]

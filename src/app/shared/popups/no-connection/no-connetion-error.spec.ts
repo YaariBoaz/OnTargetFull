@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { NoConnetionError } from './no-connetion-error';
@@ -7,7 +7,7 @@ describe('ErrorModalComponent', () => {
   let component: NoConnetionError;
   let fixture: ComponentFixture<NoConnetionError>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NoConnetionError ],
       imports: [IonicModule.forRoot()]
