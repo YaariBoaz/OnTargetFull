@@ -27,10 +27,10 @@ import {WizardService} from '../shared/authentication/signup-wizard/wizard.servi
     styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
-    @ViewChild('slides', {static: false}) slides: IonSlides;
-    @ViewChild('lineChart', {static: false}) lineChart;
-    @ViewChild('scatter', {static: false}) scatter;
-    @ViewChild('radioChartInst', {static: false}) radio;
+    @ViewChild('slides') slides: IonSlides;
+    @ViewChild('lineChart') lineChart;
+    @ViewChild('scatter') scatter;
+    @ViewChild('radioChartInst') radio;
 
     line: any;
     scatterChartIns;

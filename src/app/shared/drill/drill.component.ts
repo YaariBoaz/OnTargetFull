@@ -44,10 +44,10 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
 
     @Input() isHistory = false;
     @Input() historyDrill: DrillObject;
-    @ViewChild('container', {static: false}) container: ElementRef;
-    @ViewChild('screen', {static: false}) screen: ElementRef;
-    @ViewChild('canvas', {static: false}) canvas: ElementRef;
-    @ViewChild('downloadLink', {static: false}) downloadLink: ElementRef;
+    @ViewChild('container') container: ElementRef;
+    @ViewChild('screen') screen: ElementRef;
+    @ViewChild('canvas') canvas: ElementRef;
+    @ViewChild('downloadLink') downloadLink: ElementRef;
     @ViewChild('scrollMe', {static: true}) myScrollContainer: ElementRef;
 
 

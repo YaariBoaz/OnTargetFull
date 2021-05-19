@@ -15,7 +15,7 @@ import {ImodalType} from '../popups/error-modal/error-modal.component';
     styleUrls: ['./activity-history.component.scss'],
 })
 export class ActivityHistoryComponent implements OnInit, OnChanges {
-    @ViewChild('container', {static: false}) container: ElementRef;
+    @ViewChild('container') container: ElementRef;
 
     train = {
         date: '05.07.18',

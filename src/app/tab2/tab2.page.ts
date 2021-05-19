@@ -16,7 +16,7 @@ import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/nati
     styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-    @ViewChild('slides', {static: false}) slides;
+    @ViewChild('slides') slides;
     public selectedDrillType: DrillType = DrillType.Regular;
     slideOpts = {
         slidesPerView: 2.1,
