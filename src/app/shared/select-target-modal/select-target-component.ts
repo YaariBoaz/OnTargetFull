@@ -1,10 +1,22 @@
-import {ChangeDetectorRef, Component, NgZone, OnInit,} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    Inject,
+    NgZone,
+    OnInit,
+} from '@angular/core';
 import {ShootingService} from '../services/shooting.service';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {StorageService} from '../services/storage.service';
 import {BleService} from '../services/ble.service';
-import {AlertController, LoadingController, Platform, ToastController,} from '@ionic/angular';
+import {
+    AlertController,
+    LoadingController,
+    Platform,
+    ToastController,
+} from '@ionic/angular';
 import {HitNohitService} from '../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
@@ -219,24 +231,14 @@ export class SelectTargetComponent implements OnInit {
     }
 
     onGoToEditDrill() {
-        if (this.initService.isGateway) {
-            this.ble.disconnect(this.currentTargetId).then(() => {
-                this.shootingService.chosenTarget = this.selectedTarget;
-                this.targetIsConnected = true;
-                this.zone.run(() => {
-                    // Your router is here
-                    this.router.navigateByUrl('/tab2/select');
-                });
-            });
-        } else {
+        this.ble.disconnect(this.currentTargetId).then(() => {
             this.shootingService.chosenTarget = this.selectedTarget;
             this.targetIsConnected = true;
             this.zone.run(() => {
                 // Your router is here
                 this.router.navigateByUrl('/tab2/select');
             });
-        }
-
+        });
     }
 
     onDiscconectTest() {
@@ -262,22 +264,13 @@ export class SelectTargetComponent implements OnInit {
                 console.log('FOUND DEVICE: ' + device.name);
                 if (device.name.toLowerCase().includes('adl') ||
                     device.name.toLowerCase().includes('e64') ||
-                    device.name.toLowerCase().includes('e1n') ||
-                    device.name.toLowerCase().includes('e1n') ||
                     device.name.toLowerCase().includes('17') ||
-                    device.name.toLowerCase().includes('003') ||
                     device.name.toLowerCase().includes('e16') ||
                     device.name.toLowerCase().includes('egateway') ||
-<<<<<<< HEAD
                     device.name.toLowerCase().includes('nordic') ||
                     device.name.toLowerCase().includes('e1')) {
                     this.myTargets.push({name: device.name, isSelected: true})
                     this.connectToGetTargetName(device.id);
-=======
-                    device.name.toLowerCase().includes('nordic')) {
-                    this.addTargetToList({name: device.name, id: device.id});
-                } else if (device.name.toLowerCase().includes('e1n')) {
->>>>>>> d083207a50246080ae05abd9e92bf3053afc384f
                 }
             }
         });
@@ -360,11 +353,10 @@ export class SelectTargetComponent implements OnInit {
             if (target.name.toLowerCase().includes('adl') ||
                 target.name.toLowerCase().includes('e64') ||
                 target.name.toLowerCase().includes('17') ||
-                target.name.toLowerCase().includes('003') ||
                 target.name.toLowerCase().includes('e16') ||
                 target.name.toLowerCase().includes('egateway') ||
                 target.name.toLowerCase().includes('nordic') ||
-                target.name.toLowerCase().includes('e1n')) {
+                target.name.toLowerCase().includes('e1')) {
                 let flag = false;
                 this.myTargets.forEach(t => {
                     if (t.name === target.name) {
