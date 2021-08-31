@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, Inject, NgZone, OnInit} from '@angular/core';
 import {ShootingService} from '../../services/shooting.service';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {StorageService} from '../../services/storage.service';
 import {BleService} from '../../services/ble.service';
@@ -10,8 +9,7 @@ import {HitNohitService} from '../../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {WizardService} from '../../authentication/signup-wizard/wizard.service';
-import {MatSnackBar} from '@angular/material';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
     selector: 'app-select-target-modal',
     templateUrl: './select-target-modal.component.html',
@@ -38,7 +36,7 @@ export class SelectTargetModalComponent implements OnInit {
     constructor(private http: HttpClient,
                 private bleService: BleService,
                 private storageService: StorageService,
-                private shootingService: ShootingService,
+                public shootingService: ShootingService,
                 public loadingController: LoadingController,
                 private hitNohitService: HitNohitService,
                 private screenOrientation: ScreenOrientation,
@@ -172,8 +170,7 @@ export class SelectTargetModalComponent implements OnInit {
     }
 
     async onTargetChosen() {
-        debugger;
-        this.shootingService.chosenTarget = this.selectedTarget;
+         this.shootingService.chosenTarget = this.selectedTarget;
         this.bleService.connect(this.selectedTarget.id);
     }
 

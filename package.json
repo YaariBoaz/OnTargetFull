@@ -6,8 +6,9 @@
   "scripts": {
     "resources": "cordova-res android && node scripts/resources.js",
     "ng": "ng",
+    "run-android": "ionic capacitor run android -l --host=0.0.0.0",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ionic build --prod && npx cap copy && npx cap sync && npx cap open android",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -46,6 +47,8 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
     "@npmcli/move-file": "^1.1.2",
+    "@sentry/angular": "^6.11.0",
+    "@sentry/tracing": "^6.11.0",
     "@swimlane/ngx-charts": "^13.0.2",
     "angular-cd-timer": "^1.0.0",
     "angularx-social-login": "^2.2.1",
@@ -114,7 +117,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-androidx-adapter": {}
     }
   }
 }

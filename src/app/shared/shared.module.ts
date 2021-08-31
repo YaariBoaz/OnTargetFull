@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IonicModule} from '@ionic/angular';
-import {MatExpansionModule, MatMenuModule} from '@angular/material';
-import {ApiService} from './services/api.service';
+ import {ApiService} from './services/api.service';
 import {UserService} from './services/user.service';
 import {MaterialModule} from './material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -19,6 +18,8 @@ import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.comp
 import {AccessModalComponent} from '../shared/popups/access-modal/access-modal.component';
 import {ReversePipe} from './pipes/reverse.pipe';
 import {NoConnetionErroComponent} from './popups/no-connection/no-connetion-error';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
     declarations: [

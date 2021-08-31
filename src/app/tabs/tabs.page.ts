@@ -1,10 +1,9 @@
-import {Component, NgZone, ViewChild} from '@angular/core';
+import {Component, NgZone,} from '@angular/core';
 import {TabsService} from './tabs.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Platform} from '@ionic/angular';
-import {MatTabChangeEvent} from '@angular/material';
-
+import {MatTabChangeEvent} from '@angular/material/tabs';
 
 @Component({
     selector: 'app-tabs',

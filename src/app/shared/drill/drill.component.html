@@ -114,7 +114,7 @@
             </div>
             <div class="welcome-message" *ngIf="!showResults">
                 <div class="text">
-                    <p>Hi, {{profile?.firstName}}! Let’s start new drill.</p>
+                    <p>Hi, {{profile?.firstName}}! Let’s start new drill?.</p>
                     <p> Press button to start!</p>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="47.932" height="45.389" viewBox="0 0 47.932 45.389">
@@ -152,8 +152,7 @@
                                    transform="translate(-2 -1)">
                                     <path id="Box" fill="none" d="M0 0H24V24H0z" transform="translate(2 1)"/>
                                     <rect id="Rectangle_1747" width="24" height="24" fill="#373737"
-                                          data-name="Rectangle 1747"
-                                          rx="5" transform="translate(2 1)"/>
+                                          data-name="Rectangle 1747" rx="5" transform="translate(2 1)"/>
                                     <g id="_002-bullet" data-name="002-bullet" transform="translate(6.164 5)">
                                         <path id="Path_1178"
                                               d="M15.689.136A.464.464 0 0 0 15.361 0h-.007A6.58 6.58 0 0 0 11.3 1.58l-1.7.851a.463.463 0 0 0-.12.087L1.5 10.5a.463.463 0 0 0-.141.183L.838 11.9l-.046-.046a.464.464 0 0 0-.656.656l3.177 3.177a.464.464 0 0 0 .656-.656l-.046-.046 1.223-.522a.463.463 0 0 0 .183-.141l7.978-7.978a.463.463 0 0 0 .087-.12l.851-1.7A6.58 6.58 0 0 0 15.824.471a.463.463 0 0 0-.136-.335zM3.217 14.28l-1.672-1.672.4-.935 2.208 2.208zm1.745-.9l-2.517-2.517L9.807 3.5l2.516 2.516zm7.892-8.144l-2.265-2.264.888-.446L13.3 4.347zm.989-1.656l-1.6-1.6A5.644 5.644 0 0 1 14.85.976a5.607 5.607 0 0 1-1.008 2.603z"
@@ -238,47 +237,51 @@
         <div class="target" *ngIf="isGateway">
             <div *ngIf="showResults" class="some-wrapper" #container>
                 <div *ngIf="targetType === targetTypeEnum.Type_64">
-                    <div *ngIf="drill.drillType === drillTypeEnum.Regular">
+
+                    <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
                         <img *ngIf="!drillIsFinished" src="assets/targets/64/e64_score.png">
                         <img *ngIf="drillIsFinished" src="assets/targets/64/e64_score_finish.png">
                     </div>
-                    <div *ngIf="drill.drillType === drillTypeEnum.Zero">
+                    <div *ngIf="drill?.drillType === drillTypeEnum.Zero">
                         <img *ngIf="!drillIsFinished" src="assets/targets/64/e64_Zero.png">
                         <img *ngIf="drillIsFinished" src="assets/targets/64/e64_Zero_finish.png">
                     </div>
-                    <div *ngIf="drill.drillType === drillTypeEnum.Hostage">
+                    <div *ngIf="drill?.drillType === drillTypeEnum.Hostage">
                         <img *ngIf="!drillIsFinished" src="assets/targets/64/Hostage_png_e64.png">
                         <img *ngIf="drillIsFinished" src="assets/targets/64/Hostage_png_e64_finish.png">
                     </div>
                 </div>
                 <div *ngIf="targetType === targetTypeEnum.Type_128">
-                    <div *ngIf="drill.drillType === drillTypeEnum.Regular">
+                    <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
                         <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_score.png">
                         <img *ngIf="drillIsFinished" src="assets/targets/128/e128_score_finish.png">
                     </div>
-                    <div *ngIf="drill.drillType === drillTypeEnum.Regular">
+                    <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
                         <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_score.png">
                         <img *ngIf="drillIsFinished" src="assets/targets/128/e64_score_finish.png">
                     </div>
-                    <div *ngIf="drill.drillType === drillTypeEnum.Zero">
+                    <div *ngIf="drill?.drillType === drillTypeEnum.Zero">
                         <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_zero.png">
                         <img *ngIf="drillIsFinished" src="assets/targets/128/e128_zero.png">
                     </div>
-                    <div *ngIf="drill.drillType === drillTypeEnum.Hostage">
+                    <div *ngIf="drill?.drillType === drillTypeEnum.Hostage">
                         <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_Hostage.png">
                         <img *ngIf="drillIsFinished" src="assets/targets/128/e128_Hostage_Finish.png">
                     </div>
                 </div>
                 <!--                <div class="counter-shot">{{shotNumber}}</div>-->
-                <div class="hit" *ngFor="let shot of shots; let i = index" style="position: absolute;  "
-                     [style.top.px]=shot.y
-                     [style.left.px]=shot.x>
+                <div class="hit" *ngFor="let shot of shots; let i = index" style="position: absolute;"
+                     [style.top.px]=shot.y [style.left.px]=shot.x>
                     {{i + 1}}
+                </div>
+                <div class="hit" *ngFor="let shot of shotsThatAreNotCounted; let i = index" style="position: absolute;"
+                     [class.napar]="shot.isNapar" [class.napam]="shot.isNapam"
+                     [style.top.px]=shot.y [style.left.px]=shot.x>
                 </div>
             </div>
             <div class="welcome-message" *ngIf="!showResults">
                 <div class="text">
-                    <p>Hi, {{profile.firstName}}! Let’s start new drill.</p>
+                    <p>Hi, {{profile.firstName}}! Let’s start new drill?.</p>
                     <p> Press button to start!</p>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="47.932" height="45.389" viewBox="0 0 47.932 45.389">
@@ -299,7 +302,7 @@
                 <div class="dot three"></div>
                 <div class="dot four"></div>
             </div>
-            <div *ngIf="showResults" class="results-table">
+            <div *ngIf="showResults && !isZero" class="results-table">
                 <table>
                     <thead>
                     <tr>
@@ -317,8 +320,7 @@
                                    transform="translate(-2 -1)">
                                     <path id="Box" fill="none" d="M0 0H24V24H0z" transform="translate(2 1)"/>
                                     <rect id="Rectangle_1747" width="24" height="24" fill="#373737"
-                                          data-name="Rectangle 1747"
-                                          rx="5" transform="translate(2 1)"/>
+                                          data-name="Rectangle 1747" rx="5" transform="translate(2 1)"/>
                                     <g id="_002-bullet" data-name="002-bullet" transform="translate(6.164 5)">
                                         <path id="Path_1178"
                                               d="M15.689.136A.464.464 0 0 0 15.361 0h-.007A6.58 6.58 0 0 0 11.3 1.58l-1.7.851a.463.463 0 0 0-.12.087L1.5 10.5a.463.463 0 0 0-.141.183L.838 11.9l-.046-.046a.464.464 0 0 0-.656.656l3.177 3.177a.464.464 0 0 0 .656-.656l-.046-.046 1.223-.522a.463.463 0 0 0 .183-.141l7.978-7.978a.463.463 0 0 0 .087-.12l.851-1.7A6.58 6.58 0 0 0 15.824.471a.463.463 0 0 0-.136-.335zM3.217 14.28l-1.672-1.672.4-.935 2.208 2.208zm1.745-.9l-2.517-2.517L9.807 3.5l2.516 2.516zm7.892-8.144l-2.265-2.264.888-.446L13.3 4.347zm.989-1.656l-1.6-1.6A5.644 5.644 0 0 1 14.85.976a5.607 5.607 0 0 1-1.008 2.603z"
@@ -349,30 +351,36 @@
                                     <g id="_004-aim" data-name="004-aim" transform="translate(4.902 5.25)">
                                         <path id="Path_1182"
                                               d="M7.516 13.281a5.766 5.766 0 1 1 5.766-5.766 5.772 5.772 0 0 1-5.766 5.766zm0-10.406a4.641 4.641 0 1 0 4.641 4.641 4.646 4.646 0 0 0-4.641-4.641z"
-                                              class="cls-3" data-name="Path 1182" transform="translate(-.766 -.766)"/>
+                                              class="cls-3" data-name="Path 1182"
+                                              transform="translate(-.766 -.766)"/>
                                         <path id="Path_1183"
                                               d="M11.563 3.094A.563.563 0 0 1 11 2.531V.563a.563.563 0 0 1 1.125 0v1.968a.563.563 0 0 1-.562.563z"
                                               class="cls-3" data-name="Path 1183" transform="translate(-4.813)"/>
                                         <path id="Path_1184"
                                               d="M21.031 12.125h-1.968a.563.563 0 0 1 0-1.125h1.969a.563.563 0 0 1 0 1.125z"
-                                              class="cls-3" data-name="Path 1184" transform="translate(-8.094 -4.813)"/>
+                                              class="cls-3" data-name="Path 1184"
+                                              transform="translate(-8.094 -4.813)"/>
                                         <path id="Path_1185"
                                               d="M11.563 21.594a.563.563 0 0 1-.563-.563v-1.968a.563.563 0 0 1 1.125 0v1.969a.563.563 0 0 1-.562.562z"
-                                              class="cls-3" data-name="Path 1185" transform="translate(-4.813 -8.094)"/>
+                                              class="cls-3" data-name="Path 1185"
+                                              transform="translate(-4.813 -8.094)"/>
                                         <path id="Path_1186"
                                               d="M2.531 12.125H.563a.563.563 0 0 1 0-1.125h1.968a.563.563 0 0 1 0 1.125z"
                                               class="cls-3" data-name="Path 1186" transform="translate(0 -4.813)"/>
                                         <path id="Path_1187"
                                               d="M10.688 12.375a1.688 1.688 0 1 1 1.688-1.687 1.69 1.69 0 0 1-1.688 1.687zm0-2.25a.563.563 0 1 0 .563.563.563.563 0 0 0-.563-.563z"
-                                              class="cls-3" data-name="Path 1187" transform="translate(-3.938 -3.938)"/>
+                                              class="cls-3" data-name="Path 1187"
+                                              transform="translate(-3.938 -3.938)"/>
                                     </g>
                                 </g>
                             </svg>
                         </th>
                         <th>
                             <p> From Center</p>
-                            <div style="background: rgb(55, 55, 55);height: 25px;width: 34px;border-radius: 5px;display: flex;justify-content: center;align-items: center;">
-                                <img style="width: 16px;height: 16px" src="../../../assets/icons/icon_to_center.svg">
+                            <div
+                                    style="background: rgb(55, 55, 55);height: 25px;width: 34px;border-radius: 5px;display: flex;justify-content: center;align-items: center;">
+                                <img style="width: 16px;height: 16px"
+                                     src="../../../assets/icons/icon_to_center.svg">
                             </div>
                         </th>
                         <th>
@@ -446,6 +454,40 @@
                     <p>{{summaryObject?.totalTime }}</p>
                     <p> {{summaryObject?.split }}</p>
                 </div>
+            </div>
+            <div *ngIf="showResults && isZero" class="zero-stats">
+                <div class="grouping-status stats-container">
+                    <span> {{groupingStatus}}</span>
+                </div>
+                <div class="stats-container">
+                    <div class="zero-data-row">
+                        <img src="../../../assets/icons/grouping-zero.svg"/>
+                        <div class="data-row"><span>Grouping:</span><span style="padding-left: 10px">{{groupingNumber |
+                                number : '1.2-2'}}</span></div>
+                    </div>
+                    <div class="zero-data-row" *ngIf="upclick!==0">
+                        <img src="../../../assets/icons/clicksUp.png"/>
+                        <div class="data-row"><span>{{upclick | number : '1.2-2'}}</span><span
+                                style="padding-left: 10px">CLICKS UP</span></div>
+                    </div>
+                    <div class="zero-data-row" *ngIf="leftClick!==0">
+                        <img src="../../../assets/icons/clicksLeft.png"/>
+                        <div class="data-row"><span>{{leftClick | number : '1.2-2'}}</span><span
+                                style="padding-left: 10px">CLICKS LEFT</span></div>
+                    </div>
+                    <div class="zero-data-row" *ngIf="downClick!==0">
+                        <img src="../../../assets/icons/clicksDown.png"/>
+                        <div class="data-row"><span>{{downClick | number : '1.2-2'}}</span><span
+                                style="padding-left: 10px">CLICKS DOWN</span></div>
+                    </div>
+                    <div class="zero-data-row" *ngIf="rightClick!==0">
+                        <img src="../../../assets/icons/clicksRight.png"/>
+                        <div class="data-row"><span>{{rightClick | number : '1.2-2'}}</span><span
+                                style="padding-left: 10px">CLICKS RIGHT</span></div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
         <div class="counter" *ngIf="showCounter">

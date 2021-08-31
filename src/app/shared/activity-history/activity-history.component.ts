@@ -5,8 +5,9 @@ import {StorageService} from '../services/storage.service';
 import {Router} from '@angular/router';
 import {Platform} from '@ionic/angular';
 import {HistoryModel, HistoryValueItemModel} from '../models/HistoryModel';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {ImodalType} from '../popups/error-modal/error-modal.component';
+import {MatDialogRef} from '@angular/material/dialog';
+import {TargetType} from '../drill/constants';
+import {DrillType} from '../../tab2/tab2.page';
 
 // @ts-ignore
 @Component({
@@ -16,6 +17,14 @@ import {ImodalType} from '../popups/error-modal/error-modal.component';
 })
 export class ActivityHistoryComponent implements OnInit, OnChanges {
     @ViewChild('container') container: ElementRef;
+
+    public get targetTypeEnum(): typeof TargetType {
+        return TargetType;
+    }
+
+    public get drillTypeEnum(): typeof DrillType {
+        return DrillType;
+    }
 
     train = {
         date: '05.07.18',
@@ -78,6 +87,8 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         this.stoargeService.historicalTrainingsDate$.subscribe((data: HistoryModel) => {
             if (data) {
                 this.trains = data;
+                this.trains = this.trains.sort((a, b) => new Date(b.sessionDateTime).getTime() - new Date(a.sessionDateTime).getTime());
+
             }
 
         });

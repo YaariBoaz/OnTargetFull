@@ -6,10 +6,9 @@ import {BleService} from './shared/services/ble.service';
 import {Plugins} from '@capacitor/core';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {PopupsService} from './shared/services/popups.service';
-import {NoConnetionErroComponent} from './shared/popups/no-connection/no-connetion-error';
-import {MatDialog} from '@angular/material';
-import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
+  import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
+import {MatDialog} from '@angular/material/dialog';
 
 const {SplashScreen} = Plugins;
 const {Network} = Plugins;
@@ -49,6 +48,7 @@ export class AppComponent implements OnDestroy, OnInit {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.initService.getSights();
         this.initService.getWeapons();
+        this.initService.getCalibers();
         this.platform.ready().then(() => {
 
             SplashScreen.hide().then(r => {
@@ -76,10 +76,10 @@ export class AppComponent implements OnDestroy, OnInit {
                 }, false);
 
             });
-
             window.addEventListener('beforeunload', () => {
                 this.initService.distory();
             });
+
         });
         this.initService.isLoading.subscribe((isLoading: boolean) => {
             this.isLoding = isLoading;

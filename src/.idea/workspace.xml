@@ -36,9 +36,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb195e86-ced8-4599-a54e-fcf0617378aa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/shared/services/balistic-calculator.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/shared/services/balistic-calculator.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tab2/balistic-calculator/balistic-calculator.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tab2/balistic-calculator/balistic-calculator.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tab2/balistic-calculator/balistic-calculator.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tab2/balistic-calculator/balistic-calculator.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/balistic-header-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/arrow-zeroing.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/chart-red.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/clicksDown.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/clicksLeft.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/clicksRight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/clicksUp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/grouping-zero.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/table-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/zero-target.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../typings/cordova-typings.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../android/app/src/main/assets/capacitor.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/assets/capacitor.config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../capacitor.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../capacitor.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/activity-history/activity-history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/popups/error-modal/error-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/popups/error-modal/error-modal.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/popups/no-connection/no-connetion-error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/popups/no-connection/no-connetion-error.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/popups/signin-modal/signin-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/popups/signin-modal/signin-modal.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/modal/select-target-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/modal/select-target-modal.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/ble-new.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/ble-new.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/ble.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/ble.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/gateway.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/gateway.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/init.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/init.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/popups.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/popups.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/shooting.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/shooting.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/shared.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab1/tab1.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab1/tab1.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab1/tab1.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab2/tab2.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab2/tab2.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab2/tab2.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab2/tab2.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab2/tab2.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab2/tab2.page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab2/tab2.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab2/tab2.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab3/gunlist/gunlist.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/gunlist/gunlist.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab3/sightlist/sightlist.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/sightlist/sightlist.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tabs/tabs.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tabs/tabs.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tabs/tabs.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tabs/tabs.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +121,8 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/app/shared/drill/drill.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/app/shared/services/ble.service.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/app/shared/drill/drill.component.ts" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1fglRlcLCWJ8BwcD96xmPuQDtAe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -85,16 +142,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\onTargetMobile\OnTargetFull\src\assets\icons" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\onTargetMobile\OnTargetFull\src\assets\docs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\onTargetMobile\OnTargetFull\src\assets\icons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -128,6 +185,18 @@
       <workItem from="1618724159835" duration="34000" />
       <workItem from="1618816916701" duration="1089000" />
       <workItem from="1620284344606" duration="9792000" />
+      <workItem from="1622038847858" duration="1145000" />
+      <workItem from="1622041114111" duration="8014000" />
+      <workItem from="1622127361882" duration="21000" />
+      <workItem from="1623822886000" duration="11515000" />
+      <workItem from="1624345435910" duration="2040000" />
+      <workItem from="1624512817076" duration="1301000" />
+      <workItem from="1624514160176" duration="877000" />
+      <workItem from="1624865841073" duration="103000" />
+      <workItem from="1626244913726" duration="13306000" />
+      <workItem from="1626597536248" duration="4719000" />
+      <workItem from="1629282436837" duration="3132000" />
+      <workItem from="1630222977961" duration="27000" />
     </task>
     <servers />
   </component>
@@ -170,6 +239,15 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/shared/models/DrillModel.ts</url>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/shared/services/shooting.service.ts</url>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/shared/services/gateway.service.ts</url>
+          <line>396</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

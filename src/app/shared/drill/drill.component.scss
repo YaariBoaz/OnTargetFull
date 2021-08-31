@@ -103,15 +103,14 @@ section.drill-results {
     //padding-left: 100px;
 
 
-
     img {
-      height: 295px;
-      width: 295px;
+      height: 245px;
+      width: 245px;
     }
 
     .some-wrapper {
       position: relative;
-      width: 50%;
+      width: 60%;
       display: flex;
       justify-content: center;
 
@@ -244,7 +243,7 @@ section.drill-results {
               padding: 0 0.5em;
 
               svg {
-                width: 24px;
+                width: 2.5vw;
                 height: 24px;
                 fill: white;
               }
@@ -312,6 +311,7 @@ section.drill-results {
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         width: 100%;
+
         p {
           width: calc(100% / 4);
           color: white;
@@ -831,8 +831,24 @@ div.welcome-message {
 
     div.target {
       img {
-        height: 245px;
-        width: 245px;
+        height: 60vh;
+        width: 60vh;
+      }
+    }
+  }
+  .stats-container {
+    border-radius: 5px;
+    background-color: #ffffffa6;
+
+    .zero-data-row {
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+
+      img {
+        height: 35px !important;
+        width: 35px !important;
+        padding-right: 10px !important;
       }
     }
   }
@@ -855,4 +871,58 @@ div.welcome-message {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+}
+
+.stats-container {
+  border-radius: 5px;
+  background-color: #ffffffa6;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .zero-data-row {
+    display: flex;
+    align-items: center !important;
+    padding-left: 15px !important;
+
+    img {
+      height: 6vh !important;
+      width: 5vw!important;
+      padding-right: 10px !important;
+    }
+
+    span {
+      font-size: 2vw;
+    }
+  }
+}
+
+.isZero {
+  justify-content: center !important
+}
+
+.zero-stats {
+  width: 40%;
+  padding-right: 10%;
+}
+
+.grouping-status {
+  height: 15vh;
+  margin-bottom: 5vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+
+  span {
+    font-size: 3vw;
+  }
+}
+.napar{
+  background-color: #ce564b;
+}
+
+.napam{
+  background-color: aqua;
 }

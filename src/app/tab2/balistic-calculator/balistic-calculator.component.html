@@ -1,0 +1,389 @@
+<section class="edit-drill">
+    <!--    <ion-item #mainSection></ion-item>-->
+    <header>
+        <div>
+            <svg (click)="onBackPressed()" height="35" viewBox="0 0 27.656 35" width="27.656"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="Arrow_" width="27.656" height="35" x="0" y="0" filterUnits="userSpaceOnUse">
+                        <feOffset dy="3" />
+                        <feGaussianBlur result="blur" stdDeviation="3" />
+                        <feFlood flood-opacity=".161" />
+                        <feComposite in2="blur" operator="in" />
+                        <feComposite in="SourceGraphic" />
+                    </filter>
+                </defs>
+                <g filter="url(#Arrow_)">
+                    <path id="Arrow_2" fill="#fff" fill-rule="evenodd"
+                        d="M720.456 1174.787a.721.721 0 0 0 1 0 .69.69 0 0 0 0-.988l-7.554-7.438 7.552-7.18a.686.686 0 0 0 0-.984.712.712 0 0 0-1 0l-8.441 8.164z"
+                        data-name="Arrow" transform="translate(-703.01 -1151.99)" />
+                </g>
+            </svg>
+            <p> Edit Drill</p>
+        </div>
+    </header>
+    <div *ngIf="isParamsScreen">
+        <div class="main-content">
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-2 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <g id="Group_833" data-name="Group 833" transform="translate(-27 -494)">
+                            <rect id="Rectangle_1749" width="24" height="24" fill="#373737" data-name="Rectangle 1749"
+                                rx="5" transform="translate(27 494)" />
+                            <g id="gun" transform="translate(30 439)">
+                                <path id="Path_1280"
+                                    d="M90.527 217.328a.527.527 0 0 0 .527-.527v-5.273a.527.527 0 0 0-1.055 0v5.272a.527.527 0 0 0 .528.528z"
+                                    class="cls-2" data-name="Path 1280" transform="translate(-86.836 -144.727)" />
+                                <path id="Path_1281"
+                                    d="M17.473 61a.527.527 0 0 0-.527.527v.527H3.691a.812.812 0 0 1-.292-.076.429.429 0 0 1-.236-.451.527.527 0 0 0-1.055 0 1.741 1.741 0 0 0 .1.588 1.585 1.585 0 0 0-1.15 1.522v.527H.527a.527.527 0 0 0-.527.527V66.8a.527.527 0 0 0 .527.527.364.364 0 0 1 .281.128.373.373 0 0 1 .084.306l-.686 5.122a1.58 1.58 0 0 0 1.566 1.828H5.8a.527.527 0 0 0 .527-.527v-3.692h.527a2.641 2.641 0 0 0 2.584-2.109h4.869a.527.527 0 0 0 .527-.527v-.527h2.637A.527.527 0 0 0 18 66.8v-5.273a.527.527 0 0 0-.527-.527zM6.855 69.438h-.527v-1.055h2.019a1.585 1.585 0 0 1-1.492 1.055zm6.926-2.638v.527H5.8a.527.527 0 0 0-.527.527v5.8h-3.5a.525.525 0 0 1-.407-.187.516.516 0 0 1-.117-.424l.687-5.124a1.431 1.431 0 0 0-.324-1.149 1.416 1.416 0 0 0-.556-.4v-1.151h12.725zm3.164-.527h-2.109v-1.054h2.109zm0-2.109H2.109v-.527a.528.528 0 0 1 .527-.527h14.309z"
+                                    class="cls-2" data-name="Path 1281" />
+                            </g>
+                        </g>
+                    </svg>
+                    <p>WEAPON:</p>
+                </div>
+                <span> {{data.weaopn}}</span>
+            </div>
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Icon_Favorite_Filled" width="24" height="24"
+                        data-name="Icon / Favorite / Filled" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-3 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <path id="Box" fill="none" d="M0 0H24V24H0z" />
+                        <rect id="Rectangle_1750" width="24" height="24" fill="#373737" data-name="Rectangle 1750"
+                            rx="5" />
+                        <g id="_004-aim" data-name="004-aim" transform="translate(2.98 3)">
+                            <path id="Path_1182"
+                                d="M9.438 17.125a7.688 7.688 0 1 1 7.688-7.688 7.7 7.7 0 0 1-7.688 7.688zm0-13.875a6.188 6.188 0 1 0 6.188 6.188A6.195 6.195 0 0 0 9.438 3.25z"
+                                class="cls-3" data-name="Path 1182" transform="translate(-.438 -.438)" />
+                            <path id="Path_1183"
+                                d="M11.75 4.125a.75.75 0 0 1-.75-.75V.75a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
+                                class="cls-3" data-name="Path 1183" transform="translate(-2.75)" />
+                            <path id="Path_1184" d="M21.875 12.5H19.25a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                class="cls-3" data-name="Path 1184" transform="translate(-4.625 -2.75)" />
+                            <path id="Path_1185"
+                                d="M11.75 22.625a.75.75 0 0 1-.75-.75V19.25a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
+                                class="cls-3" data-name="Path 1185" transform="translate(-2.75 -4.625)" />
+                            <path id="Path_1186" d="M3.375 12.5H.75a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                class="cls-3" data-name="Path 1186" transform="translate(0 -2.75)" />
+                            <path id="Path_1187"
+                                d="M11.25 13.5a2.25 2.25 0 1 1 2.25-2.25 2.253 2.253 0 0 1-2.25 2.25zm0-3a.75.75 0 1 0 .75.75.751.751 0 0 0-.75-.75z"
+                                class="cls-3" data-name="Path 1187" transform="translate(-2.25 -2.25)" />
+                        </g>
+                    </svg>
+                    <p>SIGHT:</p>
+                </div>
+                <span> {{data.sight}}</span>
+            </div>
+            <div class="container range">
+                <div class="title-and-icon">
+                    <p>CALIBER:</p>
+                </div>
+                <select [(ngModel)]="caliber">
+                    <option *ngFor="let caliberUnit of caliberList |keyvalue" [value]="caliberUnit.key">
+                        {{caliberUnit.key}}</option>
+                </select>
+            </div>
+            <hr>
+            <div class="container range">
+                <div class="title-and-icon">
+                    <p>BULLET NAME:</p>
+                </div>
+
+                <div>
+                    <select [(ngModel)]="bulletName">
+                        <option *ngFor="let caliber of caliberList|keyvalue" [value]="caliber.value[0].name">
+                            {{caliber.value[0].name}}</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>BALLISTIC COEFFICIENT :</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.ballisticCoefficient" type="text">
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>INITIAL VELOCITY (FPS):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.initialVelocity" type="text">
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>SIGHT HEIGHT (in):</p>
+                </div>
+                <div class="inputs">
+                    <input [(ngModel)]="data.sightHeight" type="text">
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>ZERO RANGE (yd):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.zeroRange" type="text">
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>BORE ANGLE (deg):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.boreAngle" type="text">
+                </div>
+            </div>
+            <hr>
+            <span class="atmospheric-text">Atmospheric </span>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>WIND ANGLE(deg):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.windangle" type="text">
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>Y lnetercept (in):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.yIntercept" type="text">
+                </div>
+            </div>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>ALTITUDE (ft):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.altitude" type="text">
+                </div>
+            </div>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>BAROMETER (HG):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.barometer" type="text">
+                </div>
+            </div>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>Temperature (F):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.temperature" type="text">
+                </div>
+            </div>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>Relative Humidity (%):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.relativeHumidity" type="text">
+                </div>
+            </div>
+            <div class="container">
+                <div class="title-and-icon">
+                    <p>Wind Speed (mph):</p>
+                </div>
+
+                <div class="inputs">
+                    <input [(ngModel)]="dataModel.windSpeed" type="text">
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="set-container">
+            <button class="setButton" (click)="changeScreen()"> SET
+            </button>
+        </div>
+    </div>
+    <div *ngIf="!isParamsScreen">
+        <div class="main-content">
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-2 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <g id="Group_833" data-name="Group 833" transform="translate(-27 -494)">
+                            <rect id="Rectangle_1749" width="24" height="24" fill="#373737" data-name="Rectangle 1749"
+                                rx="5" transform="translate(27 494)" />
+                            <g id="gun" transform="translate(30 439)">
+                                <path id="Path_1280"
+                                    d="M90.527 217.328a.527.527 0 0 0 .527-.527v-5.273a.527.527 0 0 0-1.055 0v5.272a.527.527 0 0 0 .528.528z"
+                                    class="cls-2" data-name="Path 1280" transform="translate(-86.836 -144.727)" />
+                                <path id="Path_1281"
+                                    d="M17.473 61a.527.527 0 0 0-.527.527v.527H3.691a.812.812 0 0 1-.292-.076.429.429 0 0 1-.236-.451.527.527 0 0 0-1.055 0 1.741 1.741 0 0 0 .1.588 1.585 1.585 0 0 0-1.15 1.522v.527H.527a.527.527 0 0 0-.527.527V66.8a.527.527 0 0 0 .527.527.364.364 0 0 1 .281.128.373.373 0 0 1 .084.306l-.686 5.122a1.58 1.58 0 0 0 1.566 1.828H5.8a.527.527 0 0 0 .527-.527v-3.692h.527a2.641 2.641 0 0 0 2.584-2.109h4.869a.527.527 0 0 0 .527-.527v-.527h2.637A.527.527 0 0 0 18 66.8v-5.273a.527.527 0 0 0-.527-.527zM6.855 69.438h-.527v-1.055h2.019a1.585 1.585 0 0 1-1.492 1.055zm6.926-2.638v.527H5.8a.527.527 0 0 0-.527.527v5.8h-3.5a.525.525 0 0 1-.407-.187.516.516 0 0 1-.117-.424l.687-5.124a1.431 1.431 0 0 0-.324-1.149 1.416 1.416 0 0 0-.556-.4v-1.151h12.725zm3.164-.527h-2.109v-1.054h2.109zm0-2.109H2.109v-.527a.528.528 0 0 1 .527-.527h14.309z"
+                                    class="cls-2" data-name="Path 1281" />
+                            </g>
+                        </g>
+                    </svg>
+                    <p>WEAPON:</p>
+
+                </div>
+                <span> {{data?.weaopn}}</span>
+            </div>
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Icon_Favorite_Filled" width="24" height="24"
+                        data-name="Icon / Favorite / Filled" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-3 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <path id="Box" fill="none" d="M0 0H24V24H0z" />
+                        <rect id="Rectangle_1750" width="24" height="24" fill="#373737" data-name="Rectangle 1750"
+                            rx="5" />
+                        <g id="_004-aim" data-name="004-aim" transform="translate(2.98 3)">
+                            <path id="Path_1182"
+                                d="M9.438 17.125a7.688 7.688 0 1 1 7.688-7.688 7.7 7.7 0 0 1-7.688 7.688zm0-13.875a6.188 6.188 0 1 0 6.188 6.188A6.195 6.195 0 0 0 9.438 3.25z"
+                                class="cls-3" data-name="Path 1182" transform="translate(-.438 -.438)" />
+                            <path id="Path_1183"
+                                d="M11.75 4.125a.75.75 0 0 1-.75-.75V.75a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
+                                class="cls-3" data-name="Path 1183" transform="translate(-2.75)" />
+                            <path id="Path_1184" d="M21.875 12.5H19.25a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                class="cls-3" data-name="Path 1184" transform="translate(-4.625 -2.75)" />
+                            <path id="Path_1185"
+                                d="M11.75 22.625a.75.75 0 0 1-.75-.75V19.25a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
+                                class="cls-3" data-name="Path 1185" transform="translate(-2.75 -4.625)" />
+                            <path id="Path_1186" d="M3.375 12.5H.75a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                class="cls-3" data-name="Path 1186" transform="translate(0 -2.75)" />
+                            <path id="Path_1187"
+                                d="M11.25 13.5a2.25 2.25 0 1 1 2.25-2.25 2.253 2.253 0 0 1-2.25 2.25zm0-3a.75.75 0 1 0 .75.75.751.751 0 0 0-.75-.75z"
+                                class="cls-3" data-name="Path 1187" transform="translate(-2.25 -2.25)" />
+                        </g>
+                    </svg>
+                    <p>SIGHT:</p>
+
+                </div>
+                <span> {{data?.sight}}</span>
+            </div>
+            <div class="container">
+                <div class="title-and-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="Icon_Favorite_Filled" width="24" height="24"
+                        data-name="Icon / Favorite / Filled" viewBox="0 0 24 24">
+                        <defs>
+                            <style>
+                                .cls-3 {
+                                    fill: #fff
+                                }
+                            </style>
+                        </defs>
+                        <path id="Box" fill="none" d="M0 0H24V24H0z" />
+                        <rect id="Rectangle_1750" width="24" height="24" fill="#373737" data-name="Rectangle 1750"
+                            rx="5" />
+                        <g id="_004-aim" data-name="004-aim" transform="translate(2.98 3)">
+                            <path id="Path_1182"
+                                d="M9.438 17.125a7.688 7.688 0 1 1 7.688-7.688 7.7 7.7 0 0 1-7.688 7.688zm0-13.875a6.188 6.188 0 1 0 6.188 6.188A6.195 6.195 0 0 0 9.438 3.25z"
+                                class="cls-3" data-name="Path 1182" transform="translate(-.438 -.438)" />
+                            <path id="Path_1183"
+                                d="M11.75 4.125a.75.75 0 0 1-.75-.75V.75a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
+                                class="cls-3" data-name="Path 1183" transform="translate(-2.75)" />
+                            <path id="Path_1184" d="M21.875 12.5H19.25a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                class="cls-3" data-name="Path 1184" transform="translate(-4.625 -2.75)" />
+                            <path id="Path_1185"
+                                d="M11.75 22.625a.75.75 0 0 1-.75-.75V19.25a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
+                                class="cls-3" data-name="Path 1185" transform="translate(-2.75 -4.625)" />
+                            <path id="Path_1186" d="M3.375 12.5H.75a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                class="cls-3" data-name="Path 1186" transform="translate(0 -2.75)" />
+                            <path id="Path_1187"
+                                d="M11.25 13.5a2.25 2.25 0 1 1 2.25-2.25 2.253 2.253 0 0 1-2.25 2.25zm0-3a.75.75 0 1 0 .75.75.751.751 0 0 0-.75-.75z"
+                                class="cls-3" data-name="Path 1187" transform="translate(-2.25 -2.25)" />
+                        </g>
+                    </svg>
+                    <p>ZERO RANGE (YARDS)</p>
+
+                </div>
+                <span> {{dataModel.zeroRange}}</span>
+            </div>
+            <div class="container chart-wrapper">
+                <div>
+                    <img src="../../../assets/icons/chart-red.svg">
+                    <span> GRAPH</span>
+                </div>
+                <div>
+                    <canvas width="100%" height="100%" #lineChart></canvas>
+                </div>
+            </div>
+            <div class="container">
+                <mat-accordion style="width: 100%;">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <img src="../../../assets/icons/table-icon.svg">
+                                <p> TABLE </p>
+                            </mat-panel-title>
+                            <mat-panel-description>
+
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="table-container">
+                            <div class="table-header">
+
+                                <span>X</span>
+                                <span>Y</span>
+                                <span>T</span>
+                            </div>
+                            <div class="table-body">
+                                <div *ngFor="let item of tableData">
+                                    <span>{{item.x | number}}</span>
+                                    <span>{{item.y | number:'1.1-1'}}</span>
+                                    <span>{{item.t | number}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <div class="set-container">
+            <button (click)="startSession()" class="setButton"> CONTINUE
+            </button>
+            <button class="editButton" (click)="isParamsScreen = !isParamsScreen"> EDIT CALCULATOR
+            </button>
+        </div>
+    </div>
+
+</section>

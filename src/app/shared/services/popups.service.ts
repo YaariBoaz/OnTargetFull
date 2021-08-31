@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ErrorModalComponent} from '../popups/error-modal/error-modal.component';
-import {MatDialog} from '@angular/material';
-import {NoConnetionErroComponent} from '../popups/no-connection/no-connetion-error';
+ import {NoConnetionErroComponent} from '../popups/no-connection/no-connetion-error';
+import {MatDialog} from '@angular/material/dialog';
 
 @Injectable({
     providedIn: 'root'

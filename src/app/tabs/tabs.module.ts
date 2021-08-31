@@ -5,12 +5,12 @@ import {FormsModule} from '@angular/forms';
 import {TabsPageRoutingModule} from './tabs-routing.module';
 
 import {TabsPage} from './tabs.page';
-import {MatMenuModule} from '@angular/material';
-import {TabsService} from './tabs.service';
+ import {TabsService} from './tabs.service';
 import {Tab1PageModule} from '../tab1/tab1.module';
 import {Tab2PageModule} from '../tab2/tab2.module';
 import {Tab3PageModule} from '../tab3/tab3.module';
 import {SharedModule} from '../shared/shared.module';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({

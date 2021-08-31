@@ -9,6 +9,7 @@ import {UserService} from './user.service';
 import * as moment from 'moment';
 import {DrillInfo, DrillStatus, ShotItem, TargetType} from '../drill/constants';
 import {InitService} from './init.service';
+import {BalisticCalculatorService} from './balistic-calculator.service';
 
 @Injectable({
     providedIn: 'root'
@@ -63,6 +64,7 @@ export class GatewayService {
     constructor(private shootingService: ShootingService,
                 private storageService: StorageService,
                 private initService: InitService,
+                private balisticCalculatorService: BalisticCalculatorService,
                 private countupTimerService: CountupTimerService,
                 private apiService: ApiService, private userService: UserService) {
     }
@@ -93,42 +95,6 @@ export class GatewayService {
         this.firstTime = now;
         this.lastTime = now;
     }
-
-    handelShoot(parentImageHeight, parentImageWidth, data) {
-
-        const x = data.xCoord;
-        const y = data.yCoord;
-
-        const nominalStep = 8;
-        const width = parentImageWidth;
-        const height = parentImageHeight;
-
-        const deltaX = width / nominalStep;
-        const deltaY = height / nominalStep;
-
-        const widthCorrection = (0.0628 * width - 7.6862);
-        const heigthCorrection = (-0.0628 * height - 8.3138);
-
-        const xPos = (width - (deltaX * (x / nominalStep))) + widthCorrection;
-        const yPos = ((deltaY * (y / nominalStep))) + heigthCorrection;
-
-
-        this.pageData.counter++;
-        this.hits.push({x: xPos, y: yPos});
-
-        if (this.pageData.counter > this.shootingService.numberOfBullersPerDrill) {
-            console.log('Shot After Drill Finished - Ignoring It');
-
-        } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
-            this.updateStats(xPos, yPos, false, {x, y});
-            this.finishDrill();
-            this.updateHistory();
-        } else {
-
-            this.updateStats(xPos, yPos, false, {x, y});
-        }
-    }
-
 
     updateHistory() {
         this.drill = this.shootingService.selectedDrill;
@@ -218,7 +184,7 @@ export class GatewayService {
         return updatedData;
     }
 
-    updateStats(x, y, isFinish, distanceFromCenterPoints) {
+    updateStats(x, y, isFinish, distanceFromCenterPoints, zeroData) {
 
         console.log('counter:', this.pageData.counter);
         const currentdist: number = parseFloat(this.calculateBulletDistanceFromCenter(distanceFromCenterPoints.x,
@@ -281,7 +247,8 @@ export class GatewayService {
                 stats: this.stats,
                 pageData: this.pageData,
                 isFinish,
-                summaryObject: this.summaryObject
+                summaryObject: this.summaryObject,
+                zeroData
             }
         });
 
@@ -416,6 +383,10 @@ export class GatewayService {
     }
 
     handleShot_MSG_NEW(x, y) {
+        let zeroData = {} as any;
+        if (this.shootingService.getisZero()) {
+            zeroData = this.balisticCalculatorService.updateShot(x, y);
+        }
         const targetId = this.storageService.getItem('slectedTarget').name;
         const targetType = this.getTargetType(targetId);
         let nominalStep;
@@ -432,7 +403,8 @@ export class GatewayService {
             x -= 0.5;
             xPos = x;
             yPos = y;
-        } else if (targetType === TargetType.Type_16) {
+        }
+        else if (targetType === TargetType.Type_16) {
             nominalStep = 7;
             n = 5;
             x = 0.25 * x - n;
@@ -441,7 +413,8 @@ export class GatewayService {
             x -= 0.5;
             xPos = x;
             yPos = y;
-        } else { // 128
+        }
+        else { // 128
             let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
             disPointFromCenter128 = disPointFromCenter128 / 10;
             // 7 is half the width of the ellipse representing the bullet hit on the UI
@@ -475,31 +448,14 @@ export class GatewayService {
             console.log('Shot After Drill Finished - Ignoring It');
 
         } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
-            this.updateStats(xPos, yPos, false, {x, y});
+            this.updateStats(xPos, yPos, false, {x, y}, zeroData);
             this.finishDrill();
             this.updateHistory();
         } else {
 
-            this.updateStats(xPos, yPos, false, {x, y});
+            this.updateStats(xPos, yPos, false, {x, y}, zeroData);
         }
-    }
 
-    handleShot_MSG(dataArray) {
-        const targetName = dataArray[0];
-        const target = this.storageService.getItem('slectedTarget');
-        if (targetName === target.name) {
-            const x = dataArray[2];
-            let xCoord = 0;
-            if (x && x !== '') {
-                xCoord = parseFloat(x);
-            }
-            const y = dataArray[3];
-            let yCoord = 0;
-            if (y && y !== '') {
-                yCoord = parseFloat(dataArray[3]);
-            }
-            this.handelShoot(this.height, this.width, {xCoord, yCoord});
-        }
     }
 
     hanldeBateryTime_MSG(dataArray) {
@@ -659,8 +615,8 @@ export class GatewayService {
                 orbital: '0',
                 score: this.pageData.points.toString(),
                 shotNumber: '0',
-                time: this.pageData.totalTime,
-                timeSplit: this.pageData.splitTime
+                time: stat.pageData.totalTime,
+                timeSplit: stat.pageData.splitTime
             });
         });
         return shotItems;
@@ -727,7 +683,7 @@ export class GatewayService {
     }
 
     getTargetType(chosenTarget: any): TargetType {
-        if (chosenTarget === '003') {
+        if (chosenTarget === '003' || chosenTarget === '004') {
             return TargetType.Type_64;
         }
         // tslint:disable-next-line:radix
@@ -739,6 +695,8 @@ export class GatewayService {
                 return TargetType.Type_64;
             case 128:
                 return TargetType.Type_128;
+            default:
+                return TargetType.Type_64;
         }
     }
 }

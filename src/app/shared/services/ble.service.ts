@@ -17,13 +17,14 @@ const READ = '2a01';
 const READ1 = '2a04';
 const READ2 = '2a06';
 
-
 const TEMPERATURE_CHARACTERISTIC = 'bbb1';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BleService {
+    msgNumber = 1;
+
     devices: any[];
     peripheral: any;
     dataFromDevice;
@@ -152,7 +153,6 @@ export class BleService {
     }
 
     onDeviceDisconnected(peripheral) {
-        alert('The peripheral unexpectedly disconnected');
     }
 
     ionViewDidLoad() {
@@ -169,12 +169,14 @@ export class BleService {
 
 
     handleRead(name, id, service, characteristic) {
-
+        console.log('SUBSCRIBED TO START NOTIFICATION');
         this.subscription = this.ble.startNotification(id, service, characteristic).subscribe((data) => {
+            console.log('RECEIVED A MESSAGE');
             const target = this.storage.getItem('slectedTarget');
             const dec = new TextDecoder();
-            const enc = new TextEncoder();
-            const buffer = new Uint8Array(data);
+            const enc = new TextEncoder().encode(data);
+            const temp = new TextDecoder().decode(enc);
+            const buffer = new Uint8Array(data[0]);
             if (this.isGateway) {
                 this.parseGatewayMessage(buffer);
             } else {
@@ -182,7 +184,9 @@ export class BleService {
                     console.log('Target cleared shots');
                 } else {
                     // @ts-ignore
-                    const encodedString = enc.encode(buffer);
+                    const encoder = new TextEncoder();
+                    // @ts-ignore
+                    const encodedString = encoder.encode(buffer);
                     // tslint:disable-next-line:radix
                     const text = parseInt(dec.decode(encodedString));
                     this.notifyShotArrived.next(text);
@@ -200,7 +204,6 @@ export class BleService {
         const target = this.storage.getItem('slectedTarget');
         const messageFromGatewaty = String.fromCharCode.apply(null, buffer);
         console.log('MESSAGE ARRIVED: ' + messageFromGatewaty);
-
         if (messageFromGatewaty.indexOf('<') > -1) {
             this.gatewayService.processData(messageFromGatewaty);
         } else if (messageFromGatewaty.indexOf('Connecting') > -1) {

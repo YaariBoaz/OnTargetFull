@@ -5,14 +5,14 @@ import {AlertController, LoadingController} from '@ionic/angular';
 import {ApiService} from '../../services/api.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
-import {MatDialog} from '@angular/material';
-import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {SigninModalComponent} from '../../popups/signin-modal/signin-modal.component';
 import {InitService} from '../../services/init.service';
 import {Platform} from '@ionic/angular';
 import {Subscription} from 'rxjs';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {WizardService} from '../signup-wizard/wizard.service';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({

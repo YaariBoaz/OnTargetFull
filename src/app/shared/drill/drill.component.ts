@@ -27,6 +27,7 @@ import {InitService} from '../services/init.service';
 import {FakeData} from './fakeData';
 import {ConstantData, TargetType} from './constants';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
+import {BalisticCalculatorService} from '../services/balistic-calculator.service';
 
 
 @Component({
@@ -57,6 +58,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     /*  END FOR DEMO*/
     profile: any;
     shots = [];
+    shotsThatAreNotCounted = [];
     drill: DrillObject;
     testConfig: any;
     RANDOM_TIMES = FakeData.RANDOM_TIMES;
@@ -90,7 +92,15 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     fakeStats = FakeData.fakeStats;
     fakeShots = FakeData.fakeShots;
     targetType: TargetType;
+    isZero: boolean;
 
+
+    leftClick: number = 0;
+    upclick: number = 0;
+    rightClick: number = 0;
+    downClick: number = 0;
+    groupingStatus: string;
+    groupingNumber: number;
 
     public get targetTypeEnum(): typeof TargetType {
         return TargetType;
@@ -99,6 +109,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     public get drillTypeEnum(): typeof DrillType {
         return DrillType;
     }
+
     constructor(
         private screenOrientation: ScreenOrientation,
         private storageService: StorageService,
@@ -117,6 +128,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         private initService: InitService,
         public alertController: AlertController,
         private hitNohitService: HitNohitService,
+        private balisticCalculatorService: BalisticCalculatorService
     ) {
         this.drill = this.shootingService.selectedDrill;
         this.selectedTarget = this.shootingService.chosenTarget;
@@ -125,6 +137,12 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         this.hitNohitService.setDrill(this.drill);
         this.hitNohitService.initStats();
         this.setTimeElapse();
+        this.isZero = this.shootingService.getisZero();
+        this.balisticCalculatorService.resetStats();
+        if (this.isZero) {
+            const napar = this.balisticCalculatorService.calcNapar(true, this.targetType);
+            this.shotsThatAreNotCounted.push({x: napar.napar.x, y: napar.napar.y, isNapar: true});
+        }
     }
 
 
@@ -185,7 +203,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
 
 
     initStats() {
-
+        this.balisticCalculatorService.resetStats();
         this.hitNohitService.initStats();
         this.gateway.initStats();
         this.resetShots();
@@ -358,6 +376,8 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                     setTimeout(() => {
                         this.gateway.height = this.container.nativeElement.offsetHeight;
                         this.gateway.width = this.container.nativeElement.offsetWidth;
+                        this.balisticCalculatorService.divWidth = 245;
+                        this.balisticCalculatorService.divHeight = 245;
                         this.gateway.startTimer();
                     }, 1);
                 }
@@ -451,17 +471,52 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         });
         this.gateway.hitArrived.subscribe((data) => {
             if (data && !this.isFinish && data.statsData.stats.length > 0) {
-                this.shotNumber = data.hitNumber;
-                this.stats = data.statsData.stats;
-                this.pageData = data.statsData.pageData;
-                this.isFinish = data.statsData.isFinish;
-                this.summaryObject = data.statsData.summaryObject;
-                this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
-                this.cd.detectChanges();
-                this.scrollToBottom();
-                if (this.drill.numOfBullets === this.stats.length) {
-                    this.drillIsFinished = true;
+                if (data.statsData.zeroData) {
+                    this.leftClick = data.statsData.zeroData.leftClick;
+                    this.upclick = data.statsData.zeroData.upclick;
+                    this.rightClick = data.statsData.zeroData.rightClick;
+                    this.downClick = data.statsData.zeroData.downClick;
+                    this.groupingNumber = data.statsData.zeroData.napar2Napam;
+                    this.groupingStatus = data.statsData.zeroData.status;
+                    this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
+                    if (data.statsData.zeroData.napamToView.x !== 0 && data.statsData.zeroData.napamToView.y !== 0) {
+                        this.shotsThatAreNotCounted.push({
+                            x: data.statsData.zeroData.napamToView.x,
+                            y: data.statsData.zeroData.napamToView.y,
+                            isNapam: true
+                        });
+                    }
+                    if (data.statsData.zeroData.naparView.x !== 0 && data.statsData.zeroData.naparView.y !== 0) {
+                        this.shotsThatAreNotCounted.push({
+                            x: data.statsData.zeroData.naparView.x,
+                            y: data.statsData.zeroData.naparView.y,
+                            isNapar: true
+                        });
+                    }
                     this.cd.detectChanges();
+                    this.stats = data.statsData.stats;
+                    this.pageData = data.statsData.pageData;
+                    this.isFinish = data.statsData.isFinish;
+                    this.summaryObject = data.statsData.summaryObject;
+                    this.scrollToBottom();
+                    if (this.drill.numOfBullets === this.stats.length) {
+                        this.drillIsFinished = true;
+                        this.cd.detectChanges();
+                    }
+
+                } else {
+                    this.shotNumber = data.hitNumber;
+                    this.stats = data.statsData.stats;
+                    this.pageData = data.statsData.pageData;
+                    this.isFinish = data.statsData.isFinish;
+                    this.summaryObject = data.statsData.summaryObject;
+                    this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
+                    this.cd.detectChanges();
+                    this.scrollToBottom();
+                    if (this.drill.numOfBullets === this.stats.length) {
+                        this.drillIsFinished = true;
+                        this.cd.detectChanges();
+                    }
                 }
             }
         });
@@ -528,5 +583,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
             this.targetType = TargetType.Type_16;
         }
     }
+
 }
 

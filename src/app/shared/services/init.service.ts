@@ -54,6 +54,12 @@ export class InitService {
         });
     }
 
+    getCalibers() {
+        this.apiService.getCalibers().subscribe(calibers => {
+            this.storageService.setItem('caliberList', calibers);
+        });
+    }
+
 
     isRegistered() {
         return this.storageService.getItem('regisered');

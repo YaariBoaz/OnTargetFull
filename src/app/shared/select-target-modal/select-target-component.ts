@@ -11,6 +11,8 @@ import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/nati
 import {InitService} from '../services/init.service';
 import {BLE} from '@ionic-native/ble/ngx';
 import {GatewayService} from '../services/gateway.service';
+import {ErrorModalComponent} from '../popups/error-modal/error-modal.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 const SERVICE_1 = '1800';
@@ -58,6 +60,7 @@ export class SelectTargetComponent implements OnInit {
         public loadingController: LoadingController,
         private hitNohitService: HitNohitService,
         private ble: BLE,
+        public dialog: MatDialog,
         private gatewayService: GatewayService,
         private ngZone: NgZone,
         private screenOrientation: ScreenOrientation,
@@ -225,6 +228,7 @@ export class SelectTargetComponent implements OnInit {
     }
 
     onTargetSelected(target: any) {
+        this.myTargets.forEach(t => t.isSelected = false);
         target.isSelected = true;
         this.storageService.setItem('slectedTarget', target);
         this.selectedTarget = target;
@@ -235,7 +239,7 @@ export class SelectTargetComponent implements OnInit {
                 this.bleService.dissconect().then(data => {
                     this.bleService.isGateway = false;
                     this.bleService.connect(target.id);
-                    this.bleService.notifyTargetConnected.subscribe(data => {
+                    this.bleService.notifyTargetConnected.subscribe(d => {
                         this.isConnected = true;
                         this.targetNotSelected = false;
                         this.cd.detectChanges();
@@ -275,19 +279,22 @@ export class SelectTargetComponent implements OnInit {
 
     initGatewayScan() {
         this.myTargets = [];
-        this.ble.scan([], 5).subscribe(device => {
-            debugger
-        });
+        this.ble.scan([], 5).subscribe(device => this.onDeviceDiscoveredInitialScan(device), error => this.scanErrorInitialScan(error));
         setTimeout(() => {
             this.isScanning = false;
         }, 5500);
     }
 
-    private scanErrorInitialScan(error: any) {
+    scanErrorInitialScan(error: any) {
+        if (error.indexOf('Location ') > -1) {
+            const dialogRef = this.dialog.open(ErrorModalComponent, {
+                data: {modalType: 'blueTooth'}
+            });
+        }
         console.error('BLE SCAN ERROR', error);
     }
 
-    private onDeviceDiscoveredInitialScan(device: any) {
+    onDeviceDiscoveredInitialScan(device: any) {
         this.ngZone.run(() => {
             if (device.name) {
                 console.log('FOUND DEVICE: ' + device.name);
@@ -313,13 +320,13 @@ export class SelectTargetComponent implements OnInit {
     }
 
 
-    private onConnectedForTargetName(peripheral: any) {
+    onConnectedForTargetName(peripheral: any) {
         console.log('CONNECTED - Gateway/Target Connected ', peripheral);
         this.handleReadForTargetName(peripheral.id, SERVICE_2, SERVICE_2_CHAR);
     }
 
     // tslint:disable-next-line:no-shadowed-variable
-    private handleReadForTargetName(id, service, characteristic) {
+    handleReadForTargetName(id, service, characteristic) {
         this.ble.startNotification(id, service, characteristic).subscribe((data) => {
             const dec = new TextDecoder();
             const enc = new TextEncoder();
@@ -336,7 +343,7 @@ export class SelectTargetComponent implements OnInit {
         }
     }
 
-    public processData(input, id) {
+    processData(input, id) {
         const dataArray = input.replace('<,', '').replace(',>', '').split(',');
         const dataLength = dataArray.length;
         if (dataLength === 4) {
@@ -354,7 +361,7 @@ export class SelectTargetComponent implements OnInit {
         }
     }
 
-    public handleBatteryPrecentage_MSG(dataArray, id) {
+    handleBatteryPrecentage_MSG(dataArray, id) {
         const targetName = dataArray[0];
         this.addTargetToList({name: targetName, id});
     }

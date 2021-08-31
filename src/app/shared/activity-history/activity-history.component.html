@@ -38,6 +38,9 @@
                         <p class="counter">DRILL # {{i + 1}}</p>
                         <p>{{train.pointsGained}} points</p>
                     </div>
+                    <div class="date">
+                        <span>{{train.sessionDateTime |  date:"MM/dd hh:mm"}}</span>
+                    </div>
                 </div>
                 <div class="score">
                     <div class="hits">
@@ -49,6 +52,7 @@
                         <p>RANGE</p>
                     </div>
                 </div>
+
                 <div class="show-more" [ngClass]="{'active': openShowMore }" style=" margin: 0.5em;">
                     <div *ngIf="!train.openShowMore" (click)="train.openShowMore = !train.openShowMore;"
                          style="display: flex;justify-content: center;     color: #707070;align-items: center;flex-direction: column;">
@@ -72,7 +76,15 @@
                     <div class="hidden-content" #container>
                         <ng-container *ngIf="train.openShowMore">
                             <div class="hidden-content-container">
-                                <img src="assets/bullseye.png">
+                                <div *ngIf="train.drillType === drillTypeEnum.Regular">
+                                    <img src="assets/targets/64/e64_score.png">
+                                </div>
+                                <div *ngIf="train.drillType === drillTypeEnum.Zero">
+                                    <img src="assets/targets/64/e64_Zero.png">
+                                </div>
+                                <div *ngIf="train.drillType === drillTypeEnum.Hostage">
+                                    <img src="assets/targets/64/Hostage_png_e64.png">
+                                </div>
                                 <div class="hit" *ngFor="let shot of train.rawHitsLocation; let i = index"
                                      style="position: absolute;"
                                      [style.top.px]=shot.y

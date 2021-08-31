@@ -162,7 +162,8 @@ section.edit-drill {
         border-radius: 3px;
 
         &.selected {
-          border: 1px solid #363636;
+          border: 2px solid #363636;
+          border-radius: 12px;
         }
       }
 
@@ -316,5 +317,41 @@ section.edit-drill {
     margin: 32px 0;
   }
 
+  button.btn-set-calculator {
+    width: 343px;
+    height: 56px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    background-color: #ce564b;
+    font-family: Roboto, serif;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: 1.25px;
+    text-align: center;
+    color: #ffffff;
+  }
 }
 
+.check {
+  background: black;
+  color: white;
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.disabled {
+  background-color: lightgray !important;
+  color: black !important;
+}

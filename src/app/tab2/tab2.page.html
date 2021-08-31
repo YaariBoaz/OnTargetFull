@@ -52,7 +52,7 @@
                         </svg>
                         <p>CONNECTED TARGET:</p>
                     </div>
-                    <p class="connected-target">E1N1</p>
+                    <p class="connected-target">{{connectedTarget}}</p>
                 </div>
 
                 <div class="row">
@@ -106,34 +106,25 @@
                 </div>
             </div>
         </div>
-        <ion-slides #slides effect=“slide” class="sliders" pager="false" (ionSlideDidChange)="slideDidChange($event)"
+        <ion-slides #slides effect=“slide” class="sliders" pager="false"
                     [options]="slideOpts ">
             <ion-slide>
                 <img #img src="../../assets/Artboard1.jpg" alt="target-cartboard"
-                     (click)="drill.drillType = img.getAttribute('id')"
-                     [ngClass]="{'selected': drill.drillType === img.getAttribute('id') }" [attr.id]="'Hit/NoHit'">
-
+                     (click)="drill.drillType = drillTypeEnum.Regular"
+                     [ngClass]="{'selected': drill.drillType === drillTypeEnum.Regular }" [attr.id]="'Hit/NoHit'">
+                <span *ngIf="drill.drillType ===drillTypeEnum.Regular" class="check">&#10003;</span>
             </ion-slide>
             <ion-slide>
                 <img #img2 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="drill.drillType = img2.getAttribute('id')"
-                     [ngClass]="{'selected': drill.drillType === img2.getAttribute('id') }" [attr.id]="'Hostage'">
-
+                     (click)="drill.drillType = drillTypeEnum.Hostage"
+                     [ngClass]="{'selected': drill.drillType === drillTypeEnum.Hostage }" [attr.id]="'Hostage'">
+                <span *ngIf="drill.drillType === drillTypeEnum.Hostage" class="check">&#10003;</span>
             </ion-slide>
             <ion-slide>
-                <img #img3 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="drill.drillType = img3.getAttribute('id')"
-                     [ngClass]="{'selected': drill.drillType === img3.getAttribute('id') }" [attr.id]="'noIdea'">
-            </ion-slide>
-            <ion-slide>
-                <img #img4 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="drill.drillType = img4.getAttribute('id')"
-                     [ngClass]="{'selected': drill.drillType === img4.getAttribute('id') }" [attr.id]="'noIdea2'">
-            </ion-slide>
-            <ion-slide>
-                <img #img5 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="drill.drillType = img5.getAttribute('id')"
-                     [ngClass]="{'selected': drill.drillType === img5.getAttribute('id') }" [attr.id]="'noIdea3'">
+                <img #img3 src="../../assets/zero-target.png" alt="target-cartboard"
+                     (click)="drill.drillType = drillTypeEnum.Zero"
+                     [ngClass]="{'selected': drill.drillType ===drillTypeEnum.Zero }" [attr.id]="'Zero'">
+                <span *ngIf="drill.drillType === drillTypeEnum.Zero" class="check">&#10003;</span>
             </ion-slide>
         </ion-slides>
 
@@ -212,10 +203,8 @@
                     </select>
                 </div>
             </div>
-
-
             <mat-accordion>
-                <mat-expansion-panel hideToggle>
+                <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <p class="red-title">ADVANCED</p>
@@ -235,12 +224,14 @@
                                     </style>
                                 </defs>
                                 <g id="Group_833" data-name="Group 833" transform="translate(-27 -494)">
-                                    <rect id="Rectangle_1749" width="24" height="24" fill="#373737" data-name="Rectangle 1749"
+                                    <rect id="Rectangle_1749" width="24" height="24" fill="#373737"
+                                          data-name="Rectangle 1749"
                                           rx="5" transform="translate(27 494)"/>
                                     <g id="gun" transform="translate(30 439)">
                                         <path id="Path_1280"
                                               d="M90.527 217.328a.527.527 0 0 0 .527-.527v-5.273a.527.527 0 0 0-1.055 0v5.272a.527.527 0 0 0 .528.528z"
-                                              class="cls-2" data-name="Path 1280" transform="translate(-86.836 -144.727)"/>
+                                              class="cls-2" data-name="Path 1280"
+                                              transform="translate(-86.836 -144.727)"/>
                                         <path id="Path_1281"
                                               d="M17.473 61a.527.527 0 0 0-.527.527v.527H3.691a.812.812 0 0 1-.292-.076.429.429 0 0 1-.236-.451.527.527 0 0 0-1.055 0 1.741 1.741 0 0 0 .1.588 1.585 1.585 0 0 0-1.15 1.522v.527H.527a.527.527 0 0 0-.527.527V66.8a.527.527 0 0 0 .527.527.364.364 0 0 1 .281.128.373.373 0 0 1 .084.306l-.686 5.122a1.58 1.58 0 0 0 1.566 1.828H5.8a.527.527 0 0 0 .527-.527v-3.692h.527a2.641 2.641 0 0 0 2.584-2.109h4.869a.527.527 0 0 0 .527-.527v-.527h2.637A.527.527 0 0 0 18 66.8v-5.273a.527.527 0 0 0-.527-.527zM6.855 69.438h-.527v-1.055h2.019a1.585 1.585 0 0 1-1.492 1.055zm6.926-2.638v.527H5.8a.527.527 0 0 0-.527.527v5.8h-3.5a.525.525 0 0 1-.407-.187.516.516 0 0 1-.117-.424l.687-5.124a1.431 1.431 0 0 0-.324-1.149 1.416 1.416 0 0 0-.556-.4v-1.151h12.725zm3.164-.527h-2.109v-1.054h2.109zm0-2.109H2.109v-.527a.528.528 0 0 1 .527-.527h14.309z"
                                               class="cls-2" data-name="Path 1281"/>
@@ -253,8 +244,6 @@
                             <option *ngFor="let gun of myGuns" [value]="gun">{{gun}}</option>
                         </select>
                     </div>
-
-
                     <div class="container">
                         <div class="title-and-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" id="Icon_Favorite_Filled" width="24" height="24"
@@ -267,7 +256,8 @@
                                     </style>
                                 </defs>
                                 <path id="Box" fill="none" d="M0 0H24V24H0z"/>
-                                <rect id="Rectangle_1750" width="24" height="24" fill="#373737" data-name="Rectangle 1750"
+                                <rect id="Rectangle_1750" width="24" height="24" fill="#373737"
+                                      data-name="Rectangle 1750"
                                       rx="5"/>
                                 <g id="_004-aim" data-name="004-aim" transform="translate(2.98 3)">
                                     <path id="Path_1182"
@@ -276,12 +266,14 @@
                                     <path id="Path_1183"
                                           d="M11.75 4.125a.75.75 0 0 1-.75-.75V.75a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
                                           class="cls-3" data-name="Path 1183" transform="translate(-2.75)"/>
-                                    <path id="Path_1184" d="M21.875 12.5H19.25a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                    <path id="Path_1184"
+                                          d="M21.875 12.5H19.25a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
                                           class="cls-3" data-name="Path 1184" transform="translate(-4.625 -2.75)"/>
                                     <path id="Path_1185"
                                           d="M11.75 22.625a.75.75 0 0 1-.75-.75V19.25a.75.75 0 0 1 1.5 0v2.625a.75.75 0 0 1-.75.75z"
                                           class="cls-3" data-name="Path 1185" transform="translate(-2.75 -4.625)"/>
-                                    <path id="Path_1186" d="M3.375 12.5H.75a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
+                                    <path id="Path_1186"
+                                          d="M3.375 12.5H.75a.75.75 0 0 1 0-1.5h2.625a.75.75 0 0 1 0 1.5z"
                                           class="cls-3" data-name="Path 1186" transform="translate(0 -2.75)"/>
                                     <path id="Path_1187"
                                           d="M11.25 13.5a2.25 2.25 0 1 1 2.25-2.25 2.253 2.253 0 0 1-2.25 2.25zm0-3a.75.75 0 1 0 .75.75.751.751 0 0 0-.75-.75z"
@@ -290,11 +282,10 @@
                             </svg>
                             <p>SIGHT:</p>
                         </div>
-                        <select>
+                        <select [(ngModel)]='drill.sight'>
                             <option *ngFor="let sight of mySights" [value]="sight">{{sight}}</option>
                         </select>
                     </div>
-
                     <div class="container">
                         <div class="title-and-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" id="Icon_Favorite_Filled" width="24" height="24"
@@ -307,28 +298,32 @@
                                     </style>
                                 </defs>
                                 <path id="Box" fill="none" d="M0 0H24V24H0z"/>
-                                <rect id="Rectangle_1750" width="24" height="24" fill="#373737" data-name="Rectangle 1750"
+                                <rect id="Rectangle_1750" width="24" height="24" fill="#373737"
+                                      data-name="Rectangle 1750"
                                       rx="5"/>
                                 <g id="ammo" transform="translate(-18.203 4.079)">
                                     <g id="Group_717" data-name="Group 717" transform="translate(22.588 .002)">
                                         <g id="Group_716" data-name="Group 716">
                                             <path id="Path_16012"
                                                   d="M26.823 8.434c0-.018-.02-.036-.023-.053V8.37a.3.3 0 0 0-.014-.046v-.005h.014l-.562-1.449V4.514A11.769 11.769 0 0 0 24.98.154a.306.306 0 0 0-.53 0 11.93 11.93 0 0 0-1.23 4.359v2.356l-.6 1.449-.008.005a.314.314 0 0 0-.017.046v.011c0 .003.011.036.011.053h.017v6.939a.27.27 0 0 0 .3.3v.6a.27.27 0 0 0 .267.3h3.01a.33.33 0 0 0 .337-.3v-.6a.312.312 0 0 0 .3-.3V8.435zm-3-3.921a10.047 10.047 0 0 1 .905-3.5 10.035 10.035 0 0 1 .9 3.5v.3h-1.81zm0 .9h1.81v1.208h-1.81zm-.132 1.81h2l.362.905h-2.724zm2.244 8.749h-2.413v-.3h2.413zm.3-.905H23.22V8.733h3.017z"
-                                                  class="cls-3" data-name="Path 16012" transform="translate(-22.588 -.002)"/>
+                                                  class="cls-3" data-name="Path 16012"
+                                                  transform="translate(-22.588 -.002)"/>
                                         </g>
                                     </g>
                                     <g id="Group_719" data-name="Group 719" transform="translate(28.019 .002)">
                                         <g id="Group_718" data-name="Group 718">
                                             <path id="Path_16013"
                                                   d="M194.562 8.434c0-.018-.02-.036-.023-.053V8.37a.305.305 0 0 0-.014-.046v-.005h.017l-.562-1.449V4.514a11.769 11.769 0 0 0-1.261-4.36.306.306 0 0 0-.53 0 11.93 11.93 0 0 0-1.23 4.359v2.356l-.6 1.449-.008.005a.313.313 0 0 0-.017.046v.011c0 .003.012.036.011.053h.017v6.939a.27.27 0 0 0 .3.3v.6a.27.27 0 0 0 .267.3h3.017a.33.33 0 0 0 .337-.3v-.6a.312.312 0 0 0 .3-.3V8.435zm-3-3.921a10.047 10.047 0 0 1 .905-3.5 10.035 10.035 0 0 1 .9 3.5v.3h-1.81zm0 .9h1.81v1.208h-1.81zm-.132 1.81h2l.362.905h-2.729zm2.244 8.749h-2.413v-.3h2.413zm.3-.905h-3.017V8.733h3.017z"
-                                                  class="cls-3" data-name="Path 16013" transform="translate(-190.327 -.002)"/>
+                                                  class="cls-3" data-name="Path 16013"
+                                                  transform="translate(-190.327 -.002)"/>
                                         </g>
                                     </g>
                                     <g id="Group_721" data-name="Group 721" transform="translate(33.449 .002)">
                                         <g id="Group_720" data-name="Group 720">
                                             <path id="Path_16014"
                                                   d="M362.3 8.434c0-.018-.02-.036-.023-.053V8.37a.3.3 0 0 0-.014-.046v-.005h.017l-.562-1.449V4.514a11.768 11.768 0 0 0-1.26-4.36.306.306 0 0 0-.53 0 11.93 11.93 0 0 0-1.23 4.359v2.356l-.6 1.449-.008.005a.316.316 0 0 0-.017.046v.011c0 .003.012.036.011.053h.017v6.939a.27.27 0 0 0 .3.3v.6a.27.27 0 0 0 .267.3h3.017a.33.33 0 0 0 .337-.3v-.6a.312.312 0 0 0 .3-.3V8.435zm-3-3.921a10.047 10.047 0 0 1 .905-3.5 10.034 10.034 0 0 1 .9 3.5v.3H359.3zm0 .9h1.81v1.208h-1.81zm-.132 1.81h2l.362.905h-2.729zm2.244 8.749H359v-.3h2.413zm.3-.905H358.7V8.733h3.017z"
-                                                  class="cls-3" data-name="Path 16014" transform="translate(-358.066 -.002)"/>
+                                                  class="cls-3" data-name="Path 16014"
+                                                  transform="translate(-358.066 -.002)"/>
                                         </g>
                                     </g>
                                 </g>
@@ -336,13 +331,18 @@
                             <p>AMMO:</p>
                         </div>
 
-                        <select>
-                            <option value="Plain (M193)">Plain tip (M193)</option>
-                            <option value="5.56">5.56</option>
-                            <option value="5.56"> 7.62 NATO</option>
-                            <option value="12 Guage">12 Guage</option>
+                        <select [(ngModel)]='drill.ammo'>
+                            <option *ngFor="let ammo of myAmmo | keyvalue" [value]="ammo.key">{{ammo.key}}</option>
                         </select>
                     </div>
+                    <div class="container">
+                        <span>BALISTIC CALCULATOR</span>
+                        <button [ngClass]="{'disabled': drill.drillType !== img3.getAttribute('id') }"
+                                [disabled]="drill.drillType !== drillTypeEnum.Zero" class="btn-set-calculator"
+                                (click)="onBalisticCalculatorPressed()"> SET
+                        </button>
+                    </div>
+
                 </mat-expansion-panel>
             </mat-accordion>
 
