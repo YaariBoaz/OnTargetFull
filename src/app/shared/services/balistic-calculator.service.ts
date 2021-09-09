@@ -175,7 +175,7 @@ export class BalisticCalculatorService {
         const xStep = w / nominalStep;
         const yStep = h / nominalStep;
 
-        let xPos = w - (xStep * x);
+        let xPos = (xStep * x);
         let yPos = yStep * y;
 
         xPos -= 5;
@@ -195,7 +195,8 @@ export class BalisticCalculatorService {
         const range = this.shootingService.selectedDrill.range;
         let path2CM = 0.6; // this is a table that you need to build in startup  m_zeroTable[m_DrillInfo.Range].PathCM;
         path2CM = this.shootingService.zeroTable[range].pathCM;
-        let val = 32 - path2CM * 2;
+        path2CM = 3;
+        let val = 36 - path2CM * 2;
         let dataNapar;
         const targertName = JSON.parse(localStorage.getItem('slectedTarget')).name;
 
@@ -209,7 +210,7 @@ export class BalisticCalculatorService {
                 dataNapar = this.calcPostions(245, val, targetType);
             }
         } else {
-            dataNapar = this.calcPostions(32, val, targetType);
+            dataNapar = this.calcPostions(64, val, targetType);
         }
         return {
             napar: dataNapar,
@@ -434,7 +435,7 @@ export class BalisticCalculatorService {
             const napamToView = this.updateZeroTableAndTargetUI(x, y, latestHitData.isBarhan, napamDistanceFromCenter);
 
             const clicks = this.setClickViews(napamToCalcClicks, naparToCalcClikcs, devider,
-                this.shootingService.selectedDrill.range, this.moa, this.targetType);
+                this.shootingService.selectedDrill.range, this.shootingService.getMOABySight(), this.targetType);
             let status;
             if (napamToCalcClicks.grouping > 10) {
                 status = 'Scattered';

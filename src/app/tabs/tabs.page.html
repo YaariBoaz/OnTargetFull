@@ -1,4 +1,4 @@
-<mat-tab-group #tabGroup class="tabs-container" headerPosition="below" mat-stretch-tabs
+<mat-tab-group #tabGroup class="tabs-container" headerPosition="below" mat-stretch-tabs [@.disabled]="true"
                (selectedTabChange)="tabChanged($event)">
     <mat-tab label="First">
         <ng-template mat-tab-label>

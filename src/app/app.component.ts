@@ -47,6 +47,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.initService.getSights();
+        this.initService.getSightsZeroing();
         this.initService.getWeapons();
         this.initService.getCalibers();
         this.platform.ready().then(() => {

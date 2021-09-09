@@ -49,7 +49,7 @@
 
 
         <div class="buttons-container">
-            <button class="btn-connect" [disabled]="targetNotSelected"
+            <button class="btn-connect" [disabled]="!targetNotSelected"
                     (click)="onGoToEditDrill()"> Continue
             </button>
         </div>

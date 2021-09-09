@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { InventoryModel } from '../models/InventoryModel';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {InventoryModel} from '../models/InventoryModel';
 
 @Injectable({
     providedIn: 'root'
@@ -49,6 +49,8 @@ export class ApiService {
     getSights() {
         return this.http.get(this.BACKOFFICE_URL + 'DeviceData/getSights');
     }
+
+
     getCalibers() {
         return this.http.get(this.BACKOFFICE_URL + 'Zeroing/GetCaliberMapping');
     }

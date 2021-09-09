@@ -1,19 +1,19 @@
-import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
-import { ModalController, Platform } from '@ionic/angular';
-import { AlertController } from '@ionic/angular';
-import { ShootingService } from '../shared/services/shooting.service';
-import { StorageService } from '../shared/services/storage.service';
-import { TabsService } from '../tabs/tabs.service';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import { BleService } from '../shared/services/ble.service';
-import { Router } from '@angular/router';
-import { InitService } from '../shared/services/init.service';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { SightlistComponent } from '../tab3/sightlist/sightlist.component';
-import { MatDialog } from '@angular/material/dialog';
-import { BalisticCalculatorComponent } from './balistic-calculator/balistic-calculator.component';
-import { TargetType } from '../shared/drill/constants';
-import { BalisticCalculatorService } from '../shared/services/balistic-calculator.service';
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
+import {ModalController, Platform} from '@ionic/angular';
+import {AlertController} from '@ionic/angular';
+import {ShootingService} from '../shared/services/shooting.service';
+import {StorageService} from '../shared/services/storage.service';
+import {TabsService} from '../tabs/tabs.service';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {BleService} from '../shared/services/ble.service';
+import {Router} from '@angular/router';
+import {InitService} from '../shared/services/init.service';
+import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
+import {SightlistComponent} from '../tab3/sightlist/sightlist.component';
+import {MatDialog} from '@angular/material/dialog';
+import {BalisticCalculatorComponent} from './balistic-calculator/balistic-calculator.component';
+import {TargetType} from '../shared/drill/constants';
+import {BalisticCalculatorService} from '../shared/services/balistic-calculator.service';
 
 @Component({
     selector: 'app-tab2',
@@ -33,6 +33,7 @@ export class Tab2Page implements OnInit {
     myAmmo;
 
     drill: DrillObject = {
+        name: '',
         numOfBullets: 5,
         weapon: 'M4 Carbine',
         range: 150,
@@ -54,18 +55,18 @@ export class Tab2Page implements OnInit {
     }
 
     constructor(public modalController: ModalController,
-        private tabService: TabsService,
-        public alertController: AlertController,
-        private initService: InitService,
-        private shootingService: ShootingService,
-        private nativePageTransitions: NativePageTransitions,
-        private storageService: StorageService,
-        private screenOrientation: ScreenOrientation,
-        public dialog: MatDialog,
-        private zone: NgZone,
-        private balisticCalculatorService: BalisticCalculatorService,
-        private router: Router,
-        private platform: Platform
+                private tabService: TabsService,
+                public alertController: AlertController,
+                private initService: InitService,
+                private shootingService: ShootingService,
+                private nativePageTransitions: NativePageTransitions,
+                private storageService: StorageService,
+                private screenOrientation: ScreenOrientation,
+                public dialog: MatDialog,
+                private zone: NgZone,
+                private balisticCalculatorService: BalisticCalculatorService,
+                private router: Router,
+                private platform: Platform
     ) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.connectedTarget = this.shootingService.chosenTarget;
@@ -207,8 +208,6 @@ export class Tab2Page implements OnInit {
         this.shootingService.bulletName = ammoObject.name;
 
 
-
-        debugger
         this.balisticCalculatorService.getBallisticData(this.drill.weapon, this.drill.sight).subscribe((data: any) => {
             const dialogRef = this.dialog.open(BalisticCalculatorComponent, {
                 maxWidth: '100vw',
@@ -240,6 +239,7 @@ export interface DrillObject {
     sight: string;
     ammo: any;
     drillType: DrillType;
+    name: string;
     shots: Array<{ x: number, y: number }>;
 }
 

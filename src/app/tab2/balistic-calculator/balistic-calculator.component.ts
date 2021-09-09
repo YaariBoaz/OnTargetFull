@@ -124,8 +124,6 @@ export class BalisticCalculatorComponent implements OnInit, AfterViewInit {
 
     changeScreen() {
         this.baliticCalculatorService.getZeroTable(this.dataModel).subscribe((data: any) => {
-
-
             this.shootingService.zeroTable = data;
             this.chartAndTableData = data;
             this.tableData = [];

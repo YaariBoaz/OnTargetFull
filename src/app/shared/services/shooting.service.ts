@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +18,22 @@ export class ShootingService {
     drillStarteEvent = new BehaviorSubject(null);
     caliber: string;
     bulletName;
+    sightsZeroing: any;
+    calibers: any;
+    weapons: any;
+
     constructor(private http: HttpClient) {
+    }
+
+    getMOABySight(): number {
+        const signName = this.selectedDrill.sight;
+        let moa = 0.6;
+        this.sightsZeroing.forEach(sight => {
+            if (sight.name === signName) {
+                moa =  sight.moa;
+            }
+        });
+        return moa;
     }
 
     setBaseUrl(baseUrl) {
@@ -39,6 +54,7 @@ export class ShootingService {
     setIsZero(flag) {
         this.isZero = flag;
     }
+
     getisZero() {
         return this.isZero;
     }
@@ -173,7 +189,7 @@ export class ShootingService {
     fakeShot() {
         const x = this.RNADOM_SHOTS[Math.floor(Math.random() * this.RNADOM_SHOTS.length)];
         const y = this.RNADOM_SHOTS[Math.floor(Math.random() * this.RNADOM_SHOTS.length)];
-        return { xCoord: x, yCoord: y };
+        return {xCoord: x, yCoord: y};
     }
 
 }

@@ -5,6 +5,7 @@ import {UserService} from './user.service';
 import {BLE} from '@ionic-native/ble/ngx';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {GatewayService} from './gateway.service';
+import {ShootingService} from './shooting.service';
 
 
 @Injectable({
@@ -24,6 +25,7 @@ export class InitService {
     constructor(private ngZone: NgZone,
                 private apiService: ApiService,
                 private storageService: StorageService,
+                private shootingService: ShootingService,
                 public ble: BLE) {
     }
 
@@ -45,6 +47,7 @@ export class InitService {
     getWeapons() {
         this.apiService.getWeapons().subscribe(weapons => {
             this.storageService.setItem('gunList', weapons);
+            this.shootingService.weapons = weapons;
         });
     }
 
@@ -54,9 +57,16 @@ export class InitService {
         });
     }
 
+    getSightsZeroing() {
+        this.apiService.getSightsZeroing().subscribe(sights => {
+            this.shootingService.sightsZeroing = sights;
+        });
+    }
+
     getCalibers() {
         this.apiService.getCalibers().subscribe(calibers => {
             this.storageService.setItem('caliberList', calibers);
+            this.shootingService.calibers = calibers;
         });
     }
 

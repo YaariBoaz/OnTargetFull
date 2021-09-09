@@ -95,12 +95,12 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     isZero: boolean;
 
 
-    leftClick: number = 0;
-    upclick: number = 0;
-    rightClick: number = 0;
-    downClick: number = 0;
+    leftClick = 0;
+    upclick = 0;
+    rightClick = 0;
+    downClick = 0;
     groupingStatus: string;
-    groupingNumber: number;
+    groupingNumber;
 
     public get targetTypeEnum(): typeof TargetType {
         return TargetType;
