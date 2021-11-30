@@ -108,6 +108,16 @@ export class BleService {
         }
     }
 
+    resetConnection() {
+        const txe = new TextEncoder();
+        if (this.peripheral && this.peripheral.id) {
+            this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('RSTC\n').buffer).then((prmise) => {
+                console.log('reset connection completed');
+            }).catch(err => {
+            });
+        }
+    }
+
     // If location permission is denied, you'll end up here
     scanError(error) {
         console.log('Error: ' + error);

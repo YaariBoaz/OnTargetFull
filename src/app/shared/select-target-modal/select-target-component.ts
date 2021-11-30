@@ -223,6 +223,8 @@ export class SelectTargetComponent implements OnInit {
     }
 
     async reScan() {
+        this.bleService.resetConnection();
+
         this.isScanning = true;
         this.initGatewayScan();
     }

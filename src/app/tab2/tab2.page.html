@@ -62,51 +62,8 @@
 
                 <div class="row">
                     <div class="icon-and-text">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <defs>
-                                <style>
-                                    .cls-2, .cls-4 {
-                                        fill: none
-                                    }
-
-                                    .cls-2 {
-                                        stroke: #fff
-                                    }
-
-                                    .cls-3 {
-                                        stroke: none
-                                    }
-                                </style>
-                            </defs>
-                            <g id="Group_711" data-name="Group 711" transform="translate(-24 -190)">
-                                <rect id="Rectangle_1746" width="24" height="24" fill="#363636"
-                                      data-name="Rectangle 1746"
-                                      rx="5" transform="translate(24 190)"/>
-                                <g id="Group_791" data-name="Group 791">
-                                    <g id="Rectangle_1861" class="cls-2" data-name="Rectangle 1861"
-                                       transform="translate(28 194)">
-                                        <rect width="16" height="16" class="cls-3" rx="3"/>
-                                        <rect width="15" height="15" x=".5" y=".5" class="cls-4" rx="2.5"/>
-                                    </g>
-                                    <g id="Rectangle_1864" class="cls-2" data-name="Rectangle 1864"
-                                       transform="translate(30 196)">
-                                        <rect width="12" height="12" class="cls-3" rx="6"/>
-                                        <rect width="11" height="11" x=".5" y=".5" class="cls-4" rx="5.5"/>
-                                    </g>
-                                    <g id="Rectangle_1862" class="cls-2" data-name="Rectangle 1862"
-                                       transform="translate(32 198)">
-                                        <rect width="8" height="8" class="cls-3" rx="4"/>
-                                        <rect width="7" height="7" x=".5" y=".5" class="cls-4" rx="3.5"/>
-                                    </g>
-                                    <g id="Rectangle_1863" class="cls-2" data-name="Rectangle 1863"
-                                       transform="translate(35 201)">
-                                        <rect width="2" height="2" class="cls-3" rx="1"/>
-                                        <rect width="1" height="1" x=".5" y=".5" class="cls-4" rx=".5"/>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                        <p>CHOOSE DRILL TYPE:</p>
+                     <img src="../../assets/icons/Group%20711.svg" style="padding-right: 17px;">
+                        <p>CHOOSE TARGET:</p>
                     </div>
                 </div>
             </div>
@@ -161,7 +118,8 @@
                     </svg>
                     <p>NUMBER OF BULLETS:</p>
                 </div>
-                <input [(ngModel)]="drill.numOfBullets" type="number" class="bullets">
+                <input [(ngModel)]="drill.numOfBullets" min="1" type="number" class="bullets"
+                       (ngModelChange)="onNumberOfBulletsChange(drill.numOfBullets)">
             </div>
 
             <div class="container range">
@@ -344,7 +302,7 @@
                         <span>BALISTIC CALCULATOR</span>
                         <button [ngClass]="{'disabled': drill.drillType !== img3.getAttribute('id') }"
                                 [disabled]="drill.drillType !== drillTypeEnum.Zero" class="btn-set-calculator"
-                                (click)="onBalisticCalculatorPressed()"> SET
+                                (click)="onBalisticCalculatorPressed()"> Ballistic Calculator
                         </button>
                     </div>
 
@@ -352,8 +310,8 @@
             </mat-accordion>
 
         </div>
-
-        <button class="startSessionBtn" (click)="startSesstion()" routerLink="/tab2/select2"> START SESSION
+        <button [disabled]="drill.drillType == null" class="startSessionBtn" (click)="startSesstion()"
+                routerLink="/tab2/select2"> START SESSION
         </button>
 
     </div>

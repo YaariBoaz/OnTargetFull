@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ShootingService} from './shooting.service';
 import {Subject, Observable} from 'rxjs';
 import {ApiService, ZeroTableGetObject} from './api.service';
+import {InitService} from "./init.service";
 
 @Injectable({
     providedIn: 'root'
@@ -11,13 +12,28 @@ export class BalisticCalculatorService {
     mNumShots = 0;
     mZeroHits = new Array<ZeroHitData>();
     uiZeroShots = new Array<ZeroHitData>();
-    divHeight: number;
-    divWidth: number;
+    divHeight = 300;
+    divWidth = 300;
     moa = 0;
     private targetType: TargetType;
     notifyZeroShot = new Subject();
+    private sessionHits = [];
 
-    constructor(private shootingService: ShootingService, private apiService: ApiService) {
+    constructor(private shootingService: ShootingService, private apiService: ApiService, private initService: InitService) {
+        this.divHeight = this.initService.screenH;
+        this.divWidth = this.initService.screenW;
+        this.getZeroTableInit();
+
+
+        this.divWidth = this.initService.screenW;
+        this.divHeight = this.initService.screenH;
+
+        if (this.divWidth > this.divHeight) {
+            this.divWidth = this.divHeight - 100;
+        } else {
+            this.divHeight = this.divWidth - 100;
+        }
+
     }
 
 
@@ -44,6 +60,27 @@ export class BalisticCalculatorService {
     calcDistance(hitA, hitB) {
         return Math.sqrt(Math.pow((hitA.x - hitB.x), 2) + Math.pow((hitA.y - hitB.y), 2));
     }
+
+    getZeroTableInit() {
+        this.getZeroTable({
+            ballisticCoefficient: 0.121,
+            initialVelocity: 1190,
+            sightHeight: 2.5,
+            zeroRange: 250,
+            boreAngle: 0,
+            windangle: 90,
+            yIntercept: 0,
+            altitude: 0,
+            barometer: 29.59,
+            temperature: 59,
+            relativeHumidity: 0.5,
+            windSpeed: 0,
+            isMetric: true
+        }).subscribe(data => {
+            this.shootingService.zeroTable = data;
+        })
+    }
+
 
     standardDeviation(hits) {
         const v = this.constiance(hits);
@@ -139,7 +176,6 @@ export class BalisticCalculatorService {
             x = 0.25 * x - n;
             y = 0.25 * y - n;
             y -= 0.5;
-            x -= 0.5;
         } else if (targetType === TargetType.Type_16) {
             nominalStep = 7;
             n = 5;
@@ -178,8 +214,6 @@ export class BalisticCalculatorService {
         let xPos = (xStep * x);
         let yPos = yStep * y;
 
-        xPos -= 5;
-        yPos -= 5;
 
         const disPointFromCenter = 1.905 * Math.sqrt(Math.pow((nominalStep / 2 - x), 2) + Math.pow((nominalStep / 2 - y), 2));
 
@@ -210,7 +244,7 @@ export class BalisticCalculatorService {
                 dataNapar = this.calcPostions(245, val, targetType);
             }
         } else {
-            dataNapar = this.calcPostions(64, val, targetType);
+            dataNapar = this.calcPostions(32, val, targetType);
         }
         return {
             napar: dataNapar,
@@ -234,14 +268,18 @@ export class BalisticCalculatorService {
         const avg = this.average(hits);
 
         if (hits.length > 2) {
-            hits.forEach((hit) => {
+            hits.forEach((hit, i) => {
                 {
                     const dr = Math.abs(hit.disFromCenter - std);
                     if (dr > avg) {
                         console.log('Found Anmoly:[{' + hit.x + '},{ ' + hit.y + '}]');
                         hit.isBarhan = true;
+                        this.sessionHits[i].isBarhan = true;
+                        this.sessionHits[i].DisFromCenter = hit.DisFromCenter;
                     } else {
                         hit.isBarhan = false;
+                        this.sessionHits[i].DisFromCenter = hit.DisFromCenter;
+                        this.sessionHits[i].isBarhan = false;
                     }
                 }
                 ;
@@ -256,6 +294,11 @@ export class BalisticCalculatorService {
 
             return {
                 napam: newNapam,
+                grouping: maxDisBetweenPoints
+            };
+        } else {
+            return {
+                napam: centerHit,
                 grouping: maxDisBetweenPoints
             };
         }
@@ -293,39 +336,39 @@ export class BalisticCalculatorService {
         if (targetType === TargetType.Type_128) {
             if (true)// (target is !![not]!! 128 and the id is e128n2 or e128n4)
             {
-                if (napam.x > napar.x) {
+                if (napam.napam.x > napar.x) {
                     right = leftOrRightClicks;
                 } else {
                     left = leftOrRightClicks;
                 }
             } else {
-                if (napam.x < napar.x) {
+                if (napam.napam.x < napar.x) {
                     right = leftOrRightClicks;
                 } else {
                     left = leftOrRightClicks;
                 }
             }
         } else {
-            if (napam.x > napar.x) {
+            if (napam.napam.x > napar.x) {
                 right = leftOrRightClicks;
             } else {
                 left = leftOrRightClicks;
             }
+            if (napam.napam.y > napar.y) {
+                up = upOrDownClicks;
+            } else {
+                down = upOrDownClicks;
+            }
 
         }
 
-
-        if (napam.y > napar.y) {
-            up = upOrDownClicks;
-        } else {
-            down = upOrDownClicks;
-        }
 
         return {
             rightClick: right,
             leftClick: left,
             upclick: up,
             downClick: down,
+            isBarhan: false,
             napar2Napam: napar2napamDis,
             status: undefined,
             naparResults: undefined,
@@ -347,7 +390,7 @@ export class BalisticCalculatorService {
         if (ordered.length >= 2) {
             const a = new Hit(ordered[0].x, ordered[0].y);
             const b = new Hit(ordered[1].x, ordered[1].y);
-            disGroup = Math.sqrt(Math.pow((a.x - b.x), 2) + Math.pow((a.y - b.y), 2));
+            disGroup = Math.sqrt(Math.pow((a.x - b.x), 2) + Math.pow((a.y - b.y), 2)) / 10;
             let xN = 0;
             let yN = 0;
 
@@ -356,11 +399,14 @@ export class BalisticCalculatorService {
                 yN += item.y;
             });
 
-            group.x = (xN / nonBarahnHits.length) * 2;
+            group.x = xN / nonBarahnHits.length;
             group.y = yN / nonBarahnHits.length;
         }
-
-        return new Hit(group.x, group.y);
+        const returnObject = {
+            disGroup,
+            hit: new Hit(group.x, group.y)
+        }
+        return returnObject
 
     }
 
@@ -380,13 +426,14 @@ export class BalisticCalculatorService {
         });
 
 
-        const napamToView = this.calcGrouping(this.uiZeroShots);
+        const napamToView = this.calcGrouping(this.sessionHits);
         return napamToView;
     }
 
-    updateShot(x, y) {
+    updateShot(x, y, hits) {
         // new hit arrvies
         // determent which target is this (16,64,128)
+        this.sessionHits = hits;
         debugger
         try {
             this.mNumShots++;
@@ -422,7 +469,12 @@ export class BalisticCalculatorService {
             this.mZeroHits.push(newZeroHit);
 
             // Get NAPAM
+
             let napamToCalcClicks = this.calcNapam(this.mZeroHits);
+            let isBarhan = false;
+            if (this.sessionHits[this.sessionHits.length - 1].isBarhan) {
+                isBarhan = true;
+            }
             if (!napamToCalcClicks) {
                 napamToCalcClicks = {
                     napam: {x: 0, y: 0},
@@ -430,10 +482,10 @@ export class BalisticCalculatorService {
                 };
             }
 
-            const latestHitData = this.mZeroHits.find(element => element.index === this.mNumShots);
+            const latestHitData = this.sessionHits[this.sessionHits.length - 1];
             const napamDistanceFromCenter = this.calcDistanceFromCenter(x, y, this.targetType);
-            const napamToView = this.updateZeroTableAndTargetUI(x, y, latestHitData.isBarhan, napamDistanceFromCenter);
-
+            const napamToView = this.updateZeroTableAndTargetUI(latestHitData.x, latestHitData.y,
+                latestHitData.isBarhan, napamDistanceFromCenter);
             const clicks = this.setClickViews(napamToCalcClicks, naparToCalcClikcs, devider,
                 this.shootingService.selectedDrill.range, this.shootingService.getMOABySight(), this.targetType);
             let status;
@@ -443,9 +495,11 @@ export class BalisticCalculatorService {
                 status = 'Good Grouping';
             }
             clicks.status = status;
+            clicks.isBarhan = isBarhan;
             clicks.naparResults = naparResults;
-            clicks.napamToView = napamToView;
+            clicks.napamToView = napamToView.hit;
             clicks.naparView = naparView;
+            clicks.napar2Napam = napamToView.disGroup;
             return clicks;
             if (this.mNumShots === this.shootingService.numberOfBullersPerDrill) {
                 const zeroStatus = this.getZeroStatus(clicks.napar2Napam, napamToCalcClicks.grouping);

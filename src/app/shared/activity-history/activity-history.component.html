@@ -1,31 +1,42 @@
 <section class="activity-history">
     <header>
-        <div class="back-button" (click)="onBackPressed()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27.656" height="35" viewBox="0 0 27.656 35">
-                <defs>
-                    <filter id="Arrow_" width="27.656" height="35" x="0" y="0" filterUnits="userSpaceOnUse">
-                        <feOffset dy="3"/>
-                        <feGaussianBlur result="blur" stdDeviation="3"/>
-                        <feFlood flood-opacity=".161"/>
-                        <feComposite in2="blur" operator="in"/>
-                        <feComposite in="SourceGraphic"/>
-                    </filter>
-                </defs>
-                <g filter="url(#Arrow_)">
-                    <path id="Arrow_2" fill="rgba(0,0,0,0.6)" fill-rule="evenodd"
-                          d="M720.456 1174.787a.721.721 0 0 0 1 0 .69.69 0 0 0 0-.988l-7.554-7.438 7.552-7.18a.686.686 0 0 0 0-.984.712.712 0 0 0-1 0l-8.441 8.164z"
-                          data-name="Arrow" transform="translate(-703.01 -1151.99)"/>
-                </g>
-            </svg>
+        <div class="title-and-back">
+            <div class="back-button" (click)="onBackPressed()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27.656" height="35" viewBox="0 0 27.656 35">
+                    <defs>
+                        <filter id="Arrow_" width="27.656" height="35" x="0" y="0" filterUnits="userSpaceOnUse">
+                            <feOffset dy="3"/>
+                            <feGaussianBlur result="blur" stdDeviation="3"/>
+                            <feFlood flood-opacity=".161"/>
+                            <feComposite in2="blur" operator="in"/>
+                            <feComposite in="SourceGraphic"/>
+                        </filter>
+                    </defs>
+                    <g filter="url(#Arrow_)">
+                        <path id="Arrow_2" fill="rgba(0,0,0,0.6)" fill-rule="evenodd"
+                              d="M720.456 1174.787a.721.721 0 0 0 1 0 .69.69 0 0 0 0-.988l-7.554-7.438 7.552-7.18a.686.686 0 0 0 0-.984.712.712 0 0 0-1 0l-8.441 8.164z"
+                              data-name="Arrow" transform="translate(-703.01 -1151.99)"/>
+                    </g>
+                </svg>
+            </div>
+            <p class="title"> Training Log</p>
         </div>
-        <p class="title"> Training Log</p>
-
-        <div class="menu">
-            <span>⋮</span>
+        <div class="img-and-date">
+            <div class="img-container">
+                <img src="assets/icons/calendar.svg">
+            </div>
+            <div class="date-detials">
+                <div class="date">
+                    <span style="font-weight: bold;">{{currentDate | date: 'dd.MM.yyyy'}},</span> <span>{{dayName}}</span>
+                </div>
+                <div class="drill-count">
+                    <span> {{trains.length}} drills</span>
+                </div>
+            </div>
         </div>
     </header>
-    <ion-list style="overflow-y: auto;" class="cards" scrollY="true">
-        <ion-item *ngFor="let train of trains;let i=index;">
+    <div style="overflow-y: auto;" class="cards" scrollY="true">
+        <div *ngFor="let train of trains;let i=index;" class="cards-row">
             <div class="card">
                 <div class="target">
                     <div class="icon">
@@ -77,13 +88,15 @@
                         <ng-container *ngIf="train.openShowMore">
                             <div class="hidden-content-container">
                                 <div *ngIf="train.drillType === drillTypeEnum.Regular">
-                                    <img src="assets/targets/64/e64_score.png">
+                                    <img src="assets/targets/64/e64_score.png" [style.height.px]="targetW"
+                                         [style.width.px]="targetW">
                                 </div>
                                 <div *ngIf="train.drillType === drillTypeEnum.Zero">
-                                    <img src="assets/targets/64/e64_Zero.png">
+                                    <img src="assets/targets/64/e64_Zero.png" [style.height.px]="targetW"
+                                         [style.width.px]="targetW">
                                 </div>
                                 <div *ngIf="train.drillType === drillTypeEnum.Hostage">
-                                    <img src="assets/targets/64/Hostage_png_e64.png">
+                                    <img src="assets/targets/64/Hostage_png_e64.png" [style.height.px]="targetW" [style.width.px]="targetW">
                                 </div>
                                 <div class="hit" *ngFor="let shot of train.rawHitsLocation; let i = index"
                                      style="position: absolute;"
@@ -193,11 +206,17 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <div class="close-panel-container" (click)="train.openShowMore = !train.openShowMore;">
+                                    <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_arrow_up
+                                    </mat-icon>
+                                </div>
+
                             </div>
                         </ng-container>
                     </div>
                 </div>
             </div>
-        </ion-item>
-    </ion-list>
+        </div>
+    </div>
 </section>
+

@@ -152,6 +152,7 @@ select:-webkit-autofill:focus {
 
 .mat-dialog-container {
   background-color: white;
+  padding: 0px !important;
 }
 
 
@@ -210,4 +211,12 @@ mat-tab-header {
     -webkit-transform: none;
     transform: none;
   }
+}
+
+::ng-deep .item-inner {
+  border: none !important;
+}
+
+.custom-dialog-container .mat-dialog-container {
+ padding: 0px !important;
 }

@@ -2,7 +2,7 @@ import {
     AfterViewInit,
     ChangeDetectorRef,
     Component,
-    ElementRef, HostListener,
+    ElementRef,
     Input,
     NgZone,
     OnChanges,
@@ -35,7 +35,7 @@ import {BalisticCalculatorService} from '../services/balistic-calculator.service
     templateUrl: './drill.component.html',
     styleUrls: ['./drill.component.scss'],
 })
-export class DrillComponent implements OnInit, OnChanges, OnDestroy {
+export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 
 
     public counter = 0;
@@ -51,16 +51,22 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     @ViewChild('downloadLink') downloadLink: ElementRef;
     @ViewChild('scrollMe', {static: true}) myScrollContainer: ElementRef;
 
+
+    /* FOR DEMO */
+
+
+    /*  END FOR DEMO*/
     profile: any;
     shots = [];
     shotsThatAreNotCounted = [];
     drill: DrillObject;
-    timerConfig: any;
+    testConfig: any;
     RANDOM_TIMES = FakeData.RANDOM_TIMES;
 
 
     drillFinished = false;
 
+    DEFUALT_PAGE_DATE = ConstantData.DEFUALT_PAGE_DATE;
     pageData = ConstantData.pageData;
     DEFAULT_SUMMARY_OBJECT = ConstantData.DEFAULT_SUMMARY_OBJECT;
     summaryObject = ConstantData.summaryObject;
@@ -68,9 +74,13 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
     height: number;
     width: number;
+    private interval;
     stats = [];
-    batteryPercent;
+    batteryPrecent;
     isConnected = true;
+    drillFinishedBefore = false;
+    isHit = false;
+    private hitNumber = 0;
     isFinish = false;
     shotNumber = 0;
     loader;
@@ -79,12 +89,21 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
     drillIsFinished = false;
     isGateway = false;
     selectedTarget: any;
+    fakeStats = FakeData.fakeStats;
+    fakeShots = FakeData.fakeShots;
     targetType: TargetType;
     isZero: boolean;
 
-    clicksObject: ClicksObject = {leftClick: null, rightClick: null, upClick: null, downClick: null};
+
+    leftClick = 0;
+    upclick = 0;
+    rightClick = 0;
+    downClick = 0;
     groupingStatus: string;
     groupingNumber;
+    targetH;
+    targetW;
+    madadToUse
 
     public get targetTypeEnum(): typeof TargetType {
         return TargetType;
@@ -127,8 +146,19 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
             const napar = this.balisticCalculatorService.calcNapar(true, this.targetType);
             this.shotsThatAreNotCounted.push({x: napar.napar.x, y: napar.napar.y, isNapar: true});
         }
+        this.targetW = this.initService.screenW;
+        this.targetH = this.initService.screenH;
+
+        if (this.targetW > this.targetH) {
+            this.madadToUse = this.targetH - 100;
+        } else {
+            this.madadToUse = this.targetW - 100;
+        }
     }
 
+
+    ngAfterViewInit(): void {
+    }
 
     ngOnInit() {
         this.profile = this.userService.getUser();
@@ -163,13 +193,13 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         this.countupTimerService.stopTimer();
         this.countupTimerService.setTimervalue(0);
 
-        this.timerConfig = new countUpTimerConfigModel();
-        this.timerConfig.timerClass = 'test_Timer_class';
+        this.testConfig = new countUpTimerConfigModel();
+        this.testConfig.timerClass = 'test_Timer_class';
         // timer text values
-        this.timerConfig.timerTexts = new timerTexts();
-        this.timerConfig.timerTexts.hourText = ':'; // default - hh
-        this.timerConfig.timerTexts.minuteText = ':'; // default - mm
-        this.timerConfig.timerTexts.secondsText = ' '; // default - ss
+        this.testConfig.timerTexts = new timerTexts();
+        this.testConfig.timerTexts.hourText = ':'; // default - hh
+        this.testConfig.timerTexts.minuteText = ':'; // default - mm
+        this.testConfig.timerTexts.secondsText = ' '; // default - ss
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -182,11 +212,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
     }
 
-    @HostListener('unloaded')
-    ngOnDestroy() {
-        console.log('Items destroyed');
-    }
-
 
     initStats() {
         this.balisticCalculatorService.resetStats();
@@ -196,17 +221,21 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         console.log('This is in the init stats of the session');
         this.drillFinished = false;
         this.shots = [];
-        this.shotsThatAreNotCounted = [];
+
         this.stats = [];
         this.shotNumber = 0;
         this.isFinish = false;
         this.summaryObject = this.DEFAULT_SUMMARY_OBJECT;
-        this.pageData.counter = 0;
-        this.pageData.distanceFromCenter = 0;
-        this.pageData.splitTime = '0:00';
-        this.pageData.rateOfFire = 0;
-        this.pageData.points = 0;
-        this.pageData.totalTime = '0:00';
+        if (!this.pageData) {
+            this.pageData = this.pageData;
+        } else {
+            this.pageData.counter = 0;
+            this.pageData.distanceFromCenter = 0;
+            this.pageData.splitTime = '0:00';
+            this.pageData.rateOfFire = 0;
+            this.pageData.points = 0;
+            this.pageData.totalTime = '0:00';
+        }
         if (this.countupTimerService) {
             this.countupTimerService.stopTimer();
             this.countupTimerService.setTimervalue(0);
@@ -248,8 +277,13 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
         this.drillHasNotStarted = true;
     }
 
+    ngOnDestroy() {
+        console.log('[OnDestroy] Session Component');
+    }
+
 
     finishDrill() {
+        this.drillFinishedBefore = true;
         this.drillFinished = true;
         this.countupTimerService.stopTimer();
         console.log('FINISH!!!!!!!!!!!!!!!!!');
@@ -269,7 +303,17 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
     resetShots() {
         this.bleService.resetShots();
-        this.stats = [];
+        this.shots = [];
+        let napamToDelete = null;
+        this.shotsThatAreNotCounted.forEach(item => {
+            if (item.isNapam) {
+                napamToDelete = item;
+            }
+        })
+
+        if (napamToDelete) {
+            this.shotsThatAreNotCounted.splice(this.shotsThatAreNotCounted.indexOf(napamToDelete), 1);
+        }
     }
 
 
@@ -351,16 +395,52 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                 clearInterval(interval);
                 if (this.isGateway) {
                     setTimeout(() => {
-                        this.gateway.height = this.container.nativeElement.offsetHeight;
-                        this.gateway.width = this.container.nativeElement.offsetWidth;
-                        this.balisticCalculatorService.divWidth = 245;
-                        this.balisticCalculatorService.divHeight = 245;
+                        this.gateway.height = this.madadToUse;
+                        this.gateway.width = this.madadToUse;
+                        this.balisticCalculatorService.divWidth = this.madadToUse;
+                        this.balisticCalculatorService.divHeight = this.madadToUse;
                         this.gateway.startTimer();
                     }, 1);
                 }
 
             }
         }, 1000);
+    }
+
+    private startFakeShooting(index) {
+        if (index < 5) {
+            setTimeout(() => {
+                this.stats = [this.fakeStats[index], ...this.stats];
+                // @ts-ignore
+                this.summaryObject.points = this.fakeStats[index].pageData.totalPoints;
+                // @ts-ignore
+                this.summaryObject.split = this.fakeStats[index].pageData.totalSplit;
+                // @ts-ignore
+                this.summaryObject.totalTime = this.fakeStats[index].pageData.totalTime;
+                // @ts-ignore
+                this.summaryObject.distanceFromCenterAvg = this.fakeStats[index].pageData.distanceFromCenterAvg;
+                this.shots.push(this.fakeShots[index]);
+                this.startFakeShooting(index + 1);
+            }, 1212);
+        }
+    }
+
+    private startFakeShootingHitNoHit(index) {
+        if (index < 5) {
+            setTimeout(() => {
+                this.stats = [this.fakeStats[index], ...this.stats];
+                // @ts-ignore
+                this.summaryObject.points = this.fakeStats[index].pageData.totalPoints;
+                // @ts-ignore
+                this.summaryObject.split = this.fakeStats[index].pageData.totalSplit;
+                // @ts-ignore
+                this.summaryObject.totalTime = this.fakeStats[index].pageData.totalTime;
+                // @ts-ignore
+                this.summaryObject.distanceFromCenterAvg = this.fakeStats[index].pageData.distanceFromCenterAvg;
+                this.shotNumber = index + 1;
+                this.startFakeShootingHitNoHit(index + 1);
+            }, 1212);
+        }
     }
 
     private removeTabs() {
@@ -410,16 +490,26 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
                 this.drillIsFinished = true;
             }
         });
-        this.gateway.hitArrived.subscribe((data) => {
+        this.gateway.hitArrived.subscribe((data: any) => {
             if (data && !this.isFinish && data.statsData.stats.length > 0) {
-                if (data.statsData.zeroData) {
-                    this.clicksObject.leftClick = data.statsData.zeroData.leftClick;
-                    this.clicksObject.upClick = data.statsData.zeroData.upclick;
-                    this.clicksObject.rightClick = data.statsData.zeroData.rightClick;
-                    this.clicksObject.downClick = data.statsData.zeroData.downClick;
+                if (data.statsData.zeroData && Object.keys(data.statsData.zeroData).length !== 0) {
+                    this.leftClick = data.statsData.zeroData.leftClick;
+                    this.upclick = data.statsData.zeroData.upclick;
+                    this.rightClick = data.statsData.zeroData.rightClick;
+                    this.downClick = data.statsData.zeroData.downClick;
                     this.groupingNumber = data.statsData.zeroData.napar2Napam;
                     this.groupingStatus = data.statsData.zeroData.status;
-                    this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
+                    this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y, isBarhan: data.isBarhan});
+                    let napamToDelete = null;
+                    this.shotsThatAreNotCounted.forEach(item => {
+                        if (item.isNapam) {
+                            napamToDelete = item;
+                        }
+                    })
+
+                    if (napamToDelete) {
+                        this.shotsThatAreNotCounted.splice(this.shotsThatAreNotCounted.indexOf(napamToDelete), 1);
+                    }
                     if (data.statsData.zeroData.napamToView.x !== 0 && data.statsData.zeroData.napamToView.y !== 0) {
                         this.shotsThatAreNotCounted.push({
                             x: data.statsData.zeroData.napamToView.x,
@@ -520,9 +610,3 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy {
 
 }
 
-export interface ClicksObject {
-    leftClick: number;
-    upClick: number;
-    rightClick: number;
-    downClick: number;
-}
