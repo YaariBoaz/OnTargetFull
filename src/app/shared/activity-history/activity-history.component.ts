@@ -8,6 +8,7 @@ import {HistoryModel, HistoryValueItemModel} from '../models/HistoryModel';
 import {MatDialogRef} from '@angular/material/dialog';
 import {TargetType} from '../drill/constants';
 import {DrillType} from '../../tab2/tab2.page';
+import {InitService} from "../services/init.service";
 
 // @ts-ignore
 @Component({
@@ -34,15 +35,23 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     openShowMore = false;
     drills: HistoryValueItemModel[];
     hasConnection;
-    currentDay;
+    currentDate = new Date();
     numOfTrainings;
     beutifiedDate;
     stats = [];
     summaryObject;
     trains;
+    targetW;
+    targetH;
+
+    days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    d = new Date();
+    dayName = this.days[this.d.getDay()];
+
 
     constructor(private router: Router,
                 private networkService: NetworkService,
+                private initService: InitService,
                 public dialogRef: MatDialogRef<ActivityHistoryComponent>,
                 private stoargeService: StorageService,
                 private platform: Platform) {
@@ -54,6 +63,9 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
                 this.handleOfflineScenario();
             }
         });
+        this.targetW = this.initService.screenW;
+        this.targetH = this.initService.screenH;
+
     }
 
     ngOnInit() {

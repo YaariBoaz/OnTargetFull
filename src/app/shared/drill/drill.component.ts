@@ -101,6 +101,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     downClick = 0;
     groupingStatus: string;
     groupingNumber;
+    targetH;
+    targetW;
+    madadToUse
 
     public get targetTypeEnum(): typeof TargetType {
         return TargetType;
@@ -142,6 +145,14 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         if (this.isZero) {
             const napar = this.balisticCalculatorService.calcNapar(true, this.targetType);
             this.shotsThatAreNotCounted.push({x: napar.napar.x, y: napar.napar.y, isNapar: true});
+        }
+        this.targetW = this.initService.screenW;
+        this.targetH = this.initService.screenH;
+
+        if (this.targetW > this.targetH) {
+            this.madadToUse = this.targetH - 100;
+        } else {
+            this.madadToUse = this.targetW - 100;
         }
     }
 
@@ -292,7 +303,17 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
 
     resetShots() {
         this.bleService.resetShots();
-        this.stats = [];
+        this.shots = [];
+        let napamToDelete = null;
+        this.shotsThatAreNotCounted.forEach(item => {
+            if (item.isNapam) {
+                napamToDelete = item;
+            }
+        })
+
+        if (napamToDelete) {
+            this.shotsThatAreNotCounted.splice(this.shotsThatAreNotCounted.indexOf(napamToDelete), 1);
+        }
     }
 
 
@@ -374,10 +395,10 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 clearInterval(interval);
                 if (this.isGateway) {
                     setTimeout(() => {
-                        this.gateway.height = this.container.nativeElement.offsetHeight;
-                        this.gateway.width = this.container.nativeElement.offsetWidth;
-                        this.balisticCalculatorService.divWidth = 245;
-                        this.balisticCalculatorService.divHeight = 245;
+                        this.gateway.height = this.madadToUse;
+                        this.gateway.width = this.madadToUse;
+                        this.balisticCalculatorService.divWidth = this.madadToUse;
+                        this.balisticCalculatorService.divHeight = this.madadToUse;
                         this.gateway.startTimer();
                     }, 1);
                 }
@@ -469,28 +490,31 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 this.drillIsFinished = true;
             }
         });
-        this.gateway.hitArrived.subscribe((data) => {
+        this.gateway.hitArrived.subscribe((data: any) => {
             if (data && !this.isFinish && data.statsData.stats.length > 0) {
-                if (data.statsData.zeroData) {
+                if (data.statsData.zeroData && Object.keys(data.statsData.zeroData).length !== 0) {
                     this.leftClick = data.statsData.zeroData.leftClick;
                     this.upclick = data.statsData.zeroData.upclick;
                     this.rightClick = data.statsData.zeroData.rightClick;
                     this.downClick = data.statsData.zeroData.downClick;
                     this.groupingNumber = data.statsData.zeroData.napar2Napam;
                     this.groupingStatus = data.statsData.zeroData.status;
-                    this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
+                    this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y, isBarhan: data.isBarhan});
+                    let napamToDelete = null;
+                    this.shotsThatAreNotCounted.forEach(item => {
+                        if (item.isNapam) {
+                            napamToDelete = item;
+                        }
+                    })
+
+                    if (napamToDelete) {
+                        this.shotsThatAreNotCounted.splice(this.shotsThatAreNotCounted.indexOf(napamToDelete), 1);
+                    }
                     if (data.statsData.zeroData.napamToView.x !== 0 && data.statsData.zeroData.napamToView.y !== 0) {
                         this.shotsThatAreNotCounted.push({
                             x: data.statsData.zeroData.napamToView.x,
                             y: data.statsData.zeroData.napamToView.y,
                             isNapam: true
-                        });
-                    }
-                    if (data.statsData.zeroData.naparView.x !== 0 && data.statsData.zeroData.naparView.y !== 0) {
-                        this.shotsThatAreNotCounted.push({
-                            x: data.statsData.zeroData.naparView.x,
-                            y: data.statsData.zeroData.naparView.y,
-                            isNapar: true
                         });
                     }
                     this.cd.detectChanges();

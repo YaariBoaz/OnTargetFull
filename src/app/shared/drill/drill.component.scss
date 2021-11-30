@@ -17,7 +17,7 @@ section.drill-results {
     background-color: #363636;
     box-sizing: border-box;
     padding: 10px 16px;
-
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,7 +59,7 @@ section.drill-results {
 
   div.main-screen {
     position: relative;
-    height: calc(100% - 48px);
+    height: calc(100% - 18px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -101,11 +101,11 @@ section.drill-results {
     padding-left: 15px;
     padding-right: 15px;
     //padding-left: 100px;
-
-
+    height: 100%;
+    align-items: center;
     img {
-      height: 245px;
-      width: 245px;
+      height: 300px;
+      width: 300px;
     }
 
     .some-wrapper {
@@ -113,6 +113,7 @@ section.drill-results {
       width: 60%;
       display: flex;
       justify-content: center;
+      align-items: center;
 
       .counter-shot {
         position: absolute;
@@ -204,6 +205,7 @@ section.drill-results {
       width: 50%;
       justify-content: center;
       align-items: center;
+      height: 100%;
 
       table {
         display: block;
@@ -315,13 +317,14 @@ section.drill-results {
         p {
           width: calc(100% / 4);
           color: white;
-          font-size: 12px;
+          font-size: 8px;
           line-height: 14px;
           letter-spacing: 0.12px;
           box-sizing: border-box;
           padding: 0 0.5em;
           text-align: left;
           margin: 0;
+
         }
       }
 
@@ -567,14 +570,20 @@ div.targetHoly {
   height: 20px;
   border-radius: 9px;
   border-radius: 9px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.33);
-  color: #000000;
-  background: #bcbcbc;
-  display: flex;
+   color: #000000;
+   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
   font-weight: 900;
+  background: hsla(0, 0%, 100%, 1);
+
+  background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(143, 51%, 49%, 1) 100%);
+
+  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(143, 51%, 49%, 1) 100%);
+
+  background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(143, 51%, 49%, 1) 100%);
+  z-index: 10;
 }
 
 table tbody {
@@ -831,8 +840,8 @@ div.welcome-message {
 
     div.target {
       img {
-        height: 60vh;
-        width: 60vh;
+        height: 300px;
+        width: 300px;
       }
     }
   }
@@ -905,6 +914,9 @@ div.welcome-message {
 .zero-stats {
   width: 40%;
   padding-right: 10%;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
 }
 
 .grouping-status {
@@ -920,9 +932,33 @@ div.welcome-message {
   }
 }
 .napar{
-  background-color: #ce564b;
+  background: -webkit-radial-gradient(circle, white 20%, #ff8100 100%);
+  z-index: 1;
 }
 
 .napam{
-  background-color: aqua;
+  background: hsla(0, 0%, 100%, 1);
+
+  background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(279, 49%, 55%, 1) 100%);
+
+  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(279, 49%, 55%, 1) 100%);
+
+  background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(279, 49%, 55%, 1) 100%);
+  z-index: 1;
+
 }
+
+.target-container{
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.isBarhan{
+  background: hsla(0, 0%, 100%, 1);
+
+  background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(5, 58%, 70%, 1) 100%);
+
+  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(5, 58%, 70%, 1) 100%);
+
+ }

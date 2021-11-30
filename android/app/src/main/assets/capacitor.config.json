@@ -1,27 +1,23 @@
 {
-  "appId": "adl.onTarget",
-  "appName": "onTarget",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www",
-  "cordova": {},
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 10000,
-      "launchAutoHide": false,
-      "backgroundColor": "#ffffffff",
-      "androidSplashResourceName": "splash",
-      "androidScaleType": "CENTER_CROP",
-      "androidSpinnerStyle": "large",
-      "iosSpinnerStyle": "small",
-      "spinnerColor": "#999999",
-      "showSpinner": false,
-      "splashFullScreen": true,
-      "splashImmersive": true
-    }
-  },
-  "server": {
-    "url": "http://localhost:8100",
-    "cleartext": true
-  }
+	"appId": "adl.onTarget",
+	"appName": "onTarget",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "www",
+	"cordova": {},
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 10000,
+			"launchAutoHide": false,
+			"backgroundColor": "#ffffffff",
+			"androidSplashResourceName": "splash",
+			"androidScaleType": "CENTER_CROP",
+			"androidSpinnerStyle": "large",
+			"iosSpinnerStyle": "small",
+			"spinnerColor": "#999999",
+			"showSpinner": false,
+			"splashFullScreen": true,
+			"splashImmersive": true
+		}
+	}
 }

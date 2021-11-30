@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ShootingService} from './shooting.service';
 import {DrillObject, DrillType} from '../../tab2/tab2.page';
 import {StorageService} from './storage.service';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {CountupTimerService} from 'ngx-timer';
 import {ApiService} from './api.service';
 import {UserService} from './user.service';
@@ -32,6 +32,7 @@ export class GatewayService {
         rateOfFire: 0,
         counter: 0,
         points: 0,
+        isBarhan: false,
         lastShotTime: null,
         totalTime: '00:00:00'
     };
@@ -40,12 +41,13 @@ export class GatewayService {
         splitTime: '',
         rateOfFire: 0,
         counter: 0,
+        isBarhan: false,
         points: 0,
         lastShotTime: null,
         totalTime: '00:00:00'
     };
     private batteryPercent: number;
-    hitArrived = new BehaviorSubject(null);
+    hitArrived = new Subject();
     summaryObject = {
         points: 0,
         distanceFromCenter: 0,
@@ -196,7 +198,11 @@ export class GatewayService {
             this.pageData.lastShotTime = new Date();
         }
 
-
+        if (zeroData.isBarhan) {
+            this.pageData.isBarhan = true;
+        } else {
+            this.pageData.isBarhan = true;
+        }
         // this.pageData.totalTime = (this.pageData.totalTime + ((new Date().getTime() - this.pageData.lastShotTime.getTime()) / 1000));
         // this.pageData.lastShotTime = new Date();
 
@@ -383,10 +389,8 @@ export class GatewayService {
     }
 
     handleShot_MSG_NEW(x, y) {
-        let zeroData = {} as any;
-        if (this.shootingService.getisZero()) {
-            zeroData = this.balisticCalculatorService.updateShot(x, y);
-        }
+        const saveX = x;
+        const saveY = y;
         const targetId = this.storageService.getItem('slectedTarget').name;
         const targetType = this.getTargetType(targetId);
         let nominalStep;
@@ -403,8 +407,7 @@ export class GatewayService {
             x -= 0.5;
             xPos = x;
             yPos = y;
-        }
-        else if (targetType === TargetType.Type_16) {
+        } else if (targetType === TargetType.Type_16) {
             nominalStep = 7;
             n = 5;
             x = 0.25 * x - n;
@@ -413,8 +416,7 @@ export class GatewayService {
             x -= 0.5;
             xPos = x;
             yPos = y;
-        }
-        else { // 128
+        } else { // 128
             let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
             disPointFromCenter128 = disPointFromCenter128 / 10;
             // 7 is half the width of the ellipse representing the bullet hit on the UI
@@ -439,6 +441,15 @@ export class GatewayService {
             this.hits.push({x: xPos, y: yPos});
         }
 
+        let zeroData = {} as any;
+        if (this.shootingService.getisZero()) {
+            zeroData = this.balisticCalculatorService.updateShot(saveX, saveY, this.hits);
+            if (zeroData.isBarhan) {
+                this.hits[this.hits.length - 1].isBarhan = true;
+            } else {
+                this.hits[this.hits.length - 1].isBarhan = false;
+            }
+        }
 
         const disPointFromCenter = 1.905 * Math.sqrt(Math.pow((nominalStep / 2 - x), 2) + Math.pow((nominalStep / 2 - y), 2));
 

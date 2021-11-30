@@ -41,7 +41,7 @@ export class Tab2Page implements OnInit {
         sight: 'V6 5-30 X 50',
         ammo: '.17 Aguila',
         // @ts-ignore
-        drillType: 'Hit/NoHit',
+        drillType: null,
         shots: new Array<{ x, y }>()
     };
     connectedTarget = null;
@@ -148,6 +148,8 @@ export class Tab2Page implements OnInit {
     startSesstion() {
         if (this.drill.drillType === this.drillTypeEnum.Zero) {
             this.shootingService.setIsZero(true);
+        }else{
+            this.shootingService.setIsZero(false);
         }
         this.shootingService.drillStarteEvent.next(true);
         this.shootingService.selectedDrill = this.drill;
@@ -224,10 +226,18 @@ export class Tab2Page implements OnInit {
                 panelClass: 'dialog-bg'
             });
             dialogRef.afterClosed().subscribe(data => {
-                this.router.navigateByUrl('/tab2/select2');
+                if (!data  || !data.isBack) {
+                    this.router.navigateByUrl('/tab2/select2');
+                }
             });
         });
 
+    }
+
+    onNumberOfBulletsChange(val) {
+        if (val === 0 || val < 0) {
+            this.drill.numOfBullets = 1;
+        }
     }
 }
 

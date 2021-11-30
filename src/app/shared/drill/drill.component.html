@@ -236,47 +236,50 @@
         </div>
         <div class="target" *ngIf="isGateway">
             <div *ngIf="showResults" class="some-wrapper" #container>
-                <div *ngIf="targetType === targetTypeEnum.Type_64">
+                <div class="target-container" [style.width.px]="madadToUse" [style.height.px]="madadToUse">
+                    <div *ngIf="targetType === targetTypeEnum.Type_64">
 
-                    <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
-                        <img *ngIf="!drillIsFinished" src="assets/targets/64/e64_score.png">
-                        <img *ngIf="drillIsFinished" src="assets/targets/64/e64_score_finish.png">
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Regular" style="width: 312px; height: 312px;" [style.width.px]="madadToUse" [style.height.px]="madadToUse"style="background-color: white;border-radius: 100%;">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished" src="assets/targets/64/e64_score.png">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"  *ngIf="drillIsFinished" src="assets/targets/64/e64_score_finish.png">
+                        </div>
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Zero" [style.width.px]="madadToUse" [style.height.px]="madadToUse" style="background-color: white">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished" src="assets/targets/64/e64_Zero.png">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished" src="assets/targets/64/e64_Zero_finish.png">
+                        </div>
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Hostage">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished" src="assets/targets/64/Hostage_png_e64.png">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished" src="assets/targets/64/Hostage_png_e64_finish.png">
+                        </div>
                     </div>
-                    <div *ngIf="drill?.drillType === drillTypeEnum.Zero">
-                        <img *ngIf="!drillIsFinished" src="assets/targets/64/e64_Zero.png">
-                        <img *ngIf="drillIsFinished" src="assets/targets/64/e64_Zero_finish.png">
+                    <div *ngIf="targetType === targetTypeEnum.Type_128">
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished" src="assets/targets/128/e128_score.png">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"  *ngIf="drillIsFinished" src="assets/targets/128/e128_score_finish.png">
+                        </div>
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished" src="assets/targets/128/e128_score.png">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished" src="assets/targets/128/e64_score_finish.png">
+                        </div>
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Zero">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished" src="assets/targets/128/e128_zero.png">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished" src="assets/targets/128/e128_zero.png">
+                        </div>
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Hostage">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished" src="assets/targets/128/e128_Hostage.png">
+                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished" src="assets/targets/128/e128_Hostage_Finish.png">
+                        </div>
                     </div>
-                    <div *ngIf="drill?.drillType === drillTypeEnum.Hostage">
-                        <img *ngIf="!drillIsFinished" src="assets/targets/64/Hostage_png_e64.png">
-                        <img *ngIf="drillIsFinished" src="assets/targets/64/Hostage_png_e64_finish.png">
+                    <!--                <div class="counter-shot">{{shotNumber}}</div>-->
+                    <div [class.isBarhan]="shot.isBarhan" class="hit" *ngFor="let shot of shots; let i = index" style="position: absolute;"
+                         [style.top.px]=shot.y [style.left.px]=shot.x>
+                        {{i + 1}}
                     </div>
-                </div>
-                <div *ngIf="targetType === targetTypeEnum.Type_128">
-                    <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
-                        <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_score.png">
-                        <img *ngIf="drillIsFinished" src="assets/targets/128/e128_score_finish.png">
+                    <div class="hit" *ngFor="let shot of shotsThatAreNotCounted; let i = index"
+                         style="position: absolute;"
+                         [class.napar]="shot.isNapar" [class.napam]="shot.isNapam"
+                         [style.top.px]=shot.y [style.left.px]=shot.x>
                     </div>
-                    <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
-                        <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_score.png">
-                        <img *ngIf="drillIsFinished" src="assets/targets/128/e64_score_finish.png">
-                    </div>
-                    <div *ngIf="drill?.drillType === drillTypeEnum.Zero">
-                        <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_zero.png">
-                        <img *ngIf="drillIsFinished" src="assets/targets/128/e128_zero.png">
-                    </div>
-                    <div *ngIf="drill?.drillType === drillTypeEnum.Hostage">
-                        <img *ngIf="!drillIsFinished" src="assets/targets/128/e128_Hostage.png">
-                        <img *ngIf="drillIsFinished" src="assets/targets/128/e128_Hostage_Finish.png">
-                    </div>
-                </div>
-                <!--                <div class="counter-shot">{{shotNumber}}</div>-->
-                <div class="hit" *ngFor="let shot of shots; let i = index" style="position: absolute;"
-                     [style.top.px]=shot.y [style.left.px]=shot.x>
-                    {{i + 1}}
-                </div>
-                <div class="hit" *ngFor="let shot of shotsThatAreNotCounted; let i = index" style="position: absolute;"
-                     [class.napar]="shot.isNapar" [class.napam]="shot.isNapam"
-                     [style.top.px]=shot.y [style.left.px]=shot.x>
                 </div>
             </div>
             <div class="welcome-message" *ngIf="!showResults">
@@ -463,7 +466,7 @@
                     <div class="zero-data-row">
                         <img src="../../../assets/icons/grouping-zero.svg"/>
                         <div class="data-row"><span>Grouping:</span><span style="padding-left: 10px">{{groupingNumber |
-                                number : '1.2-2'}}</span></div>
+                            number : '1.2-2'}}</span></div>
                     </div>
                     <div class="zero-data-row" *ngIf="upclick!==0">
                         <img src="../../../assets/icons/clicksUp.png"/>

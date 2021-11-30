@@ -196,14 +196,14 @@ export class SignupComponent implements OnInit {
 
     continueToThird() {
         this.submitted = true;
-        if (this.registerForm.invalid) {
-            return;
-        }
-
-        this.registerForm.value.img_path = this.picture;
-        if (this.registerForm.value.age) {
-            this.registerForm.value.age = this.registerForm.value.age.toString();
-        }
+        // if (this.registerForm.invalid) {
+        //     return;
+        // }
+        //
+        // this.registerForm.value.img_path = this.picture;
+        // if (this.registerForm.value.age) {
+        //     this.registerForm.value.age = this.registerForm.value.age.toString();
+        // }
 
         this.wizardService.registerForm = this.registerForm;
         this.tab3Service.passProfileFromRegister.next(this.registerForm.value);

@@ -48,6 +48,7 @@ export class BalisticCalculatorComponent implements OnInit, AfterViewInit {
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 private dialogRef: MatDialogRef<BalisticCalculatorComponent>) {
         this.myGuns = this.storageService.getItem('gunList');
+
     }
 
     ngOnInit() {
@@ -59,8 +60,13 @@ export class BalisticCalculatorComponent implements OnInit, AfterViewInit {
         this.caliberList = this.storageService.getItem('caliberList');
     }
 
-    onBackPressed() {
 
+    onBackPressed() {
+        if (!this.isParamsScreen) {
+            this.isParamsScreen = true;
+        } else {
+            this.dialogRef.close({isBack: true});
+        }
     }
 
 
@@ -117,6 +123,7 @@ export class BalisticCalculatorComponent implements OnInit, AfterViewInit {
             });
         }
     }
+
 
     ngAfterViewInit(): void {
 

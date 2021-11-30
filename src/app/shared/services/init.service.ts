@@ -1,5 +1,5 @@
 import {Injectable, NgZone} from '@angular/core';
-import {ApiService} from './api.service';
+import {ApiService, ZeroTableGetObject} from './api.service';
 import {StorageService} from './storage.service';
 import {UserService} from './user.service';
 import {BLE} from '@ionic-native/ble/ngx';
@@ -21,12 +21,15 @@ export class InitService {
     newDashboardData = new BehaviorSubject(null);
     private targets = [];
     private currentTargetId;
+    screenW;
+    screenH;
 
     constructor(private ngZone: NgZone,
                 private apiService: ApiService,
                 private storageService: StorageService,
                 private shootingService: ShootingService,
                 public ble: BLE) {
+        this.setDeviceSize();
     }
 
     distory() {
@@ -36,12 +39,18 @@ export class InitService {
         });
     }
 
+
     getTargets() {
         return this.targets;
     }
 
     notifyOnErrorFunc(error) {
         this.notifyError.next(error);
+    }
+
+    setDeviceSize() {
+        this.screenW = screen.width;
+        this.screenH = screen.height;
     }
 
     getWeapons() {
