@@ -21,7 +21,7 @@
     }
   },
   "server": {
-    "url": "http://localhost:8100",
+    "url": "http://192.168.30.94:8100",
     "cleartext": true
   }
 }

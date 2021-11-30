@@ -6,7 +6,7 @@
   "scripts": {
     "resources": "cordova-res android && node scripts/resources.js",
     "ng": "ng",
-    "run-android": "ionic capacitor run android -l --host= 0.0.0.0",
+    "run-android": "ionic capacitor run android -l --external",
     "start": "ng serve",
     "build": "ionic build --prod && npx cap copy && npx cap sync && npx cap open android",
     "test": "ng test",

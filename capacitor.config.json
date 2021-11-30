@@ -19,9 +19,5 @@
       "splashFullScreen": true,
       "splashImmersive": true
     }
-  },
-  "server": {
-    "url": "http://localhost:8100",
-    "cleartext": true
   }
 }
