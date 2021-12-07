@@ -109,7 +109,7 @@ section.profile {
       }
 
       select {
-        width: 214px;
+        width: 200px;
         height: 40px;
         border-radius: 4px;
         border: solid 1px #f2f2f2;
@@ -220,7 +220,7 @@ section.profile {
       border: solid 1px #ce564b;
       background-color: #ffffff;
       color: #ce564b;
-      width: 214px;
+      width: 200px;
       height: 100%;
     }
   }
@@ -531,7 +531,7 @@ form.signInForm {
       border-radius: 4px;
       opacity: 0.5;
       border: solid 1px #000000;
-      width: 214px;
+      width: 200px;
       color: #000;
       box-sizing: border-box;
       padding: 0.5em;
@@ -543,7 +543,7 @@ form.signInForm {
       border-radius: 4px;
       opacity: 0.5;
       border: solid 1px #000000;
-      width: 214px;
+      width: 200px;
       color: #000;
       box-sizing: border-box;
       padding: 0.5em;
@@ -801,10 +801,10 @@ div.row {
         }
 
         select {
-          width: 214px;
           height: 40px;
           border-radius: 4px;
-          border: solid 1px #f2f2f2;
+          width: 200px !important;
+          border: solid 1px #c2c0c0 !important;
           background-color: #ffffff;
           color: rgba(0, 0, 0, 0.87);
           box-sizing: border-box;
@@ -912,7 +912,7 @@ div.row {
         border: solid 1px #ce564b;
         background-color: #ffffff;
         color: #ce564b;
-        width: 214px;
+        width: 200px;
         height: 100%;
       }
     }
@@ -1223,7 +1223,7 @@ div.row {
         border-radius: 4px;
         opacity: 0.5;
         border: solid 1px #000000;
-        width: 214px;
+        width: 200px;
         color: #000;
         box-sizing: border-box;
         padding: 0.5em;
@@ -1235,7 +1235,7 @@ div.row {
         border-radius: 4px;
         opacity: 0.5;
         border: solid 1px #000000;
-        width: 214px;
+        width: 200px;
         color: #000;
         box-sizing: border-box;
         padding: 0.5em;
