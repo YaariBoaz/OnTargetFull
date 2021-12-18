@@ -284,6 +284,9 @@ export class SelectTargetComponent implements OnInit {
         this.ble.scan([], 5).subscribe(device => this.onDeviceDiscoveredInitialScan(device), error => this.scanErrorInitialScan(error));
         setTimeout(() => {
             this.isScanning = false;
+            if (!this.targetNotSelected) {
+                this.addTargetToList(this.selectedTarget);
+            }
         }, 5500);
     }
 
@@ -304,7 +307,7 @@ export class SelectTargetComponent implements OnInit {
                     device.name.toLowerCase().includes('e64') ||
                     device.name.toLowerCase().includes('e1n') ||
                     device.name.toLowerCase().includes('e1n') ||
-                    device.name.toLowerCase().includes('eMarn001') ||
+                    device.name.toLowerCase().includes('eMarn') ||
                     device.name.toLowerCase().includes('17') ||
                     device.name.toLowerCase().includes('003') ||
                     device.name.toLowerCase().includes('e16') ||

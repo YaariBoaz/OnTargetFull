@@ -36,6 +36,7 @@ export class GatewayService {
         lastShotTime: null,
         totalTime: '00:00:00'
     };
+    notifyTargetBattery = new Subject();
     readonly DEFAULT_PAGE_DATA = {
         distanceFromCenter: 0,
         splitTime: '',
@@ -461,7 +462,7 @@ export class GatewayService {
         } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
             this.updateStats(xPos, yPos, false, {x, y}, zeroData);
             this.finishDrill();
-            this.updateHistory();
+            //this.updateHistory();
         } else {
 
             this.updateStats(xPos, yPos, false, {x, y}, zeroData);
@@ -494,6 +495,7 @@ export class GatewayService {
             bCharge = 1;
         }
         this.batteryPercent = bCharge;
+        this.notifyTargetBattery.next(this.batteryPercent);
         console.log('[Battery Precent]: ' + bCharge);
     }
 

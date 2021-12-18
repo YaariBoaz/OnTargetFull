@@ -708,6 +708,16 @@ img {
             justify-content: center;
             align-items: center;
             align-content: center;
+            width: 100%;
+
+            .hidden-content-container {
+              width: 100%;
+
+              div {
+                display: flex;
+                justify-content: center;
+              }
+            }
           }
 
           &.active {
@@ -1001,6 +1011,15 @@ td {
 
 table {
   width: 100%;
+  margin-top: 20px;
+
+  thead {
+    tr {
+      th {
+        width: 33%;
+      }
+    }
+  }
 }
 
 .close-panel-container {

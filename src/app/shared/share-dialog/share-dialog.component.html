@@ -1,0 +1,97 @@
+<section #shareDiv id="shareDiv">
+    <img class="bg" src="assets/share-bg2.jpg" alt="">
+    <div class="total-time-wrapper">
+        <div class="hits-wanted">
+            <span>{{train.rawHitsLocation.length}} / </span>
+            <span>{{train.numberOfBullets}}</span>
+        </div>
+        <div class="quiz-medal">
+            <div class="quiz-medal__circle quiz-medal__circle--gold">
+        <span>
+          1
+        </span>
+            </div>
+            <div class="quiz-medal__ribbon quiz-medal__ribbon--left"></div>
+            <div class="quiz-medal__ribbon quiz-medal__ribbon--right"></div>
+        </div>
+    </div>
+
+
+    <div class="hidden-content-container">
+        <div *ngIf="train.drillType === drillTypeEnum.Regular">
+            <img src="assets/targets/64/e64_score.png">
+        </div>
+        <div *ngIf="train.drillType === drillTypeEnum.Zero">
+            <img src="assets/targets/64/e64_Zero.png">
+        </div>
+        <div *ngIf="train.drillType === drillTypeEnum.Hostage">
+            <img src="assets/targets/64/Hostage_png_e64.png">
+        </div>
+        <div class="hit" *ngFor="let shot of train.rawHitsLocation; let i = index"
+             style="font-size: 14px;
+             position: absolute;
+    background: white;
+    color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed;
+    font-weight: bold;"
+             [style.top.px]=shot.y
+             [style.left.px]=shot.x>
+            {{i + 1}}
+        </div>
+    </div>
+    <section style="
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+">
+        <div class="info-line">
+            <div>
+                <span>Range:</span>
+                <span>{{train.range}} M</span>
+            </div>
+        </div>
+        <div class="info-line">
+            <div>
+                <span>ADFC</span>
+                <span>{{train.avgDistFromCenter}}</span>
+            </div>
+        </div>
+    </section>
+    <section style="
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+">
+        <div class="info-line">
+            <div>
+                <span>Split Avg</span>
+                <span>{{train.splitAvg / 1000}} sec</span>
+            </div>
+        </div>
+        <div class="info-line">
+            <div>
+                <span>TT</span>
+                <span>{{train.timeElapsed}}</span>
+            </div>
+        </div>
+    </section>
+</section>
+<div class="top-row">
+    <div>
+        <div class="logoList">
+            <button (click)="shareVia()">
+                Share
+            </button>
+
+        </div>
+    </div>
+</div>
+

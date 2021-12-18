@@ -27,7 +27,8 @@
             </div>
             <div class="date-detials">
                 <div class="date">
-                    <span style="font-weight: bold;">{{currentDate | date: 'dd.MM.yyyy'}},</span> <span>{{dayName}}</span>
+                    <span style="font-weight: bold;">{{currentDate | date: 'dd.MM.yyyy'}},</span>
+                    <span>{{dayName}}</span>
                 </div>
                 <div class="drill-count">
                     <span> {{trains.length}} drills</span>
@@ -48,6 +49,8 @@
                     <div class="stats">
                         <p class="counter">DRILL # {{i + 1}}</p>
                         <p>{{train.pointsGained}} points</p>
+                        <button (click)="onShareModalOpen(train)"> SHARE</button>
+
                     </div>
                     <div class="date">
                         <span>{{train.sessionDateTime |  date:"MM/dd hh:mm"}}</span>
@@ -63,7 +66,6 @@
                         <p>RANGE</p>
                     </div>
                 </div>
-
                 <div class="show-more" [ngClass]="{'active': openShowMore }" style=" margin: 0.5em;">
                     <div *ngIf="!train.openShowMore" (click)="train.openShowMore = !train.openShowMore;"
                          style="display: flex;justify-content: center;     color: #707070;align-items: center;flex-direction: column;">
@@ -88,15 +90,13 @@
                         <ng-container *ngIf="train.openShowMore">
                             <div class="hidden-content-container">
                                 <div *ngIf="train.drillType === drillTypeEnum.Regular">
-                                    <img src="assets/targets/64/e64_score.png" [style.height.px]="targetW"
-                                         [style.width.px]="targetW">
+                                    <img src="assets/targets/64/e64_score.png">
                                 </div>
                                 <div *ngIf="train.drillType === drillTypeEnum.Zero">
-                                    <img src="assets/targets/64/e64_Zero.png" [style.height.px]="targetW"
-                                         [style.width.px]="targetW">
+                                    <img src="assets/targets/64/e64_Zero.png">
                                 </div>
                                 <div *ngIf="train.drillType === drillTypeEnum.Hostage">
-                                    <img src="assets/targets/64/Hostage_png_e64.png" [style.height.px]="targetW" [style.width.px]="targetW">
+                                    <img src="assets/targets/64/Hostage_png_e64.png">
                                 </div>
                                 <div class="hit" *ngFor="let shot of train.rawHitsLocation; let i = index"
                                      style="position: absolute;"
@@ -104,7 +104,7 @@
                                      [style.left.px]=shot.x>
                                     {{i + 1}}
                                 </div>
-                                <table>
+                                <table style="color: black;">
                                     <thead>
                                     <tr>
                                         <th>
@@ -199,7 +199,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let shot of train.shotItems; let i = index">
+                                    <tr *ngFor="let shot of train.shotItems; let i = index"
+                                        style="border-top: 1px solid black;border-bottom: 1px solid black;height: 30px;">
                                         <td>{{i + 1}}</td>
                                         <td> {{shot.timeSplit}}</td>
                                         <td> {{shot.time}}</td>

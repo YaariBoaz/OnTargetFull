@@ -31,6 +31,8 @@ import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.compo
 import {NativePageTransitions} from '@ionic-native/native-page-transitions/ngx';
 import {MaterialModule} from './shared/material/material.module';
 import {enterAnimation} from './shared/animation/nav-animation';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
+import { NgxCaptureModule } from 'ngx-capture';
 
 
 // @ts-ignore
@@ -51,8 +53,8 @@ import {enterAnimation} from './shared/animation/nav-animation';
         AppRoutingModule,
         BrowserAnimationsModule,
         TabsPageModule,
-        MaterialModule
-
+        MaterialModule,
+        NgxCaptureModule
     ],
     providers: [
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
@@ -60,6 +62,7 @@ import {enterAnimation} from './shared/animation/nav-animation';
         NativePageTransitions,
         StorageService,
         Tab1Service,
+        SocialSharing,
         UserService,
         BLE,
         BluetoothSerial,

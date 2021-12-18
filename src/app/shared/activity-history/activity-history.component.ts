@@ -5,10 +5,11 @@ import {StorageService} from '../services/storage.service';
 import {Router} from '@angular/router';
 import {Platform} from '@ionic/angular';
 import {HistoryModel, HistoryValueItemModel} from '../models/HistoryModel';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {TargetType} from '../drill/constants';
 import {DrillType} from '../../tab2/tab2.page';
-import {InitService} from "../services/init.service";
+import {InitService} from '../services/init.service';
+import {ShareDialogComponent} from '../share-dialog/share-dialog.component';
 
 // @ts-ignore
 @Component({
@@ -52,6 +53,7 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     constructor(private router: Router,
                 private networkService: NetworkService,
                 private initService: InitService,
+                public dialog: MatDialog,
                 public dialogRef: MatDialogRef<ActivityHistoryComponent>,
                 private stoargeService: StorageService,
                 private platform: Platform) {
@@ -129,6 +131,20 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         } else {
             menu.classList.add('active');
         }
+    }
+
+    onShareModalOpen(drill) {
+        const dialogRef = this.dialog.open(ShareDialogComponent, {
+            data: {
+                drill,
+            },
+            width: '100%',
+            panelClass: 'full-width-dialog'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
     }
 }
 

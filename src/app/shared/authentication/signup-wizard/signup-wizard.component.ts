@@ -184,6 +184,9 @@ export class SignupWizardComponent implements OnInit {
         this.router.navigateByUrl('');
     }
 
+    finishWizardNew() {
+        this.wizardService.registerUser();
+    }
 
     activeNextStep() {
         this.stepOneComplete = true;
@@ -212,9 +215,9 @@ export class SignupWizardComponent implements OnInit {
             password: f.value.password
         };
 
-        this.stepTwoComplete = true;
-        this.stepTwoActive = false;
-        this.stepThreeActive = true;
+        this.stepOneComplete = true;
+        this.stepTwoComplete = false;
+        this.stepTwoActive = true;
         this.ref.detectChanges();
     }
 

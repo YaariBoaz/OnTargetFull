@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ShootingService} from './shooting.service';
 import {Subject, Observable} from 'rxjs';
 import {ApiService, ZeroTableGetObject} from './api.service';
-import {InitService} from "./init.service";
+import {InitService} from './init.service';
 
 @Injectable({
     providedIn: 'root'
@@ -78,7 +78,7 @@ export class BalisticCalculatorService {
             isMetric: true
         }).subscribe(data => {
             this.shootingService.zeroTable = data;
-        })
+        });
     }
 
 
@@ -405,8 +405,8 @@ export class BalisticCalculatorService {
         const returnObject = {
             disGroup,
             hit: new Hit(group.x, group.y)
-        }
-        return returnObject
+        };
+        return returnObject;
 
     }
 
@@ -491,8 +491,10 @@ export class BalisticCalculatorService {
             let status;
             if (napamToCalcClicks.grouping > 10) {
                 status = 'Scattered';
-            } else {
+            } else if (napamToCalcClicks.grouping < 10 && napamToCalcClicks.grouping > 5) {
                 status = 'Good Grouping';
+            }else{
+                status = 'Excellent';
             }
             clicks.status = status;
             clicks.isBarhan = isBarhan;

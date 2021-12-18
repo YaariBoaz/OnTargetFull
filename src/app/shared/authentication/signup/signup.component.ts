@@ -29,6 +29,7 @@ export class SignupComponent implements OnInit {
     isEditMode = true;
     private showStates = false;
     fieldTextType: boolean;
+    profile = {} as any;
 
     constructor(private apiService: ApiService,
                 public loadingController: LoadingController,
@@ -115,53 +116,23 @@ export class SignupComponent implements OnInit {
         this.back.emit(page);
     }
 
-    async selectImage() {
-
-        const actionSheet = await this.actionSheetController.create({
-            header: 'Select Image source',
-            buttons: [{
-                text: 'Load from Library',
-                handler: () => {
-                    this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
-                }
-            },
-                {
-                    text: 'Use Camera',
-                    handler: () => {
-                        this.pickImage(this.camera.PictureSourceType.CAMERA);
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel'
-                }
-            ]
-        });
-        await actionSheet.present();
-    }
-
-
-    async pickImage(sourceType) {
+    pickImage(sourceType) {
         const options: CameraOptions = {
             quality: 100,
             sourceType,
             destinationType: this.camera.DestinationType.DATA_URL,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
-            correctOrientation: true
+            correctOrientation: true,
         };
-        const loading = await this.loadingController.create({
-            message: 'Adding you to the system, please wait',
-            duration: 1000000000,
-        });
-        await loading.present();
-
         this.camera.getPicture(options).then((imageData) => {
             // imageData is either a base64 encoded string or a file URI
             // If it's base64 (DATA_URL):
             const base64Image = 'data:image/jpeg;base64,' + imageData;
-            this.showCroppedImage(base64Image, loading);
-
+            (this.profile as any).picture = base64Image;
+            this.wizardService.moreInfoForm.profilePicture = (this.profile as any).picture
+            this.ref.detectChanges();
+            return base64Image;
         }, (err) => {
             console.log(err);
         });
@@ -192,6 +163,30 @@ export class SignupComponent implements OnInit {
 
     returnToPreviusStage() {
         this.backToFirst.emit(true);
+    }
+
+    async selectImage() {
+        const actionSheet = await this.actionSheetController.create({
+            header: 'Select Image source',
+            buttons: [{
+                text: 'Load from Library',
+                handler: () => {
+                    this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+                }
+            },
+                {
+                    text: 'Use Camera',
+                    handler: () => {
+                        this.pickImage(this.camera.PictureSourceType.CAMERA);
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel'
+                }
+            ]
+        });
+        await actionSheet.present();
     }
 
     continueToThird() {

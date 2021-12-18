@@ -30,6 +30,11 @@ section.drill-results {
     div.info {
       display: flex;
       align-items: center;
+      width: 50%;
+      justify-content: space-evenly;
+      img{
+        height: 30px !important;
+      }
 
       p {
         margin: 0;
@@ -103,6 +108,7 @@ section.drill-results {
     //padding-left: 100px;
     height: 100%;
     align-items: center;
+
     img {
       height: 300px;
       width: 300px;
@@ -570,19 +576,19 @@ div.targetHoly {
   height: 20px;
   border-radius: 9px;
   border-radius: 9px;
-   color: #000000;
-   display: flex;
+  color: #000000;
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
   font-weight: 900;
   background: hsla(0, 0%, 100%, 1);
 
-  background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(143, 51%, 49%, 1) 100%);
+  background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(143, 51%, 49%, 1) 50%);
 
-  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(143, 51%, 49%, 1) 100%);
+  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(143, 51%, 49%, 1) 50%);
 
-  background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(143, 51%, 49%, 1) 100%);
+  background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(143, 51%, 49%, 1) 50%);
   z-index: 10;
 }
 
@@ -897,7 +903,7 @@ div.welcome-message {
 
     img {
       height: 6vh !important;
-      width: 5vw!important;
+      width: 5vw !important;
       padding-right: 10px !important;
     }
 
@@ -931,34 +937,51 @@ div.welcome-message {
     font-size: 3vw;
   }
 }
-.napar{
-  background: -webkit-radial-gradient(circle, white 20%, #ff8100 100%);
+
+.napar {
+  background: -webkit-radial-gradient(circle, white 0%, #ff0000 50%);
+
   z-index: 1;
 }
 
-.napam{
+.napam {
   background: hsla(0, 0%, 100%, 1);
 
-  background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(279, 49%, 55%, 1) 100%);
+  background: -webkit-radial-gradient(circle, white 0%, #3dbd6e 50%);
 
-  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(279, 49%, 55%, 1) 100%);
+  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(279, 49%, 55%, 1) 50%);
 
-  background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(279, 49%, 55%, 1) 100%);
+  background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(279, 49%, 55%, 1) 502%);
   z-index: 1;
 
 }
 
-.target-container{
+.target-container {
   position: relative;
   width: 300px;
   height: 300px;
 }
 
-.isBarhan{
+.isBarhan {
   background: hsla(0, 0%, 100%, 1);
 
   background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(5, 58%, 70%, 1) 100%);
 
   background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(5, 58%, 70%, 1) 100%);
 
- }
+}
+
+.green {
+  color: #3dbd6e;
+}
+
+.red {
+  color: #ce564b;
+}
+
+.yellow {
+  color: #ffcc00;
+}
+.lastShot{
+  background: #dfa14c !important;
+}
