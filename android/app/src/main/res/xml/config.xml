@@ -11,14 +11,6 @@
     <param name="android-package" value="com.megster.cordova.ble.central.BLECentralPlugin"/>
   </feature>
 
-  <feature name="BluetoothSerial">
-    <param name="android-package" value="com.megster.cordova.BluetoothSerial"/>
-  </feature>
-
-  <feature name="BluetoothLePlugin">
-    <param name="android-package" value="com.randdusing.bluetoothle.BluetoothLePlugin"/>
-  </feature>
-
   <feature name="Camera">
     <param name="android-package" value="org.apache.cordova.camera.CameraLauncher"/>
   </feature>
@@ -29,11 +21,6 @@
 
   <feature name="SitewaertsDocumentViewer">
     <param name="android-package" value="de.sitewaerts.cordova.documentviewer.DocumentViewerPlugin"/>
-  </feature>
-
-  <feature name="FacebookConnectPlugin">
-    <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin"/>
-    <param name="onload" value="true"/>
   </feature>
 
   <feature name="File">
@@ -47,6 +34,24 @@
 
   <feature name="CDVOrientation">
     <param name="android-package" value="cordova.plugins.screenorientation.CDVOrientation"/>
+  </feature>
+
+  <feature name="SocialSharing">
+    <param name="android-package" value="nl.xservices.plugins.SocialSharing"/>
+  </feature>
+
+  <feature name="Device">
+    <param name="android-package" value="org.apache.cordova.device.Device"/>
+  </feature>
+
+  <feature name="StatusBar">
+    <param name="android-package" value="org.apache.cordova.statusbar.StatusBar"/>
+    <param name="onload" value="true"/>
+  </feature>
+
+  <feature name="Whitelist">
+    <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin"/>
+    <param name="onload" value="true"/>
   </feature>
 
   

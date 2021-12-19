@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IonicModule} from '@ionic/angular';
-import {MatExpansionModule, MatMenuModule} from '@angular/material';
 import {ApiService} from './services/api.service';
 import {UserService} from './services/user.service';
 import {MaterialModule} from './material/material.module';
@@ -15,13 +14,27 @@ import {TermsAndConditionComponent} from './components/terms-and-condition/terms
 import {SelectTargetComponent} from './select-target-modal/select-target-component';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {SelectTargetModalComponent} from './select-target-modal/modal/select-target-modal.component';
-import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
-import {AccessModalComponent} from '../shared/popups/access-modal/access-modal.component';
+import {ErrorModalComponent} from './popups/error-modal/error-modal.component';
+import {AccessModalComponent} from './popups/access-modal/access-modal.component';
 import {ReversePipe} from './pipes/reverse.pipe';
 import {NoConnetionErroComponent} from './popups/no-connection/no-connetion-error';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {ShareDialogComponent} from './share-dialog/share-dialog.component';
 
 @NgModule({
-    declarations: [Tab3Page, NoConnetionErroComponent, AccessModalComponent, GunlistComponent, SightlistComponent, TermsAndConditionComponent, SelectTargetComponent, SelectTargetModalComponent, ErrorModalComponent, ReversePipe],
+    declarations: [
+        Tab3Page,
+        NoConnetionErroComponent,
+        AccessModalComponent,
+        GunlistComponent,
+        SightlistComponent,
+        TermsAndConditionComponent,
+        SelectTargetComponent,
+        SelectTargetModalComponent,
+        ErrorModalComponent,
+        ShareDialogComponent,
+        ReversePipe],
 
     imports: [
         CommonModule,
@@ -29,7 +42,8 @@ import {NoConnetionErroComponent} from './popups/no-connection/no-connetion-erro
         MatExpansionModule,
         IonicModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MaterialModule
     ],
     providers: [HitNohitService, ApiService, UserService, StorageService, ScreenOrientation],
     exports: [

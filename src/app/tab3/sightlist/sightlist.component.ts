@@ -5,7 +5,7 @@ import {UserService} from '../../shared/services/user.service';
 import {ApiService} from '../../shared/services/api.service';
 import {Router} from '@angular/router';
 import {AlertController} from '@ionic/angular';
-import {MatDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
     selector: 'app-sightlist',

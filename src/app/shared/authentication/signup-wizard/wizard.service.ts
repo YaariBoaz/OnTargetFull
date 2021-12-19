@@ -23,7 +23,7 @@ export class WizardService {
     notifyScopeWasSet = new BehaviorSubject(false);
     selectTargetFromWizardOpened = new BehaviorSubject(false);
     isFromListScreen = false;
-    moreInfoForm: any;
+    moreInfoForm = {} as any;
 
     constructor(private apiService: ApiService,
                 private storageService: StorageService,

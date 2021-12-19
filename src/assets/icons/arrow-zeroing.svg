@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="27.976" viewBox="0 0 32 27.976">
+    <defs>
+        <filter id="Arrow_" width="32" height="25.952" x="0" y="2.024" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur" stdDeviation="3"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g id="Group_901"  transform="translate(4.063)">
+        <rect id="Rectangle_1748" width="24" height="24" fill="#373737" data-name="Rectangle 1748" rx="5"/>
+        <g filter="url(#Arrow_)" transform="translate(-4.06)">
+            <path id="Arrow_2" fill="#fff" fill-rule="evenodd" d="M6.953 13.833a.594.594 0 0 0 .827 0 .568.568 0 0 0 0-.814L1.559 6.894 7.778.98a.565.565 0 0 0 0-.81.587.587 0 0 0-.827 0L0 6.894z" data-name="Arrow" transform="rotate(90 7.49 15.51)"/>
+        </g>
+    </g>
+</svg>

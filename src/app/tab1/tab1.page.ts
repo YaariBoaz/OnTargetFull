@@ -1,25 +1,25 @@
-import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {IonSlides, Platform} from '@ionic/angular';
-import {Router} from '@angular/router';
-import {InitService} from '../shared/services/init.service';
-import {BleService} from '../shared/services/ble.service';
-import {UserService} from '../shared/services/user.service';
-import {NetworkService} from '../shared/services/network.service';
-import {StorageService} from '../shared/services/storage.service';
-import {DashboardModel} from '../shared/models/dashboard-model';
-import {HistoryModel} from '../shared/models/HistoryModel';
-import {Tab1Service} from './tab1-service.service';
+import { AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { IonSlides, Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { InitService } from '../shared/services/init.service';
+import { BleService } from '../shared/services/ble.service';
+import { UserService } from '../shared/services/user.service';
+import { NetworkService } from '../shared/services/network.service';
+import { StorageService } from '../shared/services/storage.service';
+import { DashboardModel } from '../shared/models/dashboard-model';
+import { HistoryModel } from '../shared/models/HistoryModel';
+import { Tab1Service } from './tab1-service.service';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import {TabsService} from '../tabs/tabs.service';
-import {Chart, ChartType} from 'chart.js';
-import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {ApiService} from '../shared/services/api.service';
-import {Label, MultiDataSet} from 'ng2-charts';
-import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
-import {ActivityHistoryComponent} from '../shared/activity-history/activity-history.component';
-import {MatDialog} from '@angular/material';
-import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
+import { TabsService } from '../tabs/tabs.service';
+import { Chart, ChartType } from 'chart.js';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { ApiService } from '../shared/services/api.service';
+import { Label, MultiDataSet } from 'ng2-charts';
+import { ErrorModalComponent } from '../shared/popups/error-modal/error-modal.component';
+import { ActivityHistoryComponent } from '../shared/activity-history/activity-history.component';
+import { WizardService } from '../shared/authentication/signup-wizard/wizard.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-tab1',
@@ -27,10 +27,10 @@ import {WizardService} from '../shared/authentication/signup-wizard/wizard.servi
     styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
-    @ViewChild('slides', {static: false}) slides: IonSlides;
-    @ViewChild('lineChart', {static: false}) lineChart;
-    @ViewChild('scatter', {static: false}) scatter;
-    @ViewChild('radioChartInst', {static: false}) radio;
+    @ViewChild('slides') slides: IonSlides;
+    @ViewChild('lineChart') lineChart;
+    @ViewChild('scatter') scatter;
+    @ViewChild('radioChartInst') radio;
 
     line: any;
     scatterChartIns;
@@ -72,22 +72,24 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     showWizard = false;
     showSignin = false;
     showRegular = true;
-
+    degree = 0;
     constructor(private platform: Platform,
-                private networkService: NetworkService,
-                private router: Router,
-                private tab1Service: Tab1Service,
-                private userService: UserService,
-                private zone: NgZone,
-                private ble: BleService,
-                public dialog: MatDialog,
-                private  cd: ChangeDetectorRef,
-                private tabsService: TabsService,
-                private initService: InitService,
-                private apiService: ApiService,
-                private wizardService: WizardService,
-                private screenOrientation: ScreenOrientation,
-                private storageService: StorageService) {
+        private networkService: NetworkService,
+        private router: Router,
+        private tab1Service: Tab1Service,
+        private userService: UserService,
+        private zone: NgZone,
+        private ble: BleService,
+        public dialog: MatDialog,
+        private cd: ChangeDetectorRef,
+        private tabsService: TabsService,
+        private renderer: Renderer2,
+        private initService: InitService,
+
+        private apiService: ApiService,
+        private wizardService: WizardService,
+        private screenOrientation: ScreenOrientation,
+        private storageService: StorageService) {
         if (localStorage.isLoggedIn && localStorage.isLoggedIn === 'true') {
             this.showSignin = false;
             this.showRegular = true;
@@ -117,6 +119,19 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
             this.initDashboard();
         }
 
+        // setInterval(() => {
+        //     const image = document.getElementById('myImage');
+        //     this.renderer.setStyle(image, 'transform', 'rotate(' + this.degree + 'deg)');
+        //     if (this.degree === 360) {
+        //         this.degree = 0;
+        //     } else {
+        //         this.degree += 90;
+        //     }
+
+        // }, 1000);
+
+
+
         this.initService.notifySignupFinished.subscribe((data) => {
             if (data) {
                 this.initService.isLoading.next(false);
@@ -139,7 +154,213 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
         this.apiService.getDashboardData(userId).subscribe(data => {
             if (!data) {
-                this.isNotTrainedYet = true;
+                // this.isNotTrainedYet = true;
+                data = {
+                    userId: null,
+                    hitRatioChart: {
+                        totalHits: 100,
+                        totalShots: 200
+                    },
+                    rateOfFireChart: {
+                        userAvg: 34,
+                        worldAvg: 23
+                    },
+                    bestScores: {
+                        longestShot: 5,
+                        avgSplit: 1.3,
+                        avgDistance: 34,
+                        lastShooting: '2021-04-16T00:00:00+03:00'
+                    },
+                    trainingHistory: [
+                        {
+                            sessionId: null,
+                            sessionDateTime: null,
+                            userId: null,
+                            shotItems: null,
+                            drillDate: '2021-04-16T00:00:00+03:00',
+                            pointsGained: 56,
+                            timeLimit: 5,
+                            bulletsHit: 0,
+                            numberOfBullets: 5,
+                            drillTitle: null,
+                            maxNumberOfPoints: 0,
+                            range: 100,
+                            imageIdKey: null,
+                            imageIdFullKey: 0,
+                            hitsWithViewAdjustments: null,
+                            avgDistFromCenter: 0,
+                            description: null,
+                            targetId: null,
+                            targetIP: null,
+                            useMoq: false,
+                            drillType: 1,
+                            splitAvg: null,
+                            numericSplitAvg: 0,
+                            timeElapsed: null,
+                            recomendation: 'Good Shoting',
+                            wepon: null,
+                            sight: null,
+                            realibilty: null,
+                            b2Drop: 0,
+                            exposeTime: 0,
+                            hideTime: 0,
+                            balisticData: null,
+                            rawHitsLocation: [
+                                {
+                                    x: 34,
+                                    y: 16
+                                },
+                                {
+                                    x: 8,
+                                    y: 8
+                                },
+                                {
+                                    x: 8,
+                                    y: 16
+                                },
+                                {
+                                    x: 16,
+                                    y: 16
+                                }
+                            ],
+                            userName: null,
+                            status: 0,
+                            hitsToPass: 0,
+                            grouping: 0,
+                            center: null,
+                            epochTime: 1618520400,
+                            targetType: 0,
+                            zone1Counter: 0,
+                            zone2Counter: 0,
+                            zone3Counter: 0
+                        },
+                        {
+                            sessionId: null,
+                            sessionDateTime: null,
+                            userId: null,
+                            shotItems: null,
+                            drillDate: '2021-04-18T00:00:00+03:00',
+                            pointsGained: 25,
+                            timeLimit: 4,
+                            bulletsHit: 0,
+                            numberOfBullets: 10,
+                            drillTitle: null,
+                            maxNumberOfPoints: 0,
+                            range: 50,
+                            imageIdKey: null,
+                            imageIdFullKey: 0,
+                            hitsWithViewAdjustments: null,
+                            avgDistFromCenter: 0,
+                            description: null,
+                            targetId: null,
+                            targetIP: null,
+                            useMoq: false,
+                            drillType: 2,
+                            splitAvg: null,
+                            numericSplitAvg: 0,
+                            timeElapsed: null,
+                            recomendation: 'Good Shoting',
+                            wepon: null,
+                            sight: null,
+                            realibilty: null,
+                            b2Drop: 0,
+                            exposeTime: 0,
+                            hideTime: 0,
+                            balisticData: null,
+                            rawHitsLocation: [
+                                {
+                                    x: 34,
+                                    y: 16
+                                },
+                                {
+                                    x: 8,
+                                    y: 8
+                                },
+                                {
+                                    x: 8,
+                                    y: 16
+                                },
+                                {
+                                    x: 16,
+                                    y: 16
+                                }
+                            ],
+                            userName: null,
+                            status: 0,
+                            hitsToPass: 0,
+                            grouping: 0,
+                            center: null,
+                            epochTime: 1618693200,
+                            targetType: 0,
+                            zone1Counter: 0,
+                            zone2Counter: 0,
+                            zone3Counter: 0
+                        },
+                        {
+                            sessionId: null,
+                            sessionDateTime: null,
+                            userId: null,
+                            shotItems: null,
+                            drillDate: '2021-04-17T00:00:00+03:00',
+                            pointsGained: 10,
+                            timeLimit: 10,
+                            bulletsHit: 0,
+                            numberOfBullets: 15,
+                            drillTitle: null,
+                            maxNumberOfPoints: 0,
+                            range: 250,
+                            imageIdKey: null,
+                            imageIdFullKey: 0,
+                            hitsWithViewAdjustments: null,
+                            avgDistFromCenter: 0,
+                            description: null,
+                            targetId: null,
+                            targetIP: null,
+                            useMoq: false,
+                            drillType: 0,
+                            splitAvg: null,
+                            numericSplitAvg: 0,
+                            timeElapsed: null,
+                            recomendation: 'Bad Shhoting',
+                            wepon: null,
+                            sight: null,
+                            realibilty: null,
+                            b2Drop: 0,
+                            exposeTime: 0,
+                            hideTime: 0,
+                            balisticData: null,
+                            rawHitsLocation: [
+                                {
+                                    x: 34,
+                                    y: 16
+                                },
+                                {
+                                    x: 8,
+                                    y: 8
+                                },
+                                {
+                                    x: 8,
+                                    y: 16
+                                },
+                                {
+                                    x: 16,
+                                    y: 16
+                                }
+                            ],
+                            userName: null,
+                            status: 0,
+                            hitsToPass: 0,
+                            grouping: 0,
+                            center: null,
+                            epochTime: 1618606800,
+                            targetType: 0,
+                            zone1Counter: 0,
+                            zone2Counter: 0,
+                            zone3Counter: 0
+                        }
+                    ],
+                    totalPoints: 0
+                };
             }
             this.storageService.setItem('homeData', data);
             this.showUi = true;
@@ -309,7 +530,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                             label: 'Population (millions)',
                             backgroundColor: ['#ce564b', '#d4d4d4'],
                             data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots
-                            - this.data.hitRatioChart.totalHits]
+                                - this.data.hitRatioChart.totalHits]
                         }
                     ]
                 },
@@ -356,7 +577,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         this.storageService.passhistoricalTrainingsDate(this.data.trainingHistory);
         this.dialog.open(ActivityHistoryComponent, {
             panelClass: 'full-screen-modal',
-            data: {modalType: 'general'}
+            data: { modalType: 'general' }
         });
     }
 
@@ -378,13 +599,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
             if (this.data.trainingHistory) {
                 this.data.trainingHistory.forEach(train => {
-                    const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
+                    const monthName = new Date(train.drillDate).toLocaleString('default', { month: 'long' });
                     if (!(this.historicTrainings[monthName])) {
                         this.historicTrainings[monthName] = {};
                     }
                     const tempDate = new Date(train.drillDate);
                     const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
-                    const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
+                    const day = new Date(tempDate).toLocaleString('default', { weekday: 'long' });
                     if ((!this.historicTrainings[monthName][key])) {
                         this.historicTrainings[monthName][key] = {
                             data: [],
@@ -425,7 +646,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     private setupHitratioChart() {
         this.hitRatiochart = am4core.create('chartdiv', am4charts.PieChart);
-        const {data} = this.tab1Service.setupDataForHitration(this.data.hitRatioChart);
+        const { data } = this.tab1Service.setupDataForHitration(this.data.hitRatioChart);
 
         this.hitRatiochart.data = [{
             text: 'Hits',

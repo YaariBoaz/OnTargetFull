@@ -1,27 +1,18 @@
-import {
-    ChangeDetectorRef,
-    Component,
-    Inject,
-    NgZone,
-    OnInit,
-} from '@angular/core';
+import {ChangeDetectorRef, Component, NgZone, OnInit,} from '@angular/core';
 import {ShootingService} from '../services/shooting.service';
-import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {StorageService} from '../services/storage.service';
 import {BleService} from '../services/ble.service';
-import {
-    AlertController,
-    LoadingController,
-    Platform,
-    ToastController,
-} from '@ionic/angular';
+import {AlertController, LoadingController, Platform, ToastController} from '@ionic/angular';
 import {HitNohitService} from '../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {InitService} from '../services/init.service';
 import {BLE} from '@ionic-native/ble/ngx';
+import {GatewayService} from '../services/gateway.service';
+import {ErrorModalComponent} from '../popups/error-modal/error-modal.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 const SERVICE_1 = '1800';
@@ -59,15 +50,18 @@ export class SelectTargetComponent implements OnInit {
     personalChosen = false;
     isPersonalTargetAround = false;
     private currentTargetId: string;
+    private isConnected: boolean;
 
     constructor(
         private http: HttpClient,
-        private  bleService: BleService,
+        private bleService: BleService,
         private storageService: StorageService,
         private shootingService: ShootingService,
         public loadingController: LoadingController,
         private hitNohitService: HitNohitService,
         private ble: BLE,
+        public dialog: MatDialog,
+        private gatewayService: GatewayService,
         private ngZone: NgZone,
         private screenOrientation: ScreenOrientation,
         private cd: ChangeDetectorRef,
@@ -80,7 +74,11 @@ export class SelectTargetComponent implements OnInit {
         private router: Router
     ) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.initGatewayScan();
+        this.bleService.scanFinished.subscribe(flag => {
+            if (flag) {
+                this.myTargets = this.storageService.getItem('ble');
+            }
+        });
 
     }
 
@@ -93,6 +91,20 @@ export class SelectTargetComponent implements OnInit {
             });
         });
 
+        this.gatewayService.notifyTargetConnectedToGateway.subscribe(data => {
+            if (data) {
+                let flag = false;
+                this.myTargets.forEach(target => {
+                    if (target.name === data) {
+                        flag = true;
+                    }
+                });
+                if (!flag) {
+                    this.myTargets.push({name: data});
+                    this.cd.detectChanges();
+                }
+            }
+        });
 
         this.personalTarget = this.storageService.getItem('personalTarget');
         const tempArr = [];
@@ -211,34 +223,56 @@ export class SelectTargetComponent implements OnInit {
     }
 
     async reScan() {
+        this.bleService.resetConnection();
+
         this.isScanning = true;
         this.initGatewayScan();
     }
 
     onTargetSelected(target: any) {
+        this.myTargets.forEach(t => t.isSelected = false);
         target.isSelected = true;
-        if (target.name.indexOf('e1n') === -1) {
-            this.bleService.isGateway = true;
-            this.initService.isGateway = true;
-        } else {
-            this.bleService.isGateway = false;
-            this.initService.isGateway = false;
-        }
         this.storageService.setItem('slectedTarget', target);
         this.selectedTarget = target;
-        this.targetNotSelected = false;
         this.cd.detectChanges();
+        // If its not a gateway we need to connect directly to the target.
+        if (target.id) {
+            if (this.bleService.isGateway) {
+                this.bleService.dissconect().then(data => {
+                    this.bleService.isGateway = false;
+                    this.bleService.connect(target.id);
+                    this.bleService.notifyTargetConnected.subscribe(d => {
+                        this.isConnected = true;
+                        this.targetNotSelected = false;
+                        this.cd.detectChanges();
+                    });
+                });
+            } else {
+                this.bleService.connect(target.id);
+                this.bleService.notifyTargetConnected.subscribe(data => {
+                    this.isConnected = true;
+                    this.targetNotSelected = false;
+                    this.cd.detectChanges();
+                });
+            }
+
+        } else {
+            this.isConnected = true;
+            this.targetNotSelected = false;
+            this.cd.detectChanges();
+        }
     }
 
     onGoToEditDrill() {
-        this.ble.disconnect(this.currentTargetId).then(() => {
+        if (!this.initService.isGateway) {
             this.shootingService.chosenTarget = this.selectedTarget;
             this.targetIsConnected = true;
             this.zone.run(() => {
                 // Your router is here
                 this.router.navigateByUrl('/tab2/select');
             });
-        });
+        }
+        this.router.navigateByUrl('/tab2/select');
     }
 
     onDiscconectTest() {
@@ -250,57 +284,54 @@ export class SelectTargetComponent implements OnInit {
         this.ble.scan([], 5).subscribe(device => this.onDeviceDiscoveredInitialScan(device), error => this.scanErrorInitialScan(error));
         setTimeout(() => {
             this.isScanning = false;
+            if (!this.targetNotSelected) {
+                this.addTargetToList(this.selectedTarget);
+            }
         }, 5500);
     }
 
-    private scanErrorInitialScan(error: any) {
-
+    scanErrorInitialScan(error: any) {
+        if (error.indexOf('Location ') > -1) {
+            const dialogRef = this.dialog.open(ErrorModalComponent, {
+                data: {modalType: 'blueTooth'}
+            });
+        }
+        console.error('BLE SCAN ERROR', error);
     }
 
-    private onDeviceDiscoveredInitialScan(device: any) {
+    onDeviceDiscoveredInitialScan(device: any) {
         this.ngZone.run(() => {
-            console.log('FOUND DEVICE: ', device);
             if (device.name) {
                 console.log('FOUND DEVICE: ' + device.name);
                 if (device.name.toLowerCase().includes('adl') ||
                     device.name.toLowerCase().includes('e64') ||
+                    device.name.toLowerCase().includes('e1n') ||
+                    device.name.toLowerCase().includes('e1n') ||
+                    device.name.toLowerCase().includes('eMarn') ||
                     device.name.toLowerCase().includes('17') ||
+                    device.name.toLowerCase().includes('003') ||
                     device.name.toLowerCase().includes('e16') ||
-                    device.name.toLowerCase().includes('egateway') ||
-                    device.name.toLowerCase().includes('nordic') ||
-                    device.name.toLowerCase().includes('e1')) {
-                    this.myTargets.push({name: device.name, isSelected: true})
-                    this.connectToGetTargetName(device.id);
+                    device.name.toLowerCase().includes('nordic')) {
+                    this.addTargetToList({name: device.name, id: device.id});
+                } else if (device.name.toLowerCase().includes('egateway')) {
+                    this.bleService.gateways.push(device.id);
+                    this.bleService.isGateway = true;
+                    this.initService.isGateway = true;
+                    this.bleService.connect(device.id);
                 }
             }
+
         });
     }
 
-    private connectToGetTargetName(id: any) {
 
-        this.ble.connect(id).subscribe(
-            (peripheral) => {
-                localStorage.setItem('currentTargetId', this.currentTargetId);
-                this.currentTargetId = peripheral.id;
-                this.onConnectedForTargetName(peripheral);
-            },
-            peripheral => {
-                console.log('DISS-CONNECTED - Gateway/Target Connected ', peripheral);
-
-            }, () => {
-                console.log('DISS-CONNECTED - Gateway/Target Connected ');
-
-            }
-        );
-    }
-
-    private onConnectedForTargetName(peripheral: any) {
+    onConnectedForTargetName(peripheral: any) {
         console.log('CONNECTED - Gateway/Target Connected ', peripheral);
         this.handleReadForTargetName(peripheral.id, SERVICE_2, SERVICE_2_CHAR);
     }
 
     // tslint:disable-next-line:no-shadowed-variable
-    private handleReadForTargetName(id, service, characteristic) {
+    handleReadForTargetName(id, service, characteristic) {
         this.ble.startNotification(id, service, characteristic).subscribe((data) => {
             const dec = new TextDecoder();
             const enc = new TextEncoder();
@@ -317,7 +348,7 @@ export class SelectTargetComponent implements OnInit {
         }
     }
 
-    public processData(input, id) {
+    processData(input, id) {
         const dataArray = input.replace('<,', '').replace(',>', '').split(',');
         const dataLength = dataArray.length;
         if (dataLength === 4) {
@@ -335,7 +366,7 @@ export class SelectTargetComponent implements OnInit {
         }
     }
 
-    public handleBatteryPrecentage_MSG(dataArray, id) {
+    handleBatteryPrecentage_MSG(dataArray, id) {
         const targetName = dataArray[0];
         this.addTargetToList({name: targetName, id});
     }
@@ -349,28 +380,18 @@ export class SelectTargetComponent implements OnInit {
 
 
     private addTargetToList(target) {
-        if (target.name) {
-            if (target.name.toLowerCase().includes('adl') ||
-                target.name.toLowerCase().includes('e64') ||
-                target.name.toLowerCase().includes('17') ||
-                target.name.toLowerCase().includes('e16') ||
-                target.name.toLowerCase().includes('egateway') ||
-                target.name.toLowerCase().includes('nordic') ||
-                target.name.toLowerCase().includes('e1')) {
-                let flag = false;
-                this.myTargets.forEach(t => {
-                    if (t.name === target.name) {
-                        flag = true;
-                    }
-                });
-                if (!flag) {
-                    this.myTargets.push(target);
-                    this.cd.detectChanges();
-                }
+        let flag = false;
+        this.myTargets.forEach(t => {
+            if (t.name === target.name) {
+                flag = true;
             }
+        });
+        if (!flag) {
+            this.myTargets.push(target);
+            this.cd.detectChanges();
         }
-
     }
+
 }
 
 

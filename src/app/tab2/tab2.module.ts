@@ -10,6 +10,7 @@ import {SelectTargetComponent} from '../shared/select-target-modal/select-target
 import {DrillComponent} from '../shared/drill/drill.component';
 import {SharedModule} from '../shared/shared.module';
 import {DrillModule} from '../shared/drill/drill.module';
+import { BalisticCalculatorComponent } from './balistic-calculator/balistic-calculator.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -29,7 +30,7 @@ import {DrillModule} from '../shared/drill/drill.module';
             {path: 'select2', component: DrillComponent}])
     ],
     providers: [/*Screenshot*/],
-    declarations: [Tab2Page],
+    declarations: [Tab2Page, BalisticCalculatorComponent],
     entryComponents: [],
     exports: [
         Tab2Page

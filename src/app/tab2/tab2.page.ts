@@ -9,6 +9,11 @@ import {BleService} from '../shared/services/ble.service';
 import {Router} from '@angular/router';
 import {InitService} from '../shared/services/init.service';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
+import {SightlistComponent} from '../tab3/sightlist/sightlist.component';
+import {MatDialog} from '@angular/material/dialog';
+import {BalisticCalculatorComponent} from './balistic-calculator/balistic-calculator.component';
+import {TargetType} from '../shared/drill/constants';
+import {BalisticCalculatorService} from '../shared/services/balistic-calculator.service';
 
 @Component({
     selector: 'app-tab2',
@@ -16,41 +21,55 @@ import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/nati
     styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-    @ViewChild('slides', {static: false}) slides;
-    public selectedDrillType = 'Hit/NoHit';
+    @ViewChild('slides') slides;
+    public selectedDrillType: DrillType = DrillType.Regular;
     slideOpts = {
-        slidesPerView: 2.1,
+        slidesPerView: 2,
         spaceBetween: 3
     };
 
     mySights;
     myGuns;
+    myAmmo;
+
     drill: DrillObject = {
+        name: '',
         numOfBullets: 5,
         weapon: 'M4 Carbine',
         range: 150,
         rangeUOM: 'Meters',
         sight: 'V6 5-30 X 50',
-        ammo: 'Creedmor 6.5',
-        drillType: 'Hit/NoHit',
+        ammo: '.17 Aguila',
+        // @ts-ignore
+        drillType: null,
         shots: new Array<{ x, y }>()
     };
     connectedTarget = null;
+
+    public get targetTypeEnum(): typeof TargetType {
+        return TargetType;
+    }
+
+    public get drillTypeEnum(): typeof DrillType {
+        return DrillType;
+    }
 
     constructor(public modalController: ModalController,
                 private tabService: TabsService,
                 public alertController: AlertController,
                 private initService: InitService,
-                private  shootingService: ShootingService,
+                private shootingService: ShootingService,
                 private nativePageTransitions: NativePageTransitions,
                 private storageService: StorageService,
-                private ble: BleService,
                 private screenOrientation: ScreenOrientation,
+                public dialog: MatDialog,
                 private zone: NgZone,
+                private balisticCalculatorService: BalisticCalculatorService,
                 private router: Router,
-                private platform: Platform) {
+                private platform: Platform
+    ) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.connectedTarget = this.ble.peripheral;
+        this.connectedTarget = this.shootingService.chosenTarget;
         this.initComponents();
     }
 
@@ -76,7 +95,6 @@ export class Tab2Page implements OnInit {
     }
 
 
-
     ngOnInit(): void {
         this.tabService.$notifyTab2.subscribe(() => {
             this.initComponents();
@@ -96,6 +114,7 @@ export class Tab2Page implements OnInit {
         // this.myGuns.push('Jericho 941f');
         this.myGuns.splice(2, 0, 'Circus');
 
+        this.myAmmo = this.storageService.getItem('caliberList');
 
         this.setSightsAndWeapons();
     }
@@ -106,19 +125,19 @@ export class Tab2Page implements OnInit {
             switch (index) {
                 case 0:
                     if (!this.initService.isGateway) {
-                        this.drill.drillType = 'Hit/NoHit';
+                        this.drill.drillType = DrillType.Regular;
                     } else {
-                        this.drill.drillType = 'BullsEye';
+                        this.drill.drillType = DrillType.Regular;
                     }
                     break;
                 case 1:
-                    this.drill.drillType = 'BullsEye';
+                    this.drill.drillType = DrillType.Regular;
                     break;
                 case 1:
-                    this.drill.drillType = 'Zero';
+                    this.drill.drillType = DrillType.Zero;
                     break;
                 case 2:
-                    this.drill.drillType = 'Hostage';
+                    this.drill.drillType = DrillType.Hostage;
                     break;
             }
 
@@ -127,14 +146,15 @@ export class Tab2Page implements OnInit {
 
 
     startSesstion() {
-        if (this.initService.isGateway) {
-            if (this.drill.drillType === 'Hit/NoHit') {
-                this.drill.drillType = 'BullsEye';
-            }
+        if (this.drill.drillType === this.drillTypeEnum.Zero) {
+            this.shootingService.setIsZero(true);
+        }else{
+            this.shootingService.setIsZero(false);
         }
         this.shootingService.drillStarteEvent.next(true);
         this.shootingService.selectedDrill = this.drill;
         this.shootingService.numberOfBullersPerDrill = this.drill.numOfBullets;
+
     }
 
     async showLongRangeAlert() {
@@ -180,6 +200,45 @@ export class Tab2Page implements OnInit {
     isiOS() {
         return this.platform.is('ios');
     }
+
+    onBalisticCalculatorPressed() {
+        this.shootingService.selectedDrill = this.drill;
+        this.shootingService.numberOfBullersPerDrill = this.drill.numOfBullets;
+
+        const ammoObject = this.myAmmo[this.drill.ammo][0];
+        this.shootingService.caliber = ammoObject.caliber;
+        this.shootingService.bulletName = ammoObject.name;
+
+
+        this.balisticCalculatorService.getBallisticData(this.drill.weapon, this.drill.sight).subscribe((data: any) => {
+            const dialogRef = this.dialog.open(BalisticCalculatorComponent, {
+                maxWidth: '100vw',
+                maxHeight: '100vh',
+                height: '100%',
+                width: '100%',
+                data: {
+                    weaopn: this.drill.weapon,
+                    sight: this.drill.sight,
+                    ballisticCoefficient: data.ballisticCoefficient,
+                    initialVelocity: data.initialVelocity,
+                    sightHeight: data.sightHeight
+                },
+                panelClass: 'dialog-bg'
+            });
+            dialogRef.afterClosed().subscribe(data => {
+                if (!data  || !data.isBack) {
+                    this.router.navigateByUrl('/tab2/select2');
+                }
+            });
+        });
+
+    }
+
+    onNumberOfBulletsChange(val) {
+        if (val === 0 || val < 0) {
+            this.drill.numOfBullets = 1;
+        }
+    }
 }
 
 export interface DrillObject {
@@ -188,7 +247,17 @@ export interface DrillObject {
     range: number;
     rangeUOM: string;
     sight: string;
-    ammo: string;
-    drillType: string;
+    ammo: any;
+    drillType: DrillType;
+    name: string;
     shots: Array<{ x: number, y: number }>;
+}
+
+export enum DrillType {
+    Regular,
+    Hostage,
+    ABC,
+    Zero,
+    Surprise,
+    Surprise3Z
 }

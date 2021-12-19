@@ -10,7 +10,6 @@ import {
 import {Platform} from '@ionic/angular';
 import {Characteristic} from '@ionic-native/bluetooth-le';
 import {scan} from 'rxjs/operators';
-import {error} from 'util';
 
 @Injectable({
     providedIn: 'root'

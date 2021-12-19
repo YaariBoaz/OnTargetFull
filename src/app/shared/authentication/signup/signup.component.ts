@@ -1,17 +1,15 @@
 import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {StorageService} from '../../services/storage.service';
 import {ApiService} from '../../services/api.service';
 import {ActionSheetController, AlertController, LoadingController, Platform} from '@ionic/angular';
 import {Tab3Service} from '../../../tab3/tab3.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {ProfileImageService} from '../../services/profile-image.service';
 import {WizardService} from '../signup-wizard/wizard.service';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
-import {KeyboardInfo, KeyboardResize, Plugins} from '@capacitor/core';
-
-const { Keyboard } = Plugins;
 
 @Component({
     selector: 'app-signup',
@@ -23,9 +21,7 @@ export class SignupComponent implements OnInit {
     @Output() move: EventEmitter<any> = new EventEmitter<any>();
     @Output() backToFirst: EventEmitter<any> = new EventEmitter<any>();
     @Output() stepTwoComplete: EventEmitter<any> = new EventEmitter<any>();
-    @Output() hideShowKeyboard: EventEmitter<any> = new EventEmitter<any>();
 
-    isKeyboardOpen = false;
     registerForm: FormGroup;
     submitted = false;
     errorMessage;
@@ -33,6 +29,7 @@ export class SignupComponent implements OnInit {
     isEditMode = true;
     private showStates = false;
     fieldTextType: boolean;
+    profile = {} as any;
 
     constructor(private apiService: ApiService,
                 public loadingController: LoadingController,
@@ -66,16 +63,7 @@ export class SignupComponent implements OnInit {
         if (this.wizardService.registerForm) {
             this.registerForm = this.wizardService.registerForm;
         }
-        Keyboard.addListener('keyboardDidShow', (info: KeyboardInfo) => {
-            this.isKeyboardOpen = true;
-            this.ref.detectChanges();
-         });
-        Keyboard.addListener('keyboardWillHide', () => {
-            this.isKeyboardOpen = false;
-
-        });
     }
-
 
     toggleFieldTextType() {
         this.fieldTextType = !this.fieldTextType;
@@ -128,62 +116,23 @@ export class SignupComponent implements OnInit {
         this.back.emit(page);
     }
 
-    async selectImage() {
-
-        const actionSheet = await this.actionSheetController.create({
-            header: 'Select Image source',
-            buttons: [{
-                text: 'Load from Library',
-                handler: () => {
-                    this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
-                }
-            },
-                {
-                    text: 'Use Camera',
-                    handler: () => {
-                        this.pickImage(this.camera.PictureSourceType.CAMERA);
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel'
-                }
-            ]
-        });
-        await actionSheet.present();
-    }
-
-    isIphone() {
-        const iPhone = /iPhone/.test(navigator.userAgent) && !(window as any).MSStream;
-        const aspect = window.screen.width / window.screen.height;
-        if (iPhone && aspect.toFixed(3) === '0.462') {
-            return true;
-        }
-        return false;
-    }
-
-
-    async pickImage(sourceType) {
+    pickImage(sourceType) {
         const options: CameraOptions = {
             quality: 100,
             sourceType,
             destinationType: this.camera.DestinationType.DATA_URL,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
-            correctOrientation: true
+            correctOrientation: true,
         };
-        const loading = await this.loadingController.create({
-            message: 'Adding you to the system, please wait',
-            duration: 1000000000,
-        });
-        await loading.present();
-
         this.camera.getPicture(options).then((imageData) => {
             // imageData is either a base64 encoded string or a file URI
             // If it's base64 (DATA_URL):
             const base64Image = 'data:image/jpeg;base64,' + imageData;
-            this.showCroppedImage(base64Image, loading);
-
+            (this.profile as any).picture = base64Image;
+            this.wizardService.moreInfoForm.profilePicture = (this.profile as any).picture
+            this.ref.detectChanges();
+            return base64Image;
         }, (err) => {
             console.log(err);
         });
@@ -216,16 +165,40 @@ export class SignupComponent implements OnInit {
         this.backToFirst.emit(true);
     }
 
+    async selectImage() {
+        const actionSheet = await this.actionSheetController.create({
+            header: 'Select Image source',
+            buttons: [{
+                text: 'Load from Library',
+                handler: () => {
+                    this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+                }
+            },
+                {
+                    text: 'Use Camera',
+                    handler: () => {
+                        this.pickImage(this.camera.PictureSourceType.CAMERA);
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel'
+                }
+            ]
+        });
+        await actionSheet.present();
+    }
+
     continueToThird() {
         this.submitted = true;
-        if (this.registerForm.invalid) {
-            return;
-        }
-
-        this.registerForm.value.img_path = this.picture;
-        if (this.registerForm.value.age) {
-            this.registerForm.value.age = this.registerForm.value.age.toString();
-        }
+        // if (this.registerForm.invalid) {
+        //     return;
+        // }
+        //
+        // this.registerForm.value.img_path = this.picture;
+        // if (this.registerForm.value.age) {
+        //     this.registerForm.value.age = this.registerForm.value.age.toString();
+        // }
 
         this.wizardService.registerForm = this.registerForm;
         this.tab3Service.passProfileFromRegister.next(this.registerForm.value);

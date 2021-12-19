@@ -17,11 +17,11 @@
       "spinnerColor": "#999999",
       "showSpinner": false,
       "splashFullScreen": true,
-      "splashImmersive": true,
-      "Keyboard": {
-        "resize": "none",
-        "style": "dark"
-      }
+      "splashImmersive": true
     }
+  },
+  "server": {
+    "url": "http://172.20.10.2:8100",
+    "cleartext": true
   }
 }

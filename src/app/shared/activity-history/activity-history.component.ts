@@ -5,8 +5,11 @@ import {StorageService} from '../services/storage.service';
 import {Router} from '@angular/router';
 import {Platform} from '@ionic/angular';
 import {HistoryModel, HistoryValueItemModel} from '../models/HistoryModel';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {ImodalType} from '../popups/error-modal/error-modal.component';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {TargetType} from '../drill/constants';
+import {DrillType} from '../../tab2/tab2.page';
+import {InitService} from '../services/init.service';
+import {ShareDialogComponent} from '../share-dialog/share-dialog.component';
 
 // @ts-ignore
 @Component({
@@ -15,7 +18,15 @@ import {ImodalType} from '../popups/error-modal/error-modal.component';
     styleUrls: ['./activity-history.component.scss'],
 })
 export class ActivityHistoryComponent implements OnInit, OnChanges {
-    @ViewChild('container', {static: false}) container: ElementRef;
+    @ViewChild('container') container: ElementRef;
+
+    public get targetTypeEnum(): typeof TargetType {
+        return TargetType;
+    }
+
+    public get drillTypeEnum(): typeof DrillType {
+        return DrillType;
+    }
 
     train = {
         date: '05.07.18',
@@ -25,15 +36,24 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     openShowMore = false;
     drills: HistoryValueItemModel[];
     hasConnection;
-    currentDay;
+    currentDate = new Date();
     numOfTrainings;
     beutifiedDate;
     stats = [];
     summaryObject;
     trains;
+    targetW;
+    targetH;
 
-    constructor(private  router: Router,
-                private  networkService: NetworkService,
+    days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    d = new Date();
+    dayName = this.days[this.d.getDay()];
+
+
+    constructor(private router: Router,
+                private networkService: NetworkService,
+                private initService: InitService,
+                public dialog: MatDialog,
                 public dialogRef: MatDialogRef<ActivityHistoryComponent>,
                 private stoargeService: StorageService,
                 private platform: Platform) {
@@ -45,6 +65,9 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
                 this.handleOfflineScenario();
             }
         });
+        this.targetW = this.initService.screenW;
+        this.targetH = this.initService.screenH;
+
     }
 
     ngOnInit() {
@@ -78,30 +101,8 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         this.stoargeService.historicalTrainingsDate$.subscribe((data: HistoryModel) => {
             if (data) {
                 this.trains = data;
-                this.trains.forEach(train => {
-                    train.hits.forEach(hit => {
+                this.trains = this.trains.sort((a, b) => new Date(b.sessionDateTime).getTime() - new Date(a.sessionDateTime).getTime());
 
-                        const x = hit.x;
-                        const y = hit.y;
-
-                        const nominalStep = 8;
-                        const width = 295;
-                        const height = 295;
-
-                        const deltaX = width / nominalStep;
-                        const deltaY = height / nominalStep;
-
-                        const widthCorrection = (0.0628 * width - 7.6862);
-                        const heigthCorrection = (-0.0628 * height - 8.3138);
-
-                        const xPos = (width - (deltaX * (x / nominalStep))) + widthCorrection;
-                        const yPos = ((deltaY * (y / nominalStep))) + heigthCorrection;
-
-
-                        hit.x = xPos;
-                        hit.y = yPos;
-                    });
-                });
             }
 
         });
@@ -130,6 +131,20 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         } else {
             menu.classList.add('active');
         }
+    }
+
+    onShareModalOpen(drill) {
+        const dialogRef = this.dialog.open(ShareDialogComponent, {
+            data: {
+                drill,
+            },
+            width: '100%',
+            panelClass: 'full-width-dialog'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
     }
 }
 

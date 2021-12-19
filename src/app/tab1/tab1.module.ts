@@ -8,12 +8,12 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ChartsModule} from 'ng2-charts';
 import {SharedModule} from '../shared/shared.module';
 import {MatIconModule} from '@angular/material/icon';
-import {MatAccordion, MatExpansionModule, MatMenuModule} from '@angular/material';
-import {Camera} from '@ionic-native/camera/ngx';
+ import {Camera} from '@ionic-native/camera/ngx';
 import {Tab3Service} from '../tab3/tab3.service';
 import {ActivityHistoryComponent} from '../shared/activity-history/activity-history.component';
 import {SigninModule} from '../shared/authentication/signin/signin.module';
 import {WizardModule} from '../shared/authentication/signup-wizard/wizard.module';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
     imports: [

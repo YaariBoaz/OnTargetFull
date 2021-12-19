@@ -10,6 +10,7 @@
     </ion-refresher>
     <section *ngIf="showUi" class="dashboard" [class.ios-mode]="this.isIos()">
         <h3>Hi, {{profile?.firstName}}</h3>
+       
         <div class="menu">
             <button [class.menuBtniOs]="this.isIos()" class="menuBtn" mat-button [matMenuTriggerFor]="menu"
                     style="">
@@ -115,7 +116,7 @@
                 </ion-slide>
                 <ion-slide>
                     <div class="slide-container" *ngIf="data.rateOfFireChart">
-                        <p>RATE OF FILE</p>
+                        <p>RATE OF FIRE</p>
                         <P class="middle">{{data.rateOfFireChart.userAvg | number : '1.2-2'}}</P>
 
                         <div class="chart-container">
@@ -322,5 +323,6 @@
                 <div class="dot four"></div>
             </div>
         </div>
+        <span style="text-align: center;opacity: 0.3;padding: 0.5em;font-size: 12px;"> Ver 1.0.9 </span>
     </section>
 </ion-content>

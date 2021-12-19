@@ -14,7 +14,6 @@ import {PreviewAnyFile} from '@ionic-native/preview-any-file/ngx';
 import {File} from '@ionic-native/File/ngx';
 import {ErrorModalComponent} from '../../../shared/popups/error-modal/error-modal.component';
 import {DocumentViewer} from '@ionic-native/document-viewer/ngx';
-import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
 
 export const routes: Routes = [
     {path: '', component: SignupWizardComponent},
@@ -31,7 +30,6 @@ export const routes: Routes = [
         SharedModule,
         RouterModule.forChild(routes),
         MatDialogModule,
-        NgxExtendedPdfViewerModule
     ],
     declarations: [
         SignupWizardComponent,

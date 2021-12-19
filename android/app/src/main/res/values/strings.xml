@@ -4,4 +4,7 @@
     <string name="title_activity_main">onTarget</string>
     <string name="package_name">adl.onTarget</string>
     <string name="custom_url_scheme">adl.onTarget</string>
+    <string name="fb_app_id">2526341254299735</string>
+    <string name="fb_app_name">ADL</string>
+
 </resources>

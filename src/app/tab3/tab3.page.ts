@@ -8,14 +8,14 @@ import {Router} from '@angular/router';
 import {Tab3Service} from './tab3.service';
 import {InventoryModel} from '../shared/models/InventoryModel';
 import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
-import {MatDialog} from '@angular/material';
-import {GunlistComponent} from './gunlist/gunlist.component';
+ import {GunlistComponent} from './gunlist/gunlist.component';
 import {SightlistComponent} from './sightlist/sightlist.component';
 import {FormBuilder, Validators} from '@angular/forms';
 import {SelectTargetModalComponent} from '../shared/select-target-modal/modal/select-target-modal.component';
 import {InitService} from '../shared/services/init.service';
 import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
 import {TabsService} from '../tabs/tabs.service';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -95,7 +95,6 @@ export class Tab3Page implements OnInit {
     initActctions() {
 
         this.profile = this.storageService.getItem('profileData');
-        debugger
         const inventory: InventoryModel = this.storageService.getItem('inventory');
         const target = this.storageService.getItem('personalTarget');
         if (!inventory) {

@@ -14,103 +14,155 @@ section.activity-history {
     justify-content: space-between;
     box-sizing: border-box;
     height: 56px;
-    margin-bottom: 16px;
+    margin-bottom: 70px;
     padding: 0 15px;
+    flex-direction: column;
 
-    p.title {
-      font-size: 20px;
-      font-weight: 700;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.2;
-      letter-spacing: 0.26px;
-      text-align: center;
-      color: rgba(0, 0, 0, 0.8);
-      margin: 0;
-    }
-
-    div.menu {
-      span {
-        font-size: 30px;
-        font-weight: 700;
-      }
-    }
-  }
-
-  div.date {
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-
-    div.icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 5px;
-      background-color: rgba(0, 0, 0, 0.8);
-
+    .title-and-back {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      margin-right: 8px;
+      width: 100%;
+      justify-content: center;
 
-      svg {
-        fill: white;
+      .back-button {
+        position: absolute;
+        left: 15px;
       }
-
     }
 
-    div.day-and-drill {
+    .img-and-date {
       display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-      align-items: flex-start;
+      width: 100%;
+      padding-top: 35px;
 
-      p {
-        font-size: 12px;
-        line-height: 14px;
-        color: #707070;
-        margin: 0;
+      .img-container {
+        background: black;
+        height: 25px;
+        width: 25px;
+        padding: 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        margin-right: 10px;
       }
 
-      div.day {
+      img {
+        height: 16px;
+        width: 16px;
+      }
+    }
+
+    .date-detials {
+      .date {
         display: flex;
         align-items: center;
+        padding: 0;
+        margin: 0;
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.17;
+        letter-spacing: 1.88px;
+        text-align: left;
+        color: #373737;
+      }
 
-        p {
-          margin: 0;
-          font-size: 12px;
-          line-height: 14px;
-          letter-spacing: 1.88px;
-          color: rgba(0, 0, 0, 0.8);
-          padding-right: 0.5em;
-
-          b {
-            margin: 0;
-            font-size: 12px;
-            font-weight: bold;
-            line-height: 14px;
-            color: rgba(0, 0, 0, 0.8);
-            letter-spacing: initial;
-          }
-        }
+      .drill-count {
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.17;
+        letter-spacing: normal;
+        text-align: left;
+        color: #373737;
       }
     }
-
-    margin-bottom: 32px;
   }
+}
 
-  div.cards {
+div.date {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+
+  div.icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 500px;
-    overflow-y: auto;
+    justify-content: space-around;
+    margin-right: 8px;
+
+    svg {
+      fill: white;
+    }
+
+  }
+
+  div.day-and-drill {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: flex-start;
+
+    p {
+      font-size: 12px;
+      line-height: 14px;
+      color: #707070;
+      margin: 0;
+    }
+
+    div.day {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 1.88px;
+        color: rgba(0, 0, 0, 0.8);
+        padding-right: 0.5em;
+
+        b {
+          margin: 0;
+          font-size: 12px;
+          font-weight: bold;
+          line-height: 14px;
+          color: rgba(0, 0, 0, 0.8);
+          letter-spacing: initial;
+        }
+      }
+    }
+  }
+
+  margin-bottom: 32px;
+}
+
+div.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  overflow-y: auto;
+
+  .cards-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
     div.card {
       display: flex;
       flex-direction: column;
-
+      border: 1px solid #a9a9a961;
       width: 343px;
       //min-height: 212px;
       border-radius: 14px;
@@ -329,9 +381,10 @@ section.activity-history {
   }
 }
 
+
 .hit {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 9px;
   border-radius: 9px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.33);
@@ -345,8 +398,8 @@ section.activity-history {
 }
 
 img {
-  height: 295px;
-  width: 295px;
+  height: auto;
+  width: 250px;
 }
 
 .see-target {
@@ -368,7 +421,8 @@ img {
     height: 100vh;
     width: 100%;
     box-sizing: border-box;
-    padding: 0px 0;
+    padding-left: 15px;
+    padding-right: 15px;
 
     header {
       display: flex;
@@ -376,7 +430,7 @@ img {
       justify-content: space-between;
       box-sizing: border-box;
       height: 56px;
-      margin-bottom: 16px;
+      margin-bottom: 70px;
       padding: 0 15px;
 
       p.title {
@@ -472,8 +526,8 @@ img {
       div.card {
         display: flex;
         flex-direction: column;
-
-        width: 320px;
+        border: 1px solid #a9a9a961;
+        width: 100%;
         border-radius: 14px;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
         background-color: #ffffff;
@@ -654,6 +708,16 @@ img {
             justify-content: center;
             align-items: center;
             align-content: center;
+            width: 100%;
+
+            .hidden-content-container {
+              width: 100%;
+
+              div {
+                display: flex;
+                justify-content: center;
+              }
+            }
           }
 
           &.active {
@@ -691,8 +755,8 @@ img {
   }
 
   .hit {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 9px;
     border-radius: 9px;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.33);
@@ -706,10 +770,9 @@ img {
   }
 
   img {
-    height: 295px;
-    width: 295px;
+    height: auto;
+    width: 250px;
   }
-
   .see-target {
     font-family: Roboto;
     font-size: 10px;
@@ -726,7 +789,7 @@ img {
 div.card {
   display: flex;
   flex-direction: column;
-
+  border: 1px solid #a9a9a961;
   width: 100%;
   border-radius: 14px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -940,4 +1003,36 @@ div.card {
       }
     }
   }
+}
+
+td {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+
+  thead {
+    tr {
+      th {
+        width: 33%;
+      }
+    }
+  }
+}
+
+.close-panel-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 45px;
+
+  mat-icon {
+    color: black;
+  }
+}
+
+.mat-dialog-container {
+  padding: 0px !important;
 }

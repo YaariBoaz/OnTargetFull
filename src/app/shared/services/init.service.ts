@@ -1,11 +1,11 @@
 import {Injectable, NgZone} from '@angular/core';
-import {ApiService} from './api.service';
+import {ApiService, ZeroTableGetObject} from './api.service';
 import {StorageService} from './storage.service';
 import {UserService} from './user.service';
 import {BLE} from '@ionic-native/ble/ngx';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {GatewayService} from './gateway.service';
-import {BleService} from './ble.service';
+import {ShootingService} from './shooting.service';
 
 
 @Injectable({
@@ -21,8 +21,15 @@ export class InitService {
     newDashboardData = new BehaviorSubject(null);
     private targets = [];
     private currentTargetId;
+    screenW;
+    screenH;
 
-    constructor(private ngZone: NgZone, private apiService: ApiService, private storageService: StorageService, private userService: UserService, public ble: BLE) {
+    constructor(private ngZone: NgZone,
+                private apiService: ApiService,
+                private storageService: StorageService,
+                private shootingService: ShootingService,
+                public ble: BLE) {
+        this.setDeviceSize();
     }
 
     distory() {
@@ -32,6 +39,7 @@ export class InitService {
         });
     }
 
+
     getTargets() {
         return this.targets;
     }
@@ -40,15 +48,34 @@ export class InitService {
         this.notifyError.next(error);
     }
 
+    setDeviceSize() {
+        this.screenW = screen.width;
+        this.screenH = screen.height;
+    }
+
     getWeapons() {
         this.apiService.getWeapons().subscribe(weapons => {
             this.storageService.setItem('gunList', weapons);
+            this.shootingService.weapons = weapons;
         });
     }
 
     getSights() {
         this.apiService.getSights().subscribe(sights => {
             this.storageService.setItem('sightList', sights);
+        });
+    }
+
+    getSightsZeroing() {
+        this.apiService.getSightsZeroing().subscribe(sights => {
+            this.shootingService.sightsZeroing = sights;
+        });
+    }
+
+    getCalibers() {
+        this.apiService.getCalibers().subscribe(calibers => {
+            this.storageService.setItem('caliberList', calibers);
+            this.shootingService.calibers = calibers;
         });
     }
 

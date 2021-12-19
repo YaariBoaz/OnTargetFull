@@ -14,7 +14,6 @@ import {InitService} from './shared/services/init.service';
 import {Tab1Service} from './tab1/tab1-service.service';
 import {UserService} from './shared/services/user.service';
 import {BLE} from '@ionic-native/ble/ngx';
-import {MaterialModule} from './shared/material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from './shared/shared.module';
 import {Camera} from '@ionic-native/camera/ngx';
@@ -30,6 +29,10 @@ import {TabsPageModule} from './tabs/tabs.module';
 import {NoConnetionErroComponent} from './shared/popups/no-connection/no-connetion-error';
 import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
 import {NativePageTransitions} from '@ionic-native/native-page-transitions/ngx';
+import {MaterialModule} from './shared/material/material.module';
+import {enterAnimation} from './shared/animation/nav-animation';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
+import { NgxCaptureModule } from 'ngx-capture';
 
 
 // @ts-ignore
@@ -43,13 +46,15 @@ import {NativePageTransitions} from '@ionic-native/native-page-transitions/ngx';
         SharedModule,
         CdTimerModule,
         FormsModule,
-        IonicModule.forRoot(),
+        IonicModule.forRoot({
+            navAnimation: enterAnimation
+        }),
         HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        TabsPageModule,
         MaterialModule,
-        TabsPageModule
-
+        NgxCaptureModule
     ],
     providers: [
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
@@ -57,6 +62,7 @@ import {NativePageTransitions} from '@ionic-native/native-page-transitions/ngx';
         NativePageTransitions,
         StorageService,
         Tab1Service,
+        SocialSharing,
         UserService,
         BLE,
         BluetoothSerial,

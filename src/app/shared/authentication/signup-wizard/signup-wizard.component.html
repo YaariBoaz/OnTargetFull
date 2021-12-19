@@ -1,4 +1,4 @@
-<section class="sign-up-wizard" [class.iphone]="isIphone()">
+<section class="sign-up-wizard">
     <div class="back" *ngIf="stepTwoActive || stepThreeActive || stepFourActive">
         <img (click)="back()" src="assets/icons/Arrow%20@3x.png"><span>Back </span>
     </div>
@@ -26,13 +26,13 @@
                     </svg>
                 </p>
             </div>
-            <div class="separator" [ngClass]="{'active': stepTwoComplete }"></div>
-            <div class="circle" [ngClass]="{'active': stepThreeActive}"><p>3</p></div>
+<!--            <div class="separator" [ngClass]="{'active': stepTwoComplete }"></div>-->
+<!--            <div class="circle" [ngClass]="{'active': stepThreeActive}"><p>3</p></div>-->
         </div>
     </div>
 
     <!-- Step ONE -->
-    <ng-container *ngIf="!stepOneComplete">
+    <ng-container *ngIf="stepOneComplete && !stepTwoComplete">
         <div class="terms">
             <div class="terms-and-condition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="66.667" height="80" viewBox="0 0 66.667 80">
@@ -138,22 +138,20 @@
             </div>
         </div>
         <div class="controls">
-            <button class="confirm" (click)="activeNextStep()">ACCEPT AND CONTINUE</button>
+            <button class="confirm" (click)="finishWizardNew()">ACCEPT AND SAVE</button>
             <button class="cancel" (click)="closWizard.emit()">CANCEL</button>
         </div>
     </ng-container>
 
     <app-signup
-            *ngIf="stepOneComplete && !stepTwoComplete"
-            (back)="onBackToLogin()"
-            (hideShowKeyboard)="hideShowKeyboard($event)"
+            *ngIf="!stepOneComplete"
             (stepTwoComplete)="completeStepTwo($event)"
             (backToFirst)="backToFirst()">
     </app-signup>
 
 
-    <app-tab3 [isFromWizardInput]="true" (stepThreeComplete)="completeStepThree()" [form]="sigunUpFormDetails"
-              *ngIf="stepTwoComplete"></app-tab3>
+<!--    <app-tab3 [isFromWizardInput]="true" (stepThreeComplete)="completeStepThree()" [form]="sigunUpFormDetails"-->
+<!--              *ngIf="stepTwoComplete"></app-tab3>-->
 
     <div *ngIf="stepFourActive">
         <img src="assets/icons/right.svg">
@@ -166,45 +164,45 @@
 </section>
 <div class="view-wrapper" *ngIf="isShowUOT">
     <div class="x" (click)="isShowUOT = !isShowUOT"> X</div>
-    <ngx-extended-pdf-viewer
-            [showBookmarkButton]="false"
-            [showBorders]="false"
-            [showFindButton]="false"
-            [showOpenFileButton]="false"
-            [showPagingButtons]="false"
-            [showPresentationModeButton]="false"
-            [showRotateButton]="false"
-            [showScrollingButton]="false"
-            [showSecondaryToolbarButton]="false"
-            [showSidebarButton]="false"
-            [showSpreadButton]="false"
-            [showZoomButtons]="false"
-            [src]="'assets/docs/ADLTOU.pdf'"
-            height="80vh"
-            showSidebarOnLoad="false"
-            textLayer="false"
-            useBrowserLocale="true"></ngx-extended-pdf-viewer>
+    <!--    <ngx-extended-pdf-viewer-->
+    <!--            [showBookmarkButton]="false"-->
+    <!--            [showBorders]="false"-->
+    <!--            [showFindButton]="false"-->
+    <!--            [showOpenFileButton]="false"-->
+    <!--            [showPagingButtons]="false"-->
+    <!--            [showPresentationModeButton]="false"-->
+    <!--            [showRotateButton]="false"-->
+    <!--            [showScrollingButton]="false"-->
+    <!--            [showSecondaryToolbarButton]="false"-->
+    <!--            [showSidebarButton]="false"-->
+    <!--            [showSpreadButton]="false"-->
+    <!--            [showZoomButtons]="false"-->
+    <!--            [src]="'assets/docs/ADLTOU.pdf'"-->
+    <!--            height="80vh"-->
+    <!--            showSidebarOnLoad="false"-->
+    <!--            textLayer="false"-->
+    <!--            useBrowserLocale="true"></ngx-extended-pdf-viewer>-->
 </div>
 <div class="view-wrapper" *ngIf="isPrivatePolicy">
     <div class="x" (click)="isPrivatePolicy = !isPrivatePolicy"> X</div>
-    <ngx-extended-pdf-viewer
-            [showBookmarkButton]="false"
-            [showBorders]="false"
-            [showFindButton]="false"
-            [showOpenFileButton]="false"
-            [showPagingButtons]="false"
-            [showPresentationModeButton]="false"
-            [showRotateButton]="false"
-            [showScrollingButton]="false"
-            [showSecondaryToolbarButton]="false"
-            [showSidebarButton]="false"
-            [showSpreadButton]="false"
-            [showZoomButtons]="false"
-            [src]="'assets/docs/ADLPrivacyPolicy.pdf'"
-            height="80vh"
-            showSidebarOnLoad="false"
-            textLayer="false"
-            useBrowserLocale="true"></ngx-extended-pdf-viewer>
+    <!--    <ngx-extended-pdf-viewer-->
+    <!--            [showBookmarkButton]="false"-->
+    <!--            [showBorders]="false"-->
+    <!--            [showFindButton]="false"-->
+    <!--            [showOpenFileButton]="false"-->
+    <!--            [showPagingButtons]="false"-->
+    <!--            [showPresentationModeButton]="false"-->
+    <!--            [showRotateButton]="false"-->
+    <!--            [showScrollingButton]="false"-->
+    <!--            [showSecondaryToolbarButton]="false"-->
+    <!--            [showSidebarButton]="false"-->
+    <!--            [showSpreadButton]="false"-->
+    <!--            [showZoomButtons]="false"-->
+    <!--            [src]="'assets/docs/ADLPrivacyPolicy.pdf'"-->
+    <!--            height="80vh"-->
+    <!--            showSidebarOnLoad="false"-->
+    <!--            textLayer="false"-->
+    <!--            useBrowserLocale="true"></ngx-extended-pdf-viewer>-->
 </div>
 <!--<mat-step [completed]="false" [stepControl]="fourthGroup">-->
 <!--<ng-template matStepLabel>Summary</ng-template>-->

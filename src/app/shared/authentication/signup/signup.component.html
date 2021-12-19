@@ -1,26 +1,52 @@
-<section class="sign-up" [class.iphone]="isIphone()">
-    <form class="signInForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()" [class.addpading]="isIphone() && isKeyboardOpen">
-
+<section class="sign-up">
+    <form class="signInForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <label class="image">
+                <div *ngIf="!profile.picture" class="circle" (click)="selectImage()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30.493" height="24" viewBox="0 0 30.493 24">
+                        <defs>
+                            <style>
+                                .cls-258 {
+                                    fill: rgba(0, 0, 0, .53);
+                                    stroke: rgba(0, 0, 0, .53);
+                                }
+                            </style>
+                        </defs>
+                        <g id="camera" opacity="0.388" transform="translate(0 -44.8)">
+                            <g id="Group_759" data-name="Group 759" transform="translate(0 44.8)">
+                                <g id="Group_758" data-name="Group 758">
+                                    <path id="Path_16038"
+                                          d="M29.478 48.539a3.278 3.278 0 0 0-2.406-1.014h-4.811v-.058a2.6 2.6 0 0 0-.783-1.884 2.652 2.652 0 0 0-1.884-.783H10.9a2.672 2.672 0 0 0-2.7 2.667v.058H3.42a3.278 3.278 0 0 0-2.406 1.014A3.446 3.446 0 0 0 0 50.945V65.38a3.278 3.278 0 0 0 1.014 2.406A3.446 3.446 0 0 0 3.42 68.8h23.652a3.278 3.278 0 0 0 2.406-1.014 3.446 3.446 0 0 0 1.014-2.406V50.945a3.278 3.278 0 0 0-1.014-2.406zm-.493 16.841h-.029a1.88 1.88 0 0 1-1.884 1.884H3.42a1.88 1.88 0 0 1-1.884-1.884V50.945a1.88 1.88 0 0 1 1.884-1.884h5.594a.779.779 0 0 0 .783-.783v-.841a1.091 1.091 0 0 1 1.13-1.13h8.667a1.091 1.091 0 0 1 1.13 1.13v.841a.779.779 0 0 0 .783.783H27.1a1.88 1.88 0 0 1 1.884 1.884z"
+                                          class="cls-258" data-name="Path 16038" transform="translate(0 -44.8)"/>
+                                    <path id="Path_16039"
+                                          d="M119.13 130.8a7.125 7.125 0 1 0 5.043 2.087 7.143 7.143 0 0 0-5.043-2.087zm3.942 11.1a5.6 5.6 0 0 1-7.884 0 5.541 5.541 0 0 1-1.623-3.942 5.664 5.664 0 0 1 1.623-3.942 5.541 5.541 0 0 1 3.942-1.623 5.664 5.664 0 0 1 3.942 1.623 5.541 5.541 0 0 1 1.623 3.942 5.424 5.424 0 0 1-1.623 3.942z"
+                                          class="cls-258" data-name="Path 16039"
+                                          transform="translate(-103.884 -124.568)"/>
+                                    <circle id="Ellipse_517" cx="1.42" cy="1.42" r="1.42" class="cls-258"
+                                            data-name="Ellipse 517"
+                                            transform="translate(24.145 6.203)"/>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <div class="add">+</div>
+                </div>
+                <div *ngIf="profile.picture" class="round-border">
+                    <img [src]="domSanitizer.bypassSecurityTrustUrl(profile.picture)">
+                    <ion-icon (click)="selectImage()" *ngIf="isEditMode" ios="ios-create" md="md-create"
+                              size="large"></ion-icon>
+                </div>
+            </label>
+        </div>
         <div class="row">
             <label [ngClass]="{'hasValue': registerForm.controls.first_name.dirty || registerForm.controls.first_name.touched }">
-                <p>First Name</p>
+                <p>Nickname</p>
                 <input type="text" formControlName="first_name" class="form-control"
                        [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"/>
             </label>
 
             <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
-                <div *ngIf="f.first_name.errors.required">First Name is required</div>
-            </div>
-        </div>
-
-        <div class="row">
-            <label [ngClass]="{'hasValue': registerForm.controls.last_name.dirty || registerForm.controls.last_name.touched }">
-                <p>Last Name</p>
-                <input type="text" formControlName="last_name" class="form-control"
-                       [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"/>
-            </label>
-            <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
-                <div *ngIf="f.last_name.errors.required">Last Name is required</div>
+                <div *ngIf="f.first_name.errors.required">Nickname is required</div>
             </div>
         </div>
 

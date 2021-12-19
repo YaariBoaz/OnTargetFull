@@ -17,7 +17,7 @@ section.drill-results {
     background-color: #363636;
     box-sizing: border-box;
     padding: 10px 16px;
-
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,6 +30,11 @@ section.drill-results {
     div.info {
       display: flex;
       align-items: center;
+      width: 50%;
+      justify-content: space-evenly;
+      img{
+        height: 30px !important;
+      }
 
       p {
         margin: 0;
@@ -59,7 +64,7 @@ section.drill-results {
 
   div.main-screen {
     position: relative;
-    height: calc(100% - 48px);
+    height: calc(100% - 18px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -95,26 +100,26 @@ section.drill-results {
   }
 
   div.target {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
-    box-sizing: border-box;
-    padding: 0 1em;
+    padding-left: 15px;
+    padding-right: 15px;
     //padding-left: 100px;
+    height: 100%;
+    align-items: center;
 
     img {
-      height: 295px;
-      width: 295px;
+      height: 300px;
+      width: 300px;
     }
 
     .some-wrapper {
       position: relative;
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .counter-shot {
         position: absolute;
@@ -202,19 +207,17 @@ section.drill-results {
     }
 
     div.results-table {
-      width: 420px;
-      height: 250px;
-      position: relative;
-
       display: flex;
-      flex-direction: column;
+      width: 50%;
       justify-content: center;
+      align-items: center;
+      height: 100%;
 
       table {
         display: block;
 
         height: 200px;
-        width: 420px;
+        width: 100%;
         border-radius: 5px;
 
         direction: rtl;
@@ -248,7 +251,7 @@ section.drill-results {
               padding: 0 0.5em;
 
               svg {
-                width: 24px;
+                width: 2.5vw;
                 height: 24px;
                 fill: white;
               }
@@ -315,17 +318,19 @@ section.drill-results {
 
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
+        width: 100%;
 
         p {
           width: calc(100% / 4);
           color: white;
-          font-size: 12px;
+          font-size: 8px;
           line-height: 14px;
           letter-spacing: 0.12px;
           box-sizing: border-box;
           padding: 0 0.5em;
           text-align: left;
           margin: 0;
+
         }
       }
 
@@ -401,7 +406,6 @@ div.targetHoly {
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
 
     .counter-shot {
       position: absolute;
@@ -572,14 +576,20 @@ div.targetHoly {
   height: 20px;
   border-radius: 9px;
   border-radius: 9px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.33);
   color: #000000;
-  background: #bcbcbc;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
   font-weight: 900;
+  background: hsla(0, 0%, 100%, 1);
+
+  background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(143, 51%, 49%, 1) 50%);
+
+  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(143, 51%, 49%, 1) 50%);
+
+  background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(143, 51%, 49%, 1) 50%);
+  z-index: 10;
 }
 
 table tbody {
@@ -836,8 +846,24 @@ div.welcome-message {
 
     div.target {
       img {
-        height: 245px;
-        width: 245px;
+        height: 300px;
+        width: 300px;
+      }
+    }
+  }
+  .stats-container {
+    border-radius: 5px;
+    background-color: #ffffffa6;
+
+    .zero-data-row {
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+
+      img {
+        height: 35px !important;
+        width: 35px !important;
+        padding-right: 10px !important;
       }
     }
   }
@@ -860,4 +886,102 @@ div.welcome-message {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+}
+
+.stats-container {
+  border-radius: 5px;
+  background-color: #ffffffa6;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .zero-data-row {
+    display: flex;
+    align-items: center !important;
+    padding-left: 15px !important;
+
+    img {
+      height: 6vh !important;
+      width: 5vw !important;
+      padding-right: 10px !important;
+    }
+
+    span {
+      font-size: 2vw;
+    }
+  }
+}
+
+.isZero {
+  justify-content: center !important
+}
+
+.zero-stats {
+  width: 40%;
+  padding-right: 10%;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+}
+
+.grouping-status {
+  height: 15vh;
+  margin-bottom: 5vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+
+  span {
+    font-size: 3vw;
+  }
+}
+
+.napar {
+  background: -webkit-radial-gradient(circle, white 0%, #ff0000 50%);
+
+  z-index: 1;
+}
+
+.napam {
+  background: hsla(0, 0%, 100%, 1);
+
+  background: -webkit-radial-gradient(circle, white 0%, #3dbd6e 50%);
+
+  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(279, 49%, 55%, 1) 50%);
+
+  background: -webkit-radial-gradient(circle, hsla(0, 0%, 100%, 1) 0%, hsla(279, 49%, 55%, 1) 502%);
+  z-index: 1;
+
+}
+
+.target-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.isBarhan {
+  background: hsla(0, 0%, 100%, 1);
+
+  background: radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(5, 58%, 70%, 1) 100%);
+
+  background: -moz-radial-gradient(circle, hsla(0, 0%, 100%, 1) 20%, hsla(5, 58%, 70%, 1) 100%);
+
+}
+
+.green {
+  color: #3dbd6e;
+}
+
+.red {
+  color: #ce564b;
+}
+
+.yellow {
+  color: #ffcc00;
+}
+.lastShot{
+  background: #dfa14c !important;
 }

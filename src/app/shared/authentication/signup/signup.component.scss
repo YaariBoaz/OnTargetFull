@@ -1,7 +1,7 @@
 @import "../../../../assets/colors";
 
 :host {
-  height: 90%;
+  height: 100%;
 }
 
 section.sign-up {
@@ -245,14 +245,26 @@ section.sign-up {
 
 }
 
-.iphone{
-  height: 70%;
-}
-.iphone-wrapper{
-  width: 100%;
-  height: 100%;
-}
-.addpading{
-  background-color: white;
-  margin-bottom: 20px;
+.image {
+  display: flex;
+  justify-content: center;
+
+  .circle {
+    background: #f3f3f3;
+    padding: 0.5em;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ce564b;
+  }
+
+  img {
+    height: 120px;
+    border-radius: 100%;
+    width: 120px;
+    border: 3px solid #f6f6f6;
+  }
 }

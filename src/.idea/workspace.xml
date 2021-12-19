@@ -36,76 +36,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb195e86-ced8-4599-a54e-fcf0617378aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../android/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../resources/android/xml/network_security_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/.npmignore" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../android/app/src/main/assets/capacitor.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/assets/capacitor.config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/java/io/ionic/starter/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/java/adl/onTarget/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-hdpi-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-hdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-hdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-mdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-mdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xhdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xxhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xxhdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xxxhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-land-xxxhdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-hdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-hdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-mdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-mdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xhdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xxhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xxhdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xxxhdpi/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable-port-xxxhdpi/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/drawable/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/drawable/splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/app/src/main/res/xml/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signin/signin.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signin/signin.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/signup-wizard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup-wizard/wizard.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/authentication/signup/signup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/authentication/signup/signup.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/drill/drill.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/drill.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/drill/hit-nohit.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/drill/hit-nohit.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/select-target-modal/select-target-component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/shared/services/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/api.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tab1/tab1.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tab1/tab1.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tab1/tab1.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab1/tab1.page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tab3/tab3.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab3/tab3.page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tabs/tabs.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tabs/tabs.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/balistic-calculator.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/balistic-calculator.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/init.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/init.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/shared/services/shooting.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/shared/services/shooting.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tab2/balistic-calculator/balistic-calculator.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/tab2/balistic-calculator/balistic-calculator.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,8 +68,8 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/app/shared/drill/drill.component.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/app/shared/services/ble.service.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/app/shared/drill/drill.component.ts" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1fglRlcLCWJ8BwcD96xmPuQDtAe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -149,19 +86,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\onTargetMobile\OnTargetFull\src\assets\icons" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\onTargetMobile\OnTargetFull\src\assets\docs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\onTargetMobile\OnTargetFull\src\assets\icons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -191,6 +128,23 @@
       <workItem from="1616739883874" duration="1202000" />
       <workItem from="1617521408702" duration="24000" />
       <workItem from="1618213920336" duration="7309000" />
+      <workItem from="1618305756007" duration="1401000" />
+      <workItem from="1618724159835" duration="34000" />
+      <workItem from="1618816916701" duration="1089000" />
+      <workItem from="1620284344606" duration="9792000" />
+      <workItem from="1622038847858" duration="1145000" />
+      <workItem from="1622041114111" duration="8014000" />
+      <workItem from="1622127361882" duration="21000" />
+      <workItem from="1623822886000" duration="11515000" />
+      <workItem from="1624345435910" duration="2040000" />
+      <workItem from="1624512817076" duration="1301000" />
+      <workItem from="1624514160176" duration="877000" />
+      <workItem from="1624865841073" duration="103000" />
+      <workItem from="1626244913726" duration="13306000" />
+      <workItem from="1626597536248" duration="4719000" />
+      <workItem from="1629282436837" duration="3132000" />
+      <workItem from="1630222977961" duration="27000" />
+      <workItem from="1630595087388" duration="265000" />
     </task>
     <servers />
   </component>
@@ -226,11 +180,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/shared/services/ble.service.ts</url>
-          <line>246</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/shared/authentication/signin/signin.component.ts</url>
           <line>18</line>
           <option name="timeStamp" value="2" />
@@ -239,7 +188,20 @@
           <url>file://$PROJECT_DIR$/app/shared/models/DrillModel.ts</url>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/shared/services/shooting.service.ts</url>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app/shared/services/gateway.service.ts</url>
+          <line>396</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

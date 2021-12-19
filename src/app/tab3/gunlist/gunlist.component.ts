@@ -5,8 +5,7 @@ import {ApiService} from '../../shared/services/api.service';
 import {InventoryModel} from '../../shared/models/InventoryModel';
 import {UserService} from '../../shared/services/user.service';
 import {Router} from '@angular/router';
-import {MatDialogRef} from '@angular/material';
-
+import {MatDialogRef} from '@angular/material/dialog';
 @Component({
     selector: 'app-gunlist',
     templateUrl: './gunlist.component.html',

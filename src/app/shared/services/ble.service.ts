@@ -5,6 +5,7 @@ import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
 import {StorageService} from './storage.service';
 import {GatewayService} from './gateway.service';
 import {InitService} from './init.service';
+import {ShootingService} from './shooting.service';
 
 const SERVICE_1 = '1800';
 const SERVICE_2 = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -16,13 +17,14 @@ const READ = '2a01';
 const READ1 = '2a04';
 const READ2 = '2a06';
 
-
 const TEMPERATURE_CHARACTERISTIC = 'bbb1';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BleService {
+    msgNumber = 1;
+
     devices: any[];
     peripheral: any;
     dataFromDevice;
@@ -37,11 +39,13 @@ export class BleService {
     gatewayTargets: { gateway: any; target: any };
     notifyResetGateway = new BehaviorSubject(false);
     gateways = [];
+    private activatRecconectProcessCount = 0;
 
     constructor(
         private storage: StorageService,
         public ble: BLE,
         private ngZone: NgZone,
+        private shootingService: ShootingService,
         private initService: InitService,
         private bluetoothSerial: BluetoothSerial,
         private gatewayService: GatewayService) {
@@ -104,6 +108,16 @@ export class BleService {
         }
     }
 
+    resetConnection() {
+        const txe = new TextEncoder();
+        if (this.peripheral && this.peripheral.id) {
+            this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('RSTC\n').buffer).then((prmise) => {
+                console.log('reset connection completed');
+            }).catch(err => {
+            });
+        }
+    }
+
     // If location permission is denied, you'll end up here
     scanError(error) {
         console.log('Error: ' + error);
@@ -122,7 +136,7 @@ export class BleService {
             this.resetShots();
         }
         this.currentTargetId = deviceId;
-        this.subscription = this.ble.connect(deviceId).subscribe(
+        this.ble.connect(deviceId).subscribe(
             (peripheral) => {
                 this.isConnectedFlag = false;
                 this.notifyTargetConnected.next(true);
@@ -149,7 +163,6 @@ export class BleService {
     }
 
     onDeviceDisconnected(peripheral) {
-        alert('The peripheral unexpectedly disconnected');
     }
 
     ionViewDidLoad() {
@@ -166,11 +179,14 @@ export class BleService {
 
 
     handleRead(name, id, service, characteristic) {
+        console.log('SUBSCRIBED TO START NOTIFICATION');
         this.subscription = this.ble.startNotification(id, service, characteristic).subscribe((data) => {
+            console.log('RECEIVED A MESSAGE');
             const target = this.storage.getItem('slectedTarget');
             const dec = new TextDecoder();
-            const enc = new TextEncoder();
-            const buffer = new Uint8Array(data);
+            const enc = new TextEncoder().encode(data);
+            const temp = new TextDecoder().decode(enc);
+            const buffer = new Uint8Array(data[0]);
             if (this.isGateway) {
                 this.parseGatewayMessage(buffer);
             } else {
@@ -178,7 +194,9 @@ export class BleService {
                     console.log('Target cleared shots');
                 } else {
                     // @ts-ignore
-                    const encodedString = enc.encode(buffer);
+                    const encoder = new TextEncoder();
+                    // @ts-ignore
+                    const encodedString = encoder.encode(buffer);
                     // tslint:disable-next-line:radix
                     const text = parseInt(dec.decode(encodedString));
                     this.notifyShotArrived.next(text);
@@ -192,6 +210,7 @@ export class BleService {
     }
 
     parseGatewayMessage(buffer: Uint8Array) {
+        const selectedTarget = this.shootingService.chosenTarget;
         const target = this.storage.getItem('slectedTarget');
         const messageFromGatewaty = String.fromCharCode.apply(null, buffer);
         console.log('MESSAGE ARRIVED: ' + messageFromGatewaty);
@@ -210,6 +229,10 @@ export class BleService {
         return this.ble.isConnected(this.peripheral);
     }
 
+    dissconect() {
+        return this.ble.disconnect(this.currentTargetId);
+    }
+
     activatRecconectProcess() {
         this.ble.disconnect(this.currentTargetId).then(() => {
             this.isConnectedFlag = false;
@@ -224,7 +247,12 @@ export class BleService {
                     },
                     peripheral => {
                         console.log('Disconnected', 'The peripheral unexpectedly disconnected');
-                        this.activatRecconectProcess();
+                        if (this.activatRecconectProcessCount < 5) {
+                            this.activatRecconectProcessCount++;
+                            this.activatRecconectProcess();
+                        } else {
+                            this.activatRecconectProcessCount = 0;
+                        }
                     });
             } catch (e) {
             }

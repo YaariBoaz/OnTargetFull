@@ -7,14 +7,33 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class ShootingService {
     selectedDrill;
+    zeroTable;
     numberOfBullersPerDrill: number;
     BaseUrl;
+    private isZero: boolean;
     targets;
     targetsArrived = new BehaviorSubject(null);
     chosenTarget: any;
     RNADOM_SHOTS = [0, 16, 32, 48];
     drillStarteEvent = new BehaviorSubject(null);
+    caliber: string;
+    bulletName;
+    sightsZeroing: any;
+    calibers: any;
+    weapons: any;
+
     constructor(private http: HttpClient) {
+    }
+
+    getMOABySight(): number {
+        const signName = this.selectedDrill.sight;
+        let moa = 0.6;
+        this.sightsZeroing.forEach(sight => {
+            if (sight.name === signName) {
+                moa =  sight.moa;
+            }
+        });
+        return moa;
     }
 
     setBaseUrl(baseUrl) {
@@ -30,6 +49,14 @@ export class ShootingService {
                 this.targets = [149];
             });
         }
+    }
+
+    setIsZero(flag) {
+        this.isZero = flag;
+    }
+
+    getisZero() {
+        return this.isZero;
     }
 
     getBaseUrl() {
