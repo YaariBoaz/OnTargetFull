@@ -4,6 +4,7 @@ import {DrillComponent} from './drill.component';
 import {SharedModule} from '../shared.module';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {ReversePipe} from './reverseArray';
+import {NgxTimerModule} from 'ngx-timer';
 
 
 // @ts-ignore
@@ -12,6 +13,7 @@ import {ReversePipe} from './reverseArray';
     imports: [
         CommonModule,
         SharedModule,
+        NgxTimerModule,
     ],
     providers: [ScreenOrientation],
     exports: [DrillComponent]

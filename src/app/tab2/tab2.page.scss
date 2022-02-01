@@ -9,10 +9,10 @@ section.edit-drill {
     position: relative;
 
     background-image: linear-gradient(#00000054, #00000054), url("../../assets/edit-drill.jpg");
-    background-size: 100% 200px;
+    background-size: 100% 150px;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 200px;
+    height: 150px;
 
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@ section.edit-drill {
   }
 
   div.main-content {
-    height: calc(100% - 200px); // Compensate on header height
+    height: calc(100% - 150px); // Compensate on header height
     overflow-y: auto;
     box-sizing: border-box;
     padding: 0 21px;
@@ -147,6 +147,8 @@ section.edit-drill {
 
     .sliders {
       margin-bottom: 1.5em;
+      height: 200px;
+      margin-top: 10px;
     }
 
     .sliders .swiper-wrapper .swiper-slide {
@@ -354,6 +356,7 @@ section.edit-drill {
 .disabled {
   background-color: lightgray !important;
   color: black !important;
+  pointer-events: none;
 }
 
 .drill-name-wrapper {
@@ -391,9 +394,35 @@ button:disabled {
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color:#929292
+  color: #929292
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-  color:#929292
+  color: #929292
+}
+
+.choose-gun {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.5em;
+  height: 130px;
+  align-items: center;
+
+  div {
+    display: flex;
+    justify-content: center;
+    width: 170PX;
+    box-shadow: 5px 5px 5px 0 rgb(0 0 0 / 75%);
+    height: 90px;
+    align-items: center;
+  }
+
+  .chosenWeaponType {
+    border: 3px solid #dfa14c;
+
+  }
+
+  img {
+    height: 50px;
+  }
 }

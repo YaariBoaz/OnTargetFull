@@ -1,0 +1,116 @@
+section {
+  background-color: #efefef;
+  height: 100%;
+
+  .header {
+    height: 50px;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .date-list-wrapper {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+
+    .dates-list {
+      border-bottom: 1px solid #0000002b;
+      padding: 0.5em;
+
+      header {
+        margin-left: 24px;
+        display: flex;
+        align-items: center;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: 0.24px;
+        text-align: left;
+        color: rgba(0, 0, 0, 0.8);
+        margin-top: 10px;
+
+        .img-wrapper {
+          background-color: black;
+          border-radius: 8px;
+          width: 24px;
+          height: 24px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .month {
+          font-family: Roboto;
+          font-size: 12px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          letter-spacing: 1.88px;
+          text-align: left;
+          color: rgba(0, 0, 0, 0.8);
+          margin: 0;
+          padding-left: 10px;
+        }
+      }
+    }
+
+    .date-in-month {
+      margin-bottom: 20PX;
+      margin-top: 20px;
+      margin-left: 60px;
+      position: relative;
+
+      .date-in-month-row {
+        display: flex;
+        color: black;
+
+        .date {
+          font-family: Roboto;
+          font-size: 14px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.14;
+          letter-spacing: 0.24px;
+          text-align: left;
+          color: rgba(0, 0, 0, 0.8);
+        }
+
+        .day {
+          font-family: Roboto;
+          font-size: 14px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.14;
+          letter-spacing: 0.24px;
+          text-align: left;
+          color: rgba(0, 0, 0, 0.8);
+        }
+      }
+
+      .drill-count {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.14;
+        letter-spacing: 0.24px;
+        text-align: left;
+        color: #6e6e6e;
+      }
+
+      img {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
+}
+

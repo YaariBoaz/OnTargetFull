@@ -15,6 +15,7 @@ export class StorageService {
     data = {};
     DATA_NAME = 'homeData';
     historicalTrainingsDate$ = new BehaviorSubject<any>(null);
+    passTrainingsInDate$ = new BehaviorSubject<any>(null);
     DEFAULT_WEAPONS = [
         'AR-15',
         'M4',
@@ -34,6 +35,7 @@ export class StorageService {
         this.initData();
         this.trySyncData();
     }
+
 
     trySyncData() {
 
@@ -69,6 +71,10 @@ export class StorageService {
 
     passhistoricalTrainingsDate(data) {
         this.historicalTrainingsDate$.next(data);
+    }
+
+    passTrainingsInDate(data) {
+        this.passTrainingsInDate$.next(data);
     }
 
     private handleMockData() {

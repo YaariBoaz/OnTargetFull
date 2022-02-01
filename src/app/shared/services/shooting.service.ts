@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
+import {HitNohitService} from '../drill/hit-nohit.service';
 
 @Injectable({
     providedIn: 'root'
@@ -8,6 +9,8 @@ import {BehaviorSubject} from 'rxjs';
 export class ShootingService {
     selectedDrill;
     zeroTable;
+    isChallenge;
+    challengeId;
     numberOfBullersPerDrill: number;
     BaseUrl;
     private isZero: boolean;
@@ -25,12 +28,14 @@ export class ShootingService {
     constructor(private http: HttpClient) {
     }
 
+
+
     getMOABySight(): number {
         const signName = this.selectedDrill.sight;
         let moa = 0.6;
         this.sightsZeroing.forEach(sight => {
             if (sight.name === signName) {
-                moa =  sight.moa;
+                moa = sight.moa;
             }
         });
         return moa;

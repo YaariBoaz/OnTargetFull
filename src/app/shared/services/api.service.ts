@@ -38,12 +38,20 @@ export class ApiService {
         return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadHitNotHitDrills', dataToSync);
     }
 
+    getChallenges(): Observable<any> {
+        return this.http.get(this.BACKOFFICE_URL + 'Challenge/getChallenges');
+    }
+
+    getMyChallenges(userId): Observable<any> {
+        return this.http.get(this.BACKOFFICE_URL + 'Challenge/getMyChallenges?userId=' + userId);
+    }
+
     syncDataGateway(dataToSync) {
         return this.http.post(this.BACKOFFICE_URL + 'DeviceData/uploadDrillsMobile', dataToSync);
     }
 
     getWeapons() {
-        return this.http.get(this.BACKOFFICE_URL + 'DeviceData/getWeapons');
+        return this.http.get(this.BACKOFFICE_URL + 'Zeroing/getWeapons');
     }
 
     getSights() {

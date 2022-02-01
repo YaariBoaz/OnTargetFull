@@ -21,6 +21,7 @@ import {NoConnetionErroComponent} from './popups/no-connection/no-connetion-erro
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {ShareDialogComponent} from './share-dialog/share-dialog.component';
+import {ChallengeListComponent} from './ChooseDrill/List/challenge-list.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import {ShareDialogComponent} from './share-dialog/share-dialog.component';
         SelectTargetModalComponent,
         ErrorModalComponent,
         ShareDialogComponent,
+        ChallengeListComponent,
         ReversePipe],
 
     imports: [

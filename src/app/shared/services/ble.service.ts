@@ -70,20 +70,19 @@ export class BleService {
 
     }
 
+
     onDeviceDiscovered(device) {
-        console.log('Discovered ' + JSON.stringify(device, null, 2));
         this.ngZone.run(() => {
             if (device.name) {
+                console.log('FOUND DEVICE: ' + device.name);
                 if (device.name.toLowerCase().includes('adl') ||
                     device.name.toLowerCase().includes('e64') ||
+                    device.name.toLowerCase().includes('e1n') ||
+                    device.name.toLowerCase().includes('e1n') ||
+                    device.name.toLowerCase().includes('eMarn') ||
+                    device.name.toLowerCase().includes('003') ||
                     device.name.toLowerCase().includes('e16') ||
-                    device.name.toLowerCase().includes('egateway') ||
-                    device.name.toLowerCase().includes('nordic') ||
-                    device.name.toLowerCase().includes('e1')) {
-                    if (device.name.toLowerCase().includes('egateway') || device.name.toLowerCase().includes('nordic')) {
-                        device.name = 'eTarget E1n1';
-                        this.gateways.push(device.id);
-                    }
+                    device.name.toLowerCase().includes('nordic')) {
                     if (this.devices.length === 0) {
                         this.devices.push(device);
                         this.storage.setItem('ble', this.devices);
@@ -91,6 +90,11 @@ export class BleService {
                         this.devices.push(device);
                         this.storage.setItem('ble', this.devices);
                     }
+                } else if (device.name.toLowerCase().includes('egateway')) {
+                    this.gateways.push(device.id);
+                    this.isGateway = true;
+                    this.initService.isGateway = true;
+                    this.connect(device.id);
                 }
             }
         });
@@ -101,7 +105,7 @@ export class BleService {
         this.gatewayService.initStats();
         const txe = new TextEncoder();
         if (this.peripheral && this.peripheral.id) {
-            this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('C\n').buffer).then((prmise) => {
+            this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('CLCO\n').buffer).then((prmise) => {
                 console.log('From Reset: ' + prmise);
             }).catch(err => {
             });

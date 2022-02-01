@@ -100,9 +100,9 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     handleOfflineScenario() {
         this.stoargeService.historicalTrainingsDate$.subscribe((data: HistoryModel) => {
             if (data) {
-                this.trains = data;
+                this.trains = data.value;
                 this.trains = this.trains.sort((a, b) => new Date(b.sessionDateTime).getTime() - new Date(a.sessionDateTime).getTime());
-
+                console.log(this.trains);
             }
 
         });
@@ -145,6 +145,16 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
         });
+    }
+
+    targetSize(targetId: any): number {
+        if (targetId.startsWith('e64') || targetId.startsWith('003')) {
+            return 64;
+        } else if (targetId.startsWith('e128')) {
+            return 128;
+        }else{
+            return 16;
+        }
     }
 }
 

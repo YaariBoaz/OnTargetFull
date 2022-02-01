@@ -1,0 +1,40 @@
+<section>
+    <header>
+        <div class="back-container"> <</div>
+        <div class="title"> Choose A Challenge</div>
+    </header>
+    <div class="challegnes">
+        <div *ngFor="let challenge of data" class="card" (click)="onChallengeChosen(challenge)" mat-dialog-close>
+            <div class="title">
+                <h4>{{challenge.bestResultSentence}}</h4>
+                <div>
+                    <span>Ranked:</span><span>#{{challenge.challengeRank.rank}}</span>
+                </div>
+            </div>
+            <div class="content">
+                <div class="meta">
+                    <div class="desc">
+                        <h5>{{challenge.metadata.description}}</h5>
+                    </div>
+                    <div class="info">
+                        <div class="info-row">
+                            <span>Range:</span>
+                            <div>{{challenge.metadata.range}}</div>
+                        </div>
+                        <div class="info-row">
+                            <span># Of Bullets:</span>
+                            <div>{{challenge.metadata.numberOfBullets}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="body">
+
+                    <div class="target">
+                        <img src="assets/Artboard-bull.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

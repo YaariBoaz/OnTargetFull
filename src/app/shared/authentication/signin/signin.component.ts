@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {StorageService} from '../../services/storage.service';
 import {AlertController, LoadingController} from '@ionic/angular';
 import {ApiService} from '../../services/api.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
- import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {SigninModalComponent} from '../../popups/signin-modal/signin-modal.component';
 import {InitService} from '../../services/init.service';
 import {Platform} from '@ionic/angular';
@@ -21,6 +21,7 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
+    @Output() closeSignup;
     splash = true;
     isSignIn = true;
     userName;
@@ -69,7 +70,6 @@ export class SigninComponent implements OnInit {
     get f() {
         return this.registerForm.controls;
     }
-
 
     ngOnInit() {
 
@@ -177,7 +177,7 @@ export class SigninComponent implements OnInit {
     }
 
     backToSignin() {
-        this.router.navigateByUrl('wizard');
+        this.showWizard = false;
     }
 
     resetPassword() {

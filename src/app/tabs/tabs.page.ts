@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Platform} from '@ionic/angular';
 import {MatTabChangeEvent} from '@angular/material/tabs';
+import {BleService} from '../shared/services/ble.service';
 
 @Component({
     selector: 'app-tabs',
@@ -18,7 +19,7 @@ export class TabsPage {
     private subscription: Subscription;
     currentTab = 'tab1';
 
-    constructor(private tabService: TabsService, private router: Router, private zone: NgZone, private platform: Platform) {
+    constructor(private bleService: BleService, private tabService: TabsService, private router: Router, private zone: NgZone, private platform: Platform) {
         this.tabBarElement = document.querySelector('.tabbar');
     }
 
@@ -73,9 +74,14 @@ export class TabsPage {
                 break;
             case 1:
                 this.tabService.notifyTab2();
+                this.bleService.scan();
                 break;
             case 2:
                 this.tabService.notifyTab3();
         }
+    }
+
+    onTrainClicked() {
+
     }
 }

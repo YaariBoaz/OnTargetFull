@@ -1,0 +1,57 @@
+section {
+  height: 100vh;
+
+  header {
+    height: 56px;
+    display: flex;
+    color: black;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .challegnes {
+    width: 93vw;
+    margin-left: 230px;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      color: black;
+      border-bottom: 1px solid;
+    }
+
+    .card {
+      display: flex;
+      margin-bottom: 30px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+      justify-content: space-between;
+      flex-direction: column;
+
+      .content {
+        display: flex;
+        justify-content: space-between;
+
+        .meta {
+          color: black;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .body {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 120px;
+          }
+        }
+      }
+    }
+
+  }
+
+}
