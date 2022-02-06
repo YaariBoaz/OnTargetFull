@@ -16,12 +16,14 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {SelectTargetModalComponent} from './select-target-modal/modal/select-target-modal.component';
 import {ErrorModalComponent} from './popups/error-modal/error-modal.component';
 import {AccessModalComponent} from './popups/access-modal/access-modal.component';
-import {ReversePipe} from './pipes/reverse.pipe';
 import {NoConnetionErroComponent} from './popups/no-connection/no-connetion-error';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {ShareDialogComponent} from './share-dialog/share-dialog.component';
 import {ChallengeListComponent} from './ChooseDrill/List/challenge-list.component';
+import {PaymentComponent} from './components/payment/payment.component';
+import {ReversePipe} from './pipes/reverse.pipe';
+import {MakeItNormalTextPipe} from './pipes/make-it-normal-text.pipe';
 
 @NgModule({
     declarations: [
@@ -36,7 +38,10 @@ import {ChallengeListComponent} from './ChooseDrill/List/challenge-list.componen
         ErrorModalComponent,
         ShareDialogComponent,
         ChallengeListComponent,
-        ReversePipe],
+        PaymentComponent,
+        ReversePipe,
+        MakeItNormalTextPipe
+    ],
 
     imports: [
         CommonModule,
@@ -54,10 +59,11 @@ import {ChallengeListComponent} from './ChooseDrill/List/challenge-list.componen
         MatExpansionModule,
         IonicModule,
         FormsModule,
+        MakeItNormalTextPipe,
         ReactiveFormsModule,
         Tab3Page, GunlistComponent, SightlistComponent,
         SelectTargetModalComponent,
-        ErrorModalComponent, AccessModalComponent, ReversePipe, SelectTargetComponent
+        ErrorModalComponent, AccessModalComponent, ReversePipe, SelectTargetComponent, TermsAndConditionComponent, PaymentComponent
     ],
 
 

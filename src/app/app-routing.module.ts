@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from './shared/authentication/auth-guard.service';
 import {TabsPage} from './tabs/tabs.page';
+import {NewTargetDesignComponent} from './shared/components/new-target-design/new-target-design.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
         component: TabsPage,
 
     },
+    {path: 'new-target', component: NewTargetDesignComponent},
     {path: 'not-found', component: TabsPage, canActivate: [AuthGuardService]},
     {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];

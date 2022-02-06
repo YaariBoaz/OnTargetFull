@@ -13,10 +13,17 @@ import {TargetType} from '../../drill/constants';
 })
 export class ChallengeListComponent implements OnInit {
     bestResultSentence = 'Best Result Is: \n';
+    activeTab = 'assault';
+
+    optionsToRender = {
+        assault: ['middleEast', 'shootingInTheDark', 'sniper', 'operationInRussia', 'middleEast', 'shootingInTheDark', 'sniper', 'operationInRussia'],
+        sideArms: ['operationInRussia', 'sniper', 'shootingInTheDark', 'middleEast', 'operationInRussia', 'sniper', 'shootingInTheDark', 'middleEast'],
+    };
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any, private router: Router, private shootingService: ShootingService) {
-        debugger
-        const targetTypeParsed = this.setTargetTypeForFilter(this.shootingService.chosenTarget.name);
+
+        const targetTypeParsed = this.setTargetTypeForFilter('003');
+
         this.data = data.metaData;
         this.data = data.filter(o => this.showDrill(o.metadata.targetType));
         this.data.forEach(item => {

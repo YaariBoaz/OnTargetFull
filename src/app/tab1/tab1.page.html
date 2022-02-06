@@ -1,4 +1,6 @@
 <app-singin *ngIf="showSignin"></app-singin>
+
+
 <ion-content *ngIf="showRegular" color="light">
     <ion-refresher slot="fixed" disabled="false" (ionRefresh)="doRefresh($event)" pullFactor="0.5" pullMin="100"
                    pullMax="200">
@@ -8,312 +10,294 @@
                 refreshingSpinner="bubbles"
                 refreshingText="Refreshing....."></ion-refresher-content>
     </ion-refresher>
+
+
     <section *ngIf="showUi" class="dashboard" [class.ios-mode]="this.isIos()">
-        <h3>Hi, {{profile?.firstName}}</h3>
-       
-        <div class="menu">
-            <button [class.menuBtniOs]="this.isIos()" class="menuBtn" mat-button [matMenuTriggerFor]="menu"
-                    style="">
-                <span>⋮</span>
 
+        <div class="profile-and-stats">
+            <h3>Hi, {{profile?.firstName}}</h3>
 
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="onDiscconectTarget()">Disconnect Target</button>
-                <button mat-menu-item (click)="onLogout()">Logout</button>
-                <button mat-menu-item>Version 1.1.3</button>
-            </mat-menu>
-        </div>
+            <div class="menu">
 
-        <div class="profile">
-            <div class="avatar" *ngIf="profile.img">
-                <img *ngIf="profile.img" [src]="profile.img">
-                <img *ngIf="!profile.img" src="../../assets/avatar.jpg"/>
+                <button [class.menuBtniOs]="this.isIos()" class="menuBtn" mat-button [matMenuTriggerFor]="menu"
+                        style="">
+                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.3058 30.9168H12.6942C12.3426 30.9169 12.0015 30.7968 11.7275 30.5764C11.4536 30.356 11.2632 30.0485 11.188 29.7051L10.5605 26.8006C9.72347 26.4338 8.92978 25.9752 8.19404 25.4331L5.362 26.335C5.02678 26.4419 4.66509 26.4309 4.33698 26.3039C4.00886 26.1768 3.73408 25.9414 3.55825 25.6366L0.74625 20.7788C0.572266 20.4738 0.506956 20.1187 0.561007 19.7717C0.615058 19.4247 0.785268 19.1064 1.04379 18.8687L3.24067 16.8645C3.14076 15.9567 3.14076 15.0406 3.24067 14.1327L1.04379 12.1332C0.784902 11.8954 0.61446 11.5767 0.5604 11.2294C0.506341 10.8821 0.571871 10.5267 0.74625 10.2215L3.55208 5.36062C3.72791 5.05586 4.0027 4.82041 4.33081 4.69337C4.65892 4.56633 5.02062 4.55535 5.35583 4.66225L8.18788 5.56412C8.56404 5.28662 8.95563 5.02762 9.35954 4.79329C9.74958 4.57437 10.1504 4.3755 10.5605 4.1982L11.1895 1.29679C11.2644 0.953301 11.4544 0.645723 11.7281 0.42505C12.0017 0.204378 12.3426 0.083866 12.6942 0.0834961H18.3058C18.6574 0.083866 18.9983 0.204378 19.2719 0.42505C19.5456 0.645723 19.7356 0.953301 19.8105 1.29679L20.4457 4.19975C20.8773 4.39091 21.2998 4.6052 21.7083 4.84416C22.0891 5.06462 22.4575 5.30666 22.8121 5.5672L25.6457 4.66533C25.9807 4.55883 26.3421 4.57001 26.6698 4.69703C26.9976 4.82405 27.2722 5.05927 27.4479 5.36371L30.2538 10.2246C30.6114 10.852 30.4881 11.646 29.9562 12.1347L27.7593 14.1389C27.8592 15.0467 27.8592 15.9628 27.7593 16.8707L29.9562 18.8749C30.4881 19.3651 30.6114 20.1575 30.2538 20.785L27.4479 25.6459C27.2721 25.9506 26.9973 26.1861 26.6692 26.3131C26.3411 26.4402 25.9794 26.4511 25.6442 26.3442L22.8121 25.4424C22.077 25.984 21.2838 26.4422 20.4472 26.8083L19.8105 29.7051C19.7353 30.0483 19.5452 30.3555 19.2715 30.5759C18.9979 30.7962 18.6572 30.9165 18.3058 30.9168ZM15.4938 9.3335C13.8583 9.3335 12.2898 9.9832 11.1333 11.1397C9.97687 12.2961 9.32717 13.8647 9.32717 15.5002C9.32717 17.1357 9.97687 18.7042 11.1333 19.8607C12.2898 21.0171 13.8583 21.6668 15.4938 21.6668C17.1293 21.6668 18.6979 21.0171 19.8543 19.8607C21.0108 18.7042 21.6605 17.1357 21.6605 15.5002C21.6605 13.8647 21.0108 12.2961 19.8543 11.1397C18.6979 9.9832 17.1293 9.3335 15.4938 9.3335Z"
+                              fill="white"/>
+                    </svg>
+                </button>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="onDiscconectTarget()">Disconnect Target</button>
+                    <button mat-menu-item (click)="onLogout()">Logout</button>
+                    <button mat-menu-item>Version 1.1.3</button>
+                </mat-menu>
             </div>
-            <div class="avatar" *ngIf="!profile.img">
-                <img src="assets/avatar.jpg">
-            </div>
-            <div class="stats" *ngIf="!isNotTrainedYet">
-                <div class="text-and-icon">
-                    <div class="container">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-                            <defs>
-                                <style>
-                                    .cls-11523 {
-                                        fill: #fff
-                                    }
-                                </style>
-                            </defs>
-                            <g id="favorite">
-                                <path id="Path_16889"
-                                      d="M11.95 2.05a7 7 0 0 0-9.9 9.9 7 7 0 0 0 9.9-9.9zM7 13.18A6.18 6.18 0 1 1 13.18 7 6.187 6.187 0 0 1 7 13.18z"
-                                      class="cls-11523" data-name="Path 16889"/>
-                                <path id="Path_16890"
-                                      d="M100 84.71a.41.41 0 0 0-.331-.279l-2.621-.381-1.172-2.375a.41.41 0 0 0-.736 0l-1.167 2.375-2.621.381a.41.41 0 0 0-.227.7l1.9 1.849-.448 2.61a.41.41 0 0 0 .6.432l2.344-1.232 2.344 1.232a.41.41 0 0 0 .6-.432L98 86.979l1.9-1.849a.41.41 0 0 0 .1-.42zm-2.727 1.832a.41.41 0 0 0-.118.363l.344 2-1.8-.946a.41.41 0 0 0-.382 0l-1.8.946.344-2a.41.41 0 0 0-.118-.363l-1.456-1.419 2.012-.292a.41.41 0 0 0 .309-.224l.9-1.823.9 1.823a.41.41 0 0 0 .309.224l2.012.292z"
-                                      class="cls-11523" data-name="Path 16890" transform="translate(-88.513 -79.22)"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <p>BEGINNER</p>
+
+            <div class="profile">
+                <div class="avatar" *ngIf="profile.img">
+                    <img *ngIf="profile.img" [src]="profile.img">
+                    <img *ngIf="!profile.img" src="../../assets/avatar.jpg"/>
+                    <svg width="146" class="shape" height="25" viewBox="0 0 146 25" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H145.814L131.233 24.22H14.5814L0 0Z" fill="#FC5151"/>
+                        <text x="45" y="18">Beginner</text>
+                    </svg>
+                </div>
+                <div class="avatar" *ngIf="!profile.img">
+                    <img src="assets/avatar.jpg">
+                    <svg class="shape" width="146" height="25" viewBox="0 0 146 25" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0H145.814L131.233 24.22H14.5814L0 0Z" fill="#FC5151"/>
+                        <text x="45" y="18">Beginner</text>
+                    </svg>
                 </div>
 
-                <div class="text-and-icon">
-                    <div class="container">
-                        <svg xmlns="http://www.w3.org/2000/svg" id="_004-aim" width="13.5" height="13.5"
-                             data-name="004-aim"
-                             viewBox="0 0 13.5 13.5">
-                            <defs>
-                                <style>
-                                    .cls-18661 {
-                                        fill: #fff
-                                    }
-                                </style>
-                            </defs>
-                            <path id="Path_1182"
-                                  d="M7.516 13.281a5.766 5.766 0 1 1 5.766-5.766 5.772 5.772 0 0 1-5.766 5.766zm0-10.406a4.641 4.641 0 1 0 4.641 4.641 4.646 4.646 0 0 0-4.641-4.641z"
-                                  class="cls-18661" data-name="Path 1182" transform="translate(-.766 -.766)"/>
-                            <path id="Path_1183"
-                                  d="M11.563 3.094A.563.563 0 0 1 11 2.531V.563a.563.563 0 0 1 1.125 0v1.968a.563.563 0 0 1-.562.563z"
-                                  class="cls-18661" data-name="Path 1183" transform="translate(-4.813)"/>
-                            <path id="Path_1184"
-                                  d="M21.031 12.125h-1.968a.563.563 0 0 1 0-1.125h1.969a.563.563 0 0 1 0 1.125z"
-                                  class="cls-18661" data-name="Path 1184" transform="translate(-8.094 -4.813)"/>
-                            <path id="Path_1185"
-                                  d="M11.563 21.594a.563.563 0 0 1-.563-.563v-1.968a.563.563 0 0 1 1.125 0v1.969a.563.563 0 0 1-.562.562z"
-                                  class="cls-18661" data-name="Path 1185" transform="translate(-4.813 -8.094)"/>
-                            <path id="Path_1186"
-                                  d="M2.531 12.125H.563a.563.563 0 0 1 0-1.125h1.968a.563.563 0 0 1 0 1.125z"
-                                  class="cls-18661" data-name="Path 1186" transform="translate(0 -4.813)"/>
-                            <path id="Path_1187"
-                                  d="M10.688 12.375a1.688 1.688 0 1 1 1.688-1.687 1.69 1.69 0 0 1-1.688 1.687zm0-2.25a.563.563 0 1 0 .563.563.563.563 0 0 0-.563-.563z"
-                                  class="cls-18661" data-name="Path 1187" transform="translate(-3.938 -3.938)"/>
-                        </svg>
+                <div class="stats" *ngIf="!isNotTrainedYet">
+                    <div class="text-and-icon">
+                        <img src="assets/icons/medal.png" alt="medal" class="medal">
+                        <p>125 POINTS</p>
                     </div>
-                    <p>125 POINTS</p>
+
+                    <div class="text-and-icon">
+                        <img src="assets/icons/rank.png" alt="rank">
+                        <p>BEGINNER</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div *ngIf="!isNotTrainedYet" class="slides">
-            <ion-slides #slides effect=“slide” class="sliders" pager="true" [options]="slideOpts">
-                <ion-slide>
-                    <div class="slide-container" *ngIf="data.hitRatioChart">
-                        <p>HIT RATIO</p>
-                        <P class="middle floating">
-                            <b>{{data.hitRatioChart.totalHits}}</b>/{{data.hitRatioChart.totalShots}}
-                        </P>
-                        <div class="chart-container">
-                            <canvas width="100%" height="100%" #radioChartInst>
-                            </canvas>
-                        </div>
-                    </div>
-                    <div class="slide-container" *ngIf="!data.hitRatioChart">
-                        <p>HIT RATIO</p>
-                        <div class="chart-container">
-                            <p class="middle">No Data</p>
-                        </div>
-                    </div>
-                </ion-slide>
-                <ion-slide>
-                    <div class="slide-container" *ngIf="data.rateOfFireChart">
-                        <p>RATE OF FIRE</p>
-                        <P class="middle">{{data.rateOfFireChart.userAvg | number : '1.2-2'}}</P>
+        <!--        <div *ngIf="!isNotTrainedYet" class="slides">-->
+        <!--            <ion-slides #slides effect=“slide” class="sliders" pager="true" [options]="slideOpts">-->
+        <!--                <ion-slide>-->
+        <!--                    <div class="slide-container" *ngIf="data.hitRatioChart">-->
+        <!--                        <p>HIT RATIO</p>-->
+        <!--                        <P class="middle floating">-->
+        <!--                            <b>{{data.hitRatioChart.totalHits}}</b>/{{data.hitRatioChart.totalShots}}-->
+        <!--                        </P>-->
+        <!--                        <div class="chart-container">-->
+        <!--                            <canvas width="100%" height="100%" #radioChartInst>-->
+        <!--                            </canvas>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="slide-container" *ngIf="!data.hitRatioChart">-->
+        <!--                        <p>HIT RATIO</p>-->
+        <!--                        <div class="chart-container">-->
+        <!--                            <p class="middle">No Data</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </ion-slide>-->
+        <!--                <ion-slide>-->
+        <!--                    <div class="slide-container" *ngIf="data.rateOfFireChart">-->
+        <!--                        <p>RATE OF FIRE</p>-->
+        <!--                        <P class="middle">{{data.rateOfFireChart.userAvg | number : '1.2-2'}}</P>-->
 
-                        <div class="chart-container">
-                            <canvas width="100%" height="100%" #lineChart></canvas>
-                        </div>
-                    </div>
-                    <div class="slide-container" *ngIf="!data.rateOfFireChart">
-                        <p>RATE OF FILE</p>
-                        <div class="chart-container">
-                            <p class="middle" style=" text-align: center;">No Data</p>
-                        </div>
-                    </div>
-                </ion-slide>
-            </ion-slides>
+        <!--                        <div class="chart-container">-->
+        <!--                            <canvas width="100%" height="100%" #lineChart></canvas>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="slide-container" *ngIf="!data.rateOfFireChart">-->
+        <!--                        <p>RATE OF FILE</p>-->
+        <!--                        <div class="chart-container">-->
+        <!--                            <p class="middle" style=" text-align: center;">No Data</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </ion-slide>-->
+        <!--            </ion-slides>-->
+        <!--        </div>-->
+
+        <!--        <div *ngIf="!isNotTrainedYet" class="static-images">-->
+        <!--            <div class="image-container" *ngIf="data.bestScores">-->
+        <!--                <p>{{data.bestScores.avgSplit | number : '1.2-2'}}</p>-->
+        <!--                <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">-->
+        <!--                    <defs>-->
+        <!--                        <style>-->
+        <!--                            .cls-22256 {-->
+        <!--                                fill: #ce564b-->
+        <!--                            }-->
+        <!--                        </style>-->
+        <!--                    </defs>-->
+        <!--                    <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">-->
+        <!--                        <path id="Path_16662" fill="none" stroke="#ce564b"-->
+        <!--                              d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"-->
+        <!--                              data-name="Path 16662" transform="translate(2331 -18027)"/>-->
+        <!--                        <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(31 539)"/>-->
+        <!--                        <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(54 502)"/>-->
+        <!--                        <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(78 528)"/>-->
+        <!--                        <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887"-->
+        <!--                              rx="2.5"-->
+        <!--                              transform="translate(103 463)"/>-->
+        <!--                        <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(128 507)"/>-->
+        <!--                        <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(144 493)"/>-->
+        <!--                        <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(159 526)"/>-->
+        <!--                    </g>-->
+        <!--                </svg>-->
+        <!--                <p>FAST AVG SPLIT</p>-->
+        <!--            </div>-->
+        <!--            <div class="image-container" *ngIf="!data.bestScores">-->
+        <!--                <p>No Data</p>-->
+        <!--                <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">-->
+        <!--                    <defs>-->
+        <!--                        <style>-->
+        <!--                            .cls-22256 {-->
+        <!--                                fill: #ce564b-->
+        <!--                            }-->
+        <!--                        </style>-->
+        <!--                    </defs>-->
+        <!--                    <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">-->
+        <!--                        <path id="Path_16662" fill="none" stroke="#ce564b"-->
+        <!--                              d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"-->
+        <!--                              data-name="Path 16662" transform="translate(2331 -18027)"/>-->
+        <!--                        <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(31 539)"/>-->
+        <!--                        <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(54 502)"/>-->
+        <!--                        <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(78 528)"/>-->
+        <!--                        <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887"-->
+        <!--                              rx="2.5"-->
+        <!--                              transform="translate(103 463)"/>-->
+        <!--                        <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(128 507)"/>-->
+        <!--                        <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(144 493)"/>-->
+        <!--                        <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(159 526)"/>-->
+        <!--                    </g>-->
+        <!--                </svg>-->
+        <!--                <p>FAST AVG SPLIT</p>-->
+        <!--            </div>-->
+
+        <!--            <div class="image-container" *ngIf="data.bestScores">-->
+        <!--                <p>{{data.bestScores.longestShot}}</p>-->
+        <!--                <svg xmlns="http://www.w3.org/2000/svg" width="89" height="61" viewBox="0 0 89 61">-->
+        <!--                    <defs>-->
+        <!--                        <style>-->
+        <!--                            .cls-111252 {-->
+        <!--                                fill: #ce564b-->
+        <!--                            }-->
+        <!--                        </style>-->
+        <!--                    </defs>-->
+        <!--                    <g id="Group_836" data-name="Group 836" transform="translate(-229 -266)">-->
+        <!--                        <rect id="Rectangle_1876" width="7" height="31" class="cls-111252" data-name="Rectangle 1876"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(229 296)"/>-->
+        <!--                        <rect id="Rectangle_1877" width="7" height="22" class="cls-111252" data-name="Rectangle 1877"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(240 305)"/>-->
+        <!--                        <rect id="Rectangle_1878" width="7" height="39" class="cls-111252" data-name="Rectangle 1878"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(252 288)"/>-->
+        <!--                        <rect id="Rectangle_1879" width="7" height="48" class="cls-111252" data-name="Rectangle 1879"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(264 279)"/>-->
+        <!--                        <rect id="Rectangle_1880" width="7" height="35" class="cls-111252" data-name="Rectangle 1880"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(276 292)"/>-->
+        <!--                        <rect id="Rectangle_1881" width="7" height="61" class="cls-111252" data-name="Rectangle 1881"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(287 266)"/>-->
+        <!--                        <rect id="Rectangle_1882" width="7" height="54" class="cls-111252" data-name="Rectangle 1882"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(300 273)"/>-->
+        <!--                        <rect id="Rectangle_1883" width="7" height="44" class="cls-111252" data-name="Rectangle 1883"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(311 283)"/>-->
+        <!--                    </g>-->
+        <!--                </svg>-->
+        <!--                <p>LONGEST SHOT</p>-->
+        <!--            </div>-->
+        <!--            <div class="image-container" *ngIf="!data.bestScores">-->
+        <!--                <p>No Data</p>-->
+        <!--                <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">-->
+        <!--                    <defs>-->
+        <!--                        <style>-->
+        <!--                            .cls-22256 {-->
+        <!--                                fill: #ce564b-->
+        <!--                            }-->
+        <!--                        </style>-->
+        <!--                    </defs>-->
+        <!--                    <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">-->
+        <!--                        <path id="Path_16662" fill="none" stroke="#ce564b"-->
+        <!--                              d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"-->
+        <!--                              data-name="Path 16662" transform="translate(2331 -18027)"/>-->
+        <!--                        <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(31 539)"/>-->
+        <!--                        <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(54 502)"/>-->
+        <!--                        <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(78 528)"/>-->
+        <!--                        <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887"-->
+        <!--                              rx="2.5"-->
+        <!--                              transform="translate(103 463)"/>-->
+        <!--                        <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(128 507)"/>-->
+        <!--                        <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(144 493)"/>-->
+        <!--                        <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890"-->
+        <!--                              rx="2"-->
+        <!--                              transform="translate(159 526)"/>-->
+        <!--                    </g>-->
+        <!--                </svg>-->
+        <!--                <p>LONGEST SHOT</p>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--        <div *ngIf="!isNotTrainedYet" class="date">-->
+        <!--            <div class="bla">-->
+        <!--                <div class="image-container" (click)="onActivityClicked(null)">-->
+        <!--                    <p> Activity Log</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+
+        <div class="cards-and-button">
+            <ul class="cards">
+                <li class="card">Card One</li>
+                <li class="card">Card Two</li>
+                <li class="card">Card Cock</li>
+                <li class="card">Card Four</li>
+            </ul>
+
+            <button class="start">START</button>
         </div>
 
-        <div *ngIf="!isNotTrainedYet" class="static-images">
-            <div class="image-container" *ngIf="data.bestScores">
-                <p>{{data.bestScores.avgSplit | number : '1.2-2'}}</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">
-                    <defs>
-                        <style>
-                            .cls-22256 {
-                                fill: #ce564b
-                            }
-                        </style>
-                    </defs>
-                    <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">
-                        <path id="Path_16662" fill="none" stroke="#ce564b"
-                              d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"
-                              data-name="Path 16662" transform="translate(2331 -18027)"/>
-                        <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884"
-                              rx="2"
-                              transform="translate(31 539)"/>
-                        <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885"
-                              rx="2"
-                              transform="translate(54 502)"/>
-                        <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886"
-                              rx="2"
-                              transform="translate(78 528)"/>
-                        <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887"
-                              rx="2.5"
-                              transform="translate(103 463)"/>
-                        <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888"
-                              rx="2"
-                              transform="translate(128 507)"/>
-                        <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889"
-                              rx="2"
-                              transform="translate(144 493)"/>
-                        <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890"
-                              rx="2"
-                              transform="translate(159 526)"/>
-                    </g>
-                </svg>
-                <p>FAST AVG SPLIT</p>
-            </div>
-            <div class="image-container" *ngIf="!data.bestScores">
-                <p>No Data</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">
-                    <defs>
-                        <style>
-                            .cls-22256 {
-                                fill: #ce564b
-                            }
-                        </style>
-                    </defs>
-                    <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">
-                        <path id="Path_16662" fill="none" stroke="#ce564b"
-                              d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"
-                              data-name="Path 16662" transform="translate(2331 -18027)"/>
-                        <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884"
-                              rx="2"
-                              transform="translate(31 539)"/>
-                        <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885"
-                              rx="2"
-                              transform="translate(54 502)"/>
-                        <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886"
-                              rx="2"
-                              transform="translate(78 528)"/>
-                        <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887"
-                              rx="2.5"
-                              transform="translate(103 463)"/>
-                        <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888"
-                              rx="2"
-                              transform="translate(128 507)"/>
-                        <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889"
-                              rx="2"
-                              transform="translate(144 493)"/>
-                        <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890"
-                              rx="2"
-                              transform="translate(159 526)"/>
-                    </g>
-                </svg>
-                <p>FAST AVG SPLIT</p>
-            </div>
-
-            <div class="image-container" *ngIf="data.bestScores">
-                <p>{{data.bestScores.longestShot}}</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="89" height="61" viewBox="0 0 89 61">
-                    <defs>
-                        <style>
-                            .cls-111252 {
-                                fill: #ce564b
-                            }
-                        </style>
-                    </defs>
-                    <g id="Group_836" data-name="Group 836" transform="translate(-229 -266)">
-                        <rect id="Rectangle_1876" width="7" height="31" class="cls-111252" data-name="Rectangle 1876"
-                              rx="2"
-                              transform="translate(229 296)"/>
-                        <rect id="Rectangle_1877" width="7" height="22" class="cls-111252" data-name="Rectangle 1877"
-                              rx="2"
-                              transform="translate(240 305)"/>
-                        <rect id="Rectangle_1878" width="7" height="39" class="cls-111252" data-name="Rectangle 1878"
-                              rx="2"
-                              transform="translate(252 288)"/>
-                        <rect id="Rectangle_1879" width="7" height="48" class="cls-111252" data-name="Rectangle 1879"
-                              rx="2"
-                              transform="translate(264 279)"/>
-                        <rect id="Rectangle_1880" width="7" height="35" class="cls-111252" data-name="Rectangle 1880"
-                              rx="2"
-                              transform="translate(276 292)"/>
-                        <rect id="Rectangle_1881" width="7" height="61" class="cls-111252" data-name="Rectangle 1881"
-                              rx="2"
-                              transform="translate(287 266)"/>
-                        <rect id="Rectangle_1882" width="7" height="54" class="cls-111252" data-name="Rectangle 1882"
-                              rx="2"
-                              transform="translate(300 273)"/>
-                        <rect id="Rectangle_1883" width="7" height="44" class="cls-111252" data-name="Rectangle 1883"
-                              rx="2"
-                              transform="translate(311 283)"/>
-                    </g>
-                </svg>
-                <p>LONGEST SHOT</p>
-            </div>
-            <div class="image-container" *ngIf="!data.bestScores">
-                <p>No Data</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="132.142" height="80" viewBox="0 0 132.142 80">
-                    <defs>
-                        <style>
-                            .cls-22256 {
-                                fill: #ce564b
-                            }
-                        </style>
-                    </defs>
-                    <g id="Group_837" data-name="Group 837" transform="translate(-31 -463)">
-                        <path id="Path_16662" fill="none" stroke="#ce564b"
-                              d="M-2299.194 18567.381s11.236-33.91 22.455-36.576 14.862 26.018 25.226 26.285 14.612-65.645 25.984-65.209 9.865 43.221 23.188 43.977 7.156-15.254 17.07-14.32 9.08 38.262 17.112 32.227"
-                              data-name="Path 16662" transform="translate(2331 -18027)"/>
-                        <rect id="Rectangle_1884" width="4" height="4" class="cls-22256" data-name="Rectangle 1884"
-                              rx="2"
-                              transform="translate(31 539)"/>
-                        <rect id="Rectangle_1885" width="4" height="4" class="cls-22256" data-name="Rectangle 1885"
-                              rx="2"
-                              transform="translate(54 502)"/>
-                        <rect id="Rectangle_1886" width="4" height="4" class="cls-22256" data-name="Rectangle 1886"
-                              rx="2"
-                              transform="translate(78 528)"/>
-                        <rect id="Rectangle_1887" width="5" height="5" class="cls-22256" data-name="Rectangle 1887"
-                              rx="2.5"
-                              transform="translate(103 463)"/>
-                        <rect id="Rectangle_1888" width="4" height="4" class="cls-22256" data-name="Rectangle 1888"
-                              rx="2"
-                              transform="translate(128 507)"/>
-                        <rect id="Rectangle_1889" width="4" height="4" class="cls-22256" data-name="Rectangle 1889"
-                              rx="2"
-                              transform="translate(144 493)"/>
-                        <rect id="Rectangle_1890" width="4" height="4" class="cls-22256" data-name="Rectangle 1890"
-                              rx="2"
-                              transform="translate(159 526)"/>
-                    </g>
-                </svg>
-                <p>LONGEST SHOT</p>
-            </div>
-        </div>
-
-        <div *ngIf="!isNotTrainedYet" class="date">
-            <div class="bla">
-                <div class="image-container" (click)="onActivityClicked(null)">
-                    <p> Activity Log</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="no-train-wrapper">
-            <div class="welcome-message" *ngIf="isNotTrainedYet">
-                <div class="text">
-                    <p>Hi, {{profile?.firstName}}! Let’s start training.</p>
-                </div>
-                <div class="dot one"></div>
-                <div class="dot two"></div>
-                <div class="dot three"></div>
-                <div class="dot four"></div>
-            </div>
-        </div>
-        <span style="text-align: center;opacity: 0.3;padding: 0.5em;font-size: 12px;"> Ver 1.1.3 </span>
+        <!--        <div class="no-train-wrapper">-->
+        <!--            <div class="welcome-message" *ngIf="isNotTrainedYet">-->
+        <!--                <div class="text">-->
+        <!--                    <p>Hi, {{profile?.firstName}}! Let’s start training.</p>-->
+        <!--                </div>-->
+        <!--                <div class="dot one"></div>-->
+        <!--                <div class="dot two"></div>-->
+        <!--                <div class="dot three"></div>-->
+        <!--                <div class="dot four"></div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <span style="text-align: center;opacity: 0.3;padding: 0.5em;font-size: 12px;"> Ver 1.1.3 </span>-->
     </section>
 </ion-content>
 
