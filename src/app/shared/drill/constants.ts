@@ -48,6 +48,7 @@ export interface ShotItem {
 }
 
 export interface DrillInfo {
+    challngeId?: string;
     sessionId: string;
     sessionDateTime: Date;
     userId: string;
@@ -167,5 +168,6 @@ export enum TargetType {
     Type_128,
     Type_64,
     Type_16,
-    Type_PUP
+    Type_PUP,
+    HitNoHit
 }

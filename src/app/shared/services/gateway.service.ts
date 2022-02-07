@@ -21,7 +21,7 @@ export class GatewayService {
 
     height: number;
     width: number;
-
+    notifyHitNoHit = new Subject();
 
     drill: DrillObject;
     shots = [];
@@ -37,6 +37,7 @@ export class GatewayService {
         totalTime: '00:00:00'
     };
     notifyTargetBattery = new Subject();
+    notifyKeepAlive = new Subject();
     readonly DEFAULT_PAGE_DATA = {
         distanceFromCenter: 0,
         splitTime: '',
@@ -77,7 +78,6 @@ export class GatewayService {
         this.shots = [];
         this.hits = [];
         this.stats = [];
-        this.drillFinished = false;
         this.pageData = this.DEFAULT_PAGE_DATA;
         this.startTimer();
         this.hitArrived.next({
@@ -94,7 +94,7 @@ export class GatewayService {
 
     startTimer() {
         // tslint:disable-next-line:no-shadowed-variable max-line-length
-        const now = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        const now = new Date();
         this.firstTime = now;
         this.lastTime = now;
     }
@@ -117,8 +117,13 @@ export class GatewayService {
         //     Y: parentImageHeight / 2
         // });
 
-
+        let cId = null;
+        if (this.shootingService.isChallenge) {
+            cId = this.shootingService.challengeId;
+            cId = this.shootingService.selectedDrill.challngeId;
+        }
         const drill: DrillInfo = {
+            challngeId: cId,
             sessionId: this.userService.getUserId(),
             sessionDateTime: new Date(),
             userId: this.userService.getUserId(),
@@ -140,7 +145,7 @@ export class GatewayService {
             targetIP: '0',
             useMoq: false,
             drillType: this.drill.drillType,
-            splitAvg: this.timeStringToSeconds(this.summaryObject.split).toString(),
+            splitAvg: this.summaryObject.split,
             numericSplitAvg: this.timeStringToSeconds(this.summaryObject.split),
             timeElapsed: this.summaryObject.totalTime,
             recomendation: '',
@@ -188,41 +193,43 @@ export class GatewayService {
     }
 
     updateStats(x, y, isFinish, distanceFromCenterPoints, zeroData) {
-
         console.log('counter:', this.pageData.counter);
         const currentdist: number = parseFloat(this.calculateBulletDistanceFromCenter(distanceFromCenterPoints.x,
             distanceFromCenterPoints.y).toFixed(2));
-        this.pageData.points += this.calcScore(currentdist);
+
+        this.pageData.points = this.calcScore(currentdist * 2.54);
         // tslint:disable-next-line:max-line-length
-        this.pageData.distanceFromCenter = parseFloat(((this.pageData.distanceFromCenter + currentdist) / this.pageData.counter).toFixed(2));
+        this.pageData.distanceFromCenter = currentdist;
         if (!this.pageData.lastShotTime) {
             this.pageData.lastShotTime = new Date();
         }
-
-        if (zeroData.isBarhan) {
-            this.pageData.isBarhan = true;
-        } else {
-            this.pageData.isBarhan = true;
+        if (zeroData) {
+            if (zeroData.isBarhan) {
+                this.pageData.isBarhan = true;
+            } else {
+                this.pageData.isBarhan = true;
+            }
         }
+
         // this.pageData.totalTime = (this.pageData.totalTime + ((new Date().getTime() - this.pageData.lastShotTime.getTime()) / 1000));
         // this.pageData.lastShotTime = new Date();
 
 
         // tslint:disable-next-line:no-shadowed-variable max-line-length
-        const now = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        const now = new Date();
 
         const split = moment.utc(moment(now, 'DD/MM/YYYY HH:mm:ss').diff(moment(this.lastTime,
-            'DD/MM/YYYY HH:mm:ss'))).format('HH:mm:ss');
+            'DD/MM/YYYY HH:mm:ss'))).format('mm:ss.SS');
         const total = moment.utc(moment(now, 'DD/MM/YYYY HH:mm:ss').diff(moment(this.firstTime,
-            'DD/MM/YYYY HH:mm:ss'))).format('HH:mm:ss');
+            'DD/MM/YYYY HH:mm:ss'))).format('mm:ss.SS');
 
         // tslint:disable-next-line:max-line-length
-        this.lastTime = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        this.lastTime = new Date();
 
         this.pageData.totalTime = total;
         this.pageData.splitTime = split;
-        this.pageData.distanceFromCenter = Math.round((this.calculateBulletDistanceFromCenter(distanceFromCenterPoints.x,
-            distanceFromCenterPoints.y) + Number.EPSILON) * 100) / 100;
+        this.pageData.distanceFromCenter = parseFloat(this.calculateBulletDistanceFromCenter(distanceFromCenterPoints.x,
+            distanceFromCenterPoints.y).toFixed(2));
         this.stats.push({
             pageData: Object.assign({}, this.pageData),
             interval: this.pageData.totalTime
@@ -241,9 +248,9 @@ export class GatewayService {
 
         const statsLength = this.stats.length;
         this.summaryObject = {
-            points: Math.round(points / statsLength),
+            points,
             distanceFromCenter: this.getSummaryDistanceFromCenter(this.stats),
-            split: this.getSummarySplit(this.pageData.totalTime, statsLength),
+            split: this.getSummarySplit(this.stats, statsLength),
             totalTime: this.stats[statsLength - 1].interval,
             counter: this.stats[statsLength - 1].pageData.counter
         };
@@ -269,123 +276,85 @@ export class GatewayService {
         this.drillFinishedNotify.next(true);
     }
 
+
     calculateBulletDistanceFromCenter(xT, yT): number {
-        // Calculate distance from center:
-        // Get number of sensor on the X axis:
-        let xSensorNumber = -1.0;
-        let xDistanceFromCenter = -1.0;
-        if (xT % 8 === 0) {
-            xSensorNumber = xT / 8.0;
-            if (xSensorNumber <= 4) {
-                xDistanceFromCenter = Math.abs(xSensorNumber - 4) * 3.6 + 3.6 / 2;
-            } else {
-                xDistanceFromCenter = Math.abs(xSensorNumber - 4) * 3.6 - 3.6 / 2;
-            }
+        const targetId = this.storageService.getItem('slectedTarget').name;
+        const targetType = this.getTargetType(targetId);
+        if (targetType === TargetType.Type_128) {
+            const centerX = 245;
+            const centerY = 245;
 
-        } else if (xT % 4 === 0) {
-            xSensorNumber = Math.floor(xT / 8.0);
-            xDistanceFromCenter = Math.abs(xSensorNumber - 4) * 3.6;
-        } else {
-            // Resh:
-            xSensorNumber = Math.round(xT / 8.0);
-            if (xT < 8.0 * xSensorNumber) {
-                if (xSensorNumber <= 4) {
-                    xDistanceFromCenter = 1 + Math.abs(xSensorNumber - 4) * 3.6 + 3.6 / 2;
-                } else {
-                    xDistanceFromCenter = Math.abs(xSensorNumber - 4) * 3.6 + 3.6 / 2 - 1;
-                }
-            } else {
-                if (xSensorNumber <= 4) {
-                    xDistanceFromCenter = Math.abs(xSensorNumber - 4) * 3.6 + 3.6 / 2 - 1;
-                } else {
-                    xDistanceFromCenter = Math.abs(xSensorNumber - 4) * 3.6 + 3.6 / 2 + 1;
-                }
+            return parseFloat(((Math.sqrt(
+                (Math.pow(xT - centerX, 2)) +
+                (Math.pow(yT - centerY, 2))
+            ) / 10) / 2.54).toFixed(1));
 
-            }
+        } else if (targetType === TargetType.Type_64) {
+            const centerX = 16.303;
+            const centerY = 16.303;
+
+            const xRelative = xT / 4 * 1.8114;
+            const yRelative = yT / 4 * 1.8114;
+
+            return parseFloat((Math.sqrt(
+                (Math.pow(xRelative - centerX, 2)) +
+                (Math.pow(yRelative - centerY, 2))
+            ) / 2.54).toFixed(1));
         }
-        let ySensorNumber = -1.0;
-        let yDistanceFromCenter = -1.0;
-        if (yT % 8 === 0) {
-            ySensorNumber = yT / 8.0;
-            if (ySensorNumber <= 4) {
-                yDistanceFromCenter = Math.abs(ySensorNumber - 4) * 3.6 + 3.6 / 2;
-            } else {
-                yDistanceFromCenter = Math.abs(ySensorNumber - 4) * 3.6 - 3.6 / 2;
-            }
-
-        } else if (yT % 4 === 0) {
-            ySensorNumber = Math.floor(yT / 8.0);
-            yDistanceFromCenter = Math.abs(ySensorNumber - 4) * 3.6;
-        } else {
-            // Resh:
-            Math.round(yT / 8.0);
-            if (yT < 8.0 * ySensorNumber) {
-                if (ySensorNumber <= 4) {
-                    yDistanceFromCenter = 1 + Math.abs(ySensorNumber - 4) * 3.6 + 3.6 / 2;
-                } else {
-                    yDistanceFromCenter = Math.abs(ySensorNumber - 4) * 3.6 + 3.6 / 2 - 1;
-                }
-            } else {
-                if (ySensorNumber <= 4) {
-                    yDistanceFromCenter = Math.abs(ySensorNumber - 4) * 3.6 + 3.6 / 2 - 1;
-                } else {
-                    yDistanceFromCenter = Math.abs(ySensorNumber - 4) * 3.6 + 3.6 / 2 + 1;
-                }
-
-            }
-        }
-
-        if (xSensorNumber <= 4) {
-            xDistanceFromCenter = -1 * xDistanceFromCenter;
-        }
-
-        if (ySensorNumber <= 4) {
-            yDistanceFromCenter = -1 * yDistanceFromCenter;
-        }
-        return Math.sqrt(Math.pow(xDistanceFromCenter, 2) + Math.pow(yDistanceFromCenter, 2));
 
     }
 
     calcScore(dis) {
-        if (dis < 5) {
-            return 1;
-        } else if (dis >= 5 && dis < 10) {
-            return 2;
-        } else if (dis >= 10 && dis < 15) {
-            return 3;
-        } else if (dis >= 15 && dis < 20) {
-            return 4;
-        } else if (dis >= 20 && dis < 25) {
+        if (dis <= 2) {
+            return 11;
+        } else if (dis > 2 && dis <= 4) {
+            return 10;
+        } else if (dis > 4 && dis <= 7) {
+            return 9;
+        } else if (dis > 7 && dis <= 10) {
+            return 8;
+        } else if (dis > 10 && dis <= 14) {
+            return 7;
+        } else if (dis > 14 && dis <= 17.5) {
+            return 6;
+        } else if (dis > 17.5 && dis <= 21.5) {
             return 5;
         } else {
-            return 6;
+            return 0;
         }
     }
 
     processData(input) {
-        const dataArray = input.replace('<,', '').replace(',>', '').split(',');
-        const dataLength = dataArray.length;
-        if (dataLength === 4) {
-            const primB = dataArray[1];
-            switch (primB) {
-                case ('S'):
-                    this.handleShot_MSG_NEW(dataArray[2], dataArray[3]);
-                    break;
-                case ('T'):
-                    this.hanldeBateryTime_MSG(dataArray);
-                    break;
-                case ('B'):
-                    this.handleBatteryPrecentage_MSG(dataArray);
-                    break;
-                case ('I'):
-                    this.handleImpact_MSG(dataArray);
-                    break;
-                default:
-                    break;
+        if (!this.shootingService.numberOfBullersPerDrill || this.pageData.counter < this.shootingService.numberOfBullersPerDrill) {
+            const dataArray = input.replace('<,', '').replace(',>', '').split(',');
+            this.notifyKeepAlive.next(dataArray[0]);
+            const dataLength = dataArray.length;
+            if (dataLength === 4) {
+                const primB = dataArray[1];
+                switch (primB) {
+                    case ('S'):
+                        this.handleShot_MSG_NEW(dataArray[2], dataArray[3]);
+                        break;
+                    case ('T'):
+                        this.hanldeBateryTime_MSG(dataArray);
+                        break;
+                    case ('B'):
+                        this.handleBatteryPrecentage_MSG(dataArray);
+                        break;
+                    case ('I'):
+                        this.handleImpact_MSG(dataArray);
+                        break;
+                    case ('SZ'):
+                        this.notifyHitNoHit.next(parseInt(dataArray[3].split('\n')[0]));
+                        break;
 
+                    default:
+                        break;
+
+                }
+            } else {
+                console.error('ProcessData Invalid: {0}, Not 4 Length', input);
             }
-        } else {
-            console.error('ProcessData Invalid: {0}, Not 4 Length', input);
         }
     }
 
@@ -424,6 +393,8 @@ export class GatewayService {
             // we want to place the bullet in the middle of the cordination and not the left 0 position so we reduce 7
             x = ((this.width / 490) * x) - 7;
             y = (this.height / 490) * y;
+            xPos = 311 - x;
+            yPos = y;
             this.hits.push({x, y});
             is128 = true;
         }
@@ -443,8 +414,8 @@ export class GatewayService {
         }
 
         let zeroData = {} as any;
+        zeroData = this.balisticCalculatorService.updateShot(saveX, saveY, this.hits);
         if (this.shootingService.getisZero()) {
-            zeroData = this.balisticCalculatorService.updateShot(saveX, saveY, this.hits);
             if (zeroData.isBarhan) {
                 this.hits[this.hits.length - 1].isBarhan = true;
             } else {
@@ -460,12 +431,12 @@ export class GatewayService {
             console.log('Shot After Drill Finished - Ignoring It');
 
         } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
-            this.updateStats(xPos, yPos, false, {x, y}, zeroData);
+            this.updateStats(xPos, yPos, false, {x: parseInt(saveX), y: parseInt(saveY)}, zeroData);
             this.finishDrill();
             //this.updateHistory();
         } else {
 
-            this.updateStats(xPos, yPos, false, {x, y}, zeroData);
+            this.updateStats(xPos, yPos, false, {x: parseInt(saveX), y: parseInt(saveY)}, zeroData);
         }
 
     }
@@ -551,61 +522,40 @@ export class GatewayService {
         return newHour + ':' + newMin + ':' + newSec;
     }
 
-    getSummarySplit(timeString: any, statsLength: number) {
-        const timeArray = timeString.split(':');
-        let hour = 0;
-        let minutes = 0;
-        let seconds = 0;
-        if (timeArray[0] !== '00') {
-            let time = 0;
-            if (timeArray[0].charAt(0) !== '0') {
+    getSummarySplit(stats: any, statsLength: number) {
+        if (stats) {
+            let totalSeconds = 0;
+            stats.forEach(stat => {
+                const arr = stat.pageData.splitTime.split(':');
+                const arr2 = arr[1].split('.');
                 // tslint:disable-next-line:radix
-                time = parseInt(timeArray[0]);
-            } else {
+                const minutes = parseInt(arr[0]) / 60;
                 // tslint:disable-next-line:radix
-                time = parseInt(timeArray[0].charAt(1));
+                const seconds = parseInt(arr2[0]);
+                // tslint:disable-next-line:radix
+                const mili = parseInt(arr2[1]) / 1000;
+                totalSeconds += minutes + seconds + mili;
+            });
+            const date = new Date(0);
+            totalSeconds = totalSeconds / statsLength;
+            date.setSeconds(totalSeconds); // specify value for SECONDS here
+            let milisec = '0';
+            if (totalSeconds % 1 !== 0) {
+                milisec = totalSeconds.toString().split('.')[1];
+                if (milisec.length >= 2) {
+                    milisec = milisec[1] + milisec[2];
+                    if (parseInt(milisec) > 60) {
+                        totalSeconds += 1;
+                        milisec = milisec[1];
+                    }
+                }
             }
-            hour = time * 3600;
+            const timeString = date.toISOString().substr(11, 8);
+            const finalArray = timeString.split(':');
+            return finalArray[1] + ':' + finalArray[2] + '.' + milisec;
+            debugger
         }
-
-        if (timeArray[1] !== '00') {
-            let time = 0;
-            if (timeArray[1].charAt(0) !== '0') {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[1]);
-            } else {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[1].charAt(1));
-            }
-            minutes = time * 60;
-        }
-
-        if (timeArray[2] !== '00') {
-            let time = 0;
-            if (timeArray[2].charAt(0) !== '0') {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[2]);
-            } else {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[2].charAt(1));
-            }
-            seconds = time;
-        }
-
-        const totalSeconds = hour + minutes + seconds;
-
-        const res = Math.round(totalSeconds / statsLength);
-        if (res < 10) {
-            return '00:00:0' + res;
-
-        } else if (res >= 10 && res < 100) {
-            if (res % 1 !== 0) {
-                const mili = Math.round(res % 1);
-                return '00:0' + Math.round(res) + ':' + mili;
-            } else {
-                return '00:' + Math.round(res) + ':00';
-            }
-        }
+        return null;
     }
 
     getSummaryDistanceFromCenter(stats: any[]): number {
@@ -653,29 +603,9 @@ export class GatewayService {
         }
 
         if (timeArray[1] !== '00') {
-            let time = 0;
-            if (timeArray[1].charAt(0) !== '0') {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[1]);
-            } else {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[1].charAt(1));
-            }
-            minutes = time * 60;
+            const secAndMili = timeArray[1].split('.');
+            return parseFloat(secAndMili[0] + '.' + secAndMili[1]);
         }
-
-        if (timeArray[2] !== '00') {
-            let time = 0;
-            if (timeArray[2].charAt(0) !== '0') {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[2]);
-            } else {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[2].charAt(1));
-            }
-            seconds = time;
-        }
-
         return hour + minutes + seconds;
     }
 
@@ -698,6 +628,10 @@ export class GatewayService {
     getTargetType(chosenTarget: any): TargetType {
         if (chosenTarget === '003' || chosenTarget === '004') {
             return TargetType.Type_64;
+        }
+        if (chosenTarget.indexOf('eMar') > -1) {
+            this.initService.isGateway = false;
+            return TargetType.HitNoHit;
         }
         // tslint:disable-next-line:radix
         const num = parseInt(chosenTarget.split('e')[1].split('n')[0]);

@@ -112,8 +112,8 @@ export class SignupComponent implements OnInit {
     }
 
 
-    onBackPressed(page) {
-        this.back.emit(page);
+    onBackPressed() {
+        this.back.emit();
     }
 
     pickImage(sourceType) {

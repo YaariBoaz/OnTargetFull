@@ -176,6 +176,7 @@ div.cards {
         box-sizing: border-box;
         padding: 0 24px;
         margin: 24px 0 16px 0;
+        justify-content: space-between;
 
         div.icon {
           display: flex;
@@ -398,8 +399,8 @@ div.cards {
 }
 
 img {
-  height: auto;
-  width: 250px;
+  height: 312px;
+  width: 312px;
 }
 
 .see-target {
@@ -770,8 +771,8 @@ img {
   }
 
   img {
-    height: auto;
-    width: 250px;
+    height: 312px;
+    width: 312px;
   }
   .see-target {
     font-family: Roboto;

@@ -60,6 +60,14 @@ export class SignupWizardComponent implements OnInit {
                 private previewAnyFile: PreviewAnyFile,
                 private wizardService: WizardService) {
 
+        this.platform.backButton.subscribeWithPriority(10, () => {
+            this.closWizard.emit();
+        });
+
+        document.addEventListener('ionBackButton', (ev: any) => {
+            this.closWizard.emit();
+        });
+
 
         const content: any = document.querySelector('mat-tab-header');
         if (content) {
@@ -208,15 +216,7 @@ export class SignupWizardComponent implements OnInit {
     }
 
     backToFirst() {
-        this.stepThreeComplete = false;
-        this.stepThreeActive = false;
-
-        this.stepTwoComplete = false;
-        this.stepTwoActive = false;
-
-        this.stepOneActive = true;
-        this.stepOneComplete = false;
-
+        this.closWizard.emit();
     }
 
     completeStepTwo(f) {

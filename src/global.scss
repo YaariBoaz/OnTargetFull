@@ -143,7 +143,9 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  background-color: white !important;
+  background-color: transparent !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 .dialog-bg {
@@ -154,7 +156,6 @@ select:-webkit-autofill:focus {
   background-color: white;
   padding: 0px !important;
 }
-
 
 .alert-button-group.sc-ion-alert-md {
   display: flex;

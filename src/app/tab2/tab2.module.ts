@@ -10,7 +10,10 @@ import {SelectTargetComponent} from '../shared/select-target-modal/select-target
 import {DrillComponent} from '../shared/drill/drill.component';
 import {SharedModule} from '../shared/shared.module';
 import {DrillModule} from '../shared/drill/drill.module';
-import { BalisticCalculatorComponent } from './balistic-calculator/balistic-calculator.component';
+import {BalisticCalculatorComponent} from './balistic-calculator/balistic-calculator.component';
+import {ChooseDrillComponent} from '../shared/ChooseDrill/choose-drill.component';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MaterialModule} from '../shared/material/material.module';
 
 // @ts-ignore
 // @ts-ignore
@@ -21,6 +24,7 @@ import { BalisticCalculatorComponent } from './balistic-calculator/balistic-calc
         MatIconModule,
         CommonModule,
         FormsModule,
+        MaterialModule,
         SharedModule,
         MatMenuModule,
         DrillModule,
@@ -29,8 +33,8 @@ import { BalisticCalculatorComponent } from './balistic-calculator/balistic-calc
             {path: 'select', component: Tab2Page},
             {path: 'select2', component: DrillComponent}])
     ],
-    providers: [/*Screenshot*/],
-    declarations: [Tab2Page, BalisticCalculatorComponent],
+    providers: [],
+    declarations: [Tab2Page, BalisticCalculatorComponent, ChooseDrillComponent],
     entryComponents: [],
     exports: [
         Tab2Page

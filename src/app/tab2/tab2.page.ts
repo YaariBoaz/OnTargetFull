@@ -1,19 +1,17 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
-import {ModalController, Platform} from '@ionic/angular';
-import {AlertController} from '@ionic/angular';
+import {AlertController, ModalController, Platform} from '@ionic/angular';
 import {ShootingService} from '../shared/services/shooting.service';
 import {StorageService} from '../shared/services/storage.service';
 import {TabsService} from '../tabs/tabs.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {BleService} from '../shared/services/ble.service';
 import {Router} from '@angular/router';
 import {InitService} from '../shared/services/init.service';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
-import {SightlistComponent} from '../tab3/sightlist/sightlist.component';
 import {MatDialog} from '@angular/material/dialog';
 import {BalisticCalculatorComponent} from './balistic-calculator/balistic-calculator.component';
 import {TargetType} from '../shared/drill/constants';
 import {BalisticCalculatorService} from '../shared/services/balistic-calculator.service';
+import {GatewayService} from '../shared/services/gateway.service';
 
 @Component({
     selector: 'app-tab2',
@@ -31,20 +29,21 @@ export class Tab2Page implements OnInit {
     mySights;
     myGuns;
     myAmmo;
-
+    chosenWeaponType = 0;
     drill: DrillObject = {
         name: '',
         numOfBullets: 5,
-        weapon: 'M4 Carbine',
+        weapon: 'Rifle',
         range: 150,
-        rangeUOM: 'Meters',
-        sight: 'V6 5-30 X 50',
-        ammo: '.17 Aguila',
+        rangeUOM: 'Yards',
+        sight: '',
+        ammo: '',
         // @ts-ignore
         drillType: null,
         shots: new Array<{ x, y }>()
     };
     connectedTarget = null;
+    targetType: TargetType;
 
     public get targetTypeEnum(): typeof TargetType {
         return TargetType;
@@ -64,6 +63,7 @@ export class Tab2Page implements OnInit {
                 private screenOrientation: ScreenOrientation,
                 public dialog: MatDialog,
                 private zone: NgZone,
+                private gatewayService: GatewayService,
                 private balisticCalculatorService: BalisticCalculatorService,
                 private router: Router,
                 private platform: Platform
@@ -71,6 +71,20 @@ export class Tab2Page implements OnInit {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.connectedTarget = this.shootingService.chosenTarget;
         this.initComponents();
+
+        const targetId = this.storageService.getItem('slectedTarget').name;
+        this.targetType = this.gatewayService.getTargetType(targetId);
+        if (this.targetType === TargetType.Type_64 || this.targetType === TargetType.Type_128) {
+            this.drill.drillType = DrillType.Regular;
+        } else {
+            this.drill.drillType = DrillType.HitNoHit;
+        }
+
+    }
+
+    ionViewWillEnter() {
+        const targetId = this.storageService.getItem('slectedTarget').name;
+        this.targetType = this.gatewayService.getTargetType(targetId);
     }
 
     ionViewWillLeave() {
@@ -106,15 +120,15 @@ export class Tab2Page implements OnInit {
         // this.mySights.push('M5');
         // this.mySights.push('Iron');
         // this.mySights.push('Iron');
-        this.mySights.splice(2, 0, 'Wizer');
+        // this.mySights.splice(2, 0, 'Wizer');
 
 
-        this.myGuns = this.storageService.getItem('gunList');
+        // this.myGuns = this.storageService.getItem('gunList');
         // this.myGuns.push('AR15');
         // this.myGuns.push('Jericho 941f');
-        this.myGuns.splice(2, 0, 'Circus');
+        // this.myGuns.splice(2, 0, 'Circus');
 
-        this.myAmmo = this.storageService.getItem('caliberList');
+        // this.myAmmo = this.storageService.getItem('caliberList');
 
         this.setSightsAndWeapons();
     }
@@ -148,7 +162,7 @@ export class Tab2Page implements OnInit {
     startSesstion() {
         if (this.drill.drillType === this.drillTypeEnum.Zero) {
             this.shootingService.setIsZero(true);
-        }else{
+        } else {
             this.shootingService.setIsZero(false);
         }
         this.shootingService.drillStarteEvent.next(true);
@@ -226,7 +240,7 @@ export class Tab2Page implements OnInit {
                 panelClass: 'dialog-bg'
             });
             dialogRef.afterClosed().subscribe(data => {
-                if (!data  || !data.isBack) {
+                if (!data || !data.isBack) {
                     this.router.navigateByUrl('/tab2/select2');
                 }
             });
@@ -253,11 +267,13 @@ export interface DrillObject {
     shots: Array<{ x: number, y: number }>;
 }
 
+
 export enum DrillType {
     Regular,
     Hostage,
     ABC,
     Zero,
     Surprise,
-    Surprise3Z
+    Surprise3Z,
+    HitNoHit = 6
 }

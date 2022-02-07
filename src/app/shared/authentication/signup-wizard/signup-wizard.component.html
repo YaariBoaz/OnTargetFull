@@ -1,152 +1,152 @@
 <section class="sign-up-wizard">
-    <div class="back" *ngIf="stepTwoActive || stepThreeActive || stepFourActive">
-        <img (click)="back()" src="assets/icons/Arrow%20@3x.png"><span>Back </span>
-    </div>
-    <div class="up">
-        <p class="sign-up-title"> Sign Up</p>
-        <div class="step-circles">
-            <div class="circle" [ngClass]="{'active': stepOneActive}">
-                <p *ngIf="!stepOneComplete">1</p>
-                <p *ngIf="stepOneComplete">
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24.74 16.9">
-                        <path data-name="Path 16037"
-                              d="M24.32.43a1.47,1.47,0,0,0-2.07,0L9.31,13.37,2.5,6.56a1.45,1.45,0,0,0-2.07,0,1.47,1.47,0,0,0,0,2.07l7.84,7.84a1.47,1.47,0,0,0,2.07,0l14-14A1.46,1.46,0,0,0,24.32.43Z"
-                              transform="translate(0 0)"/>
-                    </svg>
-                </p>
-            </div>
-            <div class="separator" [ngClass]="{'active': stepTwoActive}"></div>
-            <div class="circle" [ngClass]="{'active': stepTwoActive}">
-                <p *ngIf="!stepTwoComplete">2</p>
-                <p *ngIf="stepTwoComplete">
-                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24.74 16.9">
-                        <path data-name="Path 16037"
-                              d="M24.32.43a1.47,1.47,0,0,0-2.07,0L9.31,13.37,2.5,6.56a1.45,1.45,0,0,0-2.07,0,1.47,1.47,0,0,0,0,2.07l7.84,7.84a1.47,1.47,0,0,0,2.07,0l14-14A1.46,1.46,0,0,0,24.32.43Z"
-                              transform="translate(0 0)"/>
-                    </svg>
-                </p>
-            </div>
-<!--            <div class="separator" [ngClass]="{'active': stepTwoComplete }"></div>-->
-<!--            <div class="circle" [ngClass]="{'active': stepThreeActive}"><p>3</p></div>-->
-        </div>
-    </div>
+<!--    <div class="back" *ngIf="stepTwoActive || stepThreeActive || stepFourActive">-->
+<!--        <img (click)="back()" src="assets/icons/Arrow%20@3x.png"><span>Back </span>-->
+<!--    </div>-->
+<!--    <div class="up">-->
+<!--        <p class="sign-up-title"> Sign Up</p>-->
+<!--        <div class="step-circles">-->
+<!--            <div class="circle" [ngClass]="{'active': stepOneActive}">-->
+<!--                <p *ngIf="!stepOneComplete">1</p>-->
+<!--                <p *ngIf="stepOneComplete">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24.74 16.9">-->
+<!--                        <path data-name="Path 16037"-->
+<!--                              d="M24.32.43a1.47,1.47,0,0,0-2.07,0L9.31,13.37,2.5,6.56a1.45,1.45,0,0,0-2.07,0,1.47,1.47,0,0,0,0,2.07l7.84,7.84a1.47,1.47,0,0,0,2.07,0l14-14A1.46,1.46,0,0,0,24.32.43Z"-->
+<!--                              transform="translate(0 0)"/>-->
+<!--                    </svg>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--            <div class="separator" [ngClass]="{'active': stepTwoActive}"></div>-->
+<!--            <div class="circle" [ngClass]="{'active': stepTwoActive}">-->
+<!--                <p *ngIf="!stepTwoComplete">2</p>-->
+<!--                <p *ngIf="stepTwoComplete">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24.74 16.9">-->
+<!--                        <path data-name="Path 16037"-->
+<!--                              d="M24.32.43a1.47,1.47,0,0,0-2.07,0L9.31,13.37,2.5,6.56a1.45,1.45,0,0,0-2.07,0,1.47,1.47,0,0,0,0,2.07l7.84,7.84a1.47,1.47,0,0,0,2.07,0l14-14A1.46,1.46,0,0,0,24.32.43Z"-->
+<!--                              transform="translate(0 0)"/>-->
+<!--                    </svg>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--&lt;!&ndash;            <div class="separator" [ngClass]="{'active': stepTwoComplete }"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="circle" [ngClass]="{'active': stepThreeActive}"><p>3</p></div>&ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <!-- Step ONE -->
-    <ng-container *ngIf="stepOneComplete && !stepTwoComplete">
-        <div class="terms">
-            <div class="terms-and-condition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="66.667" height="80" viewBox="0 0 66.667 80">
-                    <defs>
-                        <style>
-                            .cls-1 {
-                                fill: #ce564b
-                            }
-                        </style>
-                    </defs>
-                    <g id="paper" transform="translate(-40)">
-                        <g id="Group_735" data-name="Group 735" transform="translate(56 57.333)">
-                            <g id="Group_734" data-name="Group 734">
-                                <path id="Path_16025"
-                                      d="M140 344h-2.667a1.333 1.333 0 0 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16025" transform="translate(-136 -344)"/>
-                            </g>
-                        </g>
-                        <g id="Group_737" data-name="Group 737" transform="translate(64 57.333)">
-                            <g id="Group_736" data-name="Group 736">
-                                <path id="Path_16026"
-                                      d="M217.333 344h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 0 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16026" transform="translate(-184 -344)"/>
-                            </g>
-                        </g>
-                        <g id="Group_739" data-name="Group 739" transform="translate(56 49.333)">
-                            <g id="Group_738" data-name="Group 738">
-                                <path id="Path_16027"
-                                      d="M140 296h-2.667a1.333 1.333 0 1 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16027" transform="translate(-136 -296)"/>
-                            </g>
-                        </g>
-                        <g id="Group_741" data-name="Group 741" transform="translate(64 49.333)">
-                            <g id="Group_740" data-name="Group 740">
-                                <path id="Path_16028"
-                                      d="M217.333 296h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16028" transform="translate(-184 -296)"/>
-                            </g>
-                        </g>
-                        <g id="Group_743" data-name="Group 743" transform="translate(56 41.333)">
-                            <g id="Group_742" data-name="Group 742">
-                                <path id="Path_16029"
-                                      d="M140 248h-2.667a1.333 1.333 0 0 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16029" transform="translate(-136 -248)"/>
-                            </g>
-                        </g>
-                        <g id="Group_745" data-name="Group 745" transform="translate(64 41.333)">
-                            <g id="Group_744" data-name="Group 744">
-                                <path id="Path_16030"
-                                      d="M217.333 248h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16030" transform="translate(-184 -248)"/>
-                            </g>
-                        </g>
-                        <g id="Group_747" data-name="Group 747" transform="translate(56 33.333)">
-                            <g id="Group_746" data-name="Group 746">
-                                <path id="Path_16031"
-                                      d="M140 200h-2.667a1.333 1.333 0 0 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16031" transform="translate(-136 -200)"/>
-                            </g>
-                        </g>
-                        <g id="Group_749" data-name="Group 749" transform="translate(64 33.333)">
-                            <g id="Group_748" data-name="Group 748">
-                                <path id="Path_16032"
-                                      d="M217.333 200h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16032" transform="translate(-184 -200)"/>
-                            </g>
-                        </g>
-                        <g id="Group_751" data-name="Group 751" transform="translate(56 25.333)">
-                            <g id="Group_750" data-name="Group 750">
-                                <path id="Path_16033"
-                                      d="M140 152h-2.667a1.333 1.333 0 0 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16033" transform="translate(-136 -152)"/>
-                            </g>
-                        </g>
-                        <g id="Group_753" data-name="Group 753" transform="translate(64 25.333)">
-                            <g id="Group_752" data-name="Group 752">
-                                <path id="Path_16034"
-                                      d="M217.333 152h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 1 0 0-2.667z"
-                                      class="cls-1" data-name="Path 16034" transform="translate(-184 -152)"/>
-                            </g>
-                        </g>
-                        <g id="Group_755" data-name="Group 755" transform="translate(40)">
-                            <g id="Group_754" data-name="Group 754">
-                                <path id="Path_16035"
-                                      d="M106.649 19.916a1.26 1.26 0 0 0-.068-.343c-.015-.043-.025-.084-.044-.125a1.333 1.333 0 0 0-.267-.391L87.6.391a1.333 1.333 0 0 0-.391-.267c-.041-.019-.083-.029-.124-.044a1.328 1.328 0 0 0-.345-.069C86.721.015 86.7 0 86.667 0H49.333A1.333 1.333 0 0 0 48 1.333v4h-6.667A1.333 1.333 0 0 0 40 6.667v72A1.333 1.333 0 0 0 41.333 80h56a1.333 1.333 0 0 0 1.333-1.333V72h6.667a1.333 1.333 0 0 0 1.333-1.333V20c.001-.029-.014-.055-.017-.084zM88 4.552l14.115 14.115H88zm8 72.781H42.667V8H48v62.667A1.333 1.333 0 0 0 49.333 72H96zm8-8H50.667V2.667h34.666V20a1.333 1.333 0 0 0 1.333 1.333H104z"
-                                      class="cls-1" data-name="Path 16035" transform="translate(-40)"/>
-                            </g>
-                        </g>
-                        <g id="Group_757" data-name="Group 757" transform="translate(56 12)">
-                            <g id="Group_756" data-name="Group 756">
-                                <path id="Path_16036"
-                                      d="M145.333 72h-8A1.333 1.333 0 0 0 136 73.333v8a1.333 1.333 0 0 0 1.333 1.333h8a1.333 1.333 0 0 0 1.333-1.333v-8A1.333 1.333 0 0 0 145.333 72zM144 80h-5.333v-5.333H144z"
-                                      class="cls-1" data-name="Path 16036" transform="translate(-136 -72)"/>
-                            </g>
-                        </g>
-                    </g>
-                </svg>
-                <p class="terms-condition-text">
-                    By using this application, You agree to the
-                    <a (click)="isShowUOT = !isShowUOT">Terms And Condition</a> and<br>
-                    <a (click)="isPrivatePolicy = !isPrivatePolicy">Privacy Policy</a>
-                </p>
-            </div>
-        </div>
-        <div class="controls">
-            <button class="confirm" (click)="finishWizardNew()">ACCEPT AND SAVE</button>
-            <button class="cancel" (click)="closWizard.emit()">CANCEL</button>
-        </div>
-    </ng-container>
+<!--    &lt;!&ndash; Step ONE &ndash;&gt;-->
+<!--    <ng-container *ngIf="stepOneComplete && !stepTwoComplete">-->
+<!--        <div class="terms">-->
+<!--            <div class="terms-and-condition">-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" width="66.667" height="80" viewBox="0 0 66.667 80">-->
+<!--                    <defs>-->
+<!--                        <style>-->
+<!--                            .cls-1 {-->
+<!--                                fill: #ce564b-->
+<!--                            }-->
+<!--                        </style>-->
+<!--                    </defs>-->
+<!--                    <g id="paper" transform="translate(-40)">-->
+<!--                        <g id="Group_735" data-name="Group 735" transform="translate(56 57.333)">-->
+<!--                            <g id="Group_734" data-name="Group 734">-->
+<!--                                <path id="Path_16025"-->
+<!--                                      d="M140 344h-2.667a1.333 1.333 0 0 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16025" transform="translate(-136 -344)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_737" data-name="Group 737" transform="translate(64 57.333)">-->
+<!--                            <g id="Group_736" data-name="Group 736">-->
+<!--                                <path id="Path_16026"-->
+<!--                                      d="M217.333 344h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 0 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16026" transform="translate(-184 -344)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_739" data-name="Group 739" transform="translate(56 49.333)">-->
+<!--                            <g id="Group_738" data-name="Group 738">-->
+<!--                                <path id="Path_16027"-->
+<!--                                      d="M140 296h-2.667a1.333 1.333 0 1 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16027" transform="translate(-136 -296)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_741" data-name="Group 741" transform="translate(64 49.333)">-->
+<!--                            <g id="Group_740" data-name="Group 740">-->
+<!--                                <path id="Path_16028"-->
+<!--                                      d="M217.333 296h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16028" transform="translate(-184 -296)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_743" data-name="Group 743" transform="translate(56 41.333)">-->
+<!--                            <g id="Group_742" data-name="Group 742">-->
+<!--                                <path id="Path_16029"-->
+<!--                                      d="M140 248h-2.667a1.333 1.333 0 0 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16029" transform="translate(-136 -248)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_745" data-name="Group 745" transform="translate(64 41.333)">-->
+<!--                            <g id="Group_744" data-name="Group 744">-->
+<!--                                <path id="Path_16030"-->
+<!--                                      d="M217.333 248h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16030" transform="translate(-184 -248)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_747" data-name="Group 747" transform="translate(56 33.333)">-->
+<!--                            <g id="Group_746" data-name="Group 746">-->
+<!--                                <path id="Path_16031"-->
+<!--                                      d="M140 200h-2.667a1.333 1.333 0 0 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16031" transform="translate(-136 -200)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_749" data-name="Group 749" transform="translate(64 33.333)">-->
+<!--                            <g id="Group_748" data-name="Group 748">-->
+<!--                                <path id="Path_16032"-->
+<!--                                      d="M217.333 200h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16032" transform="translate(-184 -200)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_751" data-name="Group 751" transform="translate(56 25.333)">-->
+<!--                            <g id="Group_750" data-name="Group 750">-->
+<!--                                <path id="Path_16033"-->
+<!--                                      d="M140 152h-2.667a1.333 1.333 0 0 0 0 2.667H140a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16033" transform="translate(-136 -152)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_753" data-name="Group 753" transform="translate(64 25.333)">-->
+<!--                            <g id="Group_752" data-name="Group 752">-->
+<!--                                <path id="Path_16034"-->
+<!--                                      d="M217.333 152h-32a1.333 1.333 0 1 0 0 2.667h32a1.333 1.333 0 1 0 0-2.667z"-->
+<!--                                      class="cls-1" data-name="Path 16034" transform="translate(-184 -152)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_755" data-name="Group 755" transform="translate(40)">-->
+<!--                            <g id="Group_754" data-name="Group 754">-->
+<!--                                <path id="Path_16035"-->
+<!--                                      d="M106.649 19.916a1.26 1.26 0 0 0-.068-.343c-.015-.043-.025-.084-.044-.125a1.333 1.333 0 0 0-.267-.391L87.6.391a1.333 1.333 0 0 0-.391-.267c-.041-.019-.083-.029-.124-.044a1.328 1.328 0 0 0-.345-.069C86.721.015 86.7 0 86.667 0H49.333A1.333 1.333 0 0 0 48 1.333v4h-6.667A1.333 1.333 0 0 0 40 6.667v72A1.333 1.333 0 0 0 41.333 80h56a1.333 1.333 0 0 0 1.333-1.333V72h6.667a1.333 1.333 0 0 0 1.333-1.333V20c.001-.029-.014-.055-.017-.084zM88 4.552l14.115 14.115H88zm8 72.781H42.667V8H48v62.667A1.333 1.333 0 0 0 49.333 72H96zm8-8H50.667V2.667h34.666V20a1.333 1.333 0 0 0 1.333 1.333H104z"-->
+<!--                                      class="cls-1" data-name="Path 16035" transform="translate(-40)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                        <g id="Group_757" data-name="Group 757" transform="translate(56 12)">-->
+<!--                            <g id="Group_756" data-name="Group 756">-->
+<!--                                <path id="Path_16036"-->
+<!--                                      d="M145.333 72h-8A1.333 1.333 0 0 0 136 73.333v8a1.333 1.333 0 0 0 1.333 1.333h8a1.333 1.333 0 0 0 1.333-1.333v-8A1.333 1.333 0 0 0 145.333 72zM144 80h-5.333v-5.333H144z"-->
+<!--                                      class="cls-1" data-name="Path 16036" transform="translate(-136 -72)"/>-->
+<!--                            </g>-->
+<!--                        </g>-->
+<!--                    </g>-->
+<!--                </svg>-->
+<!--                <p class="terms-condition-text">-->
+<!--                    By using this application, You agree to the-->
+<!--                    <a (click)="isShowUOT = !isShowUOT">Terms And Condition</a> and<br>-->
+<!--                    <a (click)="isPrivatePolicy = !isPrivatePolicy">Privacy Policy</a>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="controls">-->
+<!--            <button class="confirm" (click)="finishWizardNew()">ACCEPT AND SAVE</button>-->
+<!--            <button class="cancel" (click)="closWizard.emit()">CANCEL</button>-->
+<!--        </div>-->
+<!--    </ng-container>-->
 
     <app-signup
             *ngIf="!stepOneComplete"
             (stepTwoComplete)="completeStepTwo($event)"
-            (backToFirst)="backToFirst()">
+            (back)="backToFirst()">
     </app-signup>
 
 

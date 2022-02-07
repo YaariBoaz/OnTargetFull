@@ -26,21 +26,26 @@ import {GatewayService} from './shared/services/gateway.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpErrorInterceptor} from './shared/services/interceptor.service';
 import {TabsPageModule} from './tabs/tabs.module';
-import {NoConnetionErroComponent} from './shared/popups/no-connection/no-connetion-error';
 import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
 import {NativePageTransitions} from '@ionic-native/native-page-transitions/ngx';
 import {MaterialModule} from './shared/material/material.module';
 import {enterAnimation} from './shared/animation/nav-animation';
 import {SocialSharing} from '@ionic-native/social-sharing/ngx';
-import { NgxCaptureModule } from 'ngx-capture';
+import {NgxCaptureModule} from 'ngx-capture';
+import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+import { HammerModule } from '@angular/platform-browser';
+import { ActivityLogComponent } from './shared/activity-log/activity-log.component';
+
+
 
 
 // @ts-ignore
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent,ActivityLogComponent],
     entryComponents: [ErrorModalComponent],
     imports: [
         BrowserModule,
+        HammerModule,
         CommonModule,
         ReactiveFormsModule,
         SharedModule,
@@ -54,10 +59,11 @@ import { NgxCaptureModule } from 'ngx-capture';
         BrowserAnimationsModule,
         TabsPageModule,
         MaterialModule,
-        NgxCaptureModule
+        NgxCaptureModule,
     ],
     providers: [
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+        AndroidPermissions,
         InitService,
         NativePageTransitions,
         StorageService,

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {countUpTimerConfigModel, CountupTimerService, timerTexts} from 'ngx-timer';
 import {ShootingService} from '../services/shooting.service';
 import {DashboardModel} from '../models/dashboard-model';
-import {DrillModel} from '../models/DrillModel';
+import {DrillModel, DrillModelHitNoHit} from '../models/DrillModel';
 import {StorageService} from '../services/storage.service';
 import {DrillObject} from '../../tab2/tab2.page';
 import {UserService} from '../services/user.service';
@@ -11,6 +11,8 @@ import {tap} from 'rxjs/operators';
 import {BleService} from '../services/ble.service';
 import {BehaviorSubject, interval, of, Subscription} from 'rxjs';
 import * as moment from 'moment';
+import {GatewayService} from '../services/gateway.service';
+import {ShotItem} from './constants';
 
 @Injectable({
     providedIn: 'root'
@@ -48,8 +50,8 @@ export class HitNohitService {
     summaryObject = {
         points: 0,
         distanceFromCenter: 0,
-        split: 0,
-        totalTime: 0,
+        split: '0',
+        totalTime: '0',
         counter: 0
     };
     drill: DrillObject;
@@ -77,12 +79,13 @@ export class HitNohitService {
         lastShotTime: null,
         totalTime: '00:00:00'
     };
-    private firstTime: string;
-    private lastTime: string;
+    private firstTime: Date;
+    private lastTime: Date;
 
     constructor(private shootingService: ShootingService,
                 private storageService: StorageService,
                 private userService: UserService,
+                private gateway: GatewayService,
                 private bleService: BleService,
                 private apiService: ApiService) {
         this.startListening();
@@ -100,6 +103,12 @@ export class HitNohitService {
                 this.didFirstStamArrive = true;
             }
         });
+
+        this.gateway.notifyHitNoHit.subscribe(data => {
+            if (!this.drillIsFinished) {
+                this.updateStats(data);
+            }
+        });
     }
 
     shotArrived(num) {
@@ -112,7 +121,8 @@ export class HitNohitService {
     initStats() {
         this.stats = [];
         this.drillIsFinished = false;
-        this.pageData = this.DEFAULT_PAGE_DATA;
+        this.pageData = Object.assign(this.pageData, this.DEFAULT_PAGE_DATA);
+        this.summaryObject = Object.assign(this.summaryObject, this.DEFAULT_SUMMARY_OBJECT);
         this.pageData.counter = 0;
         this.bleService.resetShots();
         this.startTimer();
@@ -121,46 +131,76 @@ export class HitNohitService {
 
     startTimer() {
         // tslint:disable-next-line:no-shadowed-variable max-line-length
-        const now = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        const now = new Date();
         this.firstTime = now;
         this.lastTime = now;
     }
 
 
     updateStats(num) {
+
         this.pageData.counter++;
         // tslint:disable-next-line:max-line-length
-        const now = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        const now = new Date();
 
         const split = moment.utc(moment(now, 'DD/MM/YYYY HH:mm:ss').diff(moment(this.lastTime,
-            'DD/MM/YYYY HH:mm:ss'))).format('HH:mm:ss');
+            'DD/MM/YYYY HH:mm:ss'))).format('mm:ss.SS');
         const total = moment.utc(moment(now, 'DD/MM/YYYY HH:mm:ss').diff(moment(this.firstTime,
-            'DD/MM/YYYY HH:mm:ss'))).format('HH:mm:ss');
-
+            'DD/MM/YYYY HH:mm:ss'))).format('mm:ss.SS');
+        this.finalSplits.push();
         // tslint:disable-next-line:max-line-length
-        this.lastTime = new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        this.lastTime = new Date();
 
         this.pageData.totalTime = total;
         this.pageData.splitTime = split;
+        this.pageData.points = 2;
         this.stats.push({pageData: Object.assign({}, this.pageData), interval: this.pageData.totalTime});
+
+
+        let points = 0;
+        let distanceFromCenter = 0;
+
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.stats.length; i++) {
+            points += this.stats[i].pageData.points;
+            distanceFromCenter += this.stats[i].pageData.distanceFromCenter;
+        }
 
 
         this.summaryObject = {
             // @ts-ignore
-            split: this.getSummarySplit(this.pageData.totalTime, this.stats.length),
-            totalTime: this.stats[this.stats.length - 1].interval,
+            points,
+            distanceFromCenter,
+            split: this.getSummarySplit(this.stats, this.stats.length),
+            totalTime: total,
             counter: this.stats[this.stats.length - 1].pageData.counter
         };
 
         let isFinish = false;
         if (this.pageData.counter >= this.shootingService.numberOfBullersPerDrill) {
             this.finishDrill();
-            // this.updateHistory();
             isFinish = true;
-            this.drillFinishedNotify.next(true);
         }
 
         this.notifyHitArrived(isFinish, num);
+    }
+
+    getShotItems() {
+        const shotItems: ShotItem[] = new Array();
+        this.stats.forEach(stat => {
+            shotItems.push({
+                disFromCenter: stat.pageData.distanceFromCenter.toString(),
+                hitHostage: false,
+                isHeader: false,
+                isOdd: false,
+                orbital: '0',
+                score: this.pageData.points.toString(),
+                shotNumber: '0',
+                time: stat.pageData.totalTime,
+                timeSplit: stat.pageData.splitTime
+            });
+        });
+        return shotItems;
     }
 
     updateHistory() {
@@ -179,16 +219,17 @@ export class HitNohitService {
         });
 
 
-        const drill: DrillModel = {
+        const drill: DrillModelHitNoHit = {
             date: new Date().toJSON(),
-            drillType: this.drill.drillType,
             day: new Date().toLocaleString('en-us', {weekday: 'long'}),
             hits: this.stats.length,
-            points: this.pageData.points,
+            points: this.summaryObject.points,
             range: this.drill.range,
-            splitTimes: this.finalSplits,
+            numericSplitAvg: this.timeStringToSeconds(this.summaryObject.split),
             totalShots: this.drill.numOfBullets,
             userId: this.userService.getUserId(),
+            splitItems: splits,
+            shotItems: this.getShotItems(),
         };
 
 
@@ -200,7 +241,7 @@ export class HitNohitService {
             range: this.drill.range,
             timeLimit: null,
             splitAvg: this.pageData.splitTime,
-            points: this.pageData.points,
+            points: this.summaryObject.points,
             avgDistFromCenter: this.pageData.distanceFromCenter,
             hits: this.stats,
             stata: this.stats,
@@ -211,15 +252,46 @@ export class HitNohitService {
         this.storageService.setItem('homeData', updatedData);
         this.apiService.syncDataHitNoHit(drill).subscribe(data => {
             this.apiService.getDashboardData(this.userService.getUserId()).subscribe((data1) => {
-                this.storageService.setItem('homeData', data1);
+                this.storageService.setItem('homeData', data);
             });
         });
 
     }
 
+    timeStringToSeconds(timeString: string): number {
+        const timeArray = timeString.split(':');
+        let hour = 0;
+        let minutes = 0;
+        const seconds = 0;
+        if (timeArray[0] !== '00') {
+            let time = 0;
+            if (timeArray[0].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[0]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[0].charAt(1));
+            }
+            hour = time * 3600;
+        }
+
+        if (timeArray[1] !== '00') {
+            let time = 0;
+            if (timeArray[1].charAt(0) !== '0') {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[1]);
+            } else {
+                // tslint:disable-next-line:radix
+                time = parseInt(timeArray[1].charAt(1));
+            }
+            minutes = time * 60;
+        }
+        return hour + minutes + seconds;
+    }
+
+
     resetDrill() {
-        this.initStats();
-        this.resetDrillSubject.next(true);
+
     }
 
 
@@ -252,9 +324,12 @@ export class HitNohitService {
         let points = 0;
         let distanceFromCenter = 0;
         let split = 0;
+
         this.stats.forEach(stat => {
             points += 2;
             distanceFromCenter += stat.pageData.distanceFromCenter;
+            const timeArray = stat.pageData.splitTime.split(':');
+            return timeArray[0] + ':' + timeArray[1];
             const arr = stat.pageData.splitTime.split(':');
             // tslint:disable-next-line:radix
             const leftSide = parseInt(arr[0]);
@@ -273,15 +348,51 @@ export class HitNohitService {
         this.summaryObject = {
             points,
             distanceFromCenter: distanceFromCenter / statsLength,
-            split: finalSplit,
+            split: this.getSummarySplit(this.stats, this.stats.length),
             totalTime: this.stats[statsLength - 1].interval,
             counter: this.stats[statsLength - 1].pageData.counter
         };
     }
 
+    getSummarySplit(stats: any, statsLength: number) {
+        if (stats) {
+            let totalSeconds = 0;
+            stats.forEach(stat => {
+                const arr = stat.pageData.splitTime.split(':');
+                const arr2 = arr[1].split('.');
+                // tslint:disable-next-line:radix
+                const minutes = parseInt(arr[0]) / 60;
+                // tslint:disable-next-line:radix
+                const seconds = parseInt(arr2[0]);
+                // tslint:disable-next-line:radix
+                const mili = parseInt(arr2[1]) / 1000;
+                totalSeconds += minutes + seconds + mili;
+            });
+            const date = new Date(0);
+            totalSeconds = totalSeconds / statsLength;
+            date.setSeconds(totalSeconds); // specify value for SECONDS here
+            let milisec = '0';
+            if (totalSeconds % 1 !== 0) {
+                milisec = totalSeconds.toString().split('.')[1];
+                if (milisec.length >= 2) {
+                    milisec = milisec[1] + milisec[2];
+                    if (parseInt(milisec) > 60) {
+                        totalSeconds += 1;
+                        milisec = milisec[1];
+                    }
+                }
+            }
+            const timeString = date.toISOString().substr(11, 8);
+            const finalArray = timeString.split(':');
+            return finalArray[1] + ':' + finalArray[2] + '.' + milisec;
+            debugger
+        }
+        return null;
+    }
+
     notifyHitArrived(isFinish, num) {
         this.hitArrived.next({
-            hitNumber: num + 1,
+            hitNumber: num,
             statsData: {
                 stats: this.stats,
                 pageData: this.pageData,
@@ -322,62 +433,6 @@ export class HitNohitService {
         });
     }
 
-    private getSummarySplit(timeString: any, statsLength: number) {
-        const timeArray = timeString.split(':');
-        let hour = 0;
-        let minutes = 0;
-        let seconds = 0;
-        if (timeArray[0] !== '00') {
-            let time = 0;
-            if (timeArray[0].charAt(0) !== '0') {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[0]);
-            } else {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[0].charAt(1));
-            }
-            hour = time * 3600;
-        }
-
-        if (timeArray[1] !== '00') {
-            let time = 0;
-            if (timeArray[1].charAt(0) !== '0') {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[1]);
-            } else {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[1].charAt(1));
-            }
-            minutes = time * 60;
-        }
-
-        if (timeArray[2] !== '00') {
-            let time = 0;
-            if (timeArray[2].charAt(0) !== '0') {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[2]);
-            } else {
-                // tslint:disable-next-line:radix
-                time = parseInt(timeArray[2].charAt(1));
-            }
-            seconds = time;
-        }
-
-        const totalSeconds = hour + minutes + seconds;
-
-        const res = Math.round(totalSeconds / statsLength);
-        if (res < 10) {
-            return '00:00:0' + res;
-
-        } else if (res >= 10 && res < 100) {
-            if (res % 1 !== 0) {
-                const mili = Math.round(res % 1);
-                return '00:0' + Math.round(res) + ':' + mili;
-            } else {
-                return '00:' + Math.round(res) + ':00';
-            }
-        }
-    }
 
 }
 

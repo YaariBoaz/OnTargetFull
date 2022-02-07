@@ -24,60 +24,27 @@
     </header>
 
     <div class="main-content">
-<!--        <div class="drill-name-wrapper">-->
-<!--            <span> DRILL NAME </span>-->
-<!--            <input type="text" matInput placeholder="Enter Drill Name" [(ngModel)]="drill.name">-->
-<!--        </div>-->
-
-<!--        <div class="basic-settings">-->
-<!--            <p class="red-title">BASIC SETTINGS</p>-->
-
-
-<!--            <div class="options">-->
-<!--                <div class="row">-->
-<!--                    <div class="icon-and-text">-->
-<!--                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">-->
-<!--                            <g id="Group_768" data-name="Group 768" transform="translate(-24 -190)">-->
-<!--                                <rect id="Rectangle_1746" width="24" height="24" fill="#363636"-->
-<!--                                      data-name="Rectangle 1746"-->
-<!--                                      rx="5" transform="translate(24 190)"/>-->
-<!--                                <g id="Connected-icon-2709" transform="translate(-346 183)">-->
-<!--                                    <path id="Rectangle_366" fill="none" d="M0 0H16V16H0z" data-name="Rectangle 366"-->
-<!--                                          transform="translate(374 11)"/>-->
-<!--                                    <path id="goal" fill="#fff"-->
-<!--                                          d="M16.679 4.3l.873-.873a.527.527 0 0 0-.329-.9L15.6 2.4 15.467.777a.527.527 0 0 0-.9-.328l-.873.873A9 9 0 0 0 2.636 15.364 9 9 0 0 0 16.679 4.3zM14.59 2.929a.528.528 0 0 0 .481.481l.929.079-1.258 1.261-1.375-.116-.117-1.376L14.511 2zM10.793 9a1.795 1.795 0 1 1-.955-1.584L8.627 8.627a.527.527 0 1 0 .746.746l1.211-1.211a1.781 1.781 0 0 1 .209.838zM10.6 6.649a2.851 2.851 0 1 0 .746.746l1.506-1.506a4.963 4.963 0 1 1-.746-.746zm4.013 7.969A7.945 7.945 0 1 1 3.382 3.382a7.949 7.949 0 0 1 9.544-1.291l-.595.595a.527.527 0 0 0-.154.359v.058l.071.841a6.017 6.017 0 1 0 1.806 1.806l.841.071h.127l.033-.006.021-.005.032-.01.02-.007.031-.013.019-.009.03-.017.018-.01.03-.022.014-.01a.523.523 0 0 0 .041-.037l.595-.595a7.949 7.949 0 0 1-1.291 9.544zm0 0"-->
-<!--                                          transform="translate(373 10)"/>-->
-<!--                                </g>-->
-<!--                            </g>-->
-<!--                        </svg>-->
-<!--                        <p>CONNECTED TARGET:</p>-->
-<!--                    </div>-->
-<!--                    <p class="connected-target">{{connectedTarget}}</p>-->
-<!--                </div>-->
-
-<!--                <div class="row">-->
-<!--                    <div class="icon-and-text">-->
-<!--                     <img src="../../assets/icons/Group%20711.svg" style="padding-right: 17px;">-->
-<!--                        <p>CHOOSE TARGET:</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
         <ion-slides #slides effect=“slide” class="sliders" pager="false"
                     [options]="slideOpts ">
-            <ion-slide>
+            <ion-slide [class.disabled]="targetType !== 4">
                 <img #img src="../../assets/Artboard1.jpg" alt="target-cartboard"
+                     (click)="drill.drillType = drillTypeEnum.HitNoHit"
+                     [ngClass]="{'selected': drill.drillType === drillTypeEnum.HitNoHit }" [attr.id]="'Hit/NoHit'">
+                <span *ngIf="drill.drillType ===drillTypeEnum.HitNoHit" class="check">&#10003;</span>
+            </ion-slide>
+            <ion-slide [class.disabled]="targetType !== 0 && targetType !== 1 && targetType !== 2">
+                <img #img src="../../assets/Artboard-bull.jpg" alt="target-cartboard"
                      (click)="drill.drillType = drillTypeEnum.Regular"
-                     [ngClass]="{'selected': drill.drillType === drillTypeEnum.Regular }" [attr.id]="'Hit/NoHit'">
+                     [ngClass]="{'selected': drill.drillType === drillTypeEnum.Regular }" [attr.id]="'Bullseye'">
                 <span *ngIf="drill.drillType ===drillTypeEnum.Regular" class="check">&#10003;</span>
             </ion-slide>
-            <ion-slide>
-                <img #img2 src="../../assets/Artboard2.jpg" alt="target-cartboard"
-                     (click)="drill.drillType = drillTypeEnum.Hostage"
-                     [ngClass]="{'selected': drill.drillType === drillTypeEnum.Hostage }" [attr.id]="'Hostage'">
-                <span *ngIf="drill.drillType === drillTypeEnum.Hostage" class="check">&#10003;</span>
-            </ion-slide>
-            <ion-slide>
+            <!--            <ion-slide>-->
+            <!--                <img #img2 src="../../assets/Artboard2.jpg" alt="target-cartboard"-->
+            <!--                     (click)="drill.drillType = drillTypeEnum.Hostage"-->
+            <!--                     [ngClass]="{'selected': drill.drillType === drillTypeEnum.Hostage }" [attr.id]="'Hostage'">-->
+            <!--                <span *ngIf="drill.drillType === drillTypeEnum.Hostage" class="check">&#10003;</span>-->
+            <!--            </ion-slide>-->
+            <ion-slide [class.disabled]="targetType !== 0 && targetType !== 1 && targetType !== 2">
                 <img #img3 src="../../assets/zero-target.png" alt="target-cartboard"
                      (click)="drill.drillType = drillTypeEnum.Zero"
                      [ngClass]="{'selected': drill.drillType ===drillTypeEnum.Zero }" [attr.id]="'Zero'">
@@ -152,13 +119,22 @@
                     </svg>
                     <p>RANGE:</p>
                 </div>
-
                 <div class="inputs">
                     <input [(ngModel)]="drill.range" type="number">
-                    <select [(ngModel)]="drill.rangeUOM">
-                        <option value="Meters">Meters</option>
-                        <option value="Feet">Feet</option>
-                    </select>
+                    <!--                    <select [(ngModel)]="drill.rangeUOM">-->
+                    <!--                        <option value="Meters">Meters</option>-->
+                    <!--                            <option value="Yards">Yards</option>-->
+                    <!--                    </select>-->
+                </div>
+            </div>
+            <div class="choose-gun">
+                <div [class.chosenWeaponType]="chosenWeaponType === 0"
+                     (click)="chosenWeaponType = 0;drill.weapon = 'Rifle'">
+                    <img src="assets/icons/gun.jpg">
+                </div>
+                <div [class.chosenWeaponType]="chosenWeaponType === 1"
+                     (click)="chosenWeaponType = 1;drill.weapon = 'Pistol'">
+                    <img src="assets/icons/gun-black.svg">
                 </div>
             </div>
             <mat-accordion>
@@ -294,7 +270,7 @@
                         </select>
                     </div>
                     <div class="container">
-                        <span>BALISTIC CALCULATOR</span>
+                        <pre>{{drill.drillType}}</pre>
                         <button [ngClass]="{'disabled': drill.drillType !== img3.getAttribute('id') }"
                                 [disabled]="drill.drillType !== drillTypeEnum.Zero" class="btn-set-calculator"
                                 (click)="onBalisticCalculatorPressed()"> Ballistic Calculator
@@ -305,7 +281,8 @@
             </mat-accordion>
 
         </div>
-        <button [disabled]="drill.drillType == null" class="startSessionBtn" (click)="startSesstion()"
+        <button [disabled]="drill.drillType == null && (chosenWeaponType ===0 || chosenWeaponType ===1)"
+                class="startSessionBtn" (click)="startSesstion()"
                 routerLink="/tab2/select2"> START SESSION
         </button>
 

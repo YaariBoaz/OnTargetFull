@@ -1,0 +1,27 @@
+<section *ngIf="cal">
+    <header class="header">
+        Activity Log
+        <img style="position: absolute;left: 10px;top: 11px;" (click)="onBackPressed()" src="assets/icons/Arrow%20.png">
+    </header>
+    <div class="date-list-wrapper">
+        <div class="dates-list" *ngFor="let train of cal">
+            <header>
+                <div class="img-wrapper">
+                    <img src="assets/icons/calendar.svg">
+                </div>
+                <h1 class="month">{{train.name}}</h1>
+            </header>
+            <div class="date-in-month" *ngFor="let trainInDate of train.value| keyvalue "
+                 (click)="onDateClicked(trainInDate)">
+                <div class="date-in-month-row">
+                    <div class="date">{{trainInDate.key | date : 'shortDate'}}</div>
+                    <div class="day">{{trainInDate.key | date :'EEEE'}}</div>
+                </div>
+                <div class="drill-count">
+                    {{trainInDate.value.length}} Drills
+                </div>
+                <img src="assets/icons/ARROW-RIGHT.svg">
+            </div>
+        </div>
+    </div>
+</section>

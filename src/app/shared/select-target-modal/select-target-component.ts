@@ -13,6 +13,8 @@ import {BLE} from '@ionic-native/ble/ngx';
 import {GatewayService} from '../services/gateway.service';
 import {ErrorModalComponent} from '../popups/error-modal/error-modal.component';
 import {MatDialog} from '@angular/material/dialog';
+import {AndroidPermissions} from '@awesome-cordova-plugins/android-permissions/ngx';
+import {TabsService} from '../../tabs/tabs.service';
 
 
 const SERVICE_1 = '1800';
@@ -31,7 +33,6 @@ const READ2 = '2a06';
     styleUrls: ['./select-target.component.scss'],
 })
 export class SelectTargetComponent implements OnInit {
-    targets = [];
     BASE_URL_HTTP = '192.168.0.86:8087';
     socket;
     GET_TARGETS_API;
@@ -51,6 +52,13 @@ export class SelectTargetComponent implements OnInit {
     isPersonalTargetAround = false;
     private currentTargetId: string;
     private isConnected: boolean;
+    myTargetsForKeepAlive = [];
+
+    targets = [
+        {name: ' E-Target64, 5', isSelected: true }, {name: ' E-Target64, 5', isSelected: false}, {
+        name: ' E-Target64, 5',
+        isSelected: false
+    }, {name: ' E-Target64, 5', isSelected: false}];
 
     constructor(
         private http: HttpClient,
@@ -60,8 +68,10 @@ export class SelectTargetComponent implements OnInit {
         public loadingController: LoadingController,
         private hitNohitService: HitNohitService,
         private ble: BLE,
+        private tabService: TabsService,
         public dialog: MatDialog,
         private gatewayService: GatewayService,
+        private androidPermissions: AndroidPermissions,
         private ngZone: NgZone,
         private screenOrientation: ScreenOrientation,
         private cd: ChangeDetectorRef,
@@ -74,15 +84,14 @@ export class SelectTargetComponent implements OnInit {
         private router: Router
     ) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.bleService.scanFinished.subscribe(flag => {
-            if (flag) {
-                this.myTargets = this.storageService.getItem('ble');
-            }
-        });
+
 
     }
 
     ngOnInit() {
+        this.tabService.$notifyTab2.subscribe(data => {
+            this.isScanning = true;
+        });
         // this.targetConnected = this.bleService.isConnectedFlag;
         this.platform.ready().then(() => {
             this.screenOrientation.unlock();
@@ -90,6 +99,26 @@ export class SelectTargetComponent implements OnInit {
 
             });
         });
+        this.gatewayService.notifyKeepAlive.subscribe(data => {
+            if (this.myTargetsForKeepAlive && this.myTargetsForKeepAlive.length) {
+                this.myTargetsForKeepAlive.forEach(target => {
+                    if (data === target.target) {
+                        target.date = new Date();
+                    }
+                });
+            }
+        });
+
+        setInterval(() => {
+            const now = new Date();
+            this.myTargetsForKeepAlive.forEach((target) => {
+                const seconds = (target.date.getTime() - now.getTime()) / 1000;
+                if (seconds >= 5) {
+                    this.myTargets = this.myTargets.filter(o => o.name === target.name);
+                }
+
+            });
+        }, 5000);
 
         this.gatewayService.notifyTargetConnectedToGateway.subscribe(data => {
             if (data) {
@@ -101,6 +130,7 @@ export class SelectTargetComponent implements OnInit {
                 });
                 if (!flag) {
                     this.myTargets.push({name: data});
+                    this.myTargetsForKeepAlive.push({target: data, date: new Date()});
                     this.cd.detectChanges();
                 }
             }
@@ -127,6 +157,7 @@ export class SelectTargetComponent implements OnInit {
                 }
             }
         });
+
     }
 
     ionViewWillLeave() {
@@ -264,15 +295,16 @@ export class SelectTargetComponent implements OnInit {
     }
 
     onGoToEditDrill() {
+        this.shootingService.chosenTarget = this.selectedTarget;
         if (!this.initService.isGateway) {
             this.shootingService.chosenTarget = this.selectedTarget;
             this.targetIsConnected = true;
             this.zone.run(() => {
                 // Your router is here
-                this.router.navigateByUrl('/tab2/select');
+                this.router.navigateByUrl('/tab2/drilled');
             });
         }
-        this.router.navigateByUrl('/tab2/select');
+        this.router.navigateByUrl('/tab2/drilled');
     }
 
     onDiscconectTest() {
@@ -292,9 +324,14 @@ export class SelectTargetComponent implements OnInit {
 
     scanErrorInitialScan(error: any) {
         if (error.indexOf('Location ') > -1) {
-            const dialogRef = this.dialog.open(ErrorModalComponent, {
-                data: {modalType: 'blueTooth'}
+            // const dialogRef = this.dialog.open(ErrorModalComponent, {
+            //     data: {modalType: 'blueTooth'}
+            // });
+            this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.LOCATION]).then(r => {
+
             });
+
+
         }
         console.error('BLE SCAN ERROR', error);
     }
@@ -378,7 +415,6 @@ export class SelectTargetComponent implements OnInit {
         });
     }
 
-
     private addTargetToList(target) {
         let flag = false;
         this.myTargets.forEach(t => {
@@ -388,10 +424,15 @@ export class SelectTargetComponent implements OnInit {
         });
         if (!flag) {
             this.myTargets.push(target);
+            this.myTargetsForKeepAlive.push({target, date: new Date()});
             this.cd.detectChanges();
         }
     }
 
+    setSelectedTarget(item: any) {
+        this.targets.forEach(x => x.isSelected = false);
+        item.isSelected = true;
+    }
 }
 
 

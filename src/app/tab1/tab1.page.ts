@@ -20,6 +20,7 @@ import { ErrorModalComponent } from '../shared/popups/error-modal/error-modal.co
 import { ActivityHistoryComponent } from '../shared/activity-history/activity-history.component';
 import { WizardService } from '../shared/authentication/signup-wizard/wizard.service';
 import { MatDialog } from '@angular/material/dialog';
+import {ActivityLogComponent} from '../shared/activity-log/activity-log.component';
 
 @Component({
     selector: 'app-tab1',
@@ -575,7 +576,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     onActivityClicked(train: HistoryModel) {
         this.storageService.passhistoricalTrainingsDate(this.data.trainingHistory);
-        this.dialog.open(ActivityHistoryComponent, {
+        this.dialog.open(ActivityLogComponent, {
             panelClass: 'full-screen-modal',
             data: { modalType: 'general' }
         });
