@@ -1,35 +1,18 @@
 <section class="sign-up">
+    <p class="logo">LOGO</p>
+
+    <p class="sign-up">Sign <span>Up</span></p>
+
+
     <form class="signInForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <label class="image">
                 <div *ngIf="!profile.picture" class="circle" (click)="selectImage()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30.493" height="24" viewBox="0 0 30.493 24">
-                        <defs>
-                            <style>
-                                .cls-258 {
-                                    fill: rgba(0, 0, 0, .53);
-                                    stroke: rgba(0, 0, 0, .53);
-                                }
-                            </style>
-                        </defs>
-                        <g id="camera" opacity="0.388" transform="translate(0 -44.8)">
-                            <g id="Group_759" data-name="Group 759" transform="translate(0 44.8)">
-                                <g id="Group_758" data-name="Group 758">
-                                    <path id="Path_16038"
-                                          d="M29.478 48.539a3.278 3.278 0 0 0-2.406-1.014h-4.811v-.058a2.6 2.6 0 0 0-.783-1.884 2.652 2.652 0 0 0-1.884-.783H10.9a2.672 2.672 0 0 0-2.7 2.667v.058H3.42a3.278 3.278 0 0 0-2.406 1.014A3.446 3.446 0 0 0 0 50.945V65.38a3.278 3.278 0 0 0 1.014 2.406A3.446 3.446 0 0 0 3.42 68.8h23.652a3.278 3.278 0 0 0 2.406-1.014 3.446 3.446 0 0 0 1.014-2.406V50.945a3.278 3.278 0 0 0-1.014-2.406zm-.493 16.841h-.029a1.88 1.88 0 0 1-1.884 1.884H3.42a1.88 1.88 0 0 1-1.884-1.884V50.945a1.88 1.88 0 0 1 1.884-1.884h5.594a.779.779 0 0 0 .783-.783v-.841a1.091 1.091 0 0 1 1.13-1.13h8.667a1.091 1.091 0 0 1 1.13 1.13v.841a.779.779 0 0 0 .783.783H27.1a1.88 1.88 0 0 1 1.884 1.884z"
-                                          class="cls-258" data-name="Path 16038" transform="translate(0 -44.8)"/>
-                                    <path id="Path_16039"
-                                          d="M119.13 130.8a7.125 7.125 0 1 0 5.043 2.087 7.143 7.143 0 0 0-5.043-2.087zm3.942 11.1a5.6 5.6 0 0 1-7.884 0 5.541 5.541 0 0 1-1.623-3.942 5.664 5.664 0 0 1 1.623-3.942 5.541 5.541 0 0 1 3.942-1.623 5.664 5.664 0 0 1 3.942 1.623 5.541 5.541 0 0 1 1.623 3.942 5.424 5.424 0 0 1-1.623 3.942z"
-                                          class="cls-258" data-name="Path 16039"
-                                          transform="translate(-103.884 -124.568)"/>
-                                    <circle id="Ellipse_517" cx="1.42" cy="1.42" r="1.42" class="cls-258"
-                                            data-name="Ellipse 517"
-                                            transform="translate(24.145 6.203)"/>
-                                </g>
-                            </g>
-                        </g>
+                    <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.5 5C3.30653 5 2.16193 5.47411 1.31802 6.31802C0.474106 7.16193 0 8.30653 0 9.5L0 23C0 24.1935 0.474106 25.3381 1.31802 26.182C2.16193 27.0259 3.30653 27.5 4.5 27.5H31.5C32.6935 27.5 33.8381 27.0259 34.682 26.182C35.5259 25.3381 36 24.1935 36 23V9.5C36 8.30653 35.5259 7.16193 34.682 6.31802C33.8381 5.47411 32.6935 5 31.5 5H28.863C27.6696 4.99975 26.5252 4.52547 25.6815 3.6815L23.8185 1.8185C22.9748 0.974528 21.8304 0.500255 20.637 0.5H15.363C14.1696 0.500255 13.0252 0.974528 12.1815 1.8185L10.3185 3.6815C9.47478 4.52547 8.33038 4.99975 7.137 5H4.5ZM5.625 9.5C5.32663 9.5 5.04048 9.38147 4.8295 9.1705C4.61853 8.95952 4.5 8.67337 4.5 8.375C4.5 8.07663 4.61853 7.79048 4.8295 7.5795C5.04048 7.36853 5.32663 7.25 5.625 7.25C5.92337 7.25 6.20952 7.36853 6.4205 7.5795C6.63147 7.79048 6.75 8.07663 6.75 8.375C6.75 8.67337 6.63147 8.95952 6.4205 9.1705C6.20952 9.38147 5.92337 9.5 5.625 9.5ZM25.875 15.125C25.875 17.2136 25.0453 19.2166 23.5685 20.6935C22.0916 22.1703 20.0886 23 18 23C15.9114 23 13.9084 22.1703 12.4315 20.6935C10.9547 19.2166 10.125 17.2136 10.125 15.125C10.125 13.0364 10.9547 11.0334 12.4315 9.55653C13.9084 8.07969 15.9114 7.25 18 7.25C20.0886 7.25 22.0916 8.07969 23.5685 9.55653C25.0453 11.0334 25.875 13.0364 25.875 15.125Z"
+                              fill="#282C36"/>
                     </svg>
-                    <div class="add">+</div>
+                    <div class="add">+Add photo</div>
                 </div>
                 <div *ngIf="profile.picture" class="round-border">
                     <img [src]="domSanitizer.bypassSecurityTrustUrl(profile.picture)">
@@ -39,10 +22,8 @@
             </label>
         </div>
         <div class="row">
-            <label [ngClass]="{'hasValue': registerForm.controls.first_name.dirty || registerForm.controls.first_name.touched }">
-                <p>Nickname</p>
-                <input type="text" formControlName="first_name" class="form-control"
-                       [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"/>
+            <label>
+                <input type="text" formControlName="first_name" class="form-control" placeholder="Nickname"/>
             </label>
 
             <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
@@ -51,10 +32,8 @@
         </div>
 
         <div class="row">
-            <label [ngClass]="{'hasValue': registerForm.controls.email.dirty || registerForm.controls.email.touched }">
-                <p>Email</p>
-                <input type="email" formControlName="email" class="form-control"
-                       [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+            <label>
+                <input type="email" formControlName="email" class="form-control" placeholder="Email"/>
             </label>
             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                 <div *ngIf="f.email.errors.required">Email is required</div>
@@ -63,10 +42,9 @@
         </div>
 
         <div class="row">
-            <label [ngClass]="{'hasValue': registerForm.controls.password.dirty || registerForm.controls.password.touched }">
-                <p>Password</p>
+            <label>
                 <input [type]="fieldTextType ? 'text' : 'password'" formControlName="password" class="form-control"
-                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" #password/>
+                       placeholder="Password" #password/>
                 <svg (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                      class="eye" viewBox="0 0 24 24">
                     <defs>
@@ -95,11 +73,9 @@
         </div>
 
         <div class="row">
-            <label [ngClass]="{'hasValue': registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched }">
-                <p>Confirm Password</p>
+            <label>
                 <input [type]="fieldTextType ? 'text' : 'password'" formControlName="confirmPassword"
-                       class="form-control"
-                       [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" #confirmPassword/>
+                       class="form-control" placeholder="Confirm Password" #confirmPassword/>
                 <svg (click)="toggleFieldTextType()" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                      class="eye" viewBox="0 0 24 24">
                     <defs>
@@ -129,8 +105,8 @@
 
     </form>
     <div class="controls">
-        <button class="confirm" (click)="continueToThird()">CONTINUE</button>
-        <button class="cancel" (click)="onBackPressed()">CANCEL</button>
+        <button class="confirm" (click)="continueToThird()">START SESSION</button>
+        <button class="cancel" (click)="onBackPressed()">BACK TO LOGIN</button>
     </div>
 </section>
 

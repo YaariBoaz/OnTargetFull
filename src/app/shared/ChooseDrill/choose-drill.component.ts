@@ -25,8 +25,8 @@ export class ChooseDrillComponent implements OnInit {
         this.challengesService.getMyChallenges().subscribe(data => {
             const dialogRef = this.dialog.open(ChallengeListComponent, {
                 data,
-                height: 'auto',
-                minWidth: '100vh',
+                height: '100%',
+                minWidth: '100%',
                 panelClass: 'datalogStyle'
             });
             dialogRef.afterClosed().subscribe(result => {

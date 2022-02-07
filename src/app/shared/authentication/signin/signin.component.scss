@@ -1,7 +1,9 @@
 @import "../../../../assets/colors";
-.disabled{
+
+.disabled {
   background-color: gray;
 }
+
 section.login {
   display: flex;
   flex-direction: column;
@@ -9,15 +11,34 @@ section.login {
   height: 100%;
   position: relative;
 
-  background-image: url("../../../../assets/login-bg.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: radial-gradient(71.47% 224.04% at 19.09% 13.6%, #404658 0%, #161820 100%);
 
   img.logo {
-    width: 80px;
-    height: 100px;
-    margin: 50px auto 79px auto;
+    width: 98px;
+    height: 45px;
+    margin: 28px auto 52px auto;
+  }
+
+  p.logo {
+    width: 98px;
+    height: 45px;
+    margin: 28px auto 52px auto;
+    font-size: 38px;
+    color: white;
+  }
+
+  p.sign-in {
+    display: flex;
+    align-items: center;
+    font-size: 27px;
+    margin: 0 auto 125px auto;
+    color: white;
+
+
+    span {
+      color: #FCE651;
+      padding-left: 0.3em;
+    }
   }
 
   div.form {
@@ -36,6 +57,26 @@ section.login {
         justify-content: space-evenly;
         width: 100%;
         margin-bottom: 30px;
+
+
+        label {
+          width: 100%;
+
+          input {
+            width: 100%;
+            border-radius: 3.5px;
+            height: 54px;
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-sizing: border-box;
+            padding: 15px;
+
+            &:focus {
+              background-color: transparent !important;
+            }
+          }
+        }
 
         div.errors {
           display: flex;
@@ -57,53 +98,23 @@ section.login {
             padding: 0.5em 0;
           }
         }
-
-
-        ::ng-deep {
-
-
-          .mat-form-field {
-            width: 100%;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.19;
-            letter-spacing: 0.15px;
-            text-align: left;
-            color: rgba(255, 255, 255, 0.87);
-          }
-
-          .mat-form-field-wrapper {
-            padding-bottom: 0 !important;
-          }
-
-          .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-            color: #ce564b;
-          }
-
-          .mat-form-field.mat-focused .mat-form-field-label {
-            color: #ce564b;
-          }
-
-        }
       }
     }
 
     button.start {
       width: 100%;
       height: 56px;
-      border-radius: 4px;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-      background-color: #ce564b;
+      border-radius: 3px;
+      background-color: #FCE651;
+      color: #000;
 
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 400;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.14;
       letter-spacing: 1.25px;
       text-align: center;
-      color: #ffffff;
     }
 
     p.forgot {
@@ -113,10 +124,11 @@ section.login {
       font-style: normal;
       line-height: 1.19;
       letter-spacing: 0.15px;
-      color: #ffffff;
+      color: rgba(#ffffff, 60%);
       text-align: right;
       margin: 0;
       margin-top: 20px;
+      font-weight: 300;
     }
 
   }
@@ -126,12 +138,12 @@ section.login {
   width: 100%;
   display: flex;
   justify-content: center;
-  position: relative;
-  top: 10%;
+  position: absolute;
+  bottom: 36px;
+
 
   a {
     font-size: 20px;
-    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.2;
@@ -139,9 +151,12 @@ section.login {
     text-align: left;
     color: #ffffff;
     display: inline-block;
+    text-decoration: underline;
+    font-weight: 300;
   }
 }
-.x{
+
+.x {
   background: black;
   height: 35px;
   width: 35px;

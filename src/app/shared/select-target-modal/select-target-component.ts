@@ -33,7 +33,6 @@ const READ2 = '2a06';
     styleUrls: ['./select-target.component.scss'],
 })
 export class SelectTargetComponent implements OnInit {
-    targets = [];
     BASE_URL_HTTP = '192.168.0.86:8087';
     socket;
     GET_TARGETS_API;
@@ -54,6 +53,12 @@ export class SelectTargetComponent implements OnInit {
     private currentTargetId: string;
     private isConnected: boolean;
     myTargetsForKeepAlive = [];
+
+    targets = [
+        {name: ' E-Target64, 5', isSelected: true }, {name: ' E-Target64, 5', isSelected: false}, {
+        name: ' E-Target64, 5',
+        isSelected: false
+    }, {name: ' E-Target64, 5', isSelected: false}];
 
     constructor(
         private http: HttpClient,
@@ -424,6 +429,10 @@ export class SelectTargetComponent implements OnInit {
         }
     }
 
+    setSelectedTarget(item: any) {
+        this.targets.forEach(x => x.isSelected = false);
+        item.isSelected = true;
+    }
 }
 
 
