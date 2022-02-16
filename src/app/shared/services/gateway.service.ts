@@ -58,8 +58,6 @@ export class GatewayService {
         counter: 0
     };
     notifyShotArrivedFromGateway = new BehaviorSubject(null);
-
-    // tslint:disable-next-line:max-line-length
     drillFinishedNotify = new BehaviorSubject(null);
     lastTime;
     firstTime;
@@ -68,12 +66,12 @@ export class GatewayService {
     constructor(private shootingService: ShootingService,
                 private storageService: StorageService,
                 private initService: InitService,
-                private balisticCalculatorService: BalisticCalculatorService,
-                private countupTimerService: CountupTimerService,
+                private ballisticCalculatorService: BalisticCalculatorService,
+                private counterUpTimerService: CountupTimerService,
                 private apiService: ApiService, private userService: UserService) {
     }
 
-
+    // Inits stats for drill when user starts a new drill
     initStats() {
         this.shots = [];
         this.hits = [];
@@ -92,6 +90,7 @@ export class GatewayService {
 
     }
 
+    // Starts total time timer
     startTimer() {
         // tslint:disable-next-line:no-shadowed-variable max-line-length
         const now = new Date();
@@ -99,6 +98,7 @@ export class GatewayService {
         this.lastTime = now;
     }
 
+    // When drill is finished and the user decides to save the drill
     updateHistory() {
         this.drill = this.shootingService.selectedDrill;
         let updatedData = this.storageService.getItem('homeData');
@@ -179,19 +179,7 @@ export class GatewayService {
 
     }
 
-    updateBestResults(updatedData) {
-        if (this.pageData.distanceFromCenter > updatedData.bestScores.avgDistance) {
-            updatedData.bestScores.avgDistance = this.pageData.distanceFromCenter;
-        }
-        if (this.drill.range > updatedData.bestScores.longestShot) {
-            updatedData.bestScores.longestShot = this.drill.range;
-        }
-        if (this.pageData.splitTime < updatedData.bestScores.avgSplit) {
-            updatedData.bestScores.avgSplit = this.pageData.splitTime;
-        }
-        return updatedData;
-    }
-
+    // Updates current active drill stats.
     updateStats(x, y, isFinish, distanceFromCenterPoints, zeroData) {
         console.log('counter:', this.pageData.counter);
         const currentdist: number = parseFloat(this.calculateBulletDistanceFromCenter(distanceFromCenterPoints.x,
@@ -270,13 +258,14 @@ export class GatewayService {
 
     }
 
+    // Notify components that drill has finished
     finishDrill() {
         this.drillFinishedBefore = true;
         this.drillFinished = true;
         this.drillFinishedNotify.next(true);
     }
 
-
+    // Calculates the distance from center of the last shot.
     calculateBulletDistanceFromCenter(xT, yT): number {
         const targetId = this.storageService.getItem('slectedTarget').name;
         const targetType = this.getTargetType(targetId);
@@ -304,6 +293,7 @@ export class GatewayService {
 
     }
 
+    // Calculates the score of the last shot.
     calcScore(dis) {
         if (dis <= 2) {
             return 11;
@@ -324,6 +314,7 @@ export class GatewayService {
         }
     }
 
+    // Receives the data from the ble service and parses to the correct function
     processData(input) {
         if (!this.shootingService.numberOfBullersPerDrill || this.pageData.counter < this.shootingService.numberOfBullersPerDrill) {
             const dataArray = input.replace('<,', '').replace(',>', '').split(',');
@@ -345,6 +336,7 @@ export class GatewayService {
                         this.handleImpact_MSG(dataArray);
                         break;
                     case ('SZ'):
+                        // tslint:disable-next-line:radix
                         this.notifyHitNoHit.next(parseInt(dataArray[3].split('\n')[0]));
                         break;
 
@@ -358,6 +350,7 @@ export class GatewayService {
         }
     }
 
+    // If gateway received a shot message
     handleShot_MSG_NEW(x, y) {
         const saveX = x;
         const saveY = y;
@@ -414,7 +407,7 @@ export class GatewayService {
         }
 
         let zeroData = {} as any;
-        zeroData = this.balisticCalculatorService.updateShot(saveX, saveY, this.hits);
+        zeroData = this.ballisticCalculatorService.updateShot(saveX, saveY, this.hits);
         if (this.shootingService.getisZero()) {
             if (zeroData.isBarhan) {
                 this.hits[this.hits.length - 1].isBarhan = true;
@@ -431,16 +424,19 @@ export class GatewayService {
             console.log('Shot After Drill Finished - Ignoring It');
 
         } else if (this.pageData.counter === this.shootingService.numberOfBullersPerDrill) {
+            // tslint:disable-next-line:radix
             this.updateStats(xPos, yPos, false, {x: parseInt(saveX), y: parseInt(saveY)}, zeroData);
             this.finishDrill();
-            //this.updateHistory();
+            // this.updateHistory();
         } else {
 
+            // tslint:disable-next-line:radix
             this.updateStats(xPos, yPos, false, {x: parseInt(saveX), y: parseInt(saveY)}, zeroData);
         }
 
     }
 
+    // If gateway received a shot message
     hanldeBateryTime_MSG(dataArray) {
         const t = dataArray[2];
         let bTime = 0;
@@ -450,6 +446,7 @@ export class GatewayService {
         }
     }
 
+    // Update battery percentage
     handleBatteryPrecentage_MSG(dataArray) {
         const targetName = dataArray[0];
         this.notifyTargetConnectedToGateway.next(targetName);
@@ -470,6 +467,7 @@ export class GatewayService {
         console.log('[Battery Precent]: ' + bCharge);
     }
 
+    // handle shot from impact target.
     handleImpact_MSG(dataArray) {
         const i1 = dataArray[2];
         let byte1 = 0;
@@ -487,6 +485,7 @@ export class GatewayService {
         this.storageService.setItem('target-impacts', deviceImpacts);
     }
 
+    // calculate split time.
     getTimeDiffrence(str1, str2) {
         console.log('In getTimeDifference: first STR: ' + str1 + ' second STR: ' + str2);
         const arr1 = str1.split(':');
@@ -522,6 +521,7 @@ export class GatewayService {
         return newHour + ':' + newMin + ':' + newSec;
     }
 
+    // Aggregate split time of current drill to get avg
     getSummarySplit(stats: any, statsLength: number) {
         if (stats) {
             let totalSeconds = 0;
@@ -544,6 +544,7 @@ export class GatewayService {
                 milisec = totalSeconds.toString().split('.')[1];
                 if (milisec.length >= 2) {
                     milisec = milisec[1] + milisec[2];
+                    // tslint:disable-next-line:radix
                     if (parseInt(milisec) > 60) {
                         totalSeconds += 1;
                         milisec = milisec[1];
@@ -553,11 +554,11 @@ export class GatewayService {
             const timeString = date.toISOString().substr(11, 8);
             const finalArray = timeString.split(':');
             return finalArray[1] + ':' + finalArray[2] + '.' + milisec;
-            debugger
         }
         return null;
     }
 
+    // Aggregate distance from center of current drill to get avg
     getSummaryDistanceFromCenter(stats: any[]): number {
         let avg = 0;
         stats.forEach(item => {
@@ -567,6 +568,7 @@ export class GatewayService {
         return Math.round((avg + Number.EPSILON) * 100) / 100;
     }
 
+    // generates objects for server.
     getShotItems() {
         const shotItems: ShotItem[] = new Array();
         this.stats.forEach(stat => {
@@ -585,11 +587,12 @@ export class GatewayService {
         return shotItems;
     }
 
+    // Parses an mm:ss string to seconds in number.
     timeStringToSeconds(timeString: string): number {
         const timeArray = timeString.split(':');
         let hour = 0;
-        let minutes = 0;
-        let seconds = 0;
+        const minutes = 0;
+        const seconds = 0;
         if (timeArray[0] !== '00') {
             let time = 0;
             if (timeArray[0].charAt(0) !== '0') {
@@ -608,6 +611,7 @@ export class GatewayService {
         }
         return hour + minutes + seconds;
     }
+
 
     calcOrbital(dis: number) {
         if (dis <= 2) {

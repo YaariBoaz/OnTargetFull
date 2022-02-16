@@ -1,0 +1,1025 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>onTarget documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">onTarget documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  NewTargetDesignComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/components/new-target-design/new-target-design.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-new-target-design</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./new-target-design.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./new-target-design.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#best" >best</a>
+                            </li>
+                            <li>
+                                <a href="#challenge" >challenge</a>
+                            </li>
+                            <li>
+                                <a href="#mine" >mine</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onBackPressed" >onBackPressed</a>
+                            </li>
+                            <li>
+                                <a href="#onStartChallenge" >onStartChallenge</a>
+                            </li>
+                            <li>
+                                <a href="#setBestScore" >setBestScore</a>
+                            </li>
+                            <li>
+                                <a href="#setMyScore" >setMyScore</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#startDrillFromChallenge" >startDrillFromChallenge</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(shootingService: <a href="../injectables/ShootingService.html" target="_self">ShootingService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, screenOrientation: ScreenOrientation)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>shootingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ShootingService.html" target="_self" >ShootingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>screenOrientation</td>
+                                                  
+                                                        <td>
+                                                                    <code>ScreenOrientation</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="startDrillFromChallenge"></a>
+                        <b>startDrillFromChallenge</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:12</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:24</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBackPressed"></a>
+                    <span class="name">
+                        <span ><b>onBackPressed</b></span>
+                        <a href="#onBackPressed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBackPressed()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onStartChallenge"></a>
+                    <span class="name">
+                        <span ><b>onStartChallenge</b></span>
+                        <a href="#onStartChallenge"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onStartChallenge()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setBestScore"></a>
+                    <span class="name">
+                        <span ><b>setBestScore</b></span>
+                        <a href="#setBestScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setBestScore()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setMyScore"></a>
+                    <span class="name">
+                        <span ><b>setMyScore</b></span>
+                        <a href="#setMyScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setMyScore()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="best"></a>
+                    <span class="name">
+                        <span ><b>best</b></span>
+                        <a href="#best"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="challenge"></a>
+                    <span class="name">
+                        <span ><b>challenge</b></span>
+                        <a href="#challenge"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mine"></a>
+                    <span class="name">
+                        <span ><b>mine</b></span>
+                        <a href="#mine"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/components/new-target-design/new-target-design.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnInit, Output, EventEmitter} from &#x27;@angular/core&#x27;;
+import {ShootingService} from &#x27;../../services/shooting.service&#x27;;
+import {Router} from &#x27;@angular/router&#x27;;
+import {ScreenOrientation} from &#x27;@ionic-native/screen-orientation/ngx&#x27;;
+
+@Component({
+    selector: &#x27;app-new-target-design&#x27;,
+    templateUrl: &#x27;./new-target-design.component.html&#x27;,
+    styleUrls: [&#x27;./new-target-design.component.scss&#x27;],
+})
+export class NewTargetDesignComponent implements OnInit {
+    @Output() startDrillFromChallenge &#x3D; new EventEmitter&lt;string&gt;();
+
+    challenge;
+    best &#x3D; &#x27;&#x27;;
+    mine &#x3D; &#x27;&#x27;;
+
+    constructor(private shootingService: ShootingService, private router: Router, private screenOrientation: ScreenOrientation,) {
+        this.challenge &#x3D; this.shootingService.challenge;
+        this.setBestScore();
+        this.setMyScore();
+    }
+
+    ngOnInit() {
+    }
+
+    onStartChallenge() {
+        this.startDrillFromChallenge.emit();
+    }
+
+    onBackPressed() {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        this.router.navigateByUrl(&#x27;choose&#x27;);
+    }
+
+    setBestScore() {
+        if (this.challenge.metadata.useBestGrouping) {
+            this.best &#x3D; this.challenge.challengeRank.bestGrouping;
+        }
+        if (this.challenge.metadata.useDisFromCenter) {
+            this.best &#x3D; this.challenge.challengeRank.bestDisFromCenter;
+        }
+        if (this.challenge.metadata.useHighestScore) {
+            this.best &#x3D; this.challenge.challengeRank.highestScore;
+        }
+        if (this.challenge.metadata.usePistol) {
+
+        }
+        if (this.challenge.metadata.useSplitTime) {
+            this.best &#x3D; this.challenge.challengeRank.bestSplitTime;
+        }
+        if (this.challenge.metadata.useTotalTime) {
+            this.best &#x3D; this.challenge.challengeRank.bestTotalTime;
+        }
+    }
+
+    setMyScore() {
+
+        if (this.challenge.metadata.useBestGrouping) {
+            this.mine &#x3D; this.challenge.challengeRank.userBestGrouping;
+        }
+        if (this.challenge.metadata.useDisFromCenter) {
+            this.mine &#x3D; this.challenge.challengeRank.userBestDisFromCenter;
+        }
+        if (this.challenge.metadata.useHighestScore) {
+            this.mine &#x3D; this.challenge.challengeRank.userHighestScore;
+        }
+        if (this.challenge.metadata.useSplitTime) {
+            this.mine &#x3D; this.challenge.challengeRank.userBestSplitTime;
+        }
+        if (this.challenge.metadata.useTotalTime) {
+            this.mine &#x3D; this.challenge.challengeRank.userBestTotalTime;
+        }
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;target&quot;&gt;
+    &lt;header&gt;
+        &lt;div class&#x3D;&quot;back-container&quot; (click)&#x3D;&quot;onBackPressed()&quot;&gt;
+            &lt;svg width&#x3D;&quot;20&quot; height&#x3D;&quot;16&quot; viewBox&#x3D;&quot;0 0 20 16&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;path d&#x3D;&quot;M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z&quot; fill&#x3D;&quot;white&quot;/&gt;
+            &lt;/svg&gt;
+            &lt;p&gt;BACK&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;data&quot;&gt;
+            &lt;!--            &lt;p class&#x3D;&quot;number&quot;&gt;#2&lt;/p&gt;--&gt;
+            &lt;p class&#x3D;&quot;title&quot;&gt;{{challenge.metadata.title}}&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;button (click)&#x3D;&quot;onStartChallenge()&quot;&gt;START&lt;/button&gt;
+    &lt;/header&gt;
+
+    &lt;div class&#x3D;&quot;content&quot;&gt;
+        &lt;div class&#x3D;&quot;numbers-column&quot;&gt;
+            &lt;div class&#x3D;&quot;container&quot;&gt;
+                &lt;p class&#x3D;&quot;number&quot;&gt;OVERALL&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useBestGrouping&quot;&gt;{{challenge.challengeRank.bestGrouping}} in&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useDisFromCenter&quot;&gt;{{challenge.challengeRank.bestDisFromCenter}} &quot;&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useHighestScore&quot;&gt;{{challenge.challengeRank.highestScore}} points&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useSplitTime&quot;&gt;{{challenge.challengeRank.bestSplitTime}} s&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useTotalTime&quot;&gt;{{challenge.challengeRank.bestTotalTime}} s&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;container&quot;&gt;
+                &lt;p class&#x3D;&quot;number&quot;&gt;MINE&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useBestGrouping&quot;&gt;{{challenge.challengeRank.userBestGrouping}} in&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useDisFromCenter&quot;&gt;{{challenge.challengeRank.userBestDisFromCenter}} &quot;&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useHighestScore&quot;&gt;{{challenge.challengeRank.userHighestScore}} points&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useSplitTime&quot;&gt;{{challenge.challengeRank.userBestSplitTime}} s&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot; *ngIf&#x3D;&quot;challenge.metadata.useTotalTime&quot;&gt;{{challenge.challengeRank.userBestTotalTime}} s&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;container&quot; *ngIf&#x3D;&quot;challenge.challengeRank.rank !&#x3D;&#x3D;-1&quot;&gt;
+                &lt;p class&#x3D;&quot;number&quot;&gt;{{challenge.challengeRank.rank}}/{{challenge.challengeRank.challengers}}&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot;&gt;place&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;container&quot; *ngIf&#x3D;&quot;challenge.challengeRank.rank &#x3D;&#x3D;&#x3D;-1&quot;&gt;
+                &lt;p class&#x3D;&quot;number&quot;&gt;0/{{challenge.challengeRank.challengers}}&lt;/p&gt;
+                &lt;p class&#x3D;&quot;text&quot;&gt;PLACE&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;img src&#x3D;&quot;assets/targets/challenge-promo-target.png&quot; style&#x3D;&quot;width: 239px;height: 239px;&quot;&gt;
+
+
+        &lt;div class&#x3D;&quot;text-and-icons-column&quot;&gt;
+            &lt;div class&#x3D;&quot;bullet-info&quot;&gt;
+                &lt;div class&#x3D;&quot;icon-and-text&quot;&gt;
+                    &lt;svg width&#x3D;&quot;28&quot; height&#x3D;&quot;27&quot; viewBox&#x3D;&quot;0 0 28 27&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                        &lt;path d&#x3D;&quot;M24.5 18.27V6C24.5 2.685 21.815 0 18.5 0C15.185 0 12.5 2.685 12.5 6V21C12.5 22.65 11.15 24 9.5 24C7.85 24 6.5 22.65 6.5 21V8.73C8.24 8.1 9.5 6.45 9.5 4.5C9.5 2.01 7.49 0 5 0C2.51 0 0.5 2.01 0.5 4.5C0.5 6.45 1.76 8.1 3.5 8.73V21C3.5 24.315 6.185 27 9.5 27C12.815 27 15.5 24.315 15.5 21V6C15.5 4.35 16.85 3 18.5 3C20.15 3 21.5 4.35 21.5 6V18.27C20.501 18.6239 19.6593 19.3195 19.1235 20.2339C18.5877 21.1482 18.3922 22.2225 18.5717 23.267C18.7511 24.3115 19.294 25.259 20.1043 25.942C20.9146 26.6251 21.9402 26.9998 23 27C25.49 27 27.5 24.99 27.5 22.5C27.5 20.55 26.24 18.9 24.5 18.27Z&quot;
+                              fill&#x3D;&quot;white&quot;/&gt;
+                    &lt;/svg&gt;
+                    &lt;p class&#x3D;&quot;button-info-text&quot;&gt;{{challenge.metadata.range}} YARD &lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;icon-and-text&quot;&gt;
+                    &lt;svg width&#x3D;&quot;30&quot; height&#x3D;&quot;31&quot; viewBox&#x3D;&quot;0 0 30 31&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                        &lt;path d&#x3D;&quot;M0.31645 22.8828L7.63353 30.207C7.84816 30.4023 8.09694 30.4999 8.37987 30.4999C8.66279 30.4999 8.9067 30.3974 9.11157 30.1923C9.31645 29.9872 9.41889 29.7431 9.41889 29.4599C9.41889 29.1767 9.31157 28.9374 9.09694 28.7421L1.77987 21.4179C1.58474 21.2031 1.34572 21.0956 1.06279 21.0956C0.779865 21.0956 0.535963 21.1982 0.331085 21.4033C0.126207 21.6083 0.0237675 21.8525 0.0237675 22.1357C0.0237675 22.4189 0.121328 22.6679 0.31645 22.8828ZM9.74084 27.4238C9.91645 27.5995 10.136 27.6874 10.3994 27.6874C10.6628 27.6874 10.8823 27.5995 11.0579 27.4238L20.336 18.1367C20.5311 17.9413 20.6287 17.7167 20.6287 17.4628C20.6287 17.2089 20.5311 16.9843 20.336 16.789L13.7213 10.1679C13.5262 9.9726 13.3018 9.87494 13.0482 9.87494C12.7945 9.87494 12.5799 9.9726 12.4043 10.1679L3.09694 19.455C2.92133 19.6308 2.83352 19.8505 2.83352 20.1142C2.83352 20.3779 2.92133 20.5976 3.09694 20.7734L9.74084 27.4238ZM12.4043 12.9804C12.5799 12.7851 12.7945 12.6874 13.0482 12.6874C13.3018 12.6874 13.5262 12.7851 13.7213 12.9804L14.453 13.7128L7.31157 20.8613C7.13597 21.037 6.91645 21.1249 6.65304 21.1249C6.38962 21.1249 6.17011 21.037 5.9945 20.8613L5.26279 20.0995L12.4043 12.9804ZM20.3652 15.1484C20.5994 15.3828 20.8774 15.4999 21.1994 15.4999C21.5213 15.4999 21.7994 15.3828 22.0335 15.1484L24.5506 12.6581C25.1165 12.0722 25.6579 11.413 26.175 10.6806C26.6921 9.94818 27.136 9.22064 27.5067 8.49799C27.8774 7.77533 28.2238 7.03314 28.5457 6.27142C28.8677 5.5097 29.1213 4.81635 29.3067 4.19135C29.4921 3.56635 29.653 2.97552 29.7896 2.41888C29.9262 1.86224 29.9945 1.43744 29.9945 1.14447C29.9945 0.851501 29.975 0.656189 29.936 0.558533C29.8384 0.539001 29.6433 0.524353 29.3506 0.514587C29.0579 0.504822 28.6335 0.573181 28.0774 0.719666C27.5213 0.86615 26.9311 1.02728 26.3067 1.20306C25.6823 1.37885 24.9896 1.62787 24.2287 1.95013C23.4677 2.2724 22.7262 2.61908 22.0043 2.99017C21.2823 3.36127 20.5555 3.8056 19.8238 4.32318C19.0921 4.84076 18.4433 5.39252 17.8774 5.97845L15.3604 8.46869C15.1262 8.70306 15.0091 8.98138 15.0091 9.30365C15.0091 9.62592 15.1262 9.90424 15.3604 10.1386L20.3652 15.1484ZM19.7213 7.82416C21.1847 6.37885 23.1067 5.13861 25.4872 4.10345C24.6287 5.64642 23.6921 6.93549 22.6774 7.97064L20.1604 10.4609C19.9262 10.6953 19.6482 10.8124 19.3262 10.8124C19.0043 10.8124 18.7262 10.6953 18.4921 10.4609L17.7896 9.78705L19.7213 7.82416Z&quot;
+                              fill&#x3D;&quot;white&quot;/&gt;
+                    &lt;/svg&gt;
+                    &lt;p class&#x3D;&quot;button-info-text&quot;&gt;{{challenge.metadata.numberOfBullets}}&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;p class&#x3D;&quot;goal&quot;&gt;GOAL: {{challenge.metadata.description}}&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./new-target-design.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">section.target {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px 20px 0 20px;
+  background: radial-gradient(71.47% 224.04% at 19.09% 13.6%, #404658 0%, #161820 100%);
+  justify-content: space-evenly;
+  height: 100%;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 42px;
+
+    div.back-container {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin: 0;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        color: white;
+      }
+
+      svg {
+        padding-right: 7px;
+        width: 35px;
+      }
+    }
+
+    div.data {
+      display: flex;
+      align-items: center;
+
+      p.number {
+        font-weight: bold;
+        font-size: 27px;
+        line-height: 32px;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0;
+        color: #FC5151;
+        padding-right: 18px;
+      }
+
+      p.title {
+        margin: 0;
+        font-weight: bold;
+        font-size: 27px;
+        line-height: 32px;
+        color: #FFFFFF;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+
+    button {
+      width: 131px;
+      height: 45px;
+      background-color: #FCE651;
+      color: black;
+      box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+  }
+
+  div.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div.numbers-column {
+      display: flex;
+      flex-direction: column;
+      padding-right: 20px;
+
+      div.container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px;
+
+        &amp;:first-of-type {
+          p.number {
+            color: #FC5151;
+          }
+        }
+
+        p.number {
+          font-size: 35px;
+          display: flex;
+          align-items: center;
+          color: #FCE651;
+          margin: 0;
+          font-weight: bold;
+        }
+
+        p.text {
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 19px;
+          text-align: center;
+          text-transform: uppercase;
+          color: #FFFFFF;
+          margin: 0;
+        }
+      }
+    }
+
+    svg.target {
+      width: 240px;
+      height: 240px;
+      padding-right: 20px;
+    }
+
+    div.text-and-icons-column {
+      display: flex;
+      flex-direction: column;
+
+      p.main-text {
+        width: 386px;
+        font-size: 18px;
+        line-height: 21px;
+        color: #FFFFFF;
+        margin: 0;
+        word-break: break-word;
+        padding-bottom: 30px;
+      }
+    }
+
+    div.bullet-info {
+      display: flex;
+      align-items: center;
+      padding-bottom: 30px;
+
+      div.icon-and-text {
+        display: flex;
+        align-items: center;
+
+        &amp;:first-of-type {
+          padding-right: 50px;
+
+        }
+
+        svg {
+          width: 47px;
+          padding-right: 14.5px;
+        }
+
+        p.button-info-text {
+          font-size: 26px;
+          line-height: 41px;
+          display: flex;
+          align-items: center;
+          color: #FFFFFF;
+          margin: 0;
+        }
+      }
+    }
+
+    p.goal {
+      font-weight: bold;
+      font-size: 26px;
+      line-height: 30px;
+      text-transform: uppercase;
+      color: #FC5151;
+      margin: 0;
+    }
+  }
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="target">    <header>        <div class="back-container" (click)="onBackPressed()">            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">                <path d="M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z" fill="white"/>            </svg>            <p>BACK</p>        </div>        <div class="data">            <!--            <p class="number">#2</p>-->            <p class="title">{{challenge.metadata.title}}</p>        </div>        <button (click)="onStartChallenge()">START</button>    </header>    <div class="content">        <div class="numbers-column">            <div class="container">                <p class="number">OVERALL</p>                <p class="text" *ngIf="challenge.metadata.useBestGrouping">{{challenge.challengeRank.bestGrouping}} in</p>                <p class="text" *ngIf="challenge.metadata.useDisFromCenter">{{challenge.challengeRank.bestDisFromCenter}} "</p>                <p class="text" *ngIf="challenge.metadata.useHighestScore">{{challenge.challengeRank.highestScore}} points</p>                <p class="text" *ngIf="challenge.metadata.useSplitTime">{{challenge.challengeRank.bestSplitTime}} s</p>                <p class="text" *ngIf="challenge.metadata.useTotalTime">{{challenge.challengeRank.bestTotalTime}} s</p>            </div>            <div class="container">                <p class="number">MINE</p>                <p class="text" *ngIf="challenge.metadata.useBestGrouping">{{challenge.challengeRank.userBestGrouping}} in</p>                <p class="text" *ngIf="challenge.metadata.useDisFromCenter">{{challenge.challengeRank.userBestDisFromCenter}} "</p>                <p class="text" *ngIf="challenge.metadata.useHighestScore">{{challenge.challengeRank.userHighestScore}} points</p>                <p class="text" *ngIf="challenge.metadata.useSplitTime">{{challenge.challengeRank.userBestSplitTime}} s</p>                <p class="text" *ngIf="challenge.metadata.useTotalTime">{{challenge.challengeRank.userBestTotalTime}} s</p>            </div>            <div class="container" *ngIf="challenge.challengeRank.rank !==-1">                <p class="number">{{challenge.challengeRank.rank}}/{{challenge.challengeRank.challengers}}</p>                <p class="text">place</p>            </div>            <div class="container" *ngIf="challenge.challengeRank.rank ===-1">                <p class="number">0/{{challenge.challengeRank.challengers}}</p>                <p class="text">PLACE</p>            </div>        </div>        <img src="assets/targets/challenge-promo-target.png" style="width: 239px;height: 239px;">        <div class="text-and-icons-column">            <div class="bullet-info">                <div class="icon-and-text">                    <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">                        <path d="M24.5 18.27V6C24.5 2.685 21.815 0 18.5 0C15.185 0 12.5 2.685 12.5 6V21C12.5 22.65 11.15 24 9.5 24C7.85 24 6.5 22.65 6.5 21V8.73C8.24 8.1 9.5 6.45 9.5 4.5C9.5 2.01 7.49 0 5 0C2.51 0 0.5 2.01 0.5 4.5C0.5 6.45 1.76 8.1 3.5 8.73V21C3.5 24.315 6.185 27 9.5 27C12.815 27 15.5 24.315 15.5 21V6C15.5 4.35 16.85 3 18.5 3C20.15 3 21.5 4.35 21.5 6V18.27C20.501 18.6239 19.6593 19.3195 19.1235 20.2339C18.5877 21.1482 18.3922 22.2225 18.5717 23.267C18.7511 24.3115 19.294 25.259 20.1043 25.942C20.9146 26.6251 21.9402 26.9998 23 27C25.49 27 27.5 24.99 27.5 22.5C27.5 20.55 26.24 18.9 24.5 18.27Z"                              fill="white"/>                    </svg>                    <p class="button-info-text">{{challenge.metadata.range}} YARD </p>                </div>                <div class="icon-and-text">                    <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">                        <path d="M0.31645 22.8828L7.63353 30.207C7.84816 30.4023 8.09694 30.4999 8.37987 30.4999C8.66279 30.4999 8.9067 30.3974 9.11157 30.1923C9.31645 29.9872 9.41889 29.7431 9.41889 29.4599C9.41889 29.1767 9.31157 28.9374 9.09694 28.7421L1.77987 21.4179C1.58474 21.2031 1.34572 21.0956 1.06279 21.0956C0.779865 21.0956 0.535963 21.1982 0.331085 21.4033C0.126207 21.6083 0.0237675 21.8525 0.0237675 22.1357C0.0237675 22.4189 0.121328 22.6679 0.31645 22.8828ZM9.74084 27.4238C9.91645 27.5995 10.136 27.6874 10.3994 27.6874C10.6628 27.6874 10.8823 27.5995 11.0579 27.4238L20.336 18.1367C20.5311 17.9413 20.6287 17.7167 20.6287 17.4628C20.6287 17.2089 20.5311 16.9843 20.336 16.789L13.7213 10.1679C13.5262 9.9726 13.3018 9.87494 13.0482 9.87494C12.7945 9.87494 12.5799 9.9726 12.4043 10.1679L3.09694 19.455C2.92133 19.6308 2.83352 19.8505 2.83352 20.1142C2.83352 20.3779 2.92133 20.5976 3.09694 20.7734L9.74084 27.4238ZM12.4043 12.9804C12.5799 12.7851 12.7945 12.6874 13.0482 12.6874C13.3018 12.6874 13.5262 12.7851 13.7213 12.9804L14.453 13.7128L7.31157 20.8613C7.13597 21.037 6.91645 21.1249 6.65304 21.1249C6.38962 21.1249 6.17011 21.037 5.9945 20.8613L5.26279 20.0995L12.4043 12.9804ZM20.3652 15.1484C20.5994 15.3828 20.8774 15.4999 21.1994 15.4999C21.5213 15.4999 21.7994 15.3828 22.0335 15.1484L24.5506 12.6581C25.1165 12.0722 25.6579 11.413 26.175 10.6806C26.6921 9.94818 27.136 9.22064 27.5067 8.49799C27.8774 7.77533 28.2238 7.03314 28.5457 6.27142C28.8677 5.5097 29.1213 4.81635 29.3067 4.19135C29.4921 3.56635 29.653 2.97552 29.7896 2.41888C29.9262 1.86224 29.9945 1.43744 29.9945 1.14447C29.9945 0.851501 29.975 0.656189 29.936 0.558533C29.8384 0.539001 29.6433 0.524353 29.3506 0.514587C29.0579 0.504822 28.6335 0.573181 28.0774 0.719666C27.5213 0.86615 26.9311 1.02728 26.3067 1.20306C25.6823 1.37885 24.9896 1.62787 24.2287 1.95013C23.4677 2.2724 22.7262 2.61908 22.0043 2.99017C21.2823 3.36127 20.5555 3.8056 19.8238 4.32318C19.0921 4.84076 18.4433 5.39252 17.8774 5.97845L15.3604 8.46869C15.1262 8.70306 15.0091 8.98138 15.0091 9.30365C15.0091 9.62592 15.1262 9.90424 15.3604 10.1386L20.3652 15.1484ZM19.7213 7.82416C21.1847 6.37885 23.1067 5.13861 25.4872 4.10345C24.6287 5.64642 23.6921 6.93549 22.6774 7.97064L20.1604 10.4609C19.9262 10.6953 19.6482 10.8124 19.3262 10.8124C19.0043 10.8124 18.7262 10.6953 18.4921 10.4609L17.7896 9.78705L19.7213 7.82416Z"                              fill="white"/>                    </svg>                    <p class="button-info-text">{{challenge.metadata.numberOfBullets}}</p>                </div>            </div>            <p class="goal">GOAL: {{challenge.metadata.description}}</p>        </div>    </div></section></div>'
+    var COMPONENTS = [{'name': 'AccessModalComponent', 'selector': 'app-access-modal'},{'name': 'ActivityHistoryComponent', 'selector': 'app-activity-history'},{'name': 'ActivityLogComponent', 'selector': 'app-activity-log'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BalisticCalculatorComponent', 'selector': 'app-balistic-calculator'},{'name': 'ChallengeListComponent', 'selector': 'challenge-list'},{'name': 'ChooseDrillComponent', 'selector': 'app-activity-log'},{'name': 'DrillComponent', 'selector': 'app-session-modal'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GunlistComponent', 'selector': 'app-gunlist'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'NewTargetDesignComponent', 'selector': 'app-new-target-design'},{'name': 'NoConnetionErroComponent', 'selector': 'app-error-modal'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'SelectTargetComponent', 'selector': 'app-select-target'},{'name': 'SelectTargetModalComponent', 'selector': 'app-select-target-modal'},{'name': 'ShareDialogComponent', 'selector': 'app-share-dialog'},{'name': 'SightlistComponent', 'selector': 'app-sightlist'},{'name': 'SigninComponent', 'selector': 'app-singin'},{'name': 'SigninModalComponent', 'selector': 'app-signin-modal'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'SignupWizardComponent', 'selector': 'app-signup-wizard'},{'name': 'Tab1Page', 'selector': 'app-tab1'},{'name': 'Tab2Page', 'selector': 'app-tab2'},{'name': 'Tab3Page', 'selector': 'app-tab3'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TermsAndConditionComponent', 'selector': 'app-terms-and-condition'},{'name': 'WizardSummaryComponent', 'selector': 'app-wizard-summary'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NewTargetDesignComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NewTargetDesignComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

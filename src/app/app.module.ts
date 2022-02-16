@@ -20,12 +20,10 @@ import {Camera} from '@ionic-native/camera/ngx';
 import {CdTimerModule} from 'angular-cd-timer';
 import {BleService} from './shared/services/ble.service';
 import {Crop} from '@ionic-native/crop/ngx';
-import {SelectTargetComponent} from './shared/select-target-modal/select-target-component';
 import {CommonModule} from '@angular/common';
 import {GatewayService} from './shared/services/gateway.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpErrorInterceptor} from './shared/services/interceptor.service';
-import {TabsPageModule} from './tabs/tabs.module';
 import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
 import {NativePageTransitions} from '@ionic-native/native-page-transitions/ngx';
 import {MaterialModule} from './shared/material/material.module';
@@ -35,6 +33,8 @@ import {NgxCaptureModule} from 'ngx-capture';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 import { HammerModule } from '@angular/platform-browser';
 import { ActivityLogComponent } from './shared/activity-log/activity-log.component';
+import {Tab1PageModule} from './tab1/tab1.module';
+import {Tab2PageModule} from './tab2/tab2.module';
 
 
 
@@ -57,9 +57,10 @@ import { ActivityLogComponent } from './shared/activity-log/activity-log.compone
         HttpClientModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        TabsPageModule,
         MaterialModule,
         NgxCaptureModule,
+        Tab1PageModule,
+        Tab2PageModule,
     ],
     providers: [
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},

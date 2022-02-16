@@ -1,27 +1,56 @@
 <section *ngIf="cal">
     <header class="header">
         Activity Log
-        <img style="position: absolute;left: 10px;top: 11px;" (click)="onBackPressed()" src="assets/icons/Arrow%20.png">
+        <div class="back-container" (click)="onBackPressed()">
+            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z" fill="white"/>
+            </svg>
+            <p>BACK</p>
+        </div>
     </header>
     <div class="date-list-wrapper">
-        <div class="dates-list" *ngFor="let train of cal">
-            <header>
-                <div class="img-wrapper">
-                    <img src="assets/icons/calendar.svg">
-                </div>
-                <h1 class="month">{{train.name}}</h1>
-            </header>
-            <div class="date-in-month" *ngFor="let trainInDate of train.value| keyvalue "
-                 (click)="onDateClicked(trainInDate)">
-                <div class="date-in-month-row">
-                    <div class="date">{{trainInDate.key | date : 'shortDate'}}</div>
-                    <div class="day">{{trainInDate.key | date :'EEEE'}}</div>
-                </div>
-                <div class="drill-count">
-                    {{trainInDate.value.length}} Drills
-                </div>
-                <img src="assets/icons/ARROW-RIGHT.svg">
-            </div>
+        <div class="dates-list">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let train of cal">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h1 class="month">{{train.name}}</h1>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="date-in-month" *ngFor="let trainInDate of train.value| keyvalue "
+                         (click)="onDateClicked(trainInDate)">
+                        <div>
+                            <div class="date-in-month-row">
+                                <div class="date">{{trainInDate.key | date : 'shortDate'}}</div>
+                                <div class="day">{{trainInDate.key | date :'EEEE'}}</div>
+                            </div>
+                            <div class="drill-count">
+                                {{trainInDate.value.length}} Drills
+                            </div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27.656" height="35" viewBox="0 0 27.656 35"
+                             style="fill:#fff">
+                            <defs>
+                                <filter id="wit88vyz5a" width="27.656" height="35" x="0" y="0"
+                                        filterUnits="userSpaceOnUse">
+                                    <feOffset dy="3"/>
+                                    <feGaussianBlur result="blur" stdDeviation="3"/>
+                                    <feFlood flood-opacity=".161"/>
+                                    <feComposite in2="blur" operator="in"/>
+                                    <feComposite in="SourceGraphic"/>
+                                </filter>
+                            </defs>
+                            <g filter="url(#wit88vyz5a)">
+                                <path fill="#fff" fill-rule="evenodd"
+                                      d="M713.226 1174.787a.721.721 0 0 1-1 0 .69.69 0 0 1 0-.988l7.554-7.438-7.551-7.18a.686.686 0 0 1 0-.984.712.712 0 0 1 1 0l8.441 8.164z"
+                                      transform="translate(-703.01 -1151.99)"/>
+                            </g>
+                        </svg>
+
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
     </div>
 </section>
+

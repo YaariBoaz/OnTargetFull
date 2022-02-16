@@ -14,7 +14,6 @@ import {GatewayService} from '../services/gateway.service';
 import {ErrorModalComponent} from '../popups/error-modal/error-modal.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AndroidPermissions} from '@awesome-cordova-plugins/android-permissions/ngx';
-import {TabsService} from '../../tabs/tabs.service';
 
 
 const SERVICE_1 = '1800';
@@ -54,11 +53,7 @@ export class SelectTargetComponent implements OnInit {
     private isConnected: boolean;
     myTargetsForKeepAlive = [];
 
-    targets = [
-        {name: ' E-Target64, 5', isSelected: true }, {name: ' E-Target64, 5', isSelected: false}, {
-        name: ' E-Target64, 5',
-        isSelected: false
-    }, {name: ' E-Target64, 5', isSelected: false}];
+    targets = [];
 
     constructor(
         private http: HttpClient,
@@ -68,7 +63,6 @@ export class SelectTargetComponent implements OnInit {
         public loadingController: LoadingController,
         private hitNohitService: HitNohitService,
         private ble: BLE,
-        private tabService: TabsService,
         public dialog: MatDialog,
         private gatewayService: GatewayService,
         private androidPermissions: AndroidPermissions,
@@ -89,9 +83,6 @@ export class SelectTargetComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tabService.$notifyTab2.subscribe(data => {
-            this.isScanning = true;
-        });
         // this.targetConnected = this.bleService.isConnectedFlag;
         this.platform.ready().then(() => {
             this.screenOrientation.unlock();
@@ -135,19 +126,7 @@ export class SelectTargetComponent implements OnInit {
                 }
             }
         });
-
         this.personalTarget = this.storageService.getItem('personalTarget');
-        const tempArr = [];
-        if (this.personalTarget) {
-            // this.myTargets.forEach(target => {
-            //     if (target.name !== this.personalTarget.name) {
-            //         tempArr.push(target);
-            //     } else {
-            //         this.isPersonalTargetAround = true;
-            //     }
-            // });
-            // this.myTargets = Object.assign([], tempArr);
-        }
 
         this.bleService.scanFinished.subscribe((flag) => {
             this.isScanning = false;
@@ -158,10 +137,10 @@ export class SelectTargetComponent implements OnInit {
             }
         });
 
+        this.reScan();
     }
 
     ionViewWillLeave() {
-
         const options: NativeTransitionOptions = {
             direction: 'up',
             duration: 500,
@@ -219,10 +198,11 @@ export class SelectTargetComponent implements OnInit {
 
     startTraining() {
         this.hitNohitService.resetDrill();
-        this.router.navigateByUrl('tab2/select');
+        this.router.navigateByUrl('choose');
     }
 
     onBackPressed() {
+        this.router.navigateByUrl('home');
     }
 
     onGetTargets() {
@@ -253,9 +233,8 @@ export class SelectTargetComponent implements OnInit {
         return promise;
     }
 
-    async reScan() {
+    reScan() {
         this.bleService.resetConnection();
-
         this.isScanning = true;
         this.initGatewayScan();
     }
@@ -264,6 +243,7 @@ export class SelectTargetComponent implements OnInit {
         this.myTargets.forEach(t => t.isSelected = false);
         target.isSelected = true;
         this.storageService.setItem('slectedTarget', target);
+        this.shootingService.isTargetConnected = true;
         this.selectedTarget = target;
         this.cd.detectChanges();
         // If its not a gateway we need to connect directly to the target.
@@ -301,10 +281,10 @@ export class SelectTargetComponent implements OnInit {
             this.targetIsConnected = true;
             this.zone.run(() => {
                 // Your router is here
-                this.router.navigateByUrl('/tab2/drilled');
+                this.router.navigateByUrl('choose');
             });
         }
-        this.router.navigateByUrl('/tab2/drilled');
+        this.router.navigateByUrl('choose');
     }
 
     onDiscconectTest() {
@@ -324,14 +304,9 @@ export class SelectTargetComponent implements OnInit {
 
     scanErrorInitialScan(error: any) {
         if (error.indexOf('Location ') > -1) {
-            // const dialogRef = this.dialog.open(ErrorModalComponent, {
-            //     data: {modalType: 'blueTooth'}
-            // });
             this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.LOCATION]).then(r => {
 
             });
-
-
         }
         console.error('BLE SCAN ERROR', error);
     }

@@ -1,7 +1,6 @@
 <section class="login" *ngIf="showSignin">
     <!--    <img class="logo" src="/assets/logo.png" alt="logo">-->
-    <p class="logo">LOGO</p>
-
+    <img class="logo" src="assets/logo.png">
     <p class="sign-in">Sign <span>In</span></p>
     <div class="form">
         <form [formGroup]="registerForm" (ngSubmit)="onLogin()">
@@ -20,7 +19,8 @@
 
             <div class="row">
                 <label>
-                    <input formControlName="password" [type]="fieldTextType ? 'text' : 'password'" placeholder="Password">
+                    <input formControlName="password" [type]="fieldTextType ? 'text' : 'password'"
+                           placeholder="Password">
                 </label>
 
                 <div class="errors" *ngIf="submitted && f.password.errors">

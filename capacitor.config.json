@@ -1,5 +1,5 @@
 {
-  "appId": "adl.onTarget",
+  "appId": "adl.onTarget.app",
   "appName": "onTarget",
   "bundledWebRuntime": false,
   "npmClient": "npm",

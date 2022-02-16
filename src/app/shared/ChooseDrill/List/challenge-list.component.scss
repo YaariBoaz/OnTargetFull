@@ -155,7 +155,7 @@ section.challenges {
         box-sizing: border-box;
         padding: 16px;
         margin-bottom: 21px;
-
+        position: relative;
 
         background-repeat: no-repeat;
         background-position: center;
@@ -167,6 +167,8 @@ section.challenges {
           font-size: 30px;
           line-height: 35px;
           margin: 0;
+          width: 100%;
+          text-align: left;
         }
 
         p {
@@ -174,6 +176,9 @@ section.challenges {
           font-size: 16px;
           line-height: 19px;
           margin: 0;
+          color: white;
+          width: 100%;
+          text-align: center;
         }
       }
     }

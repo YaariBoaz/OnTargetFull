@@ -1,7 +1,7 @@
 <section class="challenges">
 
     <header>
-        <div class="back-container">
+        <div class="back-container" (click)="onBackPressed()">
             <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z" fill="white"/>
             </svg>
@@ -17,14 +17,13 @@
                 <path d="M9.1291 7.82699L9.12911 1.36757C9.11693 1.21024 9.04584 1.0633 8.93003 0.956102C8.81422 0.848907 8.66223 0.78936 8.50443 0.789361C8.34663 0.78936 8.19463 0.848907 8.07883 0.956101C7.96302 1.0633 7.89193 1.21024 7.87975 1.36757L7.87975 7.82699L1.4159 7.82256C1.25857 7.83474 1.11162 7.90583 1.00443 8.02164C0.897235 8.13745 0.837688 8.28944 0.837688 8.44724C0.837688 8.60504 0.897235 8.75704 1.00443 8.87284C1.11162 8.98865 1.25857 9.05974 1.4159 9.07192L7.87975 9.07635L7.87532 15.5402C7.86866 15.6263 7.87987 15.7128 7.90824 15.7944C7.93661 15.8759 7.98154 15.9508 8.0402 16.0141C8.09885 16.0775 8.16998 16.1281 8.2491 16.1626C8.32823 16.1972 8.41365 16.2151 8.5 16.2151C8.58635 16.2151 8.67177 16.1972 8.75089 16.1626C8.83002 16.1281 8.90114 16.0775 8.9598 16.0141C9.01846 15.9508 9.06338 15.8759 9.09176 15.7944C9.12013 15.7128 9.13134 15.6263 9.12467 15.5402L9.12911 9.07635L15.5885 9.07635C15.7459 9.06418 15.8928 8.99308 16 8.87727C16.1072 8.76147 16.1667 8.60947 16.1667 8.45167C16.1667 8.29387 16.1072 8.14188 16 8.02607C15.8928 7.91026 15.7459 7.83917 15.5885 7.82699H9.1291Z"
                       fill="#FCE651"/>
             </svg>
-            <p>EDIT DRILL</p>
+            <p [routerLink]="['/editDrill']">EDIT DRILL</p>
         </button>
     </header>
 
-
     <div class="tabs">
         <div class="tab-headers">
-            <div class="assault" (click)="activeTab = 'assault' " [ngClass]="{'active': activeTab === 'assault' }">
+            <div class="assault" (click)="activeTab = 'rifle' " [ngClass]="{'active': activeTab === 'rifle' }">
                 <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink">
                     <rect x="43.8406" width="62" height="62" transform="rotate(45 43.8406 0)" fill="url(#pattern0)"/>
@@ -37,7 +36,7 @@
                     </defs>
                 </svg>
             </div>
-            <div class="side-arms" (click)="activeTab = 'sideArms' " [ngClass]="{'active': activeTab === 'sideArms' }">
+            <div class="side-arms" (click)="activeTab = 'pistol' " [ngClass]="{'active': activeTab === 'pistol' }">
                 <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.75 1.25H27.75V6.25H26.5V7.5H19C18.6685 7.5 18.3505 7.6317 18.1161 7.86612C17.8817 8.10054 17.75 8.41848 17.75 8.75V10C17.75 10.663 17.4866 11.2989 17.0178 11.7678C16.5489 12.2366 15.913 12.5 15.25 12.5H11.025C10.55 12.5 10.1125 12.775 9.9 13.2L6.8375 19.3125C6.625 19.7375 6.2 20 5.725 20H1.5C1.5 20 -2.25 20 2.75 12.5C2.75 12.5 6.5 7.5 1.5 7.5V1.25H2.75L3.375 0H7.125L7.75 1.25ZM16.5 10V8.75C16.5 8.41848 16.3683 8.10054 16.1339 7.86612C15.8995 7.6317 15.5815 7.5 15.25 7.5H14C14 7.5 12.75 8.75 14 10C13.337 10 12.7011 9.73661 12.2322 9.26777C11.7634 8.79893 11.5 8.16304 11.5 7.5C11.1685 7.5 10.8505 7.6317 10.6161 7.86612C10.3817 8.10054 10.25 8.41848 10.25 8.75V10C10.25 10.3315 10.3817 10.6495 10.6161 10.8839C10.8505 11.1183 11.1685 11.25 11.5 11.25H15.25C15.5815 11.25 15.8995 11.1183 16.1339 10.8839C16.3683 10.6495 16.5 10.3315 16.5 10Z"
                           fill="white"/>
@@ -46,11 +45,20 @@
             </div>
         </div>
 
-        <ul class="options">
-            <li *ngFor="let item of optionsToRender[activeTab]; let index = index"
-                [style.background-image]="'url(assets/icons/'+ item + '.png)'">
-                <p class="index">#{{ index }}</p>
-                <p>{{ item | makeItNormal }}</p>
+        <ul class="options" *ngIf="activeTab === 'pistol'">
+            <li *ngFor="let item of optionsToRender['pistol']; let index = index"
+                [style.background-image]="getBackgroundImage(item)" (click)="onChallengeChosen(item)">
+                <p *ngIf="item.challengeRank && item.challengeRank.rank !==-1" class="index">{{item.challengeRank.rank}}
+                    /{{item.challengeRank.challengers}}</p>
+                <p>{{ item.metadata.title}}</p>
+            </li>
+        </ul>
+        <ul class="options" *ngIf="activeTab === 'rifle'">
+            <li *ngFor="let item of optionsToRender['rifle']; let index = index"
+                [style.background-image]="getBackgroundImage(item)" (click)="onChallengeChosen(item)">
+                <p *ngIf="item.challengeRank && item.challengeRank.rank !==-1" class="index">{{item.challengeRank.rank}}
+                    /{{item.challengeRank.challengers}}</p>
+                <p>{{ item.metadata.title}}</p>
             </li>
         </ul>
     </div>

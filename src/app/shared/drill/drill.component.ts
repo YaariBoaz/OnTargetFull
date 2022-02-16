@@ -112,6 +112,11 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     targetDynamicWidth = 100;
     targetJustifyConent = 'center';
     isChallenge;
+    challangeNotStarted = true;
+
+    public get backgroundsEnum(): typeof Backgrounds {
+        return Backgrounds;
+    }
 
     public get targetTypeEnum(): typeof TargetType {
         return TargetType;
@@ -143,6 +148,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         this.drill = this.shootingService.selectedDrill;
         if (this.drill.challngeId) {
             this.isChallenge = true;
+
         }
         this.selectedTarget = this.shootingService.chosenTarget;
         this.isGateway = this.initService.isGateway;
@@ -391,9 +397,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                             this.bleService.resetShots();
                             this.stats = Object.assign(this.stats, []);
                             if (!this.isChallenge) {
-                                this.router.navigateByUrl('/tab2/select');
+                                this.router.navigateByUrl('home');
                             } else {
-                                this.router.navigateByUrl('/tab2/drilled');
+                                this.router.navigateByUrl('home');
                             }
                             this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
@@ -414,9 +420,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                             this.bleService.resetShots();
                             this.stats = Object.assign(this.stats, []);
                             if (!this.isChallenge) {
-                                this.router.navigateByUrl('/tab2/select');
+                                this.router.navigateByUrl('home');
                             } else {
-                                this.router.navigateByUrl('/tab2/drilled');
+                                this.router.navigateByUrl('home');
                             }
                             this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
                         });
@@ -555,10 +561,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
             if (data && !this.isFinish && data.statsData.stats.length > 0) {
                 if (this.drill.drillType === 3 && data.statsData.zeroData && Object.keys(data.statsData.zeroData).length !== 0) {
                     this.updateZeroData(data);
-                }
-                else {
+                } else {
                     this.shotNumber = data.hitNumber;
-                    this.groupingNumber = data.statsData.zeroData.napar2Napam;
+                    this.groupingNumber = data.statsData.zeroData.napar2Napam / 2.54;
                     this.stats = data.statsData.stats;
                     this.pageData = data.statsData.pageData;
                     this.isFinish = data.statsData.isFinish;
@@ -574,6 +579,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 }
             }
         });
+
         this.gateway.notifyShotArrivedFromGateway.subscribe((data) => {
             if (data) {
                 this.shots.push({x: data.x, y: data.y});
@@ -588,7 +594,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 // const loader = this.showToast('Target Connected', 'success');
             }
         });
-        this.bleService.notifyDissconnect.subscribe((flag) => {
+        this.bleService.notifyDisconnect.subscribe((flag) => {
             if (flag) {
                 if (!flag.isManually) {
                     // this.isConnected = false;
@@ -706,6 +712,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         }
     }
 
+
     private setDrillType(drillType) {
         if (drillType === 'HitNoHit') {
             this.drill.drillType = DrillType.HitNoHit;
@@ -719,4 +726,11 @@ export class MyHammerConfig extends HammerGestureConfig {
     overrides = {
         swipe: {direction: Hammer.DIRECTION_ALL},
     } as any;
+}
+
+export enum Backgrounds {
+    DESERT,
+    WINTER,
+    DARK,
+    FOREST
 }

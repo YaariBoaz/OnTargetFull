@@ -92,7 +92,7 @@ export class AppComponent implements OnDestroy, OnInit {
             this.splash = false;
         }, 5000);
 
-        this.ble.notifyDissconnect.subscribe((flag) => {
+        this.ble.notifyDisconnect.subscribe((flag) => {
             if (flag) {
 
             }

@@ -14,7 +14,6 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {SelectTargetModalComponent} from '../shared/select-target-modal/modal/select-target-modal.component';
 import {InitService} from '../shared/services/init.service';
 import {ErrorModalComponent} from '../shared/popups/error-modal/error-modal.component';
-import {TabsService} from '../tabs/tabs.service';
 import {MatDialog} from '@angular/material/dialog';
 
 
@@ -46,11 +45,11 @@ export class Tab3Page implements OnInit {
     isFromWizard: boolean;
     showState = false;
     registerForm: any;
+
     submitted;
 
     constructor(private storageService: StorageService,
                 private ref: ChangeDetectorRef,
-                private tabService: TabsService,
                 private crop: Crop,
                 private formBuilder: FormBuilder,
                 private router: Router,
@@ -79,12 +78,6 @@ export class Tab3Page implements OnInit {
             state: [],
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
-        });
-
-        this.tabService.$notifyTab3.subscribe(flag => {
-            if (flag) {
-                this.initActctions();
-            }
         });
     }
 
@@ -232,7 +225,7 @@ export class Tab3Page implements OnInit {
         this.wizardService.moreInfoForm = this.form;
         console.log('In finishWizard' + new Date());
         this.initService.isLoading.next(true);
-        this.wizardService.registerUser();
+        // this.wizardService.registerUser();
         this.initService.notifyError.subscribe((error) => {
             if (error) {
                 const dialogRef = this.dialog.open(ErrorModalComponent, {

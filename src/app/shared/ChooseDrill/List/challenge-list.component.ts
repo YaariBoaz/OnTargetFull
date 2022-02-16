@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {ChallengesService} from '../challenges.service';
 import {Router} from '@angular/router';
@@ -13,40 +13,40 @@ import {TargetType} from '../../drill/constants';
 })
 export class ChallengeListComponent implements OnInit {
     bestResultSentence = 'Best Result Is: \n';
-    activeTab = 'assault';
-
+    activeTab = 'rifle';
+    @HostListener('window:beforeunload')
     optionsToRender = {
-        assault: ['middleEast', 'shootingInTheDark', 'sniper', 'operationInRussia', 'middleEast', 'shootingInTheDark', 'sniper', 'operationInRussia'],
-        sideArms: ['operationInRussia', 'sniper', 'shootingInTheDark', 'middleEast', 'operationInRussia', 'sniper', 'shootingInTheDark', 'middleEast'],
+        rifle: [],
+        pistol: [],
     };
+    challenges;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private router: Router, private shootingService: ShootingService) {
+    constructor(private elementRef: ElementRef, private router: Router, private shootingService: ShootingService, private challengesService: ChallengesService) {
 
-        const targetTypeParsed = this.setTargetTypeForFilter('003');
+    }
 
-        this.data = data.metaData;
-        this.data = data.filter(o => this.showDrill(o.metadata.targetType));
-        this.data.forEach(item => {
-            if (!item.bestResultSentence) {
-                item.bestResultSentence = 'Best Result Is: \n\'';
-            }
-            if (item.metadata.useDisFromCenter) {
-                item.bestResultSentence += item.challengeRank.bestDisFromCenter;
-            }
-            if (item.metadata.useSplitTime) {
-                item.bestResultSentence += item.challengeRank.bestDisFromCenter;
-
-            }
-            if (item.metadata.useBestGrouping) {
-                item.bestResultSentence += item.challengeRank.bestDisFromCenter;
-
-            }
-            if (item.metadata.useTotalTime) {
-                item.bestResultSentence += item.challengeRank.bestDisFromCenter;
-            }
+    ionViewWillEnter() {
+        this.challenges = [];
+        this.optionsToRender.pistol = [];
+        this.optionsToRender.rifle = [];
+        this.challengesService.getMyChallenges().subscribe(data => {
+            this.challenges = data;
+            this.challenges.forEach(item => {
+                if (item.metadata.usePistol) {
+                    this.optionsToRender.pistol.push(item);
+                } else {
+                    this.optionsToRender.rifle.push(item);
+                }
+            });
         });
     }
 
+
+
+    @HostListener('window:unload', ['$event'])
+    unloadHandler(event) {
+        this.elementRef.nativeElement.remove();
+    }
 
     ngOnInit() {
 
@@ -68,6 +68,8 @@ export class ChallengeListComponent implements OnInit {
         this.shootingService.numberOfBullersPerDrill = challenge.metadata.numberOfBullets;
         this.shootingService.challengeId = challenge.metadata.challengeId;
         this.shootingService.selectedDrill = challenge.metadata;
+        this.shootingService.selectedDrill.bg = this.shootingService.selectedDrill.bgId
+        this.shootingService.challenge = challenge;
         this.router.navigateByUrl('/tab2/select2');
     }
 
@@ -106,6 +108,21 @@ export class ChallengeListComponent implements OnInit {
             return true;
         }
     }
-}
 
+    getBackgroundImage(item: any) {
+        if (item.metadata.bgId === 0) {
+            return 'url(assets/backgrounds/desert.png)';
+        } else if (item.metadata.bgId === 1) {
+            return 'url(assets/backgrounds/snow.png)';
+        } else if (item.metadata.bgId === 2) {
+            return 'url(assets/backgrounds/warehouse.png';
+        } else {
+            return 'url(assets/backgrounds/forest.png)';
+        }
+    }
+
+    onBackPressed() {
+        this.router.navigateByUrl('select-target');
+    }
+}
 

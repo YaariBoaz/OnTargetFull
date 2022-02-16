@@ -26,7 +26,7 @@ section.target-selection {
       color: white;
       margin: 0;
       padding-bottom: 27px;
-
+      padding-top: 20px;
       span {
         color: #FCE651;
         padding-left: 0.3em;
@@ -72,16 +72,15 @@ section.target-selection {
       border-radius: 6px;
       width: 100%;
       margin-bottom: 10px;
-
-      font-weight: 300;
-      font-size: 16px;
+      font-weight: 400;
+      font-size: 20px;
       line-height: 24px;
       letter-spacing: 0.15px;
       color: rgba(255, 255, 255, 0.87);
-
       box-sizing: border-box;
       padding: 11px 23px;
       transition: all 0.3s;
+      color: #FCE651;
 
       &.selected {
         background: #FFFFFF;
@@ -460,3 +459,24 @@ section.target-selection {
 //  }
 //}
 
+div.back-container {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 26px;
+    color: white;
+  }
+
+  svg {
+    padding-right: 7px;
+    width: 35px;
+  }
+}

@@ -192,8 +192,8 @@ export class SignupWizardComponent implements OnInit {
         this.router.navigateByUrl('');
     }
 
-    finishWizardNew() {
-        this.wizardService.registerUser();
+    finishWizardNew(data) {
+        this.wizardService.registerUser(data);
     }
 
     activeNextStep() {

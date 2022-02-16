@@ -1,0 +1,3701 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>onTarget documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">onTarget documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  SelectTargetComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/select-target-modal/select-target-component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-select-target</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./select-target.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./select-target-component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#aletMdl" >aletMdl</a>
+                            </li>
+                            <li>
+                                <a href="#BASE_URL_HTTP" >BASE_URL_HTTP</a>
+                            </li>
+                            <li>
+                                <a href="#chosenTarget" >chosenTarget</a>
+                            </li>
+                            <li>
+                                <a href="#connectedClicked" >connectedClicked</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#currentTargetId" >currentTargetId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog" >dialog</a>
+                            </li>
+                            <li>
+                                <a href="#GET_TARGETS_API" >GET_TARGETS_API</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#isConnected" >isConnected</a>
+                            </li>
+                            <li>
+                                <a href="#isFromWizard" >isFromWizard</a>
+                            </li>
+                            <li>
+                                <a href="#isPersonalTargetAround" >isPersonalTargetAround</a>
+                            </li>
+                            <li>
+                                <a href="#isScanning" >isScanning</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#loadingController" >loadingController</a>
+                            </li>
+                            <li>
+                                <a href="#myTargets" >myTargets</a>
+                            </li>
+                            <li>
+                                <a href="#myTargetsForKeepAlive" >myTargetsForKeepAlive</a>
+                            </li>
+                            <li>
+                                <a href="#personalChosen" >personalChosen</a>
+                            </li>
+                            <li>
+                                <a href="#personalTarget" >personalTarget</a>
+                            </li>
+                            <li>
+                                <a href="#primaryTarget" >primaryTarget</a>
+                            </li>
+                            <li>
+                                <a href="#selectedTarget" >selectedTarget</a>
+                            </li>
+                            <li>
+                                <a href="#socket" >socket</a>
+                            </li>
+                            <li>
+                                <a href="#targetConnected" >targetConnected</a>
+                            </li>
+                            <li>
+                                <a href="#targetIsConnected" >targetIsConnected</a>
+                            </li>
+                            <li>
+                                <a href="#targetNotSelected" >targetNotSelected</a>
+                            </li>
+                            <li>
+                                <a href="#targets" >targets</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#toastController" >toastController</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#addTargetToList" >addTargetToList</a>
+                            </li>
+                            <li>
+                                <a href="#clearPrimaryFromList" >clearPrimaryFromList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#confirmationAlert" >confirmationAlert</a>
+                            </li>
+                            <li>
+                                <a href="#distory" >distory</a>
+                            </li>
+                            <li>
+                                <a href="#handleBatteryPrecentage_MSG" >handleBatteryPrecentage_MSG</a>
+                            </li>
+                            <li>
+                                <a href="#handleReadForTargetName" >handleReadForTargetName</a>
+                            </li>
+                            <li>
+                                <a href="#initGatewayScan" >initGatewayScan</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewWillLeave" >ionViewWillLeave</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onBackPressed" >onBackPressed</a>
+                            </li>
+                            <li>
+                                <a href="#onConnectedForTargetName" >onConnectedForTargetName</a>
+                            </li>
+                            <li>
+                                <a href="#onDeviceDiscoveredInitialScan" >onDeviceDiscoveredInitialScan</a>
+                            </li>
+                            <li>
+                                <a href="#onDiscconectTest" >onDiscconectTest</a>
+                            </li>
+                            <li>
+                                <a href="#onGetTargets" >onGetTargets</a>
+                            </li>
+                            <li>
+                                <a href="#onGoToEditDrill" >onGoToEditDrill</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#onTargetChosen" >onTargetChosen</a>
+                            </li>
+                            <li>
+                                <a href="#onTargetSelected" >onTargetSelected</a>
+                            </li>
+                            <li>
+                                <a href="#parseGatewayMessage" >parseGatewayMessage</a>
+                            </li>
+                            <li>
+                                <a href="#processData" >processData</a>
+                            </li>
+                            <li>
+                                <a href="#reScan" >reScan</a>
+                            </li>
+                            <li>
+                                <a href="#scanErrorInitialScan" >scanErrorInitialScan</a>
+                            </li>
+                            <li>
+                                <a href="#setSelectedTarget" >setSelectedTarget</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#showConnectingLoader" >showConnectingLoader</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#showToast" >showToast</a>
+                            </li>
+                            <li>
+                                <a href="#startTraining" >startTraining</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, bleService: <a href="../injectables/BleService.html" target="_self">BleService</a>, storageService: <a href="../injectables/StorageService.html" target="_self">StorageService</a>, shootingService: <a href="../injectables/ShootingService.html" target="_self">ShootingService</a>, loadingController: LoadingController, hitNohitService: <a href="../injectables/HitNohitService.html" target="_self">HitNohitService</a>, ble: BLE, dialog: MatDialog, gatewayService: <a href="../injectables/GatewayService.html" target="_self">GatewayService</a>, androidPermissions: AndroidPermissions, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>, screenOrientation: ScreenOrientation, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, toastController: ToastController, zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>, initService: <a href="../injectables/InitService.html" target="_self">InitService</a>, nativePageTransitions: NativePageTransitions, platform: Platform, aletMdl: AlertController, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:56</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bleService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BleService.html" target="_self" >BleService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>storageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StorageService.html" target="_self" >StorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>shootingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ShootingService.html" target="_self" >ShootingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>loadingController</td>
+                                                  
+                                                        <td>
+                                                                    <code>LoadingController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>hitNohitService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HitNohitService.html" target="_self" >HitNohitService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ble</td>
+                                                  
+                                                        <td>
+                                                                    <code>BLE</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>gatewayService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GatewayService.html" target="_self" >GatewayService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>androidPermissions</td>
+                                                  
+                                                        <td>
+                                                                    <code>AndroidPermissions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ngZone</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>screenOrientation</td>
+                                                  
+                                                        <td>
+                                                                    <code>ScreenOrientation</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cd</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>zone</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>initService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/InitService.html" target="_self" >InitService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>nativePageTransitions</td>
+                                                  
+                                                        <td>
+                                                                    <code>NativePageTransitions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platform</td>
+                                                  
+                                                        <td>
+                                                                    <code>Platform</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>aletMdl</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addTargetToList"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>addTargetToList</b></span>
+                        <a href="#addTargetToList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addTargetToList(target)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="393"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:393</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>target</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearPrimaryFromList"></a>
+                    <span class="name">
+                        <span ><b>clearPrimaryFromList</b></span>
+                        <a href="#clearPrimaryFromList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearPrimaryFromList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:163</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmationAlert"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>confirmationAlert</b></span>
+                        <a href="#confirmationAlert"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>confirmationAlert(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="212"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:212</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>message</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="distory"></a>
+                    <span class="name">
+                        <span ><b>distory</b></span>
+                        <a href="#distory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>distory()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="387"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:387</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleBatteryPrecentage_MSG"></a>
+                    <span class="name">
+                        <span ><b>handleBatteryPrecentage_MSG</b></span>
+                        <a href="#handleBatteryPrecentage_MSG"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleBatteryPrecentage_MSG(dataArray, id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="381"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:381</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dataArray</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleReadForTargetName"></a>
+                    <span class="name">
+                        <span ><b>handleReadForTargetName</b></span>
+                        <a href="#handleReadForTargetName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleReadForTargetName(id, service, characteristic)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="346"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:346</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>service</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>characteristic</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initGatewayScan"></a>
+                    <span class="name">
+                        <span ><b>initGatewayScan</b></span>
+                        <a href="#initGatewayScan"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initGatewayScan()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="294"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:294</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillLeave"></a>
+                    <span class="name">
+                        <span ><b>ionViewWillLeave</b></span>
+                        <a href="#ionViewWillLeave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewWillLeave()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:143</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBackPressed"></a>
+                    <span class="name">
+                        <span ><b>onBackPressed</b></span>
+                        <a href="#onBackPressed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBackPressed()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="204"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:204</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onConnectedForTargetName"></a>
+                    <span class="name">
+                        <span ><b>onConnectedForTargetName</b></span>
+                        <a href="#onConnectedForTargetName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onConnectedForTargetName(peripheral: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="340"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:340</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>peripheral</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDeviceDiscoveredInitialScan"></a>
+                    <span class="name">
+                        <span ><b>onDeviceDiscoveredInitialScan</b></span>
+                        <a href="#onDeviceDiscoveredInitialScan"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDeviceDiscoveredInitialScan(device: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="314"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:314</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>device</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDiscconectTest"></a>
+                    <span class="name">
+                        <span ><b>onDiscconectTest</b></span>
+                        <a href="#onDiscconectTest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDiscconectTest()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="290"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:290</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onGetTargets"></a>
+                    <span class="name">
+                        <span ><b>onGetTargets</b></span>
+                        <a href="#onGetTargets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onGetTargets()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="208"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:208</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onGoToEditDrill"></a>
+                    <span class="name">
+                        <span ><b>onGoToEditDrill</b></span>
+                        <a href="#onGoToEditDrill"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onGoToEditDrill()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="277"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:277</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTargetChosen"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>onTargetChosen</b></span>
+                        <a href="#onTargetChosen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onTargetChosen()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTargetSelected"></a>
+                    <span class="name">
+                        <span ><b>onTargetSelected</b></span>
+                        <a href="#onTargetSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTargetSelected(target: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="242"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:242</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>target</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parseGatewayMessage"></a>
+                    <span class="name">
+                        <span ><b>parseGatewayMessage</b></span>
+                        <a href="#parseGatewayMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>parseGatewayMessage(buffer: Uint8Array, id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="355"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:355</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>buffer</td>
+                                    <td>
+                                            <code>Uint8Array</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="processData"></a>
+                    <span class="name">
+                        <span ><b>processData</b></span>
+                        <a href="#processData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>processData(input, id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="363"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:363</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>input</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reScan"></a>
+                    <span class="name">
+                        <span ><b>reScan</b></span>
+                        <a href="#reScan"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reScan()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="236"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:236</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scanErrorInitialScan"></a>
+                    <span class="name">
+                        <span ><b>scanErrorInitialScan</b></span>
+                        <a href="#scanErrorInitialScan"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>scanErrorInitialScan(error: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="305"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:305</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>error</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSelectedTarget"></a>
+                    <span class="name">
+                        <span ><b>setSelectedTarget</b></span>
+                        <a href="#setSelectedTarget"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setSelectedTarget(item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="407"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:407</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showConnectingLoader"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>showConnectingLoader</b></span>
+                        <a href="#showConnectingLoader"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showConnectingLoader()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="183"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:183</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showToast"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>showToast</b></span>
+                        <a href="#showToast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showToast(msg: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, color: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="173"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:173</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>msg</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>color</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startTraining"></a>
+                    <span class="name">
+                        <span ><b>startTraining</b></span>
+                        <a href="#startTraining"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startTraining()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:199</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="aletMdl"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>aletMdl</b></span>
+                        <a href="#aletMdl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>AlertController</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BASE_URL_HTTP"></a>
+                    <span class="name">
+                        <span ><b>BASE_URL_HTTP</b></span>
+                        <a href="#BASE_URL_HTTP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;192.168.0.86:8087&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chosenTarget"></a>
+                    <span class="name">
+                        <span ><b>chosenTarget</b></span>
+                        <a href="#chosenTarget"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="connectedClicked"></a>
+                    <span class="name">
+                        <span ><b>connectedClicked</b></span>
+                        <a href="#connectedClicked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentTargetId"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>currentTargetId</b></span>
+                        <a href="#currentTargetId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialog"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialog</b></span>
+                        <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialog</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GET_TARGETS_API"></a>
+                    <span class="name">
+                        <span ><b>GET_TARGETS_API</b></span>
+                        <a href="#GET_TARGETS_API"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isConnected"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>isConnected</b></span>
+                        <a href="#isConnected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isFromWizard"></a>
+                    <span class="name">
+                        <span ><b>isFromWizard</b></span>
+                        <a href="#isFromWizard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isPersonalTargetAround"></a>
+                    <span class="name">
+                        <span ><b>isPersonalTargetAround</b></span>
+                        <a href="#isPersonalTargetAround"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isScanning"></a>
+                    <span class="name">
+                        <span ><b>isScanning</b></span>
+                        <a href="#isScanning"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HTMLIonLoadingElement</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingController"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>loadingController</b></span>
+                        <a href="#loadingController"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>LoadingController</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="myTargets"></a>
+                    <span class="name">
+                        <span ><b>myTargets</b></span>
+                        <a href="#myTargets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="myTargetsForKeepAlive"></a>
+                    <span class="name">
+                        <span ><b>myTargetsForKeepAlive</b></span>
+                        <a href="#myTargetsForKeepAlive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="personalChosen"></a>
+                    <span class="name">
+                        <span ><b>personalChosen</b></span>
+                        <a href="#personalChosen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="personalTarget"></a>
+                    <span class="name">
+                        <span ><b>personalTarget</b></span>
+                        <a href="#personalTarget"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="primaryTarget"></a>
+                    <span class="name">
+                        <span ><b>primaryTarget</b></span>
+                        <a href="#primaryTarget"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedTarget"></a>
+                    <span class="name">
+                        <span ><b>selectedTarget</b></span>
+                        <a href="#selectedTarget"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="socket"></a>
+                    <span class="name">
+                        <span ><b>socket</b></span>
+                        <a href="#socket"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="targetConnected"></a>
+                    <span class="name">
+                        <span ><b>targetConnected</b></span>
+                        <a href="#targetConnected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="targetIsConnected"></a>
+                    <span class="name">
+                        <span ><b>targetIsConnected</b></span>
+                        <a href="#targetIsConnected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="targetNotSelected"></a>
+                    <span class="name">
+                        <span ><b>targetNotSelected</b></span>
+                        <a href="#targetNotSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="targets"></a>
+                    <span class="name">
+                        <span ><b>targets</b></span>
+                        <a href="#targets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toastController"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>toastController</b></span>
+                        <a href="#toastController"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ToastController</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/shared/select-target-modal/select-target-component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {ChangeDetectorRef, Component, NgZone, OnInit,} from &#x27;@angular/core&#x27;;
+import {ShootingService} from &#x27;../services/shooting.service&#x27;;
+import {HttpClient} from &#x27;@angular/common/http&#x27;;
+import {Router} from &#x27;@angular/router&#x27;;
+import {StorageService} from &#x27;../services/storage.service&#x27;;
+import {BleService} from &#x27;../services/ble.service&#x27;;
+import {AlertController, LoadingController, Platform, ToastController} from &#x27;@ionic/angular&#x27;;
+import {HitNohitService} from &#x27;../drill/hit-nohit.service&#x27;;
+import {ScreenOrientation} from &#x27;@ionic-native/screen-orientation/ngx&#x27;;
+import {NativePageTransitions, NativeTransitionOptions} from &#x27;@ionic-native/native-page-transitions/ngx&#x27;;
+import {InitService} from &#x27;../services/init.service&#x27;;
+import {BLE} from &#x27;@ionic-native/ble/ngx&#x27;;
+import {GatewayService} from &#x27;../services/gateway.service&#x27;;
+import {ErrorModalComponent} from &#x27;../popups/error-modal/error-modal.component&#x27;;
+import {MatDialog} from &#x27;@angular/material/dialog&#x27;;
+import {AndroidPermissions} from &#x27;@awesome-cordova-plugins/android-permissions/ngx&#x27;;
+
+
+const SERVICE_1 &#x3D; &#x27;1800&#x27;;
+const SERVICE_2 &#x3D; &#x27;6e400001-b5a3-f393-e0a9-e50e24dcca9e&#x27;;
+const SERVICE_2_CHAR &#x3D; &#x27;6e400003-b5a3-f393-e0a9-e50e24dcca9e&#x27;;
+const SERVICE_2_CHAR_WRITE &#x3D; &#x27;6e400002-b5a3-f393-e0a9-e50e24dcca9e&#x27;;
+
+const READ_WRITE &#x3D; &#x27;2a00&#x27;;
+const READ &#x3D; &#x27;2a01&#x27;;
+const READ1 &#x3D; &#x27;2a04&#x27;;
+const READ2 &#x3D; &#x27;2a06&#x27;;
+
+@Component({
+    selector: &#x27;app-select-target&#x27;,
+    templateUrl: &#x27;./select-target-component.html&#x27;,
+    styleUrls: [&#x27;./select-target.component.scss&#x27;],
+})
+export class SelectTargetComponent implements OnInit {
+    BASE_URL_HTTP &#x3D; &#x27;192.168.0.86:8087&#x27;;
+    socket;
+    GET_TARGETS_API;
+    chosenTarget &#x3D; null;
+    myTargets &#x3D; [];
+    targetConnected &#x3D; false;
+    selectedTarget &#x3D; null;
+    primaryTarget: null;
+    loading: HTMLIonLoadingElement;
+    personalTarget: any;
+    isFromWizard &#x3D; false;
+    targetIsConnected &#x3D; false;
+    targetNotSelected &#x3D; true;
+    connectedClicked &#x3D; false;
+    isScanning &#x3D; false;
+    personalChosen &#x3D; false;
+    isPersonalTargetAround &#x3D; false;
+    private currentTargetId: string;
+    private isConnected: boolean;
+    myTargetsForKeepAlive &#x3D; [];
+
+    targets &#x3D; [];
+
+    constructor(
+        private http: HttpClient,
+        private bleService: BleService,
+        private storageService: StorageService,
+        private shootingService: ShootingService,
+        public loadingController: LoadingController,
+        private hitNohitService: HitNohitService,
+        private ble: BLE,
+        public dialog: MatDialog,
+        private gatewayService: GatewayService,
+        private androidPermissions: AndroidPermissions,
+        private ngZone: NgZone,
+        private screenOrientation: ScreenOrientation,
+        private cd: ChangeDetectorRef,
+        public toastController: ToastController,
+        private zone: NgZone,
+        private initService: InitService,
+        private nativePageTransitions: NativePageTransitions,
+        private platform: Platform,
+        public aletMdl: AlertController,
+        private router: Router
+    ) {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
+
+    }
+
+    ngOnInit() {
+        // this.targetConnected &#x3D; this.bleService.isConnectedFlag;
+        this.platform.ready().then(() &#x3D;&gt; {
+            this.screenOrientation.unlock();
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT).then((data) &#x3D;&gt; {
+
+            });
+        });
+        this.gatewayService.notifyKeepAlive.subscribe(data &#x3D;&gt; {
+            if (this.myTargetsForKeepAlive &amp;&amp; this.myTargetsForKeepAlive.length) {
+                this.myTargetsForKeepAlive.forEach(target &#x3D;&gt; {
+                    if (data &#x3D;&#x3D;&#x3D; target.target) {
+                        target.date &#x3D; new Date();
+                    }
+                });
+            }
+        });
+
+        setInterval(() &#x3D;&gt; {
+            const now &#x3D; new Date();
+            this.myTargetsForKeepAlive.forEach((target) &#x3D;&gt; {
+                const seconds &#x3D; (target.date.getTime() - now.getTime()) / 1000;
+                if (seconds &gt;&#x3D; 5) {
+                    this.myTargets &#x3D; this.myTargets.filter(o &#x3D;&gt; o.name &#x3D;&#x3D;&#x3D; target.name);
+                }
+
+            });
+        }, 5000);
+
+        this.gatewayService.notifyTargetConnectedToGateway.subscribe(data &#x3D;&gt; {
+            if (data) {
+                let flag &#x3D; false;
+                this.myTargets.forEach(target &#x3D;&gt; {
+                    if (target.name &#x3D;&#x3D;&#x3D; data) {
+                        flag &#x3D; true;
+                    }
+                });
+                if (!flag) {
+                    this.myTargets.push({name: data});
+                    this.myTargetsForKeepAlive.push({target: data, date: new Date()});
+                    this.cd.detectChanges();
+                }
+            }
+        });
+        this.personalTarget &#x3D; this.storageService.getItem(&#x27;personalTarget&#x27;);
+
+        this.bleService.scanFinished.subscribe((flag) &#x3D;&gt; {
+            this.isScanning &#x3D; false;
+            if (flag) {
+                if (this.loading) {
+                    this.loading.dismiss();
+                }
+            }
+        });
+
+        this.reScan();
+    }
+
+    ionViewWillLeave() {
+        const options: NativeTransitionOptions &#x3D; {
+            direction: &#x27;up&#x27;,
+            duration: 500,
+            slowdownfactor: 3,
+            slidePixels: 20,
+            iosdelay: 100,
+            androiddelay: 150,
+            fixedPixelsTop: 0,
+            fixedPixelsBottom: 60
+        };
+
+        this.nativePageTransitions.slide(options)
+            .then(() &#x3D;&gt; {
+            })
+            .catch(() &#x3D;&gt; {
+            });
+
+    }
+
+    clearPrimaryFromList() {
+        // @ts-ignore
+        if (this.myTargets &amp;&amp; this.primaryTarget &amp;&amp; this.primaryTarget.id) {
+            this.myTargets &#x3D; this.myTargets.filter((obj) &#x3D;&gt; {
+                // @ts-ignore
+                return obj.id !&#x3D;&#x3D; this.primaryTarget.id;
+            });
+        }
+    }
+
+    async showToast(msg: string, color: string) {
+        const toast &#x3D; await this.toastController.create({
+            message: msg,
+            color,
+            duration: 2000,
+        });
+        toast.present();
+    }
+
+
+    async showConnectingLoader() {
+        this.loading &#x3D; await this.loadingController.create({
+            duration: 5000,
+            message: &#x27;Connecting to target&#x27;,
+            translucent: true,
+            cssClass: &#x27;custom-class custom-loading&#x27;,
+            backdropDismiss: true,
+        });
+        await this.loading.present();
+    }
+
+    async onTargetChosen() {
+        this.shootingService.chosenTarget &#x3D; this.selectedTarget;
+        this.targetIsConnected &#x3D; true;
+    }
+
+    startTraining() {
+        this.hitNohitService.resetDrill();
+        this.router.navigateByUrl(&#x27;choose&#x27;);
+    }
+
+    onBackPressed() {
+        this.router.navigateByUrl(&#x27;home&#x27;);
+    }
+
+    onGetTargets() {
+        this.shootingService.setTargetsI();
+    }
+
+    async confirmationAlert(message: string) {
+        let resolveFunction: (confirm: boolean) &#x3D;&gt; void;
+        const promise &#x3D; new Promise&lt;boolean&gt;((resolve) &#x3D;&gt; {
+            resolveFunction &#x3D; resolve;
+        });
+        const alert &#x3D; await this.aletMdl.create({
+            header: &#x27;Confirmation&#x27;,
+            message,
+            backdropDismiss: false,
+            buttons: [
+                {
+                    text: &#x27;No&#x27;,
+                    handler: () &#x3D;&gt; resolveFunction(false),
+                },
+                {
+                    text: &#x27;Yes&#x27;,
+                    handler: () &#x3D;&gt; resolveFunction(true),
+                },
+            ],
+        });
+        await alert.present();
+        return promise;
+    }
+
+    reScan() {
+        this.bleService.resetConnection();
+        this.isScanning &#x3D; true;
+        this.initGatewayScan();
+    }
+
+    onTargetSelected(target: any) {
+        this.myTargets.forEach(t &#x3D;&gt; t.isSelected &#x3D; false);
+        target.isSelected &#x3D; true;
+        this.storageService.setItem(&#x27;slectedTarget&#x27;, target);
+        this.shootingService.isTargetConnected &#x3D; true;
+        this.selectedTarget &#x3D; target;
+        this.cd.detectChanges();
+        // If its not a gateway we need to connect directly to the target.
+        if (target.id) {
+            if (this.bleService.isGateway) {
+                this.bleService.dissconect().then(data &#x3D;&gt; {
+                    this.bleService.isGateway &#x3D; false;
+                    this.bleService.connect(target.id);
+                    this.bleService.notifyTargetConnected.subscribe(d &#x3D;&gt; {
+                        this.isConnected &#x3D; true;
+                        this.targetNotSelected &#x3D; false;
+                        this.cd.detectChanges();
+                    });
+                });
+            } else {
+                this.bleService.connect(target.id);
+                this.bleService.notifyTargetConnected.subscribe(data &#x3D;&gt; {
+                    this.isConnected &#x3D; true;
+                    this.targetNotSelected &#x3D; false;
+                    this.cd.detectChanges();
+                });
+            }
+
+        } else {
+            this.isConnected &#x3D; true;
+            this.targetNotSelected &#x3D; false;
+            this.cd.detectChanges();
+        }
+    }
+
+    onGoToEditDrill() {
+        this.shootingService.chosenTarget &#x3D; this.selectedTarget;
+        if (!this.initService.isGateway) {
+            this.shootingService.chosenTarget &#x3D; this.selectedTarget;
+            this.targetIsConnected &#x3D; true;
+            this.zone.run(() &#x3D;&gt; {
+                // Your router is here
+                this.router.navigateByUrl(&#x27;choose&#x27;);
+            });
+        }
+        this.router.navigateByUrl(&#x27;choose&#x27;);
+    }
+
+    onDiscconectTest() {
+        ////  this.bleService.distory();
+    }
+
+    initGatewayScan() {
+        this.myTargets &#x3D; [];
+        this.ble.scan([], 5).subscribe(device &#x3D;&gt; this.onDeviceDiscoveredInitialScan(device), error &#x3D;&gt; this.scanErrorInitialScan(error));
+        setTimeout(() &#x3D;&gt; {
+            this.isScanning &#x3D; false;
+            if (!this.targetNotSelected) {
+                this.addTargetToList(this.selectedTarget);
+            }
+        }, 5500);
+    }
+
+    scanErrorInitialScan(error: any) {
+        if (error.indexOf(&#x27;Location &#x27;) &gt; -1) {
+            this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.LOCATION]).then(r &#x3D;&gt; {
+
+            });
+        }
+        console.error(&#x27;BLE SCAN ERROR&#x27;, error);
+    }
+
+    onDeviceDiscoveredInitialScan(device: any) {
+        this.ngZone.run(() &#x3D;&gt; {
+            if (device.name) {
+                console.log(&#x27;FOUND DEVICE: &#x27; + device.name);
+                if (device.name.toLowerCase().includes(&#x27;adl&#x27;) ||
+                    device.name.toLowerCase().includes(&#x27;e64&#x27;) ||
+                    device.name.toLowerCase().includes(&#x27;e1n&#x27;) ||
+                    device.name.toLowerCase().includes(&#x27;e1n&#x27;) ||
+                    device.name.toLowerCase().includes(&#x27;eMarn&#x27;) ||
+                    device.name.toLowerCase().includes(&#x27;17&#x27;) ||
+                    device.name.toLowerCase().includes(&#x27;003&#x27;) ||
+                    device.name.toLowerCase().includes(&#x27;e16&#x27;) ||
+                    device.name.toLowerCase().includes(&#x27;nordic&#x27;)) {
+                    this.addTargetToList({name: device.name, id: device.id});
+                } else if (device.name.toLowerCase().includes(&#x27;egateway&#x27;)) {
+                    this.bleService.gateways.push(device.id);
+                    this.bleService.isGateway &#x3D; true;
+                    this.initService.isGateway &#x3D; true;
+                    this.bleService.connect(device.id);
+                }
+            }
+
+        });
+    }
+
+
+    onConnectedForTargetName(peripheral: any) {
+        console.log(&#x27;CONNECTED - Gateway/Target Connected &#x27;, peripheral);
+        this.handleReadForTargetName(peripheral.id, SERVICE_2, SERVICE_2_CHAR);
+    }
+
+    // tslint:disable-next-line:no-shadowed-variable
+    handleReadForTargetName(id, service, characteristic) {
+        this.ble.startNotification(id, service, characteristic).subscribe((data) &#x3D;&gt; {
+            const dec &#x3D; new TextDecoder();
+            const enc &#x3D; new TextEncoder();
+            const buffer &#x3D; new Uint8Array(data);
+            this.parseGatewayMessage(buffer, id);
+        });
+    }
+
+    parseGatewayMessage(buffer: Uint8Array, id) {
+        const messageFromGatewaty &#x3D; String.fromCharCode.apply(null, buffer);
+        console.log(&#x27;MESSAGE: &#x27;, messageFromGatewaty);
+        if (messageFromGatewaty.indexOf(&#x27;&lt;&#x27;) &gt; -1) {
+            this.processData(messageFromGatewaty, id);
+        }
+    }
+
+    processData(input, id) {
+        const dataArray &#x3D; input.replace(&#x27;&lt;,&#x27;, &#x27;&#x27;).replace(&#x27;,&gt;&#x27;, &#x27;&#x27;).split(&#x27;,&#x27;);
+        const dataLength &#x3D; dataArray.length;
+        if (dataLength &#x3D;&#x3D;&#x3D; 4) {
+            const primB &#x3D; dataArray[1];
+            switch (primB) {
+                case (&#x27;B&#x27;):
+                    this.handleBatteryPrecentage_MSG(dataArray, id);
+                    break;
+                default:
+                    break;
+
+            }
+        } else {
+            console.error(&#x27;ProcessData Invalid: {0}, Not 4 Length&#x27;, input);
+        }
+    }
+
+    handleBatteryPrecentage_MSG(dataArray, id) {
+        const targetName &#x3D; dataArray[0];
+        this.addTargetToList({name: targetName, id});
+    }
+
+
+    distory() {
+        this.ble.disconnect(this.currentTargetId).then(() &#x3D;&gt; {
+            console.log(&#x27;Called Disconnect&#x27;);
+        });
+    }
+
+    private addTargetToList(target) {
+        let flag &#x3D; false;
+        this.myTargets.forEach(t &#x3D;&gt; {
+            if (t.name &#x3D;&#x3D;&#x3D; target.name) {
+                flag &#x3D; true;
+            }
+        });
+        if (!flag) {
+            this.myTargets.push(target);
+            this.myTargetsForKeepAlive.push({target, date: new Date()});
+            this.cd.detectChanges();
+        }
+    }
+
+    setSelectedTarget(item: any) {
+        this.targets.forEach(x &#x3D;&gt; x.isSelected &#x3D; false);
+        item.isSelected &#x3D; true;
+    }
+}
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;target-selection&quot;&gt;
+    &lt;header&gt;
+        &lt;div class&#x3D;&quot;back-container&quot; (click)&#x3D;&quot;onBackPressed()&quot;&gt;
+            &lt;svg width&#x3D;&quot;20&quot; height&#x3D;&quot;16&quot; viewBox&#x3D;&quot;0 0 20 16&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;path d&#x3D;&quot;M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z&quot; fill&#x3D;&quot;white&quot;/&gt;
+            &lt;/svg&gt;
+            &lt;p&gt;BACK&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;p class&#x3D;&quot;title&quot;&gt;Select &lt;span&gt;Target&lt;/span&gt;&lt;/p&gt;
+        &lt;button class&#x3D;&quot;connect&quot; (click)&#x3D;&quot;reScan()&quot; *ngIf&#x3D;&quot;!isScanning &amp;&amp; (!myTargets || myTargets.length &#x3D;&#x3D;&#x3D;0)&quot;&gt;connect to
+            target
+        &lt;/button&gt;
+
+        &lt;p class&#x3D;&quot;explanation-text&quot; *ngIf&#x3D;&quot;false&quot;&gt;
+            If you don’t see your Target in the list, please go to Bluetooth settings and make sure your device is
+            paired
+        &lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;div class&#x3D;&quot;ble-img&quot; *ngIf&#x3D;&quot;isScanning&quot;&gt;
+        &lt;img *ngIf&#x3D;&quot;isScanning&quot; class&#x3D;&quot;scanAnimation&quot; src&#x3D;&quot;assets/icons/Group%20770.svg&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;ul class&#x3D;&quot;target-list&quot; *ngIf&#x3D;&quot;!isScanning &amp;&amp; myTargets.length&gt;0&quot;&gt;
+        &lt;li *ngFor&#x3D;&quot;let item of myTargets&quot; (click)&#x3D;&quot;onTargetSelected(item)&quot;
+            [ngClass]&#x3D;&quot;{&#x27;selected&#x27;: item.isSelected}&quot;&gt;{{ item.name }}&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;!--        &lt;div class&#x3D;&quot;targets-list-container&quot; *ngIf&#x3D;&quot;myTargets.length &gt; 0 &quot;&gt;--&gt;
+    &lt;!--            &lt;div class&#x3D;&quot;targets-list&quot; *ngFor&#x3D;&quot;let target of  myTargets; let i &#x3D; index&quot;&gt;--&gt;
+    &lt;!--                &lt;div class&#x3D;&quot;targets-count&quot;&gt; Traget #{{i}}&lt;/div&gt;--&gt;
+    &lt;!--                &lt;div (click)&#x3D;&quot;onTargetSelected(target);&quot; class&#x3D;&quot;target-name&quot;&gt;--&gt;
+    &lt;!--                    &lt;span&gt;  {{target.name}}&lt;/span&gt;--&gt;
+    &lt;!--                    &lt;img *ngIf&#x3D;&quot;target.isSelected&quot; src&#x3D;&quot;assets/icons/Icon%20-%20Check%20Circle%20-%20Filled.svg&quot;&gt;--&gt;
+    &lt;!--                &lt;/div&gt;--&gt;
+    &lt;!--            &lt;/div&gt;--&gt;
+    &lt;!--        &lt;/div&gt;--&gt;
+
+
+    &lt;button class&#x3D;&quot;continue&quot; [disabled]&#x3D;&quot;targetNotSelected&quot; (click)&#x3D;&quot;onGoToEditDrill()&quot;&gt; Continue&lt;/button&gt;
+&lt;/section&gt;
+
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./select-target.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../assets/colors&quot;;
+
+section.target-selection {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 63px 16px 40px 16px;
+  overflow-y: auto;
+  background: radial-gradient(71.47% 224.04% at 19.09% 13.6%, #404658 0%, #161820 100%);
+  align-items: center;
+  justify-content: space-between;
+
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    p.title {
+      display: flex;
+      align-items: center;
+      font-size: 27px;
+      color: white;
+      margin: 0;
+      padding-bottom: 27px;
+      padding-top: 20px;
+      span {
+        color: #FCE651;
+        padding-left: 0.3em;
+      }
+    }
+    button.connect {
+      border: 1px solid #FCE651;
+      box-sizing: border-box;
+      border-radius: 3px;
+      background-color: transparent;
+      color: #FCE651;
+      height: 50px;
+      width: 100%;
+
+      font-size: 16px;
+      line-height: 19px;
+      text-align: center;
+      text-transform: uppercase
+    }
+
+    p.explanation-text {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 21px;
+      text-align: center;
+      color: #FFFFFF;
+      margin: 0;
+      word-break: break-word;
+      width: 343px;
+    }
+  }
+
+
+  ul.target-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+
+    li {
+      height: 45px;
+      background: rgba(255, 255, 255, 0.27);
+      border-radius: 6px;
+      width: 100%;
+      margin-bottom: 10px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.15px;
+      color: rgba(255, 255, 255, 0.87);
+      box-sizing: border-box;
+      padding: 11px 23px;
+      transition: all 0.3s;
+      color: #FCE651;
+
+      &amp;.selected {
+        background: #FFFFFF;
+        color: black;
+      }
+    }
+  }
+
+  button.continue {
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #FCE651;
+    color: black;
+    height: 50px;
+    width: 100%;
+
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase
+  }
+
+  //header {
+  //  display: flex;
+  //
+  //  div {
+  //    height: 24px;
+  //    width: 100%;
+  //    display: flex;
+  //    justify-content: center;
+  //    align-items: center;
+  //
+  //    img {
+  //      position: absolute;
+  //      left: 24px;
+  //      height: 30px;
+  //
+  //    }
+  //
+  //    span {
+  //      width: 300px;
+  //      height: 24px;
+  //      font-family: Roboto;
+  //      font-size: 20px;
+  //      font-weight: 500;
+  //      font-stretch: normal;
+  //      font-style: normal;
+  //      line-height: 1.2;
+  //      letter-spacing: 0.26px;
+  //      text-align: center;
+  //      color: rgba(0, 0, 0, 0.8);
+  //    }
+  //  }
+  //}
+
+
+  //.content {
+  //  .personal-target-title {
+  //    height: 14px;
+  //    font-family: Roboto, serif;
+  //    font-size: 12px;
+  //    font-weight: normal;
+  //    font-stretch: normal;
+  //    font-style: normal;
+  //    line-height: 1.17;
+  //    letter-spacing: 1.88px;
+  //    text-align: left;
+  //    color: rgba(0, 0, 0, 0.61);
+  //    width: 92%;
+  //    margin-left: 24px;
+  //    margin-right: 24px;
+  //    margin-top: 129px;
+  //  }
+  //
+  //  .personal-target-name {
+  //    height: 40px;
+  //    border-radius: 4px;
+  //    border: solid 1px #000000;
+  //    display: flex;
+  //    align-items: center;
+  //    padding-left: 5px;
+  //    width: 92%;
+  //    margin-left: 24px;
+  //    margin-right: 24px;
+  //    font-family: Roboto, serif;
+  //    font-size: 14px;
+  //    font-weight: normal;
+  //    font-stretch: normal;
+  //    font-style: normal;
+  //    line-height: 1.14;
+  //    letter-spacing: 0.24px;
+  //    text-align: left;
+  //    color: rgba(0, 0, 0, 0.87);
+  //  }
+  //
+  //  hr {
+  //    width: 100%;
+  //    height: 1px;
+  //    opacity: 0.05;
+  //    background-color: #000000;
+  //    margin-top: 24px;
+  //  }
+  //
+  //  .ble-img {
+  //    display: flex;
+  //    justify-content: center;
+  //    align-items: center;
+  //    position: absolute;
+  //    top: 0;
+  //    width: 100%;
+  //    height: 100%;
+  //    z-index: 1;
+  //
+  //    img {
+  //      width: 178px;
+  //      height: 178px;
+  //    }
+  //  }
+  //
+  //  .buttons-container {
+  //    display: flex;
+  //    flex-direction: column;
+  //    position: absolute;
+  //    bottom: 0;
+  //    margin-bottom: 33px;
+  //    margin-left: 16px;
+  //    margin-right: 16px;
+  //    width: calc(100% - 34px);
+  //    align-items: center;
+  //    z-index: 9999;
+  //
+  //    .btn-connect {
+  //      width: 343px;
+  //      height: 56px;
+  //      border-radius: 4px;
+  //      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  //      background-color: #ce564b;
+  //      font-family: Roboto, serif;
+  //      font-size: 14px;
+  //      font-weight: 500;
+  //      font-stretch: normal;
+  //      font-style: normal;
+  //      line-height: 1.14;
+  //      letter-spacing: 1.25px;
+  //      text-align: center;
+  //      color: #ffffff;
+  //    }
+  //
+  //    .btn-connect:disabled {
+  //      background-color: #ce564bb3;
+  //    }
+  //
+  //    .btn-setings {
+  //      width: 343px;
+  //      height: 56px;
+  //      border-radius: 4px;
+  //      border: solid 1px #ce564b;
+  //      background-color: #ffffff;
+  //      font-family: Roboto;
+  //      font-size: 14px;
+  //      font-weight: 500;
+  //      font-stretch: normal;
+  //      font-style: normal;
+  //      line-height: 1.14;
+  //      letter-spacing: 1.25px;
+  //      text-align: center;
+  //      color: #ce564b;
+  //      margin-top: 10px;
+  //    }
+  //  }
+  //}
+
+}
+
+//
+//.targets-list-container {
+//  .targets-list {
+//    .targets-count {
+//      font-family: Roboto;
+//      font-size: 12px;
+//      font-weight: normal;
+//      font-stretch: normal;
+//      font-style: normal;
+//      line-height: 1.17;
+//      letter-spacing: 1.88px;
+//      text-align: left;
+//      color: rgba(0, 0, 0, 0.61);
+//      padding-bottom: 8px;
+//      padding-bottom: 8px;
+//      margin-left: 24px;
+//    }
+//
+//    .target-name {
+//      margin-right: 24px;
+//      margin-left: 24px;
+//      height: 40px;
+//      border-radius: 4px;
+//      border: solid 1px #000000;
+//      font-family: Roboto;
+//      font-size: 14px;
+//      font-weight: normal;
+//      font-stretch: normal;
+//      font-style: normal;
+//      line-height: 1.14;
+//      letter-spacing: 0.24px;
+//      text-align: left;
+//      color: rgba(0, 0, 0, 0.87);
+//      display: flex;
+//      align-items: center;
+//      padding-left: 12px;
+//      justify-content: space-between;
+//
+//      span {
+//        font-family: Roboto;
+//        font-size: 14px;
+//        font-weight: normal;
+//        font-stretch: normal;
+//        font-style: normal;
+//        line-height: 1.14;
+//        letter-spacing: 0.24px;
+//        text-align: left;
+//        color: rgba(0, 0, 0, 0.87);
+//      }
+//
+//      img {
+//        height: 20px;
+//        width: 20px;
+//        margin-right: 17px;
+//      }
+//    }
+//  }
+//}
+//
+//.scan-container {
+//  z-index: 9999;
+//  display: flex;
+//  align-items: center;
+//
+//  .choose-target {
+//    display: flex;
+//    align-items: center;
+//    width: 75%;
+//
+//    .goal-wrapper {
+//      margin-left: 27px;
+//      width: 24px;
+//      height: 24px;
+//      display: flex;
+//      justify-content: center;
+//      align-items: center;
+//      border-radius: 5px;
+//      background-color: #363636;
+//
+//      svg {
+//        width: 18px;
+//        height: 18px;
+//      }
+//    }
+//
+//    span {
+//      margin-left: 18px;
+//    }
+//  }
+//
+//  button {
+//    width: 128px;
+//    height: 40px;
+//    border-radius: 4px;
+//    border: solid 1px #ce564b;
+//    background-color: white;
+//    font-size: 14px;
+//    font-weight: 500;
+//    font-stretch: normal;
+//    font-style: normal;
+//    line-height: 1.14;
+//    letter-spacing: 1.25px;
+//    text-align: center;
+//    color: #ce564b;
+//    margin-right: 24px;
+//    z-index: 9999;
+//  }
+//}
+
+.scanAnimation {
+  animation: pulse-red 2s infinite;
+}
+
+
+@keyframes pulse-red {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(84, 184, 222, 0.7);
+    border-radius: 100%;
+  }
+
+  70% {
+    transform: scale(1.5);
+    box-shadow: 0 0 0 10px rgba(84, 184, 222, 0);
+    border-radius: 100%;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(84, 184, 222, 0);
+    border-radius: 100%;
+  }
+}
+
+
+//.ble-img-abs {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  margin-top: 35px;
+//  position: absolute;
+//  top: 30%;
+//  left: 36%;
+//
+//  img {
+//    width: 178px;
+//    height: 178px;
+//  }
+//}
+//
+//.targets-count {
+//  font-family: Roboto;
+//  font-size: 12px;
+//  font-weight: normal;
+//  font-stretch: normal;
+//  font-style: normal;
+//  line-height: 1.17;
+//  letter-spacing: 1.88px;
+//  text-align: left;
+//  color: rgba(0, 0, 0, 0.61);
+//  padding-bottom: 8px;
+//  padding-bottom: 8px;
+//  margin-left: 24px;
+//}
+//
+//.target-name {
+//  margin-right: 24px;
+//  margin-left: 24px;
+//  height: 40px;
+//  border-radius: 4px;
+//  border: solid 1px #000000;
+//  font-family: Roboto;
+//  font-size: 14px;
+//  font-weight: normal;
+//  font-stretch: normal;
+//  font-style: normal;
+//  line-height: 1.14;
+//  letter-spacing: 0.24px;
+//  text-align: left;
+//  color: rgba(0, 0, 0, 0.87);
+//  display: flex;
+//  align-items: center;
+//  padding-left: 12px;
+//  justify-content: space-between;
+//
+//  span {
+//    font-family: Roboto;
+//    font-size: 14px;
+//    font-weight: normal;
+//    font-stretch: normal;
+//    font-style: normal;
+//    line-height: 1.14;
+//    letter-spacing: 0.24px;
+//    text-align: left;
+//    color: rgba(0, 0, 0, 0.87);
+//  }
+//
+//  img {
+//    height: 20px;
+//    width: 20px;
+//    margin-right: 17px;
+//  }
+//}
+
+div.back-container {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 26px;
+    color: white;
+  }
+
+  svg {
+    padding-right: 7px;
+    width: 35px;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="target-selection">    <header>        <div class="back-container" (click)="onBackPressed()">            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">                <path d="M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z" fill="white"/>            </svg>            <p>BACK</p>        </div>        <p class="title">Select <span>Target</span></p>        <button class="connect" (click)="reScan()" *ngIf="!isScanning && (!myTargets || myTargets.length ===0)">connect to            target        </button>        <p class="explanation-text" *ngIf="false">            If you don’t see your Target in the list, please go to Bluetooth settings and make sure your device is            paired        </p>    </header>    <div class="ble-img" *ngIf="isScanning">        <img *ngIf="isScanning" class="scanAnimation" src="assets/icons/Group%20770.svg">    </div>    <ul class="target-list" *ngIf="!isScanning && myTargets.length>0">        <li *ngFor="let item of myTargets" (click)="onTargetSelected(item)"            [ngClass]="{\'selected\': item.isSelected}">{{ item.name }}</li>    </ul>    <!--        <div class="targets-list-container" *ngIf="myTargets.length > 0 ">-->    <!--            <div class="targets-list" *ngFor="let target of  myTargets; let i = index">-->    <!--                <div class="targets-count"> Traget #{{i}}</div>-->    <!--                <div (click)="onTargetSelected(target);" class="target-name">-->    <!--                    <span>  {{target.name}}</span>-->    <!--                    <img *ngIf="target.isSelected" src="assets/icons/Icon%20-%20Check%20Circle%20-%20Filled.svg">-->    <!--                </div>-->    <!--            </div>-->    <!--        </div>-->    <button class="continue" [disabled]="targetNotSelected" (click)="onGoToEditDrill()"> Continue</button></section></div>'
+    var COMPONENTS = [{'name': 'AccessModalComponent', 'selector': 'app-access-modal'},{'name': 'ActivityHistoryComponent', 'selector': 'app-activity-history'},{'name': 'ActivityLogComponent', 'selector': 'app-activity-log'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BalisticCalculatorComponent', 'selector': 'app-balistic-calculator'},{'name': 'ChallengeListComponent', 'selector': 'challenge-list'},{'name': 'ChooseDrillComponent', 'selector': 'app-activity-log'},{'name': 'DrillComponent', 'selector': 'app-session-modal'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GunlistComponent', 'selector': 'app-gunlist'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'NewTargetDesignComponent', 'selector': 'app-new-target-design'},{'name': 'NoConnetionErroComponent', 'selector': 'app-error-modal'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'SelectTargetComponent', 'selector': 'app-select-target'},{'name': 'SelectTargetModalComponent', 'selector': 'app-select-target-modal'},{'name': 'ShareDialogComponent', 'selector': 'app-share-dialog'},{'name': 'SightlistComponent', 'selector': 'app-sightlist'},{'name': 'SigninComponent', 'selector': 'app-singin'},{'name': 'SigninModalComponent', 'selector': 'app-signin-modal'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'SignupWizardComponent', 'selector': 'app-signup-wizard'},{'name': 'Tab1Page', 'selector': 'app-tab1'},{'name': 'Tab2Page', 'selector': 'app-tab2'},{'name': 'Tab3Page', 'selector': 'app-tab3'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TermsAndConditionComponent', 'selector': 'app-terms-and-condition'},{'name': 'WizardSummaryComponent', 'selector': 'app-wizard-summary'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SelectTargetComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SelectTargetComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
