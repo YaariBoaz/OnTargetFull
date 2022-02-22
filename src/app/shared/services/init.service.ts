@@ -2,7 +2,7 @@ import {Injectable, NgZone} from '@angular/core';
 import {ApiService, ZeroTableGetObject} from './api.service';
 import {StorageService} from './storage.service';
 import {UserService} from './user.service';
-import {BLE} from '@ionic-native/ble/ngx';
+import { BLE } from '@awesome-cordova-plugins/ble/ngx';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {GatewayService} from './gateway.service';
 import {ShootingService} from './shooting.service';

@@ -1,5 +1,5 @@
 import {Injectable, NgZone} from '@angular/core';
-import {BLE} from '@ionic-native/ble/ngx';
+import { BLE } from '@awesome-cordova-plugins/ble/ngx';
 import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
 import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
 import {StorageService} from './storage.service';

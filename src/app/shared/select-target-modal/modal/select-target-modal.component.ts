@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {AlertController, LoadingController, Platform, ToastController} from '@ionic/angular';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
-import {BLE} from '@ionic-native/ble/ngx';
+import { BLE } from '@awesome-cordova-plugins/ble/ngx';
 import {MatDialog} from '@angular/material/dialog';
 import {BleService} from '../../services/ble.service';
 import {StorageService} from '../../services/storage.service';

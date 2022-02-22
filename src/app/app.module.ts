@@ -13,7 +13,7 @@ import {StorageService} from './shared/services/storage.service';
 import {InitService} from './shared/services/init.service';
 import {Tab1Service} from './tab1/tab1-service.service';
 import {UserService} from './shared/services/user.service';
-import {BLE} from '@ionic-native/ble/ngx';
+import { BLE } from '@awesome-cordova-plugins/ble/ngx';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from './shared/shared.module';
 import {Camera} from '@ionic-native/camera/ngx';
@@ -35,6 +35,8 @@ import { HammerModule } from '@angular/platform-browser';
 import { ActivityLogComponent } from './shared/activity-log/activity-log.component';
 import {Tab1PageModule} from './tab1/tab1.module';
 import {Tab2PageModule} from './tab2/tab2.module';
+
+
 
 
 
