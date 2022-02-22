@@ -36,6 +36,10 @@
     <param name="android-package" value="com.mostafa.previewanyfile.PreviewAnyFile"/>
   </feature>
 
+  <feature name="InAppBillingPlugin">
+    <param name="android-package" value="cc.fovea.PurchasePlugin"/>
+  </feature>
+
   <feature name="CDVOrientation">
     <param name="android-package" value="cordova.plugins.screenorientation.CDVOrientation"/>
   </feature>
