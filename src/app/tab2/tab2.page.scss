@@ -4,16 +4,11 @@ section.edit-drill {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: radial-gradient(71.47% 224.04% at 19.09% 13.6%, #404658 0%, #161820 100%);
 
   header {
     position: relative;
-
-    background-image: linear-gradient(#00000054, #00000054), url("../../assets/edit-drill.jpg");
-    background-size: 100% 150px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 150px;
-
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -31,6 +26,11 @@ section.edit-drill {
         font-size: 20px;
         line-height: 24px;
         letter-spacing: 0.26px;
+
+        span {
+          color: #FCE651;
+          font-weight: bold;
+        }
       }
 
       svg {
@@ -146,26 +146,20 @@ section.edit-drill {
   ::ng-deep {
 
     .sliders {
-      margin-bottom: 1.5em;
-      height: 200px;
-      margin-top: 10px;
+      height: 170px;
     }
 
     .sliders .swiper-wrapper .swiper-slide {
       position: relative;
 
       img {
-        padding: 0.5em;
-        border: 1px solid transparent;
         transition: all 0.3s;
-
-        width: 152px;
-        width: 198px;
+        width: 140px;
         border-radius: 3px;
 
         &.selected {
-          border: 2px solid #363636;
-          border-radius: 12px;
+          border: 4px solid #FCE651;
+          border-radius: 20px;
         }
       }
 
@@ -199,26 +193,20 @@ section.edit-drill {
       @include redTitle();
       padding: 31px 0;
       margin: 0;
+      width: 300px;
+      text-align: left;
     }
 
     div.container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      border-bottom: 1px solid transparent;
-      border-top: 1px solid #e3e3e3;
-
+      padding-bottom: 20px;
       &:first-of-type {
-        border-top: 1px solid #e3e3e3;
       }
 
       &:last-of-type {
-        border-bottom: 1px solid transparent;
       }
-
-      box-sizing: border-box;
-      padding: 1.5em 0;
 
       div.title-and-icon {
         display: flex;
@@ -232,27 +220,30 @@ section.edit-drill {
         }
 
         p {
-          font-size: 12px;
+          font-size: 15px;
           line-height: 14px;
-          letter-spacing: 1.88px;
-          color: rgba(0, 0, 0, 0.87);
+          letter-spacing: 1px;
+          color: white;
           margin: 0;
+          font-family: 'Roboto', serif;
+          font-weight: 100;
         }
 
       }
 
       input.bullets {
-        width: 58px;
+        width: 70px;
         height: 40px;
         box-sizing: border-box;
         padding: 10px;
-        border: 1px solid #e3e3e3;
-        border-radius: 4px;
-
+        border: 1px solid #434753;
+        border-radius: 8px;
         font-size: 14px;
         line-height: 16px;
         letter-spacing: 0.24px;
-        color: rgba(0, 0, 0, 0.87);
+        color: rgb(255 255 255);
+        background: #434753;
+        text-align: center;
 
       }
 
@@ -263,36 +254,33 @@ section.edit-drill {
 
         select,
         input {
+          width: 70px;
           height: 40px;
           box-sizing: border-box;
           padding: 10px;
-          border: 1px solid #e3e3e3;
-          border-radius: 4px;
-
+          border: 1px solid #434753;
+          border-radius: 8px;
           font-size: 14px;
           line-height: 16px;
           letter-spacing: 0.24px;
-          color: rgba(0, 0, 0, 0.87);
+          color: rgb(255 255 255);
+          background: #434753;
+          text-align: center;
         }
       }
 
       select {
         width: 214px;
         height: 40px;
-        box-sizing: border-box;
         padding: 10px;
-        border: 1px solid #e3e3e3;
-        border-radius: 4px;
-
+        border-radius: 8px;
         font-size: 14px;
         line-height: 16px;
         letter-spacing: 0.24px;
-        color: rgba(0, 0, 0, 0.87);
-
+        background-color: #404658;
       }
 
       &.range {
-        border-bottom: 1px solid #e3e3e3;
 
         div.inputs {
           input {
@@ -301,7 +289,7 @@ section.edit-drill {
           }
 
           select {
-            width: 128px;
+            width: 100px;
           }
         }
       }
@@ -309,14 +297,15 @@ section.edit-drill {
   }
 
   button.startSessionBtn {
-    background-color: #ce564b;
+    background-color: #FCE651;
     width: 100%;
     padding: 20px;
-    font-size: 14px;
+    font-size: 19px;
     line-height: 16px;
     letter-spacing: 1.25px;
-    color: white;
+    color: black;
     margin: 32px 0;
+    font-weight: bold;
   }
 
   button.btn-set-calculator {
@@ -425,4 +414,71 @@ button:disabled {
   img {
     height: 50px;
   }
+}
+
+.select-drill-container {
+  margin-bottom: 30px;
+
+  select {
+    background-color: #5F5F5F;
+    height: 45px;
+    width: 100%;
+    border-radius: 8px;
+    color: white;
+    padding-left: 10px;
+  }
+}
+
+.map-name {
+  position: absolute;
+  top: 40px;
+  color: white;
+  font-weight: bold;
+}
+::ng-deep mat-accordion{
+  background-color: transparent  !important;
+  border:none !important;
+  box-shadow: none !important;
+}
+
+
+::ng-deep  .mat-expansion-panel-header{
+  background-color: transparent  !important;
+  border:none !important;
+  box-shadow: none !important;
+  padding: 0px !important;
+}
+
+
+::ng-deep .mat-expansion-panel {
+  background-color: transparent  !important;
+  border:none !important;
+  box-shadow: none !important;
+}
+::ng-deep .mat-expansion-panel-header-description{
+  color: transparent;
+}
+
+::ng-deep .mat-expansion-indicator::after{
+  color: #FFE500 !important;
+}
+
+
+.title-icon-wrapper{
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  svg{
+    height: 45px;
+    width: 45px;
+    padding-right: 20px;
+  }
+  span{
+    color: white;
+    font-size: 24px;
+    font-weight: 100;
+  }
+}
+::ng-deep .mat-expansion-panel-body{
+  padding:  0px !important;
 }

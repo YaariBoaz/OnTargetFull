@@ -24,6 +24,8 @@ import {ChallengeListComponent} from './ChooseDrill/List/challenge-list.componen
 import {PaymentComponent} from './components/payment/payment.component';
 import {ReversePipe} from './pipes/reverse.pipe';
 import {MakeItNormalTextPipe} from './pipes/make-it-normal-text.pipe';
+import {RouterModule} from '@angular/router';
+import {NewTargetDesignComponent} from './components/new-target-design/new-target-design.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +42,8 @@ import {MakeItNormalTextPipe} from './pipes/make-it-normal-text.pipe';
         ChallengeListComponent,
         PaymentComponent,
         ReversePipe,
-        MakeItNormalTextPipe
+        MakeItNormalTextPipe,
+        NewTargetDesignComponent
     ],
 
     imports: [
@@ -50,7 +53,8 @@ import {MakeItNormalTextPipe} from './pipes/make-it-normal-text.pipe';
         IonicModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule
+        MaterialModule,
+        RouterModule
     ],
     providers: [HitNohitService, ApiService, UserService, StorageService, ScreenOrientation],
     exports: [
@@ -63,7 +67,7 @@ import {MakeItNormalTextPipe} from './pipes/make-it-normal-text.pipe';
         ReactiveFormsModule,
         Tab3Page, GunlistComponent, SightlistComponent,
         SelectTargetModalComponent,
-        ErrorModalComponent, AccessModalComponent, ReversePipe, SelectTargetComponent, TermsAndConditionComponent, PaymentComponent
+        ErrorModalComponent, AccessModalComponent, ReversePipe, SelectTargetComponent, TermsAndConditionComponent, PaymentComponent, NewTargetDesignComponent
     ],
 
 

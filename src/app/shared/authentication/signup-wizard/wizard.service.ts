@@ -34,7 +34,7 @@ export class WizardService {
     }
 
 
-    registerUser() {
+    registerUser(registerUser) {
         let myTarget = this.storageService.getItem('personalTarget');
         if (myTarget) {
             myTarget = {

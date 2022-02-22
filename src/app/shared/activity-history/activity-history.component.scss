@@ -7,6 +7,7 @@ section.activity-history {
   width: 100%;
   box-sizing: border-box;
   padding: 24px 0;
+  background: radial-gradient(71.47% 224.04% at 19.09% 13.6%, #404658 0%, #161820 100%);
 
   header {
     display: flex;
@@ -66,7 +67,7 @@ section.activity-history {
         line-height: 1.17;
         letter-spacing: 1.88px;
         text-align: left;
-        color: #373737;
+        color: #fff;
       }
 
       .drill-count {
@@ -78,7 +79,7 @@ section.activity-history {
         line-height: 1.17;
         letter-spacing: normal;
         text-align: left;
-        color: #373737;
+        color: #fff;
       }
     }
   }
@@ -116,7 +117,7 @@ div.date {
     p {
       font-size: 12px;
       line-height: 14px;
-      color: #707070;
+      color: #fff;
       margin: 0;
     }
 
@@ -167,7 +168,7 @@ div.cards {
       //min-height: 212px;
       border-radius: 14px;
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-      background-color: #ffffff;
+      background-color: transparent;
       margin-bottom: 24px;
 
       div.target {
@@ -203,7 +204,7 @@ div.cards {
             line-height: 1.17;
             letter-spacing: normal;
             text-align: left;
-            color: #373737;
+            color: #fff;
             margin: 0;
           }
 
@@ -216,7 +217,7 @@ div.cards {
             line-height: 1.17;
             letter-spacing: 1.88px;
             text-align: left;
-            color: #373737;
+            color: #fff;
 
           }
         }
@@ -246,14 +247,14 @@ div.cards {
             font-size: 17px;
             line-height: 11px;
             letter-spacing: 0.22px;
-            color: rgba(0, 0, 0, 0.87);
+            color: #fff;
             font-weight: 300;
 
             b {
               font-size: 17px;
               line-height: 11px;
               letter-spacing: 0.22px;
-              color: rgba(0, 0, 0, 0.87);
+              color: #fff;
               margin: 0;
             }
 
@@ -263,7 +264,7 @@ div.cards {
             font-size: 17px;
             line-height: 11px;
             letter-spacing: 0.22px;
-            color: rgba(0, 0, 0, 0.87);
+            color: #fff;
             margin: 0;
 
           }
@@ -272,7 +273,7 @@ div.cards {
             font-size: 10px;
             line-height: 11px;
             letter-spacing: 0.13px;
-            color: rgba(0, 0, 0, 0.87);
+            color: #fff;
             margin: 0;
           }
         }
@@ -292,7 +293,7 @@ div.cards {
           font-style: normal;
           line-height: 1.17;
           letter-spacing: 1.88px;
-          color: rgba(0, 0, 0, 0.87);
+          color: #fff;
           margin: 0;
           padding-bottom: 4px;
         }
@@ -322,7 +323,7 @@ div.cards {
           font-style: normal;
           line-height: 1.1;
           letter-spacing: 1.56px;
-          color: #707070;
+          color: #fff;
           margin: 0;
 
           display: flex;
@@ -412,6 +413,7 @@ img {
   line-height: 1.1;
   letter-spacing: 1.56px;
   text-align: left;
+  color:white;
 }
 
 @media only screen and (min-device-width: 360px) and (min-device-height: 673px) {
@@ -442,7 +444,7 @@ img {
         line-height: 1.2;
         letter-spacing: 0.26px;
         text-align: center;
-        color: rgba(0, 0, 0, 0.8);
+        color: #FCE651;
         margin: 0;
       }
 
@@ -486,7 +488,7 @@ img {
         p {
           font-size: 12px;
           line-height: 14px;
-          color: #707070;
+          color: #fff;
           margin: 0;
         }
 
@@ -531,7 +533,7 @@ img {
         width: 100%;
         border-radius: 14px;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-        background-color: #ffffff;
+        background-color: transparent;
         margin-bottom: 24px;
 
         div.target {
@@ -566,7 +568,7 @@ img {
               line-height: 1.17;
               letter-spacing: normal;
               text-align: left;
-              color: #373737;
+              color: #fff;
               margin: 0;
             }
 
@@ -579,7 +581,7 @@ img {
               line-height: 1.17;
               letter-spacing: 1.88px;
               text-align: left;
-              color: #373737;
+              color: #fff;
 
             }
           }
@@ -609,14 +611,14 @@ img {
               font-size: 17px;
               line-height: 11px;
               letter-spacing: 0.22px;
-              color: rgba(0, 0, 0, 0.87);
+              color: #fff;
               font-weight: 300;
 
               b {
                 font-size: 17px;
                 line-height: 11px;
                 letter-spacing: 0.22px;
-                color: rgba(0, 0, 0, 0.87);
+                color: #fff;
                 margin: 0;
               }
 
@@ -626,7 +628,7 @@ img {
               font-size: 17px;
               line-height: 11px;
               letter-spacing: 0.22px;
-              color: rgba(0, 0, 0, 0.87);
+              color: #fff;
               margin: 0;
 
             }
@@ -635,7 +637,7 @@ img {
               font-size: 10px;
               line-height: 11px;
               letter-spacing: 0.13px;
-              color: rgba(0, 0, 0, 0.87);
+              color: #fff;
               margin: 0;
             }
           }
@@ -655,7 +657,7 @@ img {
             font-style: normal;
             line-height: 1.17;
             letter-spacing: 1.88px;
-            color: rgba(0, 0, 0, 0.87);
+            color: #fff;
             margin: 0;
             padding-bottom: 4px;
           }
@@ -685,7 +687,7 @@ img {
             font-style: normal;
             line-height: 1.1;
             letter-spacing: 1.56px;
-            color: #707070;
+            color: #fff;
             margin: 0;
 
             display: flex;
@@ -794,7 +796,7 @@ div.card {
   width: 100%;
   border-radius: 14px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-  background-color: #ffffff;
+  background-color: transparent;
   margin-bottom: 24px;
 
   div.target {
@@ -829,7 +831,7 @@ div.card {
         line-height: 1.17;
         letter-spacing: normal;
         text-align: left;
-        color: #373737;
+        color: #fff;
         margin: 0;
       }
 
@@ -842,7 +844,7 @@ div.card {
         line-height: 1.17;
         letter-spacing: 1.88px;
         text-align: left;
-        color: #373737;
+        color: #fff;
 
       }
     }
@@ -872,14 +874,14 @@ div.card {
         font-size: 17px;
         line-height: 11px;
         letter-spacing: 0.22px;
-        color: rgba(0, 0, 0, 0.87);
+        color: #fff;
         font-weight: 300;
 
         b {
           font-size: 17px;
           line-height: 11px;
           letter-spacing: 0.22px;
-          color: rgba(0, 0, 0, 0.87);
+          color: #fff;
           margin: 0;
         }
 
@@ -889,7 +891,7 @@ div.card {
         font-size: 17px;
         line-height: 11px;
         letter-spacing: 0.22px;
-        color: rgba(0, 0, 0, 0.87);
+        color: #fff;
         margin: 0;
 
       }
@@ -898,7 +900,7 @@ div.card {
         font-size: 10px;
         line-height: 11px;
         letter-spacing: 0.13px;
-        color: rgba(0, 0, 0, 0.87);
+        color: #fff;
         margin: 0;
       }
     }
@@ -918,7 +920,7 @@ div.card {
       font-style: normal;
       line-height: 1.17;
       letter-spacing: 1.88px;
-      color: rgba(0, 0, 0, 0.87);
+      color: #fff;
       margin: 0;
       padding-bottom: 4px;
     }
@@ -948,7 +950,7 @@ div.card {
       font-style: normal;
       line-height: 1.1;
       letter-spacing: 1.56px;
-      color: #707070;
+      color: #fff;
       margin: 0;
 
       display: flex;
@@ -1036,4 +1038,41 @@ table {
 
 .mat-dialog-container {
   padding: 0px !important;
+}
+
+thead {
+  color: white;
+}
+
+tbody {
+  color: white;
+}
+div.back-container {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+
+  display: flex;
+  align-items: center;
+
+  p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 26px;
+    color: white;
+  }
+
+  svg {
+    padding-right: 7px;
+    width: 35px;
+  }
+}
+
+.shareBtn{
+  background: #FCE651;
+  border-radius: 8px;
+  height: 40px;
+  width: 100px;
+  color: black;
 }

@@ -1,0 +1,1308 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>onTarget documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">onTarget documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  TabsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/tabs/tabs.page.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-tabs</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>tabs.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>tabs.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentTab" >currentTab</a>
+                            </li>
+                            <li>
+                                <a href="#selectedTab" >selectedTab</a>
+                            </li>
+                            <li>
+                                <a href="#splash" >splash</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscription" >subscription</a>
+                            </li>
+                            <li>
+                                <a href="#tabBarElement" >tabBarElement</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ionTabsWillChange" >ionTabsWillChange</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewDidEnter" >ionViewDidEnter</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewDidLoad" >ionViewDidLoad</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewWillLeave" >ionViewWillLeave</a>
+                            </li>
+                            <li>
+                                <a href="#isRout" >isRout</a>
+                            </li>
+                            <li>
+                                <a href="#onTrainClicked" >onTrainClicked</a>
+                            </li>
+                            <li>
+                                <a href="#tabChanged" >tabChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(bleService: <a href="../injectables/BleService.html" target="_self">BleService</a>, tabService: <a href="../injectables/TabsService.html" target="_self">TabsService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, zone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>, platform: Platform)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/tabs/tabs.page.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>bleService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BleService.html" target="_self" >BleService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>tabService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TabsService.html" target="_self" >TabsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>zone</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platform</td>
+                                                  
+                                                        <td>
+                                                                    <code>Platform</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionTabsWillChange"></a>
+                    <span class="name">
+                        <span ><b>ionTabsWillChange</b></span>
+                        <a href="#ionTabsWillChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionTabsWillChange($event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewDidEnter"></a>
+                    <span class="name">
+                        <span ><b>ionViewDidEnter</b></span>
+                        <a href="#ionViewDidEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewDidEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewDidLoad"></a>
+                    <span class="name">
+                        <span ><b>ionViewDidLoad</b></span>
+                        <a href="#ionViewDidLoad"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewDidLoad()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillLeave"></a>
+                    <span class="name">
+                        <span ><b>ionViewWillLeave</b></span>
+                        <a href="#ionViewWillLeave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewWillLeave()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isRout"></a>
+                    <span class="name">
+                        <span ><b>isRout</b></span>
+                        <a href="#isRout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isRout()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>&quot;tab3&quot; | &quot;tab2&quot; | &quot;tab1&quot;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTrainClicked"></a>
+                    <span class="name">
+                        <span ><b>onTrainClicked</b></span>
+                        <a href="#onTrainClicked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTrainClicked()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabChanged"></a>
+                    <span class="name">
+                        <span ><b>tabChanged</b></span>
+                        <a href="#tabChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>tabChanged($event: MatTabChangeEvent)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$event</td>
+                                    <td>
+                                            <code>MatTabChangeEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentTab"></a>
+                    <span class="name">
+                        <span ><b>currentTab</b></span>
+                        <a href="#currentTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;tab1&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/tabs/tabs.page.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedTab"></a>
+                    <span class="name">
+                        <span ><b>selectedTab</b></span>
+                        <a href="#selectedTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/tabs/tabs.page.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="splash"></a>
+                    <span class="name">
+                        <span ><b>splash</b></span>
+                        <a href="#splash"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/tabs/tabs.page.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subscription</b></span>
+                        <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/tabs/tabs.page.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tabBarElement"></a>
+                    <span class="name">
+                        <span ><b>tabBarElement</b></span>
+                        <a href="#tabBarElement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/tabs/tabs.page.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, NgZone,} from &#x27;@angular/core&#x27;;
+import {TabsService} from &#x27;./tabs.service&#x27;;
+import {Router} from &#x27;@angular/router&#x27;;
+import {Subscription} from &#x27;rxjs&#x27;;
+import {Platform} from &#x27;@ionic/angular&#x27;;
+import {MatTabChangeEvent} from &#x27;@angular/material/tabs&#x27;;
+import {BleService} from &#x27;../shared/services/ble.service&#x27;;
+
+@Component({
+    selector: &#x27;app-tabs&#x27;,
+    templateUrl: &#x27;tabs.page.html&#x27;,
+    styleUrls: [&#x27;tabs.page.scss&#x27;],
+
+})
+export class TabsPage {
+    selectedTab &#x3D; 0;
+    splash &#x3D; true;
+    tabBarElement: any;
+    private subscription: Subscription;
+    currentTab &#x3D; &#x27;tab1&#x27;;
+
+    constructor(private bleService: BleService, private tabService: TabsService, private router: Router, private zone: NgZone, private platform: Platform) {
+        this.tabBarElement &#x3D; document.querySelector(&#x27;.tabbar&#x27;);
+    }
+
+    ionViewDidEnter() {
+        this.subscription &#x3D; this.platform.backButton.subscribeWithPriority(9999, () &#x3D;&gt; {
+
+        });
+    }
+
+    ionViewWillLeave() {
+        this.subscription.unsubscribe();
+    }
+
+    ionViewDidLoad() {
+        this.tabBarElement.style.display &#x3D; &#x27;none&#x27;;
+        setTimeout(() &#x3D;&gt; {
+            this.splash &#x3D; false;
+            this.tabBarElement.style.display &#x3D; &#x27;flex&#x27;;
+        }, 4000);
+    }
+
+
+    ionTabsWillChange($event) {
+        switch ($event.tab) {
+            case &#x27;tab1&#x27;:
+                this.tabService.notifyTab1();
+                break;
+            case &#x27;tab2&#x27;:
+                this.tabService.notifyTab2();
+                break;
+            case &#x27;tab3&#x27;:
+                this.tabService.notifyTab3();
+        }
+    }
+
+    isRout() {
+        const url &#x3D; this.router.url;
+        if (url.indexOf(&#x27;tab3&#x27;) &gt; -1) {
+            return &#x27;tab3&#x27;;
+        } else if (url.indexOf(&#x27;tab2&#x27;) &gt; -1) {
+            return &#x27;tab2&#x27;;
+        } else {
+            return &#x27;tab1&#x27;;
+        }
+    }
+
+    tabChanged($event: MatTabChangeEvent) {
+        this.selectedTab &#x3D; $event.index;
+        switch ($event.index) {
+            case 0:
+                this.tabService.notifyTab1();
+                break;
+            case 1:
+                this.tabService.notifyTab2();
+                this.bleService.scan();
+                break;
+            case 2:
+                this.tabService.notifyTab3();
+        }
+    }
+
+    onTrainClicked() {
+
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-tab1&gt;&lt;/app-tab1&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;!--
+&lt;ion-tabs (ionTabsWillChange)&#x3D;&quot;ionTabsWillChange($event)&quot;&gt;
+  &lt;ion-tab-bar slot&#x3D;&quot;bottom&quot;&gt;
+      &lt;ion-tab-button tab&#x3D;&quot;tab1&quot; [routerLink]&#x3D;&quot;&#x27;/&#x27;&quot;&gt;
+          &lt;div class&#x3D;&quot;icon&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: isRout() &#x3D;&#x3D;&#x3D; &#x27;tab1&#x27;}&quot;&gt;
+              &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 19.595 24.578&quot;&gt;
+                  &lt;defs&gt;
+                      &lt;style&gt;
+                          .cls-2 {
+                              fill: #e4e4e4;
+                              stroke: #e4e4e4
+                          }
+                      &lt;/style&gt;
+                  &lt;/defs&gt;
+                  &lt;path id&#x3D;&quot;Home_icon_&quot;
+                        d&#x3D;&quot;M12.057 23.362V12.924H6.782v10.438H0V9.42L9.42 0l9.18 9.659v13.7zm1.63-20.894V.339h2.506v4.653z&quot;
+                        class&#x3D;&quot;cls-2&quot; data-name&#x3D;&quot;Home icon&quot; transform&#x3D;&quot;translate(.5 .716)&quot;/&gt;
+              &lt;/svg&gt;
+              &lt;p&gt;Home&lt;/p&gt;
+          &lt;/div&gt;
+      &lt;/ion-tab-button&gt;
+
+      &lt;ion-tab-button tab&#x3D;&quot;tab2&quot; [routerLink]&#x3D;&quot;&#x27;/tab2&#x27;&quot;&gt;
+          &lt;div class&#x3D;&quot;icon&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: isRout() &#x3D;&#x3D;&#x3D; &#x27;tab2&#x27;}&quot;
+               style&#x3D;&quot;height: 50px;width: 50px;box-shadow: 1px 1px 3px 2px rgb(77 68 40);border-radius: 5px;&quot;&gt;
+              &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; viewBox&#x3D;&quot;0 0 31.71 32.76&quot;&gt;
+                  &lt;defs&gt;
+                      &lt;style&gt;
+                          .cls-1, .cls-3, .cls-4, .cls-6 {
+                              fill: none
+                          }
+
+                          .cls-1 {
+                              stroke: #b9b9b9
+                          }
+
+                          .cls-2 {
+                              fill: #6f6f6f
+                          }
+
+                          .cls-3 {
+                              stroke: #ab8a5a;
+                              stroke-width: .1px
+                          }
+
+                          .cls-4 {
+                              stroke: #707070
+                          }
+
+                          .cls-5 {
+                              stroke: none
+                          }
+                      &lt;/style&gt;
+                  &lt;/defs&gt;
+                  &lt;g id&#x3D;&quot;icon_target&quot; data-name&#x3D;&quot;icon target&quot; transform&#x3D;&quot;translate(-247 -1279.497)&quot;&gt;
+                      &lt;path id&#x3D;&quot;Line_66&quot; d&#x3D;&quot;M0 0v5.285&quot; class&#x3D;&quot;cls-1&quot; data-name&#x3D;&quot;Line 66&quot;
+                            transform&#x3D;&quot;rotate(90 -508.584 787.294)&quot;/&gt;
+                      &lt;path id&#x3D;&quot;Line_67&quot; d&#x3D;&quot;M0 0v5.285&quot; class&#x3D;&quot;cls-1&quot; data-name&#x3D;&quot;Line 67&quot;
+                            transform&#x3D;&quot;rotate(90 -521.797 774.082)&quot;/&gt;
+                      &lt;ellipse id&#x3D;&quot;Ellipse_139&quot; cx&#x3D;&quot;3.7&quot; cy&#x3D;&quot;3.799&quot; class&#x3D;&quot;cls-2&quot; data-name&#x3D;&quot;Ellipse 139&quot; rx&#x3D;&quot;3.7&quot;
+                               ry&#x3D;&quot;3.799&quot; transform&#x3D;&quot;translate(259.156 1292.078)&quot;/&gt;
+                      &lt;path id&#x3D;&quot;Line_68&quot; d&#x3D;&quot;M0 0v22.796&quot; class&#x3D;&quot;cls-3&quot; data-name&#x3D;&quot;Line 68&quot;
+                            transform&#x3D;&quot;translate(262.855 1284.48)&quot;/&gt;
+                      &lt;path id&#x3D;&quot;Line_69&quot; d&#x3D;&quot;M21.14 0H0&quot; class&#x3D;&quot;cls-3&quot; data-name&#x3D;&quot;Line 69&quot;
+                            transform&#x3D;&quot;translate(252.285 1295.878)&quot;/&gt;
+                      &lt;g id&#x3D;&quot;Ellipse_140&quot; class&#x3D;&quot;cls-4&quot; data-name&#x3D;&quot;Ellipse 140&quot;
+                         transform&#x3D;&quot;translate(251.228 1283.937)&quot;&gt;
+                          &lt;ellipse cx&#x3D;&quot;11.627&quot; cy&#x3D;&quot;11.941&quot; class&#x3D;&quot;cls-5&quot; rx&#x3D;&quot;11.627&quot; ry&#x3D;&quot;11.941&quot;/&gt;
+                          &lt;ellipse cx&#x3D;&quot;11.627&quot; cy&#x3D;&quot;11.941&quot; class&#x3D;&quot;cls-6&quot; rx&#x3D;&quot;11.127&quot; ry&#x3D;&quot;11.441&quot;/&gt;
+                      &lt;/g&gt;
+                      &lt;path id&#x3D;&quot;Line_161&quot; d&#x3D;&quot;M0 0v5.428&quot; class&#x3D;&quot;cls-1&quot; data-name&#x3D;&quot;Line 161&quot;
+                            transform&#x3D;&quot;translate(262.855 1306.829)&quot;/&gt;
+                      &lt;path id&#x3D;&quot;Line_162&quot; d&#x3D;&quot;M0 0v5.428&quot; class&#x3D;&quot;cls-1&quot; data-name&#x3D;&quot;Line 162&quot;
+                            transform&#x3D;&quot;translate(262.855 1279.497)&quot;/&gt;
+                  &lt;/g&gt;
+              &lt;/svg&gt;
+              &lt;p&gt;Train&lt;/p&gt;
+          &lt;/div&gt;
+      &lt;/ion-tab-button&gt;
+
+      &lt;ion-tab-button tab&#x3D;&quot;tab3&quot; [routerLink]&#x3D;&quot;&#x27;/tab3&#x27;&quot;&gt;
+          &lt;div class&#x3D;&quot;icon&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: isRout() &#x3D;&#x3D;&#x3D; &#x27;tab3&#x27;}&quot;&gt;
+              &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink&#x3D;&quot;http://www.w3.org/1999/xlink&quot;
+                   viewBox&#x3D;&quot;0 0 1000 1000&quot;&gt;
+                  &lt;defs&gt;&amp;ndash;&amp;gt;
+                      &lt;style&gt;
+                          .cls-1 {
+                              fill: #e4e4e4
+                          }
+
+                          .cls-2 {
+                              fill: #b9b9b9
+                          }
+
+                          .cls-3 {
+                              fill: #eaeaea
+                          }
+                      &lt;/style&gt;
+                  &lt;/defs&gt;
+                  &lt;g&gt;
+                      &lt;g&gt;
+                          &lt;path class&#x3D;&quot;cls-2&quot; data-name&#x3D;&quot;Path 1217&quot; transform&#x3D;&quot;translate(-1.34 -1.849)&quot;
+                                d&#x3D;&quot;M920,237.5h-68.5V134.7L710,132.5l0.7,105H285.6l2.9-105L150,134.7v105l-70-2.2c-38.6,0-70,31.4-70,70v490c0,38.6,31.4,70,70,70h840c38.6,0,70-31.4,70-70v-490C990,268.9,958.6,237.5,920,237.5z M745,167.5h70v140h-70V167.5z M290,405.9c42.3,0,76.6,45,76.6,100.6S332.3,607.2,290,607.2s-76.6-45-76.6-100.6S247.7,405.9,290,405.9z M185,167.5h70v140h-70V167.5z M138.3,725.7c0,0,8.3-66.6,27.2-79.1c18.8-12.6,73.1-20.9,73.1-20.9s35.2,37.6,50.2,37.6c14.9,0,50.2-37.6,50.2-37.6s54.3,8.3,73.2,20.9c22.2,14.8,27.7,79.1,27.7,79.1H138.3z M850,692.5H535v-35h315V692.5z M850,622.5H535v-35h315V622.5z M850,552.5H535v-35h315V552.5z M850,482.5H535v-35h315V482.5z&quot;/&gt;
+                      &lt;/g&gt;
+                  &lt;/g&gt;
+              &lt;/svg&gt;
+              &lt;p&gt;Personal Details&lt;/p&gt;
+          &lt;/div&gt;
+      &lt;/ion-tab-button&gt;
+  &lt;/ion-tab-bar&gt;
+&lt;/ion-tabs&gt; --&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>tabs.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../assets/colors&quot;;
+
+
+ion-tab-bar {
+  --background: white;
+}
+
+div.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 0.5em;
+
+  p {
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
+    color: #7f7f7f;
+    transition: all 0.3s;
+  }
+
+  svg {
+    height: 17.8px;
+    width: 17.8px;
+    fill: #7f7f7f;
+    transition: all 0.3s;
+  }
+
+  &amp;.active {
+    svg {
+      fill: #ce564b
+    }
+
+    p {
+      color: #ce564b;
+    }
+  }
+}
+
+#custom-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  width: 100%;
+  background-color: #002a3e;
+}
+
+.flb {
+  background-color: #3ebffb;
+  height: 100%;
+  width: 100%;
+  animation: pulse 1s linear forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.Aligner-item {
+  max-width: 50%;
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+
+#custom-overlay img {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: auto;
+  animation: animation 3100ms linear infinite both;
+  animation-delay: 1s;
+}
+
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.gifContainer {
+  position: absolute;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.logoImage {
+  z-index: 9999;
+  right: 2%;
+  position: absolute;
+  top: 5%;
+  height: 60% !important;
+  width: 60% !important;
+}
+
+#myProgress {
+  z-index: 9999;
+  width: 100%;
+  background-color: grey;
+  position: absolute;
+  bottom: 50px;
+  width: 70%;
+  background: white;
+}
+
+#myBar {
+  z-index: 9999;
+  height: 5px;
+  background-color: #eb8500;
+}
+
+
+.tabs-container {
+  height: 100%;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  height: 100%;
+
+}
+
+:host ::ng-deep .mat-tab-body.mat-tab-body-active {
+  height: 100%;
+
+}
+
+
+:host ::ng-deep .mat-tab-label {
+  opacity: 1 !important;
+}
+
+:host ::ng-deep mat-ink-bar {
+  color: green !important;
+}
+
+
+.mat-tab-body {
+  animation: fade-out 0.5s;
+  opacity: 0;
+}
+
+.mat-tab-body.mat-tab-body-active {
+  animation: fade-in 0.5s;
+  opacity: 1;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-tab1></app-tab1><!--<ion-tabs (ionTabsWillChange)="ionTabsWillChange($event)">  <ion-tab-bar slot="bottom">      <ion-tab-button tab="tab1" [routerLink]="\'/\'">          <div class="icon" [ngClass]="{\'active\': isRout() === \'tab1\'}">              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.595 24.578">                  <defs>                      <style>                          .cls-2 {                              fill: #e4e4e4;                              stroke: #e4e4e4                          }                      </style>                  </defs>                  <path id="Home_icon_"                        d="M12.057 23.362V12.924H6.782v10.438H0V9.42L9.42 0l9.18 9.659v13.7zm1.63-20.894V.339h2.506v4.653z"                        class="cls-2" data-name="Home icon" transform="translate(.5 .716)"/>              </svg>              <p>Home</p>          </div>      </ion-tab-button>      <ion-tab-button tab="tab2" [routerLink]="\'/tab2\'">          <div class="icon" [ngClass]="{\'active\': isRout() === \'tab2\'}"               style="height: 50px;width: 50px;box-shadow: 1px 1px 3px 2px rgb(77 68 40);border-radius: 5px;">              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.71 32.76">                  <defs>                      <style>                          .cls-1, .cls-3, .cls-4, .cls-6 {                              fill: none                          }                          .cls-1 {                              stroke: #b9b9b9                          }                          .cls-2 {                              fill: #6f6f6f                          }                          .cls-3 {                              stroke: #ab8a5a;                              stroke-width: .1px                          }                          .cls-4 {                              stroke: #707070                          }                          .cls-5 {                              stroke: none                          }                      </style>                  </defs>                  <g id="icon_target" data-name="icon target" transform="translate(-247 -1279.497)">                      <path id="Line_66" d="M0 0v5.285" class="cls-1" data-name="Line 66"                            transform="rotate(90 -508.584 787.294)"/>                      <path id="Line_67" d="M0 0v5.285" class="cls-1" data-name="Line 67"                            transform="rotate(90 -521.797 774.082)"/>                      <ellipse id="Ellipse_139" cx="3.7" cy="3.799" class="cls-2" data-name="Ellipse 139" rx="3.7"                               ry="3.799" transform="translate(259.156 1292.078)"/>                      <path id="Line_68" d="M0 0v22.796" class="cls-3" data-name="Line 68"                            transform="translate(262.855 1284.48)"/>                      <path id="Line_69" d="M21.14 0H0" class="cls-3" data-name="Line 69"                            transform="translate(252.285 1295.878)"/>                      <g id="Ellipse_140" class="cls-4" data-name="Ellipse 140"                         transform="translate(251.228 1283.937)">                          <ellipse cx="11.627" cy="11.941" class="cls-5" rx="11.627" ry="11.941"/>                          <ellipse cx="11.627" cy="11.941" class="cls-6" rx="11.127" ry="11.441"/>                      </g>                      <path id="Line_161" d="M0 0v5.428" class="cls-1" data-name="Line 161"                            transform="translate(262.855 1306.829)"/>                      <path id="Line_162" d="M0 0v5.428" class="cls-1" data-name="Line 162"                            transform="translate(262.855 1279.497)"/>                  </g>              </svg>              <p>Train</p>          </div>      </ion-tab-button>      <ion-tab-button tab="tab3" [routerLink]="\'/tab3\'">          <div class="icon" [ngClass]="{\'active\': isRout() === \'tab3\'}">              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"                   viewBox="0 0 1000 1000">                  <defs>&ndash;&gt;                      <style>                          .cls-1 {                              fill: #e4e4e4                          }                          .cls-2 {                              fill: #b9b9b9                          }                          .cls-3 {                              fill: #eaeaea                          }                      </style>                  </defs>                  <g>                      <g>                          <path class="cls-2" data-name="Path 1217" transform="translate(-1.34 -1.849)"                                d="M920,237.5h-68.5V134.7L710,132.5l0.7,105H285.6l2.9-105L150,134.7v105l-70-2.2c-38.6,0-70,31.4-70,70v490c0,38.6,31.4,70,70,70h840c38.6,0,70-31.4,70-70v-490C990,268.9,958.6,237.5,920,237.5z M745,167.5h70v140h-70V167.5z M290,405.9c42.3,0,76.6,45,76.6,100.6S332.3,607.2,290,607.2s-76.6-45-76.6-100.6S247.7,405.9,290,405.9z M185,167.5h70v140h-70V167.5z M138.3,725.7c0,0,8.3-66.6,27.2-79.1c18.8-12.6,73.1-20.9,73.1-20.9s35.2,37.6,50.2,37.6c14.9,0,50.2-37.6,50.2-37.6s54.3,8.3,73.2,20.9c22.2,14.8,27.7,79.1,27.7,79.1H138.3z M850,692.5H535v-35h315V692.5z M850,622.5H535v-35h315V622.5z M850,552.5H535v-35h315V552.5z M850,482.5H535v-35h315V482.5z"/>                      </g>                  </g>              </svg>              <p>Personal Details</p>          </div>      </ion-tab-button>  </ion-tab-bar></ion-tabs> --></div>'
+    var COMPONENTS = [{'name': 'AccessModalComponent', 'selector': 'app-access-modal'},{'name': 'ActivityHistoryComponent', 'selector': 'app-activity-history'},{'name': 'ActivityLogComponent', 'selector': 'app-activity-log'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BalisticCalculatorComponent', 'selector': 'app-balistic-calculator'},{'name': 'ChallengeListComponent', 'selector': 'challenge-list'},{'name': 'ChooseDrillComponent', 'selector': 'app-activity-log'},{'name': 'DrillComponent', 'selector': 'app-session-modal'},{'name': 'ErrorModalComponent', 'selector': 'app-error-modal'},{'name': 'GunlistComponent', 'selector': 'app-gunlist'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'NewTargetDesignComponent', 'selector': 'app-new-target-design'},{'name': 'NoConnetionErroComponent', 'selector': 'app-error-modal'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'SelectTargetComponent', 'selector': 'app-select-target'},{'name': 'SelectTargetModalComponent', 'selector': 'app-select-target-modal'},{'name': 'ShareDialogComponent', 'selector': 'app-share-dialog'},{'name': 'SightlistComponent', 'selector': 'app-sightlist'},{'name': 'SigninComponent', 'selector': 'app-singin'},{'name': 'SigninModalComponent', 'selector': 'app-signin-modal'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'SignupWizardComponent', 'selector': 'app-signup-wizard'},{'name': 'Tab1Page', 'selector': 'app-tab1'},{'name': 'Tab2Page', 'selector': 'app-tab2'},{'name': 'Tab3Page', 'selector': 'app-tab3'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TermsAndConditionComponent', 'selector': 'app-terms-and-condition'},{'name': 'WizardSummaryComponent', 'selector': 'app-wizard-summary'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TabsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TabsPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

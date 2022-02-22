@@ -11,7 +11,8 @@
     "build": "ionic build --prod && npx cap copy && npx cap sync && npx cap open android",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compodoc": "npx compodoc -p tsconfig.doc.json"
   },
   "private": true,
   "dependencies": {
@@ -63,7 +64,7 @@
     "cordova-ios": "^5.1.1",
     "cordova-plugin-android-permissions": "^1.1.2",
     "cordova-plugin-androidx-adapter": "^1.1.3",
-    "cordova-plugin-ble-central": "^1.4.1",
+    "cordova-plugin-ble-central": "github:Gargamil/cordova-plugin-ble-central",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-crop": "^0.4.0",
     "cordova-plugin-document-viewer": "^1.0.0",

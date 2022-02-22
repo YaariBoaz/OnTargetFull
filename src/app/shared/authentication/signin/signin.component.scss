@@ -1,5 +1,9 @@
 @import "../../../../assets/colors";
 
+:host {
+  height: 100%;
+}
+
 .disabled {
   background-color: gray;
 }
@@ -14,9 +18,8 @@ section.login {
   background: radial-gradient(71.47% 224.04% at 19.09% 13.6%, #404658 0%, #161820 100%);
 
   img.logo {
-    width: 98px;
-    height: 45px;
-    margin: 28px auto 52px auto;
+    height: 98px;
+    margin: 28px auto 0 auto;
   }
 
   p.logo {
@@ -31,9 +34,11 @@ section.login {
     display: flex;
     align-items: center;
     font-size: 27px;
-    margin: 0 auto 125px auto;
+    margin: 90px auto 70px auto;
     color: white;
-
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
 
     span {
       color: #FCE651;
@@ -138,8 +143,6 @@ section.login {
   width: 100%;
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: 36px;
 
 
   a {
@@ -169,4 +172,17 @@ section.login {
   right: 15px;
   color: white;
   border: 1px solid white;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
 }

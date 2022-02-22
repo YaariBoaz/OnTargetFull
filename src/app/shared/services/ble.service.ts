@@ -7,39 +7,31 @@ import {GatewayService} from './gateway.service';
 import {InitService} from './init.service';
 import {ShootingService} from './shooting.service';
 
-const SERVICE_1 = '1800';
 const SERVICE_2 = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 const SERVICE_2_CHAR = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 const SERVICE_2_CHAR_WRITE = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
-
-const READ_WRITE = '2a00';
-const READ = '2a01';
-const READ1 = '2a04';
-const READ2 = '2a06';
-
-const TEMPERATURE_CHARACTERISTIC = 'bbb1';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BleService {
     msgNumber = 1;
-
     devices: any[];
     peripheral: any;
     dataFromDevice;
     notifyShotArrived = new BehaviorSubject(0);
+    notifyDisconnect = new BehaviorSubject(null);
     notifyTargetConnected = new BehaviorSubject(false);
-    notifyDissconnect = new BehaviorSubject(null);
     subscription: Subscription;
     scanFinished = new BehaviorSubject<any>(false);
     currentTargetId: any;
     isConnectedFlag = false;
+
     isGateway: boolean;
     gatewayTargets: { gateway: any; target: any };
     notifyResetGateway = new BehaviorSubject(false);
     gateways = [];
-    private activatRecconectProcessCount = 0;
+    activateReconnectProcessCount = 0;
 
     constructor(
         private storage: StorageService,
@@ -55,6 +47,7 @@ export class BleService {
         }
     }
 
+    // Scan for BLE devices
     scan() {
         this.devices = [];  // clear list
         this.storage.setItem('ble', this.devices);
@@ -65,12 +58,7 @@ export class BleService {
         }, 6000);
     }
 
-    setStatus(message) {
-        console.log(message);
-
-    }
-
-
+    // When a BLE device is discovered we filter only the known devices.
     onDeviceDiscovered(device) {
         this.ngZone.run(() => {
             if (device.name) {
@@ -100,7 +88,7 @@ export class BleService {
         });
     }
 
-
+    // If the connection crashes when it reconnects we reset the stats.
     resetShots() {
         this.gatewayService.initStats();
         const txe = new TextEncoder();
@@ -112,6 +100,7 @@ export class BleService {
         }
     }
 
+    // NOT ACTIVE. -this was used when we wanted to let the user refresh the connection.
     resetConnection() {
         const txe = new TextEncoder();
         if (this.peripheral && this.peripheral.id) {
@@ -131,7 +120,7 @@ export class BleService {
         return this.devices;
     }
 
-
+    // Sets the target to listen for message from.
     connect(deviceId) {
         if (this.gateways.indexOf(deviceId) > -1) {
             this.isGateway = true;
@@ -154,6 +143,7 @@ export class BleService {
         );
     }
 
+    //  Notify comps that a connection has been made.
     onConnected(peripheral: any) {
         this.isConnectedFlag = false;
         if (!this.isGateway) {
@@ -166,6 +156,7 @@ export class BleService {
         this.handleRead(peripheral.name, peripheral.id, SERVICE_2, SERVICE_2_CHAR);
     }
 
+    //  Notify comps that a connection has been lost.
     onDeviceDisconnected(peripheral) {
     }
 
@@ -218,7 +209,9 @@ export class BleService {
         const target = this.storage.getItem('slectedTarget');
         const messageFromGatewaty = String.fromCharCode.apply(null, buffer);
         console.log('MESSAGE ARRIVED: ' + messageFromGatewaty);
-        if (messageFromGatewaty.indexOf('<') > -1) {
+        if (messageFromGatewaty.indexOf(',B,') > -1) {
+            this.gatewayService.processData(messageFromGatewaty);
+        } else if (selectedTarget && messageFromGatewaty.indexOf('<') > -1 && messageFromGatewaty.indexOf(selectedTarget.name) > -1) {
             this.gatewayService.processData(messageFromGatewaty);
         } else if (messageFromGatewaty.indexOf('Connecting') > -1) {
             this.gatewayTargets = {gateway: this.currentTargetId, target: messageFromGatewaty.split(' ')[3]};
@@ -240,7 +233,7 @@ export class BleService {
     activatRecconectProcess() {
         this.ble.disconnect(this.currentTargetId).then(() => {
             this.isConnectedFlag = false;
-            this.notifyDissconnect.next({isManually: false, status: true});
+            this.notifyDisconnect.next({isManually: false, status: true});
             console.log('Called Disconnect');
             try {
                 this.subscription = this.ble.connect(this.currentTargetId).subscribe(
@@ -251,11 +244,11 @@ export class BleService {
                     },
                     peripheral => {
                         console.log('Disconnected', 'The peripheral unexpectedly disconnected');
-                        if (this.activatRecconectProcessCount < 5) {
-                            this.activatRecconectProcessCount++;
+                        if (this.activateReconnectProcessCount < 5) {
+                            this.activateReconnectProcessCount++;
                             this.activatRecconectProcess();
                         } else {
-                            this.activatRecconectProcessCount = 0;
+                            this.activateReconnectProcessCount = 0;
                         }
                     });
             } catch (e) {

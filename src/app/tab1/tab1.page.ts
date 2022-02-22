@@ -1,26 +1,24 @@
-import { AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { IonSlides, Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { InitService } from '../shared/services/init.service';
-import { BleService } from '../shared/services/ble.service';
-import { UserService } from '../shared/services/user.service';
-import { NetworkService } from '../shared/services/network.service';
-import { StorageService } from '../shared/services/storage.service';
-import { DashboardModel } from '../shared/models/dashboard-model';
-import { HistoryModel } from '../shared/models/HistoryModel';
-import { Tab1Service } from './tab1-service.service';
+import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {IonSlides, Platform} from '@ionic/angular';
+import {Router} from '@angular/router';
+import {InitService} from '../shared/services/init.service';
+import {BleService} from '../shared/services/ble.service';
+import {UserService} from '../shared/services/user.service';
+import {NetworkService} from '../shared/services/network.service';
+import {StorageService} from '../shared/services/storage.service';
+import {DashboardModel} from '../shared/models/dashboard-model';
+import {HistoryModel} from '../shared/models/HistoryModel';
+import {Tab1Service} from './tab1-service.service';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import { TabsService } from '../tabs/tabs.service';
-import { Chart, ChartType } from 'chart.js';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import { ApiService } from '../shared/services/api.service';
-import { Label, MultiDataSet } from 'ng2-charts';
-import { ErrorModalComponent } from '../shared/popups/error-modal/error-modal.component';
-import { ActivityHistoryComponent } from '../shared/activity-history/activity-history.component';
-import { WizardService } from '../shared/authentication/signup-wizard/wizard.service';
-import { MatDialog } from '@angular/material/dialog';
+import {Chart, ChartType} from 'chart.js';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+import {ApiService} from '../shared/services/api.service';
+import {Label, MultiDataSet} from 'ng2-charts';
+import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
+import {MatDialog} from '@angular/material/dialog';
 import {ActivityLogComponent} from '../shared/activity-log/activity-log.component';
+import {ShootingService} from '../shared/services/shooting.service';
 
 @Component({
     selector: 'app-tab1',
@@ -74,23 +72,23 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     showSignin = false;
     showRegular = true;
     degree = 0;
-    constructor(private platform: Platform,
-        private networkService: NetworkService,
-        private router: Router,
-        private tab1Service: Tab1Service,
-        private userService: UserService,
-        private zone: NgZone,
-        private ble: BleService,
-        public dialog: MatDialog,
-        private cd: ChangeDetectorRef,
-        private tabsService: TabsService,
-        private renderer: Renderer2,
-        private initService: InitService,
 
-        private apiService: ApiService,
-        private wizardService: WizardService,
-        private screenOrientation: ScreenOrientation,
-        private storageService: StorageService) {
+    constructor(private platform: Platform,
+                private networkService: NetworkService,
+                private router: Router,
+                private tab1Service: Tab1Service,
+                private userService: UserService,
+                private zone: NgZone,
+                private shootingService: ShootingService,
+                private ble: BleService,
+                public dialog: MatDialog,
+                private cd: ChangeDetectorRef,
+                private renderer: Renderer2,
+                private initService: InitService,
+                private apiService: ApiService,
+                private wizardService: WizardService,
+                private screenOrientation: ScreenOrientation,
+                private storageService: StorageService) {
         if (localStorage.isLoggedIn && localStorage.isLoggedIn === 'true') {
             this.showSignin = false;
             this.showRegular = true;
@@ -130,7 +128,6 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         //     }
 
         // }, 1000);
-
 
 
         this.initService.notifySignupFinished.subscribe((data) => {
@@ -363,6 +360,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                     totalPoints: 0
                 };
             }
+            this.data = data;
             this.storageService.setItem('homeData', data);
             this.showUi = true;
             this.profile = this.userService.getUser();
@@ -531,7 +529,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                             label: 'Population (millions)',
                             backgroundColor: ['#ce564b', '#d4d4d4'],
                             data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots
-                                - this.data.hitRatioChart.totalHits]
+                            - this.data.hitRatioChart.totalHits]
                         }
                     ]
                 },
@@ -574,11 +572,11 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         this.slides.slidePrev(1000);
     }
 
-    onActivityClicked(train: HistoryModel) {
+    onActivityClicked() {
         this.storageService.passhistoricalTrainingsDate(this.data.trainingHistory);
         this.dialog.open(ActivityLogComponent, {
             panelClass: 'full-screen-modal',
-            data: { modalType: 'general' }
+            data: {modalType: 'general'}
         });
     }
 
@@ -600,13 +598,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
             if (this.data.trainingHistory) {
                 this.data.trainingHistory.forEach(train => {
-                    const monthName = new Date(train.drillDate).toLocaleString('default', { month: 'long' });
+                    const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
                     if (!(this.historicTrainings[monthName])) {
                         this.historicTrainings[monthName] = {};
                     }
                     const tempDate = new Date(train.drillDate);
                     const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
-                    const day = new Date(tempDate).toLocaleString('default', { weekday: 'long' });
+                    const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
                     if ((!this.historicTrainings[monthName][key])) {
                         this.historicTrainings[monthName][key] = {
                             data: [],
@@ -647,7 +645,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     private setupHitratioChart() {
         this.hitRatiochart = am4core.create('chartdiv', am4charts.PieChart);
-        const { data } = this.tab1Service.setupDataForHitration(this.data.hitRatioChart);
+        const {data} = this.tab1Service.setupDataForHitration(this.data.hitRatioChart);
 
         this.hitRatiochart.data = [{
             text: 'Hits',
@@ -746,6 +744,14 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         setTimeout(() => {
             event.target.complete();
         }, 1000);
+    }
+
+    onSelectTarget() {
+        if (this.shootingService.isTargetConnected) {
+            this.router.navigateByUrl('choose');
+        } else {
+            this.router.navigateByUrl('select-target');
+        }
     }
 }
 

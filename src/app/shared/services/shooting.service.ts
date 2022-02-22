@@ -9,6 +9,7 @@ import {HitNohitService} from '../drill/hit-nohit.service';
 export class ShootingService {
     selectedDrill;
     zeroTable;
+    challenge;
     isChallenge;
     challengeId;
     numberOfBullersPerDrill: number;
@@ -24,10 +25,10 @@ export class ShootingService {
     sightsZeroing: any;
     calibers: any;
     weapons: any;
+    isTargetConnected = false;
 
     constructor(private http: HttpClient) {
     }
-
 
 
     getMOABySight(): number {

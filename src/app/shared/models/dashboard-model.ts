@@ -34,6 +34,7 @@ export class RateOfFireChart {
     chartData: any;
     chartLabels: Array<string>;
     userAvg;
+
     constructor(props) {
         this.bestRate = 0;
         this.chartData = null;
@@ -53,13 +54,14 @@ export class Point {
 }
 
 export class BestScores {
-    longestShot: number;
+    grouping: number;
     avgSplit: number;
     avgDistance: number;
+    longestShot: number;
     lastShooting: Date;
 
     constructor() {
-        this.longestShot = 0;
+        this.grouping = 0;
         this.avgDistance = 0;
         this.avgSplit = 0;
         this.lastShooting = new Date();
@@ -101,6 +103,7 @@ export class DashboardModel {
     hitRatioChart: HitRatioChart;
     rateOfFireChart: RateOfFireChart;
     bestScores: BestScores;
+    totalPoints: number;
     trainingHistory: HistoryValueItemModel[];
 
     constructor() {

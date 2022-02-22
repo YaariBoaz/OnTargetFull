@@ -145,7 +145,7 @@
 
     <app-signup
             *ngIf="!stepOneComplete"
-            (stepTwoComplete)="completeStepTwo($event)"
+            (stepTwoComplete)="finishWizardNew($event)"
             (back)="backToFirst()">
     </app-signup>
 

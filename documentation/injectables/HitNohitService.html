@@ -1,0 +1,2539 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>onTarget documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">onTarget documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >HitNohitService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/shared/drill/hit-nohit.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currenOverTime" >currenOverTime</a>
+                            </li>
+                            <li>
+                                <a href="#currentSplitTime" >currentSplitTime</a>
+                            </li>
+                            <li>
+                                <a href="#DEFAULT_PAGE_DATA" >DEFAULT_PAGE_DATA</a>
+                            </li>
+                            <li>
+                                <a href="#DEFAULT_SUMMARY_OBJECT" >DEFAULT_SUMMARY_OBJECT</a>
+                            </li>
+                            <li>
+                                <a href="#DEFUALT_PAGEDATA" >DEFUALT_PAGEDATA</a>
+                            </li>
+                            <li>
+                                <a href="#didFirstStamArrive" >didFirstStamArrive</a>
+                            </li>
+                            <li>
+                                <a href="#doubleSplits" >doubleSplits</a>
+                            </li>
+                            <li>
+                                <a href="#drill" >drill</a>
+                            </li>
+                            <li>
+                                <a href="#drillFinished" >drillFinished</a>
+                            </li>
+                            <li>
+                                <a href="#drillFinishedNotify" >drillFinishedNotify</a>
+                            </li>
+                            <li>
+                                <a href="#drillIsFinished" >drillIsFinished</a>
+                            </li>
+                            <li>
+                                <a href="#finalSplits" >finalSplits</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#firstTime" >firstTime</a>
+                            </li>
+                            <li>
+                                <a href="#hitArrived" >hitArrived</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#lastTime" >lastTime</a>
+                            </li>
+                            <li>
+                                <a href="#overallDate" >overallDate</a>
+                            </li>
+                            <li>
+                                <a href="#overallSubscription" >overallSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#pageData" >pageData</a>
+                            </li>
+                            <li>
+                                <a href="#resetDrillSubject" >resetDrillSubject</a>
+                            </li>
+                            <li>
+                                <a href="#splitDate" >splitDate</a>
+                            </li>
+                            <li>
+                                <a href="#splitSubscription" >splitSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#stats" >stats</a>
+                            </li>
+                            <li>
+                                <a href="#summaryObject" >summaryObject</a>
+                            </li>
+                            <li>
+                                <a href="#timeConfig" >timeConfig</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createFirstShotData" >createFirstShotData</a>
+                            </li>
+                            <li>
+                                <a href="#finishDrill" >finishDrill</a>
+                            </li>
+                            <li>
+                                <a href="#getElapsedTime" >getElapsedTime</a>
+                            </li>
+                            <li>
+                                <a href="#getShotItems" >getShotItems</a>
+                            </li>
+                            <li>
+                                <a href="#getSummarySplit" >getSummarySplit</a>
+                            </li>
+                            <li>
+                                <a href="#getTotalAndSplitTimes" >getTotalAndSplitTimes</a>
+                            </li>
+                            <li>
+                                <a href="#handleSummaryData" >handleSummaryData</a>
+                            </li>
+                            <li>
+                                <a href="#initStats" >initStats</a>
+                            </li>
+                            <li>
+                                <a href="#notifyHitArrived" >notifyHitArrived</a>
+                            </li>
+                            <li>
+                                <a href="#resetDrill" >resetDrill</a>
+                            </li>
+                            <li>
+                                <a href="#setDrill" >setDrill</a>
+                            </li>
+                            <li>
+                                <a href="#shotArrived" >shotArrived</a>
+                            </li>
+                            <li>
+                                <a href="#startListening" >startListening</a>
+                            </li>
+                            <li>
+                                <a href="#startOverallInterval" >startOverallInterval</a>
+                            </li>
+                            <li>
+                                <a href="#startSplitInterval" >startSplitInterval</a>
+                            </li>
+                            <li>
+                                <a href="#startTimer" >startTimer</a>
+                            </li>
+                            <li>
+                                <a href="#timeStringToSeconds" >timeStringToSeconds</a>
+                            </li>
+                            <li>
+                                <a href="#updateHistory" >updateHistory</a>
+                            </li>
+                            <li>
+                                <a href="#updateStats" >updateStats</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(shootingService: <a href="../injectables/ShootingService.html" target="_self">ShootingService</a>, storageService: <a href="../injectables/StorageService.html" target="_self">StorageService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, gateway: <a href="../injectables/GatewayService.html" target="_self">GatewayService</a>, bleService: <a href="../injectables/BleService.html" target="_self">BleService</a>, apiService: <a href="../injectables/ApiService.html" target="_self">ApiService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:83</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>shootingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ShootingService.html" target="_self" >ShootingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>storageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StorageService.html" target="_self" >StorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>gateway</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GatewayService.html" target="_self" >GatewayService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bleService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BleService.html" target="_self" >BleService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiService.html" target="_self" >ApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createFirstShotData"></a>
+                    <span class="name">
+                        <span ><b>createFirstShotData</b></span>
+                        <a href="#createFirstShotData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createFirstShotData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="307"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:307</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finishDrill"></a>
+                    <span class="name">
+                        <span ><b>finishDrill</b></span>
+                        <a href="#finishDrill"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>finishDrill()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="319"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:319</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getElapsedTime"></a>
+                    <span class="name">
+                        <span ><b>getElapsedTime</b></span>
+                        <a href="#getElapsedTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getElapsedTime(entry: <a href="../interfaces/Entry.html" target="_self">Entry</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="405"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:405</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>entry</td>
+                                    <td>
+                                                <code><a href="../interfaces/Entry.html" target="_self" >Entry</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getShotItems"></a>
+                    <span class="name">
+                        <span ><b>getShotItems</b></span>
+                        <a href="#getShotItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getShotItems()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:188</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSummarySplit"></a>
+                    <span class="name">
+                        <span ><b>getSummarySplit</b></span>
+                        <a href="#getSummarySplit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSummarySplit(stats: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, statsLength: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="357"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:357</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>stats</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>statsLength</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTotalAndSplitTimes"></a>
+                    <span class="name">
+                        <span ><b>getTotalAndSplitTimes</b></span>
+                        <a href="#getTotalAndSplitTimes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTotalAndSplitTimes()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="298"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:298</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/SplitAndTotalTime.html" target="_self" >SplitAndTotalTime</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleSummaryData"></a>
+                    <span class="name">
+                        <span ><b>handleSummaryData</b></span>
+                        <a href="#handleSummaryData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleSummaryData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="323"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:323</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initStats"></a>
+                    <span class="name">
+                        <span ><b>initStats</b></span>
+                        <a href="#initStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initStats()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="notifyHitArrived"></a>
+                    <span class="name">
+                        <span ><b>notifyHitArrived</b></span>
+                        <a href="#notifyHitArrived"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>notifyHitArrived(isFinish, num)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="393"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:393</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>isFinish</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>num</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetDrill"></a>
+                    <span class="name">
+                        <span ><b>resetDrill</b></span>
+                        <a href="#resetDrill"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resetDrill()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="293"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:293</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDrill"></a>
+                    <span class="name">
+                        <span ><b>setDrill</b></span>
+                        <a href="#setDrill"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDrill(drill)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>drill</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shotArrived"></a>
+                    <span class="name">
+                        <span ><b>shotArrived</b></span>
+                        <a href="#shotArrived"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>shotArrived(num)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>num</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startListening"></a>
+                    <span class="name">
+                        <span ><b>startListening</b></span>
+                        <a href="#startListening"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startListening()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startOverallInterval"></a>
+                    <span class="name">
+                        <span ><b>startOverallInterval</b></span>
+                        <a href="#startOverallInterval"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startOverallInterval()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="429"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:429</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startSplitInterval"></a>
+                    <span class="name">
+                        <span ><b>startSplitInterval</b></span>
+                        <a href="#startSplitInterval"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startSplitInterval()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="422"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:422</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startTimer"></a>
+                    <span class="name">
+                        <span ><b>startTimer</b></span>
+                        <a href="#startTimer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startTimer()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="132"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:132</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timeStringToSeconds"></a>
+                    <span class="name">
+                        <span ><b>timeStringToSeconds</b></span>
+                        <a href="#timeStringToSeconds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>timeStringToSeconds(timeString: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="261"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:261</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>timeString</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateHistory"></a>
+                    <span class="name">
+                        <span ><b>updateHistory</b></span>
+                        <a href="#updateHistory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateHistory()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:206</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateStats"></a>
+                    <span class="name">
+                        <span ><b>updateStats</b></span>
+                        <a href="#updateStats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateStats(num)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>num</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currenOverTime"></a>
+                    <span class="name">
+                        <span ><b>currenOverTime</b></span>
+                        <a href="#currenOverTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentSplitTime"></a>
+                    <span class="name">
+                        <span ><b>currentSplitTime</b></span>
+                        <a href="#currentSplitTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEFAULT_PAGE_DATA"></a>
+                    <span class="name">
+                        <span ><b>DEFAULT_PAGE_DATA</b></span>
+                        <a href="#DEFAULT_PAGE_DATA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+        distanceFromCenter: 0,
+        splitTime: &#x27;&#x27;,
+        rateOfFire: 0,
+        counter: 0,
+        points: 0,
+        lastShotTime: null,
+        totalTime: &#x27;00:00:00&#x27;
+    }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEFAULT_SUMMARY_OBJECT"></a>
+                    <span class="name">
+                        <span ><b>DEFAULT_SUMMARY_OBJECT</b></span>
+                        <a href="#DEFAULT_SUMMARY_OBJECT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+        points: 0,
+        distanceFromCenter: 0,
+        split: 0,
+        totalTime: 0,
+        counter: 0
+    }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEFUALT_PAGEDATA"></a>
+                    <span class="name">
+                        <span ><b>DEFUALT_PAGEDATA</b></span>
+                        <a href="#DEFUALT_PAGEDATA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+        distanceFromCenter: 0,
+        splitTime: &#x27;&#x27;,
+        rateOfFire: 0,
+        counter: 0,
+        points: 0,
+        lastShotTime: null,
+        totalTime: {} as any
+    }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="didFirstStamArrive"></a>
+                    <span class="name">
+                        <span ><b>didFirstStamArrive</b></span>
+                        <a href="#didFirstStamArrive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doubleSplits"></a>
+                    <span class="name">
+                        <span ><b>doubleSplits</b></span>
+                        <a href="#doubleSplits"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drill"></a>
+                    <span class="name">
+                        <span ><b>drill</b></span>
+                        <a href="#drill"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DrillObject.html" target="_self" >DrillObject</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drillFinished"></a>
+                    <span class="name">
+                        <span ><b>drillFinished</b></span>
+                        <a href="#drillFinished"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drillFinishedNotify"></a>
+                    <span class="name">
+                        <span ><b>drillFinishedNotify</b></span>
+                        <a href="#drillFinishedNotify"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="drillIsFinished"></a>
+                    <span class="name">
+                        <span ><b>drillIsFinished</b></span>
+                        <a href="#drillIsFinished"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finalSplits"></a>
+                    <span class="name">
+                        <span ><b>finalSplits</b></span>
+                        <a href="#finalSplits"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="firstTime"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>firstTime</b></span>
+                        <a href="#firstTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hitArrived"></a>
+                    <span class="name">
+                        <span ><b>hitArrived</b></span>
+                        <a href="#hitArrived"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lastTime"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>lastTime</b></span>
+                        <a href="#lastTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="overallDate"></a>
+                    <span class="name">
+                        <span ><b>overallDate</b></span>
+                        <a href="#overallDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Entry.html" target="_self" >Entry</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="overallSubscription"></a>
+                    <span class="name">
+                        <span ><b>overallSubscription</b></span>
+                        <a href="#overallSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageData"></a>
+                    <span class="name">
+                        <span ><b>pageData</b></span>
+                        <a href="#pageData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+        distanceFromCenter: 0,
+        splitTime: &#x27;&#x27;,
+        rateOfFire: 0,
+        counter: 0,
+        points: 0,
+        lastShotTime: null,
+        totalTime: {} as any
+    }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetDrillSubject"></a>
+                    <span class="name">
+                        <span ><b>resetDrillSubject</b></span>
+                        <a href="#resetDrillSubject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new BehaviorSubject(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="splitDate"></a>
+                    <span class="name">
+                        <span ><b>splitDate</b></span>
+                        <a href="#splitDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Entry.html" target="_self" >Entry</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="splitSubscription"></a>
+                    <span class="name">
+                        <span ><b>splitSubscription</b></span>
+                        <a href="#splitSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stats"></a>
+                    <span class="name">
+                        <span ><b>stats</b></span>
+                        <a href="#stats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="summaryObject"></a>
+                    <span class="name">
+                        <span ><b>summaryObject</b></span>
+                        <a href="#summaryObject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+        points: 0,
+        distanceFromCenter: 0,
+        split: &#x27;0&#x27;,
+        totalTime: &#x27;0&#x27;,
+        counter: 0
+    }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timeConfig"></a>
+                    <span class="name">
+                        <span ><b>timeConfig</b></span>
+                        <a href="#timeConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/shared/drill/hit-nohit.service.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
+import {countUpTimerConfigModel, CountupTimerService, timerTexts} from &#x27;ngx-timer&#x27;;
+import {ShootingService} from &#x27;../services/shooting.service&#x27;;
+import {DashboardModel} from &#x27;../models/dashboard-model&#x27;;
+import {DrillModel, DrillModelHitNoHit} from &#x27;../models/DrillModel&#x27;;
+import {StorageService} from &#x27;../services/storage.service&#x27;;
+import {DrillObject} from &#x27;../../tab2/tab2.page&#x27;;
+import {UserService} from &#x27;../services/user.service&#x27;;
+import {ApiService} from &#x27;../services/api.service&#x27;;
+import {tap} from &#x27;rxjs/operators&#x27;;
+import {BleService} from &#x27;../services/ble.service&#x27;;
+import {BehaviorSubject, interval, of, Subscription} from &#x27;rxjs&#x27;;
+import * as moment from &#x27;moment&#x27;;
+import {GatewayService} from &#x27;../services/gateway.service&#x27;;
+import {ShotItem} from &#x27;./constants&#x27;;
+
+@Injectable({
+    providedIn: &#x27;root&#x27;
+})
+export class HitNohitService {
+    resetDrillSubject &#x3D; new BehaviorSubject(false);
+    drillFinished &#x3D; false;
+    timeConfig: any;
+    DEFUALT_PAGEDATA &#x3D; {
+        distanceFromCenter: 0,
+        splitTime: &#x27;&#x27;,
+        rateOfFire: 0,
+        counter: 0,
+        points: 0,
+        lastShotTime: null,
+        totalTime: {} as any
+    };
+    pageData &#x3D; {
+        distanceFromCenter: 0,
+        splitTime: &#x27;&#x27;,
+        rateOfFire: 0,
+        counter: 0,
+        points: 0,
+        lastShotTime: null,
+        totalTime: {} as any
+    };
+    stats &#x3D; [];
+    DEFAULT_SUMMARY_OBJECT &#x3D; {
+        points: 0,
+        distanceFromCenter: 0,
+        split: 0,
+        totalTime: 0,
+        counter: 0
+    };
+    summaryObject &#x3D; {
+        points: 0,
+        distanceFromCenter: 0,
+        split: &#x27;0&#x27;,
+        totalTime: &#x27;0&#x27;,
+        counter: 0
+    };
+    drill: DrillObject;
+    hitArrived &#x3D; new BehaviorSubject(null);
+    didFirstStamArrive &#x3D; false;
+    drillIsFinished &#x3D; false;
+
+
+    splitSubscription: Subscription;
+    splitDate: Entry &#x3D; null;
+    overallSubscription: Subscription;
+    overallDate: Entry &#x3D; null;
+    currentSplitTime: string;
+    currenOverTime: string;
+    doubleSplits &#x3D; [];
+    finalSplits &#x3D; [];
+    drillFinishedNotify &#x3D; new BehaviorSubject(null);
+
+    DEFAULT_PAGE_DATA &#x3D; {
+        distanceFromCenter: 0,
+        splitTime: &#x27;&#x27;,
+        rateOfFire: 0,
+        counter: 0,
+        points: 0,
+        lastShotTime: null,
+        totalTime: &#x27;00:00:00&#x27;
+    };
+    private firstTime: Date;
+    private lastTime: Date;
+
+    constructor(private shootingService: ShootingService,
+                private storageService: StorageService,
+                private userService: UserService,
+                private gateway: GatewayService,
+                private bleService: BleService,
+                private apiService: ApiService) {
+        this.startListening();
+    }
+
+    setDrill(drill) {
+        this.drill &#x3D; drill;
+    }
+
+    startListening() {
+        this.bleService.notifyShotArrived.subscribe(num &#x3D;&gt; {
+            if (this.didFirstStamArrive) {
+                this.shotArrived(num);
+            } else {
+                this.didFirstStamArrive &#x3D; true;
+            }
+        });
+
+        this.gateway.notifyHitNoHit.subscribe(data &#x3D;&gt; {
+            if (!this.drillIsFinished) {
+                this.updateStats(data);
+            }
+        });
+    }
+
+    shotArrived(num) {
+        if (!this.drillIsFinished) {
+            return this.updateStats(num);
+        }
+    }
+
+
+    initStats() {
+        this.stats &#x3D; [];
+        this.drillIsFinished &#x3D; false;
+        this.pageData &#x3D; Object.assign(this.pageData, this.DEFAULT_PAGE_DATA);
+        this.summaryObject &#x3D; Object.assign(this.summaryObject, this.DEFAULT_SUMMARY_OBJECT);
+        this.pageData.counter &#x3D; 0;
+        this.bleService.resetShots();
+        this.startTimer();
+
+    }
+
+    startTimer() {
+        // tslint:disable-next-line:no-shadowed-variable max-line-length
+        const now &#x3D; new Date();
+        this.firstTime &#x3D; now;
+        this.lastTime &#x3D; now;
+    }
+
+
+    updateStats(num) {
+
+        this.pageData.counter++;
+        // tslint:disable-next-line:max-line-length
+        const now &#x3D; new Date();
+
+        const split &#x3D; moment.utc(moment(now, &#x27;DD/MM/YYYY HH:mm:ss&#x27;).diff(moment(this.lastTime,
+            &#x27;DD/MM/YYYY HH:mm:ss&#x27;))).format(&#x27;mm:ss.SS&#x27;);
+        const total &#x3D; moment.utc(moment(now, &#x27;DD/MM/YYYY HH:mm:ss&#x27;).diff(moment(this.firstTime,
+            &#x27;DD/MM/YYYY HH:mm:ss&#x27;))).format(&#x27;mm:ss.SS&#x27;);
+        this.finalSplits.push();
+        // tslint:disable-next-line:max-line-length
+        this.lastTime &#x3D; new Date();
+
+        this.pageData.totalTime &#x3D; total;
+        this.pageData.splitTime &#x3D; split;
+        this.pageData.points &#x3D; 2;
+        this.stats.push({pageData: Object.assign({}, this.pageData), interval: this.pageData.totalTime});
+
+
+        let points &#x3D; 0;
+        let distanceFromCenter &#x3D; 0;
+
+        // tslint:disable-next-line:prefer-for-of
+        for (let i &#x3D; 0; i &lt; this.stats.length; i++) {
+            points +&#x3D; this.stats[i].pageData.points;
+            distanceFromCenter +&#x3D; this.stats[i].pageData.distanceFromCenter;
+        }
+
+
+        this.summaryObject &#x3D; {
+            // @ts-ignore
+            points,
+            distanceFromCenter,
+            split: this.getSummarySplit(this.stats, this.stats.length),
+            totalTime: total,
+            counter: this.stats[this.stats.length - 1].pageData.counter
+        };
+
+        let isFinish &#x3D; false;
+        if (this.pageData.counter &gt;&#x3D; this.shootingService.numberOfBullersPerDrill) {
+            this.finishDrill();
+            isFinish &#x3D; true;
+        }
+
+        this.notifyHitArrived(isFinish, num);
+    }
+
+    getShotItems() {
+        const shotItems: ShotItem[] &#x3D; new Array();
+        this.stats.forEach(stat &#x3D;&gt; {
+            shotItems.push({
+                disFromCenter: stat.pageData.distanceFromCenter.toString(),
+                hitHostage: false,
+                isHeader: false,
+                isOdd: false,
+                orbital: &#x27;0&#x27;,
+                score: this.pageData.points.toString(),
+                shotNumber: &#x27;0&#x27;,
+                time: stat.pageData.totalTime,
+                timeSplit: stat.pageData.splitTime
+            });
+        });
+        return shotItems;
+    }
+
+    updateHistory() {
+        this.drill &#x3D; this.shootingService.selectedDrill;
+        let updatedData: any &#x3D; this.storageService.getItem(&#x27;homeData&#x27;);
+        if (!updatedData) {
+            updatedData &#x3D; {};
+        }
+        if (!updatedData.trainingHistory) {
+            updatedData.trainingHistory &#x3D; [];
+        }
+
+        const splits &#x3D; [];
+        this.stats.forEach(stat &#x3D;&gt; {
+            splits.push(stat.pageData.splitTime);
+        });
+
+
+        const drill: DrillModelHitNoHit &#x3D; {
+            date: new Date().toJSON(),
+            day: new Date().toLocaleString(&#x27;en-us&#x27;, {weekday: &#x27;long&#x27;}),
+            hits: this.stats.length,
+            points: this.summaryObject.points,
+            range: this.drill.range,
+            numericSplitAvg: this.timeStringToSeconds(this.summaryObject.split),
+            totalShots: this.drill.numOfBullets,
+            userId: this.userService.getUserId(),
+            splitItems: splits,
+            shotItems: this.getShotItems(),
+        };
+
+
+        updatedData.trainingHistory.push({
+            drillDate: new Date().toString(),
+            day: new Date().toLocaleString(&#x27;en-us&#x27;, {weekday: &#x27;long&#x27;}),
+            drillType: this.drill.drillType,
+            totalShots: this.drill.numOfBullets,
+            range: this.drill.range,
+            timeLimit: null,
+            splitAvg: this.pageData.splitTime,
+            points: this.summaryObject.points,
+            avgDistFromCenter: this.pageData.distanceFromCenter,
+            hits: this.stats,
+            stata: this.stats,
+            summaryObject: this.summaryObject,
+            recommendation: null
+        });
+
+        this.storageService.setItem(&#x27;homeData&#x27;, updatedData);
+        this.apiService.syncDataHitNoHit(drill).subscribe(data &#x3D;&gt; {
+            this.apiService.getDashboardData(this.userService.getUserId()).subscribe((data1) &#x3D;&gt; {
+                this.storageService.setItem(&#x27;homeData&#x27;, data);
+            });
+        });
+
+    }
+
+    timeStringToSeconds(timeString: string): number {
+        const timeArray &#x3D; timeString.split(&#x27;:&#x27;);
+        let hour &#x3D; 0;
+        let minutes &#x3D; 0;
+        const seconds &#x3D; 0;
+        if (timeArray[0] !&#x3D;&#x3D; &#x27;00&#x27;) {
+            let time &#x3D; 0;
+            if (timeArray[0].charAt(0) !&#x3D;&#x3D; &#x27;0&#x27;) {
+                // tslint:disable-next-line:radix
+                time &#x3D; parseInt(timeArray[0]);
+            } else {
+                // tslint:disable-next-line:radix
+                time &#x3D; parseInt(timeArray[0].charAt(1));
+            }
+            hour &#x3D; time * 3600;
+        }
+
+        if (timeArray[1] !&#x3D;&#x3D; &#x27;00&#x27;) {
+            let time &#x3D; 0;
+            if (timeArray[1].charAt(0) !&#x3D;&#x3D; &#x27;0&#x27;) {
+                // tslint:disable-next-line:radix
+                time &#x3D; parseInt(timeArray[1]);
+            } else {
+                // tslint:disable-next-line:radix
+                time &#x3D; parseInt(timeArray[1].charAt(1));
+            }
+            minutes &#x3D; time * 60;
+        }
+        return hour + minutes + seconds;
+    }
+
+
+    resetDrill() {
+
+    }
+
+
+    getTotalAndSplitTimes(): SplitAndTotalTime {
+        const obj &#x3D; this.doubleSplits.find(o &#x3D;&gt; o.str &#x3D;&#x3D;&#x3D; this.currentSplitTime);
+        this.finalSplits.push(obj.mili);
+        return {
+            splitTime: this.currentSplitTime,
+            totalTime: this.currenOverTime
+        };
+    }
+
+    createFirstShotData() {
+        this.pageData.totalTime &#x3D; &#x27;00:00&#x27;;
+        this.pageData.lastShotTime &#x3D; new Date();
+        this.pageData.splitTime &#x3D; &#x27;00:00&#x27;;
+        const overAllTime &#x3D; &#x27;00:00&#x27;;
+        this.stats.push({
+            pageData: Object.assign({}, this.pageData),
+            interval: overAllTime
+        });
+        console.log(&#x27;Inside createFirstShotData pageData is: &#x27;, this.pageData);
+    }
+
+    finishDrill() {
+        this.drillIsFinished &#x3D; true;
+    }
+
+    handleSummaryData() {
+        let points &#x3D; 0;
+        let distanceFromCenter &#x3D; 0;
+        let split &#x3D; 0;
+
+        this.stats.forEach(stat &#x3D;&gt; {
+            points +&#x3D; 2;
+            distanceFromCenter +&#x3D; stat.pageData.distanceFromCenter;
+            const timeArray &#x3D; stat.pageData.splitTime.split(&#x27;:&#x27;);
+            return timeArray[0] + &#x27;:&#x27; + timeArray[1];
+            const arr &#x3D; stat.pageData.splitTime.split(&#x27;:&#x27;);
+            // tslint:disable-next-line:radix
+            const leftSide &#x3D; parseInt(arr[0]);
+            // @ts-ignore
+            const splitSum &#x3D; leftSide + parseFloat(String(arr[1] * 0.01));
+            split +&#x3D; splitSum;
+        });
+
+        const statsLength &#x3D; this.stats.length;
+        let finalSplit &#x3D; split / statsLength;
+        // @ts-ignore
+        finalSplit &#x3D; parseFloat(finalSplit).toFixed(2);
+        // @ts-ignore
+        finalSplit &#x3D; &#x27;0&#x27; + finalSplit;
+
+        this.summaryObject &#x3D; {
+            points,
+            distanceFromCenter: distanceFromCenter / statsLength,
+            split: this.getSummarySplit(this.stats, this.stats.length),
+            totalTime: this.stats[statsLength - 1].interval,
+            counter: this.stats[statsLength - 1].pageData.counter
+        };
+    }
+
+    getSummarySplit(stats: any, statsLength: number) {
+        if (stats) {
+            let totalSeconds &#x3D; 0;
+            stats.forEach(stat &#x3D;&gt; {
+                const arr &#x3D; stat.pageData.splitTime.split(&#x27;:&#x27;);
+                const arr2 &#x3D; arr[1].split(&#x27;.&#x27;);
+                // tslint:disable-next-line:radix
+                const minutes &#x3D; parseInt(arr[0]) / 60;
+                // tslint:disable-next-line:radix
+                const seconds &#x3D; parseInt(arr2[0]);
+                // tslint:disable-next-line:radix
+                const mili &#x3D; parseInt(arr2[1]) / 1000;
+                totalSeconds +&#x3D; minutes + seconds + mili;
+            });
+            const date &#x3D; new Date(0);
+            totalSeconds &#x3D; totalSeconds / statsLength;
+            date.setSeconds(totalSeconds); // specify value for SECONDS here
+            let milisec &#x3D; &#x27;0&#x27;;
+            if (totalSeconds % 1 !&#x3D;&#x3D; 0) {
+                milisec &#x3D; totalSeconds.toString().split(&#x27;.&#x27;)[1];
+                if (milisec.length &gt;&#x3D; 2) {
+                    milisec &#x3D; milisec[1] + milisec[2];
+                    if (parseInt(milisec) &gt; 60) {
+                        totalSeconds +&#x3D; 1;
+                        milisec &#x3D; milisec[1];
+                    }
+                }
+            }
+            const timeString &#x3D; date.toISOString().substr(11, 8);
+            const finalArray &#x3D; timeString.split(&#x27;:&#x27;);
+            return finalArray[1] + &#x27;:&#x27; + finalArray[2] + &#x27;.&#x27; + milisec;
+            debugger
+        }
+        return null;
+    }
+
+    notifyHitArrived(isFinish, num) {
+        this.hitArrived.next({
+            hitNumber: num,
+            statsData: {
+                stats: this.stats,
+                pageData: this.pageData,
+                isFinish,
+                summaryObject: this.summaryObject
+            }
+        });
+    }
+
+    getElapsedTime(entry: Entry): string {
+        const duration: any &#x3D; new Date().getTime() - entry.created.getTime();
+
+        // tslint:disable-next-line:radix
+        const milliseconds: any &#x3D; parseInt(String((duration % 1000) / 100));
+        let seconds: any &#x3D; Math.floor((duration / 1000) % 60);
+        let minutes: any &#x3D; Math.floor((duration / (1000 * 60)) % 60);
+        let hours: any &#x3D; Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+        hours &#x3D; (hours &lt; 10) ? &#x27;0&#x27; + hours : hours;
+        minutes &#x3D; (minutes &lt; 10) ? &#x27;0&#x27; + minutes : minutes;
+        seconds &#x3D; (seconds &lt; 10) ? &#x27;0&#x27; + seconds : seconds;
+        this.doubleSplits.push({mili: duration, str: minutes + &#x27;:&#x27; + seconds + &#x27;.&#x27; + milliseconds});
+        return minutes + &#x27;:&#x27; + seconds + &#x27;.&#x27; + milliseconds;
+
+    }
+
+    startSplitInterval() {
+        this.splitSubscription &#x3D; interval(100).subscribe(() &#x3D;&gt; {
+            const timespan &#x3D; this.getElapsedTime(this.splitDate);
+            this.currentSplitTime &#x3D; timespan;
+        });
+    }
+
+    startOverallInterval() {
+        this.overallSubscription &#x3D; interval(1000).subscribe(() &#x3D;&gt; {
+            const timespan &#x3D; this.getElapsedTime(this.overallDate);
+            this.currenOverTime &#x3D; timespan;
+        });
+    }
+
+
+}
+
+export interface SplitAndTotalTime {
+    totalTime: string;
+    splitTime: string;
+
+}
+
+
+export class TimeSpan {
+    minutes: number;
+    seconds: number;
+    milliseconds: number;
+
+    constructor(minuts, seconds, milliseconds) {
+        this.minutes &#x3D; minuts;
+        this.seconds &#x3D; seconds;
+        this.milliseconds &#x3D; milliseconds;
+    }
+
+    toString() {
+        return this.minutes + &#x27;:&#x27; + this.seconds;
+    }
+}
+
+export interface Entry {
+    created: Date;
+    id: string;
+}
+
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'HitNohitService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

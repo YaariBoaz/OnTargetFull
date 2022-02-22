@@ -2,7 +2,7 @@ section.target {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 10px 20px 40px 20px;
+  padding: 10px 20px 0 20px;
   background: radial-gradient(71.47% 224.04% at 19.09% 13.6%, #404658 0%, #161820 100%);
   justify-content: space-evenly;
   height: 100%;
@@ -174,3 +174,4 @@ section.target {
     }
   }
 }
+

@@ -46,7 +46,7 @@ section.dashboard {
       justify-content: center;
       box-sizing: border-box;
       padding: 0 16px;
-      height: 190px;
+      height: 20vh;
       position: relative;
 
       div.avatar {
@@ -114,7 +114,6 @@ section.dashboard {
       }
     }
   }
-
 
 
   div.slides {
@@ -303,21 +302,41 @@ section.dashboard {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
-      height: 480px;
-      padding: 39px 16px 74px 16px;
+      height: 40vh;
+      padding: 20px 16px 40px 16px;
       justify-content: space-between;
 
       li {
-        width: 164px;
-        height: 164px;
-        background-color: white;
+        width: 40vw;
+        height: 14vh;
+        background-color: #ffffff0f;
         border-radius: 12px;
-
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         font-weight: 700;
+
+        .first {
+          position: absolute;
+          left: 0;
+          height: 30px;
+          top: 0;
+        }
+
+        svg {
+          height: 50px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+
+        p {
+          padding: 0;
+          margin: 0;
+          font-size: 14px;
+          color: white;
+        }
       }
     }
 
@@ -465,3 +484,17 @@ div.welcome-message {
 }
 
 
+.history-wrapper {
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #fce651;
+  margin-bottom: 30px;
+  align-items: center;
+  border-radius: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  span {
+    color: #FCE651;
+  }
+}

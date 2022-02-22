@@ -21,19 +21,6 @@ export class ChooseDrillComponent implements OnInit {
 
     }
 
-    onChallengesClicked() {
-        this.challengesService.getMyChallenges().subscribe(data => {
-            const dialogRef = this.dialog.open(ChallengeListComponent, {
-                data,
-                height: '100%',
-                minWidth: '100%',
-                panelClass: 'datalogStyle'
-            });
-            dialogRef.afterClosed().subscribe(result => {
-                console.log(`Dialog result: ${result}`);
-            });
-        });
-    }
 
     onBuildDrillClicked() {
         this.router.navigateByUrl('/tab2/select');

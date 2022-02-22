@@ -2,7 +2,6 @@ import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {AlertController, ModalController, Platform} from '@ionic/angular';
 import {ShootingService} from '../shared/services/shooting.service';
 import {StorageService} from '../shared/services/storage.service';
-import {TabsService} from '../tabs/tabs.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {Router} from '@angular/router';
 import {InitService} from '../shared/services/init.service';
@@ -12,6 +11,7 @@ import {BalisticCalculatorComponent} from './balistic-calculator/balistic-calcul
 import {TargetType} from '../shared/drill/constants';
 import {BalisticCalculatorService} from '../shared/services/balistic-calculator.service';
 import {GatewayService} from '../shared/services/gateway.service';
+import {Backgrounds} from '../shared/drill/drill.component';
 
 @Component({
     selector: 'app-tab2',
@@ -22,7 +22,7 @@ export class Tab2Page implements OnInit {
     @ViewChild('slides') slides;
     public selectedDrillType: DrillType = DrillType.Regular;
     slideOpts = {
-        slidesPerView: 2,
+        slidesPerView: 2.3,
         spaceBetween: 3
     };
 
@@ -38,8 +38,9 @@ export class Tab2Page implements OnInit {
         rangeUOM: 'Yards',
         sight: '',
         ammo: '',
+        bg: Backgrounds.DESERT,
         // @ts-ignore
-        drillType: null,
+        drillType: DrillType.Regular,
         shots: new Array<{ x, y }>()
     };
     connectedTarget = null;
@@ -53,8 +54,11 @@ export class Tab2Page implements OnInit {
         return DrillType;
     }
 
+    public get backgroundsEnum(): typeof Backgrounds {
+        return Backgrounds;
+    }
+
     constructor(public modalController: ModalController,
-                private tabService: TabsService,
                 public alertController: AlertController,
                 private initService: InitService,
                 private shootingService: ShootingService,
@@ -72,8 +76,8 @@ export class Tab2Page implements OnInit {
         this.connectedTarget = this.shootingService.chosenTarget;
         this.initComponents();
 
-        const targetId = this.storageService.getItem('slectedTarget').name;
-        this.targetType = this.gatewayService.getTargetType(targetId);
+        // const targetId = this.storageService.getItem('slectedTarget').name;
+        // this.targetType = this.gatewayService.getTargetType(targetId);
         if (this.targetType === TargetType.Type_64 || this.targetType === TargetType.Type_128) {
             this.drill.drillType = DrillType.Regular;
         } else {
@@ -110,9 +114,7 @@ export class Tab2Page implements OnInit {
 
 
     ngOnInit(): void {
-        this.tabService.$notifyTab2.subscribe(() => {
-            this.initComponents();
-        });
+
     }
 
     initComponents() {
@@ -239,7 +241,8 @@ export class Tab2Page implements OnInit {
                 },
                 panelClass: 'dialog-bg'
             });
-            dialogRef.afterClosed().subscribe(data => {
+            // tslint:disable-next-line:no-shadowed-variable
+            dialogRef.afterClosed().subscribe((data: any) => {
                 if (!data || !data.isBack) {
                     this.router.navigateByUrl('/tab2/select2');
                 }
@@ -264,6 +267,7 @@ export interface DrillObject {
     ammo: any;
     drillType: DrillType;
     name: string;
+    bg: Backgrounds;
     shots: Array<{ x: number, y: number }>;
 }
 

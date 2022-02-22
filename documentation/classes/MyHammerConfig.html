@@ -1,0 +1,957 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>onTarget documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">onTarget documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li >MyHammerConfig</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/shared/drill/drill.component.ts</code>
+        </p>
+
+
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="https://angular.io/api/platform-browser/HammerGestureConfig" target="_blank" >HammerGestureConfig</a></code>
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#overrides" >overrides</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="overrides"></a>
+                    <span class="name">
+                        <span ><b>overrides</b></span>
+                        <a href="#overrides"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+        swipe: {direction: Hammer.DIRECTION_ALL},
+    } as any</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="726" class="link-to-prism">src/app/shared/drill/drill.component.ts:726</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    Input,
+    NgZone,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    SimpleChanges,
+    ViewChild
+} from &#x27;@angular/core&#x27;;
+import * as Hammer from &#x27;hammerjs&#x27;;
+
+import {ShootingService} from &#x27;../services/shooting.service&#x27;;
+import {DrillObject, DrillType} from &#x27;../../tab2/tab2.page&#x27;;
+import {StorageService} from &#x27;../services/storage.service&#x27;;
+import {countUpTimerConfigModel, CountupTimerService, timerTexts} from &#x27;ngx-timer&#x27;;
+import {UserService} from &#x27;../services/user.service&#x27;;
+import {ApiService} from &#x27;../services/api.service&#x27;;
+import {BleService} from &#x27;../services/ble.service&#x27;;
+import {HitNohitService} from &#x27;./hit-nohit.service&#x27;;
+import {Router} from &#x27;@angular/router&#x27;;
+import {AlertController, ToastController} from &#x27;@ionic/angular&#x27;;
+import {ScreenOrientation} from &#x27;@ionic-native/screen-orientation/ngx&#x27;;
+import {GatewayService} from &#x27;../services/gateway.service&#x27;;
+import {InitService} from &#x27;../services/init.service&#x27;;
+import {FakeData} from &#x27;./fakeData&#x27;;
+import {ConstantData, TargetType} from &#x27;./constants&#x27;;
+import {NativePageTransitions, NativeTransitionOptions} from &#x27;@ionic-native/native-page-transitions/ngx&#x27;;
+import {BalisticCalculatorService} from &#x27;../services/balistic-calculator.service&#x27;;
+import {HammerGestureConfig} from &#x27;@angular/platform-browser&#x27;;
+
+
+@Component({
+    selector: &#x27;app-session-modal&#x27;,
+    templateUrl: &#x27;./drill.component.html&#x27;,
+    styleUrls: [&#x27;./drill.component.scss&#x27;],
+})
+export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+
+
+    public counter &#x3D; 0;
+    public showCounter &#x3D; false;
+    public showResults &#x3D; false;
+
+
+    @Input() isHistory &#x3D; false;
+    @Input() historyDrill: DrillObject;
+    @ViewChild(&#x27;container&#x27;) container: ElementRef;
+    @ViewChild(&#x27;screen&#x27;) screen: ElementRef;
+    @ViewChild(&#x27;canvas&#x27;) canvas: ElementRef;
+    @ViewChild(&#x27;downloadLink&#x27;) downloadLink: ElementRef;
+    @ViewChild(&#x27;scrollMe&#x27;, {static: true}) myScrollContainer: ElementRef;
+
+
+    /* FOR DEMO */
+
+
+    /*  END FOR DEMO*/
+    profile: any;
+    shots &#x3D; [];
+    shotsThatAreNotCounted &#x3D; [];
+    drill;
+    testConfig: any;
+    RANDOM_TIMES &#x3D; FakeData.RANDOM_TIMES;
+
+
+    drillFinished &#x3D; false;
+
+    DEFUALT_PAGE_DATE &#x3D; ConstantData.DEFUALT_PAGE_DATE;
+    pageData &#x3D; ConstantData.pageData;
+    DEFAULT_SUMMARY_OBJECT &#x3D; ConstantData.DEFAULT_SUMMARY_OBJECT;
+    summaryObject &#x3D; ConstantData.summaryObject;
+
+
+    height: number;
+    width: number;
+    private interval;
+    stats &#x3D; [];
+    batteryPrecent;
+    isConnected &#x3D; true;
+    drillFinishedBefore &#x3D; false;
+    isHit &#x3D; false;
+    private hitNumber &#x3D; 0;
+    isFinish &#x3D; false;
+    shotNumber &#x3D; 0;
+    loader;
+    isHitNoHit &#x3D; true;
+    drillHasNotStarted &#x3D; true;
+    drillIsFinished &#x3D; false;
+    isGateway &#x3D; false;
+    selectedTarget: any;
+    fakeStats &#x3D; FakeData.fakeStats;
+    fakeShots &#x3D; FakeData.fakeShots;
+    targetType: TargetType;
+    isZero: boolean;
+
+    weaponToShow;
+    sightToShow;
+    leftClick &#x3D; 0;
+    upclick &#x3D; 0;
+    rightClick &#x3D; 0;
+    downClick &#x3D; 0;
+    groupingStatus: string;
+    groupingNumber;
+    targetH;
+    targetW;
+    madadToUse;
+    panValue &#x3D; 0;
+    targetDynamicWidth &#x3D; 100;
+    targetJustifyConent &#x3D; &#x27;center&#x27;;
+    isChallenge;
+    challangeNotStarted &#x3D; true;
+
+    public get backgroundsEnum(): typeof Backgrounds {
+        return Backgrounds;
+    }
+
+    public get targetTypeEnum(): typeof TargetType {
+        return TargetType;
+    }
+
+    public get drillTypeEnum(): typeof DrillType {
+        return DrillType;
+    }
+
+    constructor(
+        private screenOrientation: ScreenOrientation,
+        private storageService: StorageService,
+        private shootingService: ShootingService,
+        private countupTimerService: CountupTimerService,
+        public toastController: ToastController,
+        private userService: UserService,
+        private apiService: ApiService,
+        private nativePageTransitions: NativePageTransitions,
+        private bleService: BleService,
+        private gateway: GatewayService,
+        private cd: ChangeDetectorRef,
+        private router: Router,
+        private ngZone: NgZone,
+        private initService: InitService,
+        public alertController: AlertController,
+        private hitNohitService: HitNohitService,
+        private balisticCalculatorService: BalisticCalculatorService
+    ) {
+        this.drill &#x3D; this.shootingService.selectedDrill;
+        if (this.drill.challngeId) {
+            this.isChallenge &#x3D; true;
+
+        }
+        this.selectedTarget &#x3D; this.shootingService.chosenTarget;
+        this.isGateway &#x3D; this.initService.isGateway;
+        this.setTargetType(JSON.parse(localStorage.getItem(&#x27;slectedTarget&#x27;)).name);
+        this.hitNohitService.setDrill(this.drill);
+        this.hitNohitService.initStats();
+        this.setTimeElapse();
+        this.isZero &#x3D; this.shootingService.getisZero();
+        this.balisticCalculatorService.resetStats();
+        if (this.isZero) {
+            const napar &#x3D; this.balisticCalculatorService.calcNapar(true, this.targetType);
+            this.shotsThatAreNotCounted.push({x: napar.napar.x, y: napar.napar.y, isNapar: true});
+        }
+        this.targetW &#x3D; this.initService.screenW;
+        this.targetH &#x3D; this.initService.screenH;
+
+        if (this.targetW &gt; this.targetH) {
+            this.madadToUse &#x3D; this.targetH - 100;
+        } else {
+            this.madadToUse &#x3D; this.targetW - 100;
+        }
+    }
+
+
+    ngAfterViewInit(): void {
+    }
+
+    ngOnInit() {
+        this.profile &#x3D; this.userService.getUser();
+        this.removeTabs();
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+        this.registerNotifications();
+    }
+
+
+    async showToast(msg: string, color: string) {
+        const toast &#x3D; await this.toastController.create({
+            message: msg,
+            color,
+            duration: 2000
+        });
+        toast.present();
+    }
+
+
+    setTimeElapse() {
+        this.countupTimerService.stopTimer();
+        this.countupTimerService.setTimervalue(0);
+
+        this.testConfig &#x3D; new countUpTimerConfigModel();
+        this.testConfig.timerClass &#x3D; &#x27;test_Timer_class&#x27;;
+        // timer text values
+        this.testConfig.timerTexts &#x3D; new timerTexts();
+        this.testConfig.timerTexts.hourText &#x3D; &#x27;:&#x27;; // default - hh
+        this.testConfig.timerTexts.minuteText &#x3D; &#x27;:&#x27;; // default - mm
+        this.testConfig.timerTexts.secondsText &#x3D; &#x27; &#x27;; // default - ss
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes &amp;&amp; changes.isHistory) {
+            this.isHistory &#x3D; changes.isHistory.currentValue;
+        }
+        if (changes &amp;&amp; changes.historyDrill) {
+            this.historyDrill &#x3D; changes.historyDrill.currentValue;
+        }
+
+    }
+
+
+    initStats() {
+        this.balisticCalculatorService.resetStats();
+        this.hitNohitService.initStats();
+        this.gateway.initStats();
+        this.drillIsFinished &#x3D; false;
+        this.resetShots();
+        console.log(&#x27;This is in the init stats of the session&#x27;);
+        this.drillFinished &#x3D; false;
+        this.shots &#x3D; [];
+
+        this.stats &#x3D; [];
+        this.shotNumber &#x3D; 0;
+        this.isFinish &#x3D; false;
+        this.summaryObject &#x3D; this.DEFAULT_SUMMARY_OBJECT;
+        if (!this.pageData) {
+            this.pageData &#x3D; this.pageData;
+        } else {
+            this.pageData.counter &#x3D; 0;
+            this.pageData.distanceFromCenter &#x3D; 0;
+            this.pageData.splitTime &#x3D; &#x27;0:00&#x27;;
+            this.pageData.rateOfFire &#x3D; 0;
+            this.pageData.points &#x3D; 0;
+            this.pageData.totalTime &#x3D; &#x27;0:00&#x27;;
+        }
+        if (this.countupTimerService) {
+            this.countupTimerService.stopTimer();
+            this.countupTimerService.setTimervalue(0);
+        }
+        this.cd.detectChanges();
+
+    }
+
+    async onBackPressed() {
+        this.countupTimerService.stopTimer();
+        this.drillIsFinished &#x3D; false;
+        const content: any &#x3D; document.querySelector(&#x27;mat-tab-header&#x27;);
+        if (content) {
+            content.style.display &#x3D; &#x27;flex&#x27;;
+        }
+        await this.closeDrillBeforeFinish(false);
+
+    }
+
+    ionViewWillEnter() {
+        this.bleService.isConnected().then((status) &#x3D;&gt; {
+            console.log(&#x27;IS CONNECTED: &#x27;, status);
+        }, error &#x3D;&gt; {
+            console.log(error);
+        });
+        //  this.drill &#x3D; this.shootingService.selectedDrill;
+        if (!this.drill.weapon) {
+            this.weaponToShow &#x3D; &#x27;Rifle&#x27;;
+            this.sightToShow &#x3D; &#x27;&#x27;;
+        } else {
+            this.weaponToShow &#x3D; this.drill.weapon.split(&#x27; &#x27;)[0];
+            this.sightToShow &#x3D; this.drill.sight.split(&#x27; &#x27;)[0];
+        }
+
+
+        this.countupTimerService.stopTimer();
+        this.countupTimerService.setTimervalue(0);
+        this.drillHasNotStarted &#x3D; true;
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE).then(r &#x3D;&gt; {
+        });
+        this.showResults &#x3D; false;
+        this.showCounter &#x3D; false;
+        this.drillHasNotStarted &#x3D; true;
+    }
+
+    ngOnDestroy() {
+        console.log(&#x27;[OnDestroy] Session Component&#x27;);
+    }
+
+
+    async restartShooting() {
+        const alert &#x3D; await this.alertController.create({
+            cssClass: &#x27;my-custom-class&#x27;,
+            message: &#x27;Save session ?&#x27;,
+            buttons: [
+                {
+                    text: &#x27;Cancel&#x27;,
+                    role: &#x27;cancel&#x27;,
+                    cssClass: &#x27;secondary&#x27;,
+                    handler: (blah) &#x3D;&gt; {
+                        console.log(&#x27;Pressed Cancel&#x27;);
+                    }
+                }, {
+                    text: &#x27;Yes&#x27;,
+                    handler: () &#x3D;&gt; {
+                        this.ngZone.runGuarded(() &#x3D;&gt; {
+                            this.groupingNumber &#x3D; 0;
+                            this.countupTimerService.stopTimer();
+                            if (!this.isChallenge) {
+                                if (this.isGateway) {
+                                    this.gateway.updateHistory();
+                                    this.gateway.initStats();
+                                } else {
+                                    this.hitNohitService.updateHistory();
+                                    this.hitNohitService.initStats();
+                                }
+                            }
+                            this.initStats();
+                            this.setTimeElapse();
+                            this.bleService.resetShots();
+                            this.stats &#x3D; Object.assign(this.stats, []);
+                            this.drillHasNotStarted &#x3D; true;
+                            this.showResults &#x3D; false;
+                        });
+                    }
+                },
+                {
+                    text: &#x27;No&#x27;,
+                    cssClass: &#x27;secondary&#x27;,
+                    handler: (blah) &#x3D;&gt; {
+                        this.ngZone.runGuarded(() &#x3D;&gt; {
+                            this.groupingNumber &#x3D; 0;
+                            this.countupTimerService.stopTimer();
+                            if (this.isGateway) {
+                                this.gateway.initStats();
+                            } else {
+                                this.hitNohitService.initStats();
+                            }
+                            this.initStats();
+                            this.setTimeElapse();
+                            this.bleService.resetShots();
+                            this.stats &#x3D; Object.assign(this.stats, []);
+                            this.drillHasNotStarted &#x3D; true;
+                            this.showResults &#x3D; false;
+                        });
+                    }
+                }
+            ]
+        });
+        await alert.present();
+    }
+
+    resetShots() {
+        this.bleService.resetShots();
+        this.shots &#x3D; [];
+        let napamToDelete &#x3D; null;
+        this.shotsThatAreNotCounted.forEach(item &#x3D;&gt; {
+            if (item.isNapam) {
+                napamToDelete &#x3D; item;
+            }
+        });
+
+        if (napamToDelete) {
+            this.shotsThatAreNotCounted.splice(this.shotsThatAreNotCounted.indexOf(napamToDelete), 1);
+        }
+    }
+
+
+    async closeDrillBeforeFinish(isReset) {
+        const alert &#x3D; await this.alertController.create({
+            cssClass: &#x27;my-custom-class&#x27;,
+            message: &#x27;Save session ?&#x27;,
+            buttons: [
+                {
+                    text: &#x27;Cancel&#x27;,
+                    role: &#x27;cancel&#x27;,
+                    cssClass: &#x27;secondary&#x27;,
+                    handler: (blah) &#x3D;&gt; {
+                        console.log(&#x27;Pressed Cancel&#x27;);
+                    }
+                }, {
+                    text: &#x27;Yes&#x27;,
+                    handler: () &#x3D;&gt; {
+                        this.ngZone.runGuarded(() &#x3D;&gt; {
+                            if (this.isGateway) {
+                                this.gateway.updateHistory();
+                                this.gateway.initStats();
+                            } else {
+                                this.hitNohitService.updateHistory();
+                                this.hitNohitService.initStats();
+                            }
+                            this.initStats();
+                            this.bleService.resetShots();
+                            this.stats &#x3D; Object.assign(this.stats, []);
+                            if (!this.isChallenge) {
+                                this.router.navigateByUrl(&#x27;home&#x27;);
+                            } else {
+                                this.router.navigateByUrl(&#x27;home&#x27;);
+                            }
+                            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
+                        });
+                    }
+                },
+                {
+                    text: &#x27;No&#x27;,
+                    cssClass: &#x27;secondary&#x27;,
+                    handler: (blah) &#x3D;&gt; {
+                        this.ngZone.runGuarded(() &#x3D;&gt; {
+                            if (this.isGateway) {
+                                this.gateway.initStats();
+                            } else {
+                                this.hitNohitService.initStats();
+                            }
+                            this.initStats();
+                            this.bleService.resetShots();
+                            this.stats &#x3D; Object.assign(this.stats, []);
+                            if (!this.isChallenge) {
+                                this.router.navigateByUrl(&#x27;home&#x27;);
+                            } else {
+                                this.router.navigateByUrl(&#x27;home&#x27;);
+                            }
+                            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+                        });
+                    }
+                }
+            ]
+        });
+        await alert.present();
+    }
+
+    onReconnect() {
+        this.bleService.connect(this.bleService.currentTargetId);
+    }
+
+    activateCounter() {
+        this.counter &#x3D; 3;
+        this.showCounter &#x3D; true;
+        const interval &#x3D; setInterval(() &#x3D;&gt; {
+            this.counter--;
+            if (this.counter &lt; 1) {
+                this.countupTimerService.startTimer();
+                this.counter &#x3D; 3;
+                this.showResults &#x3D; true;
+                this.showCounter &#x3D; false;
+                this.drillHasNotStarted &#x3D; false;
+                this.bleService.resetShots();
+                clearInterval(interval);
+                setTimeout(() &#x3D;&gt; {
+                    this.gateway.height &#x3D; this.madadToUse;
+                    this.gateway.width &#x3D; this.madadToUse;
+                    this.balisticCalculatorService.divWidth &#x3D; this.madadToUse;
+                    this.balisticCalculatorService.divHeight &#x3D; this.madadToUse;
+                    if (this.isGateway) {
+                        this.gateway.initStats();
+                    } else {
+                        this.hitNohitService.initStats();
+                    }
+                }, 1);
+
+
+            }
+        }, 1000);
+
+    }
+
+    private startFakeShooting(index) {
+        if (index &lt; 5) {
+            setTimeout(() &#x3D;&gt; {
+                this.stats &#x3D; [this.fakeStats[index], ...this.stats];
+                // @ts-ignore
+                this.summaryObject.points &#x3D; this.fakeStats[index].pageData.totalPoints;
+                // @ts-ignore
+                this.summaryObject.split &#x3D; this.fakeStats[index].pageData.totalSplit;
+                // @ts-ignore
+                this.summaryObject.totalTime &#x3D; this.fakeStats[index].pageData.totalTime;
+                // @ts-ignore
+                this.summaryObject.distanceFromCenterAvg &#x3D; this.fakeStats[index].pageData.distanceFromCenterAvg;
+                this.shots.push(this.fakeShots[index]);
+                this.startFakeShooting(index + 1);
+            }, 1212);
+        }
+    }
+
+    private startFakeShootingHitNoHit(index) {
+        if (index &lt; 5) {
+            setTimeout(() &#x3D;&gt; {
+                this.stats &#x3D; [this.fakeStats[index], ...this.stats];
+                // @ts-ignore
+                this.summaryObject.points &#x3D; this.fakeStats[index].pageData.totalPoints;
+                // @ts-ignore
+                this.summaryObject.split &#x3D; this.fakeStats[index].pageData.totalSplit;
+                // @ts-ignore
+                this.summaryObject.totalTime &#x3D; this.fakeStats[index].pageData.totalTime;
+                // @ts-ignore
+                this.summaryObject.distanceFromCenterAvg &#x3D; this.fakeStats[index].pageData.distanceFromCenterAvg;
+                this.shotNumber &#x3D; index + 1;
+                this.startFakeShootingHitNoHit(index + 1);
+            }, 1212);
+        }
+    }
+
+    private removeTabs() {
+        const content: any &#x3D; document.querySelector(&#x27;mat-tab-header&#x27;);
+        if (content) {
+            content.style.display &#x3D; &#x27;none&#x27;;
+        }
+    }
+
+    private registerNotifications() {
+        this.registerHitNoHitNotifications();
+        this.registerGatewayNotifications();
+        this.registerBLENotifications();
+        this.registerBatteryState();
+        this.shootingService.drillStarteEvent.subscribe(data &#x3D;&gt; {
+            if (data) {
+                this.drillIsFinished &#x3D; false;
+            }
+        });
+    }
+
+    private registerHitNoHitNotifications() {
+        this.hitNohitService.hitArrived.subscribe((data) &#x3D;&gt; {
+            if (data !&#x3D;&#x3D; null &amp;&amp; !this.drillHasNotStarted &amp;&amp; !this.drillIsFinished) {
+                this.shotNumber &#x3D; data.hitNumber;
+                this.stats &#x3D; data.statsData.stats;
+                this.pageData &#x3D; data.statsData.page;
+                this.isFinish &#x3D; data.statsData.isFinish;
+                this.summaryObject &#x3D; data.statsData.summaryObject;
+                this.cd.detectChanges();
+                if (this.drill.numOfBullets &#x3D;&#x3D;&#x3D; this.stats.length) {
+                    this.drillIsFinished &#x3D; true;
+                    this.cd.detectChanges();
+                    this.countupTimerService.pauseTimer();
+                }
+            }
+        });
+        this.hitNohitService.drillFinishedNotify.subscribe(data &#x3D;&gt; {
+            if (data) {
+                this.drillIsFinished &#x3D; true;
+            }
+        });
+        this.hitNohitService.resetDrillSubject.subscribe((flag) &#x3D;&gt; {
+            if (flag) {
+                this.initStats();
+            }
+        });
+    }
+
+    registerGatewayNotifications() {
+        this.gateway.drillFinishedNotify.subscribe(data &#x3D;&gt; {
+            if (data) {
+                this.drillIsFinished &#x3D; true;
+            }
+        });
+        this.gateway.hitArrived.subscribe((data: any) &#x3D;&gt; {
+            if (data &amp;&amp; !this.isFinish &amp;&amp; data.statsData.stats.length &gt; 0) {
+                if (this.drill.drillType &#x3D;&#x3D;&#x3D; 3 &amp;&amp; data.statsData.zeroData &amp;&amp; Object.keys(data.statsData.zeroData).length !&#x3D;&#x3D; 0) {
+                    this.updateZeroData(data);
+                } else {
+                    this.shotNumber &#x3D; data.hitNumber;
+                    this.groupingNumber &#x3D; data.statsData.zeroData.napar2Napam / 2.54;
+                    this.stats &#x3D; data.statsData.stats;
+                    this.pageData &#x3D; data.statsData.pageData;
+                    this.isFinish &#x3D; data.statsData.isFinish;
+                    this.summaryObject &#x3D; data.statsData.summaryObject;
+                    this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
+                    this.cd.detectChanges();
+                    this.scrollToBottom();
+                    if (this.drill.numOfBullets &#x3D;&#x3D;&#x3D; this.stats.length) {
+                        this.drillIsFinished &#x3D; true;
+                        this.cd.detectChanges();
+                        this.countupTimerService.pauseTimer();
+                    }
+                }
+            }
+        });
+
+        this.gateway.notifyShotArrivedFromGateway.subscribe((data) &#x3D;&gt; {
+            if (data) {
+                this.shots.push({x: data.x, y: data.y});
+            }
+        });
+    }
+
+    registerBLENotifications() {
+        this.bleService.notifyTargetConnected.subscribe(status &#x3D;&gt; {
+            if (status) {
+                this.isConnected &#x3D; true;
+                // const loader &#x3D; this.showToast(&#x27;Target Connected&#x27;, &#x27;success&#x27;);
+            }
+        });
+        this.bleService.notifyDisconnect.subscribe((flag) &#x3D;&gt; {
+            if (flag) {
+                if (!flag.isManually) {
+                    // this.isConnected &#x3D; false;
+                    // this.cd.detectChanges();
+                    // const loader &#x3D; this.showToast(&#x27;The target has been disconnected \n System trying to reconnect&#x27;, &#x27;danger&#x27;);
+                }
+            }
+        });
+    }
+
+    scrollToBottom() {
+        try {
+            this.myScrollContainer.nativeElement.scrollTop &#x3D; this.myScrollContainer.nativeElement.scrollHeight;
+        } catch (err) {
+        }
+    }
+
+    ionViewWillLeave() {
+
+        const options: NativeTransitionOptions &#x3D; {
+            direction: &#x27;up&#x27;,
+            duration: 500,
+            slowdownfactor: 3,
+            slidePixels: 20,
+            iosdelay: 100,
+            androiddelay: 150,
+            fixedPixelsTop: 0,
+            fixedPixelsBottom: 60
+        };
+
+        this.nativePageTransitions.slide(options)
+            .then(() &#x3D;&gt; {
+            })
+            .catch(() &#x3D;&gt; {
+            });
+
+    }
+
+    setTargetType(name) {
+        if (name &#x3D;&#x3D;&#x3D; &#x27;003&#x27; || name.indexOf(&#x27;64&#x27;) &gt; -1) {
+            this.targetType &#x3D; TargetType.Type_64;
+            this.isGateway &#x3D; true;
+        } else if (name.indexOf(&#x27;128&#x27;) &gt; -1) {
+            this.targetType &#x3D; TargetType.Type_128;
+            this.isGateway &#x3D; true;
+        } else if (name.indexOf(&#x27;16&#x27;) &gt; -1) {
+            this.targetType &#x3D; TargetType.Type_16;
+            this.isGateway &#x3D; true;
+        } else {
+            this.isGateway &#x3D; false;
+            this.targetType &#x3D; TargetType.HitNoHit;
+        }
+    }
+
+    private registerBatteryState() {
+        this.gateway.notifyTargetConnectedToGateway.subscribe(data &#x3D;&gt; {
+            this.isConnected &#x3D; true;
+        });
+        this.gateway.notifyTargetBattery.subscribe(data &#x3D;&gt; {
+            this.batteryPrecent &#x3D; data;
+        });
+    }
+
+    onSwipe(evt) {
+        console.log(&#x27;swipe left&#x27;);
+        this.panValue &#x3D; 400;
+        this.targetDynamicWidth &#x3D; 100;
+        this.targetJustifyConent &#x3D; &#x27;space-between&#x27;;
+
+    }
+
+    onSwipeRight($event: any) {
+        setTimeout(() &#x3D;&gt; {
+            console.log(&#x27;swipe right&#x27;);
+            this.panValue &#x3D; 0;
+            this.targetJustifyConent &#x3D; &#x27;center&#x27;;
+        }, 100);
+
+    }
+
+    private updateZeroData(data: any) {
+        this.leftClick &#x3D; data.statsData.zeroData.leftClick;
+        this.upclick &#x3D; data.statsData.zeroData.upclick;
+        this.rightClick &#x3D; data.statsData.zeroData.rightClick;
+        this.downClick &#x3D; data.statsData.zeroData.downClick;
+        this.groupingNumber &#x3D; data.statsData.zeroData.napar2Napam;
+        this.groupingStatus &#x3D; data.statsData.zeroData.status;
+        this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y, isBarhan: data.isBarhan});
+        let napamToDelete &#x3D; null;
+        this.shotsThatAreNotCounted.forEach(item &#x3D;&gt; {
+            if (item.isNapam) {
+                napamToDelete &#x3D; item;
+            }
+        });
+
+        if (napamToDelete) {
+            this.shotsThatAreNotCounted.splice(this.shotsThatAreNotCounted.indexOf(napamToDelete), 1);
+        }
+        if (data.statsData.zeroData.napamToView.x !&#x3D;&#x3D; 0 &amp;&amp; data.statsData.zeroData.napamToView.y !&#x3D;&#x3D; 0) {
+            this.shotsThatAreNotCounted.push({
+                x: data.statsData.zeroData.napamToView.x,
+                y: data.statsData.zeroData.napamToView.y,
+                isNapam: true
+            });
+        }
+        this.cd.detectChanges();
+        this.stats &#x3D; data.statsData.stats;
+        this.pageData &#x3D; data.statsData.pageData;
+        this.isFinish &#x3D; data.statsData.isFinish;
+        this.summaryObject &#x3D; data.statsData.summaryObject;
+        this.scrollToBottom();
+        if (this.drill.numOfBullets &#x3D;&#x3D;&#x3D; this.stats.length) {
+            this.drillIsFinished &#x3D; true;
+            this.cd.detectChanges();
+        }
+    }
+
+
+    private setDrillType(drillType) {
+        if (drillType &#x3D;&#x3D;&#x3D; &#x27;HitNoHit&#x27;) {
+            this.drill.drillType &#x3D; DrillType.HitNoHit;
+        } else {
+            this.drill.drillType &#x3D; DrillType.Regular;
+        }
+    }
+}
+
+export class MyHammerConfig extends HammerGestureConfig {
+    overrides &#x3D; {
+        swipe: {direction: Hammer.DIRECTION_ALL},
+    } as any;
+}
+
+export enum Backgrounds {
+    DESERT,
+    WINTER,
+    DARK,
+    FOREST
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'MyHammerConfig.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

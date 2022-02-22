@@ -1,5 +1,11 @@
 <section class="drill-results">
-    <header [class.isHistoryBG]="isHistory===true">
+    <img class="bg-pic" *ngIf="drill.bg == backgroundsEnum.DESERT" src="assets/backgrounds/desert.png"/>
+    <img class="bg-pic" *ngIf="drill.bg == backgroundsEnum.FOREST" src="assets/backgrounds/forest.png"/>
+    <img class="bg-pic" *ngIf="drill.bg == backgroundsEnum.WINTER" src="assets/backgrounds/snow.png"/>
+    <img class="bg-pic" *ngIf="drill.bg == backgroundsEnum.DARK" src="assets/backgrounds/warehouse.png"/>
+
+
+    <header [class.isHistoryBG]="isHistory===true" *ngIf="!isChallenge || !challangeNotStarted">
         <div class="back-button" (click)="onBackPressed()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.721 22.938">
                 <defs>
@@ -67,6 +73,11 @@
         <button *ngIf="drillHasNotStarted" class="start" (click)="activateCounter()">START</button>
         <button *ngIf="!drillHasNotStarted" class="start" (click)="restartShooting()">RESET</button>
     </header>
+
+    <div class="challenge-promo" *ngIf="isChallenge && challangeNotStarted">
+        <app-new-target-design
+                (startDrillFromChallenge)="activateCounter(); challangeNotStarted = false"></app-new-target-design>
+    </div>
     <div class="main-screen">
 
         <div class="target" *ngIf="!isGateway" [style.width.%]="targetDynamicWidth"
@@ -141,8 +152,8 @@
              [style.justifyContent]="targetJustifyConent">
             <div *ngIf="showResults" class="some-wrapper">
                 <div class="target-container" [style.width.px]="madadToUse" [style.height.px]="madadToUse">
-                    <div *ngIf="targetType === targetTypeEnum.Type_64">
-                        <div *ngIf="drill?.drillType === drillTypeEnum.Regular" style="width: 312px; height: 312px;"
+                    <div class="64" *ngIf="targetType === targetTypeEnum.Type_64">
+                        <div *ngIf="drill?.drillType == drillTypeEnum.Regular" style="width: 312px; height: 312px;"
                              [style.width.px]="madadToUse" [style.height.px]="madadToUse"
                              style="background-color: white;border-radius: 100%;">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
@@ -150,7 +161,7 @@
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished"
                                  src="assets/targets/64/e64_score_finish.png">
                         </div>
-                        <div *ngIf="drill?.drillType === drillTypeEnum.HitNoHit" style="width: 312px; height: 312px;"
+                        <div *ngIf="drill?.drillType == drillTypeEnum.HitNoHit" style="width: 312px; height: 312px;"
                              [style.width.px]="madadToUse" [style.height.px]="madadToUse"
                              style="background-color: white;border-radius: 100%;">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
@@ -172,7 +183,7 @@
                                  src="assets/targets/64/Hostage_png_e64_finish.png">
                         </div>
                     </div>
-                    <div *ngIf="targetType === targetTypeEnum.Type_128">
+                    <div class="128" *ngIf="targetType === targetTypeEnum.Type_128">
                         <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
                                  src="assets/targets/128/e128_score.png">
