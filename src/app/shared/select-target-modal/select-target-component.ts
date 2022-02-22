@@ -9,7 +9,7 @@ import {HitNohitService} from '../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {InitService} from '../services/init.service';
-import {BLE} from '@ionic-native/ble/ngx';
+import { BLE } from '@awesome-cordova-plugins/ble/ngx';
 import {GatewayService} from '../services/gateway.service';
 import {ErrorModalComponent} from '../popups/error-modal/error-modal.component';
 import {MatDialog} from '@angular/material/dialog';
