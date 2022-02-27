@@ -52,7 +52,7 @@ export class SelectTargetComponent implements OnInit {
     private currentTargetId: string;
     private isConnected: boolean;
     myTargetsForKeepAlive = [];
-
+    isiOS;
     targets = [];
 
     constructor(
@@ -79,7 +79,7 @@ export class SelectTargetComponent implements OnInit {
     ) {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
-
+        this.isiOS = this.platform.is('ios');
     }
 
     ngOnInit() {

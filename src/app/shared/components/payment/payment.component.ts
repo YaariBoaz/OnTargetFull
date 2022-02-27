@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {PurchaseService} from '../../services/purchase.service';
 
 @Component({
     selector: 'app-payment',
@@ -7,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-
+    products;
     prices = [
         {
             timeLimit: 'ONE TIME USE',
@@ -34,11 +35,15 @@ export class PaymentComponent implements OnInit {
         }
     ];
 
-    constructor() {
+    constructor(private purchaseService:PurchaseService) {
     }
 
     ngOnInit() {
+      //  this.products = this.purchaseService.getProducts();
+        console.log(this.products);
     }
+    
+    
 
     selectedAndReload(item) {
         this.prices.forEach(x => x.isSelected = false);
