@@ -319,6 +319,13 @@
   dependencies:
     "@types/cordova" latest
 
+"@awesome-cordova-plugins/purchases@^5.39.1":
+  version "5.39.1"
+  resolved "https://registry.yarnpkg.com/@awesome-cordova-plugins/purchases/-/purchases-5.39.1.tgz#88500f2290a4fa49f27e8794fbefb6cf261725af"
+  integrity sha512-bkbCSpY2PmoqYc/X287WXKETT4BQ6JqFYlbzF6W6SvqeFdcbG4chx9tFoxi75wmyNySGY/TOQbbw86cEGvGx3Q==
+  dependencies:
+    "@types/cordova" latest
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.16.7.tgz"
@@ -3588,6 +3595,11 @@ cordova-plugin-purchase@^11.0.0:
   version "11.0.0"
   resolved "https://registry.npmjs.org/cordova-plugin-purchase/-/cordova-plugin-purchase-11.0.0.tgz"
   integrity sha512-FkgOyWBYS989dYpM6d3R36VrdsHweTbmp5y7ELa1GwMYq2AG+ImdB6DJcVpyU/se/zpTndBWH/zN9s3AFKfsLg==
+
+cordova-plugin-purchases@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-purchases/-/cordova-plugin-purchases-2.3.0.tgz#35b63100d8a1a6d9cf97944a2d5c9f5a8785dba9"
+  integrity sha512-tw5zJDa6QL+Eo/8jsvPCNC5kj8qJSujLVyuSXKRYEgZ1kFEKJ89he3lq7WWqWCmj9mVz56bjrmdOPlIwxKFdQA==
 
 cordova-plugin-screen-orientation@^3.0.2:
   version "3.0.2"

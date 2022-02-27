@@ -9,10 +9,14 @@ import {PopupsService} from './shared/services/popups.service';
   import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {MatDialog} from '@angular/material/dialog';
+import {InAppPurchase2} from '@ionic-native/in-app-purchase-2/ngx';
 
 const {SplashScreen} = Plugins;
 const {Network} = Plugins;
 
+const ADL_IAP_KEY = 'adl';
+const ADL_IAP_KEY_2_SESSIONS = 'twoSessionSub';
+const ADL_IAP_KEY_6_SESSIONS = 'sixSessions';
 
 @Component({
     selector: 'app-root',
@@ -23,10 +27,13 @@ export class AppComponent implements OnDestroy, OnInit {
     private devices;
     splash = true;
     isLoding = false;
+    isiOS = false;
+
 
     constructor(
         private platform: Platform,
         private initService: InitService,
+        private store: InAppPurchase2,
         private nativePageTransitions: NativePageTransitions,
         public ble: BleService,
         private popupsService: PopupsService,
@@ -34,17 +41,6 @@ export class AppComponent implements OnDestroy, OnInit {
         private screenOrientation: ScreenOrientation,
         public dialog: MatDialog
     ) {
-
-
-        Network.addListener('networkStatusChange', (status) => {
-            if (!status.connected) {
-                const dialogRef = this.dialog.open(ErrorModalComponent, {
-                    data: {modalType: 'wifi'}
-                });
-            }
-        });
-
-
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.initService.getSights();
         this.initService.getSightsZeroing();
@@ -77,6 +73,10 @@ export class AppComponent implements OnDestroy, OnInit {
                 }, false);
 
             });
+
+            if(this.platform.is('ios')){
+                this.isiOS= true;
+            }
             window.addEventListener('beforeunload', () => {
                 this.initService.distory();
             });
@@ -85,6 +85,10 @@ export class AppComponent implements OnDestroy, OnInit {
         this.initService.isLoading.subscribe((isLoading: boolean) => {
             this.isLoding = isLoading;
         });
+
+        this.store.register({id: ADL_IAP_KEY, type: this.store.PAID_SUBSCRIPTION});
+        this.store.register({id: ADL_IAP_KEY_2_SESSIONS, type: this.store.CONSUMABLE});
+        this.store.register({id: ADL_IAP_KEY_6_SESSIONS, type: this.store.CONSUMABLE});
     }
 
     ngOnInit() {

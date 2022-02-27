@@ -23,5 +23,9 @@
         "style": "dark"
       }
     }
+  },
+  "server": {
+    "url": "http://172.20.10.9:8100",
+    "cleartext": true
   }
 }

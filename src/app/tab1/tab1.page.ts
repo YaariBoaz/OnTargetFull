@@ -19,6 +19,7 @@ import {WizardService} from '../shared/authentication/signup-wizard/wizard.servi
 import {MatDialog} from '@angular/material/dialog';
 import {ActivityLogComponent} from '../shared/activity-log/activity-log.component';
 import {ShootingService} from '../shared/services/shooting.service';
+import {PaymentComponent} from '../shared/components/payment/payment.component';
 
 @Component({
     selector: 'app-tab1',
@@ -140,6 +141,11 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
             if (data) {
                 this.initDashboard();
             }
+        });
+
+        this.dialog.open(PaymentComponent, {
+            height: '100%',
+            width: '100%',
         });
     }
 
@@ -753,5 +759,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
             this.router.navigateByUrl('select-target');
         }
     }
+
+
 }
 

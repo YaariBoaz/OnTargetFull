@@ -31,6 +31,15 @@
     <param name="ios-package" value="HWPPreviewAnyFile"/>
   </feature>
 
+  <feature name="InAppPurchase">
+    <param name="ios-package" value="InAppPurchase"/>
+    <param name="onload" value="true"/>
+  </feature>
+
+  <feature name="PurchasesPlugin">
+    <param name="ios-package" value="CDVPurchasesPlugin"/>
+  </feature>
+
   <feature name="CDVOrientation">
     <param name="ios-package" value="CDVOrientation"/>
   </feature>

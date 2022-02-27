@@ -31,6 +31,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -38,6 +40,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Our app does not request this permission or utilize this functionality but it is included in our info.plist since our app utilizes the cordova-ble-central library, which references this permission in its code</string>
 	<key>NSCameraUsageDescription</key>
 	<string>To Take Photos and Video</string>
 	<key>NSLocationAlwaysUsageDescription</key>

@@ -35,6 +35,8 @@ import { HammerModule } from '@angular/platform-browser';
 import { ActivityLogComponent } from './shared/activity-log/activity-log.component';
 import {Tab1PageModule} from './tab1/tab1.module';
 import {Tab2PageModule} from './tab2/tab2.module';
+import {InAppPurchase2} from '@ionic-native/in-app-purchase-2/ngx';
+import {PurchaseService} from './shared/services/purchase.service';
 
 
 
@@ -85,8 +87,10 @@ import {Tab2PageModule} from './tab2/tab2.module';
             useClass: HttpErrorInterceptor,
             multi: true,
             deps: [InitService]
-        }
-    ],
+        },
+PurchaseService,
+        InAppPurchase2
+     ],
     exports: [MaterialModule],
     bootstrap: [AppComponent]
 })

@@ -498,3 +498,6 @@ div.welcome-message {
     color: #FCE651;
   }
 }
+::ng-deep .cdk-overlay-pane{
+  max-width: 100vw !important;
+}
