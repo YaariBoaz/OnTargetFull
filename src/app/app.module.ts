@@ -37,6 +37,7 @@ import {Tab1PageModule} from './tab1/tab1.module';
 import {Tab2PageModule} from './tab2/tab2.module';
 import {InAppPurchase2} from '@ionic-native/in-app-purchase-2/ngx';
 import {PurchaseService} from './shared/services/purchase.service';
+import {DrillModule} from './shared/drill/drill.module';
 
 
 
@@ -65,6 +66,7 @@ import {PurchaseService} from './shared/services/purchase.service';
         NgxCaptureModule,
         Tab1PageModule,
         Tab2PageModule,
+        DrillModule,
     ],
     providers: [
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},

@@ -7,6 +7,7 @@ import {SelectTargetComponent} from './shared/select-target-modal/select-target-
 import {ChooseDrillComponent} from './shared/ChooseDrill/choose-drill.component';
 import {ChallengeListComponent} from './shared/ChooseDrill/List/challenge-list.component';
 import {Tab2Page} from './tab2/tab2.page';
+import {DrillComponent} from './shared/drill/drill.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -30,6 +31,10 @@ const routes: Routes = [
     }, {
         path: 'editDrill',
         component: Tab2Page,
+
+    },{
+        path: 'drill',
+        component: DrillComponent,
 
     },
     {path: 'new-target', component: NewTargetDesignComponent},

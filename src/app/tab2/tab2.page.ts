@@ -244,7 +244,7 @@ export class Tab2Page implements OnInit {
             // tslint:disable-next-line:no-shadowed-variable
             dialogRef.afterClosed().subscribe((data: any) => {
                 if (!data || !data.isBack) {
-                    this.router.navigateByUrl('/tab2/select2');
+                    this.router.navigateByUrl('drill');
                 }
             });
         });

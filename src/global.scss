@@ -48,8 +48,27 @@ body, html {
   margin: 0;
   height: 100%;
   font-family: 'Roboto', sans-serif;
+  background: radial-gradient(71.47% 224.04% at 19.09% 13.6%, #404658 0%, #161820 100%);
 }
 
+.ion-app {
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  height: calc(100% + (var(--safe-area-inset-top) + var(--safe-area-inset-bottom)));
+}
+
+
+
+
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */
+  body{
+   }
+}
+
+@supports not (-webkit-touch-callout: none) {
+  /* CSS for other than iOS devices */
+}
 
 .mat-expansion-panel {
   background-color: white !important;

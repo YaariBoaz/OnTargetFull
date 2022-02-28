@@ -306,9 +306,9 @@
             </mat-accordion>
 
         </div>
-        <button [disabled]="drill.drillType == null && (chosenWeaponType ===0 || chosenWeaponType ===1)"
+        <button [disabled]="drill.drillType == null"
                 class="startSessionBtn" (click)="startSesstion()"
-                routerLink="/tab2/select2"> START SESSION
+                routerLink="drill"> START SESSION
         </button>
 
     </div>

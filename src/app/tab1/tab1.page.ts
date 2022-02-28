@@ -142,11 +142,10 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 this.initDashboard();
             }
         });
-
-        this.dialog.open(PaymentComponent, {
-            height: '100%',
-            width: '100%',
-        });
+        // this.dialog.open(PaymentComponent, {
+        //     height: '100%',
+        //     width: '100%',
+        // });
     }
 
 

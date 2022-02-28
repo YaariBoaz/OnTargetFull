@@ -27,12 +27,7 @@ import {MaterialModule} from '../shared/material/material.module';
         MaterialModule,
         SharedModule,
         MatMenuModule,
-        DrillModule,
-        RouterModule.forChild([
-            {path: '', component: SelectTargetComponent},
-            {path: 'select', component: Tab2Page},
-            {path: 'select2', component: DrillComponent}])
-    ],
+],
     providers: [],
     declarations: [Tab2Page, BalisticCalculatorComponent, ChooseDrillComponent],
     entryComponents: [],
