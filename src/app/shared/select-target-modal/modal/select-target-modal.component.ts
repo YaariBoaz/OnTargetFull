@@ -287,6 +287,7 @@ export class SelectTargetModalComponent implements OnInit {
                     this.bleService.gateways.push(device.id);
                     this.bleService.isGateway = true;
                     this.initService.isGateway = true;
+                    debugger;
                     this.bleService.connect(device.id);
                 }
             }

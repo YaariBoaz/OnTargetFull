@@ -251,6 +251,7 @@ export class SelectTargetComponent implements OnInit {
             if (this.bleService.isGateway) {
                 this.bleService.dissconect().then(data => {
                     this.bleService.isGateway = false;
+                    debugger
                     this.bleService.connect(target.id);
                     this.bleService.notifyTargetConnected.subscribe(d => {
                         this.isConnected = true;
@@ -259,6 +260,7 @@ export class SelectTargetComponent implements OnInit {
                     });
                 });
             } else {
+                debugger
                 this.bleService.connect(target.id);
                 this.bleService.notifyTargetConnected.subscribe(data => {
                     this.isConnected = true;
@@ -329,6 +331,7 @@ export class SelectTargetComponent implements OnInit {
                     this.bleService.gateways.push(device.id);
                     this.bleService.isGateway = true;
                     this.initService.isGateway = true;
+                    debugger
                     this.bleService.connect(device.id);
                 }
             }

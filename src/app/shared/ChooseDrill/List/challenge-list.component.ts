@@ -70,7 +70,7 @@ export class ChallengeListComponent implements OnInit {
         this.shootingService.selectedDrill = challenge.metadata;
         this.shootingService.selectedDrill.bg = this.shootingService.selectedDrill.bgId
         this.shootingService.challenge = challenge;
-        this.router.navigateByUrl('/tab2/select2');
+        this.router.navigateByUrl('drill');
     }
 
     setTargetType(challenge) {
