@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
-
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
 import {BluetoothLE} from '@ionic-native/bluetooth-le/ngx';
@@ -16,7 +15,6 @@ import {UserService} from './shared/services/user.service';
 import { BLE } from '@awesome-cordova-plugins/ble/ngx';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from './shared/shared.module';
-import {Camera} from '@ionic-native/camera/ngx';
 import {CdTimerModule} from 'angular-cd-timer';
 import {BleService} from './shared/services/ble.service';
 import {Crop} from '@ionic-native/crop/ngx';
@@ -35,8 +33,7 @@ import { HammerModule } from '@angular/platform-browser';
 import { ActivityLogComponent } from './shared/activity-log/activity-log.component';
 import {Tab1PageModule} from './tab1/tab1.module';
 import {Tab2PageModule} from './tab2/tab2.module';
-import {InAppPurchase2} from '@ionic-native/in-app-purchase-2/ngx';
-import {PurchaseService} from './shared/services/purchase.service';
+ import {PurchaseService} from './shared/services/purchase.service';
 import {DrillModule} from './shared/drill/drill.module';
 
 
@@ -79,8 +76,7 @@ import {DrillModule} from './shared/drill/drill.module';
         UserService,
         BLE,
         BluetoothSerial,
-        Camera,
-        GatewayService,
+         GatewayService,
         BleService,
         Crop,
         BluetoothLE,
@@ -91,7 +87,6 @@ import {DrillModule} from './shared/drill/drill.module';
             deps: [InitService]
         },
 PurchaseService,
-        InAppPurchase2
      ],
     exports: [MaterialModule],
     bootstrap: [AppComponent]

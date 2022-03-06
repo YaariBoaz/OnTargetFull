@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {StorageService} from '../shared/services/storage.service';
-import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ActionSheetController, AlertController, Platform} from '@ionic/angular';
 import {Crop} from '@ionic-native/crop/ngx';
 import {Router} from '@angular/router';
@@ -193,27 +192,27 @@ export class Tab3Page implements OnInit {
     }
 
     async selectImage() {
-        const actionSheet = await this.actionSheetController.create({
-            header: 'Select Image source',
-            buttons: [{
-                text: 'Load from Library',
-                handler: () => {
-                    this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
-                }
-            },
-                {
-                    text: 'Use Camera',
-                    handler: () => {
-                        this.pickImage(this.camera.PictureSourceType.CAMERA);
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel'
-                }
-            ]
-        });
-        await actionSheet.present();
+        // const actionSheet = await this.actionSheetController.create({
+        //     header: 'Select Image source',
+        //     buttons: [{
+        //         text: 'Load from Library',
+        //         handler: () => {
+        //             this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+        //         }
+        //     },
+        //         {
+        //             text: 'Use Camera',
+        //             handler: () => {
+        //                 this.pickImage(this.camera.PictureSourceType.CAMERA);
+        //             }
+        //         },
+        //         {
+        //             text: 'Cancel',
+        //             role: 'cancel'
+        //         }
+        //     ]
+        // });
+        // await actionSheet.present();
     }
 
 
@@ -257,24 +256,24 @@ export class Tab3Page implements OnInit {
     }
 
     pickImage(sourceType) {
-        const options: CameraOptions = {
-            quality: 100,
-            sourceType,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE,
-            correctOrientation: true,
-        };
-        this.camera.getPicture(options).then((imageData) => {
-            // imageData is either a base64 encoded string or a file URI
-            // If it's base64 (DATA_URL):
-            const base64Image = 'data:image/jpeg;base64,' + imageData;
-            this.profile.picture = base64Image;
-            this.ref.detectChanges();
-            return base64Image;
-        }, (err) => {
-            console.log(err);
-        });
+        // const options: CameraOptions = {
+        //     quality: 100,
+        //     sourceType,
+        //     destinationType: this.camera.DestinationType.DATA_URL,
+        //     encodingType: this.camera.EncodingType.JPEG,
+        //     mediaType: this.camera.MediaType.PICTURE,
+        //     correctOrientation: true,
+        // };
+        // this.camera.getPicture(options).then((imageData) => {
+        //     // imageData is either a base64 encoded string or a file URI
+        //     // If it's base64 (DATA_URL):
+        //     const base64Image = 'data:image/jpeg;base64,' + imageData;
+        //     this.profile.picture = base64Image;
+        //     this.ref.detectChanges();
+        //     return base64Image;
+        // }, (err) => {
+        //     console.log(err);
+        // });
     }
 
     get f() {
