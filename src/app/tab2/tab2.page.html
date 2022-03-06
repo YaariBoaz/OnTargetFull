@@ -33,7 +33,7 @@
         </div>
         <div class="select-drill-container">
             <div></div>
-            <select [(ngModel)]="drill.drillType">
+            <select [(ngModel)]="drill.drillType" (change)="onDrillTypeChanged($event)">
                 <option selected [value]="drillTypeEnum.Regular"> Bullseye</option>
                  <option [value]="drillTypeEnum.Zero"> Zero</option>
                  <option [value]="drillTypeEnum.HitNoHit" *ngIf="targetType === 4"> HitNoHit</option>

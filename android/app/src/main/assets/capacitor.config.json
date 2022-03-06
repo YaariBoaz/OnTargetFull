@@ -7,7 +7,7 @@
 	"cordova": {},
 	"plugins": {
 		"SplashScreen": {
-			"launchShowDuration": 10000,
+			"launchShowDuration": 5000,
 			"launchAutoHide": false,
 			"backgroundColor": "#ffffffff",
 			"androidSplashResourceName": "splash",
@@ -17,7 +17,11 @@
 			"spinnerColor": "#999999",
 			"showSpinner": false,
 			"splashFullScreen": true,
-			"splashImmersive": true
+			"splashImmersive": true,
+			"Keyboard": {
+				"resize": "none",
+				"style": "dark"
+			}
 		}
 	}
 }

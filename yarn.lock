@@ -319,13 +319,6 @@
   dependencies:
     "@types/cordova" latest
 
-"@awesome-cordova-plugins/purchases@^5.39.1":
-  version "5.39.1"
-  resolved "https://registry.yarnpkg.com/@awesome-cordova-plugins/purchases/-/purchases-5.39.1.tgz#88500f2290a4fa49f27e8794fbefb6cf261725af"
-  integrity sha512-bkbCSpY2PmoqYc/X287WXKETT4BQ6JqFYlbzF6W6SvqeFdcbG4chx9tFoxi75wmyNySGY/TOQbbw86cEGvGx3Q==
-  dependencies:
-    "@types/cordova" latest
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.16.7.tgz"
@@ -1273,8 +1266,13 @@
 
 "@capacitor/android@^3.4.1":
   version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.4.1.tgz#d4accc41c843927853d27c7f638487bd52633486"
+  resolved "https://registry.npmjs.org/@capacitor/android/-/android-3.4.1.tgz"
   integrity sha512-4qQGEdZTW8W01PTOzSScmx9NBDcsi1GRl32tyYnpQrjdH2f7hI9OX2MLbNkirtOwKNCDeinQfEqqn0hVCkgHag==
+
+"@capacitor/camera@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-1.3.0.tgz#02d4b7146a9d48841405c793dcbd01b38d8ee4ba"
+  integrity sha512-qulUOyrJS0TZJCjCB/88nvYiCEOAsIO4VKY0ZG4TEkytLWc1/RbevuGfUazDH94pU1wRoIO24zcc4rA+cZbKtw==
 
 "@capacitor/cli@^3.4.1":
   version "3.4.1"
@@ -1307,7 +1305,7 @@
 
 "@capacitor/ios@^3.4.1":
   version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.4.1.tgz#0ae173056924294aa1e468b70377d603abea790e"
+  resolved "https://registry.npmjs.org/@capacitor/ios/-/ios-3.4.1.tgz"
   integrity sha512-ycFCyKI8DsgedVg7PW5MpCVgqFuD0PMHQGVfC5ichXc2C/jAATX32EVdEMCB0N3guKoH2k6T3Efwg59+Fcdx2w==
 
 "@csstools/convert-colors@^1.4.0":
@@ -1393,13 +1391,6 @@
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/camera@^5.23.0":
-  version "5.36.0"
-  resolved "https://registry.npmjs.org/@ionic-native/camera/-/camera-5.36.0.tgz"
-  integrity sha512-68hdPn0hA7yn4YNTgmLF32x/l7arFulboGhNiyFQ35/QxqrOmppf77p4xaPOyJtNyICKHLaiStC6w1eEAtl9MA==
-  dependencies:
-    "@types/cordova" latest
-
 "@ionic-native/core@^5.0.0":
   version "5.36.0"
   resolved "https://registry.npmjs.org/@ionic-native/core/-/core-5.36.0.tgz"
@@ -1425,13 +1416,6 @@
   version "5.36.0"
   resolved "https://registry.npmjs.org/@ionic-native/file/-/file-5.36.0.tgz"
   integrity sha512-x7yZ4VdC8n8FNlpRmUFtohNlOZnExvoxZ/6oCvGsV+ec8TJXUsDK/BYi1g+lkPTCUY3EmQIeBOe4PLO6fRJ7qg==
-  dependencies:
-    "@types/cordova" latest
-
-"@ionic-native/in-app-purchase-2@^5.36.0":
-  version "5.36.0"
-  resolved "https://registry.npmjs.org/@ionic-native/in-app-purchase-2/-/in-app-purchase-2-5.36.0.tgz"
-  integrity sha512-Mr4ZzqaQzXEldS5CzUoEHe/1O16m+//dWuYAYoJGBc0U2+WMU9iJV7y+c+IlPCB+rfU1yfmfgj06QX8wqvHIWw==
   dependencies:
     "@types/cordova" latest
 
@@ -3551,11 +3535,6 @@ cordova-plugin-ble-central@^1.4.3:
   resolved "https://registry.npmjs.org/cordova-plugin-ble-central/-/cordova-plugin-ble-central-1.4.3.tgz"
   integrity sha512-quJ0xNcFNqPzWpt6OMlp3zYhfCmaEvgdQyjwixjdDoHrSkRgnXET9GfszSiWQqMGmmPe3Iw8ICWdGNNXq5sQzw==
 
-cordova-plugin-camera@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/cordova-plugin-camera/-/cordova-plugin-camera-4.1.0.tgz"
-  integrity sha512-fCLhWjWYn49q3X5xaypAPgTz6MAWSKFFQvD2Gpi5SuVlrRPRphtX2jIqR2zCBuDTBR082QVnlc+yUDXt65Mjgw==
-
 cordova-plugin-crop@^0.4.0:
   version "0.4.0"
   resolved "https://registry.npmjs.org/cordova-plugin-crop/-/cordova-plugin-crop-0.4.0.tgz"
@@ -3590,16 +3569,6 @@ cordova-plugin-preview-any-file@^0.1.7:
   version "0.1.7"
   resolved "https://registry.npmjs.org/cordova-plugin-preview-any-file/-/cordova-plugin-preview-any-file-0.1.7.tgz"
   integrity sha512-nhJmP2izQurpAlzBFBWpVHw8WZpuMCWshWrf0L5jP6en6x+v6fs0OqnN3axIMCTALLYXNhYh6RU0s8b5l07DVA==
-
-cordova-plugin-purchase@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.npmjs.org/cordova-plugin-purchase/-/cordova-plugin-purchase-11.0.0.tgz"
-  integrity sha512-FkgOyWBYS989dYpM6d3R36VrdsHweTbmp5y7ELa1GwMYq2AG+ImdB6DJcVpyU/se/zpTndBWH/zN9s3AFKfsLg==
-
-cordova-plugin-purchases@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-purchases/-/cordova-plugin-purchases-2.3.0.tgz#35b63100d8a1a6d9cf97944a2d5c9f5a8785dba9"
-  integrity sha512-tw5zJDa6QL+Eo/8jsvPCNC5kj8qJSujLVyuSXKRYEgZ1kFEKJ89he3lq7WWqWCmj9mVz56bjrmdOPlIwxKFdQA==
 
 cordova-plugin-screen-orientation@^3.0.2:
   version "3.0.2"
@@ -5211,9 +5180,9 @@ fs-constants@^1.0.0:
   integrity sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==
 
 fs-extra@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.0.0.tgz#9ff61b655dde53fb34a82df84bb214ce802e17c1"
-  integrity sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ==
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.0.1.tgz#27de43b4320e833f6867cc044bfce29fdf0ef3b8"
+  integrity sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"

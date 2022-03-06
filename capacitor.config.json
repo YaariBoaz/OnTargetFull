@@ -7,7 +7,7 @@
   "cordova": {},
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 10000,
+      "launchShowDuration": 5000,
       "launchAutoHide": false,
       "backgroundColor": "#ffffffff",
       "androidSplashResourceName": "splash",
