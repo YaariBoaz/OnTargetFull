@@ -65,6 +65,7 @@ export class BleService {
                 console.log('FOUND DEVICE: ' + device.name);
                 if (device.name.toLowerCase().includes('adl') ||
                     device.name.toLowerCase().includes('e64') ||
+                    device.name.toLowerCase().includes('e64n015') ||
                     device.name.toLowerCase().includes('e1n') ||
                     device.name.toLowerCase().includes('e1n') ||
                     device.name.toLowerCase().includes('eMarn') ||

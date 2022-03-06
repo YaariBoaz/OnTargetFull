@@ -1031,4 +1031,22 @@ div.welcome-message {
   z-index: 9999;
 }
 
+@media screen and (orientation:landscape) {
+  .drag-arrow {
+    width: 50px;
+    background: #fee715ff;
+    position: absolute;
+    right: 0;
+    top: 40%;
+    height: 50px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+}
+
+
 
