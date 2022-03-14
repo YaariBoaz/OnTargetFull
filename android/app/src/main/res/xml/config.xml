@@ -15,10 +15,6 @@
     <param name="android-package" value="com.megster.cordova.ble.central.BLECentralPlugin"/>
   </feature>
 
-  <feature name="Camera">
-    <param name="android-package" value="org.apache.cordova.camera.CameraLauncher"/>
-  </feature>
-
   <feature name="CropPlugin">
     <param name="android-package" value="com.jeduan.crop.CropPlugin"/>
   </feature>
@@ -34,14 +30,6 @@
 
   <feature name="PreviewAnyFile">
     <param name="android-package" value="com.mostafa.previewanyfile.PreviewAnyFile"/>
-  </feature>
-
-  <feature name="InAppBillingPlugin">
-    <param name="android-package" value="cc.fovea.PurchasePlugin"/>
-  </feature>
-
-  <feature name="PurchasesPlugin">
-    <param name="android-package" value="com.revenuecat.purchases.PurchasesPlugin"/>
   </feature>
 
   <feature name="CDVOrientation">
