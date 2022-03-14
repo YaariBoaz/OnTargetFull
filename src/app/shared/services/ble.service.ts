@@ -91,7 +91,7 @@ export class BleService {
 
     // If the connection crashes when it reconnects we reset the stats.
     resetShots() {
-        this.gagittewayService.initStats();
+        this.gatewayService.initStats();
         const txe = new TextEncoder();
         if (this.peripheral && this.peripheral.id) {
             this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('CLCO\n').buffer).then((prmise) => {
