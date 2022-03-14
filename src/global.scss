@@ -245,3 +245,15 @@ mat-tab-header {
 ::ng-deep .cdk-overlay-pane{
   max-width: 100vw !important;
 }
+
+
+.d-flex{
+  display: flex;
+}
+.align-item-center {
+  align-items: center;
+}
+
+.justify-content-center{
+  justify-content: center;
+}

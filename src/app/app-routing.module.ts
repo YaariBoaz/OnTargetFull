@@ -13,6 +13,7 @@ import {DrillComponent} from './shared/drill/drill.component';
 //   { path: '', redirectTo: 'home', pathMatch: 'full' },
 //   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
 // ];
+
 const routes: Routes = [
     {
         path: 'home',
@@ -38,7 +39,11 @@ const routes: Routes = [
 
     },
     {path: 'new-target', component: NewTargetDesignComponent},
-    {path: '', redirectTo: 'home', pathMatch: 'full'}
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: 'subscription',
+    loadChildren: () => import('./shared/subscription/subscription.module').then( m => m.SubscriptionPageModule)
+  }
 ];
 
 @NgModule({
