@@ -6,7 +6,7 @@
         <form [formGroup]="registerForm" (ngSubmit)="onLogin()">
             <div class="row">
                 <label>
-                    <input type="email" formControlName="email" placeholder="Email">
+                    <input value="zeeshan@yopmail.com" type="email" formControlName="email" placeholder="Email">
                 </label>
 
                 <div class="errors" *ngIf="submitted && f.email.errors">
@@ -19,7 +19,7 @@
 
             <div class="row">
                 <label>
-                    <input formControlName="password" [type]="fieldTextType ? 'text' : 'password'"
+                    <input value="12345678" formControlName="password" [type]="fieldTextType ? 'text' : 'password'"
                            placeholder="Password">
                 </label>
 

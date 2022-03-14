@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {PurchaseService} from '../../services/purchase.service';
+import { Component, OnInit } from '@angular/core';
+import { IAPProduct } from '@ionic-native/in-app-purchase-2';
+import { PurchaseService } from '../../services/purchase.service';
 
 @Component({
     selector: 'app-payment',
@@ -8,7 +9,7 @@ import {PurchaseService} from '../../services/purchase.service';
 })
 export class PaymentComponent implements OnInit {
 
-    products;
+    products: IAPProduct[];
     prices = [
         {
             timeLimit: 'ONE TIME USE',
@@ -35,18 +36,28 @@ export class PaymentComponent implements OnInit {
         }
     ];
 
-    constructor(private purchaseService:PurchaseService) {
+    constructor(private purchaseService: PurchaseService) {
     }
 
     ngOnInit() {
-      //  this.products = this.purchaseService.getProducts();
-        console.log(this.products);
+        // this.products = 
+        this.purchaseService.getProducts().then((products: IAPProduct[]) => {
+            // this.products = products;
+            this.products = products.filter((pro) => { return pro.price != null });
+            this.products.forEach(x => x['isSelected'] = false);
+            this.products[0]['isSelected'] = true;
+            console.log("products =>", products);
+        });
     }
-    
-    
+
+
+    onPurchase() {
+        this.purchaseService.purchase(this.products.find((pro) => { return pro['isSelected'] }));
+        // console.log(this.purchaseService.products);
+    }
 
     selectedAndReload(item) {
-        this.prices.forEach(x => x.isSelected = false);
+        this.products.forEach(x => x['isSelected'] = false);
         item.isSelected = true;
     }
 }

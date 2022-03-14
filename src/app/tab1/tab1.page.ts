@@ -1,25 +1,28 @@
-import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {IonSlides, Platform} from '@ionic/angular';
-import {Router} from '@angular/router';
-import {InitService} from '../shared/services/init.service';
-import {BleService} from '../shared/services/ble.service';
-import {UserService} from '../shared/services/user.service';
-import {NetworkService} from '../shared/services/network.service';
-import {StorageService} from '../shared/services/storage.service';
-import {DashboardModel} from '../shared/models/dashboard-model';
-import {HistoryModel} from '../shared/models/HistoryModel';
-import {Tab1Service} from './tab1-service.service';
+import { AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { IonRouterOutlet, IonSlides, ModalController, Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { InitService } from '../shared/services/init.service';
+import { BleService } from '../shared/services/ble.service';
+import { UserService } from '../shared/services/user.service';
+import { NetworkService } from '../shared/services/network.service';
+import { StorageService } from '../shared/services/storage.service';
+import { DashboardModel } from '../shared/models/dashboard-model';
+import { HistoryModel } from '../shared/models/HistoryModel';
+import { Tab1Service } from './tab1-service.service';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import {Chart, ChartType} from 'chart.js';
-import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {ApiService} from '../shared/services/api.service';
-import {Label, MultiDataSet} from 'ng2-charts';
-import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
-import {MatDialog} from '@angular/material/dialog';
-import {ActivityLogComponent} from '../shared/activity-log/activity-log.component';
-import {ShootingService} from '../shared/services/shooting.service';
-import {PaymentComponent} from '../shared/components/payment/payment.component';
+import { Chart, ChartType } from 'chart.js';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { ApiService } from '../shared/services/api.service';
+import { Label, MultiDataSet } from 'ng2-charts';
+import { WizardService } from '../shared/authentication/signup-wizard/wizard.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivityLogComponent } from '../shared/activity-log/activity-log.component';
+import { ShootingService } from '../shared/services/shooting.service';
+import { PaymentComponent } from '../shared/components/payment/payment.component';
+import { SubscriptionPage } from '../shared/subscription/subscription.page';
+import { PurchaseService } from '../shared/services/purchase.service';
+// import { InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
 
 @Component({
     selector: 'app-tab1',
@@ -73,23 +76,30 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     showSignin = false;
     showRegular = true;
     degree = 0;
+    mySubscription: any = null;
 
     constructor(private platform: Platform,
-                private networkService: NetworkService,
-                private router: Router,
-                private tab1Service: Tab1Service,
-                private userService: UserService,
-                private zone: NgZone,
-                private shootingService: ShootingService,
-                private ble: BleService,
-                public dialog: MatDialog,
-                private cd: ChangeDetectorRef,
-                private renderer: Renderer2,
-                private initService: InitService,
-                private apiService: ApiService,
-                private wizardService: WizardService,
-                private screenOrientation: ScreenOrientation,
-                private storageService: StorageService) {
+        private networkService: NetworkService,
+        private router: Router,
+        private tab1Service: Tab1Service,
+        private userService: UserService,
+        private zone: NgZone,
+        private shootingService: ShootingService,
+        private ble: BleService,
+        public dialog: MatDialog,
+        private cd: ChangeDetectorRef,
+        private renderer: Renderer2,
+        private initService: InitService,
+        private apiService: ApiService,
+        private wizardService: WizardService,
+        private screenOrientation: ScreenOrientation,
+        private storageService: StorageService,
+        public modalController: ModalController,
+        private routerOutlet: IonRouterOutlet,
+        private srvPurchase: PurchaseService
+        // private store: InAppPurchase2
+    ) {
+
         if (localStorage.isLoggedIn && localStorage.isLoggedIn === 'true') {
             this.showSignin = false;
             this.showRegular = true;
@@ -101,24 +111,43 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         }
         this.wizardService.notifyUserWasRegisterd.subscribe(data => {
             if (data) {
+
                 this.showSignin = false;
                 this.showRegular = true;
                 this.showWizard = false;
                 this.initDashboard();
+
                 const content: any = document.querySelector('mat-tab-header');
                 if (content) {
                     content.style.display = 'flex';
                 }
             }
         });
+
+        this.wizardService.afterSubscriptionDone.subscribe((data) => {
+            if (data) {
+                // this.getSubscription();
+                this.mySubscription = data;
+            }
+        })
     }
 
+
+    getSubscription() {
+        this.apiService.getSubscription(this.profile.id).subscribe((resp) => {
+            if (resp) {
+                this.mySubscription = resp;
+            }
+            console.log("what is getSubscription resp", resp);
+        }, err => {
+
+        });
+    }
 
     ngOnInit(): void {
         if (this.showRegular) {
             this.initDashboard();
         }
-
         // setInterval(() => {
         //     const image = document.getElementById('myImage');
         //     this.renderer.setStyle(image, 'transform', 'rotate(' + this.degree + 'deg)');
@@ -149,247 +178,9 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     }
 
 
+
+
     initDashboard() {
-        let userId = this.userService.getUserId();
-        if (!userId) {
-            userId = localStorage.getItem('userId');
-        }
-
-        this.apiService.getDashboardData(userId).subscribe(data => {
-            if (!data) {
-                // this.isNotTrainedYet = true;
-                data = {
-                    userId: null,
-                    hitRatioChart: {
-                        totalHits: 0,
-                        totalShots: 0
-                    },
-                    rateOfFireChart: {
-                        userAvg: 0,
-                        worldAvg: 0
-                    },
-                    bestScores: {
-                        longestShot:0,
-                        avgSplit: 0,
-                        avgDistance: 0,
-                        lastShooting: ''
-                    },
-                    totalPoints: 0
-                };
-            }
-            this.data = data;
-            this.storageService.setItem('homeData', data);
-            this.showUi = true;
-            this.profile = this.userService.getUser();
-            this.handleOfflineScenario();
-            this.initService.isLoading.next(false);
-            this.initService.isLoading.next(false);
-            this.cd.detectChanges();
-        });
-    }
-
-    onDiscconectTarget() {
-        this.initService.distory();
-    }
-
-    onLogout() {
-        localStorage.setItem('userId', null);
-        localStorage.setItem('isLoggedIn', null);
-        localStorage.setItem('profileData', null);
-        localStorage.setItem('homeData', null);
-        localStorage.setItem('sightList', null);
-        localStorage.setItem('gunList', null);
-        this.showSignin = true;
-        this.showRegular = false;
-        this.showWizard = false;
-    }
-
-    createLineChart() {
-        if (this.lineChart && this.lineChart.nativeElement) {
-            this.line = new Chart(this.lineChart.nativeElement, {
-                type: 'line',
-                data: {
-                    labels: [100, 250, 200, 450, 300, 600],
-                    datasets: [
-                        {
-                            data: [100, 250, 200, 450, 300, 600],
-                            label: 'Africa',
-                            borderColor: '#ce564b',
-                            fill: false
-                        }
-                    ]
-                },
-                options: {
-                    elements: {
-                        line: {
-                            tension: 0,
-                            borderWidth: 2,
-                        },
-                        point: {
-                            radius: 0
-                        }
-                    },
-                    legend: {
-                        display: false
-                    },
-                    responsive: true,
-                    title: {
-                        display: false,
-                    },
-                    scales: {
-                        xAxes: [{
-                            display: false,
-
-                        }],
-                        yAxes: [{
-                            display: false,
-
-                        }]
-                    }
-                }
-
-            });
-        }
-    }
-
-    createScatterChart() {
-        if (this.scatter && this.scatter.nativeElement) {
-            this.scatterChartIns = new Chart(this.scatter.nativeElement, {
-                type: 'scatter',
-                data: {
-                    datasets: [
-                        {
-                            label: 'Scatter Dataset',
-                            borderColor: '#ce564b',
-                            pointBackgroundColor: '#ce564b',
-                            fill: false,
-                            data: [
-                                {
-                                    x: 1,
-                                    y: 0
-                                },
-                                {
-                                    x: 0,
-                                    y: 2
-                                },
-                                {
-                                    x: 3,
-                                    y: 1
-                                },
-                                {
-                                    x: 4,
-                                    y: 2.5
-                                },
-                                {
-                                    x: 5,
-                                    y: 1
-                                },
-                                {
-                                    x: 6,
-                                    y: 0
-                                }
-
-                            ]
-                        }
-                    ]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    responsive: true,
-                    title: {
-                        display: false,
-                    },
-                    elements: {
-                        point: {
-                            radius: 5,
-                        }
-                    },
-                    layout: {
-                        padding: {
-                            left: 25,
-                            right: 5,
-                            bottom: 20,
-                            top: 15
-                        }
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                type: 'linear',
-                                position: 'bottom',
-                                display: false,
-                            }
-                        ],
-                        yAxes: [
-                            {
-                                display: false,
-                            }
-                        ]
-                    }
-                }
-            });
-        }
-
-    }
-
-
-    createRadioChart() {
-        if (this.radio) {
-            this.radioChartInst = new Chart(this.radio.nativeElement, {
-                type: 'doughnut',
-                data: {
-                    datasets: [
-                        {
-                            borderColor: '#1C00ff00',
-                            label: 'Population (millions)',
-                            backgroundColor: ['#ce564b', '#d4d4d4'],
-                            data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots
-                            - this.data.hitRatioChart.totalHits]
-                        }
-                    ]
-                },
-                options: {
-                    cutoutPercentage: 85,
-                    legend: {
-                        display: false
-                    },
-                    responsive: true,
-                    title: {
-                        display: false,
-                    },
-                    scales: {
-                        xAxes: [{
-                            display: false,
-
-                        }],
-                        yAxes: [{
-                            display: false,
-
-                        }]
-                    },
-                }
-            });
-        }
-    }
-
-    slideChanged() {
-        this.slides.getActiveIndex().then((index: number) => {
-            this.slideIndex = index;
-            console.log('currentIndex:', index);
-        });
-    }
-
-    onNextSlide() {
-        this.slides.slideNext(1000);
-    }
-
-    onPrevSlide() {
-        this.slides.slidePrev(1000);
-    }
-
-    onActivityClicked() {
         let userId = this.userService.getUserId();
         if (!userId) {
             userId = localStorage.getItem('userId');
@@ -606,11 +397,224 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 };
             }
             this.data = data;
-            this.storageService.passhistoricalTrainingsDate(this.data.trainingHistory);
-            this.dialog.open(ActivityLogComponent, {
-                panelClass: 'full-screen-modal',
-                data: {modalType: 'general'}
+            this.storageService.setItem('homeData', data);
+            this.showUi = true;
+            this.profile = this.userService.getUser();
+            console.log("this profile", this.userService.getUser().id);
+            this.getSubscription();
+            this.handleOfflineScenario();
+            this.initService.isLoading.next(false);
+            this.initService.isLoading.next(false);
+            this.cd.detectChanges();
+        });
+    }
+
+    onDiscconectTarget() {
+        this.initService.distory();
+    }
+
+    onLogout() {
+        localStorage.setItem('userId', null);
+        localStorage.setItem('isLoggedIn', null);
+        localStorage.setItem('profileData', null);
+        localStorage.setItem('homeData', null);
+        localStorage.setItem('sightList', null);
+        localStorage.setItem('gunList', null);
+        this.showSignin = true;
+        this.showRegular = false;
+        this.showWizard = false;
+    }
+
+    createLineChart() {
+        if (this.lineChart && this.lineChart.nativeElement) {
+            this.line = new Chart(this.lineChart.nativeElement, {
+                type: 'line',
+                data: {
+                    labels: [100, 250, 200, 450, 300, 600],
+                    datasets: [
+                        {
+                            data: [100, 250, 200, 450, 300, 600],
+                            label: 'Africa',
+                            borderColor: '#ce564b',
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    elements: {
+                        line: {
+                            tension: 0,
+                            borderWidth: 2,
+                        },
+                        point: {
+                            radius: 0
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    responsive: true,
+                    title: {
+                        display: false,
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: false,
+
+                        }],
+                        yAxes: [{
+                            display: false,
+
+                        }]
+                    }
+                }
+
             });
+        }
+    }
+
+    createScatterChart() {
+        if (this.scatter && this.scatter.nativeElement) {
+            this.scatterChartIns = new Chart(this.scatter.nativeElement, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: 'Scatter Dataset',
+                            borderColor: '#ce564b',
+                            pointBackgroundColor: '#ce564b',
+                            fill: false,
+                            data: [
+                                {
+                                    x: 1,
+                                    y: 0
+                                },
+                                {
+                                    x: 0,
+                                    y: 2
+                                },
+                                {
+                                    x: 3,
+                                    y: 1
+                                },
+                                {
+                                    x: 4,
+                                    y: 2.5
+                                },
+                                {
+                                    x: 5,
+                                    y: 1
+                                },
+                                {
+                                    x: 6,
+                                    y: 0
+                                }
+
+                            ]
+                        }
+                    ]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    responsive: true,
+                    title: {
+                        display: false,
+                    },
+                    elements: {
+                        point: {
+                            radius: 5,
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 25,
+                            right: 5,
+                            bottom: 20,
+                            top: 15
+                        }
+                    },
+                    scales: {
+                        xAxes: [
+                            {
+                                type: 'linear',
+                                position: 'bottom',
+                                display: false,
+                            }
+                        ],
+                        yAxes: [
+                            {
+                                display: false,
+                            }
+                        ]
+                    }
+                }
+            });
+        }
+
+    }
+
+
+    createRadioChart() {
+        if (this.radio) {
+            this.radioChartInst = new Chart(this.radio.nativeElement, {
+                type: 'doughnut',
+                data: {
+                    datasets: [
+                        {
+                            borderColor: '#1C00ff00',
+                            label: 'Population (millions)',
+                            backgroundColor: ['#ce564b', '#d4d4d4'],
+                            data: [this.data.hitRatioChart.totalHits, this.data.hitRatioChart.totalShots
+                                - this.data.hitRatioChart.totalHits]
+                        }
+                    ]
+                },
+                options: {
+                    cutoutPercentage: 85,
+                    legend: {
+                        display: false
+                    },
+                    responsive: true,
+                    title: {
+                        display: false,
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: false,
+
+                        }],
+                        yAxes: [{
+                            display: false,
+
+                        }]
+                    },
+                }
+            });
+        }
+    }
+
+    slideChanged() {
+        this.slides.getActiveIndex().then((index: number) => {
+            this.slideIndex = index;
+            console.log('currentIndex:', index);
+        });
+    }
+
+    onNextSlide() {
+        this.slides.slideNext(1000);
+    }
+
+    onPrevSlide() {
+        this.slides.slidePrev(1000);
+    }
+
+    onActivityClicked() {
+        this.storageService.passhistoricalTrainingsDate(this.data.trainingHistory);
+        this.dialog.open(ActivityLogComponent, {
+            panelClass: 'full-screen-modal',
+            data: { modalType: 'general' }
         });
     }
 
@@ -632,13 +636,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
             if (this.data.trainingHistory) {
                 this.data.trainingHistory.forEach(train => {
-                    const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
+                    const monthName = new Date(train.drillDate).toLocaleString('default', { month: 'long' });
                     if (!(this.historicTrainings[monthName])) {
                         this.historicTrainings[monthName] = {};
                     }
                     const tempDate = new Date(train.drillDate);
                     const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
-                    const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
+                    const day = new Date(tempDate).toLocaleString('default', { weekday: 'long' });
                     if ((!this.historicTrainings[monthName][key])) {
                         this.historicTrainings[monthName][key] = {
                             data: [],
@@ -679,7 +683,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     private setupHitratioChart() {
         this.hitRatiochart = am4core.create('chartdiv', am4charts.PieChart);
-        const {data} = this.tab1Service.setupDataForHitration(this.data.hitRatioChart);
+        const { data } = this.tab1Service.setupDataForHitration(this.data.hitRatioChart);
 
         this.hitRatiochart.data = [{
             text: 'Hits',
@@ -787,6 +791,18 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
             this.router.navigateByUrl('select-target');
         }
     }
+
+    async openSubModal() {
+        let modal = await this.modalController.create({
+            component: SubscriptionPage,
+            swipeToClose: true,
+            presentingElement: this.routerOutlet.nativeEl
+
+        });
+        return await modal.present();
+    }
+
+
 
 
 }

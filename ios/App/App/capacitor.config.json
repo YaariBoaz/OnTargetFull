@@ -7,7 +7,7 @@
 	"cordova": {},
 	"plugins": {
 		"SplashScreen": {
-			"launchShowDuration": 5000,
+			"launchShowDuration": 10000,
 			"launchAutoHide": false,
 			"backgroundColor": "#ffffffff",
 			"androidSplashResourceName": "splash",
@@ -23,5 +23,9 @@
 				"style": "dark"
 			}
 		}
+	},
+	"server": {
+		"url": "http://192.168.18.17:8100",
+		"cleartext": true
 	}
 }

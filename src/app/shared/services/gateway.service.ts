@@ -320,28 +320,32 @@ export class GatewayService {
             const dataArray = input.replace('<,', '').replace(',>', '').split(',');
             this.notifyKeepAlive.next(dataArray[0]);
             const dataLength = dataArray.length;
-            const primB = dataArray[1];
-            switch (primB) {
-                case ('S'):
-                    this.handleShot_MSG_NEW(dataArray[2], dataArray[3]);
-                    break;
-                case ('T'):
-                    this.hanldeBateryTime_MSG(dataArray);
-                    break;
-                case ('B'):
-                    this.handleBatteryPrecentage_MSG(dataArray);
-                    break;
-                case ('I'):
-                    this.handleImpact_MSG(dataArray);
-                    break;
-                case ('SZ'):
-                    // tslint:disable-next-line:radix
-                    this.notifyHitNoHit.next(parseInt(dataArray[3].split('\n')[0]));
-                    break;
+            if (dataLength === 4) {
+                const primB = dataArray[1];
+                switch (primB) {
+                    case ('S'):
+                        this.handleShot_MSG_NEW(dataArray[2], dataArray[3]);
+                        break;
+                    case ('T'):
+                        this.hanldeBateryTime_MSG(dataArray);
+                        break;
+                    case ('B'):
+                        this.handleBatteryPrecentage_MSG(dataArray);
+                        break;
+                    case ('I'):
+                        this.handleImpact_MSG(dataArray);
+                        break;
+                    case ('SZ'):
+                        // tslint:disable-next-line:radix
+                        this.notifyHitNoHit.next(parseInt(dataArray[3].split('\n')[0]));
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
 
+                }
+            } else {
+                console.error('ProcessData Invalid: {0}, Not 4 Length', input);
             }
         }
     }

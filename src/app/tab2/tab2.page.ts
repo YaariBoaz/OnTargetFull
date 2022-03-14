@@ -39,6 +39,7 @@ export class Tab2Page implements OnInit {
         sight: '',
         ammo: '',
         bg: Backgrounds.DESERT,
+        // @ts-ignore
         drillType: DrillType.Regular,
         shots: new Array<{ x, y }>()
     };
@@ -134,9 +135,6 @@ export class Tab2Page implements OnInit {
         this.setSightsAndWeapons();
     }
 
-    onDrillTypeChanged(event) {
-        debugger;
-    }
 
     slideDidChange(event) {
         this.slides.getActiveIndex().then(index => {
@@ -172,7 +170,6 @@ export class Tab2Page implements OnInit {
         this.shootingService.drillStarteEvent.next(true);
         this.shootingService.selectedDrill = this.drill;
         this.shootingService.numberOfBullersPerDrill = this.drill.numOfBullets;
-        this.router.navigateByUrl('drill');
 
     }
 

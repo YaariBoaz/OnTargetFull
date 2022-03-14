@@ -1,41 +1,21 @@
 import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {StorageService} from '../../services/storage.service';
 import {ApiService} from '../../services/api.service';
 import {ActionSheetController, AlertController, LoadingController, Platform} from '@ionic/angular';
 import {Tab3Service} from '../../../tab3/tab3.service';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {ProfileImageService} from '../../services/profile-image.service';
 import {WizardService} from '../signup-wizard/wizard.service';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
-import {Camera, CameraResultType} from '@capacitor/camera';
-
-const pickPicture = async () => {
-    return await Camera.pickImages({
-        quality: 90,
-        limit: 1,
-        width: 200,
-        height: 200,
-        correctOrientation: true,
-        presentationStyle: 'fullscreen'
-    });
-};
-
-const takePicture = async () => {
-    return await Camera.getPhoto({
-        quality: 90,
-        allowEditing: true,
-        resultType: CameraResultType.DataUrl
-    });
-};
 
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.scss'],
 })
-
-
 export class SignupComponent implements OnInit {
     @Output() back: EventEmitter<any>;
     @Output() move: EventEmitter<any> = new EventEmitter<any>();
@@ -63,6 +43,7 @@ export class SignupComponent implements OnInit {
                 public domSanitizer: DomSanitizer,
                 private storageService: StorageService,
                 private actionSheetController: ActionSheetController,
+                private camera: Camera,
                 public alertController: AlertController) {
         this.back = new EventEmitter();
     }
@@ -136,39 +117,25 @@ export class SignupComponent implements OnInit {
     }
 
     pickImage(sourceType) {
-        if (sourceType === 1) {
-            takePicture().then(data => {
-                const base64Image = data.dataUrl;
-                (this.profile as any).picture = base64Image;
-                this.wizardService.moreInfoForm.profilePicture = (this.profile as any).picture;
-                this.ref.detectChanges();
-                return base64Image;
-
-            });
-        } else {
-            pickPicture().then(data => {
-                debugger
-            });
-        }
-        // const options: CameraOptions = {
-        //     quality: 100,
-        //     sourceType,
-        //     destinationType: this.camera.DestinationType.DATA_URL,
-        //     encodingType: this.camera.EncodingType.JPEG,
-        //     mediaType: this.camera.MediaType.PICTURE,
-        //     correctOrientation: true,
-        // };
-        // this.camera.getPicture(options).then((imageData) => {
-        //     // imageData is either a base64 encoded string or a file URI
-        //     // If it's base64 (DATA_URL):
-        //     const base64Image = 'data:image/jpeg;base64,' + imageData;
-        //     (this.profile as any).picture = base64Image;
-        //     this.wizardService.moreInfoForm.profilePicture = (this.profile as any).picture
-        //     this.ref.detectChanges();
-        //     return base64Image;
-        // }, (err) => {
-        //     console.log(err);
-        // });
+        const options: CameraOptions = {
+            quality: 100,
+            sourceType,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            correctOrientation: true,
+        };
+        this.camera.getPicture(options).then((imageData) => {
+            // imageData is either a base64 encoded string or a file URI
+            // If it's base64 (DATA_URL):
+            const base64Image = 'data:image/jpeg;base64,' + imageData;
+            (this.profile as any).picture = base64Image;
+            this.wizardService.moreInfoForm.profilePicture = (this.profile as any).picture
+            this.ref.detectChanges();
+            return base64Image;
+        }, (err) => {
+            console.log(err);
+        });
     }
 
 
@@ -204,13 +171,13 @@ export class SignupComponent implements OnInit {
             buttons: [{
                 text: 'Load from Library',
                 handler: () => {
-                    this.pickImage(0);
+                    this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
                 }
             },
                 {
                     text: 'Use Camera',
                     handler: () => {
-                        this.pickImage(1);
+                        this.pickImage(this.camera.PictureSourceType.CAMERA);
                     }
                 },
                 {
@@ -263,6 +230,4 @@ export class SignupComponent implements OnInit {
             return {invalid: true};
         }
     }
-
-
 }

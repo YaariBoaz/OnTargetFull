@@ -1,18 +1,19 @@
-import {Component, OnInit, Output} from '@angular/core';
-import {Router} from '@angular/router';
-import {StorageService} from '../../services/storage.service';
-import {AlertController, LoadingController} from '@ionic/angular';
-import {ApiService} from '../../services/api.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../services/user.service';
-import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {SigninModalComponent} from '../../popups/signin-modal/signin-modal.component';
-import {InitService} from '../../services/init.service';
-import {Platform} from '@ionic/angular';
-import {Subscription} from 'rxjs';
-import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
-import {WizardService} from '../signup-wizard/wizard.service';
-import {MatDialog} from '@angular/material/dialog';
+import { Component, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageService } from '../../services/storage.service';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { ApiService } from '../../services/api.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { SigninModalComponent } from '../../popups/signin-modal/signin-modal.component';
+import { InitService } from '../../services/init.service';
+import { Platform } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
+import { WizardService } from '../signup-wizard/wizard.service';
+import { MatDialog } from '@angular/material/dialog';
+
 
 
 @Component({
@@ -156,13 +157,13 @@ export class SigninComponent implements OnInit {
                 username: this.registerForm.value.email,
                 password: this.registerForm.value.password
             }).subscribe((data: any) => {
-                    localStorage.setItem('userId', data.id);
-                    this.userService.setUser(data);
-                    this.storageService.setItem('isLoggedIn', true);
-                    this.storageService.setItem('profileData', data);
-                    this.initService.isLoading.next(false);
-                    this.wizardService.notifyUserWasRegisterd.next(true);
-                },
+                localStorage.setItem('userId', data.id);
+                this.userService.setUser(data);
+                this.storageService.setItem('isLoggedIn', true);
+                this.storageService.setItem('profileData', data);
+                this.initService.isLoading.next(false);
+                this.wizardService.notifyUserWasRegisterd.next(true);
+            },
                 (error) => {
                     this.initService.isLoading.next(false);
                     const dialogRef = this.dialog.open(SigninModalComponent, {
