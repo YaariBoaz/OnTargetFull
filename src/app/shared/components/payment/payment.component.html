@@ -5,32 +5,38 @@
     </div>
 
 
-    <ul class="prices">
-        <li *ngFor="let item of prices" [ngClass]="{'selected': item.isSelected }" (click)="selectedAndReload(item)">
-            <p class="title">{{ item.timeLimit }}</p>
-            <p *ngIf="item.isPopular" class="popular">
-                POPULAR!
-                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16.0074 5.56251L11.0484 4.84181L8.83162 0.347664C8.77107 0.224617 8.67146 0.125007 8.54841 0.0644604C8.23982 -0.0878834 7.86482 0.0390698 7.71052 0.347664L5.49372 4.84181L0.534736 5.56251C0.398017 5.58204 0.273017 5.64649 0.177313 5.74415C0.0616135 5.86307 -0.0021424 6.02306 5.49725e-05 6.18896C0.00225235 6.35486 0.0702232 6.5131 0.189032 6.62892L3.77693 10.127L2.92927 15.0664C2.90939 15.1813 2.92211 15.2995 2.96597 15.4075C3.00984 15.5156 3.0831 15.6092 3.17745 15.6777C3.2718 15.7462 3.38346 15.7869 3.49978 15.7952C3.61609 15.8035 3.7324 15.7791 3.83552 15.7246L8.27107 13.3926L12.7066 15.7246C12.8277 15.7891 12.9683 15.8106 13.1031 15.7871C13.4429 15.7285 13.6715 15.4063 13.6129 15.0664L12.7652 10.127L16.3531 6.62892C16.4508 6.53321 16.5152 6.40821 16.5347 6.27149C16.5875 5.9297 16.3492 5.61329 16.0074 5.56251Z"
-                          fill="black"/>
-                </svg>
-            </p>
-            <div class="price">
-                <p class="price-amount">{{  item.price }}$</p>
-                <div class="container-price">
-                    <p>/</p>
-                    <p>{{ item.pricePer }}</p>
-                </div>
+    <ng-container *ngIf="products">
+        <ul class="prices">
+            <li *ngFor="let item of products" [ngClass]="{'selected': item.isSelected }"
+                (click)="selectedAndReload(item)">
+                <ng-container *ngIf="item.price">
+                    <p class="title">{{ item.timeLimit }}</p>
+                    <p *ngIf="item.isPopular" class="popular">
+                        POPULAR!
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M16.0074 5.56251L11.0484 4.84181L8.83162 0.347664C8.77107 0.224617 8.67146 0.125007 8.54841 0.0644604C8.23982 -0.0878834 7.86482 0.0390698 7.71052 0.347664L5.49372 4.84181L0.534736 5.56251C0.398017 5.58204 0.273017 5.64649 0.177313 5.74415C0.0616135 5.86307 -0.0021424 6.02306 5.49725e-05 6.18896C0.00225235 6.35486 0.0702232 6.5131 0.189032 6.62892L3.77693 10.127L2.92927 15.0664C2.90939 15.1813 2.92211 15.2995 2.96597 15.4075C3.00984 15.5156 3.0831 15.6092 3.17745 15.6777C3.2718 15.7462 3.38346 15.7869 3.49978 15.7952C3.61609 15.8035 3.7324 15.7791 3.83552 15.7246L8.27107 13.3926L12.7066 15.7246C12.8277 15.7891 12.9683 15.8106 13.1031 15.7871C13.4429 15.7285 13.6715 15.4063 13.6129 15.0664L12.7652 10.127L16.3531 6.62892C16.4508 6.53321 16.5152 6.40821 16.5347 6.27149C16.5875 5.9297 16.3492 5.61329 16.0074 5.56251Z"
+                                fill="black" />
+                        </svg>
+                    </p>
+                    <div class="price">
+                        <p class="price-amount">{{ item.price }}</p>
+                        <div class="container-price">
+                            <p>/</p>
+                            <p>{{ item.title }}</p>
+                        </div>
 
-            </div>
-            <p class="for-free">{{ item.sessionForFree }}</p>
-        </li>
-    </ul>
+                    </div>
+                    <p class="for-free">{{ item.description }}</p>
+                </ng-container>
+            </li>
+        </ul>
+    </ng-container>
 
     <div class="explanation">
         <p>*Limit the bullets to 30 hits on target **Session counts only if you hit the target</p>
     </div>
     <div class="controls">
-        <button class="confirm">ACCEPT</button>
+        <button class="confirm" (click)="onPurchase()">ACCEPT</button>
     </div>
 </section>

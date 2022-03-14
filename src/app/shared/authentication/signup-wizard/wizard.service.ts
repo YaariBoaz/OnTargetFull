@@ -22,6 +22,7 @@ export class WizardService {
     notifyWeaponWasSet = new BehaviorSubject(false);
     notifyScopeWasSet = new BehaviorSubject(false);
     selectTargetFromWizardOpened = new BehaviorSubject(false);
+    afterSubscriptionDone = new BehaviorSubject({});
     isFromListScreen = false;
     moreInfoForm = {} as any;
 

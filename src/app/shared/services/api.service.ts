@@ -1,7 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {InventoryModel} from '../models/InventoryModel';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { InventoryModel } from '../models/InventoryModel';
+import { WizardService } from '../authentication/signup-wizard/wizard.service';
+import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +17,7 @@ export class ApiService {
     // BASE_URL = 'htttp:/127.0.0.1:5001/';
     // BACKOFFICE_URL = 'http://192.168.0.104:9080/';
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private srvWizard: WizardService, private srvUser: UserService) {
     }
 
     ping(): Observable<any> {
@@ -102,6 +104,26 @@ export class ApiService {
     getBallisticData(weaponName, sightName) {
         return this.http.get(this.BACKOFFICE_URL + 'Zeroing/getBallisticData?weponName=' + weaponName + '&sightName=' + sightName);
     }
+
+    uploadSubscription(data) {
+        console.log("uploadSubscription => ", this.BACKOFFICE_URL + 'Apple/uploadPD?id=' + this.srvUser.getUser().id, typeof data);
+        return this.http.post(this.BACKOFFICE_URL + 'Apple/uploadPD?id=' + this.srvUser.getUser().id, data, {
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        }).subscribe(async () => {
+            console.log("uploadSubscription => done");
+            this.srvWizard.afterSubscriptionDone.next(data);
+        }, (errr) => {
+            console.log("uploadSubscription => error", errr);
+        });
+    }
+
+    getSubscription(id: string) {
+
+        return this.http.get(this.BACKOFFICE_URL + 'Apple/GetPD?id=' + id);
+    }
+
 
 }
 
