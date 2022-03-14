@@ -20,6 +20,7 @@
                 </div>
             </label>
         </div>
+
         <div class="row">
             <label>
                 <input type="text" formControlName="first_name" class="form-control" placeholder="Nickname"/>
@@ -101,12 +102,30 @@
                 <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
             </div>
         </div>
+        <div class="row">
+            <label>
+                <select
+                        class="custom-select mb-3"
+                        (change)="changeCity($event)"
+                        formControlName="cityName"
+                >
+                    <option value="">Choose City</option>
+                    <option *ngFor="let city of cities" [ngValue]="city">
+                        {{ city }}
+                    </option>
+                </select>
+            </label>
+            <div class="invalid-feedback" *ngIf="submitted && f.cityName?.errors">
+                <sup>*</sup>Please provide range name
+            </div>
 
+        </div>
+        <div class="controls">
+            <button type="submit" class="confirm" (click)="continueToThird()">START SESSION</button>
+            <button class="cancel" (click)="onBackPressed()">BACK TO LOGIN</button>
+        </div>
     </form>
-    <div class="controls">
-        <button class="confirm" (click)="continueToThird()">START SESSION</button>
-        <button class="cancel" (click)="onBackPressed()">BACK TO LOGIN</button>
-    </div>
+
 </section>
 
 

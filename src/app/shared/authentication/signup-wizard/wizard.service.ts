@@ -71,6 +71,7 @@ export class WizardService {
         toSend.first_name = this.registerForm.value.first_name;
         toSend.last_name = this.registerForm.value.last_name;
         toSend.password = this.registerForm.value.password;
+        toSend.state = this.registerForm.value.cityName;
         if (this.moreInfoForm.gendre) {
             toSend.gender = this.moreInfoForm.gendre;
         }

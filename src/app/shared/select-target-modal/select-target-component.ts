@@ -9,7 +9,7 @@ import {HitNohitService} from '../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {InitService} from '../services/init.service';
-import { BLE } from '@awesome-cordova-plugins/ble/ngx';
+import {BLE} from '@awesome-cordova-plugins/ble/ngx';
 import {GatewayService} from '../services/gateway.service';
 import {ErrorModalComponent} from '../popups/error-modal/error-modal.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -115,7 +115,7 @@ export class SelectTargetComponent implements OnInit {
             if (data) {
                 let flag = false;
                 this.myTargets.forEach(target => {
-                    if (target.name === data) {
+                    if (target.name.indexOf(data) > -1) {
                         flag = true;
                     }
                 });
@@ -294,6 +294,7 @@ export class SelectTargetComponent implements OnInit {
     }
 
     initGatewayScan() {
+        this.gatewayService.targets = [];
         this.myTargets = [];
         this.ble.scan([], 5).subscribe(device => this.onDeviceDiscoveredInitialScan(device), error => this.scanErrorInitialScan(error));
         setTimeout(() => {

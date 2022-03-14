@@ -49,7 +49,7 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     d = new Date();
     dayName = this.days[this.d.getDay()];
 
-
+    madadToUse;
     constructor(private router: Router,
                 private networkService: NetworkService,
                 private initService: InitService,
@@ -71,7 +71,14 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
+        this.targetW = this.initService.screenW;
+        this.targetH = this.initService.screenH;
 
+        if (this.targetW > this.targetH) {
+            this.madadToUse = this.targetH - 150
+        } else {
+            this.madadToUse = this.targetW - 150;
+        }
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -148,9 +155,9 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     }
 
     targetSize(targetId: any): number {
-        if (targetId.startsWith('e64') || targetId.startsWith('003')) {
+        if (targetId.startsWith('e64') || targetId.startsWith('003') || targetId.toLowerCase().startsWith('c5')) {
             return 64;
-        } else if (targetId.startsWith('e128')) {
+        } else if (targetId.toLowerCase().startsWith('e128') || targetId.toLowerCase().startsWith('cs')) {
             return 128;
         }else{
             return 16;

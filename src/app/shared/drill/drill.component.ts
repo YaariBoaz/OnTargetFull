@@ -166,9 +166,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         this.targetH = this.initService.screenH;
 
         if (this.targetW > this.targetH) {
-            this.madadToUse = this.targetH - 100;
+            this.madadToUse = this.targetH - 150;
         } else {
-            this.madadToUse = this.targetW - 100;
+            this.madadToUse = this.targetW - 150;
         }
     }
 
@@ -465,7 +465,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
 
             }
         }, 1000);
-
     }
 
     private startFakeShooting(index) {
@@ -637,15 +636,31 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         if (name === '003' || name.indexOf('64') > -1) {
             this.targetType = TargetType.Type_64;
             this.isGateway = true;
+            return;
         } else if (name.indexOf('128') > -1) {
             this.targetType = TargetType.Type_128;
             this.isGateway = true;
+            return;
         } else if (name.indexOf('16') > -1) {
             this.targetType = TargetType.Type_16;
             this.isGateway = true;
+            return;
+        } else if (name.indexOf('c') > -1) {
+            this.targetType = TargetType.Type_128;
+            this.isGateway = true;
+            return;
+         } else if (name.indexOf('a') > -1) {
+            this.targetType = TargetType.Type_16;
+            this.isGateway = true;
+            return;
+        } else if (name.indexOf('b') > -1) {
+            this.targetType = TargetType.Type_64;
+            this.isGateway = true;
+            return;
         } else {
             this.isGateway = false;
             this.targetType = TargetType.HitNoHit;
+            return;
         }
     }
 

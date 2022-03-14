@@ -118,34 +118,16 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         if (this.showRegular) {
             this.initDashboard();
         }
-
-        // setInterval(() => {
-        //     const image = document.getElementById('myImage');
-        //     this.renderer.setStyle(image, 'transform', 'rotate(' + this.degree + 'deg)');
-        //     if (this.degree === 360) {
-        //         this.degree = 0;
-        //     } else {
-        //         this.degree += 90;
-        //     }
-
-        // }, 1000);
-
-
         this.initService.notifySignupFinished.subscribe((data) => {
             if (data) {
                 this.initService.isLoading.next(false);
             }
         });
-
         this.initService.newDashboardData.subscribe(data => {
             if (data) {
                 this.initDashboard();
             }
         });
-        // this.dialog.open(PaymentComponent, {
-        //     height: '100%',
-        //     width: '100%',
-        // });
     }
 
 
@@ -169,7 +151,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                         worldAvg: 0
                     },
                     bestScores: {
-                        longestShot:0,
+                        longestShot: 0,
                         avgSplit: 0,
                         avgDistance: 0,
                         lastShooting: ''
@@ -414,194 +396,6 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                         avgDistance: 34,
                         lastShooting: '2021-04-16T00:00:00+03:00'
                     },
-                    trainingHistory: [
-                        {
-                            sessionId: null,
-                            sessionDateTime: null,
-                            userId: null,
-                            shotItems: null,
-                            drillDate: '2021-04-16T00:00:00+03:00',
-                            pointsGained: 56,
-                            timeLimit: 5,
-                            bulletsHit: 0,
-                            numberOfBullets: 5,
-                            drillTitle: null,
-                            maxNumberOfPoints: 0,
-                            range: 100,
-                            imageIdKey: null,
-                            imageIdFullKey: 0,
-                            hitsWithViewAdjustments: null,
-                            avgDistFromCenter: 0,
-                            description: null,
-                            targetId: null,
-                            targetIP: null,
-                            useMoq: false,
-                            drillType: 1,
-                            splitAvg: null,
-                            numericSplitAvg: 0,
-                            timeElapsed: null,
-                            recomendation: 'Good Shoting',
-                            wepon: null,
-                            sight: null,
-                            realibilty: null,
-                            b2Drop: 0,
-                            exposeTime: 0,
-                            hideTime: 0,
-                            balisticData: null,
-                            rawHitsLocation: [
-                                {
-                                    x: 34,
-                                    y: 16
-                                },
-                                {
-                                    x: 8,
-                                    y: 8
-                                },
-                                {
-                                    x: 8,
-                                    y: 16
-                                },
-                                {
-                                    x: 16,
-                                    y: 16
-                                }
-                            ],
-                            userName: null,
-                            status: 0,
-                            hitsToPass: 0,
-                            grouping: 0,
-                            center: null,
-                            epochTime: 1618520400,
-                            targetType: 0,
-                            zone1Counter: 0,
-                            zone2Counter: 0,
-                            zone3Counter: 0
-                        },
-                        {
-                            sessionId: null,
-                            sessionDateTime: null,
-                            userId: null,
-                            shotItems: null,
-                            drillDate: '2021-04-18T00:00:00+03:00',
-                            pointsGained: 25,
-                            timeLimit: 4,
-                            bulletsHit: 0,
-                            numberOfBullets: 10,
-                            drillTitle: null,
-                            maxNumberOfPoints: 0,
-                            range: 50,
-                            imageIdKey: null,
-                            imageIdFullKey: 0,
-                            hitsWithViewAdjustments: null,
-                            avgDistFromCenter: 0,
-                            description: null,
-                            targetId: null,
-                            targetIP: null,
-                            useMoq: false,
-                            drillType: 2,
-                            splitAvg: null,
-                            numericSplitAvg: 0,
-                            timeElapsed: null,
-                            recomendation: 'Good Shoting',
-                            wepon: null,
-                            sight: null,
-                            realibilty: null,
-                            b2Drop: 0,
-                            exposeTime: 0,
-                            hideTime: 0,
-                            balisticData: null,
-                            rawHitsLocation: [
-                                {
-                                    x: 34,
-                                    y: 16
-                                },
-                                {
-                                    x: 8,
-                                    y: 8
-                                },
-                                {
-                                    x: 8,
-                                    y: 16
-                                },
-                                {
-                                    x: 16,
-                                    y: 16
-                                }
-                            ],
-                            userName: null,
-                            status: 0,
-                            hitsToPass: 0,
-                            grouping: 0,
-                            center: null,
-                            epochTime: 1618693200,
-                            targetType: 0,
-                            zone1Counter: 0,
-                            zone2Counter: 0,
-                            zone3Counter: 0
-                        },
-                        {
-                            sessionId: null,
-                            sessionDateTime: null,
-                            userId: null,
-                            shotItems: null,
-                            drillDate: '2021-04-17T00:00:00+03:00',
-                            pointsGained: 10,
-                            timeLimit: 10,
-                            bulletsHit: 0,
-                            numberOfBullets: 15,
-                            drillTitle: null,
-                            maxNumberOfPoints: 0,
-                            range: 250,
-                            imageIdKey: null,
-                            imageIdFullKey: 0,
-                            hitsWithViewAdjustments: null,
-                            avgDistFromCenter: 0,
-                            description: null,
-                            targetId: null,
-                            targetIP: null,
-                            useMoq: false,
-                            drillType: 0,
-                            splitAvg: null,
-                            numericSplitAvg: 0,
-                            timeElapsed: null,
-                            recomendation: 'Bad Shhoting',
-                            wepon: null,
-                            sight: null,
-                            realibilty: null,
-                            b2Drop: 0,
-                            exposeTime: 0,
-                            hideTime: 0,
-                            balisticData: null,
-                            rawHitsLocation: [
-                                {
-                                    x: 34,
-                                    y: 16
-                                },
-                                {
-                                    x: 8,
-                                    y: 8
-                                },
-                                {
-                                    x: 8,
-                                    y: 16
-                                },
-                                {
-                                    x: 16,
-                                    y: 16
-                                }
-                            ],
-                            userName: null,
-                            status: 0,
-                            hitsToPass: 0,
-                            grouping: 0,
-                            center: null,
-                            epochTime: 1618606800,
-                            targetType: 0,
-                            zone1Counter: 0,
-                            zone2Counter: 0,
-                            zone3Counter: 0
-                        }
-                    ],
                     totalPoints: 0
                 };
             }
