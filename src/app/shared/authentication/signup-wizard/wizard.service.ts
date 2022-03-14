@@ -97,7 +97,7 @@ export class WizardService {
         toSend.target = myTarget;
 
         console.log('In registerUser Before HTTP For Register' + new Date());
-        this.initService.isLoading.next(true);
+        // this.initService.isLoading.next(true);
         this.apiService.signup(toSend).subscribe((returnedValue) => {
             console.log('In registerUser AFTER HTTP For Register BEFORE SignIn' + new Date());
             this.apiService.login({

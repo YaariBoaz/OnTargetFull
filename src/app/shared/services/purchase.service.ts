@@ -6,6 +6,7 @@ import { Purchases } from '@awesome-cordova-plugins/purchases/ngx';
 import { Resolve } from '@angular/router';
 import { ApiService } from './api.service';
 import { UserService } from './user.service';
+import {Subject} from 'rxjs';
 
 const ADL_IAP_KEY = 'adl';
 const ADL_IAP_KEY_2_SESSIONS = 'twoSessionSub';
@@ -17,6 +18,7 @@ const ADL_IAP_KEY_6_SESSIONS = 'sixSessions';
 export class PurchaseService {
     products: IAPProduct[];
     product;
+    $notifyPurchaseApproved = new Subject();
     constructor(private purchases: Purchases,
         private plt: Platform,
         private store: InAppPurchase2,
@@ -26,7 +28,7 @@ export class PurchaseService {
             this.purchases.setup('appl_zvLCiuPbRXLEBKOylPgsndRSFNX');
             this.purchases.getOfferings().then((offerings) => {
                 if (offerings.current !== null) {
-                    debugger;
+                     ;
                 }
             },
                 error => {
@@ -54,7 +56,7 @@ export class PurchaseService {
             this.store.ready(() => {
                 this.products = this.store.products;
                 resolve(this.products);
-                debugger
+
             });
         })
     }
@@ -81,27 +83,28 @@ export class PurchaseService {
         // General query to all products
         this.store.when('product')
             .approved((p: IAPProduct) => {
-                if (p && !p["id"].includes(".onTarget.app")) {
-                    console.log("i am in approved event", p);
+                if (p && !p.id.includes('.onTarget.app')) {
+                    console.log('i am in approved event', p);
                     this.srvApi.uploadSubscription(p);
+                    this.$notifyPurchaseApproved.next(true);
                 }
-                debugger
             })
             .verified((p: IAPProduct) => {
-                console.log("i am in verified event", p);
+                console.log('i am in verified event', p);
                 p.finish();
             }).cancelled((p) => {
-                console.log("i am in cancelled event", p);
+                console.log('i am in cancelled event', p);
 
             });
     }
 
     purchase(_product: IAPProduct) {
         const product = Object.assign(_product, {});
-        delete product['isSelected'];
+        // @ts-ignore
+        delete product.isSelected;
         this.store.order(product).then(p => {
             // Purchase in progress!
-            console.log("what is purchase", p);
+            console.log('what is purchase', p);
         }, e => {
         });
     }

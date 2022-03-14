@@ -38,6 +38,7 @@ import {Tab2PageModule} from './tab2/tab2.module';
 import {InAppPurchase2} from '@ionic-native/in-app-purchase-2/ngx';
 import {PurchaseService} from './shared/services/purchase.service';
 import {DrillModule} from './shared/drill/drill.module';
+import {ApiService} from './shared/services/api.service';
 
 
 
@@ -72,6 +73,7 @@ import {DrillModule} from './shared/drill/drill.module';
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         AndroidPermissions,
         InitService,
+        ApiService,
         NativePageTransitions,
         StorageService,
         Tab1Service,
@@ -84,12 +86,6 @@ import {DrillModule} from './shared/drill/drill.module';
         BleService,
         Crop,
         BluetoothLE,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: HttpErrorInterceptor,
-            multi: true,
-            deps: [InitService]
-        },
 PurchaseService,
         InAppPurchase2
      ],
@@ -98,3 +94,6 @@ PurchaseService,
 })
 export class AppModule {
 }
+
+
+

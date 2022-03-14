@@ -21,5 +21,7 @@ export class SubscriptionPage implements OnInit {
   ngOnInit() {
   }
 
-
+  onClose(){
+    this.modalCtrl.dismiss();
+  }
 }

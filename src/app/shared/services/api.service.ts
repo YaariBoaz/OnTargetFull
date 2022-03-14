@@ -74,7 +74,7 @@ export class ApiService {
     }
 
 
-    //Zeriong
+    // Zeriong
 
 
     getZeroTable(data: ZeroTableGetObject) {
@@ -106,21 +106,20 @@ export class ApiService {
     }
 
     uploadSubscription(data) {
-        console.log("uploadSubscription => ", this.BACKOFFICE_URL + 'Apple/uploadPD?id=' + this.srvUser.getUser().id, typeof data);
+        console.log('uploadSubscription => ', this.BACKOFFICE_URL + 'Apple/uploadPD?id=' + this.srvUser.getUser().id, typeof data);
         return this.http.post(this.BACKOFFICE_URL + 'Apple/uploadPD?id=' + this.srvUser.getUser().id, data, {
             headers: {
-                "Content-Type": 'application/json'
+                'Content-Type': 'application/json'
             }
         }).subscribe(async () => {
-            console.log("uploadSubscription => done");
+            console.log('uploadSubscription => done');
             this.srvWizard.afterSubscriptionDone.next(data);
         }, (errr) => {
-            console.log("uploadSubscription => error", errr);
+            console.log('uploadSubscription => error', errr);
         });
     }
 
     getSubscription(id: string) {
-
         return this.http.get(this.BACKOFFICE_URL + 'Apple/GetPD?id=' + id);
     }
 
