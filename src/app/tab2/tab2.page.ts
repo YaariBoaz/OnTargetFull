@@ -26,6 +26,14 @@ export class Tab2Page implements OnInit {
         spaceBetween: 3
     };
 
+    public get targetTypeEnum(): typeof TargetType {
+        return TargetType;
+    }
+
+    public get drillTypeEnum(): typeof DrillType {
+        return DrillType;
+    }
+
     mySights;
     myGuns;
     myAmmo;
@@ -39,19 +47,12 @@ export class Tab2Page implements OnInit {
         sight: '',
         ammo: '',
         bg: Backgrounds.DESERT,
-        drillType: DrillType.Regular,
+        drillType: 0,
         shots: new Array<{ x, y }>()
     };
     connectedTarget = null;
     targetType: TargetType;
-
-    public get targetTypeEnum(): typeof TargetType {
-        return TargetType;
-    }
-
-    public get drillTypeEnum(): typeof DrillType {
-        return DrillType;
-    }
+    drillType = DrillType.Regular;
 
     public get backgroundsEnum(): typeof Backgrounds {
         return Backgrounds;
@@ -78,9 +79,9 @@ export class Tab2Page implements OnInit {
         // const targetId = this.storageService.getItem('slectedTarget').name;
         // this.targetType = this.gatewayService.getTargetType(targetId);
         if (this.targetType === TargetType.Type_64 || this.targetType === TargetType.Type_128) {
-            this.drill.drillType = DrillType.Regular;
+            this.drill.drillType = 0;
         } else {
-            this.drill.drillType = DrillType.HitNoHit;
+            this.drill.drillType = 6;
         }
 
     }
@@ -135,7 +136,6 @@ export class Tab2Page implements OnInit {
     }
 
     onDrillTypeChanged(event) {
-        debugger;
     }
 
     slideDidChange(event) {
@@ -164,6 +164,7 @@ export class Tab2Page implements OnInit {
 
 
     startSesstion() {
+        this.drill.drillType = this.drillType;
         if (this.drill.drillType === this.drillTypeEnum.Zero) {
             this.shootingService.setIsZero(true);
         } else {
@@ -281,6 +282,5 @@ export enum DrillType {
     ABC,
     Zero,
     Surprise,
-    Surprise3Z,
     HitNoHit = 6
 }

@@ -8,7 +8,7 @@ import {InitService} from './init.service';
     providedIn: 'root'
 })
 export class BalisticCalculatorService {
-
+    grouping
     mNumShots = 0;
     mZeroHits = new Array<ZeroHitData>();
     uiZeroShots = new Array<ZeroHitData>();
@@ -502,6 +502,7 @@ export class BalisticCalculatorService {
             clicks.napamToView = napamToView.hit;
             clicks.naparView = naparView;
             clicks.napar2Napam = napamToView.disGroup;
+            this.grouping = clicks.napar2Napam / 2.54
             return clicks;
             if (this.mNumShots === this.shootingService.numberOfBullersPerDrill) {
                 const zeroStatus = this.getZeroStatus(clicks.napar2Napam, napamToCalcClicks.grouping);

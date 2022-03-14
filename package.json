@@ -85,6 +85,7 @@
     "ngx-animate": "^1.0.1",
     "ngx-capture": "^0.12.1",
     "ngx-timer": "^1.0.6",
+    "regression": "^2.0.1",
     "rxjs": "~6.5.1",
     "save-html-as-image": "^1.6.0",
     "tslib": "^2.0.0",

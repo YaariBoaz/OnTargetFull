@@ -33,11 +33,12 @@
         </div>
         <div class="select-drill-container">
             <div></div>
-            <select [(ngModel)]="drill.drillType" (change)="onDrillTypeChanged($event)">
-                <option selected [value]="drillTypeEnum.Regular"> Bullseye</option>
-                 <option [value]="drillTypeEnum.Zero"> Zero</option>
-                 <option [value]="drillTypeEnum.HitNoHit" *ngIf="targetType === 4"> HitNoHit</option>
+            <select name="myColor"  [(ngModel)]="drillType" (ngModelChange)="onDrillTypeChanged($event)">
+                <option selected [value]="0"> Bullseye</option>
+                 <option [value]="3"> Zero</option>
+                 <option [value]="6" *ngIf="targetType === 4"> HitNoHit</option>
             </select>
+
         </div>
         <div class="title-icon-wrapper">
             <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">

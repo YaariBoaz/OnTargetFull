@@ -3,7 +3,8 @@
         <div class="title-and-back">
             <div class="back-container" (click)="onBackPressed()">
                 <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z" fill="white"/>
+                    <path d="M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z"
+                          fill="white"/>
                 </svg>
                 <p>BACK</p>
             </div>
@@ -80,8 +81,8 @@
                         <ng-container *ngIf="train.openShowMore">
                             <div class="hidden-content-container">
                                 <div>
-                                    <div style="height: 312px;width:312px;position: relative;">
-                                        <div *ngIf="train.drillType===7" style="height: 312px;width:312px;">
+                                    <div style="position: relative;">
+                                        <div *ngIf="train.drillType===7" style="">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="312" height="312"
                                                  viewBox="0 0 282.232 282.232">
                                                 <defs>
@@ -137,29 +138,41 @@
                                             <div style="position: absolute;left: 0;top: 0;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;"
                                                  class="counter-shot white">{{train.bulletsHit}}</div>
                                         </div>
-                                        <div style="height: 312px;width:312px;background-color: white;border-radius: 100%"
+                                        <div [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                             style="background-color: white;border-radius: 100%"
                                              *ngIf="train.drillType === drillTypeEnum.Regular">
-                                            <img src="assets/targets/64/e64_score.png"
+                                            <span>{{train.targetId}}</span>
+                                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                                 src="assets/targets/64/e64_score.png"
                                                  *ngIf="targetSize(train.targetId) === 64">
-                                            <img src="assets/targets/128/e128_score.png"
+                                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                                 src="assets/targets/128/e128_score.png"
                                                  *ngIf="targetSize(train.targetId) === 128">
                                         </div>
-                                        <div style="height: 312px;width:312px;background-color: white;border-radius: 100%"
+                                        <div [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                             style="background-color: white;border-radius: 100%"
                                              *ngIf="train.drillType === drillTypeEnum.Zero">
-                                            <img src="assets/targets/64/e64_Zero.png"
+                                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                                 src="assets/targets/64/e64_Zero.png"
                                                  *ngIf="targetSize(train.targetId) === 64">
-                                            <img src="assets/targets/128/e128_zero.png"
+                                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                                 src="assets/targets/128/e128_zero.png"
                                                  *ngIf="targetSize(train.targetId) === 128">
                                         </div>
-                                        <div style="height: 312px;width:312px;background-color: white;border-radius: 100%"
+                                        <div [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                             style="background-color: white;border-radius: 100%"
                                              *ngIf="train.drillType === drillTypeEnum.Hostage">
-                                            <img src="assets/targets/64/Hostage_png_e64.png">
+                                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                                 src="assets/targets/64/Hostage_png_e64.png">
                                         </div>
-                                        <div style="height: 312px;width:312px;background-color: white;border-radius: 100%"
+                                        <div [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                             style="background-color: white;border-radius: 100%"
                                              *ngIf="train.drillType === drillTypeEnum.HitNoHit">
-                                            <img src="assets/bullseye.png"
+                                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                                 src="assets/bullseye.png"
                                                  *ngIf="targetSize(train.targetId) === 64">
-                                            <img src="assets/bullseye.png"
+                                            <img [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                                                 src="assets/bullseye.png"
                                                  *ngIf="targetSize(train.targetId) === 128">
                                         </div>
                                         <div class="hit" *ngFor="let shot of train.rawHitsLocation; let i = index"
@@ -309,9 +322,7 @@
                                         style="border-top: 1px solid black;border-bottom: 1px solid black;height: 30px;">
                                         <td>{{i + 1}}</td>
                                         <td> {{shot.timeSplit}}</td>
-                                        <td><span
-                                                *ngIf="shot.shotItems && shot.shotItems.length">{{shot.shotItems[shot.shotItems.length - 1]?.time}}</span>
-                                        </td>
+                                        <td>{{shot.time}}</td>
                                         <td> {{shot.disFromCenter}}</td>
                                     </tr>
                                     </tbody>
@@ -432,4 +443,6 @@
         </div>
     </div>
 </section>
+
+
 

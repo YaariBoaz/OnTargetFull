@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import {DrillInfo, DrillStatus, ShotItem, TargetType} from '../drill/constants';
 import {InitService} from './init.service';
 import {BalisticCalculatorService} from './balistic-calculator.service';
+import regression from 'regression';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +19,7 @@ export class GatewayService {
     drillFinishedBefore = false;
     drillFinished = false;
     notifyTargetConnectedToGateway = new BehaviorSubject(null);
-
+    result128LR;
     height: number;
     width: number;
     notifyHitNoHit = new Subject();
@@ -62,6 +63,7 @@ export class GatewayService {
     lastTime;
     firstTime;
     hits = [];
+    targets = [];
 
     constructor(private shootingService: ShootingService,
                 private storageService: StorageService,
@@ -87,7 +89,7 @@ export class GatewayService {
                 summaryObject: null
             }
         });
-
+        this.drillFinished = false;
     }
 
     // Starts total time timer
@@ -131,7 +133,7 @@ export class GatewayService {
             drillDate: new Date(),
             pointsGained: this.summaryObject.points,
             timeLimit: 0,
-            bulletsHit: this.hits.length - 1,
+            bulletsHit: this.hits.length,
             numberOfBullets: this.drill.numOfBullets,
             drillTitle: DrillType[this.drill.drillType],
             maxNumberOfPoints: 100000,
@@ -144,7 +146,7 @@ export class GatewayService {
             targetId: this.storageService.getItem('slectedTarget').name,
             targetIP: '0',
             useMoq: false,
-            drillType: this.drill.drillType,
+            drillType: parseInt(this.drill.drillType.toString()),
             splitAvg: this.summaryObject.split,
             numericSplitAvg: this.timeStringToSeconds(this.summaryObject.split),
             timeElapsed: this.summaryObject.totalTime,
@@ -160,7 +162,7 @@ export class GatewayService {
             userName: this.userService.getUser().name,
             status: DrillStatus.Done,
             hitsToPass: 0,
-            grouping: 0,
+            grouping: parseFloat((Math.round(this.ballisticCalculatorService.grouping * 100) / 100).toFixed(2)),
             center: null,
             epochTime: 0,
             targetType: this.getTargetType(this.storageService.getItem('slectedTarget').name),
@@ -316,32 +318,34 @@ export class GatewayService {
 
     // Receives the data from the ble service and parses to the correct function
     processData(input) {
-        if (!this.shootingService.numberOfBullersPerDrill || this.pageData.counter < this.shootingService.numberOfBullersPerDrill) {
-            const dataArray = input.replace('<,', '').replace(',>', '').split(',');
-            this.notifyKeepAlive.next(dataArray[0]);
-            const dataLength = dataArray.length;
-            const primB = dataArray[1];
-            switch (primB) {
-                case ('S'):
-                    this.handleShot_MSG_NEW(dataArray[2], dataArray[3]);
-                    break;
-                case ('T'):
-                    this.hanldeBateryTime_MSG(dataArray);
-                    break;
-                case ('B'):
-                    this.handleBatteryPrecentage_MSG(dataArray);
-                    break;
-                case ('I'):
-                    this.handleImpact_MSG(dataArray);
-                    break;
-                case ('SZ'):
-                    // tslint:disable-next-line:radix
-                    this.notifyHitNoHit.next(parseInt(dataArray[3].split('\n')[0]));
-                    break;
+        if (!this.drillFinished) {
+            if (!this.shootingService.numberOfBullersPerDrill || this.pageData.counter < this.shootingService.numberOfBullersPerDrill) {
+                const dataArray = input.replace('<,', '').replace(',>', '').split(',');
+                this.notifyKeepAlive.next(dataArray[0]);
+                const dataLength = dataArray.length;
+                const primB = dataArray[1];
+                switch (primB) {
+                    case ('S'):
+                        this.handleShot_MSG_NEW(dataArray[2], dataArray[3]);
+                        break;
+                    case ('T'):
+                        this.hanldeBateryTime_MSG(dataArray);
+                        break;
+                    case ('B'):
+                        this.handleBatteryPrecentage_MSG(dataArray);
+                        break;
+                    case ('I'):
+                        this.handleImpact_MSG(dataArray);
+                        break;
+                    case ('SZ'):
+                        // tslint:disable-next-line:radix
+                        this.notifyHitNoHit.next(parseInt(dataArray[3].split('\n')[0]) + 1);
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
 
+                }
             }
         }
     }
@@ -376,13 +380,24 @@ export class GatewayService {
             xPos = x;
             yPos = y;
         } else { // 128
+            // tslint:disable-next-line:ban-types
+            this.result128LR = regression.linear([[0, 65], [this.width / 2, 240], [this.width, 425]]);
+            const gradient = this.result128LR.equation[0];
+            const yIntercept = this.result128LR.equation[1];
+            const xLR = this.result128LR.predict(x);
+            const yLR = this.result128LR.predict(y);
+
+
+            const m =
+                x = (x * 0.783) - 46.542;
+            y = (y * 0.783) - 46.542;
             let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
             disPointFromCenter128 = disPointFromCenter128 / 10;
             // 7 is half the width of the ellipse representing the bullet hit on the UI
             // we want to place the bullet in the middle of the cordination and not the left 0 position so we reduce 7
-            x = ((this.width / 490) * x) - 7;
-            y = (this.height / 490) * y;
-            xPos = 311 - x;
+            // x = (this.width / 490) * x - 7;
+            // y = (this.height / 490) * y;
+            xPos = x;
             yPos = y;
             this.hits.push({x, y});
             is128 = true;
@@ -397,8 +412,8 @@ export class GatewayService {
             xPos = w - (xStep * x);
             yPos = yStep * y;
 
-            xPos -= 5;
-            yPos -= 5;
+            xPos -= 2;
+            yPos -= 2;
             this.hits.push({x: xPos, y: yPos});
         }
 
@@ -432,6 +447,38 @@ export class GatewayService {
 
     }
 
+
+    // tslint:disable-next-line:ban-types
+    linearRegression(inputArray): Function {
+        const x = inputArray.map((element) => inputArray[0]);
+        const y = inputArray.map((element) => inputArray[1]);
+        const sumX = x.reduce((prev, curr) => prev + curr, 0);
+        const avgX = sumX / x.length;
+        const xDifferencesToAverage = x.map((value) => avgX - value);
+        const xDifferencesToAverageSquared = xDifferencesToAverage.map(
+            (value) => value ** 2
+        );
+        const SSxx = xDifferencesToAverageSquared.reduce(
+            (prev, curr) => prev + curr,
+            0
+        );
+        const sumY = y.reduce((prev, curr) => prev + curr, 0);
+        const avgY = sumY / y.length;
+        const yDifferencesToAverage = y.map((value) => avgY - value);
+        const xAndYDifferencesMultiplied = xDifferencesToAverage.map(
+            (curr, index) => curr * yDifferencesToAverage[index]
+        );
+        const SSxy = xAndYDifferencesMultiplied.reduce(
+            (prev, curr) => prev + curr,
+            0
+        );
+        const slope = SSxy / SSxx;
+        const intercept = avgY - slope * avgX;
+        // tslint:disable-next-line:no-shadowed-variable
+        return (x) => intercept + slope * x;
+    }
+
+
     // If gateway received a shot message
     hanldeBateryTime_MSG(dataArray) {
         const t = dataArray[2];
@@ -445,7 +492,10 @@ export class GatewayService {
     // Update battery percentage
     handleBatteryPrecentage_MSG(dataArray) {
         const targetName = dataArray[0];
-        this.notifyTargetConnectedToGateway.next(targetName);
+        if (this.targets.indexOf(targetName) === -1) {
+            this.notifyTargetConnectedToGateway.next(targetName);
+            this.targets.push(targetName);
+        }
         const b = dataArray[2];
         let heartRate = 0;
         if (b && b !== '') {
@@ -634,6 +684,13 @@ export class GatewayService {
             return TargetType.HitNoHit;
         }
         // tslint:disable-next-line:radix
+        if (chosenTarget.indexOf('c') > -1) {
+            return TargetType.Type_128;
+        } else if (chosenTarget.indexOf('b') > -1) {
+            return TargetType.Type_64;
+        } else if (chosenTarget.indexOf('a') > -1) {
+            return TargetType.Type_16;
+        }
         const num = parseInt(chosenTarget.split('e')[1].split('n')[0]);
         switch (num) {
             case 16:
