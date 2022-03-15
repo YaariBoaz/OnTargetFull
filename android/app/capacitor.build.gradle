@@ -9,12 +9,15 @@ android {
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
-
+    implementation project(':capacitor-camera')
     implementation "com.soundcloud.android:android-crop:1.0.0@aar"
     implementation "androidx.appcompat:appcompat:1.0.0"
+    implementation "com.android.billingclient:billing:4.0.0"
+    implementation "com.revenuecat.purchases:purchases-hybrid-common:1.8.0"
+    implementation "androidx.annotation:annotation:[1.2.0]"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
 }
-
+apply from: "../../node_modules/cordova-annotated-plugin-android/build.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

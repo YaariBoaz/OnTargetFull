@@ -10,7 +10,6 @@ import * as moment from 'moment';
 import {DrillInfo, DrillStatus, ShotItem, TargetType} from '../drill/constants';
 import {InitService} from './init.service';
 import {BalisticCalculatorService} from './balistic-calculator.service';
-import regression from 'regression';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +18,7 @@ export class GatewayService {
     drillFinishedBefore = false;
     drillFinished = false;
     notifyTargetConnectedToGateway = new BehaviorSubject(null);
-    result128LR;
+
     height: number;
     width: number;
     notifyHitNoHit = new Subject();
@@ -339,7 +338,7 @@ export class GatewayService {
                         break;
                     case ('SZ'):
                         // tslint:disable-next-line:radix
-                        this.notifyHitNoHit.next(parseInt(dataArray[3].split('\n')[0]) + 1);
+                        this.notifyHitNoHit.next(parseInt(dataArray[3].split('\n')[0]));
                         break;
 
                     default:
@@ -367,10 +366,11 @@ export class GatewayService {
             x = 0.25 * x - n;
             y = 0.25 * y - n;
             y -= 0.5;
-            x -= 0.5;
+            x -=0.5;
             xPos = x;
             yPos = y;
-        } else if (targetType === TargetType.Type_16) {
+        }
+        else if (targetType === TargetType.Type_16) {
             nominalStep = 7;
             n = 5;
             x = 0.25 * x - n;
@@ -379,26 +379,20 @@ export class GatewayService {
             x -= 0.5;
             xPos = x;
             yPos = y;
-        } else { // 128
-            // tslint:disable-next-line:ban-types
-            this.result128LR = regression.linear([[0, 65], [this.width / 2, 240], [this.width, 425]]);
-            const gradient = this.result128LR.equation[0];
-            const yIntercept = this.result128LR.equation[1];
-            const xLR = this.result128LR.predict(x);
-            const yLR = this.result128LR.predict(y);
+        }
+        else { // 128
 
-
-            const m =
-                x = (x * 0.783) - 46.542;
-            y = (y * 0.783) - 46.542;
             let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
             disPointFromCenter128 = disPointFromCenter128 / 10;
             // 7 is half the width of the ellipse representing the bullet hit on the UI
             // we want to place the bullet in the middle of the cordination and not the left 0 position so we reduce 7
             // x = (this.width / 490) * x - 7;
             // y = (this.height / 490) * y;
-            xPos = x;
-            yPos = y;
+
+            xPos = 0.7278 * x - 47.306
+            yPos = 0.7278 * y - 47.306
+            // xPos = x;
+            // yPos = y;
             this.hits.push({x, y});
             is128 = true;
         }
@@ -446,38 +440,6 @@ export class GatewayService {
         }
 
     }
-
-
-    // tslint:disable-next-line:ban-types
-    linearRegression(inputArray): Function {
-        const x = inputArray.map((element) => inputArray[0]);
-        const y = inputArray.map((element) => inputArray[1]);
-        const sumX = x.reduce((prev, curr) => prev + curr, 0);
-        const avgX = sumX / x.length;
-        const xDifferencesToAverage = x.map((value) => avgX - value);
-        const xDifferencesToAverageSquared = xDifferencesToAverage.map(
-            (value) => value ** 2
-        );
-        const SSxx = xDifferencesToAverageSquared.reduce(
-            (prev, curr) => prev + curr,
-            0
-        );
-        const sumY = y.reduce((prev, curr) => prev + curr, 0);
-        const avgY = sumY / y.length;
-        const yDifferencesToAverage = y.map((value) => avgY - value);
-        const xAndYDifferencesMultiplied = xDifferencesToAverage.map(
-            (curr, index) => curr * yDifferencesToAverage[index]
-        );
-        const SSxy = xAndYDifferencesMultiplied.reduce(
-            (prev, curr) => prev + curr,
-            0
-        );
-        const slope = SSxy / SSxx;
-        const intercept = avgY - slope * avgX;
-        // tslint:disable-next-line:no-shadowed-variable
-        return (x) => intercept + slope * x;
-    }
-
 
     // If gateway received a shot message
     hanldeBateryTime_MSG(dataArray) {

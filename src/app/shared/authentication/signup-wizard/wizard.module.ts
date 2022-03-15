@@ -11,7 +11,6 @@ import {SelectTargetComponent} from '../../select-target-modal/select-target-com
 import {MatDialogModule} from '@angular/material/dialog';
 import {SelectTargetModalComponent} from '../../select-target-modal/modal/select-target-modal.component';
 import {PreviewAnyFile} from '@ionic-native/preview-any-file/ngx';
-import {File} from '@ionic-native/File/ngx';
 import {ErrorModalComponent} from '../../../shared/popups/error-modal/error-modal.component';
 import {DocumentViewer} from '@ionic-native/document-viewer/ngx';
 
@@ -36,7 +35,7 @@ export const routes: Routes = [
         SignupComponent,
         WizardSummaryComponent,
     ],
-    providers: [PreviewAnyFile, File, DocumentViewer],
+    providers: [PreviewAnyFile, DocumentViewer],
     entryComponents: [SelectTargetModalComponent, ErrorModalComponent],
 
     exports: [SignupWizardComponent]

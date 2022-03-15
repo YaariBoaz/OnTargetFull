@@ -11,6 +11,7 @@ import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/nati
 import {Camera, CameraResultType, GalleryPhotos} from '@capacitor/camera';
 import {TermsAndConditionComponent} from '../../components/terms-and-condition/terms-and-condition.component';
 import {MatDialog} from '@angular/material/dialog';
+import {HttpClient} from '@angular/common/http';
 
 const pickPicture = async () => {
     return await Camera.pickImages({
@@ -59,6 +60,7 @@ export class SignupComponent implements OnInit {
                 private tab3Service: Tab3Service,
                 private nativePageTransitions: NativePageTransitions,
                 private ref: ChangeDetectorRef,
+                private http:HttpClient,
                 private wizardService: WizardService,
                 public domSanitizer: DomSanitizer,
                 private storageService: StorageService,
@@ -82,15 +84,13 @@ export class SignupComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
-            cityName: ['', [Validators.required]],
+            // cityName: ['', [Validators.required]],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             confirmPassword: ['', Validators.required],
         }, {
             validator: this.mustMatch('password', 'confirmPassword')
         });
-
-
         if (this.wizardService.registerForm) {
             this.registerForm = this.wizardService.registerForm;
         }

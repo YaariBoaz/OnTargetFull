@@ -56,7 +56,7 @@ import {NewTargetDesignComponent} from './components/new-target-design/new-targe
         MaterialModule,
         RouterModule
     ],
-    providers: [HitNohitService, ApiService, UserService, StorageService, ScreenOrientation],
+    providers: [HitNohitService ,StorageService, ScreenOrientation],
     exports: [
         MaterialModule,
         MatMenuModule,

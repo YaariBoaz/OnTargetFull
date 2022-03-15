@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
+import {ApiService} from './api.service';
+import {InitService} from './init.service';
 
 @Injectable({
     providedIn: 'root'
@@ -7,7 +9,7 @@ import { StorageService } from './storage.service';
 export class UserService {
     private user: any;
 
-    constructor(private storageService: StorageService) {
+    constructor(private storageService: StorageService,private apiService:ApiService,private initService:InitService) {
         this.user = this.storageService.getItem('profileData');
     }
 

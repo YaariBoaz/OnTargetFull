@@ -166,9 +166,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         this.targetH = this.initService.screenH;
 
         if (this.targetW > this.targetH) {
-            this.madadToUse = this.targetH - 150;
+            this.madadToUse = this.targetH - 150 + 10;
         } else {
-            this.madadToUse = this.targetW - 150;
+            this.madadToUse = this.targetW - 150 + 10;
         }
     }
 
@@ -449,6 +449,28 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 this.showCounter = false;
                 this.drillHasNotStarted = false;
                 this.bleService.resetShots();
+                // const data = [];
+                // for (let i = 65; i <= 425; i += 20) {
+                //     for (let j = 65; j <= 425; j += 20) {
+                //         if ((i >= 125 && i <= 365) && (j >= 125 && j <= 365)) {
+                //
+                //         } else {
+                //             data.push([i, j]);
+                //         }
+                //     }
+                // }
+                // for (let i = 65; i <= 425; i += 15) {
+                //     for (let j = 65; j <= 425; j += 15) {
+                //         if ((i >= 125 && i <= 365) && (j >= 125 && j <= 365)) {
+                //             data.push([i, j]);
+                //         } else {
+                //
+                //         }
+                //     }
+                // }
+                // data.forEach(item => {
+                //     this.gateway.handleShot_MSG_NEW(item[0], item[1]);
+                // });
                 clearInterval(interval);
                 setTimeout(() => {
                     this.gateway.height = this.madadToUse;
@@ -562,7 +584,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                     this.updateZeroData(data);
                 } else {
                     this.shotNumber = data.hitNumber;
-                    this.groupingNumber = data.statsData.zeroData.napar2Napam / 2.54;
+                    if (data.statsData && data.statsData.zeroData) {
+                        this.groupingNumber = data.statsData.zeroData.napar2Napam / 2.54;
+                    }
                     this.stats = data.statsData.stats;
                     this.pageData = data.statsData.pageData;
                     this.isFinish = data.statsData.isFinish;
@@ -649,7 +673,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
             this.targetType = TargetType.Type_128;
             this.isGateway = true;
             return;
-         } else if (name.indexOf('a') > -1) {
+        } else if (name.indexOf('a') > -1) {
             this.targetType = TargetType.Type_16;
             this.isGateway = true;
             return;

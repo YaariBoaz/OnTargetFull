@@ -54,7 +54,6 @@ export class SignupWizardComponent implements OnInit {
                 private nativePageTransitions: NativePageTransitions,
                 private ref: ChangeDetectorRef,
                 private zone: NgZone,
-                private file: File,
                 private http: HttpClient,
                 private documentV: DocumentViewer,
                 private previewAnyFile: PreviewAnyFile,
@@ -73,7 +72,6 @@ export class SignupWizardComponent implements OnInit {
         if (content) {
             content.style.display = 'none';
         }
-
 
         this.wizardService.selectTargetFromWizardOpened.subscribe(flag => {
             this.isTargetModalOpned = flag;

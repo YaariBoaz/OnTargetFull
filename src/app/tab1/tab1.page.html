@@ -25,6 +25,9 @@
                     </svg>
                 </button>
 
+
+
+
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)="onDiscconectTarget()">Disconnect Target</button>
                     <button mat-menu-item (click)="openSubModal()">Subscription</button>
@@ -69,7 +72,7 @@
         <ng-container *ngIf="mySubscription">
             <div class="d-flex align-item-center justify-content-center">
                 <ion-icon name="star" style="color: #FCE651;"></ion-icon>
-                <div>{{mySubscription.billingPeriodUnit}} Subscription</div>
+                <div style="color:white;">{{mySubscription.title}} Subscription</div>
             </div>
         </ng-container>
 

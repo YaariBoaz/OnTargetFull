@@ -6,10 +6,11 @@ import {BleService} from './shared/services/ble.service';
 import {Plugins} from '@capacitor/core';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {PopupsService} from './shared/services/popups.service';
-  import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
+import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {MatDialog} from '@angular/material/dialog';
 import {InAppPurchase2} from '@ionic-native/in-app-purchase-2/ngx';
+import {WizardService} from './shared/authentication/signup-wizard/wizard.service';
 
 const {SplashScreen} = Plugins;
 const {Network} = Plugins;
@@ -36,6 +37,7 @@ export class AppComponent implements OnDestroy, OnInit {
         private store: InAppPurchase2,
         private nativePageTransitions: NativePageTransitions,
         public ble: BleService,
+        private wizardService: WizardService,
         private popupsService: PopupsService,
         public loadingController: LoadingController,
         private screenOrientation: ScreenOrientation,
@@ -74,8 +76,8 @@ export class AppComponent implements OnDestroy, OnInit {
 
             });
 
-            if(this.platform.is('ios')){
-                this.isiOS= true;
+            if (this.platform.is('ios')) {
+                this.isiOS = true;
             }
             window.addEventListener('beforeunload', () => {
                 this.initService.distory();
@@ -83,6 +85,10 @@ export class AppComponent implements OnDestroy, OnInit {
 
         });
         this.initService.isLoading.subscribe((isLoading: boolean) => {
+            this.isLoding = isLoading;
+        });
+
+        this.wizardService.isLoading.subscribe((isLoading: boolean) => {
             this.isLoding = isLoading;
         });
 

@@ -568,8 +568,8 @@ div.targetHoly {
 }
 
 .hit {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 9px;
   border-radius: 9px;
   color: #000000;
@@ -1030,5 +1030,23 @@ div.welcome-message {
   height: 100%;
   z-index: 9999;
 }
+
+@media screen and (orientation:landscape) {
+  .drag-arrow {
+    width: 50px;
+    background: #fee715ff;
+    position: absolute;
+    right: 0;
+    top: 40%;
+    height: 50px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+}
+
 
 

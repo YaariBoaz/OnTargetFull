@@ -319,6 +319,20 @@
   dependencies:
     "@types/cordova" latest
 
+"@awesome-cordova-plugins/in-app-purchase-2@^5.40.0":
+  version "5.40.0"
+  resolved "https://registry.yarnpkg.com/@awesome-cordova-plugins/in-app-purchase-2/-/in-app-purchase-2-5.40.0.tgz#c1324f4b71d4510b77da2ee22924df5154939d6e"
+  integrity sha512-6T3iFZ/IObhQ7UXKix0PNi+5wXLtlhoA2MaM9DapnxXdeXVCmYA5SyVFMf4u77GRhXY/jgingy9uhTaN2aDLpg==
+  dependencies:
+    "@types/cordova" latest
+
+"@awesome-cordova-plugins/purchases@^5.39.1":
+  version "5.40.0"
+  resolved "https://registry.yarnpkg.com/@awesome-cordova-plugins/purchases/-/purchases-5.40.0.tgz#7fc2cd9c30846b93f0ba540d3a2115713084cc25"
+  integrity sha512-oXxCGoIazL4wD5HuYsyPL+CeVc2WxvMt1YfAbguGcOVrTMxVveM6YKwE5A0AFx3omj/B75yHHQOIG3Sk+9cFXQ==
+  dependencies:
+    "@types/cordova" latest
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.16.7.tgz"
@@ -1269,10 +1283,10 @@
   resolved "https://registry.npmjs.org/@capacitor/android/-/android-3.4.1.tgz"
   integrity sha512-4qQGEdZTW8W01PTOzSScmx9NBDcsi1GRl32tyYnpQrjdH2f7hI9OX2MLbNkirtOwKNCDeinQfEqqn0hVCkgHag==
 
-"@capacitor/camera@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-1.3.0.tgz#02d4b7146a9d48841405c793dcbd01b38d8ee4ba"
-  integrity sha512-qulUOyrJS0TZJCjCB/88nvYiCEOAsIO4VKY0ZG4TEkytLWc1/RbevuGfUazDH94pU1wRoIO24zcc4rA+cZbKtw==
+"@capacitor/camera@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-1.3.1.tgz#bb63bd47e87b9b5916b77cdb164e5c01b2f85e25"
+  integrity sha512-P0Isb1RKUGUpvmLTxsfVOge6bte7hGzp/zObQAQJ96wh9IAGv8S87g7qPm6SLPhg9HK+E8JY3eUmN6KbIRGJNg==
 
 "@capacitor/cli@^3.4.1":
   version "3.4.1"
@@ -1416,6 +1430,13 @@
   version "5.36.0"
   resolved "https://registry.npmjs.org/@ionic-native/file/-/file-5.36.0.tgz"
   integrity sha512-x7yZ4VdC8n8FNlpRmUFtohNlOZnExvoxZ/6oCvGsV+ec8TJXUsDK/BYi1g+lkPTCUY3EmQIeBOe4PLO6fRJ7qg==
+  dependencies:
+    "@types/cordova" latest
+
+"@ionic-native/in-app-purchase-2@^5.36.0":
+  version "5.36.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/in-app-purchase-2/-/in-app-purchase-2-5.36.0.tgz#423a8100bf05f54b984dd8fcccc5228710008181"
+  integrity sha512-Mr4ZzqaQzXEldS5CzUoEHe/1O16m+//dWuYAYoJGBc0U2+WMU9iJV7y+c+IlPCB+rfU1yfmfgj06QX8wqvHIWw==
   dependencies:
     "@types/cordova" latest
 
@@ -3482,6 +3503,11 @@ cordova-android@8.1.0:
     q "^1.5.1"
     shelljs "^0.5.3"
 
+cordova-annotated-plugin-android@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/cordova-annotated-plugin-android/-/cordova-annotated-plugin-android-1.0.4.tgz#d8eb61b29a6fd32b324ccc62842c966acbefea42"
+  integrity sha512-rGBUp9YMBWrw+v+7tgl8Mx5PzR0fA6Bs2ZATisdmSW/qlzQtd5P9yeOsqkMoaDSzM8IcKEsvY4ingcEbv3oYFA==
+
 cordova-common@^3.1.0, cordova-common@^3.2.0:
   version "3.2.1"
   resolved "https://registry.npmjs.org/cordova-common/-/cordova-common-3.2.1.tgz"
@@ -3569,6 +3595,16 @@ cordova-plugin-preview-any-file@^0.1.7:
   version "0.1.7"
   resolved "https://registry.npmjs.org/cordova-plugin-preview-any-file/-/cordova-plugin-preview-any-file-0.1.7.tgz"
   integrity sha512-nhJmP2izQurpAlzBFBWpVHw8WZpuMCWshWrf0L5jP6en6x+v6fs0OqnN3axIMCTALLYXNhYh6RU0s8b5l07DVA==
+
+cordova-plugin-purchase@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-purchase/-/cordova-plugin-purchase-11.0.0.tgz#d49ddd0d521c4bae4022a5db3eec5bd22a6c7adb"
+  integrity sha512-FkgOyWBYS989dYpM6d3R36VrdsHweTbmp5y7ELa1GwMYq2AG+ImdB6DJcVpyU/se/zpTndBWH/zN9s3AFKfsLg==
+
+cordova-plugin-purchases@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-purchases/-/cordova-plugin-purchases-2.3.0.tgz#35b63100d8a1a6d9cf97944a2d5c9f5a8785dba9"
+  integrity sha512-tw5zJDa6QL+Eo/8jsvPCNC5kj8qJSujLVyuSXKRYEgZ1kFEKJ89he3lq7WWqWCmj9mVz56bjrmdOPlIwxKFdQA==
 
 cordova-plugin-screen-orientation@^3.0.2:
   version "3.0.2"

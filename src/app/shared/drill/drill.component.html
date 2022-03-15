@@ -151,10 +151,11 @@
         <div class="target" *ngIf="isGateway" [style.width.%]="targetDynamicWidth"
              [style.justifyContent]="targetJustifyConent">
             <div *ngIf="showResults" class="some-wrapper">
+
                 <div class="target-container" [style.width.px]="madadToUse" [style.height.px]="madadToUse">
                     <div class="64" *ngIf="targetType === targetTypeEnum.Type_64">
-                        <div *ngIf="drill?.drillType == drillTypeEnum.Regular" style="width: 312px; height: 312px;"
-                             [style.width.px]="madadToUse" [style.height.px]="madadToUse"
+                        <div *ngIf="drill?.drillType == drillTypeEnum.Regular" [style.width.px]="madadToUse"
+                             [style.height.px]="madadToUse"
                              style="background-color: white;border-radius: 100%;">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
                                  src="assets/targets/64/e64_score.png">

@@ -1,25 +1,28 @@
-import {AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {IonSlides, Platform} from '@ionic/angular';
-import {Router} from '@angular/router';
-import {InitService} from '../shared/services/init.service';
-import {BleService} from '../shared/services/ble.service';
-import {UserService} from '../shared/services/user.service';
-import {NetworkService} from '../shared/services/network.service';
-import {StorageService} from '../shared/services/storage.service';
-import {DashboardModel} from '../shared/models/dashboard-model';
-import {HistoryModel} from '../shared/models/HistoryModel';
-import {Tab1Service} from './tab1-service.service';
+import { AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { IonRouterOutlet, IonSlides, ModalController, Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { InitService } from '../shared/services/init.service';
+import { BleService } from '../shared/services/ble.service';
+import { UserService } from '../shared/services/user.service';
+import { NetworkService } from '../shared/services/network.service';
+import { StorageService } from '../shared/services/storage.service';
+import { DashboardModel } from '../shared/models/dashboard-model';
+import { HistoryModel } from '../shared/models/HistoryModel';
+import { Tab1Service } from './tab1-service.service';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import {Chart, ChartType} from 'chart.js';
-import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {ApiService} from '../shared/services/api.service';
-import {Label, MultiDataSet} from 'ng2-charts';
-import {WizardService} from '../shared/authentication/signup-wizard/wizard.service';
-import {MatDialog} from '@angular/material/dialog';
-import {ActivityLogComponent} from '../shared/activity-log/activity-log.component';
-import {ShootingService} from '../shared/services/shooting.service';
-import {PaymentComponent} from '../shared/components/payment/payment.component';
+import { Chart, ChartType } from 'chart.js';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { ApiService } from '../shared/services/api.service';
+import { Label, MultiDataSet } from 'ng2-charts';
+import { WizardService } from '../shared/authentication/signup-wizard/wizard.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivityLogComponent } from '../shared/activity-log/activity-log.component';
+import { ShootingService } from '../shared/services/shooting.service';
+import { PaymentComponent } from '../shared/components/payment/payment.component';
+import { SubscriptionPage } from '../shared/subscription/subscription.page';
+import { PurchaseService } from '../shared/services/purchase.service';
+// import { InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2/ngx';
 
 @Component({
     selector: 'app-tab1',
@@ -73,6 +76,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     showSignin = false;
     showRegular = true;
     degree = 0;
+    mySubscription: any = null;
 
     constructor(private platform: Platform,
                 private networkService: NetworkService,
@@ -89,9 +93,16 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 private apiService: ApiService,
                 private wizardService: WizardService,
                 private screenOrientation: ScreenOrientation,
-                private storageService: StorageService) {
+                private storageService: StorageService,
+                public modalController: ModalController,
+                private routerOutlet: IonRouterOutlet,
+                private srvPurchase: PurchaseService
+                // private store: InAppPurchase2
+    ) {
+
         if (localStorage.isLoggedIn && localStorage.isLoggedIn === 'true') {
             this.showSignin = false;
+            this.openSubModal();
             this.showRegular = true;
             this.showWizard = false;
         } else {
@@ -101,34 +112,76 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         }
         this.wizardService.notifyUserWasRegisterd.subscribe(data => {
             if (data) {
+
                 this.showSignin = false;
                 this.showRegular = true;
                 this.showWizard = false;
+                this.openSubModal();
                 this.initDashboard();
+
                 const content: any = document.querySelector('mat-tab-header');
                 if (content) {
                     content.style.display = 'flex';
                 }
             }
         });
-    }
+        this.wizardService.afterSubscriptionDone.subscribe((data) => {
+            if (data) {
+                // this.getSubscription();
+                this.mySubscription = data;
+                debugger
+            }
+        })
+     }
 
+
+
+
+    getSubscription() {
+        this.apiService.getSubscription(this.profile.id).subscribe((resp) => {
+            if (resp) {
+                this.mySubscription = resp;
+            }
+            console.log('what is getSubscription resp', resp);
+        }, err => {
+
+        });
+    }
 
     ngOnInit(): void {
         if (this.showRegular) {
             this.initDashboard();
         }
+        // setInterval(() => {
+        //     const image = document.getElementById('myImage');
+        //     this.renderer.setStyle(image, 'transform', 'rotate(' + this.degree + 'deg)');
+        //     if (this.degree === 360) {
+        //         this.degree = 0;
+        //     } else {
+        //         this.degree += 90;
+        //     }
+
+        // }, 1000);
+
+
         this.initService.notifySignupFinished.subscribe((data) => {
             if (data) {
                 this.initService.isLoading.next(false);
             }
         });
+
         this.initService.newDashboardData.subscribe(data => {
             if (data) {
                 this.initDashboard();
             }
         });
+        // this.dialog.open(PaymentComponent, {
+        //     height: '100%',
+        //     width: '100%',
+        // });
     }
+
+
 
 
     initDashboard() {
@@ -143,19 +196,207 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 data = {
                     userId: null,
                     hitRatioChart: {
-                        totalHits: 0,
-                        totalShots: 0
+                        totalHits: 100,
+                        totalShots: 200
                     },
                     rateOfFireChart: {
-                        userAvg: 0,
-                        worldAvg: 0
+                        userAvg: 34,
+                        worldAvg: 23
                     },
                     bestScores: {
-                        longestShot: 0,
-                        avgSplit: 0,
-                        avgDistance: 0,
-                        lastShooting: ''
+                        longestShot: 5,
+                        avgSplit: 1.3,
+                        avgDistance: 34,
+                        lastShooting: '2021-04-16T00:00:00+03:00'
                     },
+                    trainingHistory: [
+                        {
+                            sessionId: null,
+                            sessionDateTime: null,
+                            userId: null,
+                            shotItems: null,
+                            drillDate: '2021-04-16T00:00:00+03:00',
+                            pointsGained: 56,
+                            timeLimit: 5,
+                            bulletsHit: 0,
+                            numberOfBullets: 5,
+                            drillTitle: null,
+                            maxNumberOfPoints: 0,
+                            range: 100,
+                            imageIdKey: null,
+                            imageIdFullKey: 0,
+                            hitsWithViewAdjustments: null,
+                            avgDistFromCenter: 0,
+                            description: null,
+                            targetId: null,
+                            targetIP: null,
+                            useMoq: false,
+                            drillType: 1,
+                            splitAvg: null,
+                            numericSplitAvg: 0,
+                            timeElapsed: null,
+                            recomendation: 'Good Shoting',
+                            wepon: null,
+                            sight: null,
+                            realibilty: null,
+                            b2Drop: 0,
+                            exposeTime: 0,
+                            hideTime: 0,
+                            balisticData: null,
+                            rawHitsLocation: [
+                                {
+                                    x: 34,
+                                    y: 16
+                                },
+                                {
+                                    x: 8,
+                                    y: 8
+                                },
+                                {
+                                    x: 8,
+                                    y: 16
+                                },
+                                {
+                                    x: 16,
+                                    y: 16
+                                }
+                            ],
+                            userName: null,
+                            status: 0,
+                            hitsToPass: 0,
+                            grouping: 0,
+                            center: null,
+                            epochTime: 1618520400,
+                            targetType: 0,
+                            zone1Counter: 0,
+                            zone2Counter: 0,
+                            zone3Counter: 0
+                        },
+                        {
+                            sessionId: null,
+                            sessionDateTime: null,
+                            userId: null,
+                            shotItems: null,
+                            drillDate: '2021-04-18T00:00:00+03:00',
+                            pointsGained: 25,
+                            timeLimit: 4,
+                            bulletsHit: 0,
+                            numberOfBullets: 10,
+                            drillTitle: null,
+                            maxNumberOfPoints: 0,
+                            range: 50,
+                            imageIdKey: null,
+                            imageIdFullKey: 0,
+                            hitsWithViewAdjustments: null,
+                            avgDistFromCenter: 0,
+                            description: null,
+                            targetId: null,
+                            targetIP: null,
+                            useMoq: false,
+                            drillType: 2,
+                            splitAvg: null,
+                            numericSplitAvg: 0,
+                            timeElapsed: null,
+                            recomendation: 'Good Shoting',
+                            wepon: null,
+                            sight: null,
+                            realibilty: null,
+                            b2Drop: 0,
+                            exposeTime: 0,
+                            hideTime: 0,
+                            balisticData: null,
+                            rawHitsLocation: [
+                                {
+                                    x: 34,
+                                    y: 16
+                                },
+                                {
+                                    x: 8,
+                                    y: 8
+                                },
+                                {
+                                    x: 8,
+                                    y: 16
+                                },
+                                {
+                                    x: 16,
+                                    y: 16
+                                }
+                            ],
+                            userName: null,
+                            status: 0,
+                            hitsToPass: 0,
+                            grouping: 0,
+                            center: null,
+                            epochTime: 1618693200,
+                            targetType: 0,
+                            zone1Counter: 0,
+                            zone2Counter: 0,
+                            zone3Counter: 0
+                        },
+                        {
+                            sessionId: null,
+                            sessionDateTime: null,
+                            userId: null,
+                            shotItems: null,
+                            drillDate: '2021-04-17T00:00:00+03:00',
+                            pointsGained: 10,
+                            timeLimit: 10,
+                            bulletsHit: 0,
+                            numberOfBullets: 15,
+                            drillTitle: null,
+                            maxNumberOfPoints: 0,
+                            range: 250,
+                            imageIdKey: null,
+                            imageIdFullKey: 0,
+                            hitsWithViewAdjustments: null,
+                            avgDistFromCenter: 0,
+                            description: null,
+                            targetId: null,
+                            targetIP: null,
+                            useMoq: false,
+                            drillType: 0,
+                            splitAvg: null,
+                            numericSplitAvg: 0,
+                            timeElapsed: null,
+                            recomendation: 'Bad Shhoting',
+                            wepon: null,
+                            sight: null,
+                            realibilty: null,
+                            b2Drop: 0,
+                            exposeTime: 0,
+                            hideTime: 0,
+                            balisticData: null,
+                            rawHitsLocation: [
+                                {
+                                    x: 34,
+                                    y: 16
+                                },
+                                {
+                                    x: 8,
+                                    y: 8
+                                },
+                                {
+                                    x: 8,
+                                    y: 16
+                                },
+                                {
+                                    x: 16,
+                                    y: 16
+                                }
+                            ],
+                            userName: null,
+                            status: 0,
+                            hitsToPass: 0,
+                            grouping: 0,
+                            center: null,
+                            epochTime: 1618606800,
+                            targetType: 0,
+                            zone1Counter: 0,
+                            zone2Counter: 0,
+                            zone3Counter: 0
+                        }
+                    ],
                     totalPoints: 0
                 };
             }
@@ -163,6 +404,8 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
             this.storageService.setItem('homeData', data);
             this.showUi = true;
             this.profile = this.userService.getUser();
+            console.log('this profile', this.userService.getUser().id);
+            this.getSubscription();
             this.handleOfflineScenario();
             this.initService.isLoading.next(false);
             this.initService.isLoading.next(false);
@@ -372,39 +615,10 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onActivityClicked() {
-        let userId = this.userService.getUserId();
-        if (!userId) {
-            userId = localStorage.getItem('userId');
-        }
-
-        this.apiService.getDashboardData(userId).subscribe(data => {
-            if (!data) {
-                // this.isNotTrainedYet = true;
-                data = {
-                    userId: null,
-                    hitRatioChart: {
-                        totalHits: 100,
-                        totalShots: 200
-                    },
-                    rateOfFireChart: {
-                        userAvg: 34,
-                        worldAvg: 23
-                    },
-                    bestScores: {
-                        longestShot: 5,
-                        avgSplit: 1.3,
-                        avgDistance: 34,
-                        lastShooting: '2021-04-16T00:00:00+03:00'
-                    },
-                    totalPoints: 0
-                };
-            }
-            this.data = data;
-            this.storageService.passhistoricalTrainingsDate(this.data.trainingHistory);
-            this.dialog.open(ActivityLogComponent, {
-                panelClass: 'full-screen-modal',
-                data: {modalType: 'general'}
-            });
+        this.storageService.passhistoricalTrainingsDate(this.data.trainingHistory);
+        this.dialog.open(ActivityLogComponent, {
+            panelClass: 'full-screen-modal',
+            data: { modalType: 'general' }
         });
     }
 
@@ -426,13 +640,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
             if (this.data.trainingHistory) {
                 this.data.trainingHistory.forEach(train => {
-                    const monthName = new Date(train.drillDate).toLocaleString('default', {month: 'long'});
+                    const monthName = new Date(train.drillDate).toLocaleString('default', { month: 'long' });
                     if (!(this.historicTrainings[monthName])) {
                         this.historicTrainings[monthName] = {};
                     }
                     const tempDate = new Date(train.drillDate);
                     const key = tempDate.getDate() + '.' + (tempDate.getMonth() + 1) + '.' + tempDate.getFullYear();
-                    const day = new Date(tempDate).toLocaleString('default', {weekday: 'long'});
+                    const day = new Date(tempDate).toLocaleString('default', { weekday: 'long' });
                     if ((!this.historicTrainings[monthName][key])) {
                         this.historicTrainings[monthName][key] = {
                             data: [],
@@ -473,7 +687,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
     private setupHitratioChart() {
         this.hitRatiochart = am4core.create('chartdiv', am4charts.PieChart);
-        const {data} = this.tab1Service.setupDataForHitration(this.data.hitRatioChart);
+        const { data } = this.tab1Service.setupDataForHitration(this.data.hitRatioChart);
 
         this.hitRatiochart.data = [{
             text: 'Hits',
@@ -582,6 +796,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
-
+    async openSubModal() {
+        // const modal = await this.modalController.create({
+        //     component: SubscriptionPage,
+        //     swipeToClose: true,
+        //     presentingElement: this.routerOutlet.nativeEl
+        //
+        // });
+        // return await modal.present();
+    }
 }
-

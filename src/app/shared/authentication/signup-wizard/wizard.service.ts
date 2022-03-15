@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {InventoryModel} from '../../models/InventoryModel';
 import {ApiService} from '../../services/api.service';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {StorageService} from '../../services/storage.service';
 import {Tab3Service} from '../../../tab3/tab3.service';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {InitService} from '../../services/init.service';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -25,10 +26,13 @@ export class WizardService {
     afterSubscriptionDone = new BehaviorSubject({});
     isFromListScreen = false;
     moreInfoForm = {} as any;
+    isLoading = new Subject();
+    BACKOFFICE_URL = 'https://adlbackoffice20200309103113.azurewebsites.net/';
 
     constructor(private apiService: ApiService,
                 private storageService: StorageService,
                 private tab3Service: Tab3Service,
+                private http: HttpClient,
                 private initService: InitService,
                 private userService: UserService,
                 private router: Router) {
@@ -97,24 +101,33 @@ export class WizardService {
         toSend.target = myTarget;
 
         console.log('In registerUser Before HTTP For Register' + new Date());
-        this.initService.isLoading.next(true);
-        this.apiService.signup(toSend).subscribe((returnedValue) => {
+        // this.initService.isLoading.next(true);
+        this.isLoading.next(true);
+        this.http.post(this.BACKOFFICE_URL + 'Login/register', toSend).subscribe((returnedValue) => {
             console.log('In registerUser AFTER HTTP For Register BEFORE SignIn' + new Date());
-            this.apiService.login({
+            this.login({
                 username: toSend.email,
                 password: toSend.password
             }).subscribe((data) => {
                 if (data) {
                     this.userService.setUser(data);
-                    this.apiService.getDashboardData(this.userService.getUserId());
-                    this.apiService.getDashboardData(this.userService.getUserId());
+                    this.getDashboardData(this.userService.getUserId());
                     this.storageService.setItem('isLoggedIn', true);
                     this.storageService.setItem('profileData', data);
                     this.notifyUserWasRegisterd.next(true);
+                    this.isLoading.next(false);
                 }
             });
         });
 
+    }
+
+    login(loginDetails) {
+        return this.http.post(this.BACKOFFICE_URL + 'Login/authenticate', loginDetails);
+    }
+
+    getDashboardData(userId): Observable<any> {
+        return this.http.get(this.BACKOFFICE_URL + 'DeviceData/GetDashboard?userId=' + userId);
     }
 
 

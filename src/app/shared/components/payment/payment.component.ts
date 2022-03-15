@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,EventEmitter, OnInit, Output} from '@angular/core';
 import { IAPProduct } from '@ionic-native/in-app-purchase-2';
 import { PurchaseService } from '../../services/purchase.service';
 
@@ -8,7 +8,7 @@ import { PurchaseService } from '../../services/purchase.service';
     styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
-
+    @Output() exit = new EventEmitter();
     products: IAPProduct[];
     prices = [
         {
@@ -40,7 +40,6 @@ export class PaymentComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.products = 
         this.purchaseService.getProducts().then((products: IAPProduct[]) => {
             // this.products = products;
             this.products = products.filter((pro) => { return pro.price != null });
@@ -48,6 +47,12 @@ export class PaymentComponent implements OnInit {
             this.products[0]['isSelected'] = true;
             console.log("products =>", products);
         });
+
+        this.purchaseService.$notifyPurchaseApproved.subscribe(data =>{
+            if(data){
+                this.exit.emit(true);
+            }
+        })
     }
 
 

@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {SignupComponent} from './signup.component';
 import {SharedModule} from '../../shared.module';
 import {RouterModule, Routes} from '@angular/router';
-import {Camera} from '@ionic-native/camera/ngx';
 
 
 export const routes: Routes = [
@@ -19,7 +18,7 @@ export const routes: Routes = [
         RouterModule.forChild(routes),
 
     ],
-    providers: [Camera],
+    providers: [],
     exports: []
 })
 export class SignupModule {
