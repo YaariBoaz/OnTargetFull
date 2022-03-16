@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C64CCC48-6C50-4421-B5E3-6B96E5BA06F0"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69AF86D2-5460-4425-BCB9-A6DEFF97F312"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "723"
+            endingLineNumber = "723"
+            landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "69AF86D2-5460-4425-BCB9-A6DEFF97F312 - 4264fd4fa86e0d79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BLECentralPlugin findServiceFromUUID:p:]"
+                  moduleName = "CordovaPlugins"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/boazyaari/Desktop/OnTargetFull/OnTargetFull/ios/capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "725"
+                  endingLineNumber = "725"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "69AF86D2-5460-4425-BCB9-A6DEFF97F312 - f94eea5790c303d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BLECentralPlugin findPeripheralByUUID:]"
+                  moduleName = "CordovaPlugins"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/boazyaari/Desktop/OnTargetFull/OnTargetFull/ios/capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "724"
+                  endingLineNumber = "724"
+                  offsetFromSymbolStart = "380">
+               </Location>
+               <Location
+                  uuid = "69AF86D2-5460-4425-BCB9-A6DEFF97F312 - f94eea5790c303d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BLECentralPlugin findPeripheralByUUID:]"
+                  moduleName = "CordovaPlugins"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/boazyaari/Desktop/OnTargetFull/OnTargetFull/ios/capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "724"
+                  endingLineNumber = "724"
+                  offsetFromSymbolStart = "412">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1ACF3F6F-7A44-4CBA-A00C-1E5EC097CB79"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
+            landmarkName = "-peripheral:didUpdateValueForCharacteristic:error:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A22D45AF-69B6-427B-9583-C3D960901451"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "832"
+            endingLineNumber = "832"
+            landmarkName = "-findPeripheralByUUID:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "18D95888-9154-4A32-A93A-9D9B7F767E09"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "827"
+            endingLineNumber = "827"
+            landmarkName = "-findPeripheralByUUID:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "18D95888-9154-4A32-A93A-9D9B7F767E09 - f94eea5790c37c6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BLECentralPlugin findPeripheralByUUID:]"
+                  moduleName = "CordovaPlugins"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/boazyaari/Desktop/OnTargetFull/OnTargetFull/ios/capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "827"
+                  endingLineNumber = "827"
+                  offsetFromSymbolStart = "292">
+               </Location>
+               <Location
+                  uuid = "18D95888-9154-4A32-A93A-9D9B7F767E09 - f94eea5790c37c6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BLECentralPlugin findPeripheralByUUID:]"
+                  moduleName = "CordovaPlugins"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/boazyaari/Desktop/OnTargetFull/OnTargetFull/ios/capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "827"
+                  endingLineNumber = "827"
+                  offsetFromSymbolStart = "344">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF61E418-0D6F-4B79-8E4F-DBCE2710E619"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "833"
+            endingLineNumber = "833"
+            landmarkName = "-findPeripheralByUUID:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8339B7ED-E51A-4744-BB5C-8816F802AB27"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "826"
+            endingLineNumber = "826"
+            landmarkName = "-findPeripheralByUUID:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "324CA8DA-7226-4AB4-A1A4-BDFD393AB79C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "825"
+            endingLineNumber = "825"
+            landmarkName = "-findPeripheralByUUID:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

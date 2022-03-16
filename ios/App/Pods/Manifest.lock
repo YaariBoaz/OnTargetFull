@@ -1,0 +1,60 @@
+PODS:
+  - Capacitor (3.4.1):
+    - CapacitorCordova
+  - CapacitorCamera (1.3.1):
+    - Capacitor
+  - CapacitorCordova (3.4.1)
+  - CordovaPlugins (3.4.1):
+    - CapacitorCordova
+  - CordovaPluginsResources (0.0.105)
+  - CordovaPluginsStatic (3.4.1):
+    - CapacitorCordova
+    - PurchasesHybridCommon (= 1.8.0)
+  - Purchases (3.12.2):
+    - PurchasesCoreSwift (= 3.12.2)
+  - PurchasesCoreSwift (3.12.2)
+  - PurchasesHybridCommon (1.8.0):
+    - Purchases (= 3.12.2)
+
+DEPENDENCIES:
+  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
+  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
+  - CordovaPluginsResources (from `../capacitor-cordova-ios-plugins`)
+  - CordovaPluginsStatic (from `../capacitor-cordova-ios-plugins`)
+
+SPEC REPOS:
+  trunk:
+    - Purchases
+    - PurchasesCoreSwift
+    - PurchasesHybridCommon
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorCamera:
+    :path: "../../node_modules/@capacitor/camera"
+  CapacitorCordova:
+    :path: "../../node_modules/@capacitor/ios"
+  CordovaPlugins:
+    :path: "../capacitor-cordova-ios-plugins"
+  CordovaPluginsResources:
+    :path: "../capacitor-cordova-ios-plugins"
+  CordovaPluginsStatic:
+    :path: "../capacitor-cordova-ios-plugins"
+
+SPEC CHECKSUMS:
+  Capacitor: 9ff0758671daabc97247c8c57a981379bc30bb5f
+  CapacitorCamera: 04c853d49e4a6d3ca7266aa9a937b0d41b711999
+  CapacitorCordova: 4cf19cbad01e5a9e143e2f28f66c621c362f0f79
+  CordovaPlugins: 26a197ed61fe14087726e8d42c9e1cb9266bb951
+  CordovaPluginsResources: 1b3992e05cb6336d2850cd77dd5e3054f2f76f96
+  CordovaPluginsStatic: 38feea63ed1c6b49833160a69c1cee72473886b2
+  Purchases: 3e20881892483ab6ca17cb86a89af4c6d1731562
+  PurchasesCoreSwift: e614645840af49d465dee1918011f784365d79a6
+  PurchasesHybridCommon: f87cfd2fb1a55df8daa2a996a1d19d48e5bfbf4f
+
+PODFILE CHECKSUM: 5c706fc77209bccca8c4d231e2d214eb09fabc3e
+
+COCOAPODS: 1.11.2
