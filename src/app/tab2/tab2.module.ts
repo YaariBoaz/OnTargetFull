@@ -6,7 +6,6 @@ import {FormsModule} from '@angular/forms';
 import {Tab2Page} from './tab2.page';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
-import {SelectTargetComponent} from '../shared/select-target-modal/select-target-component';
 import {DrillComponent} from '../shared/drill/drill.component';
 import {SharedModule} from '../shared/shared.module';
 import {DrillModule} from '../shared/drill/drill.module';

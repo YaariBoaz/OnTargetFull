@@ -62,7 +62,8 @@ export class BleService {
     onDeviceDiscovered(device) {
         this.ngZone.run(() => {
             if (device.name) {
-                console.log('FOUND DEVICE: ' + device.name);
+                console.log('FOUND DEVICE IN BLE SERVICE: ' + device.name);
+                debugger;
                 if (device.name.toLowerCase().includes('adl') ||
                     device.name.toLowerCase().includes('e64') ||
                     device.name.toLowerCase().includes('e64n015') ||
@@ -80,9 +81,11 @@ export class BleService {
                         this.storage.setItem('ble', this.devices);
                     }
                 } else if (device.name.toLowerCase().includes('egateway')) {
+                    debugger;
                     this.gateways.push(device.id);
                     this.isGateway = true;
                     this.initService.isGateway = true;
+                    debugger
                     this.connect(device.id);
                 }
             }
@@ -92,13 +95,13 @@ export class BleService {
     // If the connection crashes when it reconnects we reset the stats.
     resetShots() {
         this.gatewayService.initStats();
-        const txe = new TextEncoder();
-        if (this.peripheral && this.peripheral.id) {
-            this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('CLCO\n').buffer).then((prmise) => {
-                console.log('From Reset: ' + prmise);
-            }).catch(err => {
-            });
-        }
+        // const txe = new TextEncoder();
+        // if (this.peripheral && this.peripheral.id) {
+        //     this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('CLCO\n').buffer).then((prmise) => {
+        //         console.log('From Reset: ' + prmise);
+        //     }).catch(err => {
+        //     });
+        // }
     }
 
     // NOT ACTIVE. -this was used when we wanted to let the user refresh the connection.
@@ -129,19 +132,21 @@ export class BleService {
         } else {
             this.resetShots();
         }
-        this.currentTargetId = deviceId;
-        this.ble.connect(deviceId).subscribe(
-            (peripheral) => {
-                this.isConnectedFlag = false;
-                this.notifyTargetConnected.next(true);
-                this.onConnected(peripheral);
-            },
-            peripheral => {
-                console.log('DEVICE DISCONNECT IT SELF', peripheral);
-                this.activatRecconectProcess();
-            }, () => {
-            }
-        );
+         if(this.currentTargetId){
+             this.ble.connect(this.currentTargetId).subscribe(
+                 (peripheral) => {
+                     this.isConnectedFlag = false;
+                     this.notifyTargetConnected.next(true);
+                     this.onConnected(peripheral);
+                 },
+                 peripheral => {
+                     console.log('DEVICE DISCONNECT IT SELF', peripheral);
+                     this.activatRecconectProcess();
+                 }, () => {
+                 }
+             );
+         }
+
     }
 
     //  Notify comps that a connection has been made.
@@ -237,6 +242,7 @@ export class BleService {
             this.notifyDisconnect.next({isManually: false, status: true});
             console.log('Called Disconnect');
             try {
+                debugger
                 this.subscription = this.ble.connect(this.currentTargetId).subscribe(
                     (peripheral) => {
                         this.isConnectedFlag = false;

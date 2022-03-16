@@ -434,6 +434,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     }
 
     onReconnect() {
+        debugger
         this.bleService.connect(this.bleService.currentTargetId);
     }
 

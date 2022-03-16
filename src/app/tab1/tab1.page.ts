@@ -102,7 +102,6 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
 
         if (localStorage.isLoggedIn && localStorage.isLoggedIn === 'true') {
             this.showSignin = false;
-            this.openSubModal();
             this.showRegular = true;
             this.showWizard = false;
         } else {
@@ -797,12 +796,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     }
 
     async openSubModal() {
-        // const modal = await this.modalController.create({
-        //     component: SubscriptionPage,
-        //     swipeToClose: true,
-        //     presentingElement: this.routerOutlet.nativeEl
-        //
-        // });
-        // return await modal.present();
+        const modal = await this.modalController.create({
+            component: SubscriptionPage,
+            swipeToClose: false,
+            presentingElement: this.routerOutlet.nativeEl,
+            cssClass:'modal-fullscreen'
+
+        });
+        return await modal.present();
     }
 }

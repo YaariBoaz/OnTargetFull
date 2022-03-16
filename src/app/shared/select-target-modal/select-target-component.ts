@@ -136,8 +136,6 @@ export class SelectTargetComponent implements OnInit {
                 }
             }
         });
-
-        this.reScan();
     }
 
     ionViewWillLeave() {
@@ -240,6 +238,7 @@ export class SelectTargetComponent implements OnInit {
     }
 
     onTargetSelected(target: any) {
+        debugger;
         this.myTargets.forEach(t => t.isSelected = false);
         target.isSelected = true;
         this.storageService.setItem('slectedTarget', target);
@@ -252,7 +251,7 @@ export class SelectTargetComponent implements OnInit {
                 this.bleService.dissconect().then(data => {
                     this.bleService.isGateway = false;
                     debugger
-                    this.bleService.connect(target.id);
+                    this.bleService.connect(target.uuid);
                     this.bleService.notifyTargetConnected.subscribe(d => {
                         this.isConnected = true;
                         this.targetNotSelected = false;
@@ -261,7 +260,7 @@ export class SelectTargetComponent implements OnInit {
                 });
             } else {
                 debugger
-                this.bleService.connect(target.id);
+                this.bleService.connect(target.uuid);
                 this.bleService.notifyTargetConnected.subscribe(data => {
                     this.isConnected = true;
                     this.targetNotSelected = false;
@@ -315,10 +314,10 @@ export class SelectTargetComponent implements OnInit {
     }
 
     onDeviceDiscoveredInitialScan(device: any) {
-        this.ngZone.run(() => {
             if (device.name) {
-                console.log('FOUND DEVICE: ' + device.name);
-                if (device.name.toLowerCase().includes('adl') ||
+                console.log('FOUND DEVICE:  IN SELECT-TRAGET-COMPONET' + device.name);
+                debugger
+                if (device.name && device.name.toLowerCase().includes('adl') ||
                     device.name.toLowerCase().includes('e64') ||
                     device.name.toLowerCase().includes('e1n') ||
                     device.name.toLowerCase().includes('e1n') ||
@@ -328,16 +327,20 @@ export class SelectTargetComponent implements OnInit {
                     device.name.toLowerCase().includes('e16') ||
                     device.name.toLowerCase().includes('nordic')) {
                     this.addTargetToList({name: device.name, id: device.id});
-                } else if (device.name.toLowerCase().includes('egateway')) {
+                } else if (device.name && device.name.toLowerCase().includes('egateway')) {
                     this.bleService.gateways.push(device.id);
                     this.bleService.isGateway = true;
                     this.initService.isGateway = true;
                     debugger
-                    this.bleService.connect(device.id);
+                    this.bleService.currentTargetId = device.id;
+                    console.log('UUUID OF GATEWAY IS: ',device.id)
+                    this.bleService.connect(device.uuid);
+                    console.log('DEVICE OBJECT ' ,device);
+                    console.log('UUUID OF GATEWAY I WANTED : ',this.bleService.currentTargetId)
+
+
                 }
             }
-
-        });
     }
 
 

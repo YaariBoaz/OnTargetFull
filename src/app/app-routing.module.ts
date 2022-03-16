@@ -3,11 +3,11 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {AuthGuardService} from './shared/authentication/auth-guard.service';
 import {NewTargetDesignComponent} from './shared/components/new-target-design/new-target-design.component';
 import {Tab1Page} from './tab1/tab1.page';
-import {SelectTargetComponent} from './shared/select-target-modal/select-target-component';
 import {ChooseDrillComponent} from './shared/ChooseDrill/choose-drill.component';
 import {ChallengeListComponent} from './shared/ChooseDrill/List/challenge-list.component';
 import {Tab2Page} from './tab2/tab2.page';
 import {DrillComponent} from './shared/drill/drill.component';
+import {SelectTargetComponent} from './shared/select-target-modal/select-target-component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: 'home', pathMatch: 'full' },

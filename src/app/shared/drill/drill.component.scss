@@ -112,6 +112,8 @@ section.drill-results {
     img {
       height: 300px;
       width: 300px;
+      background: white;
+      border-radius: 100%;
     }
 
     .some-wrapper {
@@ -576,7 +578,7 @@ div.targetHoly {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 900;
   background: hsla(0, 0%, 100%, 1);
 

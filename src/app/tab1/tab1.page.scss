@@ -501,3 +501,12 @@ div.welcome-message {
 ::ng-deep .cdk-overlay-pane{
   max-width: 100vw !important;
 }
+
+  ::ng-deep .modal-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }

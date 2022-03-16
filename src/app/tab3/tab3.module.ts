@@ -10,7 +10,6 @@ import {SightlistComponent} from './sightlist/sightlist.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {SharedModule} from '../shared/shared.module';
 import {StorageService} from '../shared/services/storage.service';
-import {SelectTargetModalComponent} from '../shared/select-target-modal/modal/select-target-modal.component';
 
 // @ts-ignore
 @NgModule({

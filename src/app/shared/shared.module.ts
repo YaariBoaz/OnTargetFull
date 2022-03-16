@@ -11,10 +11,8 @@ import {SightlistComponent} from '../tab3/sightlist/sightlist.component';
 import {StorageService} from './services/storage.service';
 import {HitNohitService} from './drill/hit-nohit.service';
 import {TermsAndConditionComponent} from './components/terms-and-condition/terms-and-condition.component';
-import {SelectTargetComponent} from './select-target-modal/select-target-component';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
-import {SelectTargetModalComponent} from './select-target-modal/modal/select-target-modal.component';
-import {ErrorModalComponent} from './popups/error-modal/error-modal.component';
+ import {ErrorModalComponent} from './popups/error-modal/error-modal.component';
 import {AccessModalComponent} from './popups/access-modal/access-modal.component';
 import {NoConnetionErroComponent} from './popups/no-connection/no-connetion-error';
 import {MatMenuModule} from '@angular/material/menu';
@@ -26,6 +24,7 @@ import {ReversePipe} from './pipes/reverse.pipe';
 import {MakeItNormalTextPipe} from './pipes/make-it-normal-text.pipe';
 import {RouterModule} from '@angular/router';
 import {NewTargetDesignComponent} from './components/new-target-design/new-target-design.component';
+import {SelectTargetComponent} from './select-target-modal/select-target-component';
 
 @NgModule({
     declarations: [
@@ -36,7 +35,6 @@ import {NewTargetDesignComponent} from './components/new-target-design/new-targe
         SightlistComponent,
         TermsAndConditionComponent,
         SelectTargetComponent,
-        SelectTargetModalComponent,
         ErrorModalComponent,
         ShareDialogComponent,
         ChallengeListComponent,
@@ -56,7 +54,7 @@ import {NewTargetDesignComponent} from './components/new-target-design/new-targe
         MaterialModule,
         RouterModule
     ],
-    providers: [HitNohitService ,StorageService, ScreenOrientation],
+    providers: [HitNohitService, ApiService, UserService, StorageService, ScreenOrientation],
     exports: [
         MaterialModule,
         MatMenuModule,
@@ -66,8 +64,8 @@ import {NewTargetDesignComponent} from './components/new-target-design/new-targe
         MakeItNormalTextPipe,
         ReactiveFormsModule,
         Tab3Page, GunlistComponent, SightlistComponent,
-        SelectTargetModalComponent,
-        ErrorModalComponent, AccessModalComponent, ReversePipe, SelectTargetComponent, TermsAndConditionComponent, PaymentComponent, NewTargetDesignComponent
+        ErrorModalComponent, AccessModalComponent, ReversePipe,
+        SelectTargetComponent, TermsAndConditionComponent, PaymentComponent, NewTargetDesignComponent
     ],
 
 

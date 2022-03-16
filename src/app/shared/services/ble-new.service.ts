@@ -47,9 +47,11 @@ export class BleNewService {
         };
         this.bluetoothle.startScan(params).subscribe((scanResult) => {
             if (scanResult.name) {
-                console.log('FOUND DEVICE: ', scanResult.name);
+                console.log('FOUND DEVICE IN NEW BLE SERVICE: ', scanResult.name);
+                debugger;
                 if (scanResult.name.indexOf('eGate') > -1) {
                     this.stopScan();
+                    debugger
                     this.connect(scanResult.address);
                 }
                 this.devices.push(scanResult);
