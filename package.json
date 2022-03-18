@@ -63,6 +63,8 @@
     "add": "^2.0.6",
     "angular-cd-timer": "^1.0.0",
     "angularx-social-login": "^2.2.1",
+    "capacitor-ios-app-tracking": "^1.0.5-rc1",
+    "capacitor-plugin-app-tracking-transparency": "^2.0.0",
     "chart.js": "^2.9.3",
     "com.telerik.plugins.nativepagetransitions": "^0.7.0",
     "cordova-android": "8.1.0",
@@ -111,6 +113,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-idfa": "^2.0.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^4.0.0",
     "cordova-plugin-splashscreen": "5.0.2",
@@ -142,7 +145,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-androidx-adapter": {}
+      "cordova-plugin-androidx-adapter": {},
+      "cordova-plugin-idfa": {}
     }
   }
 }

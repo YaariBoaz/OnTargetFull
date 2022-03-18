@@ -823,13 +823,11 @@
     for (CBPeripheral *p in peripherals) {
 
         NSString* other = p.identifier.UUIDString;
-        if([uuid isKindOfClass:[NSString class]]){
-            if ([uuid isEqualToString:other]) {
-                peripheral = p;
-                break;
-            }
+
+        if ([uuid isEqualToString:other]) {
+            peripheral = p;
+            break;
         }
-    
     }
     return peripheral;
 }

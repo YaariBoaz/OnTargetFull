@@ -1,0 +1,23 @@
+{
+  "name": "CapacitorPluginAppTrackingTransparency",
+  "version": "2.0.0",
+  "summary": "Capacitor plugin to request user authorization to access app-related data for tracking the user or the device.",
+  "license": "MIT",
+  "homepage": "git+https://github.com/mahnuh/capacitor-plugin-app-tracking-transparency.git",
+  "authors": "Manuel Heidrich",
+  "source": {
+    "git": "git+https://github.com/mahnuh/capacitor-plugin-app-tracking-transparency.git",
+    "tag": "2.0.0"
+  },
+  "source_files": "ios/Plugin/**/*.{swift,h,m,c,cc,mm,cpp}",
+  "platforms": {
+    "ios": "12.0"
+  },
+  "dependencies": {
+    "Capacitor": [
+
+    ]
+  },
+  "swift_versions": "5.1",
+  "swift_version": "5.1"
+}

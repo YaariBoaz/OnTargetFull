@@ -12,6 +12,6 @@
     s.xcconfig = {'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) COCOAPODS=1 WK_WEB_VIEW_ONLY=1' }
     s.dependency 'CapacitorCordova'
     s.swift_version  = '5.1'
-    s.weak_frameworks = 'ImageIO', 'Social', 'MessageUI'
-    s.frameworks = 'CoreBluetooth', 'CoreLocation', 'CoreGraphics', 'AssetsLibrary', 'MobileCoreServices', 'AVFoundation', 'QuartzCore', 'UIKit', 'Foundation', 'ImageIO', 'MessageUI', 'StoreKit'
+    s.weak_frameworks = 'Social', 'MessageUI', 'AdSupport', 'AppTrackingTransparency'
+    s.frameworks = 'CoreBluetooth', 'QuartzCore', 'AVFoundation', 'UIKit', 'Foundation', 'CoreGraphics', 'ImageIO', 'MessageUI', 'AssetsLibrary', 'MobileCoreServices', 'StoreKit'
   end
