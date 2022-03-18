@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Allow On Target to track your personal details for optimising our services</string>
+	<string>Your data will be used to deliver personalized content to you.</string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
 	<key>CFBundleGetInfoString</key>
 	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
