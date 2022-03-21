@@ -57,14 +57,6 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
                 public dialogRef: MatDialogRef<ActivityHistoryComponent>,
                 private stoargeService: StorageService,
                 private platform: Platform) {
-        this.networkService.hasConnectionSubject$.subscribe(hasConnection => {
-            this.hasConnection = hasConnection;
-            if (this.hasConnection) {
-                this.handleOfflineScenario();
-            } else {
-                this.handleOfflineScenario();
-            }
-        });
         this.targetW = this.initService.screenW;
         this.targetH = this.initService.screenH;
 
