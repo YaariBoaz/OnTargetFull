@@ -1,11 +1,10 @@
 import {Injectable, NgZone} from '@angular/core';
-import { BLE } from '@awesome-cordova-plugins/ble/ngx';
 import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
-import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
 import {StorageService} from './storage.service';
 import {GatewayService} from './gateway.service';
 import {InitService} from './init.service';
 import {ShootingService} from './shooting.service';
+import {BleClient} from '@capacitor-community/bluetooth-le';
 
 const SERVICE_2 = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 const SERVICE_2_CHAR = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
@@ -35,11 +34,9 @@ export class BleService {
 
     constructor(
         private storage: StorageService,
-        public ble: BLE,
         private ngZone: NgZone,
         private shootingService: ShootingService,
         private initService: InitService,
-        private bluetoothSerial: BluetoothSerial,
         private gatewayService: GatewayService) {
         this.devices = this.storage.getItem('ble');
         if (!this.devices) {
@@ -51,7 +48,9 @@ export class BleService {
     scan() {
         this.devices = [];  // clear list
         this.storage.setItem('ble', this.devices);
-        this.ble.scan([], 5).subscribe(device => this.onDeviceDiscovered(device), error => this.scanError(error));
+        BleClient.requestLEScan(null, result => {
+            this.onDeviceDiscovered(result);
+        });
         setTimeout(() => {
             this.storage.setItem('ble', this.devices);
             this.scanFinished.next(true);
@@ -63,7 +62,6 @@ export class BleService {
         this.ngZone.run(() => {
             if (device.name) {
                 console.log('FOUND DEVICE IN BLE SERVICE: ' + device.name);
-                debugger;
                 if (device.name.toLowerCase().includes('adl') ||
                     device.name.toLowerCase().includes('e64') ||
                     device.name.toLowerCase().includes('e64n015') ||
@@ -81,11 +79,9 @@ export class BleService {
                         this.storage.setItem('ble', this.devices);
                     }
                 } else if (device.name.toLowerCase().includes('egateway')) {
-                    debugger;
                     this.gateways.push(device.id);
                     this.isGateway = true;
                     this.initService.isGateway = true;
-                    debugger
                     this.connect(device.id);
                 }
             }
@@ -108,7 +104,8 @@ export class BleService {
     resetConnection() {
         const txe = new TextEncoder();
         if (this.peripheral && this.peripheral.id) {
-            this.ble.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, txe.encode('RSTC\n').buffer).then((prmise) => {
+            const dv = new DataView(txe.encode('RSTC\n').buffer);
+            BleClient.write(this.peripheral.id, SERVICE_2, SERVICE_2_CHAR_WRITE, dv).then((prmise) => {
                 console.log('reset connection completed');
             }).catch(err => {
             });
@@ -132,20 +129,17 @@ export class BleService {
         } else {
             this.resetShots();
         }
-         if(this.currentTargetId){
-             this.ble.connect(this.currentTargetId).subscribe(
-                 (peripheral) => {
-                     this.isConnectedFlag = false;
-                     this.notifyTargetConnected.next(true);
-                     this.onConnected(peripheral);
-                 },
-                 peripheral => {
-                     console.log('DEVICE DISCONNECT IT SELF', peripheral);
-                     this.activatRecconectProcess();
-                 }, () => {
-                 }
-             );
-         }
+        if (this.currentTargetId) {
+            BleClient.connect(this.currentTargetId).then((peripheral) => {
+                    this.isConnectedFlag = false;
+                    this.notifyTargetConnected.next(true);
+                    this.onConnected(peripheral);
+                },
+                peripheral => {
+                    console.log('DEVICE DISCONNECT IT SELF', peripheral);
+                    this.activatRecconectProcess();
+                });
+        }
 
     }
 
@@ -172,7 +166,7 @@ export class BleService {
 
     ionViewWillLeave() {
         console.log('ionViewWillLeave disconnecting Bluetooth');
-        this.ble.disconnect(this.peripheral.id).then(
+        BleClient.disconnect(this.peripheral.id).then(
             () => console.log('Disconnected ' + JSON.stringify(this.peripheral)),
             () => console.log('ERROR disconnecting ' + JSON.stringify(this.peripheral))
         );
@@ -181,12 +175,10 @@ export class BleService {
 
     handleRead(name, id, service, characteristic) {
         console.log('SUBSCRIBED TO START NOTIFICATION');
-        this.subscription = this.ble.startNotification(id, service, characteristic).subscribe((data) => {
+        BleClient.startNotifications(id, service, characteristic, (data) => {
             console.log('RECEIVED A MESSAGE');
             const target = this.storage.getItem('slectedTarget');
             const dec = new TextDecoder();
-            const enc = new TextEncoder().encode(data);
-            const temp = new TextDecoder().decode(enc);
             const buffer = new Uint8Array(data[0]);
             if (this.isGateway) {
                 this.parseGatewayMessage(buffer);
@@ -206,7 +198,8 @@ export class BleService {
                     });
                 }
             }
-
+        }).then(r => {
+            debugger;
         });
     }
 
@@ -229,21 +222,21 @@ export class BleService {
 
 
     isConnected(): Promise<any> {
-        return this.ble.isConnected(this.peripheral);
+        return BleClient.isBonded(this.peripheral);
     }
 
     dissconect() {
-        return this.ble.disconnect(this.currentTargetId);
+        return BleClient.disconnect(this.currentTargetId);
     }
 
     activatRecconectProcess() {
-        this.ble.disconnect(this.currentTargetId).then(() => {
+        BleClient.disconnect(this.currentTargetId).then(() => {
             this.isConnectedFlag = false;
             this.notifyDisconnect.next({isManually: false, status: true});
             console.log('Called Disconnect');
             try {
-                debugger
-                this.subscription = this.ble.connect(this.currentTargetId).subscribe(
+
+                BleClient.connect(this.currentTargetId).then(
                     (peripheral) => {
                         this.isConnectedFlag = false;
                         this.notifyTargetConnected.next(true);
@@ -264,7 +257,8 @@ export class BleService {
     }
 
     resetGateway() {
-        this.ble.write(this.currentTargetId, SERVICE_2, SERVICE_2_CHAR_WRITE, this.str2ab('R')).then((data) => {
+        const dv = new DataView(this.str2ab('R'));
+        BleClient.write(this.currentTargetId, SERVICE_2, SERVICE_2_CHAR_WRITE, dv).then((data) => {
             this.notifyResetGateway.next(true);
         });
 

@@ -361,16 +361,9 @@ export class GatewayService {
         let yPos;
         let is128 = false;
         if (targetType === TargetType.Type_64) {
-            nominalStep = 15;
-            n = 1;
-            x = 0.25 * x - n;
-            y = 0.25 * y - n;
-            y -= 0.5;
-            x -=0.5;
-            xPos = x;
-            yPos = y;
-        }
-        else if (targetType === TargetType.Type_16) {
+            xPos = 4.85714 * x - 38.85714;
+            yPos = 4.85714 * y - 38.85714;
+        } else if (targetType === TargetType.Type_16) {
             nominalStep = 7;
             n = 5;
             x = 0.25 * x - n;
@@ -379,9 +372,8 @@ export class GatewayService {
             x -= 0.5;
             xPos = x;
             yPos = y;
-        }
-        else { // 128
-
+        } else { // 128     
+            debugger;
             let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
             disPointFromCenter128 = disPointFromCenter128 / 10;
             // 7 is half the width of the ellipse representing the bullet hit on the UI
@@ -389,9 +381,17 @@ export class GatewayService {
             // x = (this.width / 490) * x - 7;
             // y = (this.height / 490) * y;
 
-            xPos = 0.7278 * x - 47.306
-            yPos = 0.7278 * y - 47.306
-            // xPos = x;
+            if (targetId.toLowerCase().indexOf('cs') > -1) {
+                xPos = 0.7278 * x - 47.306;
+                yPos = 0.7278 * y - 47.306;
+            }
+            if (targetId[0].toLowerCase() === 'c' && targetId[1].toLowerCase() !== 's' || targetId[0] === 'e') {
+                xPos = 0.5955 * x - 14.886;
+                yPos = 0.5955 * y - 14.886;
+                if (targetId[0] === 'e') {
+                    yPos = this.width - yPos;
+                }
+            }
             // yPos = y;
             this.hits.push({x, y});
             is128 = true;
