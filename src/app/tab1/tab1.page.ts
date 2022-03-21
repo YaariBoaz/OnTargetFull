@@ -610,13 +610,13 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
     }
 
     async openSubModal() {
-        // const modal = await this.modalController.create({
-        //     component: SubscriptionPage,
-        //     swipeToClose: false,
-        //     presentingElement: this.routerOutlet.nativeEl,
-        //     cssClass:'modal-fullscreen'
-        //
-        // });
-        // return await modal.present();
+        const modal = await this.modalController.create({
+            component: SubscriptionPage,
+            swipeToClose: false,
+            presentingElement: this.routerOutlet.nativeEl,
+            cssClass:'modal-fullscreen'
+
+        });
+        return await modal.present();
     }
 }
