@@ -201,8 +201,8 @@
                             </svg>
                             <p>WEAPON:</p>
                         </div>
-                        <select [(ngModel)]='drill.weapon' (ngModelChange)="onWeaponChanged()">
-                            <option *ngFor="let gun of myGuns" [value]="gun.name">{{gun.name}}</option>
+                        <select [(ngModel)]='drill.weapon'>
+                            <option *ngFor="let gun of myGuns" [value]="gun">{{gun}}</option>
                         </select>
                     </div>
                     <div class="container">
@@ -243,7 +243,7 @@
                             </svg>
                             <p>SIGHT:</p>
                         </div>
-                        <select [(ngModel)]='drill.sight' >
+                        <select [(ngModel)]='drill.sight'>
                             <option *ngFor="let sight of mySights" [value]="sight">{{sight}}</option>
                         </select>
                     </div>
@@ -293,13 +293,13 @@
                         </div>
 
                         <select [(ngModel)]='drill.ammo'>
-                            <option *ngFor="let ammo of myAmmo" [value]="ammo">{{ammo}}</option>
+                            <option *ngFor="let ammo of myAmmo | keyvalue" [value]="ammo.key">{{ammo.key}}</option>
                         </select>
                     </div>
 
                     <div class="container">
-                        <button
-                                [disabled]="drillType != drillTypeEnum.Zero" class="btn-set-calculator"
+                        <button [ngClass]="{'disabled': drill.drillType !== img3.getAttribute('id') }"
+                                [disabled]="drill.drillType !== drillTypeEnum.Zero" class="btn-set-calculator"
                                 (click)="onBalisticCalculatorPressed()"> Ballistic Calculator
                         </button>
                     </div>
