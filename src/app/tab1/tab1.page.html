@@ -72,7 +72,8 @@
         <ng-container *ngIf="mySubscription">
             <div class="d-flex align-item-center justify-content-center">
                 <ion-icon name="star" style="color: #FCE651;"></ion-icon>
-                <div style="color:white;">{{mySubscription.title}} Subscription</div>
+                <div style="color:white;">{{mySubscription.title ? mySubscription.title: mySubscription.type}}
+                    Subscription</div>
             </div>
         </ng-container>
 

@@ -20,7 +20,7 @@
             <div class="row">
                 <label>
                     <input value="12345678" formControlName="password" [type]="fieldTextType ? 'text' : 'password'"
-                           placeholder="Password">
+                        placeholder="Password">
                 </label>
 
                 <div class="errors" *ngIf="submitted && f.password.errors">
@@ -33,6 +33,14 @@
         <button class="start" (click)="onLogin()">START SESSION</button>
         <p class="forgot" (click)="forgotPassword =true;">Forgot your password?</p>
     </div>
+
+    <!--  -->
+    <div class="terms-cdt" >
+        <ion-icon (click)="selectTermsCondition = !selectTermsCondition" name="{{selectTermsCondition ? 'checkbox': 'checkbox-outline'}}" class="terms-checkbox"></ion-icon>
+        <p>By using this application, You agree to the <span (click)="openBrowser($event)">Terms and Conditions</span> and <span (click)="openBrowser($event)">Privacy
+                Policy</span>.</p>
+    </div>
+
     <div class="create-account-container">
         <a (click)="goToSignUp()">I don’t have an account. Create one!</a>
     </div>

@@ -38,6 +38,8 @@ export class SigninComponent implements OnInit {
     showWizard = false;
     showSignin = true;
 
+    selectTermsCondition = false;
+
     constructor(
         public dialog: MatDialog,
         private router: Router,
@@ -192,5 +194,10 @@ export class SigninComponent implements OnInit {
     closeWizard() {
         this.showSignin = true;
         this.showWizard = false;
+    }
+
+    openBrowser(e) {
+        console.log(e);
+        window.open('https://docs.google.com/document/d/e/2PACX-1vR2FAVavivWTgxAGAUhNHsEApBbhWzD9groTDYsyOTgMUvOupo3QRImETeW1HQ1AtEed00hzgsNqaWK/pub');
     }
 }

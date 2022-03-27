@@ -53,7 +53,7 @@ export class Tab2Page implements OnInit {
     connectedTarget = null;
     targetType: TargetType;
     drillType = DrillType.Regular;
-    calibers;
+
     public get backgroundsEnum(): typeof Backgrounds {
         return Backgrounds;
     }
@@ -75,7 +75,6 @@ export class Tab2Page implements OnInit {
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.connectedTarget = this.shootingService.chosenTarget;
         this.initComponents();
-        this.calibers = this.shootingService.calibers;
 
         // const targetId = this.storageService.getItem('slectedTarget').name;
         // this.targetType = this.gatewayService.getTargetType(targetId);
@@ -120,8 +119,18 @@ export class Tab2Page implements OnInit {
 
     initComponents() {
         this.mySights = this.storageService.getItem('sightList');
-         this.myGuns = this.storageService.getItem('gunList');
-        this.myGuns.shift();
+        // this.mySights.push('M5');
+        // this.mySights.push('Iron');
+        // this.mySights.push('Iron');
+        // this.mySights.splice(2, 0, 'Wizer');
+
+
+        // this.myGuns = this.storageService.getItem('gunList');
+        // this.myGuns.push('AR15');
+        // this.myGuns.push('Jericho 941f');
+        // this.myGuns.splice(2, 0, 'Circus');
+
+        // this.myAmmo = this.storageService.getItem('caliberList');
 
         this.setSightsAndWeapons();
     }
@@ -182,11 +191,17 @@ export class Tab2Page implements OnInit {
 
     private setSightsAndWeapons() {
         if (this.myGuns) {
-            this.drill.weapon = this.myGuns[0].name;
-            this.mySights = this.myGuns[0].sights;
-            this.drill.sight = this.myGuns[0].sights[0];
-            this.myAmmo = this.myGuns[0].calibers;
-            this.drill.ammo = this.myGuns[0].calibers[0];
+            this.drill.weapon = this.myGuns[1];
+        } else {
+            this.myGuns = this.storageService.DEFAULT_WEAPONS;
+            this.drill.weapon = this.myGuns[1];
+        }
+
+        if (this.mySights) {
+            this.drill.sight = this.mySights[0];
+        } else {
+            this.mySights = this.storageService.DEFAULT_SIGHTS;
+            this.drill.sight = this.mySights[0];
         }
     }
 
@@ -244,17 +259,6 @@ export class Tab2Page implements OnInit {
         if (val === 0 || val < 0) {
             this.drill.numOfBullets = 1;
         }
-    }
-
-    onWeaponChanged(){
-        this.myGuns.forEach((item)=>{
-            if(item.name === this.drill.weapon){
-                this.mySights = item.sights;
-                this.myAmmo = item.calibers;
-                this.drill.sight = this.myGuns[0].sights[0];
-                this.drill.ammo = this.myGuns[0].calibers[0];
-            }
-        })
     }
 }
 

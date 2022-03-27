@@ -21,6 +21,12 @@ export class TermsAndConditionComponent implements OnInit {
             this.dialogRef.close();
         }
     }
+
+    openBrowser(e) {
+        console.log(e);
+        window.open('https://docs.google.com/document/d/e/2PACX-1vR2FAVavivWTgxAGAUhNHsEApBbhWzD9groTDYsyOTgMUvOupo3QRImETeW1HQ1AtEed00hzgsNqaWK/pub');
+    }
+    
 }
 
 

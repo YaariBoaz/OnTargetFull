@@ -53,11 +53,11 @@ export class ApiService {
     }
 
     getWeapons() {
-        return this.http.get(this.BACKOFFICE_URL + 'Zeroing/GetWepons');
+        return this.http.get(this.BACKOFFICE_URL + 'Zeroing/getWeapons');
     }
 
     getSights() {
-        return this.http.get(this.BACKOFFICE_URL + 'Zeroing/GetSights');
+        return this.http.get(this.BACKOFFICE_URL + 'DeviceData/getSights');
     }
 
 
