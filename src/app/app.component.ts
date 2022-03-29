@@ -14,6 +14,7 @@ import {
     AppTrackingTransparency,
     AppTrackingStatusResponse,
 } from 'capacitor-plugin-app-tracking-transparency';
+
 const ADL_IAP_KEY = 'adl';
 const ADL_IAP_KEY_2_SESSIONS = 'twoSessionSub';
 const ADL_IAP_KEY_6_SESSIONS = 'sixSessions';
