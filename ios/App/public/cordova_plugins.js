@@ -282,7 +282,7 @@
     // TOP OF METADATA
     {
       "com.telerik.plugins.nativepagetransitions": "0.7.0",
-      "cordova-plugin-android-permissions": "1.1.2",
+      "cordova-plugin-android-permissions": "1.1.3",
       "cordova-plugin-ble-central": "1.4.3",
       "cordova-plugin-crop": "0.3.1",
       "cordova-plugin-document-viewer": "1.0.0",
