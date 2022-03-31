@@ -23,7 +23,7 @@
                         <p class="price-amount">{{ item.price }}</p>
                         <div class="container-price">
                             <p>/</p>
-                            <p>{{ item.title }}</p>
+                            <p>{{ item.title ?item.title:item.type }}</p>
                         </div>
 
                     </div>

@@ -115,7 +115,7 @@ export class Tab1Page implements OnInit, AfterViewInit, OnDestroy {
                 this.showSignin = false;
                 this.showRegular = true;
                 this.showWizard = false;
-                this.openSubModal();
+                // this.openSubModal();
                 this.initDashboard();
 
                 const content: any = document.querySelector('mat-tab-header');

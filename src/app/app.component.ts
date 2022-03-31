@@ -14,6 +14,7 @@ import {
     AppTrackingTransparency,
     AppTrackingStatusResponse,
 } from 'capacitor-plugin-app-tracking-transparency';
+
 const ADL_IAP_KEY = 'adl';
 const ADL_IAP_KEY_2_SESSIONS = 'twoSessionSub';
 const ADL_IAP_KEY_6_SESSIONS = 'sixSessions';
@@ -95,9 +96,9 @@ export class AppComponent implements OnDestroy, OnInit {
             this.isLoding = isLoading;
         });
 
-        this.store.register({id: ADL_IAP_KEY, type: this.store.PAID_SUBSCRIPTION});
-        this.store.register({id: ADL_IAP_KEY_2_SESSIONS, type: this.store.CONSUMABLE});
-        this.store.register({id: ADL_IAP_KEY_6_SESSIONS, type: this.store.CONSUMABLE});
+        // this.store.register({id: ADL_IAP_KEY, type: this.store.PAID_SUBSCRIPTION});
+        // this.store.register({id: ADL_IAP_KEY_2_SESSIONS, type: this.store.CONSUMABLE});
+        // this.store.register({id: ADL_IAP_KEY_6_SESSIONS, type: this.store.CONSUMABLE});
 
 
         this.getStatus().then((data) =>{

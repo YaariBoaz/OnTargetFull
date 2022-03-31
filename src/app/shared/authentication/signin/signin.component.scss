@@ -186,3 +186,27 @@ section.login {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: white;
 }
+
+
+.terms-checkbox {
+
+  font-size: 50px;
+  padding-right: 10px;
+  color: white !important;
+
+}
+
+.terms-cdt{
+  display: flex;
+    padding: 10px;
+    align-items: center;
+
+    p{
+      color:#fff
+    }
+
+    span{
+      font-weight: bold;
+      text-decoration: underline;
+    }
+}
