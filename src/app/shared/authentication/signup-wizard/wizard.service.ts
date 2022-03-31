@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
 import {InitService} from '../../services/init.service';
 import {HttpClient} from '@angular/common/http';
 
-@Injectable({ 
+@Injectable({
     providedIn: 'root'
 })
 export class WizardService {
