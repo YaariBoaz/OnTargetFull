@@ -1024,6 +1024,7 @@ div.welcome-message {
 .bg-pic {
   position: absolute;
   z-index: -1;
+  height: 100%;
 }
 
 .challenge-promo {
@@ -1052,3 +1053,11 @@ div.welcome-message {
 
 
 
+.table-sum{
+  display: flex;
+  justify-content: space-between;
+}
+
+table{
+  color:white !important;
+}

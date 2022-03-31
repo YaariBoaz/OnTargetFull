@@ -521,6 +521,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 // @ts-ignore
                 this.summaryObject.distanceFromCenterAvg = this.fakeStats[index].pageData.distanceFromCenterAvg;
                 this.shotNumber = index + 1;
+                console.log('HIT NO HIT SHOT startFakeShootingHitNoHit #' + this.shotNumber);
                 this.startFakeShootingHitNoHit(index + 1);
             }, 1212);
         }
@@ -548,7 +549,8 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     private registerHitNoHitNotifications() {
         this.hitNohitService.hitArrived.subscribe((data) => {
             if (data !== null && !this.drillHasNotStarted && !this.drillIsFinished) {
-                this.shotNumber = data.hitNumber;
+                console.log('HIT NO HIT SHOT registerHitNoHitNotifications #' + data.hitNumber);
+                this.shotNumber = data.statsData.stats.length;
                 this.stats = data.statsData.stats;
                 this.pageData = data.statsData.page;
                 this.isFinish = data.statsData.isFinish;
@@ -584,6 +586,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 if (this.drill.drillType === 3 && data.statsData.zeroData && Object.keys(data.statsData.zeroData).length !== 0) {
                     this.updateZeroData(data);
                 } else {
+                    console.log('HIT NO HIT SHOT hitArrived #' + data.hitNumber);
                     this.shotNumber = data.hitNumber;
                     if (data.statsData && data.statsData.zeroData) {
                         this.groupingNumber = data.statsData.zeroData.napar2Napam / 2.54;

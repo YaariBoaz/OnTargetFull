@@ -21,7 +21,8 @@ export class ChallengeListComponent implements OnInit {
     };
     challenges;
 
-    constructor(private elementRef: ElementRef, private router: Router, private shootingService: ShootingService, private challengesService: ChallengesService) {
+    constructor(private elementRef: ElementRef,
+                private router: Router, private shootingService: ShootingService, private challengesService: ChallengesService) {
 
     }
 
