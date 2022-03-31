@@ -1,0 +1,6 @@
+framework module CapacitorIosAppTracking {
+  umbrella header "CapacitorIosAppTracking-umbrella.h"
+
+  export *
+  module * { export * }
+}

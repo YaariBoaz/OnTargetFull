@@ -23,5 +23,8 @@
         "style": "dark"
       }
     }
+  },
+  "server": {
+    "cleartext": true
   }
 }

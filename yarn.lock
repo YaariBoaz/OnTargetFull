@@ -282,10 +282,10 @@
   dependencies:
     "@types/cordova" latest
 
-"@awesome-cordova-plugins/ble@^5.39.1":
-  version "5.39.1"
-  resolved "https://registry.npmjs.org/@awesome-cordova-plugins/ble/-/ble-5.39.1.tgz"
-  integrity sha512-XGD20gJ5SAQW2nGBqbgV+vp3K/ThxBcy3ZlbaXE/RJ1Rt6VH9YnedbsD1OekRNorGdkXXdkPDcqUPUFqxl5Nxg==
+"@awesome-cordova-plugins/ble@^5.40.0":
+  version "5.40.0"
+  resolved "https://registry.npmjs.org/@awesome-cordova-plugins/ble/-/ble-5.40.0.tgz"
+  integrity sha512-g7LK8MjCPu/vXtLEtVB+N1/yKH+uHunysDGf1TAUzsgBNTGXH7v3mcOEV3t4deO4Yas+9Jbmo6FME57CV7EL9Q==
   dependencies:
     "@types/cordova" latest
 
@@ -1225,14 +1225,6 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@capacitor-community/bluetooth-le@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/@capacitor-community/bluetooth-le/-/bluetooth-le-1.8.0.tgz"
-  integrity sha512-iP2ecnmohxLSxzdR3PA08pfDQd/5NSwNCQwBmx03x5aAy7eyHFN7VNC2knYjq91XTRRpHNgI50bjLHbrJEtaVA==
-  dependencies:
-    "@types/web-bluetooth" "^0.0.12"
-    throat "^6.0.1"
-
 "@capacitor/android@^3.4.1":
   version "3.4.1"
   resolved "https://registry.npmjs.org/@capacitor/android/-/android-3.4.1.tgz"
@@ -1341,27 +1333,6 @@
   version "5.36.0"
   resolved "https://registry.npmjs.org/@ionic-native/base64/-/base64-5.36.0.tgz"
   integrity sha512-noP+exMFWtKeojEN3942ONepr7ZXzD/cnYvqTIWVJkOKLq9djNslTw72cEqvwcBiRK++MN6OOmflTgh+3gBeag==
-  dependencies:
-    "@types/cordova" latest
-
-"@ionic-native/ble@^5.33.0":
-  version "5.36.0"
-  resolved "https://registry.npmjs.org/@ionic-native/ble/-/ble-5.36.0.tgz"
-  integrity sha512-91HVd3UjuRC51+TQqfL0CQYHV6oQVb1JsQCJZ0VpVaNw0EXRQo40XjYzOUbZjlCVYS8seZeegytLlr5y1GEAGQ==
-  dependencies:
-    "@types/cordova" latest
-
-"@ionic-native/bluetooth-le@^5.28.0":
-  version "5.36.0"
-  resolved "https://registry.npmjs.org/@ionic-native/bluetooth-le/-/bluetooth-le-5.36.0.tgz"
-  integrity sha512-VJYX2gx85PH1SXVVm+wOeMXVt5U0W5t8HAAx4MWBaAjRoREQSYtKVxWtLURhYKwS4Pu82v/EQmRbwz2AyEg+Wg==
-  dependencies:
-    "@types/cordova" latest
-
-"@ionic-native/bluetooth-serial@^5.26.0":
-  version "5.36.0"
-  resolved "https://registry.npmjs.org/@ionic-native/bluetooth-serial/-/bluetooth-serial-5.36.0.tgz"
-  integrity sha512-etb2xbKQBbfI0mGkxgXDuQL40ndu0lJA48Ukz7XUaphUHSP62TofBoPZkXY/CmNvx2ZTCVBB9+2zOFsyyo6iQg==
   dependencies:
     "@types/cordova" latest
 
@@ -1799,7 +1770,7 @@
   resolved "https://registry.npmjs.org/@types/cookie/-/cookie-0.4.1.tgz"
   integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
 
-"@types/cordova@^0.0.34":
+"@types/cordova@^0.0.34", "@types/cordova@latest":
   version "0.0.34"
   resolved "https://registry.npmjs.org/@types/cordova/-/cordova-0.0.34.tgz"
   integrity sha1-6nrd907Ow9dimCegw54smt3HPQQ=
@@ -1891,11 +1862,6 @@
   version "0.1.2"
   resolved "https://registry.npmjs.org/@types/source-list-map/-/source-list-map-0.1.2.tgz"
   integrity sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==
-
-"@types/web-bluetooth@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.npmjs.org/@types/web-bluetooth/-/web-bluetooth-0.0.12.tgz"
-  integrity sha512-Q4sUrowpylCOWjUWFtNwkNBHQUnCL8y44Iq2ZLtVMAuAGIwPSXa3kqIvu2LwXoc2d1jyaaw4Bg354degHrsADw==
 
 "@types/webpack-sources@^0.1.5":
   version "0.1.9"
@@ -2609,7 +2575,7 @@ binary-extensions@^2.0.0:
 
 bindings@^1.5.0:
   version "1.5.0"
-  resolved "https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.5.0.tgz#10353c9e945334bc0511a6d90b38fbc7c9c504df"
   integrity sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==
   dependencies:
     file-uri-to-path "1.0.0"
@@ -2906,6 +2872,16 @@ canonical-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/canonical-path/-/canonical-path-1.0.0.tgz"
   integrity sha512-feylzsbDxi1gPZ1IjystzIQZagYYLvfKrSuygUCgf7z6x790VEzze5QEkdSV1U58RA7Hi0+v6fv4K54atOzATg==
+
+capacitor-ios-app-tracking@^1.0.5-rc1:
+  version "1.0.5-rc1"
+  resolved "https://registry.npmjs.org/capacitor-ios-app-tracking/-/capacitor-ios-app-tracking-1.0.5-rc1.tgz"
+  integrity sha512-CGOvh1w1m97PVdegJ3pmzK5NQzIiDe/3Pky/DPOAkwlDFYqua8BBYVDsajBH40t+BemmydCNH+S7wC0/ubgXFg==
+
+capacitor-plugin-app-tracking-transparency@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/capacitor-plugin-app-tracking-transparency/-/capacitor-plugin-app-tracking-transparency-2.0.0.tgz"
+  integrity sha512-zgfLWwbkg4l82UC/IN7FsK7Lr3cbLNjsY0yWBSLhxMKE8a/LnXrHeRjTCpeyzqBmRfqhqRUS5OUrXqlvzDHWjg==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -3443,7 +3419,7 @@ cordova-ios@^5.1.1:
     xcode "^2.0.0"
     xml-escape "^1.1.0"
 
-cordova-plugin-android-permissions@^1.1.2:
+cordova-plugin-android-permissions@^1.1.3:
   version "1.1.3"
   resolved "https://registry.npmjs.org/cordova-plugin-android-permissions/-/cordova-plugin-android-permissions-1.1.3.tgz"
   integrity sha512-tA+iZri+WA0Ys/8U2E8BeSBoNbomyn51rrt3k3S5vzG7Hx/3tnKKeKzbL607nnlRMfOFec546UYa+xBXKkiEtA==
@@ -3456,10 +3432,10 @@ cordova-plugin-androidx-adapter@^1.1.3:
     q "^1.5.1"
     recursive-readdir "^2.2.2"
 
-cordova-plugin-ble-central@^1.4.3:
-  version "1.4.3"
-  resolved "https://registry.npmjs.org/cordova-plugin-ble-central/-/cordova-plugin-ble-central-1.4.3.tgz"
-  integrity sha512-quJ0xNcFNqPzWpt6OMlp3zYhfCmaEvgdQyjwixjdDoHrSkRgnXET9GfszSiWQqMGmmPe3Iw8ICWdGNNXq5sQzw==
+cordova-plugin-ble-central@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.npmjs.org/cordova-plugin-ble-central/-/cordova-plugin-ble-central-1.4.4.tgz"
+  integrity sha512-zE2eRsGGJSSKSuIWIhVB7JkGkwbPaAO0NZytUhn7loay6nM4NMvSxhvJkucYea79V5iYoODuZdjiRlSTzfRcew==
 
 cordova-plugin-crop@^0.4.0:
   version "0.4.0"
@@ -3480,6 +3456,11 @@ cordova-plugin-file@^6.0.2:
   version "6.0.2"
   resolved "https://registry.npmjs.org/cordova-plugin-file/-/cordova-plugin-file-6.0.2.tgz"
   integrity sha512-m7cughw327CjONN/qjzsTpSesLaeybksQh420/gRuSXJX5Zt9NfgsSbqqKDon6jnQ9Mm7h7imgyO2uJ34XMBtA==
+
+cordova-plugin-idfa@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/cordova-plugin-idfa/-/cordova-plugin-idfa-2.0.0.tgz"
+  integrity sha512-oxTLXf97xYBmfTTR6R/yMIXf/NzG8CRhr8L9w0bqD4ZBq7SILukVUI4YR7bAtfWpCQTbEJXFbMXLzzTIQONLQg==
 
 cordova-plugin-ionic-keyboard@^2.0.5:
   version "2.2.0"
@@ -3542,6 +3523,11 @@ cordova-res@^0.15.3:
     elementtree "^0.1.7"
     sharp "^0.29.2"
     tslib "^2.0.3"
+
+cordova-support-android-plugin@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/cordova-support-android-plugin/-/cordova-support-android-plugin-1.0.2.tgz"
+  integrity sha512-bgvSG5/A2Z/OerfNHN7AHMV3jt+9bH6J4vw9T8R5OJRkkK+ENRBhL8qx7m6mLmBPvtQoIhCMOCRMM9fd4P/p9w==
 
 core-js-compat@^3.16.2, core-js-compat@^3.9.0:
   version "3.21.1"
@@ -4955,7 +4941,7 @@ file-saver@^2.0.5:
 
 file-uri-to-path@1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
   integrity sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==
 
 fileset@^2.0.3:
@@ -5128,7 +5114,7 @@ fs.realpath@^1.0.0:
 
 fsevents@^1.2.7:
   version "1.2.13"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.13.tgz#f325cb0455592428bcf11b383370ef70e3bfcc38"
   integrity sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==
   dependencies:
     bindings "^1.5.0"
@@ -5136,7 +5122,7 @@ fsevents@^1.2.7:
 
 fsevents@~2.3.2:
   version "2.3.2"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
@@ -6902,7 +6888,7 @@ mute-stream@0.0.8:
 
 nan@^2.12.1:
   version "2.15.0"
-  resolved "https://registry.npmjs.org/nan/-/nan-2.15.0.tgz"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.15.0.tgz#3f34a473ff18e15c1b5626b62903b5ad6e665fee"
   integrity sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==
 
 nanoid@^3.1.23:
@@ -9739,11 +9725,6 @@ text-table@0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
-
-throat@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/throat/-/throat-6.0.1.tgz"
-  integrity sha512-8hmiGIJMDlwjg7dlJ4yKGLK8EsYqKgPWbG3b4wjJddKNwc7N7Dpn08Df4szr/sZdMVeOstrdYSsqzX6BYbcB+w==
 
 through2@^2.0.0, through2@~2.0.3:
   version "2.0.5"

@@ -1,0 +1,6 @@
+framework module CapacitorPluginAppTrackingTransparency {
+  umbrella header "CapacitorPluginAppTrackingTransparency-umbrella.h"
+
+  export *
+  module * { export * }
+}

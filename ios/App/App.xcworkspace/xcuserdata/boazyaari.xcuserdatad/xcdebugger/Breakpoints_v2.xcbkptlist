@@ -93,8 +93,8 @@
             filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "832"
-            endingLineNumber = "832"
+            startingLineNumber = "834"
+            endingLineNumber = "834"
             landmarkName = "-findPeripheralByUUID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -109,8 +109,8 @@
             filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "827"
-            endingLineNumber = "827"
+            startingLineNumber = "832"
+            endingLineNumber = "832"
             landmarkName = "-findPeripheralByUUID:"
             landmarkType = "7">
             <Locations>
@@ -157,8 +157,8 @@
             filePath = "../capacitor-cordova-ios-plugins/sources/CordovaPluginBleCentral/BLECentralPlugin.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "833"
-            endingLineNumber = "833"
+            startingLineNumber = "835"
+            endingLineNumber = "835"
             landmarkName = "-findPeripheralByUUID:"
             landmarkType = "7">
          </BreakpointContent>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <manifest package="adl.onTarget" xmlns:android="http://schemas.android.com/apk/res/android">
     <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme" android:usesCleartextTraffic="true">
-        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/title_activity_main" android:launchMode="singleTask" android:name="adl.onTarget.MainActivity" android:theme="@style/AppTheme.NoActionBarLaunch">
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:exported="true" android:label="@string/title_activity_main" android:launchMode="singleTask" android:name="adl.onTarget.MainActivity" android:theme="@style/AppTheme.NoActionBarLaunch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -13,7 +13,7 @@
                 <data android:scheme="@string/custom_url_scheme" />
             </intent-filter>
         </activity>
-        <provider android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+        <provider android:authorities="${applicationId}.fileprovider" android:exported="true" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
         </provider>
     </application>

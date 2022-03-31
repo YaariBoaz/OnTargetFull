@@ -1,0 +1,1 @@
+(self.webpackChunkonTarget=self.webpackChunkonTarget||[]).push([[7004],{37004:function(e,r,s){"use strict";s.r(r),s.d(r,{AppTrackingTransparencyWeb:function(){return n}});var t=s(15310);class n extends t.Uw{getStatus(){return Promise.resolve({status:"authorized"})}requestPermission(){return Promise.resolve({status:"authorized"})}}}}]);

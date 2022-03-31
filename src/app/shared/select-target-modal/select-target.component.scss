@@ -485,3 +485,21 @@ div.back-container {
 .ios{
   top: 50px !important;
 }
+.gateway-connected{
+  position: absolute;
+  height: 45px;
+  top: 5px;
+  right: 5px;
+  background: white;
+  border-radius: 100%;
+  padding: 3px;
+}
+.gateway-notconnected{
+  position: absolute;
+  height: 45px;
+  top: 5px;
+  right: 5px;
+  background: white;
+  border-radius: 100%;
+  padding: 3px;
+}

@@ -3,18 +3,17 @@ import {Platform} from '@ionic/angular';
 import {InitService} from './shared/services/init.service';
 import {LoadingController} from '@ionic/angular';
 import {BleService} from './shared/services/ble.service';
-import {Plugins} from '@capacitor/core';
-import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
+ import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {PopupsService} from './shared/services/popups.service';
-import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
-import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
+ import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {MatDialog} from '@angular/material/dialog';
 import {InAppPurchase2} from '@ionic-native/in-app-purchase-2/ngx';
 import {WizardService} from './shared/authentication/signup-wizard/wizard.service';
-
-const {SplashScreen} = Plugins;
-const {Network} = Plugins;
-
+import 'capacitor-plugin-app-tracking-transparency'; // only if you want web support
+import {
+    AppTrackingTransparency,
+    AppTrackingStatusResponse,
+} from 'capacitor-plugin-app-tracking-transparency';
 const ADL_IAP_KEY = 'adl';
 const ADL_IAP_KEY_2_SESSIONS = 'twoSessionSub';
 const ADL_IAP_KEY_6_SESSIONS = 'sixSessions';
@@ -50,24 +49,29 @@ export class AppComponent implements OnDestroy, OnInit {
         this.initService.getCalibers();
         this.platform.ready().then(() => {
 
-            SplashScreen.hide().then(r => {
-                const options: NativeTransitionOptions = {
-                    direction: 'up',
-                    duration: 500,
-                    slowdownfactor: 3,
-                    slidePixels: 20,
-                    iosdelay: 100,
-                    androiddelay: 150,
-                    fixedPixelsTop: 0,
-                    fixedPixelsBottom: 60
-                };
+            if (this.platform.is('ios')) {
 
-                this.nativePageTransitions.slide(options)
-                    .then(() => {
-                    })
-                    .catch(() => {
-                    });
-            });
+
+            }
+
+            // SplashScreen.hide().then(r => {
+            //     const options: NativeTransitionOptions = {
+            //         direction: 'up',
+            //         duration: 500,
+            //         slowdownfactor: 3,
+            //         slidePixels: 20,
+            //         iosdelay: 100,
+            //         androiddelay: 150,
+            //         fixedPixelsTop: 0,
+            //         fixedPixelsBottom: 60
+            //     };
+            //
+            //     this.nativePageTransitions.slide(options)
+            //         .then(() => {
+            //         })
+            //         .catch(() => {
+            //         });
+            // });
             this.platform.backButton.subscribeWithPriority(9999, () => {
                 document.addEventListener('backbutton', (event) => {
                     event.preventDefault();
@@ -75,7 +79,6 @@ export class AppComponent implements OnDestroy, OnInit {
                 }, false);
 
             });
-
             if (this.platform.is('ios')) {
                 this.isiOS = true;
             }
@@ -95,6 +98,30 @@ export class AppComponent implements OnDestroy, OnInit {
         this.store.register({id: ADL_IAP_KEY, type: this.store.PAID_SUBSCRIPTION});
         this.store.register({id: ADL_IAP_KEY_2_SESSIONS, type: this.store.CONSUMABLE});
         this.store.register({id: ADL_IAP_KEY_6_SESSIONS, type: this.store.CONSUMABLE});
+
+
+        this.getStatus().then((data) =>{
+
+        })
+        this.requestPermission().then((data)=>{
+            console.log(data.status);
+        })
+
+
+    }
+
+    public async getStatus(): Promise<AppTrackingStatusResponse> {
+        const response = await AppTrackingTransparency.getStatus();
+        console.log(response);
+        // { status: 'authorized' } for example
+        return response;
+    }
+
+    public async requestPermission(): Promise<AppTrackingStatusResponse> {
+        const response = await AppTrackingTransparency.requestPermission();
+        console.log(response);
+        // { status: 'authorized' } for example
+        return response;
     }
 
     ngOnInit() {
@@ -108,6 +135,8 @@ export class AppComponent implements OnDestroy, OnInit {
             }
         });
     }
+
+
 
 
     async presentLoadingWithOptions() {
