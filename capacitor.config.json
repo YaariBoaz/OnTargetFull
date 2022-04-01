@@ -23,9 +23,12 @@
         "style": "dark"
       }
     }
+<<<<<<< HEAD
   },
   "server": {
     "url": "http://192.168.68.106:8100",
     "cleartext": true
+=======
+>>>>>>> parent of fee3893 (fix hits)
   }
 }

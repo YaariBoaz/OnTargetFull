@@ -230,9 +230,9 @@
 // write: function (device_id, service_uuid, characteristic_uuid, value, success, failure) {
 - (void)write:(CDVInvokedUrlCommand*)command {
     BLECommandContext *context = [self getData:command prop:CBCharacteristicPropertyWrite];
-    id message = [self tryDecodeBinaryData:[command argumentAtIndex:3]]; // This should be binary
+    NSData *message = [command argumentAtIndex:3]; // This is binary
     if (context) {
-        if (message != nil && [message isKindOfClass:[NSData class]]) {
+        if (message != nil) {
             CBPeripheral *peripheral = [context peripheral];
             if ([peripheral state] != CBPeripheralStateConnected) {
                 CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Peripheral is not connected"];
@@ -248,11 +248,6 @@
             [peripheral writeValue:message forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 
             // response is sent from didWriteValueForCharacteristic
-        } else if (message != nil) {
-            // #897: some alternative BLE plugins expect a string rather than array buffer, so this is a common misuse
-            CDVPluginResult *pluginResult = nil;
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"message was not ArrayBuffer"];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         } else {
             CDVPluginResult *pluginResult = nil;
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"message was null"];
@@ -266,10 +261,11 @@
     NSLog(@"writeWithoutResponse");
 
     BLECommandContext *context = [self getData:command prop:CBCharacteristicPropertyWriteWithoutResponse];
-    id message = [self tryDecodeBinaryData:[command argumentAtIndex:3]]; // This should be binary
+    NSData *message = [command argumentAtIndex:3]; // This is binary
+
     if (context) {
         CDVPluginResult *pluginResult = nil;
-        if (message != nil && [message isKindOfClass:[NSData class]]) {
+        if (message != nil) {
             CBPeripheral *peripheral = [context peripheral];
             if ([peripheral state] != CBPeripheralStateConnected) {
                 CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Peripheral is not connected"];
@@ -282,9 +278,6 @@
             [peripheral writeValue:message forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
 
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        } else if (message != nil) {
-            // #897: some alternative BLE plugins expect a string rather than array buffer, so this is a common misuse
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"message was not ArrayBuffer"];
         } else {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"message was null"];
         }
@@ -749,58 +742,30 @@
     NSString *stopNotificationCallbackId = [stopNotificationCallbacks objectForKey:key];
 
     CDVPluginResult *pluginResult = nil;
-    
-    if (stopNotificationCallbackId) {
-        if (!characteristic.isNotifying) {
-            // successfully stopped notifications
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-            [notificationCallbacks removeObjectForKey:key];
-        } else {
-            if (error) {
-                // error: something went wrong
-                NSLog(@"%@", error);
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
-            } else {
-                // error: still notifying
-                NSLog(@"Notifications failed to stop");
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Notifications failed to stop"];
-            }
-        }
 
+    if (!characteristic.isNotifying && stopNotificationCallbackId) {
+        if (error) {
+            NSLog(@"%@", error);
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
+        } else {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        }
         [self.commandDelegate sendPluginResult:pluginResult callbackId:stopNotificationCallbackId];
         [stopNotificationCallbacks removeObjectForKey:key];
+        [notificationCallbacks removeObjectForKey:key];
+        NSAssert(![startNotificationCallbacks objectForKey:key], @"%@ existed in both start and stop notification callback dicts!", key);
     }
-
-    if (startNotificationCallbackId) {
-        if (characteristic.isNotifying) {
-            // successfully started notifications
+    
+    if (characteristic.isNotifying && startNotificationCallbackId) {
+        if (error) {
+            NSLog(@"%@", error);
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:startNotificationCallbackId];
+            [startNotificationCallbacks removeObjectForKey:key];
+        } else {
             // notification start succeeded, move the callback to the value notifications dict
             [notificationCallbacks setObject:startNotificationCallbackId forKey:key];
             [startNotificationCallbacks removeObjectForKey:key];
-        } else {
-            if (error) {
-                // error: something went wrong
-                NSLog(@"%@", error);
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
-            } else {
-                // error: not notifying
-                NSLog(@"Notifications failed to start");
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Notifications failed to start"];
-            }
-
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:startNotificationCallbackId];
-            [startNotificationCallbacks removeObjectForKey:key];
-        }
-    }
-
-    if (!characteristic.isNotifying) {
-        // characteristic is not notifying
-        NSString *notificationCallbackId = [notificationCallbacks objectForKey:key];
-        if (notificationCallbackId) {
-            // error: characteristic no longer notifying
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Characteristic not notifying"];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:startNotificationCallbackId];
-            [notificationCallbacks removeObjectForKey:key];
         }
     }
 }
@@ -1105,16 +1070,6 @@
 
 - (BOOL) isFalsey:(NSString *)value {
     return value == nil || [value length] == 0 || [@"false" isEqualToString:[value lowercaseString]];
-}
-
-- (id) tryDecodeBinaryData:(id)value {
-    if (value != nil && [value isKindOfClass:[NSString class]]) {
-        NSData *decoded = [[NSData alloc] initWithBase64EncodedString:value options:0];
-        if (decoded != nil) {
-            return decoded;
-        }
-    }
-    return value;
 }
 
 @end

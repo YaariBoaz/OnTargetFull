@@ -3,13 +3,12 @@ import {ShootingService} from './shooting.service';
 import {Subject, Observable} from 'rxjs';
 import {ApiService, ZeroTableGetObject} from './api.service';
 import {InitService} from './init.service';
-import {StorageService} from './storage.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BalisticCalculatorService {
-    grouping;
+    grouping
     mNumShots = 0;
     mZeroHits = new Array<ZeroHitData>();
     uiZeroShots = new Array<ZeroHitData>();
@@ -20,10 +19,7 @@ export class BalisticCalculatorService {
     notifyZeroShot = new Subject();
     private sessionHits = [];
 
-    constructor(private shootingService: ShootingService,
-                private storageService: StorageService,
-                private apiService: ApiService,
-                private initService: InitService) {
+    constructor(private shootingService: ShootingService, private apiService: ApiService, private initService: InitService) {
         this.divHeight = this.initService.screenH;
         this.divWidth = this.initService.screenW;
         this.getZeroTableInit();
@@ -170,19 +166,16 @@ export class BalisticCalculatorService {
         return 1.905 * Math.sqrt(Math.pow((nominalStep / 2 - x), 2) + Math.pow((nominalStep / 2 - y), 2));
     }
 
-    calcPostions(x, y) {
-        const saveX = x;
-        const saveY = y;
-        const targetId = this.storageService.getItem('slectedTarget').name;
-        const targetType = this.getTargetType(targetId);
+    calcPostions(x, y, targetType) {
         let nominalStep;
         let n;
-        let xPos;
-        let yPos;
-        let is128 = false;
+
         if (targetType === TargetType.Type_64) {
-            xPos = 4.85714 * x - 38.85714;
-            yPos = 4.85714 * y - 38.85714;
+            nominalStep = 15;
+            n = 1;
+            x = 0.25 * x - n;
+            y = 0.25 * y - n;
+            y -= 0.5;
         } else if (targetType === TargetType.Type_16) {
             nominalStep = 7;
             n = 5;
@@ -190,76 +183,44 @@ export class BalisticCalculatorService {
             y = 0.25 * y - n;
             y -= 0.5;
             x -= 0.5;
-            xPos = x;
-            yPos = y;
-        } else { // 128
-            let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
-            disPointFromCenter128 = disPointFromCenter128 / 10;
-            // 7 is half the width of the ellipse representing the bullet hit on the UI
-            // we want to place the bullet in the middle of the cordination and not the left 0 position so we reduce 7
-            // x = (this.width / 490) * x - 7;
-            // y = (this.height / 490) * y;
+        } else // case of 128 target
+        {
+            if (targetType === TargetType.Type_128 &&
+                this.shootingService.chosenTarget === 'e128n2' ||
+                this.shootingService.chosenTarget === 'e128n4') {
 
-            if (targetId.toLowerCase().indexOf('cs') > -1) {
-                xPos = 0.7278 * x - 47.306;
-                yPos = 0.7278 * y - 47.306;
+                nominalStep = 8;
+                x = x / nominalStep;
+                y = y / nominalStep;
             }
-            if (targetId[0].toLowerCase() === 'c' && targetId[1].toLowerCase() !== 's' || targetId[0] === 'e') {
-                xPos = 0.5955 * x - 14.886;
-                yPos = 0.5955 * y - 14.886;
-                if (targetId[0] === 'e') {
-                    yPos = this.divWidth - yPos;
-                }
+            // else
+            {
+                const disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2)) / 10;
+                x = ((this.divWidth / 490) * x) - 7;
+                y = (this.divHeight / 490) * y;
+
+                const data128 = new ZeroHitData(x, y);
+                data128.DisFromCenter = disPointFromCenter128;
+                return data128;
             }
-            is128 = true;
         }
 
-        if (!is128) {
-            const w = this.divWidth;
-            const h = this.divHeight;
-            const xStep = w / nominalStep;
-            const yStep = h / nominalStep;
 
-            xPos = w - (xStep * x);
-            yPos = yStep * y;
+        const w = this.divWidth;
+        const h = this.divHeight;
+        const xStep = w / nominalStep;
+        const yStep = h / nominalStep;
 
-            xPos -= 2;
-            yPos -= 2;
-        }
+        let xPos = (xStep * x);
+        let yPos = yStep * y;
+
+
         const disPointFromCenter = 1.905 * Math.sqrt(Math.pow((nominalStep / 2 - x), 2) + Math.pow((nominalStep / 2 - y), 2));
+
+
         const data = new ZeroHitData(xPos, yPos);
         data.DisFromCenter = disPointFromCenter;
         return data;
-    }
-
-    getTargetType(chosenTarget: any): TargetType {
-        if (chosenTarget === '003' || chosenTarget === '004') {
-            return TargetType.Type_64;
-        }
-        if (chosenTarget.indexOf('eMar') > -1) {
-            this.initService.isGateway = false;
-            return TargetType.HitNoHit;
-        }
-        // tslint:disable-next-line:radix
-        if (chosenTarget.indexOf('c') > -1) {
-            return TargetType.Type_128;
-        } else if (chosenTarget.indexOf('b') > -1) {
-            return TargetType.Type_64;
-        } else if (chosenTarget.indexOf('a') > -1) {
-            return TargetType.Type_16;
-        }
-        // tslint:disable-next-line:radix
-        const num = parseInt(chosenTarget.split('e')[1].split('n')[0]);
-        switch (num) {
-            case 16:
-                return TargetType.Type_16;
-            case 64:
-                return TargetType.Type_64;
-            case 128:
-                return TargetType.Type_128;
-            default:
-                return TargetType.Type_64;
-        }
     }
 
     calcNapar(doDraw, targetType) {
@@ -268,23 +229,22 @@ export class BalisticCalculatorService {
         const range = this.shootingService.selectedDrill.range;
         let path2CM = 0.6; // this is a table that you need to build in startup  m_zeroTable[m_DrillInfo.Range].PathCM;
         path2CM = this.shootingService.zeroTable[range].pathCM;
+        path2CM = 3;
+        let val = 36 - path2CM * 2;
         let dataNapar;
         const targertName = JSON.parse(localStorage.getItem('slectedTarget')).name;
-        let val;
+
         if (targetType === TargetType.Type_128) {
-             val = (this.divWidth / 2) + ((this.divWidth / 49) * path2CM);
             if (targertName === 'e128n2' || targertName === 'e128n4')// (target is 128 and the id is e128n2 or e128n4)
             {
-                dataNapar = this.calcPostions(this.divWidth / 2, val);
+                dataNapar = this.calcPostions(245 / 7.55, val, targetType);
             } else {
                 const middleYPointInCM = 24.5;
                 val = (middleYPointInCM - path2CM) * 10;
-                const data = new ZeroHitData(this.divWidth / 2, val);
-                dataNapar = data;
+                dataNapar = this.calcPostions(245, val, targetType);
             }
         } else {
-            val = (this.divWidth / 2) + ((this.divWidth / 30) * path2CM);
-            dataNapar = this.calcPostions(this.divWidth / 2, val);
+            dataNapar = this.calcPostions(32, val, targetType);
         }
         return {
             napar: dataNapar,
@@ -451,7 +411,7 @@ export class BalisticCalculatorService {
     }
 
     updateZeroTableAndTargetUI(x, y, isBarhan, disFromCenter) {
-        const data = this.calcPostions(x, y);
+        const data = this.calcPostions(x, y, this.targetType);
         // m_DrillInfo.RawHitsLocation.Add(new Hit(x, y));
         // m_DrillInfo.HitsWithViewAdjustments.Add(new Hit(data.XPosition, data.YPositon));
         const uiHitData = new ZeroHitData(data.x, data.y);
@@ -474,6 +434,7 @@ export class BalisticCalculatorService {
         // new hit arrvies
         // determent which target is this (16,64,128)
         this.sessionHits = hits;
+        debugger
         try {
             this.mNumShots++;
             const timesStrings = {}; // get splittime and total time for the hits
@@ -532,7 +493,7 @@ export class BalisticCalculatorService {
                 status = 'Scattered';
             } else if (napamToCalcClicks.grouping < 10 && napamToCalcClicks.grouping > 5) {
                 status = 'Good Grouping';
-            } else {
+            }else{
                 status = 'Excellent';
             }
             clicks.status = status;
@@ -541,7 +502,7 @@ export class BalisticCalculatorService {
             clicks.napamToView = napamToView.hit;
             clicks.naparView = naparView;
             clicks.napar2Napam = napamToView.disGroup;
-            this.grouping = clicks.napar2Napam / 2.54;
+            this.grouping = clicks.napar2Napam / 2.54
             return clicks;
             if (this.mNumShots === this.shootingService.numberOfBullersPerDrill) {
                 const zeroStatus = this.getZeroStatus(clicks.napar2Napam, napamToCalcClicks.grouping);
@@ -633,10 +594,10 @@ class Hit {
     }
 }
 
-export enum TargetType {
+enum TargetType {
     Type_128,
     Type_64,
     Type_16,
-    Type_PUP,
-    HitNoHit
+    Type_PUP
 }
+

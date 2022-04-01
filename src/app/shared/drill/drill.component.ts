@@ -156,13 +156,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         this.hitNohitService.setDrill(this.drill);
         this.hitNohitService.initStats();
         this.setTimeElapse();
-    }
-
-
-    ngAfterViewInit(): void {
-    }
-
-    ngOnInit() {
         this.isZero = this.shootingService.getisZero();
         this.balisticCalculatorService.resetStats();
         if (this.isZero) {
@@ -177,7 +170,13 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
         } else {
             this.madadToUse = this.targetW - 150 + 10;
         }
+    }
 
+
+    ngAfterViewInit(): void {
+    }
+
+    ngOnInit() {
         this.profile = this.userService.getUser();
         this.removeTabs();
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);

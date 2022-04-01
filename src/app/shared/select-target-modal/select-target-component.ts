@@ -9,7 +9,7 @@ import {HitNohitService} from '../drill/hit-nohit.service';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {InitService} from '../services/init.service';
-import {BLE} from '@awesome-cordova-plugins/ble/ngx';
+import {BleClient} from '@capacitor-community/bluetooth-le';
 import {GatewayService} from '../services/gateway.service';
 import {ErrorModalComponent} from '../popups/error-modal/error-modal.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -50,7 +50,7 @@ export class SelectTargetComponent implements OnInit {
     personalChosen = false;
     isPersonalTargetAround = false;
     private currentTargetId: string;
-    isConnected: boolean;
+    private isConnected: boolean;
     myTargetsForKeepAlive = [];
     isiOS;
     targets = [];
@@ -62,7 +62,6 @@ export class SelectTargetComponent implements OnInit {
         private shootingService: ShootingService,
         public loadingController: LoadingController,
         private hitNohitService: HitNohitService,
-        private ble: BLE,
         public dialog: MatDialog,
         private gatewayService: GatewayService,
         private androidPermissions: AndroidPermissions,
@@ -232,6 +231,7 @@ export class SelectTargetComponent implements OnInit {
     }
 
     reScan() {
+        this.bleService.resetConnection();
         this.isScanning = true;
         this.initGatewayScan();
     }
@@ -291,7 +291,11 @@ export class SelectTargetComponent implements OnInit {
     initGatewayScan() {
         this.gatewayService.targets = [];
         this.myTargets = [];
-        this.ble.scan([], 5).subscribe(device => this.onDeviceDiscoveredInitialScan(device), error => this.scanErrorInitialScan(error));
+
+        BleClient.requestLEScan(null, result => {
+            this.onDeviceDiscoveredInitialScan(result);
+        });
+
         setTimeout(() => {
             this.isScanning = false;
             if (!this.targetNotSelected) {
@@ -301,20 +305,12 @@ export class SelectTargetComponent implements OnInit {
     }
 
     scanErrorInitialScan(error: any) {
+        if (error.indexOf('Location ') > -1) {
+            this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.LOCATION]).then(r => {
 
-        this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.BLUETOOTH_SCAN]).then(r => {
-            console.log(r);
-        });
-        this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.BLUETOOTH_CONNECT]).then(r => {
-            console.log(r);
-        });
-        this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION]).then(r => {
-            console.log(r);
-        });
-        this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION]).then(r => {
-            console.log(r);
-        });
-
+            });
+        }
+        console.error('BLE SCAN ERROR', error);
     }
 
     onDeviceDiscoveredInitialScan(device: any) {
@@ -334,12 +330,9 @@ export class SelectTargetComponent implements OnInit {
                 this.bleService.gateways.push(device.id);
                 this.bleService.isGateway = true;
                 this.initService.isGateway = true;
-                this.isConnected = true;
-
-                debugger
                 this.bleService.currentTargetId = device.id;
                 console.log('UUUID OF GATEWAY IS: ', device.id);
-                this.bleService.connect(device.id);
+                this.bleService.connect(device.uuid);
                 console.log('DEVICE OBJECT ', device);
                 console.log('UUUID OF GATEWAY I WANTED : ', this.bleService.currentTargetId);
 
@@ -356,10 +349,10 @@ export class SelectTargetComponent implements OnInit {
 
     // tslint:disable-next-line:no-shadowed-variable
     handleReadForTargetName(id, service, characteristic) {
-        this.ble.startNotification(id, service, characteristic).subscribe((data) => {
+        BleClient.startNotifications(id, service, characteristic, (data) => {
             const dec = new TextDecoder();
             const enc = new TextEncoder();
-            const buffer = new Uint8Array(data);
+            const buffer = new Uint8Array(data.buffer);
             this.parseGatewayMessage(buffer, id);
         });
     }
@@ -397,7 +390,7 @@ export class SelectTargetComponent implements OnInit {
 
 
     distory() {
-        this.ble.disconnect(this.currentTargetId).then(() => {
+        BleClient.disconnect(this.currentTargetId).then(() => {
             console.log('Called Disconnect');
         });
     }

@@ -76,7 +76,6 @@ export class InitService {
         this.apiService.getCalibers().subscribe(calibers => {
             this.storageService.setItem('caliberList', calibers);
             this.shootingService.calibers = calibers;
-            debugger;
         });
     }
 

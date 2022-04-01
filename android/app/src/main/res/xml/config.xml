@@ -52,10 +52,6 @@
     <param name="android-package" value="org.apache.cordova.device.Device"/>
   </feature>
 
-  <feature name="Idfa">
-    <param name="android-package" value="by.chemerisuk.cordova.advertising.IdfaPlugin"/>
-  </feature>
-
   <feature name="StatusBar">
     <param name="android-package" value="org.apache.cordova.statusbar.StatusBar"/>
     <param name="onload" value="true"/>

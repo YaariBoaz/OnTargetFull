@@ -3,6 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
+import {BluetoothSerial} from '@ionic-native/bluetooth-serial/ngx';
+import {BluetoothLE} from '@ionic-native/bluetooth-le/ngx';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -74,19 +76,19 @@ import {Camera} from '@capacitor/camera';
         SocialSharing,
         UserService,
         BLE,
+        BluetoothSerial,
         GatewayService,
         BleService,
         Crop,
+        BluetoothLE,
         PurchaseService,
         InAppPurchase2
     ],
-
     exports: [MaterialModule],
     bootstrap: [AppComponent]
 })
 export class AppModule {
 }
-
 
 
 

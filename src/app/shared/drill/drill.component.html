@@ -170,34 +170,34 @@
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished"
                                  src="assets/targets/64/e64_score_finish.png">
                         </div>
-                        <div *ngIf="drill?.drillType == drillTypeEnum.Zero" [style.width.px]="madadToUse"
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Zero" [style.width.px]="madadToUse"
                              [style.height.px]="madadToUse" style="background-color: white">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
                                  src="assets/targets/64/e64_Zero.png">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished"
                                  src="assets/targets/64/e64_Zero_finish.png">
                         </div>
-                        <div *ngIf="drill?.drillType == drillTypeEnum.Hostage">
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Hostage">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
                                  src="assets/targets/64/Hostage_png_e64.png">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished"
                                  src="assets/targets/64/Hostage_png_e64_finish.png">
                         </div>
                     </div>
-                    <div class="128" *ngIf="targetType == targetTypeEnum.Type_128">
-                        <div *ngIf="drill?.drillType == drillTypeEnum.Regular">
+                    <div class="128" *ngIf="targetType === targetTypeEnum.Type_128">
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Regular">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
                                  src="assets/targets/128/e128_score.png">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished"
                                  src="assets/targets/128/e128_score_finish.png">
                         </div>
-                        <div *ngIf="drill?.drillType == drillTypeEnum.Zero">
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Zero">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
                                  src="assets/targets/128/e128_zero.png">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished"
                                  src="assets/targets/128/e128_zero.png">
                         </div>
-                        <div *ngIf="drill?.drillType == drillTypeEnum.Hostage">
+                        <div *ngIf="drill?.drillType === drillTypeEnum.Hostage">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="!drillIsFinished"
                                  src="assets/targets/128/e128_Hostage.png">
                             <img [style.width.px]="madadToUse" [style.height.px]="madadToUse" *ngIf="drillIsFinished"
@@ -210,12 +210,12 @@
                          [style.top.px]=shot.y [style.left.px]=shot.x>
                         {{i + 1}}
                     </div>
-                    <div class="shotsThatAreNotCounted" *ngIf="drill?.drillType == drillTypeEnum.Zero">
-                        <div  class="shotsThatAreNotCountedShot" *ngFor="let shot of shotsThatAreNotCounted; let i = index" style="position: absolute;"
+                    <ng-template *ngIf="drill?.drillType === drillTypeEnum.Zero">
+                        <div *ngFor="let shot of shotsThatAreNotCounted; let i = index" style="position: absolute;"
                              [class.napar]="shot.isNapar" [class.napam]="shot.isNapam"
                              [style.top.px]=shot.y [style.left.px]=shot.x>
                         </div>
-                    </div>
+                    </ng-template>
                 </div>
             </div>
             <div class="welcome-message" *ngIf="!showResults && !showCounter">
