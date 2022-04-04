@@ -113,16 +113,19 @@ export class GatewayService {
         this.stats.forEach(item => {
             splits.push(item.pageData.splitTime);
         });
-        // const recommendation = this.shootingService.getRecommendation(this.shots, {
-        //     X: parentImageWidth / 2,
-        //     Y: parentImageHeight / 2
-        // });
+
 
         let cId = null;
         if (this.shootingService.isChallenge) {
             cId = this.shootingService.challengeId;
             cId = this.shootingService.selectedDrill.challngeId;
         }
+
+        const hitsForServer = [];
+        this.hits.forEach(item => {
+            hitsForServer.push({x: item.xPos, y: item.yPos});
+        })
+
         const drill: DrillInfo = {
             challngeId: cId,
             sessionId: this.userService.getUserId(),
@@ -157,7 +160,7 @@ export class GatewayService {
             b2Drop: 0,
             exposeTime: 0,
             hideTime: 0,
-            rawHitsLocation: this.hits,
+            rawHitsLocation: hitsForServer,
             userName: this.userService.getUser().name,
             status: DrillStatus.Done,
             hitsToPass: 0,
@@ -351,6 +354,7 @@ export class GatewayService {
 
     // If gateway received a shot message
     handleShot_MSG_NEW(x, y) {
+
         const saveX = x;
         const saveY = y;
         const targetId = this.storageService.getItem('slectedTarget').name;
@@ -359,10 +363,9 @@ export class GatewayService {
         let n;
         let xPos;
         let yPos;
-        let is128 = false;
         if (targetType === TargetType.Type_64) {
-            xPos = 4.85714 * x - 38.85714;
-            yPos = 4.85714 * y - 38.85714;
+            xPos = Math.abs((3.75 * x - 30) - 210);
+            yPos = (3.75 * y - 30);
         } else if (targetType === TargetType.Type_16) {
             nominalStep = 7;
             n = 5;
@@ -372,45 +375,19 @@ export class GatewayService {
             x -= 0.5;
             xPos = x;
             yPos = y;
-        } else { // 128     
-            debugger;
+        } else { // 128
             let disPointFromCenter128 = Math.sqrt(Math.pow((245 - x), 2) + Math.pow((245 - y), 2));
             disPointFromCenter128 = disPointFromCenter128 / 10;
-            // 7 is half the width of the ellipse representing the bullet hit on the UI
-            // we want to place the bullet in the middle of the cordination and not the left 0 position so we reduce 7
-            // x = (this.width / 490) * x - 7;
-            // y = (this.height / 490) * y;
-
             if (targetId.toLowerCase().indexOf('cs') > -1) {
-                xPos = 0.7278 * x - 47.306;
-                yPos = 0.7278 * y - 47.306;
-            }
-            if (targetId[0].toLowerCase() === 'c' && targetId[1].toLowerCase() !== 's' || targetId[0] === 'e') {
+                // xPos = 0.7278 * x - 47.306;
+                xPos = 0.58333 * x - 37.91667
+                //  yPos = 0.7278 * y - 47.306;
+                yPos = 0.58333 * y - 37.91667
+            } else {
                 xPos = 0.5955 * x - 14.886;
                 yPos = 0.5955 * y - 14.886;
-                if (targetId[0] === 'e') {
-                    yPos = this.width - yPos;
-                }
             }
-            // yPos = y;
-            this.hits.push({x, y});
-            is128 = true;
         }
-
-        if (!is128) {
-            const w = this.width;
-            const h = this.height;
-            const xStep = w / nominalStep;
-            const yStep = h / nominalStep;
-
-            xPos = w - (xStep * x);
-            yPos = yStep * y;
-
-            xPos -= 2;
-            yPos -= 2;
-            this.hits.push({x: xPos, y: yPos});
-        }
-
         let zeroData = {} as any;
         zeroData = this.ballisticCalculatorService.updateShot(saveX, saveY, this.hits);
         if (this.shootingService.getisZero()) {
@@ -425,6 +402,7 @@ export class GatewayService {
 
         const orb = this.calcOrbital(disPointFromCenter);
         this.pageData.counter++;
+        this.hits.push({xPos, yPos});
         if (this.pageData.counter > this.shootingService.numberOfBullersPerDrill) {
             console.log('Shot After Drill Finished - Ignoring It');
 
@@ -576,6 +554,7 @@ export class GatewayService {
         return Math.round((avg + Number.EPSILON) * 100) / 100;
     }
 
+
     // generates objects for server.
     getShotItems() {
         const shotItems: ShotItem[] = new Array();
@@ -638,7 +617,7 @@ export class GatewayService {
     }
 
     getTargetType(chosenTarget: any): TargetType {
-        if (chosenTarget === '003' || chosenTarget === '004') {
+        if (chosenTarget.indexOf('003') > -1 || chosenTarget === '004') {
             return TargetType.Type_64;
         }
         if (chosenTarget.indexOf('eMar') > -1) {

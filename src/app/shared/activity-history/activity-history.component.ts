@@ -50,6 +50,7 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
     dayName = this.days[this.d.getDay()];
 
     madadToUse;
+
     constructor(private router: Router,
                 private networkService: NetworkService,
                 private initService: InitService,
@@ -75,9 +76,9 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
         this.targetH = this.initService.screenH;
 
         if (this.targetW > this.targetH) {
-            this.madadToUse = this.targetH - 150
+            this.madadToUse = 220;
         } else {
-            this.madadToUse = this.targetW - 150;
+            this.madadToUse = 220;
         }
     }
 
@@ -159,7 +160,7 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
             return 64;
         } else if (targetId.toLowerCase().startsWith('e128') || targetId.toLowerCase().startsWith('cs')) {
             return 128;
-        }else{
+        } else {
             return 16;
         }
     }
