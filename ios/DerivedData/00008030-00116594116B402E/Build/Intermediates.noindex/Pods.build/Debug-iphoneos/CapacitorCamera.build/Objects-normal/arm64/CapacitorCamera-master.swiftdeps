@@ -1,0 +1,9 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "b2d5b1de632e6c2a628d71e579efcf3bc7cb17597065a2af605b486c2153ef83"
+build_start_time: [1649140565, 517057895]
+build_end_time: [1649140566, 356470108]
+inputs:
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/@capacitor/camera/ios/Plugin/CameraExtensions.swift": [1648976999, 266999006]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/@capacitor/camera/ios/Plugin/CameraPlugin.swift": [1648976999, 266999006]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/@capacitor/camera/ios/Plugin/CameraTypes.swift": [1648976999, 266999006]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/@capacitor/camera/ios/Plugin/ImageSaver.swift": [1648976999, 266999006]

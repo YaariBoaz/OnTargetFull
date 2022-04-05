@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "767f63372fe52fd3543019600977c72bda54970d2b925a80458b38c6b0188f40"
+build_start_time: [1649140567, 766119956]
+build_end_time: [1649140568, 73475837]
+inputs:
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesHybridCommon/ios/PurchasesHybridCommon/PurchasesHybridCommon/PurchasesHybridCommon.swift"
+  : [1648805174, 656086444]

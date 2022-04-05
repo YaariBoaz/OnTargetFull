@@ -1,0 +1,9 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "b2d5b1de632e6c2a628d71e579efcf3bc7cb17597065a2af605b486c2153ef83"
+build_start_time: [1649140565, 518049955]
+build_end_time: [1649140565, 955477952]
+inputs:
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/capacitor-plugin-app-tracking-transparency/ios/Plugin/AppTrackingTransparency.swift"
+  : [1648977677, 806404352]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/capacitor-plugin-app-tracking-transparency/ios/Plugin/AppTrackingTransparencyPlugin.swift"
+  : [1648977677, 809235095]

@@ -1,0 +1,10 @@
+framework module CapacitorPluginAppTrackingTransparency {
+  umbrella header "CapacitorPluginAppTrackingTransparency-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module CapacitorPluginAppTrackingTransparency.__Swift {
+    exclude header "CapacitorPluginAppTrackingTransparency-Swift.h"
+}

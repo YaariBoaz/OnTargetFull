@@ -1,0 +1,11 @@
+framework module CordovaPluginsStatic {
+  umbrella header "CordovaPluginsStatic-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module CordovaPluginsStatic.Swift {
+    header "CordovaPluginsStatic-Swift.h"
+    requires objc
+}

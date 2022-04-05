@@ -1,0 +1,10 @@
+framework module CapacitorCommunityBluetoothLe {
+  umbrella header "CapacitorCommunityBluetoothLe-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module CapacitorCommunityBluetoothLe.__Swift {
+    exclude header "CapacitorCommunityBluetoothLe-Swift.h"
+}

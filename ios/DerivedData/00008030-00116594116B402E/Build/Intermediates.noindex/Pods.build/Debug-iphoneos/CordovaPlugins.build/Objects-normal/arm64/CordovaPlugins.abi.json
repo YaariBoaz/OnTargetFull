@@ -1,0 +1,630 @@
+{
+  "kind": "Root",
+  "name": "TopLevel",
+  "printedName": "TopLevel",
+  "children": [
+    {
+      "kind": "Import",
+      "name": "Cordova",
+      "printedName": "Cordova",
+      "declKind": "Import",
+      "moduleName": "CordovaPlugins"
+    },
+    {
+      "kind": "Import",
+      "name": "QuickLook",
+      "printedName": "QuickLook",
+      "declKind": "Import",
+      "moduleName": "CordovaPlugins"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "PreviewAnyFile",
+      "printedName": "PreviewAnyFile",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "previewItem",
+          "printedName": "previewItem",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "NSURL",
+              "printedName": "Foundation.NSURL",
+              "usr": "c:objc(cs)NSURL"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:14CordovaPlugins14PreviewAnyFileC11previewItemSo5NSURLCvp",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC11previewItemSo5NSURLCvp",
+          "moduleName": "CordovaPlugins",
+          "isOpen": true,
+          "declAttributes": [
+            "Lazy"
+          ],
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "NSURL",
+                  "printedName": "Foundation.NSURL",
+                  "usr": "c:objc(cs)NSURL"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:14CordovaPlugins14PreviewAnyFileC11previewItemSo5NSURLCvg",
+              "mangledName": "$s14CordovaPlugins14PreviewAnyFileC11previewItemSo5NSURLCvg",
+              "moduleName": "CordovaPlugins",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "NSURL",
+                  "printedName": "Foundation.NSURL",
+                  "usr": "c:objc(cs)NSURL"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:14CordovaPlugins14PreviewAnyFileC11previewItemSo5NSURLCvs",
+              "mangledName": "$s14CordovaPlugins14PreviewAnyFileC11previewItemSo5NSURLCvs",
+              "moduleName": "CordovaPlugins",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:14CordovaPlugins14PreviewAnyFileC11previewItemSo5NSURLCvM",
+              "mangledName": "$s14CordovaPlugins14PreviewAnyFileC11previewItemSo5NSURLCvM",
+              "moduleName": "CordovaPlugins",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "$__lazy_storage_$_previewItem",
+          "printedName": "$__lazy_storage_$_previewItem",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Foundation.NSURL?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "NSURL",
+                  "printedName": "Foundation.NSURL",
+                  "usr": "c:objc(cs)NSURL"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:14CordovaPlugins14PreviewAnyFileC29$__lazy_storage_$_previewItem33_B9877E9709955231E697194A8BADB27ELLSo5NSURLCSgvp",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC29$__lazy_storage_$_previewItem33_B9877E9709955231E697194A8BADB27ELLSo5NSURLCSgvp",
+          "moduleName": "CordovaPlugins",
+          "implicit": true,
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "Final"
+          ],
+          "fixedbinaryorder": 0,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "tempCommandId",
+          "printedName": "tempCommandId",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:14CordovaPlugins14PreviewAnyFileC13tempCommandIdSSvp",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC13tempCommandIdSSvp",
+          "moduleName": "CordovaPlugins",
+          "isOpen": true,
+          "declAttributes": [
+            "Lazy"
+          ],
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:14CordovaPlugins14PreviewAnyFileC13tempCommandIdSSvg",
+              "mangledName": "$s14CordovaPlugins14PreviewAnyFileC13tempCommandIdSSvg",
+              "moduleName": "CordovaPlugins",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:14CordovaPlugins14PreviewAnyFileC13tempCommandIdSSvs",
+              "mangledName": "$s14CordovaPlugins14PreviewAnyFileC13tempCommandIdSSvs",
+              "moduleName": "CordovaPlugins",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:14CordovaPlugins14PreviewAnyFileC13tempCommandIdSSvM",
+              "mangledName": "$s14CordovaPlugins14PreviewAnyFileC13tempCommandIdSSvM",
+              "moduleName": "CordovaPlugins",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "$__lazy_storage_$_tempCommandId",
+          "printedName": "$__lazy_storage_$_tempCommandId",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:14CordovaPlugins14PreviewAnyFileC31$__lazy_storage_$_tempCommandId33_B9877E9709955231E697194A8BADB27ELLSSSgvp",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC31$__lazy_storage_$_tempCommandId33_B9877E9709955231E697194A8BADB27ELLSSSgvp",
+          "moduleName": "CordovaPlugins",
+          "implicit": true,
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "Final"
+          ],
+          "fixedbinaryorder": 1,
+          "hasStorage": true
+        },
+        {
+          "kind": "Function",
+          "name": "preview",
+          "printedName": "preview(_command:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CDVInvokedUrlCommand",
+              "printedName": "Cordova.CDVInvokedUrlCommand",
+              "usr": "c:objc(cs)CDVInvokedUrlCommand"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CordovaPlugins@objc(cs)HWPPreviewAnyFile(im)preview:",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC7preview8_commandySo20CDVInvokedUrlCommandC_tF",
+          "moduleName": "CordovaPlugins",
+          "isOpen": true,
+          "objc_name": "preview:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "downloadfile",
+          "printedName": "downloadfile(withName:completion:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Foundation.URL?, Foundation.NSError?) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Foundation.URL?, Foundation.NSError?)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Optional",
+                      "printedName": "Foundation.URL?",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "URL",
+                          "printedName": "Foundation.URL",
+                          "usr": "s:10Foundation3URLV"
+                        }
+                      ],
+                      "usr": "s:Sq"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Optional",
+                      "printedName": "Foundation.NSError?",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "NSError",
+                          "printedName": "Foundation.NSError",
+                          "usr": "c:objc(cs)NSError"
+                        }
+                      ],
+                      "usr": "s:Sq"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:14CordovaPlugins14PreviewAnyFileC12downloadfile8withName10completionySS_ySb_10Foundation3URLVSgSo7NSErrorCSgtctF",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC12downloadfile8withName10completionySS_ySb_10Foundation3URLVSgSo7NSErrorCSgtctF",
+          "moduleName": "CordovaPlugins",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "dismissPreviewCallback",
+          "printedName": "dismissPreviewCallback()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:14CordovaPlugins14PreviewAnyFileC07dismissC8CallbackyyF",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC07dismissC8CallbackyyF",
+          "moduleName": "CordovaPlugins",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(webViewEngine:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CordovaPlugins.PreviewAnyFile?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PreviewAnyFile",
+                  "printedName": "CordovaPlugins.PreviewAnyFile",
+                  "usr": "c:@M@CordovaPlugins@objc(cs)HWPPreviewAnyFile"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "ImplicitlyUnwrappedOptional",
+              "printedName": "WebKit.WKWebView?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "WKWebView",
+                  "printedName": "WebKit.WKWebView",
+                  "usr": "c:objc(cs)WKWebView"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CordovaPlugins@objc(cs)HWPPreviewAnyFile(im)initWithWebViewEngine:",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC13webViewEngineACSgSo05WKWebG0CSg_tcfc",
+          "moduleName": "CordovaPlugins",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "initWithWebViewEngine:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "PreviewAnyFile",
+              "printedName": "CordovaPlugins.PreviewAnyFile",
+              "usr": "c:@M@CordovaPlugins@objc(cs)HWPPreviewAnyFile"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CordovaPlugins@objc(cs)HWPPreviewAnyFile(im)init",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileCACycfc",
+          "moduleName": "CordovaPlugins",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "init",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Function",
+          "name": "numberOfPreviewItems",
+          "printedName": "numberOfPreviewItems(in:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "QLPreviewController",
+              "printedName": "QuickLook.QLPreviewController",
+              "usr": "c:objc(cs)QLPreviewController"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@CM@CordovaPlugins@objc(cs)HWPPreviewAnyFile(im)numberOfPreviewItemsInPreviewController:",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC08numberOfC5Items2inSiSo19QLPreviewControllerC_tF",
+          "moduleName": "CordovaPlugins",
+          "isOpen": true,
+          "objc_name": "numberOfPreviewItemsInPreviewController:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "previewController",
+          "printedName": "previewController(_:previewItemAt:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "QLPreviewItem",
+              "printedName": "QuickLook.QLPreviewItem",
+              "usr": "c:objc(pl)QLPreviewItem"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "QLPreviewController",
+              "printedName": "QuickLook.QLPreviewController",
+              "usr": "c:objc(cs)QLPreviewController"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@CM@CordovaPlugins@objc(cs)HWPPreviewAnyFile(im)previewController:previewItemAtIndex:",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC17previewController_0F6ItemAtSo09QLPreviewH0_pSo0jG0C_SitF",
+          "moduleName": "CordovaPlugins",
+          "isOpen": true,
+          "objc_name": "previewController:previewItemAtIndex:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "previewControllerWillDismiss",
+          "printedName": "previewControllerWillDismiss(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "QLPreviewController",
+              "printedName": "QuickLook.QLPreviewController",
+              "usr": "c:objc(cs)QLPreviewController"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@CM@CordovaPlugins@objc(cs)HWPPreviewAnyFile(im)previewControllerWillDismiss:",
+          "mangledName": "$s14CordovaPlugins14PreviewAnyFileC28previewControllerWillDismissyySo09QLPreviewG0CF",
+          "moduleName": "CordovaPlugins",
+          "isOpen": true,
+          "objc_name": "previewControllerWillDismiss:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:@M@CordovaPlugins@objc(cs)HWPPreviewAnyFile",
+      "mangledName": "$s14CordovaPlugins14PreviewAnyFileC",
+      "moduleName": "CordovaPlugins",
+      "isOpen": true,
+      "objc_name": "HWPPreviewAnyFile",
+      "declAttributes": [
+        "ObjC",
+        "RawDocComment"
+      ],
+      "superclassUsr": "c:objc(cs)CDVPlugin",
+      "inheritsConvenienceInitializers": true,
+      "superclassNames": [
+        "Cordova.CDVPlugin",
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    }
+  ],
+  "json_format_version": 6
+}

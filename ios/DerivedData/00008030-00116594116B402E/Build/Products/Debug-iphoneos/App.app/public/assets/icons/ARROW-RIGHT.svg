@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27.656" height="35" viewBox="0 0 27.656 35" style="fill:#fff">
+    <defs>
+        <filter id="wit88vyz5a" width="27.656" height="35" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur" stdDeviation="3"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g filter="url(#wit88vyz5a)">
+        <path fill="rgba(0,0,0,0.6)" fill-rule="evenodd" d="M713.226 1174.787a.721.721 0 0 1-1 0 .69.69 0 0 1 0-.988l7.554-7.438-7.551-7.18a.686.686 0 0 1 0-.984.712.712 0 0 1 1 0l8.441 8.164z" transform="translate(-703.01 -1151.99)"/>
+    </g>
+</svg>

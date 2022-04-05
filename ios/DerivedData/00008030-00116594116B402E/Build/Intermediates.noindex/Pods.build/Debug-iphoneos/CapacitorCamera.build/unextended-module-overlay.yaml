@@ -1,0 +1,14 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/DerivedData/00008030-00116594116B402E/Build/Products/Debug-iphoneos/CapacitorCamera/CapacitorCamera.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/DerivedData/00008030-00116594116B402E/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/CapacitorCamera.build/unextended-module.modulemap",
+    }]
+  }]
+}

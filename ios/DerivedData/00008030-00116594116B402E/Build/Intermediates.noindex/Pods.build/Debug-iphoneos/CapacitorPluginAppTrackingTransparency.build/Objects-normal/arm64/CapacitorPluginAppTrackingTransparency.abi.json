@@ -1,0 +1,418 @@
+{
+  "kind": "Root",
+  "name": "TopLevel",
+  "printedName": "TopLevel",
+  "children": [
+    {
+      "kind": "Import",
+      "name": "Foundation",
+      "printedName": "Foundation",
+      "declKind": "Import",
+      "moduleName": "CapacitorPluginAppTrackingTransparency"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "AppTrackingTransparency",
+      "printedName": "AppTrackingTransparency",
+      "children": [
+        {
+          "kind": "Function",
+          "name": "getStatus",
+          "printedName": "getStatus(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparency(im)getStatus:",
+          "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdE0C9getStatusyS2SF",
+          "moduleName": "CapacitorPluginAppTrackingTransparency",
+          "isOpen": true,
+          "declAttributes": [
+            "AccessControl",
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "requestPermission",
+          "printedName": "requestPermission(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparency(im)requestPermission:",
+          "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdE0C17requestPermissionyS2SF",
+          "moduleName": "CapacitorPluginAppTrackingTransparency",
+          "isOpen": true,
+          "declAttributes": [
+            "AccessControl",
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "AppTrackingTransparency",
+              "printedName": "CapacitorPluginAppTrackingTransparency.AppTrackingTransparency",
+              "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparency"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparency(im)init",
+          "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdE0CACycfc",
+          "moduleName": "CapacitorPluginAppTrackingTransparency",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "init",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparency",
+      "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdE0C",
+      "moduleName": "CapacitorPluginAppTrackingTransparency",
+      "isOpen": true,
+      "declAttributes": [
+        "AccessControl",
+        "ObjC"
+      ],
+      "superclassUsr": "c:objc(cs)NSObject",
+      "inheritsConvenienceInitializers": true,
+      "superclassNames": [
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Foundation",
+      "printedName": "Foundation",
+      "declKind": "Import",
+      "moduleName": "CapacitorPluginAppTrackingTransparency"
+    },
+    {
+      "kind": "Import",
+      "name": "Capacitor",
+      "printedName": "Capacitor",
+      "declKind": "Import",
+      "moduleName": "CapacitorPluginAppTrackingTransparency"
+    },
+    {
+      "kind": "Import",
+      "name": "AppTrackingTransparency",
+      "printedName": "AppTrackingTransparency",
+      "declKind": "Import",
+      "moduleName": "CapacitorPluginAppTrackingTransparency"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "AppTrackingTransparencyPlugin",
+      "printedName": "AppTrackingTransparencyPlugin",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "implementation",
+          "printedName": "implementation",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "AppTrackingTransparency",
+              "printedName": "CapacitorPluginAppTrackingTransparency.AppTrackingTransparency",
+              "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparency"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:38CapacitorPluginAppTrackingTransparency0cdeB0C14implementation33_0D5735E0ACC831C3DF1212CC87EAAFE8LLAA0cdE0Cvp",
+          "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdeB0C14implementation33_0D5735E0ACC831C3DF1212CC87EAAFE8LLAA0cdE0Cvp",
+          "moduleName": "CapacitorPluginAppTrackingTransparency",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "Final",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 0,
+          "isLet": true,
+          "hasStorage": true
+        },
+        {
+          "kind": "Function",
+          "name": "getStatus",
+          "printedName": "getStatus(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparencyPlugin(im)getStatus:",
+          "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdeB0C9getStatusyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorPluginAppTrackingTransparency",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "requestPermission",
+          "printedName": "requestPermission(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparencyPlugin(im)requestPermission:",
+          "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdeB0C17requestPermissionyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorPluginAppTrackingTransparency",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(bridge:pluginId:pluginName:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "AppTrackingTransparencyPlugin",
+              "printedName": "CapacitorPluginAppTrackingTransparency.AppTrackingTransparencyPlugin",
+              "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparencyPlugin"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPBridgeProtocol",
+              "printedName": "Capacitor.CAPBridgeProtocol",
+              "usr": "c:@M@Capacitor@objc(pl)CAPBridgeProtocol"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparencyPlugin(im)initWithBridge:pluginId:pluginName:",
+          "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdeB0C6bridge8pluginId0G4NameAC0A017CAPBridgeProtocol_p_S2Stcfc",
+          "moduleName": "CapacitorPluginAppTrackingTransparency",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "initWithBridge:pluginId:pluginName:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "AppTrackingTransparencyPlugin",
+              "printedName": "CapacitorPluginAppTrackingTransparency.AppTrackingTransparencyPlugin",
+              "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparencyPlugin"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparencyPlugin(im)init",
+          "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdeB0CACycfc",
+          "moduleName": "CapacitorPluginAppTrackingTransparency",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "init",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:@M@CapacitorPluginAppTrackingTransparency@objc(cs)AppTrackingTransparencyPlugin",
+      "mangledName": "$s38CapacitorPluginAppTrackingTransparency0cdeB0C",
+      "moduleName": "CapacitorPluginAppTrackingTransparency",
+      "isOpen": true,
+      "objc_name": "AppTrackingTransparencyPlugin",
+      "declAttributes": [
+        "AccessControl",
+        "ObjC",
+        "RawDocComment"
+      ],
+      "superclassUsr": "c:objc(cs)CAPPlugin",
+      "inheritsConvenienceInitializers": true,
+      "superclassNames": [
+        "Capacitor.CAPPlugin",
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    }
+  ],
+  "json_format_version": 6
+}

@@ -1,0 +1,11 @@
+framework module PurchasesCoreSwift {
+  umbrella header "PurchasesCoreSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module PurchasesCoreSwift.Swift {
+    header "PurchasesCoreSwift-Swift.h"
+    requires objc
+}

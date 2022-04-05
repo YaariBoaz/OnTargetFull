@@ -381,7 +381,7 @@ export class GatewayService {
             if (targetId.toLowerCase().indexOf('cs') > -1) {
                 // xPos = 0.7278 * x - 47.306;
                 xPos = 0.58333 * x - 37.91667
-                //  yPos = 0.7278 * y - 47.306;
+                // yPos = 0.7278 * y - 47.306;
                 yPos = 0.58333 * y - 37.91667
             } else {
                 xPos = 0.5955 * x - 14.886;

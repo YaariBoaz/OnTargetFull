@@ -1,0 +1,4306 @@
+{
+  "kind": "Root",
+  "name": "TopLevel",
+  "printedName": "TopLevel",
+  "children": [
+    {
+      "kind": "Import",
+      "name": "Foundation",
+      "printedName": "Foundation",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe"
+    },
+    {
+      "kind": "Import",
+      "name": "CoreBluetooth",
+      "printedName": "CoreBluetooth",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe"
+    },
+    {
+      "kind": "Function",
+      "name": "descriptorValueToString",
+      "printedName": "descriptorValueToString(_:)",
+      "children": [
+        {
+          "kind": "TypeNominal",
+          "name": "String",
+          "printedName": "Swift.String",
+          "usr": "s:SS"
+        },
+        {
+          "kind": "TypeNominal",
+          "name": "ProtocolComposition",
+          "printedName": "Any"
+        }
+      ],
+      "declKind": "Func",
+      "usr": "s:29CapacitorCommunityBluetoothLe23descriptorValueToStringySSypF",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe23descriptorValueToStringySSypF",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "funcSelfKind": "NonMutating"
+    },
+    {
+      "kind": "Function",
+      "name": "dataToString",
+      "printedName": "dataToString(_:)",
+      "children": [
+        {
+          "kind": "TypeNominal",
+          "name": "String",
+          "printedName": "Swift.String",
+          "usr": "s:SS"
+        },
+        {
+          "kind": "TypeNominal",
+          "name": "Data",
+          "printedName": "Foundation.Data",
+          "usr": "s:10Foundation4DataV"
+        }
+      ],
+      "declKind": "Func",
+      "usr": "s:29CapacitorCommunityBluetoothLe12dataToStringySS10Foundation4DataVF",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe12dataToStringySS10Foundation4DataVF",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "funcSelfKind": "NonMutating"
+    },
+    {
+      "kind": "Function",
+      "name": "stringToData",
+      "printedName": "stringToData(_:)",
+      "children": [
+        {
+          "kind": "TypeNominal",
+          "name": "Data",
+          "printedName": "Foundation.Data",
+          "usr": "s:10Foundation4DataV"
+        },
+        {
+          "kind": "TypeNominal",
+          "name": "String",
+          "printedName": "Swift.String",
+          "usr": "s:SS"
+        }
+      ],
+      "declKind": "Func",
+      "usr": "s:29CapacitorCommunityBluetoothLe12stringToDatay10Foundation0G0VSSF",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe12stringToDatay10Foundation0G0VSSF",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "funcSelfKind": "NonMutating"
+    },
+    {
+      "kind": "Function",
+      "name": "cbuuidToString",
+      "printedName": "cbuuidToString(_:)",
+      "children": [
+        {
+          "kind": "TypeNominal",
+          "name": "String",
+          "printedName": "Swift.String",
+          "usr": "s:SS"
+        },
+        {
+          "kind": "TypeNominal",
+          "name": "CBUUID",
+          "printedName": "CoreBluetooth.CBUUID",
+          "usr": "c:objc(cs)CBUUID"
+        }
+      ],
+      "declKind": "Func",
+      "usr": "s:29CapacitorCommunityBluetoothLe14cbuuidToStringySSSo6CBUUIDCF",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe14cbuuidToStringySSSo6CBUUIDCF",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "funcSelfKind": "NonMutating"
+    },
+    {
+      "kind": "Function",
+      "name": "cbuuidToStringUppercase",
+      "printedName": "cbuuidToStringUppercase(_:)",
+      "children": [
+        {
+          "kind": "TypeNominal",
+          "name": "String",
+          "printedName": "Swift.String",
+          "usr": "s:SS"
+        },
+        {
+          "kind": "TypeNominal",
+          "name": "CBUUID",
+          "printedName": "CoreBluetooth.CBUUID",
+          "usr": "c:objc(cs)CBUUID"
+        }
+      ],
+      "declKind": "Func",
+      "usr": "s:29CapacitorCommunityBluetoothLe23cbuuidToStringUppercaseySSSo6CBUUIDCF",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe23cbuuidToStringUppercaseySSSo6CBUUIDCF",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "funcSelfKind": "NonMutating"
+    },
+    {
+      "kind": "Import",
+      "name": "Foundation",
+      "printedName": "Foundation",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe"
+    },
+    {
+      "kind": "Import",
+      "name": "CoreBluetooth",
+      "printedName": "CoreBluetooth",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "Device",
+      "printedName": "Device",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "peripheral",
+          "printedName": "peripheral",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "ImplicitlyUnwrappedOptional",
+              "printedName": "CoreBluetooth.CBPeripheral?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CBPeripheral",
+                  "printedName": "CoreBluetooth.CBPeripheral",
+                  "usr": "c:objc(cs)CBPeripheral"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC10peripheral030_E4FE6F39444F7C07B77D29B6A3C42G1DLLSo12CBPeripheralCSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral030_E4FE6F39444F7C07B77D29B6A3C42G1DLLSo12CBPeripheralCSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 0,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "callbackMap",
+          "printedName": "callbackMap",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : (Swift.Bool, Swift.String) -> ()]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeFunc",
+                  "name": "Function",
+                  "printedName": "(Swift.Bool, Swift.String) -> ()",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Void",
+                      "printedName": "()"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Tuple",
+                      "printedName": "(Swift.Bool, Swift.String)",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "Bool",
+                          "printedName": "Swift.Bool",
+                          "usr": "s:Sb"
+                        },
+                        {
+                          "kind": "TypeNominal",
+                          "name": "String",
+                          "printedName": "Swift.String",
+                          "usr": "s:SS"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC11callbackMap030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSDySSySb_SStcGvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC11callbackMap030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSDySSySb_SStcGvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 1,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "timeoutMap",
+          "printedName": "timeoutMap",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Dispatch.DispatchWorkItem]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "DispatchWorkItem",
+                  "printedName": "Dispatch.DispatchWorkItem",
+                  "usr": "s:8Dispatch0A8WorkItemC"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC10timeoutMap030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSDySS8Dispatch0R8WorkItemCGvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10timeoutMap030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSDySS8Dispatch0R8WorkItemCGvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 2,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "servicesCount",
+          "printedName": "servicesCount",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC13servicesCount030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSivp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC13servicesCount030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSivp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 3,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "servicesDiscovered",
+          "printedName": "servicesDiscovered",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC18servicesDiscovered030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSivp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC18servicesDiscovered030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSivp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 4,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "characteristicsCount",
+          "printedName": "characteristicsCount",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC20characteristicsCount030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSivp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC20characteristicsCount030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSivp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 5,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "characteristicsDiscovered",
+          "printedName": "characteristicsDiscovered",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC25characteristicsDiscovered030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSivp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC25characteristicsDiscovered030_E4FE6F39444F7C07B77D29B6A3C42H1DLLSivp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 6,
+          "hasStorage": true
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Device",
+              "printedName": "CapacitorCommunityBluetoothLe.Device",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceCyACSo12CBPeripheralCcfc",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceCyACSo12CBPeripheralCcfc",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Function",
+          "name": "getName",
+          "printedName": "getName()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC7getNameSSSgyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC7getNameSSSgyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getId",
+          "printedName": "getId()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC5getIdSSyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC5getIdSSyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "isConnected",
+          "printedName": "isConnected()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC11isConnectedSbyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC11isConnectedSbyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getPeripheral",
+          "printedName": "getPeripheral()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC13getPeripheralSo12CBPeripheralCyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC13getPeripheralSo12CBPeripheralCyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "setOnConnected",
+          "printedName": "setOnConnected(_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC14setOnConnectedyySd_ySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC14setOnConnectedyySd_ySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didDiscoverServices:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didDiscoverServices:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_19didDiscoverServicesySo12CBPeripheralC_s5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didDiscoverServices:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didDiscoverCharacteristicsFor:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBService",
+              "printedName": "CoreBluetooth.CBService",
+              "usr": "c:objc(cs)CBService"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didDiscoverCharacteristicsForService:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_29didDiscoverCharacteristicsFor5errorySo12CBPeripheralC_So9CBServiceCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didDiscoverCharacteristicsForService:error:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didDiscoverDescriptorsFor:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCharacteristic",
+              "printedName": "CoreBluetooth.CBCharacteristic",
+              "usr": "c:objc(cs)CBCharacteristic"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didDiscoverDescriptorsForCharacteristic:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_25didDiscoverDescriptorsFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didDiscoverDescriptorsForCharacteristic:error:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getServices",
+          "printedName": "getServices()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[CoreBluetooth.CBService]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CBService",
+                  "printedName": "CoreBluetooth.CBService",
+                  "usr": "c:objc(cs)CBService"
+                }
+              ],
+              "usr": "s:Sa"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC11getServicesSaySo9CBServiceCGyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC11getServicesSaySo9CBServiceCGyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "readRssi",
+          "printedName": "readRssi(_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC8readRssiyySd_ySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC8readRssiyySd_ySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didReadRSSI:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "NSNumber",
+              "printedName": "Foundation.NSNumber",
+              "usr": "c:objc(cs)NSNumber"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didReadRSSI:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_11didReadRSSI5errorySo12CBPeripheralC_So8NSNumberCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didReadRSSI:error:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "read",
+          "printedName": "read(_:_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC4readyySo6CBUUIDC_AFSdySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC4readyySo6CBUUIDC_AFSdySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didUpdateValueFor:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCharacteristic",
+              "printedName": "CoreBluetooth.CBCharacteristic",
+              "usr": "c:objc(cs)CBCharacteristic"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didUpdateValueForCharacteristic:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_17didUpdateValueFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didUpdateValueForCharacteristic:error:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "readDescriptor",
+          "printedName": "readDescriptor(_:_:_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC14readDescriptoryySo6CBUUIDC_A2FSdySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC14readDescriptoryySo6CBUUIDC_A2FSdySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didUpdateValueFor:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBDescriptor",
+              "printedName": "CoreBluetooth.CBDescriptor",
+              "usr": "c:objc(cs)CBDescriptor"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didUpdateValueForDescriptor:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_17didUpdateValueFor5errorySo12CBPeripheralC_So12CBDescriptorCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didUpdateValueForDescriptor:error:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "write",
+          "printedName": "write(_:_:_:_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCharacteristicWriteType",
+              "printedName": "CoreBluetooth.CBCharacteristicWriteType",
+              "usr": "c:@E@CBCharacteristicWriteType"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC5writeyySo6CBUUIDC_AFSSSo25CBCharacteristicWriteTypeVSdySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC5writeyySo6CBUUIDC_AFSSSo25CBCharacteristicWriteTypeVSdySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didWriteValueFor:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCharacteristic",
+              "printedName": "CoreBluetooth.CBCharacteristic",
+              "usr": "c:objc(cs)CBCharacteristic"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didWriteValueForCharacteristic:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_16didWriteValueFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didWriteValueForCharacteristic:error:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "writeDescriptor",
+          "printedName": "writeDescriptor(_:_:_:_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC15writeDescriptoryySo6CBUUIDC_A2FSSSdySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC15writeDescriptoryySo6CBUUIDC_A2FSSSdySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didWriteValueFor:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBDescriptor",
+              "printedName": "CoreBluetooth.CBDescriptor",
+              "usr": "c:objc(cs)CBDescriptor"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didWriteValueForDescriptor:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_16didWriteValueFor5errorySo12CBPeripheralC_So12CBDescriptorCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didWriteValueForDescriptor:error:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "setNotifications",
+          "printedName": "setNotifications(_:_:_:_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBUUID",
+              "printedName": "CoreBluetooth.CBUUID",
+              "usr": "c:objc(cs)CBUUID"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "((Swift.Bool, Swift.String) -> ())?",
+              "children": [
+                {
+                  "kind": "TypeFunc",
+                  "name": "Function",
+                  "printedName": "(Swift.Bool, Swift.String) -> ()",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Void",
+                      "printedName": "()"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Tuple",
+                      "printedName": "(Swift.Bool, Swift.String)",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "Bool",
+                          "printedName": "Swift.Bool",
+                          "usr": "s:Sb"
+                        },
+                        {
+                          "kind": "TypeNominal",
+                          "name": "String",
+                          "printedName": "Swift.String",
+                          "usr": "s:SS"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe6DeviceC16setNotificationsyySo6CBUUIDC_AFSbySb_SStcSgSdySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC16setNotificationsyySo6CBUUIDC_AFSbySb_SStcSgSdySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "peripheral",
+          "printedName": "peripheral(_:didUpdateNotificationStateFor:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCharacteristic",
+              "printedName": "CoreBluetooth.CBCharacteristic",
+              "usr": "c:objc(cs)CBCharacteristic"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)peripheral:didUpdateNotificationStateForCharacteristic:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC10peripheral_29didUpdateNotificationStateFor5errorySo12CBPeripheralC_So16CBCharacteristicCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "peripheral:didUpdateNotificationStateForCharacteristic:error:",
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Device",
+              "printedName": "CapacitorCommunityBluetoothLe.Device",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device(im)init",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceCACycfc",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "init",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe6DeviceC",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "isOpen": true,
+      "declAttributes": [
+        "ObjC"
+      ],
+      "superclassUsr": "c:objc(cs)NSObject",
+      "superclassNames": [
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Foundation",
+      "printedName": "Foundation",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe"
+    },
+    {
+      "kind": "Import",
+      "name": "CoreBluetooth",
+      "printedName": "CoreBluetooth",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "DeviceManager",
+      "printedName": "DeviceManager",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "centralManager",
+          "printedName": "centralManager",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "ImplicitlyUnwrappedOptional",
+              "printedName": "CoreBluetooth.CBCentralManager?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CBCentralManager",
+                  "printedName": "CoreBluetooth.CBCentralManager",
+                  "usr": "c:objc(cs)CBCentralManager"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC07centralF033_3ACCA5217AECE08CA882169CA7FBF0E3LLSo09CBCentralF0CSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC07centralF033_3ACCA5217AECE08CA882169CA7FBF0E3LLSo09CBCentralF0CSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 0,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "viewController",
+          "printedName": "viewController",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "UIKit.UIViewController?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIViewController",
+                  "printedName": "UIKit.UIViewController",
+                  "usr": "c:objc(cs)UIViewController"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC14viewController33_3ACCA5217AECE08CA882169CA7FBF0E3LLSo06UIViewH0CSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC14viewController33_3ACCA5217AECE08CA882169CA7FBF0E3LLSo06UIViewH0CSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 1,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "displayStrings",
+          "printedName": "displayStrings",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "ImplicitlyUnwrappedOptional",
+              "printedName": "[Swift.String : Swift.String]?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Dictionary",
+                  "printedName": "[Swift.String : Swift.String]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ],
+                  "usr": "s:SD"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC14displayStrings33_3ACCA5217AECE08CA882169CA7FBF0E3LLSDyS2SGSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC14displayStrings33_3ACCA5217AECE08CA882169CA7FBF0E3LLSDyS2SGSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 2,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "callbackMap",
+          "printedName": "callbackMap",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : (Swift.Bool, Swift.String) -> ()]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeFunc",
+                  "name": "Function",
+                  "printedName": "(Swift.Bool, Swift.String) -> ()",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Void",
+                      "printedName": "()"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Tuple",
+                      "printedName": "(Swift.Bool, Swift.String)",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "Bool",
+                          "printedName": "Swift.Bool",
+                          "usr": "s:Sb"
+                        },
+                        {
+                          "kind": "TypeNominal",
+                          "name": "String",
+                          "printedName": "Swift.String",
+                          "usr": "s:SS"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC11callbackMap33_3ACCA5217AECE08CA882169CA7FBF0E3LLSDySSySb_SStcGvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC11callbackMap33_3ACCA5217AECE08CA882169CA7FBF0E3LLSDySSySb_SStcGvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 3,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "scanResultCallback",
+          "printedName": "scanResultCallback",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "((CapacitorCommunityBluetoothLe.Device, [Swift.String : Any], Foundation.NSNumber) -> ())?",
+              "children": [
+                {
+                  "kind": "TypeFunc",
+                  "name": "Function",
+                  "printedName": "(CapacitorCommunityBluetoothLe.Device, [Swift.String : Any], Foundation.NSNumber) -> ()",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Void",
+                      "printedName": "()"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Tuple",
+                      "printedName": "(CapacitorCommunityBluetoothLe.Device, [Swift.String : Any], Foundation.NSNumber)",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "Device",
+                          "printedName": "CapacitorCommunityBluetoothLe.Device",
+                          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+                        },
+                        {
+                          "kind": "TypeNominal",
+                          "name": "Dictionary",
+                          "printedName": "[Swift.String : Any]",
+                          "children": [
+                            {
+                              "kind": "TypeNominal",
+                              "name": "String",
+                              "printedName": "Swift.String",
+                              "usr": "s:SS"
+                            },
+                            {
+                              "kind": "TypeNominal",
+                              "name": "ProtocolComposition",
+                              "printedName": "Any"
+                            }
+                          ],
+                          "usr": "s:SD"
+                        },
+                        {
+                          "kind": "TypeNominal",
+                          "name": "NSNumber",
+                          "printedName": "Foundation.NSNumber",
+                          "usr": "c:objc(cs)NSNumber"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC18scanResultCallback33_3ACCA5217AECE08CA882169CA7FBF0E3LLyAA0E0C_SDySSypGSo8NSNumberCtcSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC18scanResultCallback33_3ACCA5217AECE08CA882169CA7FBF0E3LLyAA0E0C_SDySSypGSo8NSNumberCtcSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 4,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "stateReceiver",
+          "printedName": "stateReceiver",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "((Swift.Bool) -> ())?",
+              "children": [
+                {
+                  "kind": "TypeFunc",
+                  "name": "Function",
+                  "printedName": "(Swift.Bool) -> ()",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Void",
+                      "printedName": "()"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    }
+                  ]
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC13stateReceiver33_3ACCA5217AECE08CA882169CA7FBF0E3LLySbcSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC13stateReceiver33_3ACCA5217AECE08CA882169CA7FBF0E3LLySbcSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 5,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "timeoutMap",
+          "printedName": "timeoutMap",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Dispatch.DispatchWorkItem]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "DispatchWorkItem",
+                  "printedName": "Dispatch.DispatchWorkItem",
+                  "usr": "s:8Dispatch0A8WorkItemC"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC10timeoutMap33_3ACCA5217AECE08CA882169CA7FBF0E3LLSDySS8Dispatch0O8WorkItemCGvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC10timeoutMap33_3ACCA5217AECE08CA882169CA7FBF0E3LLSDySS8Dispatch0O8WorkItemCGvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 6,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "stopScanWorkItem",
+          "printedName": "stopScanWorkItem",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Dispatch.DispatchWorkItem?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "DispatchWorkItem",
+                  "printedName": "Dispatch.DispatchWorkItem",
+                  "usr": "s:8Dispatch0A8WorkItemC"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC16stopScanWorkItem33_3ACCA5217AECE08CA882169CA7FBF0E3LL8Dispatch0qiJ0CSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC16stopScanWorkItem33_3ACCA5217AECE08CA882169CA7FBF0E3LL8Dispatch0qiJ0CSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 7,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "alertController",
+          "printedName": "alertController",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "UIKit.UIAlertController?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIAlertController",
+                  "printedName": "UIKit.UIAlertController",
+                  "usr": "c:objc(cs)UIAlertController"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC15alertController33_3ACCA5217AECE08CA882169CA7FBF0E3LLSo07UIAlertH0CSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC15alertController33_3ACCA5217AECE08CA882169CA7FBF0E3LLSo07UIAlertH0CSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 8,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "discoveredDevices",
+          "printedName": "discoveredDevices",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : CapacitorCommunityBluetoothLe.Device]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Device",
+                  "printedName": "CapacitorCommunityBluetoothLe.Device",
+                  "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC17discoveredDevices33_3ACCA5217AECE08CA882169CA7FBF0E3LLSDySSAA0E0CGvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC17discoveredDevices33_3ACCA5217AECE08CA882169CA7FBF0E3LLSDySSAA0E0CGvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 9,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "deviceNameFilter",
+          "printedName": "deviceNameFilter",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC16deviceNameFilter33_3ACCA5217AECE08CA882169CA7FBF0E3LLSSSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC16deviceNameFilter33_3ACCA5217AECE08CA882169CA7FBF0E3LLSSSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 10,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "deviceNamePrefixFilter",
+          "printedName": "deviceNamePrefixFilter",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC22deviceNamePrefixFilter33_3ACCA5217AECE08CA882169CA7FBF0E3LLSSSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC22deviceNamePrefixFilter33_3ACCA5217AECE08CA882169CA7FBF0E3LLSSSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 11,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "shouldShowDeviceList",
+          "printedName": "shouldShowDeviceList",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC010shouldShowE4List33_3ACCA5217AECE08CA882169CA7FBF0E3LLSbvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC010shouldShowE4List33_3ACCA5217AECE08CA882169CA7FBF0E3LLSbvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 12,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "allowDuplicates",
+          "printedName": "allowDuplicates",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC15allowDuplicates33_3ACCA5217AECE08CA882169CA7FBF0E3LLSbvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC15allowDuplicates33_3ACCA5217AECE08CA882169CA7FBF0E3LLSbvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 13,
+          "hasStorage": true
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "DeviceManager",
+              "printedName": "CapacitorCommunityBluetoothLe.DeviceManager",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "UIKit.UIViewController?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIViewController",
+                  "printedName": "UIKit.UIViewController",
+                  "usr": "c:objc(cs)UIViewController"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Swift.String]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:SD"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerCyACSo16UIViewControllerCSg_SDyS2SGySb_SStctcfc",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerCyACSo16UIViewControllerCSg_SDyS2SGySb_SStctcfc",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Function",
+          "name": "setDisplayStrings",
+          "printedName": "setDisplayStrings(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Swift.String]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC17setDisplayStringsyySDyS2SGF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC17setDisplayStringsyySDyS2SGF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "centralManagerDidUpdateState",
+          "printedName": "centralManagerDidUpdateState(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCentralManager",
+              "printedName": "CoreBluetooth.CBCentralManager",
+              "usr": "c:objc(cs)CBCentralManager"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager(im)centralManagerDidUpdateState:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC07centralF14DidUpdateStateyySo09CBCentralF0CF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "centralManagerDidUpdateState:",
+          "declAttributes": [
+            "ObjC",
+            "RawDocComment"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "isEnabled",
+          "printedName": "isEnabled()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC9isEnabledSbyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC9isEnabledSbyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "registerStateReceiver",
+          "printedName": "registerStateReceiver(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC21registerStateReceiveryyySbcF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC21registerStateReceiveryyySbcF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "unregisterStateReceiver",
+          "printedName": "unregisterStateReceiver()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC23unregisterStateReceiveryyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC23unregisterStateReceiveryyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "emitState",
+          "printedName": "emitState(enabled:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC9emitState7enabledySb_tF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC9emitState7enabledySb_tF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "startScanning",
+          "printedName": "startScanning(_:_:_:_:_:_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[CoreBluetooth.CBUUID]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CBUUID",
+                  "printedName": "CoreBluetooth.CBUUID",
+                  "usr": "c:objc(cs)CBUUID"
+                }
+              ],
+              "usr": "s:Sa"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Double?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Double",
+                  "printedName": "Swift.Double",
+                  "usr": "s:Sd"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCommunityBluetoothLe.Device, [Swift.String : Any], Foundation.NSNumber) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(CapacitorCommunityBluetoothLe.Device, [Swift.String : Any], Foundation.NSNumber)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Device",
+                      "printedName": "CapacitorCommunityBluetoothLe.Device",
+                      "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Dictionary",
+                      "printedName": "[Swift.String : Any]",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "String",
+                          "printedName": "Swift.String",
+                          "usr": "s:SS"
+                        },
+                        {
+                          "kind": "TypeNominal",
+                          "name": "ProtocolComposition",
+                          "printedName": "Any"
+                        }
+                      ],
+                      "usr": "s:SD"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "NSNumber",
+                      "printedName": "Foundation.NSNumber",
+                      "usr": "c:objc(cs)NSNumber"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC13startScanningyySaySo6CBUUIDCG_SSSgAHS2bSdSgySb_SStcyAA0E0C_SDySSypGSo8NSNumberCtctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC13startScanningyySaySo6CBUUIDCG_SSSgAHS2bSdSgySb_SStcyAA0E0C_SDySSypGSo8NSNumberCtctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "stopScan",
+          "printedName": "stopScan()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC8stopScanyyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC8stopScanyyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "centralManager",
+          "printedName": "centralManager(_:didDiscover:advertisementData:rssi:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCentralManager",
+              "printedName": "CoreBluetooth.CBCentralManager",
+              "usr": "c:objc(cs)CBCentralManager"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "usr": "s:SD"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "NSNumber",
+              "printedName": "Foundation.NSNumber",
+              "usr": "c:objc(cs)NSNumber"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager(im)centralManager:didDiscoverPeripheral:advertisementData:RSSI:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC07centralF0_11didDiscover17advertisementData4rssiySo09CBCentralF0C_So12CBPeripheralCSDySSypGSo8NSNumberCtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "centralManager:didDiscoverPeripheral:advertisementData:RSSI:",
+          "declAttributes": [
+            "ObjC",
+            "RawDocComment"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "showDeviceList",
+          "printedName": "showDeviceList()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC04showE4ListyyF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC04showE4ListyyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getDevices",
+          "printedName": "getDevices(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[CapacitorCommunityBluetoothLe.Device]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Device",
+                  "printedName": "CapacitorCommunityBluetoothLe.Device",
+                  "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+                }
+              ],
+              "usr": "s:Sa"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[Foundation.UUID]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "UUID",
+                  "printedName": "Foundation.UUID",
+                  "usr": "s:10Foundation4UUIDV"
+                }
+              ],
+              "usr": "s:Sa"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC10getDevicesySayAA0E0CGSay10Foundation4UUIDVGF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC10getDevicesySayAA0E0CGSay10Foundation4UUIDVGF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getConnectedDevices",
+          "printedName": "getConnectedDevices(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[CapacitorCommunityBluetoothLe.Device]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Device",
+                  "printedName": "CapacitorCommunityBluetoothLe.Device",
+                  "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+                }
+              ],
+              "usr": "s:Sa"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[CoreBluetooth.CBUUID]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CBUUID",
+                  "printedName": "CoreBluetooth.CBUUID",
+                  "usr": "c:objc(cs)CBUUID"
+                }
+              ],
+              "usr": "s:Sa"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC19getConnectedDevicesySayAA0E0CGSaySo6CBUUIDCGF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC19getConnectedDevicesySayAA0E0CGSaySo6CBUUIDCGF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "connect",
+          "printedName": "connect(_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Device",
+              "printedName": "CapacitorCommunityBluetoothLe.Device",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC7connectyyAA0E0C_SdySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC7connectyyAA0E0C_SdySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "centralManager",
+          "printedName": "centralManager(_:didConnect:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCentralManager",
+              "printedName": "CoreBluetooth.CBCentralManager",
+              "usr": "c:objc(cs)CBCentralManager"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager(im)centralManager:didConnectPeripheral:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC07centralF0_10didConnectySo09CBCentralF0C_So12CBPeripheralCtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "centralManager:didConnectPeripheral:",
+          "declAttributes": [
+            "ObjC",
+            "RawDocComment"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "centralManager",
+          "printedName": "centralManager(_:didFailToConnect:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCentralManager",
+              "printedName": "CoreBluetooth.CBCentralManager",
+              "usr": "c:objc(cs)CBCentralManager"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager(im)centralManager:didFailToConnectPeripheral:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC07centralF0_16didFailToConnect5errorySo09CBCentralF0C_So12CBPeripheralCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "centralManager:didFailToConnectPeripheral:error:",
+          "declAttributes": [
+            "ObjC",
+            "RawDocComment"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "setOnDisconnected",
+          "printedName": "setOnDisconnected(_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Device",
+              "printedName": "CapacitorCommunityBluetoothLe.Device",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC17setOnDisconnectedyyAA0E0C_ySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC17setOnDisconnectedyyAA0E0C_ySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "disconnect",
+          "printedName": "disconnect(_:_:_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Device",
+              "printedName": "CapacitorCommunityBluetoothLe.Device",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Double",
+              "printedName": "Swift.Double",
+              "usr": "s:Sd"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Bool, Swift.String) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Tuple",
+                  "printedName": "(Swift.Bool, Swift.String)",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Bool",
+                      "printedName": "Swift.Bool",
+                      "usr": "s:Sb"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC10disconnectyyAA0E0C_SdySb_SStctF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC10disconnectyyAA0E0C_SdySb_SStctF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "centralManager",
+          "printedName": "centralManager(_:didDisconnectPeripheral:error:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBCentralManager",
+              "printedName": "CoreBluetooth.CBCentralManager",
+              "usr": "c:objc(cs)CBCentralManager"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CBPeripheral",
+              "printedName": "CoreBluetooth.CBPeripheral",
+              "usr": "c:objc(cs)CBPeripheral"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager(im)centralManager:didDisconnectPeripheral:error:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC07centralF0_23didDisconnectPeripheral5errorySo09CBCentralF0C_So12CBPeripheralCs5Error_pSgtF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "objc_name": "centralManager:didDisconnectPeripheral:error:",
+          "declAttributes": [
+            "ObjC",
+            "RawDocComment"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getDevice",
+          "printedName": "getDevice(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CapacitorCommunityBluetoothLe.Device?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Device",
+                  "printedName": "CapacitorCommunityBluetoothLe.Device",
+                  "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:29CapacitorCommunityBluetoothLe13DeviceManagerC03getE0yAA0E0CSgSSF",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC03getE0yAA0E0CSgSSF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "DeviceManager",
+              "printedName": "CapacitorCommunityBluetoothLe.DeviceManager",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager(im)init",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerCACycfc",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "init",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe13DeviceManagerC",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "isOpen": true,
+      "declAttributes": [
+        "ObjC"
+      ],
+      "superclassUsr": "c:objc(cs)NSObject",
+      "superclassNames": [
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Foundation",
+      "printedName": "Foundation",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "declAttributes": [
+        "RawDocComment"
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Capacitor",
+      "printedName": "Capacitor",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe"
+    },
+    {
+      "kind": "Import",
+      "name": "CoreBluetooth",
+      "printedName": "CoreBluetooth",
+      "declKind": "Import",
+      "moduleName": "CapacitorCommunityBluetoothLe"
+    },
+    {
+      "kind": "Var",
+      "name": "CONNECTION_TIMEOUT",
+      "printedName": "CONNECTION_TIMEOUT",
+      "children": [
+        {
+          "kind": "TypeNominal",
+          "name": "Double",
+          "printedName": "Swift.Double",
+          "usr": "s:Sd"
+        }
+      ],
+      "declKind": "Var",
+      "usr": "s:29CapacitorCommunityBluetoothLe18CONNECTION_TIMEOUTSdvp",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe18CONNECTION_TIMEOUTSdvp",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "declAttributes": [
+        "HasInitialValue",
+        "HasStorage"
+      ],
+      "isLet": true,
+      "hasStorage": true
+    },
+    {
+      "kind": "Var",
+      "name": "DEFAULT_TIMEOUT",
+      "printedName": "DEFAULT_TIMEOUT",
+      "children": [
+        {
+          "kind": "TypeNominal",
+          "name": "Double",
+          "printedName": "Swift.Double",
+          "usr": "s:Sd"
+        }
+      ],
+      "declKind": "Var",
+      "usr": "s:29CapacitorCommunityBluetoothLe15DEFAULT_TIMEOUTSdvp",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe15DEFAULT_TIMEOUTSdvp",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "declAttributes": [
+        "HasInitialValue",
+        "HasStorage"
+      ],
+      "isLet": true,
+      "hasStorage": true
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "BluetoothLe",
+      "printedName": "BluetoothLe",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "deviceManager",
+          "printedName": "deviceManager",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CapacitorCommunityBluetoothLe.DeviceManager?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "DeviceManager",
+                  "printedName": "CapacitorCommunityBluetoothLe.DeviceManager",
+                  "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)DeviceManager"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe0cD0C13deviceManager33_35AFEEDA0955870F13937D5130BD6AA8LLAA06DeviceF0CSgvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C13deviceManager33_35AFEEDA0955870F13937D5130BD6AA8LLAA06DeviceF0CSgvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 0,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "deviceMap",
+          "printedName": "deviceMap",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : CapacitorCommunityBluetoothLe.Device]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Device",
+                  "printedName": "CapacitorCommunityBluetoothLe.Device",
+                  "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)Device"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe0cD0C9deviceMap33_35AFEEDA0955870F13937D5130BD6AA8LLSDySSAA6DeviceCGvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C9deviceMap33_35AFEEDA0955870F13937D5130BD6AA8LLSDySSAA6DeviceCGvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 1,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "displayStrings",
+          "printedName": "displayStrings",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Swift.String]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:29CapacitorCommunityBluetoothLe0cD0C14displayStrings33_35AFEEDA0955870F13937D5130BD6AA8LLSDyS2SGvp",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C14displayStrings33_35AFEEDA0955870F13937D5130BD6AA8LLSDyS2SGvp",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 2,
+          "hasStorage": true
+        },
+        {
+          "kind": "Function",
+          "name": "load",
+          "printedName": "load()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)load",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C4loadyyF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "overriding": true,
+          "isOpen": true,
+          "objc_name": "load",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "AccessControl",
+            "Override"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "initialize",
+          "printedName": "initialize(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)initialize:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C10initializeyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "isEnabled",
+          "printedName": "isEnabled(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)isEnabled:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C9isEnabledyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "enable",
+          "printedName": "enable(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)enable:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C6enableyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "disable",
+          "printedName": "disable(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)disable:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C7disableyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "startEnabledNotifications",
+          "printedName": "startEnabledNotifications(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)startEnabledNotifications:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C25startEnabledNotificationsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "stopEnabledNotifications",
+          "printedName": "stopEnabledNotifications(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)stopEnabledNotifications:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C24stopEnabledNotificationsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "isLocationEnabled",
+          "printedName": "isLocationEnabled(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)isLocationEnabled:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C17isLocationEnabledyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "openLocationSettings",
+          "printedName": "openLocationSettings(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)openLocationSettings:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C20openLocationSettingsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "openBluetoothSettings",
+          "printedName": "openBluetoothSettings(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)openBluetoothSettings:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C04openC8SettingsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "openAppSettings",
+          "printedName": "openAppSettings(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)openAppSettings:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C15openAppSettingsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "setDisplayStrings",
+          "printedName": "setDisplayStrings(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)setDisplayStrings:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C17setDisplayStringsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "requestDevice",
+          "printedName": "requestDevice(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)requestDevice:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C13requestDeviceyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "requestLEScan",
+          "printedName": "requestLEScan(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)requestLEScan:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C13requestLEScanyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "stopLEScan",
+          "printedName": "stopLEScan(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)stopLEScan:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C10stopLEScanyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getDevices",
+          "printedName": "getDevices(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)getDevices:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C10getDevicesyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getConnectedDevices",
+          "printedName": "getConnectedDevices(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)getConnectedDevices:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C19getConnectedDevicesyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "connect",
+          "printedName": "connect(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)connect:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C7connectyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "createBond",
+          "printedName": "createBond(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)createBond:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C10createBondyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "isBonded",
+          "printedName": "isBonded(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)isBonded:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C8isBondedyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "disconnect",
+          "printedName": "disconnect(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)disconnect:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C10disconnectyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getServices",
+          "printedName": "getServices(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)getServices:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C11getServicesyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "readRssi",
+          "printedName": "readRssi(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)readRssi:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C8readRssiyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "read",
+          "printedName": "read(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)read:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C4readyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "write",
+          "printedName": "write(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)write:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C5writeyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "writeWithoutResponse",
+          "printedName": "writeWithoutResponse(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)writeWithoutResponse:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C20writeWithoutResponseyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "readDescriptor",
+          "printedName": "readDescriptor(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)readDescriptor:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C14readDescriptoryySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "writeDescriptor",
+          "printedName": "writeDescriptor(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)writeDescriptor:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C15writeDescriptoryySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "startNotifications",
+          "printedName": "startNotifications(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)startNotifications:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C18startNotificationsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "stopNotifications",
+          "printedName": "stopNotifications(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)stopNotifications:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C17stopNotificationsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(bridge:pluginId:pluginName:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "BluetoothLe",
+              "printedName": "CapacitorCommunityBluetoothLe.BluetoothLe",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPBridgeProtocol",
+              "printedName": "Capacitor.CAPBridgeProtocol",
+              "usr": "c:@M@Capacitor@objc(pl)CAPBridgeProtocol"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)initWithBridge:pluginId:pluginName:",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C6bridge8pluginId0F4NameAC0A017CAPBridgeProtocol_p_S2Stcfc",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "initWithBridge:pluginId:pluginName:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "BluetoothLe",
+              "printedName": "CapacitorCommunityBluetoothLe.BluetoothLe",
+              "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe(im)init",
+          "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0CACycfc",
+          "moduleName": "CapacitorCommunityBluetoothLe",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "init",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:@M@CapacitorCommunityBluetoothLe@objc(cs)BluetoothLe",
+      "mangledName": "$s29CapacitorCommunityBluetoothLe0cD0C",
+      "moduleName": "CapacitorCommunityBluetoothLe",
+      "isOpen": true,
+      "objc_name": "BluetoothLe",
+      "declAttributes": [
+        "AccessControl",
+        "ObjC"
+      ],
+      "superclassUsr": "c:objc(cs)CAPPlugin",
+      "inheritsConvenienceInitializers": true,
+      "superclassNames": [
+        "Capacitor.CAPPlugin",
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    }
+  ],
+  "json_format_version": 6
+}

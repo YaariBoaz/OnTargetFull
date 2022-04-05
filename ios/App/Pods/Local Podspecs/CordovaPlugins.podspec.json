@@ -25,22 +25,20 @@
   },
   "swift_versions": "5.1",
   "weak_frameworks": [
-    "ImageIO",
     "Social",
     "MessageUI"
   ],
   "frameworks": [
     "CoreBluetooth",
-    "CoreLocation",
-    "CoreGraphics",
-    "AssetsLibrary",
-    "MobileCoreServices",
-    "AVFoundation",
     "QuartzCore",
+    "AVFoundation",
     "UIKit",
     "Foundation",
+    "CoreGraphics",
     "ImageIO",
     "MessageUI",
+    "AssetsLibrary",
+    "MobileCoreServices",
     "StoreKit"
   ],
   "swift_version": "5.1"

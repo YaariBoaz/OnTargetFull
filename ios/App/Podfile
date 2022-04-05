@@ -9,14 +9,8 @@ install! 'cocoapods', :disable_input_output_paths => true
 def capacitor_pods
   pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
   pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
-<<<<<<< HEAD
   pod 'CapacitorCamera', :path => '../../node_modules/@capacitor/camera'
-  pod 'CapacitorIosAppTracking', :path => '../../node_modules/capacitor-ios-app-tracking'
   pod 'CapacitorPluginAppTrackingTransparency', :path => '../../node_modules/capacitor-plugin-app-tracking-transparency'
-=======
-  pod 'CapacitorCommunityBluetoothLe', :path => '..\..\node_modules\@capacitor-community\bluetooth-le'
-  pod 'CapacitorCamera', :path => '..\..\node_modules\@capacitor\camera'
->>>>>>> parent of fee3893 (fix hits)
   pod 'CordovaPlugins', :path => '../capacitor-cordova-ios-plugins'
   pod 'CordovaPluginsStatic', :path => '../capacitor-cordova-ios-plugins'
   pod 'CordovaPluginsResources', :path => '../capacitor-cordova-ios-plugins'

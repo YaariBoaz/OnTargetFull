@@ -1,0 +1,9 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "b2d5b1de632e6c2a628d71e579efcf3bc7cb17597065a2af605b486c2153ef83"
+build_start_time: [1648978086, 684551000]
+build_end_time: [1648978087, 326282024]
+inputs:
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/@capacitor-community/bluetooth-le/ios/Plugin/Conversion.swift": [1648976998, 894000053]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/@capacitor-community/bluetooth-le/ios/Plugin/Device.swift": [1648976998, 894000053]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/@capacitor-community/bluetooth-le/ios/Plugin/DeviceManager.swift": [1648976998, 894000053]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/node_modules/@capacitor-community/bluetooth-le/ios/Plugin/Plugin.swift": [1648976998, 894000053]

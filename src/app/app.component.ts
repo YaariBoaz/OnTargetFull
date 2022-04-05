@@ -3,25 +3,19 @@ import {Platform} from '@ionic/angular';
 import {InitService} from './shared/services/init.service';
 import {LoadingController} from '@ionic/angular';
 import {BleService} from './shared/services/ble.service';
-import {Plugins} from '@capacitor/core';
 import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 import {PopupsService} from './shared/services/popups.service';
-import {ErrorModalComponent} from './shared/popups/error-modal/error-modal.component';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {MatDialog} from '@angular/material/dialog';
 import {InAppPurchase2} from '@ionic-native/in-app-purchase-2/ngx';
 import {WizardService} from './shared/authentication/signup-wizard/wizard.service';
-<<<<<<< HEAD
 import 'capacitor-plugin-app-tracking-transparency'; // only if you want web support
 import {
     AppTrackingTransparency,
     AppTrackingStatusResponse,
 } from 'capacitor-plugin-app-tracking-transparency';
-=======
+import {SplashScreen} from '@ionic-native/splash-screen';
 
-const {SplashScreen} = Plugins;
-const {Network} = Plugins;
->>>>>>> parent of fee3893 (fix hits)
 
 const ADL_IAP_KEY = 'adl';
 const ADL_IAP_KEY_2_SESSIONS = 'twoSessionSub';
@@ -58,24 +52,6 @@ export class AppComponent implements OnDestroy, OnInit {
         this.initService.getCalibers();
         this.platform.ready().then(() => {
 
-            SplashScreen.hide().then(r => {
-                const options: NativeTransitionOptions = {
-                    direction: 'up',
-                    duration: 500,
-                    slowdownfactor: 3,
-                    slidePixels: 20,
-                    iosdelay: 100,
-                    androiddelay: 150,
-                    fixedPixelsTop: 0,
-                    fixedPixelsBottom: 60
-                };
-
-                this.nativePageTransitions.slide(options)
-                    .then(() => {
-                    })
-                    .catch(() => {
-                    });
-            });
             this.platform.backButton.subscribeWithPriority(9999, () => {
                 document.addEventListener('backbutton', (event) => {
                     event.preventDefault();
@@ -100,7 +76,6 @@ export class AppComponent implements OnDestroy, OnInit {
             this.isLoding = isLoading;
         });
 
-<<<<<<< HEAD
         // this.store.register({id: ADL_IAP_KEY, type: this.store.PAID_SUBSCRIPTION});
         // this.store.register({id: ADL_IAP_KEY_2_SESSIONS, type: this.store.CONSUMABLE});
         // this.store.register({id: ADL_IAP_KEY_6_SESSIONS, type: this.store.CONSUMABLE});
@@ -127,12 +102,11 @@ export class AppComponent implements OnDestroy, OnInit {
         const response = await AppTrackingTransparency.requestPermission();
         console.log(response);
         // { status: 'authorized' } for example
-        return response;
-=======
         this.store.register({id: ADL_IAP_KEY, type: this.store.PAID_SUBSCRIPTION});
         this.store.register({id: ADL_IAP_KEY_2_SESSIONS, type: this.store.CONSUMABLE});
         this.store.register({id: ADL_IAP_KEY_6_SESSIONS, type: this.store.CONSUMABLE});
->>>>>>> parent of fee3893 (fix hits)
+        return response;
+
     }
 
     ngOnInit() {

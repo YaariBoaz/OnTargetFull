@@ -1,0 +1,5631 @@
+{
+  "kind": "Root",
+  "name": "TopLevel",
+  "printedName": "TopLevel",
+  "children": [
+    {
+      "kind": "Import",
+      "name": "UIKit",
+      "printedName": "UIKit",
+      "declKind": "Import",
+      "moduleName": "CapacitorCamera"
+    },
+    {
+      "kind": "Import",
+      "name": "Photos",
+      "printedName": "Photos",
+      "declKind": "Import",
+      "moduleName": "CapacitorCamera"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraAuthorizationState",
+      "printedName": "CameraAuthorizationState",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "authorizationState",
+          "printedName": "authorizationState",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B18AuthorizationStateP013authorizationD0SSvp",
+          "mangledName": "$s15CapacitorCamera0B18AuthorizationStateP013authorizationD0SSvp",
+          "moduleName": "CapacitorCamera",
+          "protocolReq": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B18AuthorizationStateP013authorizationD0SSvg",
+              "mangledName": "$s15CapacitorCamera0B18AuthorizationStateP013authorizationD0SSvg",
+              "moduleName": "CapacitorCamera",
+              "genericSig": "<τ_0_0 where τ_0_0 : CapacitorCamera.CameraAuthorizationState>",
+              "sugared_genericSig": "<Self where Self : CapacitorCamera.CameraAuthorizationState>",
+              "protocolReq": true,
+              "reqNewWitnessTableEntry": true,
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Protocol",
+      "usr": "s:15CapacitorCamera0B18AuthorizationStateP",
+      "mangledName": "$s15CapacitorCamera0B18AuthorizationStateP",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl"
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "Foundation",
+      "printedName": "Foundation",
+      "declKind": "Import",
+      "moduleName": "CapacitorCamera"
+    },
+    {
+      "kind": "Import",
+      "name": "Capacitor",
+      "printedName": "Capacitor",
+      "declKind": "Import",
+      "moduleName": "CapacitorCamera"
+    },
+    {
+      "kind": "Import",
+      "name": "Photos",
+      "printedName": "Photos",
+      "declKind": "Import",
+      "moduleName": "CapacitorCamera"
+    },
+    {
+      "kind": "Import",
+      "name": "PhotosUI",
+      "printedName": "PhotosUI",
+      "declKind": "Import",
+      "moduleName": "CapacitorCamera"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraPlugin",
+      "printedName": "CameraPlugin",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "call",
+          "printedName": "call",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Capacitor.CAPPluginCall?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CAPPluginCall",
+                  "printedName": "Capacitor.CAPPluginCall",
+                  "usr": "c:objc(cs)CAPPluginCall"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6PluginC4call33_1A34ADF9A204B9DE2321397F6EBD15A1LLSo13CAPPluginCallCSgvp",
+          "mangledName": "$s15CapacitorCamera0B6PluginC4call33_1A34ADF9A204B9DE2321397F6EBD15A1LLSo13CAPPluginCallCSgvp",
+          "moduleName": "CapacitorCamera",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 0,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "settings",
+          "printedName": "settings",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraSettings",
+              "printedName": "CapacitorCamera.CameraSettings",
+              "usr": "s:15CapacitorCamera0B8SettingsV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6PluginC8settings33_1A34ADF9A204B9DE2321397F6EBD15A1LLAA0B8SettingsVvp",
+          "mangledName": "$s15CapacitorCamera0B6PluginC8settings33_1A34ADF9A204B9DE2321397F6EBD15A1LLAA0B8SettingsVvp",
+          "moduleName": "CapacitorCamera",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 1,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "defaultSource",
+          "printedName": "defaultSource",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraSource",
+              "printedName": "CapacitorCamera.CameraSource",
+              "usr": "s:15CapacitorCamera0B6SourceO"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6PluginC13defaultSource33_1A34ADF9A204B9DE2321397F6EBD15A1LLAA0bE0Ovp",
+          "mangledName": "$s15CapacitorCamera0B6PluginC13defaultSource33_1A34ADF9A204B9DE2321397F6EBD15A1LLAA0bE0Ovp",
+          "moduleName": "CapacitorCamera",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "Final",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 2,
+          "isLet": true,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "defaultDirection",
+          "printedName": "defaultDirection",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraDirection",
+              "printedName": "CapacitorCamera.CameraDirection",
+              "usr": "s:15CapacitorCamera0B9DirectionO"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6PluginC16defaultDirection33_1A34ADF9A204B9DE2321397F6EBD15A1LLAA0bE0Ovp",
+          "mangledName": "$s15CapacitorCamera0B6PluginC16defaultDirection33_1A34ADF9A204B9DE2321397F6EBD15A1LLAA0bE0Ovp",
+          "moduleName": "CapacitorCamera",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "Final",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 3,
+          "isLet": true,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "multiple",
+          "printedName": "multiple",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6PluginC8multiple33_1A34ADF9A204B9DE2321397F6EBD15A1LLSbvp",
+          "mangledName": "$s15CapacitorCamera0B6PluginC8multiple33_1A34ADF9A204B9DE2321397F6EBD15A1LLSbvp",
+          "moduleName": "CapacitorCamera",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 4,
+          "hasStorage": true
+        },
+        {
+          "kind": "Var",
+          "name": "imageCounter",
+          "printedName": "imageCounter",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6PluginC12imageCounter33_1A34ADF9A204B9DE2321397F6EBD15A1LLSivp",
+          "mangledName": "$s15CapacitorCamera0B6PluginC12imageCounter33_1A34ADF9A204B9DE2321397F6EBD15A1LLSivp",
+          "moduleName": "CapacitorCamera",
+          "isInternal": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage",
+            "AccessControl"
+          ],
+          "fixedbinaryorder": 5,
+          "hasStorage": true
+        },
+        {
+          "kind": "Function",
+          "name": "checkPermissions",
+          "printedName": "checkPermissions(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin(im)checkPermissions:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC16checkPermissionsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCamera",
+          "overriding": true,
+          "isOpen": true,
+          "objc_name": "checkPermissions:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "AccessControl",
+            "Override"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "requestPermissions",
+          "printedName": "requestPermissions(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin(im)requestPermissions:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC18requestPermissionsyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCamera",
+          "overriding": true,
+          "isOpen": true,
+          "objc_name": "requestPermissions:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "AccessControl",
+            "Override"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "getPhoto",
+          "printedName": "getPhoto(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin(im)getPhoto:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC8getPhotoyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "pickImages",
+          "printedName": "pickImages(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPPluginCall",
+              "printedName": "Capacitor.CAPPluginCall",
+              "usr": "c:objc(cs)CAPPluginCall"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin(im)pickImages:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC10pickImagesyySo13CAPPluginCallCF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(bridge:pluginId:pluginName:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraPlugin",
+              "printedName": "CapacitorCamera.CameraPlugin",
+              "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CAPBridgeProtocol",
+              "printedName": "Capacitor.CAPBridgeProtocol",
+              "usr": "c:@M@Capacitor@objc(pl)CAPBridgeProtocol"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin(im)initWithBridge:pluginId:pluginName:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC6bridge8pluginId0E4NameAC0A017CAPBridgeProtocol_p_S2Stcfc",
+          "moduleName": "CapacitorCamera",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "initWithBridge:pluginId:pluginName:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraPlugin",
+              "printedName": "CapacitorCamera.CameraPlugin",
+              "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin(im)init",
+          "mangledName": "$s15CapacitorCamera0B6PluginCACycfc",
+          "moduleName": "CapacitorCamera",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "init",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Function",
+          "name": "imagePickerControllerDidCancel",
+          "printedName": "imagePickerControllerDidCancel(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UIImagePickerController",
+              "printedName": "UIKit.UIImagePickerController",
+              "usr": "c:objc(cs)UIImagePickerController"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@CM@CapacitorCamera@objc(cs)CAPCameraPlugin(im)imagePickerControllerDidCancel:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC30imagePickerControllerDidCancelyySo07UIImageeF0CF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "objc_name": "imagePickerControllerDidCancel:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Custom",
+            "AccessControl"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "popoverPresentationControllerDidDismissPopover",
+          "printedName": "popoverPresentationControllerDidDismissPopover(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UIPopoverPresentationController",
+              "printedName": "UIKit.UIPopoverPresentationController",
+              "usr": "c:objc(cs)UIPopoverPresentationController"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@CM@CapacitorCamera@objc(cs)CAPCameraPlugin(im)popoverPresentationControllerDidDismissPopover:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC46popoverPresentationControllerDidDismissPopoveryySo09UIPopovereF0CF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "objc_name": "popoverPresentationControllerDidDismissPopover:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Custom",
+            "AccessControl"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "presentationControllerDidDismiss",
+          "printedName": "presentationControllerDidDismiss(_:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UIPresentationController",
+              "printedName": "UIKit.UIPresentationController",
+              "usr": "c:objc(cs)UIPresentationController"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@CM@CapacitorCamera@objc(cs)CAPCameraPlugin(im)presentationControllerDidDismiss:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC32presentationControllerDidDismissyySo014UIPresentationE0CF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "objc_name": "presentationControllerDidDismiss:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Custom",
+            "AccessControl"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "imagePickerController",
+          "printedName": "imagePickerController(_:didFinishPickingMediaWithInfo:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UIImagePickerController",
+              "printedName": "UIKit.UIImagePickerController",
+              "usr": "c:objc(cs)UIImagePickerController"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[UIKit.UIImagePickerController.InfoKey : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "InfoKey",
+                  "printedName": "UIKit.UIImagePickerController.InfoKey",
+                  "usr": "c:@T@UIImagePickerControllerInfoKey"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@CM@CapacitorCamera@objc(cs)CAPCameraPlugin(im)imagePickerController:didFinishPickingMediaWithInfo:",
+          "mangledName": "$s15CapacitorCamera0B6PluginC21imagePickerController_29didFinishPickingMediaWithInfoySo07UIImageeF0C_SDySo0mefL3KeyaypGtF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "objc_name": "imagePickerController:didFinishPickingMediaWithInfo:",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Custom",
+            "AccessControl"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "picker",
+          "printedName": "picker(_:didFinishPicking:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "PHPickerViewController",
+              "printedName": "PhotosUI.PHPickerViewController",
+              "usr": "c:objc(cs)PHPickerViewController"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[PhotosUI.PHPickerResult]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PHPickerResult",
+                  "printedName": "PhotosUI.PHPickerResult",
+                  "usr": "s:8PhotosUI14PHPickerResultV"
+                }
+              ],
+              "usr": "s:Sa"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:15CapacitorCamera0B6PluginC6picker_16didFinishPickingySo22PHPickerViewControllerC_Say8PhotosUI0H6ResultVGtF",
+          "mangledName": "$s15CapacitorCamera0B6PluginC6picker_16didFinishPickingySo22PHPickerViewControllerC_Say8PhotosUI0H6ResultVGtF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "declAttributes": [
+            "AccessControl"
+          ],
+          "funcSelfKind": "NonMutating"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:@M@CapacitorCamera@objc(cs)CAPCameraPlugin",
+      "mangledName": "$s15CapacitorCamera0B6PluginC",
+      "moduleName": "CapacitorCamera",
+      "isOpen": true,
+      "objc_name": "CAPCameraPlugin",
+      "declAttributes": [
+        "AccessControl",
+        "ObjC"
+      ],
+      "superclassUsr": "c:objc(cs)CAPPlugin",
+      "inheritsConvenienceInitializers": true,
+      "superclassNames": [
+        "Capacitor.CAPPlugin",
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "PHPickerViewControllerDelegate",
+          "printedName": "PHPickerViewControllerDelegate",
+          "usr": "s:8PhotosUI30PHPickerViewControllerDelegateP",
+          "mangledName": "$s8PhotosUI30PHPickerViewControllerDelegateP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "UIKit",
+      "printedName": "UIKit",
+      "declKind": "Import",
+      "moduleName": "CapacitorCamera"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraSource",
+      "printedName": "CameraSource",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "prompt",
+          "printedName": "prompt",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraSource.Type) -> CapacitorCamera.CameraSource",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraSource",
+                  "printedName": "CapacitorCamera.CameraSource",
+                  "usr": "s:15CapacitorCamera0B6SourceO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraSource.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraSource",
+                      "printedName": "CapacitorCamera.CameraSource",
+                      "usr": "s:15CapacitorCamera0B6SourceO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B6SourceO6promptyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B6SourceO6promptyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 0
+        },
+        {
+          "kind": "Var",
+          "name": "camera",
+          "printedName": "camera",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraSource.Type) -> CapacitorCamera.CameraSource",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraSource",
+                  "printedName": "CapacitorCamera.CameraSource",
+                  "usr": "s:15CapacitorCamera0B6SourceO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraSource.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraSource",
+                      "printedName": "CapacitorCamera.CameraSource",
+                      "usr": "s:15CapacitorCamera0B6SourceO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B6SourceO6camerayA2CmF",
+          "mangledName": "$s15CapacitorCamera0B6SourceO6camerayA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 1
+        },
+        {
+          "kind": "Var",
+          "name": "photos",
+          "printedName": "photos",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraSource.Type) -> CapacitorCamera.CameraSource",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraSource",
+                  "printedName": "CapacitorCamera.CameraSource",
+                  "usr": "s:15CapacitorCamera0B6SourceO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraSource.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraSource",
+                      "printedName": "CapacitorCamera.CameraSource",
+                      "usr": "s:15CapacitorCamera0B6SourceO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B6SourceO6photosyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B6SourceO6photosyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 2
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(rawValue:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CapacitorCamera.CameraSource?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraSource",
+                  "printedName": "CapacitorCamera.CameraSource",
+                  "usr": "s:15CapacitorCamera0B6SourceO"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B6SourceO8rawValueACSgSS_tcfc",
+          "mangledName": "$s15CapacitorCamera0B6SourceO8rawValueACSgSS_tcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "declAttributes": [
+            "Inlinable"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Var",
+          "name": "rawValue",
+          "printedName": "rawValue",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6SourceO8rawValueSSvp",
+          "mangledName": "$s15CapacitorCamera0B6SourceO8rawValueSSvp",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B6SourceO8rawValueSSvg",
+              "mangledName": "$s15CapacitorCamera0B6SourceO8rawValueSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Inlinable"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Enum",
+      "usr": "s:15CapacitorCamera0B6SourceO",
+      "mangledName": "$s15CapacitorCamera0B6SourceO",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl",
+        "RawDocComment"
+      ],
+      "enumRawTypeName": "String",
+      "isEnumExhaustive": true,
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "RawRepresentable",
+          "printedName": "RawRepresentable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "RawValue",
+              "printedName": "RawValue",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ]
+            }
+          ],
+          "usr": "s:SY",
+          "mangledName": "$sSY"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraDirection",
+      "printedName": "CameraDirection",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "rear",
+          "printedName": "rear",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraDirection.Type) -> CapacitorCamera.CameraDirection",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraDirection",
+                  "printedName": "CapacitorCamera.CameraDirection",
+                  "usr": "s:15CapacitorCamera0B9DirectionO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraDirection.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraDirection",
+                      "printedName": "CapacitorCamera.CameraDirection",
+                      "usr": "s:15CapacitorCamera0B9DirectionO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B9DirectionO4rearyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B9DirectionO4rearyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 0
+        },
+        {
+          "kind": "Var",
+          "name": "front",
+          "printedName": "front",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraDirection.Type) -> CapacitorCamera.CameraDirection",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraDirection",
+                  "printedName": "CapacitorCamera.CameraDirection",
+                  "usr": "s:15CapacitorCamera0B9DirectionO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraDirection.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraDirection",
+                      "printedName": "CapacitorCamera.CameraDirection",
+                      "usr": "s:15CapacitorCamera0B9DirectionO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B9DirectionO5frontyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B9DirectionO5frontyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 1
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(rawValue:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CapacitorCamera.CameraDirection?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraDirection",
+                  "printedName": "CapacitorCamera.CameraDirection",
+                  "usr": "s:15CapacitorCamera0B9DirectionO"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B9DirectionO8rawValueACSgSS_tcfc",
+          "mangledName": "$s15CapacitorCamera0B9DirectionO8rawValueACSgSS_tcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "declAttributes": [
+            "Inlinable"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Var",
+          "name": "rawValue",
+          "printedName": "rawValue",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B9DirectionO8rawValueSSvp",
+          "mangledName": "$s15CapacitorCamera0B9DirectionO8rawValueSSvp",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B9DirectionO8rawValueSSvg",
+              "mangledName": "$s15CapacitorCamera0B9DirectionO8rawValueSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Inlinable"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Enum",
+      "usr": "s:15CapacitorCamera0B9DirectionO",
+      "mangledName": "$s15CapacitorCamera0B9DirectionO",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl"
+      ],
+      "enumRawTypeName": "String",
+      "isEnumExhaustive": true,
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "RawRepresentable",
+          "printedName": "RawRepresentable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "RawValue",
+              "printedName": "RawValue",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ]
+            }
+          ],
+          "usr": "s:SY",
+          "mangledName": "$sSY"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraResultType",
+      "printedName": "CameraResultType",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "base64",
+          "printedName": "base64",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraResultType.Type) -> CapacitorCamera.CameraResultType",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraResultType",
+                  "printedName": "CapacitorCamera.CameraResultType",
+                  "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraResultType.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraResultType",
+                      "printedName": "CapacitorCamera.CameraResultType",
+                      "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B10ResultTypeO6base64yA2CmF",
+          "mangledName": "$s15CapacitorCamera0B10ResultTypeO6base64yA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 0
+        },
+        {
+          "kind": "Var",
+          "name": "uri",
+          "printedName": "uri",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraResultType.Type) -> CapacitorCamera.CameraResultType",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraResultType",
+                  "printedName": "CapacitorCamera.CameraResultType",
+                  "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraResultType.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraResultType",
+                      "printedName": "CapacitorCamera.CameraResultType",
+                      "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B10ResultTypeO3uriyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B10ResultTypeO3uriyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 1
+        },
+        {
+          "kind": "Var",
+          "name": "dataURL",
+          "printedName": "dataURL",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraResultType.Type) -> CapacitorCamera.CameraResultType",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraResultType",
+                  "printedName": "CapacitorCamera.CameraResultType",
+                  "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraResultType.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraResultType",
+                      "printedName": "CapacitorCamera.CameraResultType",
+                      "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B10ResultTypeO7dataURLyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B10ResultTypeO7dataURLyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 2
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(rawValue:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CapacitorCamera.CameraResultType?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraResultType",
+                  "printedName": "CapacitorCamera.CameraResultType",
+                  "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B10ResultTypeO8rawValueACSgSS_tcfc",
+          "mangledName": "$s15CapacitorCamera0B10ResultTypeO8rawValueACSgSS_tcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "declAttributes": [
+            "Inlinable"
+          ],
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Var",
+          "name": "rawValue",
+          "printedName": "rawValue",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B10ResultTypeO8rawValueSSvp",
+          "mangledName": "$s15CapacitorCamera0B10ResultTypeO8rawValueSSvp",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B10ResultTypeO8rawValueSSvg",
+              "mangledName": "$s15CapacitorCamera0B10ResultTypeO8rawValueSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Inlinable"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Enum",
+      "usr": "s:15CapacitorCamera0B10ResultTypeO",
+      "mangledName": "$s15CapacitorCamera0B10ResultTypeO",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl"
+      ],
+      "enumRawTypeName": "String",
+      "isEnumExhaustive": true,
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "RawRepresentable",
+          "printedName": "RawRepresentable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "RawValue",
+              "printedName": "RawValue",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ]
+            }
+          ],
+          "usr": "s:SY",
+          "mangledName": "$sSY"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraPromptText",
+      "printedName": "CameraPromptText",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "title",
+          "printedName": "title",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B10PromptTextV5titleSSvp",
+          "mangledName": "$s15CapacitorCamera0B10PromptTextV5titleSSvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B10PromptTextV5titleSSvg",
+              "mangledName": "$s15CapacitorCamera0B10PromptTextV5titleSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "photoAction",
+          "printedName": "photoAction",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B10PromptTextV11photoActionSSvp",
+          "mangledName": "$s15CapacitorCamera0B10PromptTextV11photoActionSSvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 1,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B10PromptTextV11photoActionSSvg",
+              "mangledName": "$s15CapacitorCamera0B10PromptTextV11photoActionSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "cameraAction",
+          "printedName": "cameraAction",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B10PromptTextV12cameraActionSSvp",
+          "mangledName": "$s15CapacitorCamera0B10PromptTextV12cameraActionSSvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 2,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B10PromptTextV12cameraActionSSvg",
+              "mangledName": "$s15CapacitorCamera0B10PromptTextV12cameraActionSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "cancelAction",
+          "printedName": "cancelAction",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B10PromptTextV12cancelActionSSvp",
+          "mangledName": "$s15CapacitorCamera0B10PromptTextV12cancelActionSSvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 3,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B10PromptTextV12cancelActionSSvg",
+              "mangledName": "$s15CapacitorCamera0B10PromptTextV12cancelActionSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(title:photoAction:cameraAction:cancelAction:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraPromptText",
+              "printedName": "CapacitorCamera.CameraPromptText",
+              "usr": "s:15CapacitorCamera0B10PromptTextV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.String?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B10PromptTextV5title11photoAction06cameraG006cancelG0ACSSSg_A3Htcfc",
+          "mangledName": "$s15CapacitorCamera0B10PromptTextV5title11photoAction06cameraG006cancelG0ACSSSg_A3Htcfc",
+          "moduleName": "CapacitorCamera",
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Struct",
+      "usr": "s:15CapacitorCamera0B10PromptTextV",
+      "mangledName": "$s15CapacitorCamera0B10PromptTextV",
+      "moduleName": "CapacitorCamera",
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Sendable",
+          "printedName": "Sendable",
+          "usr": "s:s8SendableP",
+          "mangledName": "$ss8SendableP"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraSettings",
+      "printedName": "CameraSettings",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "source",
+          "printedName": "source",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraSource",
+              "printedName": "CapacitorCamera.CameraSource",
+              "usr": "s:15CapacitorCamera0B6SourceO"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV6sourceAA0B6SourceOvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV6sourceAA0B6SourceOvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraSource",
+                  "printedName": "CapacitorCamera.CameraSource",
+                  "usr": "s:15CapacitorCamera0B6SourceO"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV6sourceAA0B6SourceOvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV6sourceAA0B6SourceOvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraSource",
+                  "printedName": "CapacitorCamera.CameraSource",
+                  "usr": "s:15CapacitorCamera0B6SourceO"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV6sourceAA0B6SourceOvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV6sourceAA0B6SourceOvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV6sourceAA0B6SourceOvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV6sourceAA0B6SourceOvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "direction",
+          "printedName": "direction",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraDirection",
+              "printedName": "CapacitorCamera.CameraDirection",
+              "usr": "s:15CapacitorCamera0B9DirectionO"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV9directionAA0B9DirectionOvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV9directionAA0B9DirectionOvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 1,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraDirection",
+                  "printedName": "CapacitorCamera.CameraDirection",
+                  "usr": "s:15CapacitorCamera0B9DirectionO"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV9directionAA0B9DirectionOvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV9directionAA0B9DirectionOvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraDirection",
+                  "printedName": "CapacitorCamera.CameraDirection",
+                  "usr": "s:15CapacitorCamera0B9DirectionO"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV9directionAA0B9DirectionOvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV9directionAA0B9DirectionOvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV9directionAA0B9DirectionOvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV9directionAA0B9DirectionOvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "resultType",
+          "printedName": "resultType",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraResultType",
+              "printedName": "CapacitorCamera.CameraResultType",
+              "usr": "s:15CapacitorCamera0B10ResultTypeO"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV10resultTypeAA0b6ResultE0Ovp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV10resultTypeAA0b6ResultE0Ovp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 2,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraResultType",
+                  "printedName": "CapacitorCamera.CameraResultType",
+                  "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV10resultTypeAA0b6ResultE0Ovg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV10resultTypeAA0b6ResultE0Ovg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraResultType",
+                  "printedName": "CapacitorCamera.CameraResultType",
+                  "usr": "s:15CapacitorCamera0B10ResultTypeO"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV10resultTypeAA0b6ResultE0Ovs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV10resultTypeAA0b6ResultE0Ovs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV10resultTypeAA0b6ResultE0OvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV10resultTypeAA0b6ResultE0OvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "userPromptText",
+          "printedName": "userPromptText",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraPromptText",
+              "printedName": "CapacitorCamera.CameraPromptText",
+              "usr": "s:15CapacitorCamera0B10PromptTextV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV14userPromptTextAA0beF0Vvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV14userPromptTextAA0beF0Vvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 3,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPromptText",
+                  "printedName": "CapacitorCamera.CameraPromptText",
+                  "usr": "s:15CapacitorCamera0B10PromptTextV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV14userPromptTextAA0beF0Vvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV14userPromptTextAA0beF0Vvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPromptText",
+                  "printedName": "CapacitorCamera.CameraPromptText",
+                  "usr": "s:15CapacitorCamera0B10PromptTextV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV14userPromptTextAA0beF0Vvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV14userPromptTextAA0beF0Vvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV14userPromptTextAA0beF0VvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV14userPromptTextAA0beF0VvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "jpegQuality",
+          "printedName": "jpegQuality",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CGFloat",
+              "printedName": "CoreGraphics.CGFloat",
+              "usr": "s:12CoreGraphics7CGFloatV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV11jpegQuality12CoreGraphics7CGFloatVvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV11jpegQuality12CoreGraphics7CGFloatVvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 4,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CGFloat",
+                  "printedName": "CoreGraphics.CGFloat",
+                  "usr": "s:12CoreGraphics7CGFloatV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV11jpegQuality12CoreGraphics7CGFloatVvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV11jpegQuality12CoreGraphics7CGFloatVvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "CGFloat",
+                  "printedName": "CoreGraphics.CGFloat",
+                  "usr": "s:12CoreGraphics7CGFloatV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV11jpegQuality12CoreGraphics7CGFloatVvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV11jpegQuality12CoreGraphics7CGFloatVvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV11jpegQuality12CoreGraphics7CGFloatVvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV11jpegQuality12CoreGraphics7CGFloatVvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "width",
+          "printedName": "width",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CGFloat",
+              "printedName": "CoreGraphics.CGFloat",
+              "usr": "s:12CoreGraphics7CGFloatV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV5width12CoreGraphics7CGFloatVvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV5width12CoreGraphics7CGFloatVvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 5,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CGFloat",
+                  "printedName": "CoreGraphics.CGFloat",
+                  "usr": "s:12CoreGraphics7CGFloatV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV5width12CoreGraphics7CGFloatVvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV5width12CoreGraphics7CGFloatVvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "CGFloat",
+                  "printedName": "CoreGraphics.CGFloat",
+                  "usr": "s:12CoreGraphics7CGFloatV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV5width12CoreGraphics7CGFloatVvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV5width12CoreGraphics7CGFloatVvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV5width12CoreGraphics7CGFloatVvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV5width12CoreGraphics7CGFloatVvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "height",
+          "printedName": "height",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CGFloat",
+              "printedName": "CoreGraphics.CGFloat",
+              "usr": "s:12CoreGraphics7CGFloatV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV6height12CoreGraphics7CGFloatVvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV6height12CoreGraphics7CGFloatVvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 6,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CGFloat",
+                  "printedName": "CoreGraphics.CGFloat",
+                  "usr": "s:12CoreGraphics7CGFloatV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV6height12CoreGraphics7CGFloatVvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV6height12CoreGraphics7CGFloatVvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "CGFloat",
+                  "printedName": "CoreGraphics.CGFloat",
+                  "usr": "s:12CoreGraphics7CGFloatV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV6height12CoreGraphics7CGFloatVvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV6height12CoreGraphics7CGFloatVvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV6height12CoreGraphics7CGFloatVvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV6height12CoreGraphics7CGFloatVvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "allowEditing",
+          "printedName": "allowEditing",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV12allowEditingSbvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV12allowEditingSbvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 7,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV12allowEditingSbvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV12allowEditingSbvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV12allowEditingSbvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV12allowEditingSbvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV12allowEditingSbvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV12allowEditingSbvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "shouldResize",
+          "printedName": "shouldResize",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV12shouldResizeSbvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV12shouldResizeSbvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 8,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV12shouldResizeSbvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV12shouldResizeSbvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV12shouldResizeSbvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV12shouldResizeSbvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV12shouldResizeSbvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV12shouldResizeSbvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "shouldCorrectOrientation",
+          "printedName": "shouldCorrectOrientation",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV24shouldCorrectOrientationSbvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV24shouldCorrectOrientationSbvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 9,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV24shouldCorrectOrientationSbvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV24shouldCorrectOrientationSbvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV24shouldCorrectOrientationSbvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV24shouldCorrectOrientationSbvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV24shouldCorrectOrientationSbvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV24shouldCorrectOrientationSbvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "saveToGallery",
+          "printedName": "saveToGallery",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "usr": "s:Sb"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV13saveToGallerySbvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV13saveToGallerySbvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 10,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV13saveToGallerySbvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV13saveToGallerySbvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Bool",
+                  "printedName": "Swift.Bool",
+                  "usr": "s:Sb"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV13saveToGallerySbvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV13saveToGallerySbvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV13saveToGallerySbvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV13saveToGallerySbvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "presentationStyle",
+          "printedName": "presentationStyle",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "UIModalPresentationStyle",
+              "printedName": "UIKit.UIModalPresentationStyle",
+              "usr": "c:@E@UIModalPresentationStyle"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B8SettingsV17presentationStyleSo019UIModalPresentationE0Vvp",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV17presentationStyleSo019UIModalPresentationE0Vvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 11,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIModalPresentationStyle",
+                  "printedName": "UIKit.UIModalPresentationStyle",
+                  "usr": "c:@E@UIModalPresentationStyle"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV17presentationStyleSo019UIModalPresentationE0Vvg",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV17presentationStyleSo019UIModalPresentationE0Vvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIModalPresentationStyle",
+                  "printedName": "UIKit.UIModalPresentationStyle",
+                  "usr": "c:@E@UIModalPresentationStyle"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV17presentationStyleSo019UIModalPresentationE0Vvs",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV17presentationStyleSo019UIModalPresentationE0Vvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B8SettingsV17presentationStyleSo019UIModalPresentationE0VvM",
+              "mangledName": "$s15CapacitorCamera0B8SettingsV17presentationStyleSo019UIModalPresentationE0VvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(source:direction:resultType:userPromptText:jpegQuality:width:height:allowEditing:shouldResize:shouldCorrectOrientation:saveToGallery:presentationStyle:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraSettings",
+              "printedName": "CapacitorCamera.CameraSettings",
+              "usr": "s:15CapacitorCamera0B8SettingsV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CameraSource",
+              "printedName": "CapacitorCamera.CameraSource",
+              "hasDefaultArg": true,
+              "usr": "s:15CapacitorCamera0B6SourceO"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CameraDirection",
+              "printedName": "CapacitorCamera.CameraDirection",
+              "hasDefaultArg": true,
+              "usr": "s:15CapacitorCamera0B9DirectionO"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CameraResultType",
+              "printedName": "CapacitorCamera.CameraResultType",
+              "hasDefaultArg": true,
+              "usr": "s:15CapacitorCamera0B10ResultTypeO"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CameraPromptText",
+              "printedName": "CapacitorCamera.CameraPromptText",
+              "hasDefaultArg": true,
+              "usr": "s:15CapacitorCamera0B10PromptTextV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CGFloat",
+              "printedName": "CoreGraphics.CGFloat",
+              "hasDefaultArg": true,
+              "usr": "s:12CoreGraphics7CGFloatV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CGFloat",
+              "printedName": "CoreGraphics.CGFloat",
+              "hasDefaultArg": true,
+              "usr": "s:12CoreGraphics7CGFloatV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CGFloat",
+              "printedName": "CoreGraphics.CGFloat",
+              "hasDefaultArg": true,
+              "usr": "s:12CoreGraphics7CGFloatV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "hasDefaultArg": true,
+              "usr": "s:Sb"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "hasDefaultArg": true,
+              "usr": "s:Sb"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "hasDefaultArg": true,
+              "usr": "s:Sb"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Bool",
+              "printedName": "Swift.Bool",
+              "hasDefaultArg": true,
+              "usr": "s:Sb"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UIModalPresentationStyle",
+              "printedName": "UIKit.UIModalPresentationStyle",
+              "hasDefaultArg": true,
+              "usr": "c:@E@UIModalPresentationStyle"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B8SettingsV6source9direction10resultType14userPromptText11jpegQuality5width6height12allowEditing12shouldResize0Q18CorrectOrientation13saveToGallery17presentationStyleAcA0B6SourceO_AA0B9DirectionOAA0b6ResultG0OAA0biJ0V12CoreGraphics7CGFloatVA2ZS4bSo019UIModalPresentationY0Vtcfc",
+          "mangledName": "$s15CapacitorCamera0B8SettingsV6source9direction10resultType14userPromptText11jpegQuality5width6height12allowEditing12shouldResize0Q18CorrectOrientation13saveToGallery17presentationStyleAcA0B6SourceO_AA0B9DirectionOAA0b6ResultG0OAA0biJ0V12CoreGraphics7CGFloatVA2ZS4bSo019UIModalPresentationY0Vtcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraSettings",
+              "printedName": "CapacitorCamera.CameraSettings",
+              "usr": "s:15CapacitorCamera0B8SettingsV"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B8SettingsVACycfc",
+          "mangledName": "$s15CapacitorCamera0B8SettingsVACycfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Struct",
+      "usr": "s:15CapacitorCamera0B8SettingsV",
+      "mangledName": "$s15CapacitorCamera0B8SettingsV",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl"
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraResult",
+      "printedName": "CameraResult",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "image",
+          "printedName": "image",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "UIKit.UIImage?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIImage",
+                  "printedName": "UIKit.UIImage",
+                  "usr": "c:objc(cs)UIImage"
+                }
+              ],
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6ResultV5imageSo7UIImageCSgvp",
+          "mangledName": "$s15CapacitorCamera0B6ResultV5imageSo7UIImageCSgvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Optional",
+                  "printedName": "UIKit.UIImage?",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "UIImage",
+                      "printedName": "UIKit.UIImage",
+                      "usr": "c:objc(cs)UIImage"
+                    }
+                  ],
+                  "usr": "s:Sq"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B6ResultV5imageSo7UIImageCSgvg",
+              "mangledName": "$s15CapacitorCamera0B6ResultV5imageSo7UIImageCSgvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "metadata",
+          "printedName": "metadata",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.AnyHashable : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "AnyHashable",
+                  "printedName": "Swift.AnyHashable",
+                  "usr": "s:s11AnyHashableV"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B6ResultV8metadataSDys11AnyHashableVypGvp",
+          "mangledName": "$s15CapacitorCamera0B6ResultV8metadataSDys11AnyHashableVypGvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 1,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Dictionary",
+                  "printedName": "[Swift.AnyHashable : Any]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "AnyHashable",
+                      "printedName": "Swift.AnyHashable",
+                      "usr": "s:s11AnyHashableV"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "ProtocolComposition",
+                      "printedName": "Any"
+                    }
+                  ],
+                  "usr": "s:SD"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B6ResultV8metadataSDys11AnyHashableVypGvg",
+              "mangledName": "$s15CapacitorCamera0B6ResultV8metadataSDys11AnyHashableVypGvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(image:metadata:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "CameraResult",
+              "printedName": "CapacitorCamera.CameraResult",
+              "usr": "s:15CapacitorCamera0B6ResultV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "UIKit.UIImage?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIImage",
+                  "printedName": "UIKit.UIImage",
+                  "usr": "c:objc(cs)UIImage"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.AnyHashable : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "AnyHashable",
+                  "printedName": "Swift.AnyHashable",
+                  "usr": "s:s11AnyHashableV"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B6ResultV5image8metadataACSo7UIImageCSg_SDys11AnyHashableVypGtcfc",
+          "mangledName": "$s15CapacitorCamera0B6ResultV5image8metadataACSo7UIImageCSg_SDys11AnyHashableVypGtcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Struct",
+      "usr": "s:15CapacitorCamera0B6ResultV",
+      "mangledName": "$s15CapacitorCamera0B6ResultV",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl"
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraPermissionType",
+      "printedName": "CameraPermissionType",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "camera",
+          "printedName": "camera",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraPermissionType.Type) -> CapacitorCamera.CameraPermissionType",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPermissionType",
+                  "printedName": "CapacitorCamera.CameraPermissionType",
+                  "usr": "s:15CapacitorCamera0B14PermissionTypeO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraPermissionType.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPermissionType",
+                      "printedName": "CapacitorCamera.CameraPermissionType",
+                      "usr": "s:15CapacitorCamera0B14PermissionTypeO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B14PermissionTypeO6camerayA2CmF",
+          "mangledName": "$s15CapacitorCamera0B14PermissionTypeO6camerayA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 0
+        },
+        {
+          "kind": "Var",
+          "name": "photos",
+          "printedName": "photos",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraPermissionType.Type) -> CapacitorCamera.CameraPermissionType",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPermissionType",
+                  "printedName": "CapacitorCamera.CameraPermissionType",
+                  "usr": "s:15CapacitorCamera0B14PermissionTypeO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraPermissionType.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPermissionType",
+                      "printedName": "CapacitorCamera.CameraPermissionType",
+                      "usr": "s:15CapacitorCamera0B14PermissionTypeO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B14PermissionTypeO6photosyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B14PermissionTypeO6photosyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 1
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(rawValue:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CapacitorCamera.CameraPermissionType?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPermissionType",
+                  "printedName": "CapacitorCamera.CameraPermissionType",
+                  "usr": "s:15CapacitorCamera0B14PermissionTypeO"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B14PermissionTypeO8rawValueACSgSS_tcfc",
+          "mangledName": "$s15CapacitorCamera0B14PermissionTypeO8rawValueACSgSS_tcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Var",
+          "name": "rawValue",
+          "printedName": "rawValue",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B14PermissionTypeO8rawValueSSvp",
+          "mangledName": "$s15CapacitorCamera0B14PermissionTypeO8rawValueSSvp",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B14PermissionTypeO8rawValueSSvg",
+              "mangledName": "$s15CapacitorCamera0B14PermissionTypeO8rawValueSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "allCases",
+          "printedName": "allCases",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[CapacitorCamera.CameraPermissionType]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPermissionType",
+                  "printedName": "CapacitorCamera.CameraPermissionType",
+                  "usr": "s:15CapacitorCamera0B14PermissionTypeO"
+                }
+              ],
+              "usr": "s:Sa"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B14PermissionTypeO8allCasesSayACGvpZ",
+          "mangledName": "$s15CapacitorCamera0B14PermissionTypeO8allCasesSayACGvpZ",
+          "moduleName": "CapacitorCamera",
+          "static": true,
+          "implicit": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Array",
+                  "printedName": "[CapacitorCamera.CameraPermissionType]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPermissionType",
+                      "printedName": "CapacitorCamera.CameraPermissionType",
+                      "usr": "s:15CapacitorCamera0B14PermissionTypeO"
+                    }
+                  ],
+                  "usr": "s:Sa"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B14PermissionTypeO8allCasesSayACGvgZ",
+              "mangledName": "$s15CapacitorCamera0B14PermissionTypeO8allCasesSayACGvgZ",
+              "moduleName": "CapacitorCamera",
+              "static": true,
+              "implicit": true,
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Enum",
+      "usr": "s:15CapacitorCamera0B14PermissionTypeO",
+      "mangledName": "$s15CapacitorCamera0B14PermissionTypeO",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl",
+        "RawDocComment"
+      ],
+      "enumRawTypeName": "String",
+      "isEnumExhaustive": true,
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "RawRepresentable",
+          "printedName": "RawRepresentable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "RawValue",
+              "printedName": "RawValue",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ]
+            }
+          ],
+          "usr": "s:SY",
+          "mangledName": "$sSY"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CaseIterable",
+          "printedName": "CaseIterable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "AllCases",
+              "printedName": "AllCases",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Array",
+                  "printedName": "[CapacitorCamera.CameraPermissionType]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPermissionType",
+                      "printedName": "CapacitorCamera.CameraPermissionType",
+                      "usr": "s:15CapacitorCamera0B14PermissionTypeO"
+                    }
+                  ],
+                  "usr": "s:Sa"
+                }
+              ]
+            }
+          ],
+          "usr": "s:s12CaseIterableP",
+          "mangledName": "$ss12CaseIterableP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Sendable",
+          "printedName": "Sendable",
+          "usr": "s:s8SendableP",
+          "mangledName": "$ss8SendableP"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "CameraPropertyListKeys",
+      "printedName": "CameraPropertyListKeys",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "photoLibraryAddUsage",
+          "printedName": "photoLibraryAddUsage",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraPropertyListKeys.Type) -> CapacitorCamera.CameraPropertyListKeys",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPropertyListKeys",
+                  "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                  "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraPropertyListKeys.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPropertyListKeys",
+                      "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                      "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B16PropertyListKeysO20photoLibraryAddUsageyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO20photoLibraryAddUsageyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 0
+        },
+        {
+          "kind": "Var",
+          "name": "photoLibraryUsage",
+          "printedName": "photoLibraryUsage",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraPropertyListKeys.Type) -> CapacitorCamera.CameraPropertyListKeys",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPropertyListKeys",
+                  "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                  "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraPropertyListKeys.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPropertyListKeys",
+                      "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                      "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B16PropertyListKeysO17photoLibraryUsageyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO17photoLibraryUsageyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 1
+        },
+        {
+          "kind": "Var",
+          "name": "cameraUsage",
+          "printedName": "cameraUsage",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(CapacitorCamera.CameraPropertyListKeys.Type) -> CapacitorCamera.CameraPropertyListKeys",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPropertyListKeys",
+                  "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                  "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Metatype",
+                  "printedName": "CapacitorCamera.CameraPropertyListKeys.Type",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPropertyListKeys",
+                      "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                      "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "declKind": "EnumElement",
+          "usr": "s:15CapacitorCamera0B16PropertyListKeysO11cameraUsageyA2CmF",
+          "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO11cameraUsageyA2CmF",
+          "moduleName": "CapacitorCamera",
+          "fixedbinaryorder": 2
+        },
+        {
+          "kind": "Var",
+          "name": "link",
+          "printedName": "link",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B16PropertyListKeysO4linkSSvp",
+          "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO4linkSSvp",
+          "moduleName": "CapacitorCamera",
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B16PropertyListKeysO4linkSSvg",
+              "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO4linkSSvg",
+              "moduleName": "CapacitorCamera",
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "missingMessage",
+          "printedName": "missingMessage",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B16PropertyListKeysO14missingMessageSSvp",
+          "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO14missingMessageSSvp",
+          "moduleName": "CapacitorCamera",
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B16PropertyListKeysO14missingMessageSSvg",
+              "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO14missingMessageSSvg",
+              "moduleName": "CapacitorCamera",
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(rawValue:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CapacitorCamera.CameraPropertyListKeys?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPropertyListKeys",
+                  "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                  "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera0B16PropertyListKeysO8rawValueACSgSS_tcfc",
+          "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO8rawValueACSgSS_tcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Var",
+          "name": "rawValue",
+          "printedName": "rawValue",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B16PropertyListKeysO8rawValueSSvp",
+          "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO8rawValueSSvp",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B16PropertyListKeysO8rawValueSSvg",
+              "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO8rawValueSSvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "allCases",
+          "printedName": "allCases",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Array",
+              "printedName": "[CapacitorCamera.CameraPropertyListKeys]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CameraPropertyListKeys",
+                  "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                  "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                }
+              ],
+              "usr": "s:Sa"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera0B16PropertyListKeysO8allCasesSayACGvpZ",
+          "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO8allCasesSayACGvpZ",
+          "moduleName": "CapacitorCamera",
+          "static": true,
+          "implicit": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Array",
+                  "printedName": "[CapacitorCamera.CameraPropertyListKeys]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPropertyListKeys",
+                      "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                      "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                    }
+                  ],
+                  "usr": "s:Sa"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera0B16PropertyListKeysO8allCasesSayACGvgZ",
+              "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO8allCasesSayACGvgZ",
+              "moduleName": "CapacitorCamera",
+              "static": true,
+              "implicit": true,
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Enum",
+      "usr": "s:15CapacitorCamera0B16PropertyListKeysO",
+      "mangledName": "$s15CapacitorCamera0B16PropertyListKeysO",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl"
+      ],
+      "enumRawTypeName": "String",
+      "isEnumExhaustive": true,
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "RawRepresentable",
+          "printedName": "RawRepresentable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "RawValue",
+              "printedName": "RawValue",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ]
+            }
+          ],
+          "usr": "s:SY",
+          "mangledName": "$sSY"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CaseIterable",
+          "printedName": "CaseIterable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "AllCases",
+              "printedName": "AllCases",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Array",
+                  "printedName": "[CapacitorCamera.CameraPropertyListKeys]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "CameraPropertyListKeys",
+                      "printedName": "CapacitorCamera.CameraPropertyListKeys",
+                      "usr": "s:15CapacitorCamera0B16PropertyListKeysO"
+                    }
+                  ],
+                  "usr": "s:Sa"
+                }
+              ]
+            }
+          ],
+          "usr": "s:s12CaseIterableP",
+          "mangledName": "$ss12CaseIterableP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Sendable",
+          "printedName": "Sendable",
+          "usr": "s:s8SendableP",
+          "mangledName": "$ss8SendableP"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "PhotoFlags",
+      "printedName": "PhotoFlags",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "rawValue",
+          "printedName": "rawValue",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera10PhotoFlagsV8rawValueSivp",
+          "mangledName": "$s15CapacitorCamera10PhotoFlagsV8rawValueSivp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Int",
+                  "printedName": "Swift.Int",
+                  "usr": "s:Si"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV8rawValueSivg",
+              "mangledName": "$s15CapacitorCamera10PhotoFlagsV8rawValueSivg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "edited",
+          "printedName": "edited",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "PhotoFlags",
+              "printedName": "CapacitorCamera.PhotoFlags",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera10PhotoFlagsV6editedACvpZ",
+          "mangledName": "$s15CapacitorCamera10PhotoFlagsV6editedACvpZ",
+          "moduleName": "CapacitorCamera",
+          "static": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PhotoFlags",
+                  "printedName": "CapacitorCamera.PhotoFlags",
+                  "usr": "s:15CapacitorCamera10PhotoFlagsV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV6editedACvgZ",
+              "mangledName": "$s15CapacitorCamera10PhotoFlagsV6editedACvgZ",
+              "moduleName": "CapacitorCamera",
+              "static": true,
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "gallery",
+          "printedName": "gallery",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "PhotoFlags",
+              "printedName": "CapacitorCamera.PhotoFlags",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera10PhotoFlagsV7galleryACvpZ",
+          "mangledName": "$s15CapacitorCamera10PhotoFlagsV7galleryACvpZ",
+          "moduleName": "CapacitorCamera",
+          "static": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PhotoFlags",
+                  "printedName": "CapacitorCamera.PhotoFlags",
+                  "usr": "s:15CapacitorCamera10PhotoFlagsV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV7galleryACvgZ",
+              "mangledName": "$s15CapacitorCamera10PhotoFlagsV7galleryACvgZ",
+              "moduleName": "CapacitorCamera",
+              "static": true,
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "all",
+          "printedName": "all",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "PhotoFlags",
+              "printedName": "CapacitorCamera.PhotoFlags",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera10PhotoFlagsV3allACvpZ",
+          "mangledName": "$s15CapacitorCamera10PhotoFlagsV3allACvpZ",
+          "moduleName": "CapacitorCamera",
+          "static": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "isLet": true,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PhotoFlags",
+                  "printedName": "CapacitorCamera.PhotoFlags",
+                  "usr": "s:15CapacitorCamera10PhotoFlagsV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV3allACvgZ",
+              "mangledName": "$s15CapacitorCamera10PhotoFlagsV3allACvgZ",
+              "moduleName": "CapacitorCamera",
+              "static": true,
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(rawValue:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "PhotoFlags",
+              "printedName": "CapacitorCamera.PhotoFlags",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera10PhotoFlagsV8rawValueACSi_tcfc",
+          "mangledName": "$s15CapacitorCamera10PhotoFlagsV8rawValueACSi_tcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Struct",
+      "usr": "s:15CapacitorCamera10PhotoFlagsV",
+      "mangledName": "$s15CapacitorCamera10PhotoFlagsV",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "OptionSet",
+          "printedName": "OptionSet",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "Element",
+              "printedName": "Element",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PhotoFlags",
+                  "printedName": "CapacitorCamera.PhotoFlags",
+                  "usr": "s:15CapacitorCamera10PhotoFlagsV"
+                }
+              ]
+            }
+          ],
+          "usr": "s:s9OptionSetP",
+          "mangledName": "$ss9OptionSetP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "RawRepresentable",
+          "printedName": "RawRepresentable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "RawValue",
+              "printedName": "RawValue",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Int",
+                  "printedName": "Swift.Int",
+                  "usr": "s:Si"
+                }
+              ]
+            }
+          ],
+          "usr": "s:SY",
+          "mangledName": "$sSY"
+        },
+        {
+          "kind": "Conformance",
+          "name": "SetAlgebra",
+          "printedName": "SetAlgebra",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "Element",
+              "printedName": "Element",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PhotoFlags",
+                  "printedName": "CapacitorCamera.PhotoFlags",
+                  "usr": "s:15CapacitorCamera10PhotoFlagsV"
+                }
+              ]
+            }
+          ],
+          "usr": "s:s10SetAlgebraP",
+          "mangledName": "$ss10SetAlgebraP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "ExpressibleByArrayLiteral",
+          "printedName": "ExpressibleByArrayLiteral",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "ArrayLiteralElement",
+              "printedName": "ArrayLiteralElement",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PhotoFlags",
+                  "printedName": "CapacitorCamera.PhotoFlags",
+                  "usr": "s:15CapacitorCamera10PhotoFlagsV"
+                }
+              ]
+            }
+          ],
+          "usr": "s:s25ExpressibleByArrayLiteralP",
+          "mangledName": "$ss25ExpressibleByArrayLiteralP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Sendable",
+          "printedName": "Sendable",
+          "usr": "s:s8SendableP",
+          "mangledName": "$ss8SendableP"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "ProcessedImage",
+      "printedName": "ProcessedImage",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "image",
+          "printedName": "image",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "UIImage",
+              "printedName": "UIKit.UIImage",
+              "usr": "c:objc(cs)UIImage"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera14ProcessedImageV5imageSo7UIImageCvp",
+          "mangledName": "$s15CapacitorCamera14ProcessedImageV5imageSo7UIImageCvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIImage",
+                  "printedName": "UIKit.UIImage",
+                  "usr": "c:objc(cs)UIImage"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV5imageSo7UIImageCvg",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV5imageSo7UIImageCvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "UIImage",
+                  "printedName": "UIKit.UIImage",
+                  "usr": "c:objc(cs)UIImage"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV5imageSo7UIImageCvs",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV5imageSo7UIImageCvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV5imageSo7UIImageCvM",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV5imageSo7UIImageCvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "metadata",
+          "printedName": "metadata",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera14ProcessedImageV8metadataSDySSypGvp",
+          "mangledName": "$s15CapacitorCamera14ProcessedImageV8metadataSDySSypGvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 1,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Dictionary",
+                  "printedName": "[Swift.String : Any]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "ProtocolComposition",
+                      "printedName": "Any"
+                    }
+                  ],
+                  "usr": "s:SD"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV8metadataSDySSypGvg",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV8metadataSDySSypGvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Dictionary",
+                  "printedName": "[Swift.String : Any]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "ProtocolComposition",
+                      "printedName": "Any"
+                    }
+                  ],
+                  "usr": "s:SD"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV8metadataSDySSypGvs",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV8metadataSDySSypGvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV8metadataSDySSypGvM",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV8metadataSDySSypGvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "flags",
+          "printedName": "flags",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "PhotoFlags",
+              "printedName": "CapacitorCamera.PhotoFlags",
+              "usr": "s:15CapacitorCamera10PhotoFlagsV"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera14ProcessedImageV5flagsAA10PhotoFlagsVvp",
+          "mangledName": "$s15CapacitorCamera14ProcessedImageV5flagsAA10PhotoFlagsVvp",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 2,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "PhotoFlags",
+                  "printedName": "CapacitorCamera.PhotoFlags",
+                  "usr": "s:15CapacitorCamera10PhotoFlagsV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV5flagsAA10PhotoFlagsVvg",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV5flagsAA10PhotoFlagsVvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "PhotoFlags",
+                  "printedName": "CapacitorCamera.PhotoFlags",
+                  "usr": "s:15CapacitorCamera10PhotoFlagsV"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV5flagsAA10PhotoFlagsVvs",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV5flagsAA10PhotoFlagsVvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV5flagsAA10PhotoFlagsVvM",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV5flagsAA10PhotoFlagsVvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "declAttributes": [
+                "Transparent"
+              ],
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Var",
+          "name": "exifData",
+          "printedName": "exifData",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera14ProcessedImageV8exifDataSDySSypGvp",
+          "mangledName": "$s15CapacitorCamera14ProcessedImageV8exifDataSDySSypGvp",
+          "moduleName": "CapacitorCamera",
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Dictionary",
+                  "printedName": "[Swift.String : Any]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "ProtocolComposition",
+                      "printedName": "Any"
+                    }
+                  ],
+                  "usr": "s:SD"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera14ProcessedImageV8exifDataSDySSypGvg",
+              "mangledName": "$s15CapacitorCamera14ProcessedImageV8exifDataSDySSypGvg",
+              "moduleName": "CapacitorCamera",
+              "accessorKind": "get"
+            }
+          ]
+        },
+        {
+          "kind": "Function",
+          "name": "overwriteMetadataOrientation",
+          "printedName": "overwriteMetadataOrientation(to:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:15CapacitorCamera14ProcessedImageV28overwriteMetadataOrientation2toySi_tF",
+          "mangledName": "$s15CapacitorCamera14ProcessedImageV28overwriteMetadataOrientation2toySi_tF",
+          "moduleName": "CapacitorCamera",
+          "declAttributes": [
+            "Mutating"
+          ],
+          "funcSelfKind": "Mutating"
+        },
+        {
+          "kind": "Function",
+          "name": "replaceDictionaryOrientation",
+          "printedName": "replaceDictionaryOrientation(atNode:to:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "paramValueOwnership": "InOut",
+              "usr": "s:SD"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Int",
+              "printedName": "Swift.Int",
+              "usr": "s:Si"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:15CapacitorCamera14ProcessedImageV28replaceDictionaryOrientation6atNode2toySDySSypGz_SitF",
+          "mangledName": "$s15CapacitorCamera14ProcessedImageV28replaceDictionaryOrientation6atNode2toySDySSypGz_SitF",
+          "moduleName": "CapacitorCamera",
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Function",
+          "name": "generateJPEG",
+          "printedName": "generateJPEG(with:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Foundation.Data?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Data",
+                  "printedName": "Foundation.Data",
+                  "usr": "s:10Foundation4DataV"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "CGFloat",
+              "printedName": "CoreGraphics.CGFloat",
+              "usr": "s:12CoreGraphics7CGFloatV"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:15CapacitorCamera14ProcessedImageV12generateJPEG4with10Foundation4DataVSg12CoreGraphics7CGFloatV_tF",
+          "mangledName": "$s15CapacitorCamera14ProcessedImageV12generateJPEG4with10Foundation4DataVSg12CoreGraphics7CGFloatV_tF",
+          "moduleName": "CapacitorCamera",
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(image:metadata:flags:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "ProcessedImage",
+              "printedName": "CapacitorCamera.ProcessedImage",
+              "usr": "s:15CapacitorCamera14ProcessedImageV"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UIImage",
+              "printedName": "UIKit.UIImage",
+              "usr": "c:objc(cs)UIImage"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "usr": "s:SD"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "PhotoFlags",
+              "printedName": "CapacitorCamera.PhotoFlags",
+              "hasDefaultArg": true,
+              "usr": "s:15CapacitorCamera10PhotoFlagsV"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera14ProcessedImageV5image8metadata5flagsACSo7UIImageC_SDySSypGAA10PhotoFlagsVtcfc",
+          "mangledName": "$s15CapacitorCamera14ProcessedImageV5image8metadata5flagsACSo7UIImageC_SDySSypGAA10PhotoFlagsVtcfc",
+          "moduleName": "CapacitorCamera",
+          "implicit": true,
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Struct",
+      "usr": "s:15CapacitorCamera14ProcessedImageV",
+      "mangledName": "$s15CapacitorCamera14ProcessedImageV",
+      "moduleName": "CapacitorCamera",
+      "declAttributes": [
+        "AccessControl"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Sendable",
+          "printedName": "Sendable",
+          "usr": "s:s8SendableP",
+          "mangledName": "$ss8SendableP"
+        }
+      ]
+    },
+    {
+      "kind": "Import",
+      "name": "UIKit",
+      "printedName": "UIKit",
+      "declKind": "Import",
+      "moduleName": "CapacitorCamera"
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "ImageSaver",
+      "printedName": "ImageSaver",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "onResult",
+          "printedName": "onResult",
+          "children": [
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Error?) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Optional",
+                  "printedName": "Swift.Error?",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Error",
+                      "printedName": "Swift.Error",
+                      "usr": "s:s5ErrorP"
+                    }
+                  ],
+                  "usr": "s:Sq"
+                }
+              ]
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:15CapacitorCamera10ImageSaverC8onResultyys5Error_pSgcvp",
+          "mangledName": "$s15CapacitorCamera10ImageSaverC8onResultyys5Error_pSgcvp",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "declAttributes": [
+            "HasInitialValue",
+            "HasStorage"
+          ],
+          "fixedbinaryorder": 0,
+          "hasStorage": true,
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeFunc",
+                  "name": "Function",
+                  "printedName": "(Swift.Error?) -> ()",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Void",
+                      "printedName": "()"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Optional",
+                      "printedName": "Swift.Error?",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "Error",
+                          "printedName": "Swift.Error",
+                          "usr": "s:s5ErrorP"
+                        }
+                      ],
+                      "usr": "s:Sq"
+                    }
+                  ]
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera10ImageSaverC8onResultyys5Error_pSgcvg",
+              "mangledName": "$s15CapacitorCamera10ImageSaverC8onResultyys5Error_pSgcvg",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "get"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Set",
+              "printedName": "Set()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeFunc",
+                  "name": "Function",
+                  "printedName": "(Swift.Error?) -> ()",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Void",
+                      "printedName": "()"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Optional",
+                      "printedName": "Swift.Error?",
+                      "children": [
+                        {
+                          "kind": "TypeNominal",
+                          "name": "Error",
+                          "printedName": "Swift.Error",
+                          "usr": "s:s5ErrorP"
+                        }
+                      ],
+                      "usr": "s:Sq"
+                    }
+                  ]
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera10ImageSaverC8onResultyys5Error_pSgcvs",
+              "mangledName": "$s15CapacitorCamera10ImageSaverC8onResultyys5Error_pSgcvs",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "set"
+            },
+            {
+              "kind": "Accessor",
+              "name": "Modify",
+              "printedName": "Modify()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:15CapacitorCamera10ImageSaverC8onResultyys5Error_pSgcvM",
+              "mangledName": "$s15CapacitorCamera10ImageSaverC8onResultyys5Error_pSgcvM",
+              "moduleName": "CapacitorCamera",
+              "implicit": true,
+              "isOpen": true,
+              "accessorKind": "_modify"
+            }
+          ]
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init(image:onResult:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "ImageSaver",
+              "printedName": "CapacitorCamera.ImageSaver",
+              "usr": "c:@M@CapacitorCamera@objc(cs)ImageSaver"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UIImage",
+              "printedName": "UIKit.UIImage",
+              "usr": "c:objc(cs)UIImage"
+            },
+            {
+              "kind": "TypeFunc",
+              "name": "Function",
+              "printedName": "(Swift.Error?) -> ()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Void",
+                  "printedName": "()"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "Optional",
+                  "printedName": "Swift.Error?",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "Error",
+                      "printedName": "Swift.Error",
+                      "usr": "s:s5ErrorP"
+                    }
+                  ],
+                  "usr": "s:Sq"
+                }
+              ]
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "s:15CapacitorCamera10ImageSaverC5image8onResultACSo7UIImageC_ys5Error_pSgctcfc",
+          "mangledName": "$s15CapacitorCamera10ImageSaverC5image8onResultACSo7UIImageC_ys5Error_pSgctcfc",
+          "moduleName": "CapacitorCamera",
+          "init_kind": "Designated"
+        },
+        {
+          "kind": "Function",
+          "name": "saveResult",
+          "printedName": "saveResult(_:didFinishSavingWithError:contextInfo:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Void",
+              "printedName": "()"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UIImage",
+              "printedName": "UIKit.UIImage",
+              "usr": "c:objc(cs)UIImage"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "Swift.Error?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Error",
+                  "printedName": "Swift.Error",
+                  "usr": "s:s5ErrorP"
+                }
+              ],
+              "usr": "s:Sq"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "UnsafeRawPointer",
+              "printedName": "Swift.UnsafeRawPointer",
+              "usr": "s:SV"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "c:@M@CapacitorCamera@objc(cs)ImageSaver(im)saveResult:didFinishSavingWithError:contextInfo:",
+          "mangledName": "$s15CapacitorCamera10ImageSaverC10saveResult_24didFinishSavingWithError11contextInfoySo7UIImageC_s0K0_pSgSVtF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "declAttributes": [
+            "ObjC"
+          ],
+          "funcSelfKind": "NonMutating"
+        },
+        {
+          "kind": "Constructor",
+          "name": "init",
+          "printedName": "init()",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "ImageSaver",
+              "printedName": "CapacitorCamera.ImageSaver",
+              "usr": "c:@M@CapacitorCamera@objc(cs)ImageSaver"
+            }
+          ],
+          "declKind": "Constructor",
+          "usr": "c:@M@CapacitorCamera@objc(cs)ImageSaver(im)init",
+          "mangledName": "$s15CapacitorCamera10ImageSaverCACycfc",
+          "moduleName": "CapacitorCamera",
+          "overriding": true,
+          "implicit": true,
+          "objc_name": "init",
+          "declAttributes": [
+            "Dynamic",
+            "ObjC",
+            "Override"
+          ],
+          "init_kind": "Designated"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:@M@CapacitorCamera@objc(cs)ImageSaver",
+      "mangledName": "$s15CapacitorCamera10ImageSaverC",
+      "moduleName": "CapacitorCamera",
+      "isOpen": true,
+      "declAttributes": [
+        "ObjC"
+      ],
+      "superclassUsr": "c:objc(cs)NSObject",
+      "superclassNames": [
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "AVAuthorizationStatus",
+      "printedName": "AVAuthorizationStatus",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "authorizationState",
+          "printedName": "authorizationState",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:So21AVAuthorizationStatusV15CapacitorCameraE18authorizationStateSSvp",
+          "mangledName": "$sSo21AVAuthorizationStatusV15CapacitorCameraE18authorizationStateSSvp",
+          "moduleName": "CapacitorCamera",
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:So21AVAuthorizationStatusV15CapacitorCameraE18authorizationStateSSvg",
+              "mangledName": "$sSo21AVAuthorizationStatusV15CapacitorCameraE18authorizationStateSSvg",
+              "moduleName": "CapacitorCamera",
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Enum",
+      "usr": "c:@E@AVAuthorizationStatus",
+      "moduleName": "AVFoundation",
+      "intro_iOS": "7.0",
+      "objc_name": "AVAuthorizationStatus",
+      "declAttributes": [
+        "Available",
+        "SynthesizedProtocol",
+        "ObjC",
+        "SynthesizedProtocol",
+        "Sendable",
+        "Dynamic"
+      ],
+      "enumRawTypeName": "Int",
+      "isExternal": true,
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "RawRepresentable",
+          "printedName": "RawRepresentable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "RawValue",
+              "printedName": "RawValue",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Int",
+                  "printedName": "Swift.Int",
+                  "usr": "s:Si"
+                }
+              ]
+            }
+          ],
+          "usr": "s:SY",
+          "mangledName": "$sSY"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Sendable",
+          "printedName": "Sendable",
+          "usr": "s:s8SendableP",
+          "mangledName": "$ss8SendableP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CameraAuthorizationState",
+          "printedName": "CameraAuthorizationState",
+          "usr": "s:15CapacitorCamera0B18AuthorizationStateP",
+          "mangledName": "$s15CapacitorCamera0B18AuthorizationStateP"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "PHAuthorizationStatus",
+      "printedName": "PHAuthorizationStatus",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "authorizationState",
+          "printedName": "authorizationState",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "String",
+              "printedName": "Swift.String",
+              "usr": "s:SS"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:So21PHAuthorizationStatusV15CapacitorCameraE18authorizationStateSSvp",
+          "mangledName": "$sSo21PHAuthorizationStatusV15CapacitorCameraE18authorizationStateSSvp",
+          "moduleName": "CapacitorCamera",
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:So21PHAuthorizationStatusV15CapacitorCameraE18authorizationStateSSvg",
+              "mangledName": "$sSo21PHAuthorizationStatusV15CapacitorCameraE18authorizationStateSSvg",
+              "moduleName": "CapacitorCamera",
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Enum",
+      "usr": "c:@E@PHAuthorizationStatus",
+      "moduleName": "Photos",
+      "intro_iOS": "8",
+      "objc_name": "PHAuthorizationStatus",
+      "declAttributes": [
+        "Available",
+        "Available",
+        "SynthesizedProtocol",
+        "ObjC",
+        "SynthesizedProtocol",
+        "Sendable",
+        "Dynamic"
+      ],
+      "enumRawTypeName": "Int",
+      "isExternal": true,
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "RawRepresentable",
+          "printedName": "RawRepresentable",
+          "children": [
+            {
+              "kind": "TypeWitness",
+              "name": "RawValue",
+              "printedName": "RawValue",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Int",
+                  "printedName": "Swift.Int",
+                  "usr": "s:Si"
+                }
+              ]
+            }
+          ],
+          "usr": "s:SY",
+          "mangledName": "$sSY"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Sendable",
+          "printedName": "Sendable",
+          "usr": "s:s8SendableP",
+          "mangledName": "$ss8SendableP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CameraAuthorizationState",
+          "printedName": "CameraAuthorizationState",
+          "usr": "s:15CapacitorCamera0B18AuthorizationStateP",
+          "mangledName": "$s15CapacitorCamera0B18AuthorizationStateP"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "PHAsset",
+      "printedName": "PHAsset",
+      "children": [
+        {
+          "kind": "Var",
+          "name": "imageData",
+          "printedName": "imageData",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "Dictionary",
+              "printedName": "[Swift.String : Any]",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "String",
+                  "printedName": "Swift.String",
+                  "usr": "s:SS"
+                },
+                {
+                  "kind": "TypeNominal",
+                  "name": "ProtocolComposition",
+                  "printedName": "Any"
+                }
+              ],
+              "usr": "s:SD"
+            }
+          ],
+          "declKind": "Var",
+          "usr": "s:So7PHAssetC15CapacitorCameraE9imageDataSDySSypGvp",
+          "mangledName": "$sSo7PHAssetC15CapacitorCameraE9imageDataSDySSypGvp",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "declAttributes": [
+            "RawDocComment"
+          ],
+          "accessors": [
+            {
+              "kind": "Accessor",
+              "name": "Get",
+              "printedName": "Get()",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "Dictionary",
+                  "printedName": "[Swift.String : Any]",
+                  "children": [
+                    {
+                      "kind": "TypeNominal",
+                      "name": "String",
+                      "printedName": "Swift.String",
+                      "usr": "s:SS"
+                    },
+                    {
+                      "kind": "TypeNominal",
+                      "name": "ProtocolComposition",
+                      "printedName": "Any"
+                    }
+                  ],
+                  "usr": "s:SD"
+                }
+              ],
+              "declKind": "Accessor",
+              "usr": "s:So7PHAssetC15CapacitorCameraE9imageDataSDySSypGvg",
+              "mangledName": "$sSo7PHAssetC15CapacitorCameraE9imageDataSDySSypGvg",
+              "moduleName": "CapacitorCamera",
+              "isOpen": true,
+              "accessorKind": "get"
+            }
+          ]
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:objc(cs)PHAsset",
+      "moduleName": "Photos",
+      "isOpen": true,
+      "intro_iOS": "8",
+      "objc_name": "PHAsset",
+      "declAttributes": [
+        "Available",
+        "ObjC",
+        "Dynamic"
+      ],
+      "superclassUsr": "c:objc(cs)PHObject",
+      "isExternal": true,
+      "inheritsConvenienceInitializers": true,
+      "superclassNames": [
+        "Photos.PHObject",
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        }
+      ]
+    },
+    {
+      "kind": "TypeDecl",
+      "name": "UIImage",
+      "printedName": "UIImage",
+      "children": [
+        {
+          "kind": "Function",
+          "name": "reformat",
+          "printedName": "reformat(to:)",
+          "children": [
+            {
+              "kind": "TypeNominal",
+              "name": "UIImage",
+              "printedName": "UIKit.UIImage",
+              "usr": "c:objc(cs)UIImage"
+            },
+            {
+              "kind": "TypeNominal",
+              "name": "Optional",
+              "printedName": "CoreGraphics.CGSize?",
+              "children": [
+                {
+                  "kind": "TypeNominal",
+                  "name": "CGSize",
+                  "printedName": "CoreGraphics.CGSize",
+                  "usr": "c:@S@CGSize"
+                }
+              ],
+              "hasDefaultArg": true,
+              "usr": "s:Sq"
+            }
+          ],
+          "declKind": "Func",
+          "usr": "s:So7UIImageC15CapacitorCameraE8reformat2toABSo6CGSizeVSg_tF",
+          "mangledName": "$sSo7UIImageC15CapacitorCameraE8reformat2toABSo6CGSizeVSg_tF",
+          "moduleName": "CapacitorCamera",
+          "isOpen": true,
+          "declAttributes": [
+            "RawDocComment"
+          ],
+          "funcSelfKind": "NonMutating"
+        }
+      ],
+      "declKind": "Class",
+      "usr": "c:objc(cs)UIImage",
+      "moduleName": "UIKit",
+      "isOpen": true,
+      "intro_iOS": "2.0",
+      "objc_name": "UIImage",
+      "declAttributes": [
+        "Available",
+        "ObjC",
+        "Dynamic"
+      ],
+      "superclassUsr": "c:objc(cs)NSObject",
+      "isExternal": true,
+      "inheritsConvenienceInitializers": true,
+      "superclassNames": [
+        "ObjectiveC.NSObject"
+      ],
+      "conformances": [
+        {
+          "kind": "Conformance",
+          "name": "Equatable",
+          "printedName": "Equatable",
+          "usr": "s:SQ",
+          "mangledName": "$sSQ"
+        },
+        {
+          "kind": "Conformance",
+          "name": "Hashable",
+          "printedName": "Hashable",
+          "usr": "s:SH",
+          "mangledName": "$sSH"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CVarArg",
+          "printedName": "CVarArg",
+          "usr": "s:s7CVarArgP",
+          "mangledName": "$ss7CVarArgP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObservingPublishing",
+          "printedName": "_KeyValueCodingAndObservingPublishing",
+          "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+          "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_KeyValueCodingAndObserving",
+          "printedName": "_KeyValueCodingAndObserving",
+          "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+          "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomStringConvertible",
+          "printedName": "CustomStringConvertible",
+          "usr": "s:s23CustomStringConvertibleP",
+          "mangledName": "$ss23CustomStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "CustomDebugStringConvertible",
+          "printedName": "CustomDebugStringConvertible",
+          "usr": "s:s28CustomDebugStringConvertibleP",
+          "mangledName": "$ss28CustomDebugStringConvertibleP"
+        },
+        {
+          "kind": "Conformance",
+          "name": "_ExpressibleByImageLiteral",
+          "printedName": "_ExpressibleByImageLiteral",
+          "usr": "s:s26_ExpressibleByImageLiteralP",
+          "mangledName": "$ss26_ExpressibleByImageLiteralP"
+        }
+      ]
+    }
+  ],
+  "json_format_version": 6
+}

@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "7a13f6b1c854fe0ca9bfaa0cea0fc49e05427be0b9ae93da14fa5b0761d36214"
+build_start_time: [1649140565, 516347885]
+build_end_time: [1649140566, 309993028]
+inputs:
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/capacitor-cordova-ios-plugins/sources/CordovaPluginPreviewAnyFile/PreviewAnyFile.swift"
+  : [1649140506, 544147491]

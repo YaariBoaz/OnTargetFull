@@ -1,0 +1,41 @@
+Target dependency graph (12 targets)
+CapacitorCordova in Pods, no dependencies
+Capacitor in Pods, depends on:
+CapacitorCordova in Pods (explicit)
+CapacitorCamera in Pods, depends on:
+Capacitor in Pods (explicit)
+CapacitorPluginAppTrackingTransparency in Pods, depends on:
+Capacitor in Pods (explicit)
+CordovaPlugins in Pods, depends on:
+CapacitorCordova in Pods (explicit)
+CordovaPluginsResources in Pods, no dependencies
+PurchasesCoreSwift in Pods, no dependencies
+Purchases in Pods, depends on:
+PurchasesCoreSwift in Pods (explicit)
+PurchasesHybridCommon in Pods, depends on:
+Purchases in Pods (explicit)
+CordovaPluginsStatic in Pods, depends on:
+CapacitorCordova in Pods (explicit)
+PurchasesHybridCommon in Pods (explicit)
+Pods-App in Pods, depends on:
+Capacitor in Pods (explicit)
+CapacitorCamera in Pods (explicit)
+CapacitorCordova in Pods (explicit)
+CapacitorPluginAppTrackingTransparency in Pods (explicit)
+CordovaPlugins in Pods (explicit)
+CordovaPluginsResources in Pods (explicit)
+CordovaPluginsStatic in Pods (explicit)
+Purchases in Pods (explicit)
+PurchasesCoreSwift in Pods (explicit)
+PurchasesHybridCommon in Pods (explicit)
+App in App, depends on:
+Pods-App in Pods (implicit dependency via file 'Pods_App.framework' in build phase 'Link Binary')
+Capacitor in Pods (implicit dependency via options '-framework Capacitor' in build setting 'OTHER_LDFLAGS')
+CapacitorCamera in Pods (implicit dependency via options '-framework CapacitorCamera' in build setting 'OTHER_LDFLAGS')
+CapacitorPluginAppTrackingTransparency in Pods (implicit dependency via options '-framework CapacitorPluginAppTrackingTransparency' in build setting 'OTHER_LDFLAGS')
+CapacitorCordova in Pods (implicit dependency via options '-framework Cordova' in build setting 'OTHER_LDFLAGS')
+CordovaPlugins in Pods (implicit dependency via options '-framework CordovaPlugins' in build setting 'OTHER_LDFLAGS')
+CordovaPluginsStatic in Pods (implicit dependency via options '-framework CordovaPluginsStatic' in build setting 'OTHER_LDFLAGS')
+Purchases in Pods (implicit dependency via options '-framework Purchases' in build setting 'OTHER_LDFLAGS')
+PurchasesCoreSwift in Pods (implicit dependency via options '-framework PurchasesCoreSwift' in build setting 'OTHER_LDFLAGS')
+PurchasesHybridCommon in Pods (implicit dependency via options '-framework PurchasesHybridCommon' in build setting 'OTHER_LDFLAGS')

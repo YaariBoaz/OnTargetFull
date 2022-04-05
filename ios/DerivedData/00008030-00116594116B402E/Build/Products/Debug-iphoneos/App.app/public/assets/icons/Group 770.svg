@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="178" height="178" viewBox="0 0 178 178">
+    <defs>
+        <style>
+            .cls-7{fill:none}.cls-6{stroke:none}
+        </style>
+    </defs>
+    <g id="Group_770" transform="translate(-40 -160)">
+        <g id="Ellipse_26" fill="none" stroke="#54B8DE" stroke-width="2px" opacity="0.255" transform="translate(94 214)">
+            <circle cx="34.5" cy="34.5" r="34.5" class="cls-6"/>
+            <circle cx="34.5" cy="34.5" r="33.5" class="cls-7"/>
+        </g>
+        <g id="Ellipse_27" fill="none" stroke="#54B8DE" stroke-width="2px" opacity="0.278" transform="translate(83 203)">
+            <circle cx="46" cy="46" r="46" class="cls-6"/>
+            <circle cx="46" cy="46" r="45" class="cls-7"/>
+        </g>
+        <g id="Ellipse_28" fill="none" stroke="#54B8DE" stroke-width="2px" opacity="0.269" transform="translate(66 186)">
+            <circle cx="62.5" cy="62.5" r="62.5" class="cls-6"/>
+            <circle cx="62.5" cy="62.5" r="61.5" class="cls-7"/>
+        </g>
+        <g id="Ellipse_29" fill="none" stroke="#ce564b" stroke-width="2px" opacity="0.536" transform="translate(40 160)">
+            <circle cx="89" cy="89" r="89" class="cls-6"/>
+            <circle cx="89" cy="89" r="88" class="cls-7"/>
+        </g>
+        <path id="Path_15960" fill="#54B8DE" d="M171.159 952.458a.951.951 0 0 1-.953-.952v-16.43l-8.383 8.41a.951.951 0 0 1-1.347 0 .956.956 0 0 1 0-1.348l9.265-9.294-9.265-9.294a.952.952 0 0 1 1.348-1.345l8.383 8.408v-16.428a.949.949 0 0 1 .588-.88.96.96 0 0 1 .366-.072.943.943 0 0 1 .672.278l9.278 9.28a.952.952 0 0 1 0 1.345l-8.682 8.71 8.682 8.709a.955.955 0 0 1 0 1.346l-9.28 9.279a.942.942 0 0 1-.672.278zm.952-3.252l6.981-6.98-6.981-7zm0-18.739l6.981-7-6.981-6.98z" transform="translate(-41.974 -686.442)"/>
+    </g>
+</svg>

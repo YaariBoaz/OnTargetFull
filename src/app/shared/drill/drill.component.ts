@@ -449,8 +449,6 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                 this.showCounter = false;
                 this.drillHasNotStarted = false;
                 this.bleService.resetShots();
-
-                // THIS IS THE CODE FOR DRAWING A MATRIX
                 // const data = [];
                 // for (let i = 65; i <= 425; i += 20) {
                 //     for (let j = 65; j <= 425; j += 20) {
@@ -549,7 +547,7 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
     private registerHitNoHitNotifications() {
         this.hitNohitService.hitArrived.subscribe((data) => {
             if (data !== null && !this.drillHasNotStarted && !this.drillIsFinished) {
-                this.shotNumber = data.hitNumber;
+                this.shotNumber = data.statsData.stats.length;
                 this.stats = data.statsData.stats;
                 this.pageData = data.statsData.page;
                 this.isFinish = data.statsData.isFinish;

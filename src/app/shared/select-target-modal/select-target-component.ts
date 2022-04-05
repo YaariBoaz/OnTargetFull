@@ -338,9 +338,9 @@ export class SelectTargetComponent implements OnInit {
 
                 debugger
                 this.bleService.currentTargetId = device.id;
+                console.log('GATEWAY IS: ', device);
                 console.log('UUUID OF GATEWAY IS: ', device.id);
                 this.bleService.connect(device.id);
-                console.log('DEVICE OBJECT ', device);
                 console.log('UUUID OF GATEWAY I WANTED : ', this.bleService.currentTargetId);
 
 

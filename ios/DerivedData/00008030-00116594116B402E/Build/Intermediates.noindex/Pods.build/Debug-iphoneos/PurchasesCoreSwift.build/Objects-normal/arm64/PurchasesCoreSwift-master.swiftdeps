@@ -1,0 +1,73 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "a6cecef5a6ed667d1fad877a54cdc510e52b751cee87173da0877fd64ec60b17"
+build_start_time: [1649140565, 496645927]
+build_end_time: [1649140566, 664633035]
+inputs:
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/IntroEligibilityCalculator.swift"
+  : [1648805174, 652815341]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/BasicTypes/ASN1Container.swift"
+  : [1648805174, 652973651]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/BasicTypes/ASN1ObjectIdentifier.swift"
+  : [1648805174, 653044700]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/BasicTypes/AppleReceipt.swift"
+  : [1648805174, 653110027]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/BasicTypes/InAppPurchase.swift"
+  : [1648805174, 653174638]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/Builders/ASN1ContainerBuilder.swift"
+  : [1648805174, 653270244]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/Builders/ASN1ObjectIdentifierBuilder.swift"
+  : [1648805174, 653344154]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/Builders/AppleReceiptBuilder.swift"
+  : [1648805174, 653419494]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/Builders/InAppPurchaseBuilder.swift"
+  : [1648805174, 653514862]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/DataConverters/ArraySlice_UInt8+Extensions.swift"
+  : [1648805174, 653604984]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/DataConverters/ISO3601DateFormatter.swift"
+  : [1648805174, 653668880]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/DataConverters/UInt8+Extensions.swift"
+  : [1648805174, 653737068]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/ReceiptParser.swift"
+  : [1648805174, 653801918]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/LocalReceiptParsing/ReceiptParsingError.swift"
+  : [1648805174, 653859138]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/LogIntent.swift": [1648805174, 653945684]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Logger.swift": [1648805174, 654007911]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/AttributionStrings.swift"
+  : [1648805174, 654097557]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/ConfigureStrings.swift"
+  : [1648805174, 654160737]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/IdentityStrings.swift"
+  : [1648805174, 654226541]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/NetworkStrings.swift"
+  : [1648805174, 654297113]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/OfferingStrings.swift"
+  : [1648805174, 654358863]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/PurchaseStrings.swift"
+  : [1648805174, 654420137]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/PurchaserInfoStrings.swift"
+  : [1648805174, 654477596]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/ReceiptStrings.swift"
+  : [1648805174, 654539108]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/RestoreStrings.swift"
+  : [1648805174, 654609680]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Logging/Strings/Strings.swift"
+  : [1648805174, 654665946]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Misc/DateExtensions.swift": [1648805174, 654752969]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Misc/OperationDispatcher.swift"
+  : [1648805174, 654811859]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Networking/ETagAndResponseWrapper.swift"
+  : [1648805174, 654899835]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Networking/ETagManager.swift"
+  : [1648805174, 654967308]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Networking/HTTPResponse.swift"
+  : [1648805174, 655024528]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Networking/HTTPStatusCodes.swift"
+  : [1648805174, 655084133]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Purchasing/ProductsManager.swift"
+  : [1648805174, 655176162]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Purchasing/ProductsRequestFactory.swift"
+  : [1648805174, 655235290]
+  ? "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Purchasing/TransactionsFactory.swift"
+  : [1648805174, 655299186]
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/Pods/PurchasesCoreSwift/PurchasesCoreSwift/Transaction.swift": [1648805174, 655364036]

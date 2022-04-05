@@ -1,0 +1,10 @@
+framework module CordovaPluginsStatic {
+  umbrella header "CordovaPluginsStatic-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module CordovaPluginsStatic.__Swift {
+    exclude header "CordovaPluginsStatic-Swift.h"
+}

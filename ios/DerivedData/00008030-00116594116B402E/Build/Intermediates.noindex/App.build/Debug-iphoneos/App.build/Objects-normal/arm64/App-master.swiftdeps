@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
+options: "8a2008a8486058ca66301473002979b972ea225bcb478c96764f9bc0eb4cb5dd"
+build_start_time: [1649140569, 442610979]
+build_end_time: [1649140569, 813688993]
+inputs:
+  "/Users/shacharyaari/Documents/GitHub/OnTargetFull/ios/App/App/AppDelegate.swift": [1648805174, 637665033]

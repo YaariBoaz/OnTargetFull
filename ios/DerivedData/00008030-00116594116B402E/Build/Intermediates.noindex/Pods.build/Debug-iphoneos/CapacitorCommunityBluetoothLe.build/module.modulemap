@@ -1,0 +1,11 @@
+framework module CapacitorCommunityBluetoothLe {
+  umbrella header "CapacitorCommunityBluetoothLe-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module CapacitorCommunityBluetoothLe.Swift {
+    header "CapacitorCommunityBluetoothLe-Swift.h"
+    requires objc
+}
