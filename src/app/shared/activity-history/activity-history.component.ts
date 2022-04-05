@@ -164,6 +164,10 @@ export class ActivityHistoryComponent implements OnInit, OnChanges {
             return 16;
         }
     }
+
+    isIOS(){
+        return this.platform.is('ios')
+    }
 }
 
 export interface TrainingHistory {

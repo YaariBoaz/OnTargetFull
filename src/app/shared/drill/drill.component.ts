@@ -593,7 +593,9 @@ export class DrillComponent implements OnInit, OnChanges, OnDestroy, AfterViewIn
                     this.summaryObject = data.statsData.summaryObject;
                     this.shots.push({x: data.statsData.shot.x, y: data.statsData.shot.y});
                     this.cd.detectChanges();
-                    this.scrollToBottom();
+                    setTimeout(()=>{
+                        this.scrollToBottom();
+                    },500)
                     if (this.drill.numOfBullets === this.stats.length) {
                         this.drillIsFinished = true;
                         this.cd.detectChanges();

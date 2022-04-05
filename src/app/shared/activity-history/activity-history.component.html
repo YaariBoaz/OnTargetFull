@@ -1,6 +1,6 @@
 <section class="activity-history">
     <header>
-        <div class="title-and-back">
+        <div class="title-and-back" [class.ios-header]="isIOS()">
             <div class="back-container" (click)="onBackPressed()">
                 <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 7.86914L11.6769 15.6191V11.4438H19.9286V4.29445H11.6769V0.119141L0 7.86914Z"

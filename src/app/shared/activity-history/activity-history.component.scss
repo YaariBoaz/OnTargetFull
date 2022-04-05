@@ -1076,3 +1076,15 @@ div.back-container {
   width: 100px;
   color: black;
 }
+
+.ios-header{
+    padding-top: 40px;
+  div.back-container {
+    position: absolute;
+    top:60px;
+    left: 16px;
+
+    display: flex;
+    align-items: center;
+  }
+}
