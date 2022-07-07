@@ -87,7 +87,7 @@
     "hammerjs": "^2.0.8",
     "html2canvas": "^1.3.3",
     "jetifier": "^2.0.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "ng2-charts": "2.4.2",
     "ngx-animate": "^1.0.1",
     "ngx-capture": "^0.12.1",
